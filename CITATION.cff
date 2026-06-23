@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+title: "RhoDyn: dynamic residence-state analysis for live-cell signaling and perturbation data"
+message: "If you use RhoDyn, please cite the software release associated with the version you used."
+type: software
+authors:
+  - family-names: Socodato
+    given-names: Renato
+version: 0.1.0
+license: Apache-2.0
+repository-code: "https://github.com/renatosocodato/rhodyn"
+date-released: 2026-06-23
+abstract: "RhoDyn is a standalone toolkit for residence-time, reserve-like buffering, bounded coupling, stochastic timing, and reduced-controller analysis from live-cell signaling and perturbation data."
+

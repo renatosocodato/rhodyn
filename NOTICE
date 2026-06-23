@@ -1,0 +1,7 @@
+RhoDyn
+Copyright 2026 Renato Socodato
+
+RhoDyn was motivated by residence-state and reduced-controller analysis patterns
+developed in the windowed RhoA manuscript project. It is a standalone software
+toolkit and is not part of the manuscript analysis dependency chain.
+

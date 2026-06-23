@@ -1,0 +1,44 @@
+# RhoDyn architecture
+
+RhoDyn separates reusable dynamic-state analysis from manuscript-specific
+biological interpretation.
+
+## Core layers
+
+1. `rhodyn.schema`
+   Validates tidy trajectory and endpoint tables.
+
+2. `rhodyn.residence`
+   Scores signal dwell time inside a declared window and compares residence
+   summaries with amplitude summaries.
+
+3. `rhodyn.reserve`
+   Provides normalization helpers for reserve-like buffering readouts.
+
+4. `rhodyn.coupling`
+   Encodes bounded-coupling decisions from confidence intervals or posterior
+   samples supplied by the user.
+
+5. `rhodyn.models`
+   Simulates a minimal residence-gated controller.
+
+6. `rhodyn.sim`
+   Provides stochastic timing helpers, including first-passage and simple
+   Gillespie/tau-leap routines.
+
+7. `rhodyn.compare`
+   Compares reduced controller predictions against endpoint constraints.
+
+8. `rhodyn.paper`
+   Documents the manuscript repository and Zenodo data package as an optional
+   case study without making them package dependencies.
+
+## What stays outside the core
+
+- raw microscopy reading;
+- image segmentation;
+- manuscript figure composition;
+- disease-specific claims;
+- private data adapters;
+- dashboard or hosted analysis.
+

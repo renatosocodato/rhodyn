@@ -1,0 +1,11 @@
+model,endpoint,observed,predicted,weight
+amplitude_only,rhoa_mean,0.55,0.57,1.0
+amplitude_only,src_late,0.31,0.48,1.0
+amplitude_only,reserve,0.72,0.50,1.0
+residence_gated,rhoa_mean,0.55,0.56,1.0
+residence_gated,src_late,0.31,0.33,1.0
+residence_gated,reserve,0.72,0.70,1.0
+reserve_free,rhoa_mean,0.55,0.56,1.0
+reserve_free,src_late,0.31,0.35,1.0
+reserve_free,reserve,0.72,0.43,1.0
+
