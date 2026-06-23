@@ -82,25 +82,54 @@ Print the optional manuscript case-study metadata.
 rhodyn paper-case-study
 ```
 
-## Input schema
+## Input schemas
 
-Trajectory tables are expected to be tidy CSV files with at least:
+RhoDyn accepts tidy CSV inputs. Required columns must be present and non-empty
+where they identify a biological grouping or comparison. Optional columns can be
+omitted without failing validation.
+
+Trajectory tables describe live-cell signaling traces.
 
 | column | meaning |
 | --- | --- |
-| `cell_id` | cell or trace identifier |
-| `time` | time coordinate |
+| `cell_id` | required cell or trace identifier |
+| `time` | required non-negative time coordinate |
 | `condition` | treatment, genotype, or perturbation group |
 | `signal` | measured signaling value |
+| `replicate` | optional replicate, field, well, or experiment identifier |
 
-Endpoint-comparison tables are expected to contain:
+Endpoint-comparison tables describe observed-versus-predicted model outputs.
 
 | column | meaning |
 | --- | --- |
-| `model` | model or architecture name |
-| `endpoint` | measured endpoint |
+| `model` | required model or architecture name |
+| `endpoint` | required measured endpoint |
 | `observed` | observed value |
 | `predicted` | model-predicted value |
+| `weight` | optional endpoint weight, defaulting to `1.0` |
+
+Reserve tables describe calcium, viability, or other reserve-like response
+coordinates.
+
+| column | meaning |
+| --- | --- |
+| `sample_id` | required cell, field, well, or sample identifier |
+| `time` | required non-negative time coordinate |
+| `condition` | treatment, genotype, or perturbation group |
+| `response` | measured reserve-like response |
+| `replicate` | optional replicate, field, well, or experiment identifier |
+
+Coupling tables describe bounded-coupling interval or ROPE summaries supplied
+by the user.
+
+| column | meaning |
+| --- | --- |
+| `contrast` | required perturbation or condition contrast |
+| `estimate` | contrast estimate |
+| `ci_low` | lower confidence or credible interval bound |
+| `ci_high` | upper confidence or credible interval bound |
+| `margin` | positive declared equivalence or biological-negligibility margin |
+| `rope_mass` | optional posterior mass inside the margin |
 
 ## Relationship to the RhoA manuscript
 
@@ -147,4 +176,3 @@ Unsupported interpretations include:
 ## License
 
 Apache License 2.0. See `LICENSE`.
-

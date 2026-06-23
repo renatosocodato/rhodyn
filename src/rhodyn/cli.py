@@ -11,7 +11,7 @@ from rhodyn.models import simulate_controller
 from rhodyn.paper import inspect_case_study_root, paper_case_study_metadata
 from rhodyn.report import to_plain
 from rhodyn.residence import ResidenceWindow, score_records
-from rhodyn.schema import read_endpoint_csv, read_trajectory_csv
+from rhodyn.schema import read_coupling_csv, read_endpoint_csv, read_reserve_csv, read_trajectory_csv, schema_specs
 
 
 def _print_json(payload: object) -> None:
@@ -21,9 +21,21 @@ def _print_json(payload: object) -> None:
 def cmd_validate(args: argparse.Namespace) -> int:
     if args.kind == "trajectory":
         rows, issues = read_trajectory_csv(args.csv)
-    else:
+    elif args.kind == "endpoint":
         rows, issues = read_endpoint_csv(args.csv)
-    _print_json({"status": "pass" if not issues else "fail", "rows": len(rows), "issues": issues})
+    elif args.kind == "reserve":
+        rows, issues = read_reserve_csv(args.csv)
+    else:
+        rows, issues = read_coupling_csv(args.csv)
+    _print_json(
+        {
+            "status": "pass" if not issues else "fail",
+            "kind": args.kind,
+            "schema": schema_specs()[args.kind],
+            "rows": len(rows),
+            "issues": issues,
+        }
+    )
     return 0 if not issues else 1
 
 
@@ -67,7 +79,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     validate = sub.add_parser("validate", help="Validate a tidy input CSV.")
     validate.add_argument("csv")
-    validate.add_argument("--kind", choices=["trajectory", "endpoint"], default="trajectory")
+    validate.add_argument("--kind", choices=["trajectory", "endpoint", "reserve", "coupling"], default="trajectory")
     validate.set_defaults(func=cmd_validate)
 
     score = sub.add_parser("score-residence", help="Score residence-window summaries for a trajectory table.")
@@ -102,4 +114,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
