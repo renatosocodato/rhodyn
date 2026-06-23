@@ -76,6 +76,12 @@ Compare reduced model predictions from a tidy endpoint table.
 rhodyn compare examples/synthetic_endpoints.csv
 ```
 
+Run the dependency-free synthetic walkthrough.
+
+```bash
+PYTHONPATH=src python examples/residence_reserve_workflow.py
+```
+
 Print the optional manuscript case-study metadata.
 
 ```bash
