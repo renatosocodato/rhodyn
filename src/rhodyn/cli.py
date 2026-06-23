@@ -4,9 +4,9 @@ from __future__ import annotations
 
 import argparse
 import json
-from dataclasses import asdict
 
 from rhodyn.compare import rank_model_fits
+from rhodyn.extras import extra_plan
 from rhodyn.models import simulate_controller
 from rhodyn.paper import inspect_case_study_root, paper_case_study_metadata
 from rhodyn.report import to_plain
@@ -73,6 +73,11 @@ def cmd_paper_case_study(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_extras(args: argparse.Namespace) -> int:
+    _print_json({"status": "pass", "extras": extra_plan()})
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="rhodyn", description="Dynamic residence-state analysis toolkit.")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -102,6 +107,9 @@ def build_parser() -> argparse.ArgumentParser:
     paper = sub.add_parser("paper-case-study", help="Print optional manuscript case-study metadata.")
     paper.add_argument("--data-root", default="")
     paper.set_defaults(func=cmd_paper_case_study)
+
+    extras = sub.add_parser("extras", help="Print optional dependency groups and planned first uses.")
+    extras.set_defaults(func=cmd_extras)
 
     return parser
 

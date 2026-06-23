@@ -50,6 +50,16 @@ python -m unittest discover tests
 
 The package currently uses only the Python standard library.
 
+Optional scientific-computing extras are declared for future table, statistics,
+plotting, and notebook workflows.
+
+```bash
+python -m pip install 'rhodyn[pandas]'
+python -m pip install 'rhodyn[stats]'
+python -m pip install 'rhodyn[plots]'
+python -m pip install 'rhodyn[notebooks]'
+```
+
 ## Quick examples
 
 Validate a synthetic live-cell trajectory table.
@@ -86,6 +96,12 @@ Print the optional manuscript case-study metadata.
 
 ```bash
 rhodyn paper-case-study
+```
+
+Inspect optional dependency groups.
+
+```bash
+rhodyn extras
 ```
 
 ## Input schemas
