@@ -98,6 +98,12 @@ Print the optional manuscript case-study metadata.
 rhodyn paper-case-study
 ```
 
+Inspect a local release-like table root and map discovered CSVs to RhoDyn roles.
+
+```bash
+rhodyn paper-case-study --data-root examples
+```
+
 Inspect optional dependency groups.
 
 ```bash
