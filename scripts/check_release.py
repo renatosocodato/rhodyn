@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -41,9 +42,33 @@ def _text_files(root: Path) -> list[Path]:
     return files
 
 
+def _tracked_paths(root: Path) -> set[str] | None:
+    try:
+        result = subprocess.run(
+            ["git", "ls-files"],
+            cwd=root,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+        )
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return {line.strip() for line in result.stdout.splitlines() if line.strip()}
+
+
+def _tracked_or_unknown(rel: Path, tracked: set[str] | None) -> bool:
+    if tracked is None:
+        return True
+    rel_text = rel.as_posix()
+    prefix = rel_text.rstrip("/") + "/"
+    return rel_text in tracked or any(path.startswith(prefix) for path in tracked)
+
+
 def check_release(root: Path = ROOT) -> dict[str, object]:
     failures: list[str] = []
     warnings: list[str] = []
+    tracked = _tracked_paths(root)
 
     for name in REQUIRED_FILES:
         if not (root / name).exists():
@@ -75,10 +100,16 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             continue
         rel = path.relative_to(root)
         if path.is_dir() and path.name in GENERATED_DIRS:
-            failures.append(f"generated directory should not be committed: {rel}")
+            if _tracked_or_unknown(rel, tracked):
+                failures.append(f"generated directory should not be committed: {rel}")
+            else:
+                warnings.append(f"ignoring untracked generated directory: {rel}")
         if path.is_dir() and path.name.endswith(".egg-info"):
-            failures.append(f"egg-info directory should not be committed: {rel}")
-        if path.is_file() and path.suffix.lower() in RAW_EXTENSIONS:
+            if _tracked_or_unknown(rel, tracked):
+                failures.append(f"egg-info directory should not be committed: {rel}")
+            else:
+                warnings.append(f"ignoring untracked egg-info directory: {rel}")
+        if path.is_file() and path.suffix.lower() in RAW_EXTENSIONS and _tracked_or_unknown(rel, tracked):
             failures.append(f"raw or manuscript-private data-like file should not be packaged: {rel}")
 
     if not (root / ".github" / "workflows" / "package.yml").exists():
