@@ -10,6 +10,16 @@ from rhodyn.coupling import (
     rope_mass,
     two_sample_welch_tost,
 )
+from rhodyn.ctc import (
+    CTC_SIGNAL_CHOICES,
+    CtcFeatureRecord,
+    CtcLineageRecord,
+    ctc_features_to_trajectory_records,
+    ctc_lineage_coverage_issues,
+    read_ctc_feature_csv,
+    read_ctc_lineage,
+    write_trajectory_csv,
+)
 from rhodyn.extras import MissingOptionalDependency, OptionalExtra, extra_plan, require_extra
 from rhodyn.models import ControllerParams, simulate_controller
 from rhodyn.plots import (
@@ -47,8 +57,11 @@ from rhodyn.uncertainty import BootstrapResult, PermutationResult, bootstrap_int
 __all__ = [
     "ControllerParams",
     "BootstrapResult",
+    "CTC_SIGNAL_CHOICES",
     "CouplingIntervalRecord",
     "CouplingResult",
+    "CtcFeatureRecord",
+    "CtcLineageRecord",
     "EndpointRecord",
     "EquivalenceDecision",
     "GroupMetadata",
@@ -67,9 +80,11 @@ __all__ = [
     "TostDecision",
     "TrajectoryRecord",
     "UncertaintyInterval",
+    "bootstrap_interval",
     "coupling_result_from_decision",
     "coupling_result_from_tost",
-    "bootstrap_interval",
+    "ctc_features_to_trajectory_records",
+    "ctc_lineage_coverage_issues",
     "equivalence_from_interval",
     "extra_plan",
     "linear_grid",
@@ -82,6 +97,8 @@ __all__ = [
     "plot_residence_trace",
     "plot_sensitivity_curve",
     "rank_model_fits",
+    "read_ctc_feature_csv",
+    "read_ctc_lineage",
     "residence_result_from_summary",
     "residence_window_grid",
     "require_extra",
@@ -93,6 +110,7 @@ __all__ = [
     "score_trace_window_sensitivity",
     "simulate_controller",
     "two_sample_welch_tost",
+    "write_trajectory_csv",
 ]
 
 __version__ = "0.1.0"

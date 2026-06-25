@@ -1,5 +1,18 @@
 # Changelog
 
+## Unreleased
+
+Started:
+
+- CTC-style public live-cell tracking adapter for the MLCI benchmark tutorial;
+- `ctc-to-trajectory` CLI conversion from pre-extracted track features to RhoDyn trajectory tables;
+- tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
+- MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
+
+Boundary:
+
+- The bundled fixture validates the adapter and workflow only. Biological interpretation requires features extracted from the public Zenodo benchmark.
+
 ## v0.1.0
 
 Private hardening release for the standalone RhoDyn toolkit.

@@ -14,22 +14,29 @@ future examples.
 
 ## Current status
 
-This is an early open-core scaffold for `v0.1.0`.
+This is an early open-core scaffold moving into the `v0.3.0` public
+case-study lane.
 
 Included now:
 
 - tidy live-cell trajectory validation;
+- Cell Tracking Challenge-style feature-table conversion for the first public
+  microbial tracking tutorial;
 - residence-window scoring;
 - amplitude and dwell-time summaries;
 - reserve-style normalization helpers;
 - bounded-equivalence decision helpers from supplied intervals or posterior
-  samples;
+  samples and raw arrays;
+- bootstrap and permutation uncertainty helpers;
+- residence-window sensitivity curves;
+- optional diagnostic plots;
 - simple deterministic controller simulation;
 - stochastic first-passage utilities;
 - reduced-model comparison helpers;
 - a CLI;
 - synthetic examples;
-- a documented paper-data adapter stub.
+- a documented paper-data adapter stub;
+- a public-data candidate matrix and MLCI tutorial scaffold.
 
 Not included yet:
 
@@ -74,6 +81,24 @@ Score residence in a signaling window.
 rhodyn score-residence examples/synthetic_trajectory.csv --low 0.35 --high 0.75
 ```
 
+Convert a CTC-style microbial tracking feature table into a RhoDyn trajectory
+table.
+
+```bash
+rhodyn ctc-to-trajectory examples/mlci_ctc_features.csv \
+  --lineage examples/mlci_man_track.txt \
+  --signal speed \
+  --condition mlci_tracking \
+  --replicate schema_fixture \
+  --output mlci_speed_trajectory.csv
+```
+
+Run the public case-study workflow scaffold.
+
+```bash
+PYTHONPATH=src python examples/mlci_public_case_study_workflow.py
+```
+
 Run a minimal controller simulation.
 
 ```bash
@@ -109,6 +134,11 @@ Inspect optional dependency groups.
 ```bash
 rhodyn extras
 ```
+
+The v0.3.0 public tutorial scaffold is documented in
+`docs/mlci_public_tutorial.md`. The included CTC-style fixture validates the
+adapter and workflow only. Biological interpretation requires features
+extracted from the public Zenodo MLCI benchmark.
 
 ## Input schemas
 

@@ -6,6 +6,14 @@ import argparse
 import json
 
 from rhodyn.compare import rank_model_fits
+from rhodyn.ctc import (
+    CTC_SIGNAL_CHOICES,
+    ctc_features_to_trajectory_records,
+    ctc_lineage_coverage_issues,
+    read_ctc_feature_csv,
+    read_ctc_lineage,
+    write_trajectory_csv,
+)
 from rhodyn.extras import extra_plan
 from rhodyn.models import simulate_controller
 from rhodyn.paper import inspect_case_study_root, paper_case_study_metadata
@@ -125,6 +133,42 @@ def cmd_sensitivity(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_ctc_to_trajectory(args: argparse.Namespace) -> int:
+    features, issues = read_ctc_feature_csv(args.features_csv)
+    lineage_rows = []
+    if args.lineage:
+        lineage_rows, lineage_issues = read_ctc_lineage(args.lineage)
+        issues.extend(lineage_issues)
+        if not lineage_issues:
+            issues.extend(ctc_lineage_coverage_issues(features, lineage_rows))
+    if issues:
+        _print_json({"status": "fail", "issues": issues})
+        return 1
+
+    records = ctc_features_to_trajectory_records(
+        features,
+        signal=args.signal,
+        condition=args.condition,
+        replicate=args.replicate,
+    )
+    if args.output:
+        write_trajectory_csv(records, args.output)
+    _print_json(
+        {
+            "status": "pass",
+            "input_rows": len(features),
+            "lineage_rows": len(lineage_rows),
+            "trajectory_rows": len(records),
+            "signal": args.signal,
+            "condition": args.condition,
+            "replicate": args.replicate,
+            "output": args.output,
+            "rows": [] if args.output else records,
+        }
+    )
+    return 0
+
+
 def cmd_paper_case_study(args: argparse.Namespace) -> int:
     payload = paper_case_study_metadata()
     if args.data_root:
@@ -174,6 +218,15 @@ def build_parser() -> argparse.ArgumentParser:
     sensitivity.add_argument("--min-residence-fraction", type=float, default=0.0)
     sensitivity.add_argument("--signal-column", default="signal")
     sensitivity.set_defaults(func=cmd_sensitivity)
+
+    ctc = sub.add_parser("ctc-to-trajectory", help="Convert CTC-style track features into trajectory CSV.")
+    ctc.add_argument("features_csv")
+    ctc.add_argument("--lineage", default="", help="Optional CTC man_track.txt file for interval validation.")
+    ctc.add_argument("--signal", choices=CTC_SIGNAL_CHOICES, default="speed")
+    ctc.add_argument("--condition", default="mlci_tracking")
+    ctc.add_argument("--replicate", default="")
+    ctc.add_argument("--output", default="", help="Optional output CSV path. If omitted, rows are printed as JSON.")
+    ctc.set_defaults(func=cmd_ctc_to_trajectory)
 
     paper = sub.add_parser("paper-case-study", help="Print optional manuscript case-study metadata.")
     paper.add_argument("--data-root", default="")

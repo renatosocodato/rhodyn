@@ -84,3 +84,7 @@ Use the microbial tracking benchmark as the v0.3.0 tutorial target. It is the
 best current balance of public access, time-resolved biology, annotation quality,
 and license clarity. Use Cell Painting as a static-state comparator and keep
 Allen calcium as a scientifically strong but license-sensitive candidate.
+
+The v0.3.0 adapter and tutorial scaffold are now started in
+`rhodyn.ctc`, the `ctc-to-trajectory` CLI command, and
+`docs/mlci_public_tutorial.md`.
