@@ -29,9 +29,11 @@ from rhodyn.results import (
     residence_result_from_summary,
 )
 from rhodyn.schema import CouplingIntervalRecord, EndpointRecord, ReserveRecord, TrajectoryRecord, schema_specs
+from rhodyn.uncertainty import BootstrapResult, PermutationResult, bootstrap_interval, permutation_test
 
 __all__ = [
     "ControllerParams",
+    "BootstrapResult",
     "CouplingIntervalRecord",
     "CouplingResult",
     "EndpointRecord",
@@ -41,6 +43,7 @@ __all__ = [
     "ModelFit",
     "ModelComparisonResult",
     "OptionalExtra",
+    "PermutationResult",
     "ResidenceResult",
     "ResidenceWindow",
     "ReserveRecord",
@@ -53,10 +56,12 @@ __all__ = [
     "UncertaintyInterval",
     "coupling_result_from_decision",
     "coupling_result_from_tost",
+    "bootstrap_interval",
     "equivalence_from_interval",
     "extra_plan",
     "model_comparison_result_from_fits",
     "one_sample_tost",
+    "permutation_test",
     "rank_model_fits",
     "residence_result_from_summary",
     "require_extra",

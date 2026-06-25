@@ -34,14 +34,21 @@ biological interpretation.
 7. `rhodyn.compare`
    Compares reduced controller predictions against endpoint constraints.
 
-8. `rhodyn.results`
+8. `rhodyn.uncertainty`
+   Provides percentile bootstrap intervals and permutation tests for residence,
+   reserve, coupling, endpoint-fit, and other one-dimensional summaries. When
+   grouping labels are supplied, resampling and exchangeability operate at the
+   declared group level rather than silently treating every row as an
+   independent biological replicate.
+
+9. `rhodyn.results`
    Wraps residence, reserve, coupling, uncertainty, sensitivity, and
    model-comparison outputs in typed, JSON-friendly result objects. Each result
    carries grouping metadata and provenance fields so condition, cell, replicate,
    well, donor, batch, input schema, analysis parameters, and software version
    remain visible beside the quantitative value.
 
-9. `rhodyn.paper`
+10. `rhodyn.paper`
    Documents the manuscript repository and Zenodo data package as an optional
    case study without making them package dependencies.
 
