@@ -7,9 +7,11 @@ import json
 
 from rhodyn.compare import rank_model_fits
 from rhodyn.ctc import (
+    CTC_LINEAGE_SIGNAL_CHOICES,
     CTC_SIGNAL_CHOICES,
     ctc_features_to_trajectory_records,
     ctc_lineage_coverage_issues,
+    ctc_lineage_to_trajectory_records,
     read_ctc_feature_csv,
     read_ctc_lineage,
     write_trajectory_csv,
@@ -169,6 +171,36 @@ def cmd_ctc_to_trajectory(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_ctc_lineage_to_trajectory(args: argparse.Namespace) -> int:
+    lineage_rows, issues = read_ctc_lineage(args.lineage)
+    if issues:
+        _print_json({"status": "fail", "issues": issues})
+        return 1
+    records = ctc_lineage_to_trajectory_records(
+        lineage_rows,
+        signal=args.signal,
+        condition=args.condition,
+        replicate=args.replicate,
+        max_tracks=args.max_tracks,
+    )
+    if args.output:
+        write_trajectory_csv(records, args.output)
+    _print_json(
+        {
+            "status": "pass",
+            "lineage_rows": len(lineage_rows),
+            "trajectory_rows": len(records),
+            "signal": args.signal,
+            "condition": args.condition,
+            "replicate": args.replicate,
+            "max_tracks": args.max_tracks,
+            "output": args.output,
+            "rows": [] if args.output else records,
+        }
+    )
+    return 0
+
+
 def cmd_paper_case_study(args: argparse.Namespace) -> int:
     payload = paper_case_study_metadata()
     if args.data_root:
@@ -227,6 +259,18 @@ def build_parser() -> argparse.ArgumentParser:
     ctc.add_argument("--replicate", default="")
     ctc.add_argument("--output", default="", help="Optional output CSV path. If omitted, rows are printed as JSON.")
     ctc.set_defaults(func=cmd_ctc_to_trajectory)
+
+    lineage = sub.add_parser(
+        "ctc-lineage-to-trajectory",
+        help="Convert a CTC man_track.txt lineage table into trajectory CSV.",
+    )
+    lineage.add_argument("lineage")
+    lineage.add_argument("--signal", choices=CTC_LINEAGE_SIGNAL_CHOICES, default="normalized_track_age")
+    lineage.add_argument("--condition", default="mlci_tracking")
+    lineage.add_argument("--replicate", default="")
+    lineage.add_argument("--max-tracks", type=int, default=None)
+    lineage.add_argument("--output", default="", help="Optional output CSV path. If omitted, rows are printed as JSON.")
+    lineage.set_defaults(func=cmd_ctc_lineage_to_trajectory)
 
     paper = sub.add_parser("paper-case-study", help="Print optional manuscript case-study metadata.")
     paper.add_argument("--data-root", default="")

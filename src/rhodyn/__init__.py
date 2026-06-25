@@ -11,10 +11,12 @@ from rhodyn.coupling import (
     two_sample_welch_tost,
 )
 from rhodyn.ctc import (
+    CTC_LINEAGE_SIGNAL_CHOICES,
     CTC_SIGNAL_CHOICES,
     CtcFeatureRecord,
     CtcLineageRecord,
     ctc_features_to_trajectory_records,
+    ctc_lineage_to_trajectory_records,
     ctc_lineage_coverage_issues,
     read_ctc_feature_csv,
     read_ctc_lineage,
@@ -57,6 +59,7 @@ from rhodyn.uncertainty import BootstrapResult, PermutationResult, bootstrap_int
 __all__ = [
     "ControllerParams",
     "BootstrapResult",
+    "CTC_LINEAGE_SIGNAL_CHOICES",
     "CTC_SIGNAL_CHOICES",
     "CouplingIntervalRecord",
     "CouplingResult",
@@ -85,6 +88,7 @@ __all__ = [
     "coupling_result_from_tost",
     "ctc_features_to_trajectory_records",
     "ctc_lineage_coverage_issues",
+    "ctc_lineage_to_trajectory_records",
     "equivalence_from_interval",
     "extra_plan",
     "linear_grid",

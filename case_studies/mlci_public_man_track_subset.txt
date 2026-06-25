@@ -1,0 +1,35 @@
+# Source: Tracking one-in-a-million microbial single-cell tracking benchmark
+# Zenodo record: https://zenodo.org/records/7260137
+# File within ctc_format.zip: 00_GT/TRA/man_track.txt
+# License: CC-BY-4.0
+# This is a small lineage subset for adapter tests and tutorial demonstration.
+1 799 799 0
+2 799 799 0
+3 795 798 0
+4 795 797 0
+5 792 799 0
+6 791 799 0
+7 790 791 0
+8 789 790 0
+9 785 799 0
+10 783 783 0
+11 781 781 0
+12 777 778 0
+13 775 799 0
+14 771 771 0
+15 757 799 0
+16 757 760 0
+17 735 736 0
+18 720 720 0
+19 710 739 0
+20 740 761 19
+21 740 764 19
+22 704 705 0
+23 0 73 0
+24 74 132 23
+25 133 212 24
+26 213 292 25
+27 293 378 26
+28 379 454 27
+29 455 531 28
+30 532 602 29

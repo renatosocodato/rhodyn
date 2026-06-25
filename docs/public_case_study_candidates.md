@@ -85,6 +85,9 @@ best current balance of public access, time-resolved biology, annotation quality
 and license clarity. Use Cell Painting as a static-state comparator and keep
 Allen calcium as a scientifically strong but license-sensitive candidate.
 
-The v0.3.0 adapter and tutorial scaffold are now started in
-`rhodyn.ctc`, the `ctc-to-trajectory` CLI command, and
-`docs/mlci_public_tutorial.md`.
+The v0.3.0 adapter and tutorial scaffold are now started in `rhodyn.ctc`, the
+`ctc-to-trajectory` and `ctc-lineage-to-trajectory` CLI commands, and
+`docs/mlci_public_tutorial.md`. A small real public subset from
+`00_GT/TRA/man_track.txt` is included at
+`case_studies/mlci_public_man_track_subset.txt` so the public-data path can be
+exercised before full segmentation-derived feature extraction is added.

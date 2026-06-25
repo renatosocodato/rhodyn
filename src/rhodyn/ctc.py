@@ -34,6 +34,7 @@ class CtcFeatureRecord:
 
 
 CTC_SIGNAL_CHOICES = ("speed", "displacement", "area", "intensity")
+CTC_LINEAGE_SIGNAL_CHOICES = ("presence", "track_age", "normalized_track_age", "duration")
 
 
 def read_ctc_lineage(path: str | Path) -> tuple[list[CtcLineageRecord], list[ValidationIssue]]:
@@ -209,6 +210,57 @@ def ctc_features_to_trajectory_records(
                 )
             )
     return trajectories
+
+
+def ctc_lineage_to_trajectory_records(
+    lineage: list[CtcLineageRecord],
+    *,
+    signal: str = "normalized_track_age",
+    condition: str = "mlci_tracking",
+    replicate: str = "",
+    max_tracks: int | None = None,
+) -> list[TrajectoryRecord]:
+    """Convert CTC lineage intervals into trajectory records.
+
+    This is a lightweight public-data path for CTC archives when centroid or
+    intensity features have not yet been extracted from masks. The derived
+    signal describes track presence, age, normalized age, or duration rather
+    than molecular activity.
+    """
+
+    if signal not in CTC_LINEAGE_SIGNAL_CHOICES:
+        choices = ", ".join(CTC_LINEAGE_SIGNAL_CHOICES)
+        raise ValueError(f"unknown CTC lineage signal {signal!r}; choices are {choices}")
+    selected = sorted(lineage, key=lambda row: (row.start_frame, row.track_id))
+    if max_tracks is not None:
+        if max_tracks <= 0:
+            raise ValueError("max_tracks must be positive when supplied")
+        selected = selected[:max_tracks]
+
+    records: list[TrajectoryRecord] = []
+    for row in selected:
+        duration = row.end_frame - row.start_frame
+        length = duration + 1
+        for frame in range(row.start_frame, row.end_frame + 1):
+            age = frame - row.start_frame
+            if signal == "presence":
+                value = 1.0
+            elif signal == "track_age":
+                value = float(age)
+            elif signal == "duration":
+                value = float(length)
+            else:
+                value = 0.0 if duration == 0 else age / duration
+            records.append(
+                TrajectoryRecord(
+                    cell_id=f"track_{row.track_id}",
+                    time=float(frame),
+                    condition=condition,
+                    signal=value,
+                    replicate=replicate,
+                )
+            )
+    return records
 
 
 def write_trajectory_csv(records: list[TrajectoryRecord], path: str | Path) -> None:

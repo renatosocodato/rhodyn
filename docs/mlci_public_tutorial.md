@@ -40,6 +40,12 @@ If available, keep the CTC `man_track.txt` file beside the feature table. RhoDyn
 uses it to check that feature frames fall within the lineage interval declared
 for each track.
 
+The repository also includes a small real public subset from the benchmark
+lineage file at `case_studies/mlci_public_man_track_subset.txt`. This subset was
+extracted from `00_GT/TRA/man_track.txt` inside the Zenodo `ctc_format.zip`
+archive. It can be used immediately to exercise the public-data path without
+downloading the multi-GB archive.
+
 ## Convert tracks to RhoDyn trajectories
 
 The adapter supports four signal choices.
@@ -64,15 +70,37 @@ python -m rhodyn.cli ctc-to-trajectory \
 The output is a normal RhoDyn trajectory table with `cell_id`, `time`,
 `condition`, `signal`, and `replicate`.
 
+## Convert lineage intervals when mask features are not available
+
+If centroid or intensity features have not yet been extracted, the CTC lineage
+table can still demonstrate the public-data path. This conversion derives
+trajectory signals from track intervals rather than from object geometry.
+
+```bash
+python -m rhodyn.cli ctc-lineage-to-trajectory \
+  case_studies/mlci_public_man_track_subset.txt \
+  --signal normalized_track_age \
+  --condition mlci_public_lineage_subset \
+  --replicate zenodo_7260137 \
+  --max-tracks 10 \
+  --output mlci_public_lineage_trajectory.csv
+```
+
+Supported lineage signals are `presence`, `track_age`,
+`normalized_track_age`, and `duration`. These are useful for proving the
+public-data workflow and testing grouping, residence, sensitivity, uncertainty,
+and plotting. They do not replace centroid, intensity, or morphology features
+for biological interpretation.
+
 ## Score residence
 
 After conversion, residence scoring uses the same API as any other trajectory
 table.
 
 ```bash
-python -m rhodyn.cli score-residence mlci_speed_trajectory.csv \
-  --low 3.0 \
-  --high 5.0
+python -m rhodyn.cli score-residence mlci_public_lineage_trajectory.csv \
+  --low 0.25 \
+  --high 0.75
 ```
 
 For the real public benchmark, the residence window should be declared as an
@@ -85,13 +113,13 @@ Residence-window sensitivity asks whether the qualitative result depends on a
 narrowly chosen window.
 
 ```bash
-python -m rhodyn.cli sensitivity mlci_speed_trajectory.csv \
-  --low-min 2.0 \
-  --low-max 3.0 \
-  --high-min 5.0 \
-  --high-max 6.0 \
+python -m rhodyn.cli sensitivity mlci_public_lineage_trajectory.csv \
+  --low-min 0.2 \
+  --low-max 0.3 \
+  --high-min 0.7 \
+  --high-max 0.8 \
   --steps 4 \
-  --min-residence-fraction 0.5
+  --min-residence-fraction 0.25
 ```
 
 This produces typed sensitivity-curve outputs with the low/high window,
@@ -110,10 +138,10 @@ from rhodyn.residence import ResidenceWindow, score_records
 from rhodyn.schema import read_trajectory_csv
 from rhodyn.uncertainty import bootstrap_interval
 
-rows, issues = read_trajectory_csv("mlci_speed_trajectory.csv")
+rows, issues = read_trajectory_csv("mlci_public_lineage_trajectory.csv")
 if issues:
     raise ValueError(issues)
-summaries = score_records(rows, ResidenceWindow(low=3.0, high=5.0))
+summaries = score_records(rows, ResidenceWindow(low=0.25, high=0.75))
 interval = bootstrap_interval(
     [summary.residence_fraction for summary in summaries],
     n_resamples=1000,
@@ -131,7 +159,7 @@ from rhodyn.plots import plot_residence_trace
 from rhodyn.residence import ResidenceWindow
 
 first_track = [row for row in rows if row.cell_id == rows[0].cell_id]
-fig, ax = plot_residence_trace(first_track, ResidenceWindow(low=3.0, high=5.0))
+fig, ax = plot_residence_trace(first_track, ResidenceWindow(low=0.25, high=0.75))
 fig.savefig("mlci_residence_trace.png", dpi=200)
 ```
 
@@ -145,9 +173,12 @@ python examples/mlci_public_case_study_workflow.py
 ```
 
 This fixture is not a biological result from the public benchmark. It is a
-schema and workflow check. The public demonstration becomes biological only
-after features are extracted from the Zenodo benchmark and analyzed with a
-declared signal, residence window, grouping structure, and uncertainty rule.
+schema and workflow check. The same script also analyzes the small public
+lineage subset, which demonstrates RhoDyn's public-data path on real benchmark
+track intervals. Biological interpretation remains limited until centroid,
+intensity, or morphology features are extracted from the Zenodo masks or videos
+and analyzed with a declared signal, residence window, grouping structure, and
+uncertainty rule.
 
 ## Relation to the manuscript
 
