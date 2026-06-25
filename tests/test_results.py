@@ -2,12 +2,13 @@ import json
 from unittest import TestCase
 
 from rhodyn.compare import rank_model_fits
-from rhodyn.coupling import equivalence_from_interval
+from rhodyn.coupling import equivalence_from_interval, two_sample_welch_tost
 from rhodyn.report import to_plain
 from rhodyn.residence import ResidenceWindow, score_records
 from rhodyn.results import (
     GroupMetadata,
     coupling_result_from_decision,
+    coupling_result_from_tost,
     model_comparison_result_from_fits,
     residence_result_from_summary,
 )
@@ -57,3 +58,19 @@ class TypedResultTests(TestCase):
         self.assertEqual(plain["ranking_metric"], "bic")
         self.assertEqual(plain["provenance"]["schema_kind"], "endpoint")
         self.assertEqual(plain["value_kind"], "model_comparison")
+
+    def test_tost_result_serialization_carries_margin_and_p_values(self):
+        decision = two_sample_welch_tost(
+            [0.10, 0.11, 0.09, 0.10, 0.12, 0.08],
+            [0.12, 0.11, 0.13, 0.12, 0.10, 0.14],
+            margin=0.15,
+            prefer_scipy=False,
+        )
+        result = coupling_result_from_tost("rock_src", decision, parameters={"alpha": 0.05})
+        plain = to_plain(result)
+
+        self.assertTrue(plain["passes"])
+        self.assertEqual(plain["decision_rule"], "welch_tost_interval_rope")
+        self.assertEqual(plain["margin"], 0.15)
+        self.assertIsNotNone(plain["p_tost"])
+        self.assertEqual(plain["n"], 12)

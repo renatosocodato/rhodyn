@@ -17,7 +17,12 @@ biological interpretation.
 
 4. `rhodyn.coupling`
    Encodes bounded-coupling decisions from confidence intervals or posterior
-   samples supplied by the user.
+   samples supplied by the user. It also provides one-sample and Welch
+   two-sample TOST helpers from raw arrays, with optional SciPy-backed
+   t-distribution calculations under `rhodyn[stats]` and a dependency-free
+   normal approximation for lightweight use. A passing decision means
+   equivalence inside the declared biological margin, not proof that the
+   underlying coupling is exactly zero.
 
 5. `rhodyn.models`
    Simulates a minimal residence-gated controller.

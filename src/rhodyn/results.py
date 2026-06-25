@@ -7,7 +7,7 @@ from importlib.metadata import PackageNotFoundError, version
 from typing import Any
 
 from rhodyn.compare import ModelFit
-from rhodyn.coupling import EquivalenceDecision
+from rhodyn.coupling import EquivalenceDecision, TostDecision
 from rhodyn.residence import TraceResidenceSummary
 
 
@@ -114,6 +114,16 @@ class CouplingResult:
     provenance: ResultProvenance
     rope_mass: float | None = None
     rope_threshold: float = 0.95
+    se: float | None = None
+    df: float | None = None
+    p_lower: float | None = None
+    p_upper: float | None = None
+    p_tost: float | None = None
+    alpha: float | None = None
+    method: str = ""
+    n: int | None = None
+    n_a: int | None = None
+    n_b: int | None = None
     value_kind: str = "decision_rule"
 
 
@@ -213,6 +223,43 @@ def coupling_result_from_decision(
         passes=decision.passes,
         decision_rule=decision_rule,
         provenance=ResultProvenance(schema_kind="coupling", parameters=parameters or {}, source=source),
+    )
+
+
+def coupling_result_from_tost(
+    contrast: str,
+    decision: TostDecision,
+    *,
+    group: GroupMetadata | None = None,
+    parameters: dict[str, Any] | None = None,
+    source: str = "",
+    decision_rule: str = "welch_tost_interval_rope",
+) -> CouplingResult:
+    """Attach group and provenance context to a raw-array TOST decision."""
+
+    return CouplingResult(
+        contrast=contrast,
+        group=group or GroupMetadata(),
+        estimate=decision.estimate,
+        ci_low=decision.ci_low,
+        ci_high=decision.ci_high,
+        margin=decision.margin,
+        interval_inside_margin=decision.interval_inside_margin,
+        rope_mass=decision.rope_mass,
+        rope_threshold=decision.rope_threshold,
+        passes=decision.passes,
+        decision_rule=decision_rule,
+        provenance=ResultProvenance(schema_kind="coupling", parameters=parameters or {}, source=source),
+        se=decision.se,
+        df=decision.df,
+        p_lower=decision.p_lower,
+        p_upper=decision.p_upper,
+        p_tost=decision.p_tost,
+        alpha=decision.alpha,
+        method=decision.method,
+        n=decision.n,
+        n_a=decision.n_a,
+        n_b=decision.n_b,
     )
 
 
