@@ -29,6 +29,12 @@ from rhodyn.results import (
     residence_result_from_summary,
 )
 from rhodyn.schema import CouplingIntervalRecord, EndpointRecord, ReserveRecord, TrajectoryRecord, schema_specs
+from rhodyn.sensitivity import (
+    linear_grid,
+    residence_window_grid,
+    score_records_window_sensitivity,
+    score_trace_window_sensitivity,
+)
 from rhodyn.uncertainty import BootstrapResult, PermutationResult, bootstrap_interval, permutation_test
 
 __all__ = [
@@ -59,16 +65,20 @@ __all__ = [
     "bootstrap_interval",
     "equivalence_from_interval",
     "extra_plan",
+    "linear_grid",
     "model_comparison_result_from_fits",
     "one_sample_tost",
     "permutation_test",
     "rank_model_fits",
     "residence_result_from_summary",
+    "residence_window_grid",
     "require_extra",
     "rope_decision",
     "rope_mass",
     "schema_specs",
+    "score_records_window_sensitivity",
     "score_trace",
+    "score_trace_window_sensitivity",
     "simulate_controller",
     "two_sample_welch_tost",
 ]

@@ -13,6 +13,7 @@ from rhodyn.report import to_plain
 from rhodyn.residence import ResidenceWindow, score_records
 from rhodyn.results import model_comparison_result_from_fits, residence_result_from_summary
 from rhodyn.schema import read_coupling_csv, read_endpoint_csv, read_reserve_csv, read_trajectory_csv, schema_specs
+from rhodyn.sensitivity import residence_window_grid, score_records_window_sensitivity
 
 
 def _print_json(payload: object) -> None:
@@ -87,6 +88,43 @@ def cmd_compare(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_sensitivity(args: argparse.Namespace) -> int:
+    rows, issues = read_trajectory_csv(args.csv, signal_column=args.signal_column)
+    if issues:
+        _print_json({"status": "fail", "issues": issues})
+        return 1
+    windows = residence_window_grid(
+        low_min=args.low_min,
+        low_max=args.low_max,
+        high_min=args.high_min,
+        high_max=args.high_max,
+        steps=args.steps,
+    )
+    parameters = {
+        "low_min": args.low_min,
+        "low_max": args.low_max,
+        "high_min": args.high_min,
+        "high_max": args.high_max,
+        "steps": args.steps,
+        "signal_column": args.signal_column,
+    }
+    curves = score_records_window_sensitivity(
+        rows,
+        windows,
+        min_residence_fraction=args.min_residence_fraction,
+        parameters=parameters,
+    )
+    _print_json(
+        {
+            "status": "pass",
+            "window_count": len(windows),
+            "min_residence_fraction": args.min_residence_fraction,
+            "curves": curves,
+        }
+    )
+    return 0
+
+
 def cmd_paper_case_study(args: argparse.Namespace) -> int:
     payload = paper_case_study_metadata()
     if args.data_root:
@@ -125,6 +163,17 @@ def build_parser() -> argparse.ArgumentParser:
     compare.add_argument("csv")
     compare.add_argument("--parameters", type=int, default=1)
     compare.set_defaults(func=cmd_compare)
+
+    sensitivity = sub.add_parser("sensitivity", help="Score residence summaries across a low/high window grid.")
+    sensitivity.add_argument("csv")
+    sensitivity.add_argument("--low-min", type=float, required=True)
+    sensitivity.add_argument("--low-max", type=float, required=True)
+    sensitivity.add_argument("--high-min", type=float, required=True)
+    sensitivity.add_argument("--high-max", type=float, required=True)
+    sensitivity.add_argument("--steps", type=int, default=5)
+    sensitivity.add_argument("--min-residence-fraction", type=float, default=0.0)
+    sensitivity.add_argument("--signal-column", default="signal")
+    sensitivity.set_defaults(func=cmd_sensitivity)
 
     paper = sub.add_parser("paper-case-study", help="Print optional manuscript case-study metadata.")
     paper.add_argument("--data-root", default="")

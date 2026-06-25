@@ -15,7 +15,14 @@ biological interpretation.
 3. `rhodyn.reserve`
    Provides normalization helpers for reserve-like buffering readouts.
 
-4. `rhodyn.coupling`
+4. `rhodyn.sensitivity`
+   Scores residence summaries across declared low/high window grids, exposing
+   how residence fraction, dwell time, segment count, and amplitude summaries
+   change as the permissive interval is varied. This supports robustness checks
+   over window choice rather than automatic discovery of a measured biological
+   window.
+
+5. `rhodyn.coupling`
    Encodes bounded-coupling decisions from confidence intervals or posterior
    samples supplied by the user. It also provides one-sample and Welch
    two-sample TOST helpers from raw arrays, with optional SciPy-backed
@@ -24,31 +31,31 @@ biological interpretation.
    equivalence inside the declared biological margin, not proof that the
    underlying coupling is exactly zero.
 
-5. `rhodyn.models`
+6. `rhodyn.models`
    Simulates a minimal residence-gated controller.
 
-6. `rhodyn.sim`
+7. `rhodyn.sim`
    Provides stochastic timing helpers, including first-passage and simple
    Gillespie/tau-leap routines.
 
-7. `rhodyn.compare`
+8. `rhodyn.compare`
    Compares reduced controller predictions against endpoint constraints.
 
-8. `rhodyn.uncertainty`
+9. `rhodyn.uncertainty`
    Provides percentile bootstrap intervals and permutation tests for residence,
    reserve, coupling, endpoint-fit, and other one-dimensional summaries. When
    grouping labels are supplied, resampling and exchangeability operate at the
    declared group level rather than silently treating every row as an
    independent biological replicate.
 
-9. `rhodyn.results`
+10. `rhodyn.results`
    Wraps residence, reserve, coupling, uncertainty, sensitivity, and
    model-comparison outputs in typed, JSON-friendly result objects. Each result
    carries grouping metadata and provenance fields so condition, cell, replicate,
    well, donor, batch, input schema, analysis parameters, and software version
    remain visible beside the quantitative value.
 
-10. `rhodyn.paper`
+11. `rhodyn.paper`
    Documents the manuscript repository and Zenodo data package as an optional
    case study without making them package dependencies.
 

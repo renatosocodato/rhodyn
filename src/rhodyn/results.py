@@ -151,6 +151,8 @@ class SensitivityPoint:
     residence_fraction: float
     residence_time: float
     mean_signal: float
+    max_signal: float
+    min_signal: float
     segment_count: int
 
 
