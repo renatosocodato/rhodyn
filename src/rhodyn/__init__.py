@@ -12,6 +12,13 @@ from rhodyn.coupling import (
 )
 from rhodyn.extras import MissingOptionalDependency, OptionalExtra, extra_plan, require_extra
 from rhodyn.models import ControllerParams, simulate_controller
+from rhodyn.plots import (
+    plot_coupling_interval,
+    plot_model_residuals,
+    plot_reserve_summary,
+    plot_residence_trace,
+    plot_sensitivity_curve,
+)
 from rhodyn.residence import ResidenceWindow, score_trace
 from rhodyn.results import (
     CouplingResult,
@@ -69,6 +76,11 @@ __all__ = [
     "model_comparison_result_from_fits",
     "one_sample_tost",
     "permutation_test",
+    "plot_coupling_interval",
+    "plot_model_residuals",
+    "plot_reserve_summary",
+    "plot_residence_trace",
+    "plot_sensitivity_curve",
     "rank_model_fits",
     "residence_result_from_summary",
     "residence_window_grid",
