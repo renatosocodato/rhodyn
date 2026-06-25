@@ -11,6 +11,7 @@ from rhodyn.models import simulate_controller
 from rhodyn.paper import inspect_case_study_root, paper_case_study_metadata
 from rhodyn.report import to_plain
 from rhodyn.residence import ResidenceWindow, score_records
+from rhodyn.results import model_comparison_result_from_fits, residence_result_from_summary
 from rhodyn.schema import read_coupling_csv, read_endpoint_csv, read_reserve_csv, read_trajectory_csv, schema_specs
 
 
@@ -44,8 +45,24 @@ def cmd_score_residence(args: argparse.Namespace) -> int:
     if issues:
         _print_json({"status": "fail", "issues": issues})
         return 1
-    summaries = score_records(rows, ResidenceWindow(low=args.low, high=args.high))
-    _print_json({"status": "pass", "window": {"low": args.low, "high": args.high}, "summaries": summaries})
+    window = ResidenceWindow(low=args.low, high=args.high)
+    summaries = score_records(rows, window)
+    typed = [
+        residence_result_from_summary(
+            summary,
+            parameters={"low": args.low, "high": args.high, "signal_column": args.signal_column},
+            source=str(args.csv),
+        )
+        for summary in summaries
+    ]
+    _print_json(
+        {
+            "status": "pass",
+            "window": {"low": args.low, "high": args.high},
+            "summaries": summaries,
+            "typed_results": typed,
+        }
+    )
     return 0
 
 
@@ -61,7 +78,12 @@ def cmd_compare(args: argparse.Namespace) -> int:
         _print_json({"status": "fail", "issues": issues})
         return 1
     fits = rank_model_fits(rows, parameter_count=args.parameters)
-    _print_json({"status": "pass", "fits": fits})
+    typed = model_comparison_result_from_fits(
+        fits,
+        parameters={"parameter_count": args.parameters},
+        source=str(args.csv),
+    )
+    _print_json({"status": "pass", "fits": fits, "typed_result": typed})
     return 0
 
 

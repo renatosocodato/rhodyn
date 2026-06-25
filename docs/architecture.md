@@ -29,7 +29,14 @@ biological interpretation.
 7. `rhodyn.compare`
    Compares reduced controller predictions against endpoint constraints.
 
-8. `rhodyn.paper`
+8. `rhodyn.results`
+   Wraps residence, reserve, coupling, uncertainty, sensitivity, and
+   model-comparison outputs in typed, JSON-friendly result objects. Each result
+   carries grouping metadata and provenance fields so condition, cell, replicate,
+   well, donor, batch, input schema, analysis parameters, and software version
+   remain visible beside the quantitative value.
+
+9. `rhodyn.paper`
    Documents the manuscript repository and Zenodo data package as an optional
    case study without making them package dependencies.
 
@@ -41,4 +48,3 @@ biological interpretation.
 - disease-specific claims;
 - private data adapters;
 - dashboard or hosted analysis.
-
