@@ -8,6 +8,7 @@ Started:
 - `ctc-to-trajectory` CLI conversion from pre-extracted track features to RhoDyn trajectory tables;
 - dependency-light CTC TIFF-mask feature extraction for centroid, area, and mean raw-intensity rows;
 - range-based MLCI feature-subset helper that writes derived features and provenance without retaining raw TIFF images;
+- denser v0.3.2 public feature subset sampled every 10 frames from frame 0 through frame 140;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

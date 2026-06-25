@@ -90,7 +90,8 @@ The v0.3.0 adapter and tutorial scaffold are now started in `rhodyn.ctc`, the
 `docs/mlci_public_tutorial.md`. The v0.3.1 path adds a small public
 segmentation-derived feature table at
 `case_studies/mlci_public_track_features_subset.csv`, with provenance in the
-neighboring JSON file. It is derived from selected Zenodo tracking masks and raw
-frames while retaining only centroid, area, and mean-intensity rows. The earlier
+neighboring JSON file. The v0.3.2 refresh samples the public benchmark every 10
+frames from frame 0 through frame 140 while retaining only centroid, area, and
+mean-intensity rows. The earlier
 `case_studies/mlci_public_man_track_subset.txt` lineage subset remains as a
 fallback for tests that need track intervals without object-level features.

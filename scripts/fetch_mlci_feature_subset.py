@@ -19,7 +19,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from rhodyn.ctc import ctc_mask_to_feature_records, read_ctc_lineage, read_uncompressed_grayscale_tiff
 
 
-DEFAULT_FRAMES = "0,20,40,60,80,100,120,140"
+DEFAULT_FRAMES = "0:140:10"
 
 
 class ZipRangeReader:
@@ -53,13 +53,22 @@ def _parse_frames(value: str) -> list[int]:
         part = part.strip()
         if not part:
             continue
-        frame = int(part)
-        if frame < 0:
-            raise ValueError("frames must be non-negative")
-        frames.append(frame)
+        if ":" in part:
+            pieces = [int(piece) for piece in part.split(":")]
+            if len(pieces) not in {2, 3}:
+                raise ValueError("frame ranges must use start:end or start:end:step")
+            start, end = pieces[0], pieces[1]
+            step = pieces[2] if len(pieces) == 3 else 1
+            if step <= 0:
+                raise ValueError("frame range step must be positive")
+            frames.extend(range(start, end + 1, step))
+        else:
+            frames.append(int(part))
+    if any(frame < 0 for frame in frames):
+        raise ValueError("frames must be non-negative")
     if not frames:
         raise ValueError("at least one frame is required")
-    return frames
+    return sorted(set(frames))
 
 
 def _sha256(path: Path) -> str:
@@ -74,7 +83,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--url", default=ZENODO_CTC_ZIP_URL)
     parser.add_argument("--sequence", default="00")
-    parser.add_argument("--frames", default=DEFAULT_FRAMES, help="Comma-separated frame indices.")
+    parser.add_argument("--frames", default=DEFAULT_FRAMES, help="Comma-separated frames or inclusive ranges like 0:140:10.")
     parser.add_argument("--label-source", choices=["TRA", "SEG"], default="TRA")
     parser.add_argument("--lineage-filter", default="", help="Optional CTC lineage table used to keep known track ids.")
     parser.add_argument("--include-intensity", action=argparse.BooleanOptionalAction, default=True)
@@ -120,7 +129,7 @@ def main() -> int:
 
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["track_id", "frame", "x", "y", "area", "intensity"])
+        writer = csv.DictWriter(handle, fieldnames=["track_id", "frame", "x", "y", "area", "intensity"], lineterminator="\n")
         writer.writeheader()
         for record in records:
             writer.writerow(
@@ -141,6 +150,7 @@ def main() -> int:
         "license": "CC-BY-4.0",
         "sequence": args.sequence,
         "label_source": args.label_source,
+        "frame_spec": args.frames,
         "frames": frames,
         "lineage_filter": args.lineage_filter,
         "lineage_filter_rows": lineage_rows,

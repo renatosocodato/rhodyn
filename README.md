@@ -24,6 +24,8 @@ Included now:
   microbial tracking tutorial;
 - selected CTC TIFF-mask feature extraction for centroid, area, and mean
   intensity rows without retaining raw images;
+- a denser public MLCI feature subset sampled every 10 frames from frame 0
+  through frame 140;
 - residence-window scoring;
 - amplitude and dwell-time summaries;
 - reserve-style normalization helpers;
@@ -105,6 +107,7 @@ Regenerate the small public feature subset without keeping raw image files.
 
 ```bash
 python scripts/fetch_mlci_feature_subset.py \
+  --frames 0:140:10 \
   --lineage-filter case_studies/mlci_public_man_track_subset.txt \
   --output case_studies/mlci_public_track_features_subset.csv \
   --provenance case_studies/mlci_public_track_features_subset.provenance.json

@@ -178,7 +178,7 @@ class CtcAdapterTests(TestCase):
         self.assertEqual(lineage_issues, [])
         self.assertEqual(feature_issues, [])
         self.assertEqual(ctc_lineage_coverage_issues(features, lineage), [])
-        self.assertEqual(len(features), 8)
+        self.assertEqual(len(features), 15)
         self.assertTrue(all(feature.intensity is not None for feature in features))
 
         intensity_records = ctc_features_to_trajectory_records(
@@ -220,9 +220,9 @@ class CtcAdapterTests(TestCase):
         self.assertEqual(payload["status"], "pass")
         self.assertEqual(payload["trajectory_rows"], 6)
         self.assertIn("public_subset", payload)
-        self.assertEqual(payload["public_subset"]["feature_rows"], 8)
-        self.assertEqual(payload["public_subset"]["intensity_trajectory_rows"], 8)
-        self.assertEqual(payload["public_subset"]["speed_trajectory_rows"], 8)
+        self.assertEqual(payload["public_subset"]["feature_rows"], 15)
+        self.assertEqual(payload["public_subset"]["intensity_trajectory_rows"], 15)
+        self.assertEqual(payload["public_subset"]["speed_trajectory_rows"], 15)
         self.assertIn("public_lineage_fallback", payload)
         self.assertGreater(payload["public_lineage_fallback"]["trajectory_rows"], 10)
         self.assertIn("segmentation-derived features demonstrate", payload["interpretation_boundary"])

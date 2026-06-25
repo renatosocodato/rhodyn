@@ -43,11 +43,12 @@ uses it to check that feature frames fall within the lineage interval declared
 for each track.
 
 The repository includes two small real public subsets from the benchmark. The
-primary v0.3.1 subset is
+primary v0.3.2 subset is
 `case_studies/mlci_public_track_features_subset.csv`, a derived table of
 centroids, areas, and mean raw intensities from selected tracking masks and raw
-frames. The companion provenance file records the Zenodo source, selected ZIP
-entries, checksum, and raw-file policy. A lighter lineage-only subset remains at
+frames sampled every 10 frames from frame 0 through frame 140. The companion
+provenance file records the Zenodo source, selected ZIP entries, checksum, and
+raw-file policy. A lighter lineage-only subset remains at
 `case_studies/mlci_public_man_track_subset.txt` for fallback tests when mask
 features are not available.
 
@@ -59,6 +60,7 @@ writes the derived feature table, and does not write raw image files.
 
 ```bash
 python scripts/fetch_mlci_feature_subset.py \
+  --frames 0:140:10 \
   --lineage-filter case_studies/mlci_public_man_track_subset.txt \
   --output case_studies/mlci_public_track_features_subset.csv \
   --provenance case_studies/mlci_public_track_features_subset.provenance.json
