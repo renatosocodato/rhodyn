@@ -6,6 +6,7 @@ import csv
 from dataclasses import dataclass
 from math import isfinite, sqrt
 from pathlib import Path
+import struct
 from typing import Iterable
 
 from rhodyn.schema import TrajectoryRecord, ValidationIssue
@@ -31,6 +32,16 @@ class CtcFeatureRecord:
     y: float
     area: float
     intensity: float | None = None
+
+
+@dataclass(frozen=True)
+class CtcTiffImage:
+    """A dependency-light grayscale TIFF image used for CTC masks or frames."""
+
+    width: int
+    height: int
+    bits_per_sample: int
+    pixels: tuple[int, ...]
 
 
 CTC_SIGNAL_CHOICES = ("speed", "displacement", "area", "intensity")
@@ -131,6 +142,131 @@ def read_ctc_feature_csv(
                 )
             )
     return records, issues
+
+
+def _tiff_values(data: bytes, endian: str, field_type: int, count: int, value_or_offset: int) -> tuple[int, ...]:
+    type_sizes = {3: 2, 4: 4}
+    if field_type not in type_sizes:
+        raise ValueError(f"unsupported TIFF field type: {field_type}")
+    size = type_sizes[field_type] * count
+    if size <= 4:
+        raw = struct.pack(endian + "I", value_or_offset)[:size]
+    else:
+        raw = data[value_or_offset : value_or_offset + size]
+    if field_type == 3:
+        return struct.unpack(endian + "H" * count, raw)
+    return struct.unpack(endian + "I" * count, raw)
+
+
+def read_uncompressed_grayscale_tiff(data: bytes) -> CtcTiffImage:
+    """Read the simple uncompressed grayscale TIFFs used by the CTC archives.
+
+    The reader intentionally supports only the subset needed for the public
+    Cell Tracking Challenge-style examples. It avoids adding an image
+    dependency to the core package, while failing loudly if a TIFF uses
+    compression, multiple samples per pixel, or an unsupported bit depth.
+    """
+
+    if data[:2] == b"II":
+        endian = "<"
+    elif data[:2] == b"MM":
+        endian = ">"
+    else:
+        raise ValueError("unsupported TIFF byte order")
+    magic, ifd_offset = struct.unpack(endian + "HI", data[2:8])
+    if magic != 42:
+        raise ValueError("unsupported TIFF magic number")
+
+    entry_count = struct.unpack(endian + "H", data[ifd_offset : ifd_offset + 2])[0]
+    tags: dict[int, tuple[int, int, int]] = {}
+    for index in range(entry_count):
+        offset = ifd_offset + 2 + index * 12
+        tag, field_type, count, value_or_offset = struct.unpack(endian + "HHII", data[offset : offset + 12])
+        tags[tag] = (field_type, count, value_or_offset)
+
+    def tag_values(tag: int, default: tuple[int, ...] | None = None) -> tuple[int, ...]:
+        if tag not in tags:
+            if default is not None:
+                return default
+            raise ValueError(f"missing required TIFF tag {tag}")
+        return _tiff_values(data, endian, *tags[tag])
+
+    width = tag_values(256)[0]
+    height = tag_values(257)[0]
+    bits_per_sample = tag_values(258)[0]
+    compression = tag_values(259, (1,))[0]
+    samples_per_pixel = tag_values(277, (1,))[0]
+    strip_offsets = tag_values(273)
+    strip_byte_counts = tag_values(279)
+
+    if compression != 1:
+        raise ValueError("only uncompressed TIFF images are supported")
+    if samples_per_pixel != 1:
+        raise ValueError("only single-channel grayscale TIFF images are supported")
+    if bits_per_sample not in {8, 16}:
+        raise ValueError("only 8-bit and 16-bit grayscale TIFF images are supported")
+    if len(strip_offsets) != len(strip_byte_counts):
+        raise ValueError("TIFF strip offsets and byte counts do not match")
+
+    pixel_bytes = b"".join(data[offset : offset + byte_count] for offset, byte_count in zip(strip_offsets, strip_byte_counts))
+    expected_bytes = width * height * (bits_per_sample // 8)
+    if len(pixel_bytes) != expected_bytes:
+        raise ValueError("TIFF pixel byte count does not match image dimensions")
+    if bits_per_sample == 8:
+        pixels = tuple(pixel_bytes)
+    else:
+        pixels = struct.unpack(endian + "H" * (width * height), pixel_bytes)
+    return CtcTiffImage(width=width, height=height, bits_per_sample=bits_per_sample, pixels=tuple(int(value) for value in pixels))
+
+
+def ctc_mask_to_feature_records(
+    mask: CtcTiffImage,
+    *,
+    frame: int,
+    intensity_image: CtcTiffImage | None = None,
+    allowed_track_ids: set[str] | None = None,
+) -> list[CtcFeatureRecord]:
+    """Convert one labeled CTC mask into centroid, area, and intensity rows.
+
+    Non-zero mask labels become track identifiers. If an intensity image is
+    supplied, the returned intensity is the mean raw pixel value under each
+    mask label.
+    """
+
+    if intensity_image is not None and (intensity_image.width != mask.width or intensity_image.height != mask.height):
+        raise ValueError("intensity image dimensions do not match the mask")
+
+    aggregates: dict[int, list[float]] = {}
+    for index, label in enumerate(mask.pixels):
+        if label == 0:
+            continue
+        track_id = str(label)
+        if allowed_track_ids is not None and track_id not in allowed_track_ids:
+            continue
+        x = index % mask.width
+        y = index // mask.width
+        if label not in aggregates:
+            aggregates[label] = [0.0, 0.0, 0.0, 0.0]
+        aggregates[label][0] += 1.0
+        aggregates[label][1] += x
+        aggregates[label][2] += y
+        if intensity_image is not None:
+            aggregates[label][3] += intensity_image.pixels[index]
+
+    records: list[CtcFeatureRecord] = []
+    for label, (count, x_sum, y_sum, intensity_sum) in sorted(aggregates.items()):
+        intensity = None if intensity_image is None else intensity_sum / count
+        records.append(
+            CtcFeatureRecord(
+                track_id=str(label),
+                frame=frame,
+                x=x_sum / count,
+                y=y_sum / count,
+                area=count,
+                intensity=intensity,
+            )
+        )
+    return records
 
 
 def ctc_lineage_coverage_issues(

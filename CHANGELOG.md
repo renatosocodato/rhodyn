@@ -6,12 +6,14 @@ Started:
 
 - CTC-style public live-cell tracking adapter for the MLCI benchmark tutorial;
 - `ctc-to-trajectory` CLI conversion from pre-extracted track features to RhoDyn trajectory tables;
+- dependency-light CTC TIFF-mask feature extraction for centroid, area, and mean raw-intensity rows;
+- range-based MLCI feature-subset helper that writes derived features and provenance without retaining raw TIFF images;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 
 Boundary:
 
-- The bundled fixture validates the adapter and workflow only. Biological interpretation requires features extracted from the public Zenodo benchmark.
+- The bundled public feature subset validates the adapter and workflow only. Biological interpretation requires a declared signal, residence window, grouping structure, and uncertainty rule.
 
 ## v0.1.0
 

@@ -14,7 +14,7 @@ future examples.
 
 ## Current status
 
-This is an early open-core scaffold moving into the `v0.3.0` public
+This is an early open-core scaffold moving into the `v0.3.x` public
 case-study lane.
 
 Included now:
@@ -22,6 +22,8 @@ Included now:
 - tidy live-cell trajectory validation;
 - Cell Tracking Challenge-style feature-table conversion for the first public
   microbial tracking tutorial;
+- selected CTC TIFF-mask feature extraction for centroid, area, and mean
+  intensity rows without retaining raw images;
 - residence-window scoring;
 - amplitude and dwell-time summaries;
 - reserve-style normalization helpers;
@@ -41,7 +43,7 @@ Included now:
 Not included yet:
 
 - image segmentation;
-- raw microscopy ingestion;
+- general raw microscopy ingestion beyond the selected CTC TIFF path;
 - manuscript-specific figure generation;
 - disease-state prediction;
 - a graphical dashboard.
@@ -99,6 +101,15 @@ Run the public case-study workflow scaffold.
 PYTHONPATH=src python examples/mlci_public_case_study_workflow.py
 ```
 
+Regenerate the small public feature subset without keeping raw image files.
+
+```bash
+python scripts/fetch_mlci_feature_subset.py \
+  --lineage-filter case_studies/mlci_public_man_track_subset.txt \
+  --output case_studies/mlci_public_track_features_subset.csv \
+  --provenance case_studies/mlci_public_track_features_subset.provenance.json
+```
+
 Run a minimal controller simulation.
 
 ```bash
@@ -135,10 +146,12 @@ Inspect optional dependency groups.
 rhodyn extras
 ```
 
-The v0.3.0 public tutorial scaffold is documented in
+The v0.3.x public tutorial scaffold is documented in
 `docs/mlci_public_tutorial.md`. The included CTC-style fixture validates the
-adapter and workflow only. Biological interpretation requires features
-extracted from the public Zenodo MLCI benchmark.
+adapter, and the small public feature subset demonstrates centroid, area, and
+mean-intensity ingestion from the Zenodo MLCI benchmark. Biological
+interpretation requires a declared signal, residence window, grouping
+structure, and uncertainty rule.
 
 ## Input schemas
 

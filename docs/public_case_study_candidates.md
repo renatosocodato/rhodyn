@@ -87,7 +87,10 @@ Allen calcium as a scientifically strong but license-sensitive candidate.
 
 The v0.3.0 adapter and tutorial scaffold are now started in `rhodyn.ctc`, the
 `ctc-to-trajectory` and `ctc-lineage-to-trajectory` CLI commands, and
-`docs/mlci_public_tutorial.md`. A small real public subset from
-`00_GT/TRA/man_track.txt` is included at
-`case_studies/mlci_public_man_track_subset.txt` so the public-data path can be
-exercised before full segmentation-derived feature extraction is added.
+`docs/mlci_public_tutorial.md`. The v0.3.1 path adds a small public
+segmentation-derived feature table at
+`case_studies/mlci_public_track_features_subset.csv`, with provenance in the
+neighboring JSON file. It is derived from selected Zenodo tracking masks and raw
+frames while retaining only centroid, area, and mean-intensity rows. The earlier
+`case_studies/mlci_public_man_track_subset.txt` lineage subset remains as a
+fallback for tests that need track intervals without object-level features.

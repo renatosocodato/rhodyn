@@ -1,4 +1,5 @@
 import json
+import struct
 import subprocess
 import sys
 import tempfile
@@ -9,13 +10,58 @@ from rhodyn.ctc import (
     ctc_features_to_trajectory_records,
     ctc_lineage_coverage_issues,
     ctc_lineage_to_trajectory_records,
+    ctc_mask_to_feature_records,
     read_ctc_feature_csv,
     read_ctc_lineage,
+    read_uncompressed_grayscale_tiff,
 )
 from rhodyn.schema import read_trajectory_csv
 
 
 class CtcAdapterTests(TestCase):
+    def _tiny_tiff(self, width, height, bits, pixels):
+        pixel_bytes = bytes(pixels) if bits == 8 else struct.pack("<" + "H" * len(pixels), *pixels)
+        entries = []
+
+        def add(tag, field_type, count, value):
+            entries.append((tag, field_type, count, value))
+
+        entry_count = 9
+        pixel_offset = 8 + 2 + entry_count * 12 + 4
+        add(256, 4, 1, width)
+        add(257, 4, 1, height)
+        add(258, 3, 1, bits)
+        add(259, 3, 1, 1)
+        add(262, 3, 1, 1)
+        add(273, 4, 1, pixel_offset)
+        add(277, 3, 1, 1)
+        add(278, 4, 1, height)
+        add(279, 4, 1, len(pixel_bytes))
+        header = bytearray(b"II*\x00\x08\x00\x00\x00")
+        header.extend(struct.pack("<H", entry_count))
+        for row in entries:
+            header.extend(struct.pack("<HHII", *row))
+        header.extend(struct.pack("<I", 0))
+        header.extend(pixel_bytes)
+        return bytes(header)
+
+    def test_mask_to_features_from_uncompressed_tiff_bytes(self):
+        mask = read_uncompressed_grayscale_tiff(self._tiny_tiff(3, 2, 16, [0, 1, 1, 2, 2, 2]))
+        raw = read_uncompressed_grayscale_tiff(self._tiny_tiff(3, 2, 8, [10, 20, 30, 100, 110, 120]))
+        records = ctc_mask_to_feature_records(mask, frame=5, intensity_image=raw)
+
+        self.assertEqual(len(records), 2)
+        self.assertEqual(records[0].track_id, "1")
+        self.assertEqual(records[0].area, 2)
+        self.assertAlmostEqual(records[0].x, 1.5)
+        self.assertAlmostEqual(records[0].y, 0.0)
+        self.assertAlmostEqual(records[0].intensity or 0, 25.0)
+        self.assertEqual(records[1].track_id, "2")
+        self.assertEqual(records[1].area, 3)
+        self.assertAlmostEqual(records[1].x, 1.0)
+        self.assertAlmostEqual(records[1].y, 1.0)
+        self.assertAlmostEqual(records[1].intensity or 0, 110.0)
+
     def test_read_ctc_lineage_and_features(self):
         lineage, lineage_issues = read_ctc_lineage("examples/mlci_man_track.txt")
         features, feature_issues = read_ctc_feature_csv("examples/mlci_ctc_features.csv")
@@ -126,6 +172,41 @@ class CtcAdapterTests(TestCase):
         self.assertEqual(issues, [])
         self.assertEqual(len(rows), payload["trajectory_rows"])
 
+    def test_public_segmentation_feature_subset_converts_to_intensity_and_speed(self):
+        lineage, lineage_issues = read_ctc_lineage("case_studies/mlci_public_man_track_subset.txt")
+        features, feature_issues = read_ctc_feature_csv("case_studies/mlci_public_track_features_subset.csv")
+        self.assertEqual(lineage_issues, [])
+        self.assertEqual(feature_issues, [])
+        self.assertEqual(ctc_lineage_coverage_issues(features, lineage), [])
+        self.assertEqual(len(features), 8)
+        self.assertTrue(all(feature.intensity is not None for feature in features))
+
+        intensity_records = ctc_features_to_trajectory_records(
+            features,
+            signal="intensity",
+            condition="mlci_public_segmentation_features",
+            replicate="zenodo_7260137",
+        )
+        speed_records = ctc_features_to_trajectory_records(
+            features,
+            signal="speed",
+            condition="mlci_public_segmentation_features",
+            replicate="zenodo_7260137",
+        )
+
+        self.assertEqual(len(intensity_records), len(features))
+        self.assertEqual(len(speed_records), len(features))
+        self.assertTrue(all(record.signal >= 0 for record in speed_records))
+
+    def test_public_case_study_ships_no_raw_image_or_archive_payloads(self):
+        forbidden_suffixes = {".tif", ".tiff", ".zip"}
+        shipped_payloads = [
+            path
+            for path in Path("case_studies").rglob("*")
+            if path.is_file() and path.suffix.lower() in forbidden_suffixes
+        ]
+        self.assertEqual(shipped_payloads, [])
+
     def test_public_case_study_workflow_runs(self):
         result = subprocess.run(
             [sys.executable, "examples/mlci_public_case_study_workflow.py"],
@@ -139,6 +220,10 @@ class CtcAdapterTests(TestCase):
         self.assertEqual(payload["status"], "pass")
         self.assertEqual(payload["trajectory_rows"], 6)
         self.assertIn("public_subset", payload)
-        self.assertGreater(payload["public_subset"]["trajectory_rows"], 10)
-        self.assertIn("public lineage subset demonstrates", payload["interpretation_boundary"])
+        self.assertEqual(payload["public_subset"]["feature_rows"], 8)
+        self.assertEqual(payload["public_subset"]["intensity_trajectory_rows"], 8)
+        self.assertEqual(payload["public_subset"]["speed_trajectory_rows"], 8)
+        self.assertIn("public_lineage_fallback", payload)
+        self.assertGreater(payload["public_lineage_fallback"]["trajectory_rows"], 10)
+        self.assertIn("segmentation-derived features demonstrate", payload["interpretation_boundary"])
         self.assertIn(payload["plot_status"], {"matplotlib_not_installed", "plot_constructed_without_display"})

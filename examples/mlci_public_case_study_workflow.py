@@ -1,8 +1,4 @@
-"""Minimal public-case-study workflow for CTC-style live-cell tracks.
-
-The bundled CSV is a tiny schema fixture. For a real public tutorial, replace
-the fixture with features extracted from the MLCI benchmark CTC archives.
-"""
+"""Minimal public-case-study workflow for CTC-style live-cell tracks."""
 
 from __future__ import annotations
 
@@ -62,17 +58,26 @@ def main() -> None:
     public_lineage, public_lineage_issues = read_ctc_lineage(CASE_STUDIES / "mlci_public_man_track_subset.txt")
     if public_lineage_issues:
         raise SystemExit(json.dumps(to_plain({"public_lineage_issues": public_lineage_issues}), indent=2))
-    public_trajectories = ctc_lineage_to_trajectory_records(
-        public_lineage,
-        signal="normalized_track_age",
-        condition="mlci_public_lineage_subset",
+    public_features, public_feature_issues = read_ctc_feature_csv(CASE_STUDIES / "mlci_public_track_features_subset.csv")
+    if public_feature_issues:
+        raise SystemExit(json.dumps(to_plain({"public_feature_issues": public_feature_issues}), indent=2))
+
+    public_intensity_trajectories = ctc_features_to_trajectory_records(
+        public_features,
+        signal="intensity",
+        condition="mlci_public_segmentation_features",
         replicate="zenodo_7260137",
-        max_tracks=10,
     )
-    public_residence = score_records(public_trajectories, ResidenceWindow(low=0.25, high=0.75))
+    public_speed_trajectories = ctc_features_to_trajectory_records(
+        public_features,
+        signal="speed",
+        condition="mlci_public_segmentation_features",
+        replicate="zenodo_7260137",
+    )
+    public_residence = score_records(public_intensity_trajectories, ResidenceWindow(low=13.0, high=14.5))
     public_sensitivity = score_records_window_sensitivity(
-        public_trajectories,
-        residence_window_grid(low_min=0.2, low_max=0.3, high_min=0.7, high_max=0.8, steps=2),
+        public_intensity_trajectories,
+        residence_window_grid(low_min=12.8, low_max=13.2, high_min=14.2, high_max=14.6, steps=2),
         min_residence_fraction=0.25,
     )
     public_uncertainty = bootstrap_interval(
@@ -80,7 +85,15 @@ def main() -> None:
         n_resamples=50,
         seed=17,
         schema_kind="trajectory",
-        parameters={"source": "Zenodo 7260137 00_GT/TRA/man_track.txt subset"},
+        parameters={"source": "Zenodo 7260137 tracking label mean intensities"},
+    )
+
+    public_lineage_trajectories = ctc_lineage_to_trajectory_records(
+        public_lineage,
+        signal="normalized_track_age",
+        condition="mlci_public_lineage_subset",
+        replicate="zenodo_7260137",
+        max_tracks=10,
     )
 
     plot_status = "matplotlib_not_installed"
@@ -91,9 +104,9 @@ def main() -> None:
         matplotlib.use("Agg", force=True)
         import matplotlib.pyplot as plt
 
-        first_cell_id = public_trajectories[0].cell_id
-        first_track = [row for row in public_trajectories if row.cell_id == first_cell_id]
-        fig, _ = plot_residence_trace(first_track, ResidenceWindow(low=0.25, high=0.75))
+        first_cell_id = public_intensity_trajectories[0].cell_id
+        first_track = [row for row in public_intensity_trajectories if row.cell_id == first_cell_id]
+        fig, _ = plot_residence_trace(first_track, ResidenceWindow(low=13.0, high=14.5))
         plt.close(fig)
         plot_status = "plot_constructed_without_display"
 
@@ -108,15 +121,21 @@ def main() -> None:
                     "sensitivity_curves": sensitivity,
                     "bootstrap_interval": uncertainty.interval,
                     "public_subset": {
-                        "source": "Zenodo 7260137 ctc_format.zip 00_GT/TRA/man_track.txt",
-                        "lineage_rows": len(public_lineage),
-                        "trajectory_rows": len(public_trajectories),
+                        "source": "Zenodo 7260137 ctc_format.zip tracking masks plus raw frames",
+                        "feature_rows": len(public_features),
+                        "intensity_trajectory_rows": len(public_intensity_trajectories),
+                        "speed_trajectory_rows": len(public_speed_trajectories),
                         "residence_summaries": public_residence,
                         "sensitivity_curves": public_sensitivity,
                         "bootstrap_interval": public_uncertainty.interval,
                     },
+                    "public_lineage_fallback": {
+                        "source": "Zenodo 7260137 ctc_format.zip 00_GT/TRA/man_track.txt",
+                        "lineage_rows": len(public_lineage),
+                        "trajectory_rows": len(public_lineage_trajectories),
+                    },
                     "plot_status": plot_status,
-                    "interpretation_boundary": "public lineage subset demonstrates software flow only; segmentation-derived features are needed for centroid or intensity biology",
+                    "interpretation_boundary": "public segmentation-derived features demonstrate centroid, area, and intensity ingestion; biological interpretation still requires a declared signal, window, grouping structure, and uncertainty rule",
                 }
             ),
             indent=2,

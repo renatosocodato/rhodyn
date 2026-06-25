@@ -1,0 +1,43 @@
+{
+  "source": "Tracking one-in-a-million microbial single-cell tracking benchmark",
+  "zenodo_record": "https://zenodo.org/records/7260137",
+  "zip_url": "https://zenodo.org/api/records/7260137/files/ctc_format.zip/content",
+  "license": "CC-BY-4.0",
+  "sequence": "00",
+  "label_source": "TRA",
+  "frames": [
+    0,
+    20,
+    40,
+    60,
+    80,
+    100,
+    120,
+    140
+  ],
+  "lineage_filter": "case_studies/mlci_public_man_track_subset.txt",
+  "lineage_filter_rows": 30,
+  "include_intensity": true,
+  "extracted_zip_entries": [
+    "00_GT/TRA/man_track0000.tif",
+    "00/t0000.tif",
+    "00_GT/TRA/man_track0020.tif",
+    "00/t0020.tif",
+    "00_GT/TRA/man_track0040.tif",
+    "00/t0040.tif",
+    "00_GT/TRA/man_track0060.tif",
+    "00/t0060.tif",
+    "00_GT/TRA/man_track0080.tif",
+    "00/t0080.tif",
+    "00_GT/TRA/man_track0100.tif",
+    "00/t0100.tif",
+    "00_GT/TRA/man_track0120.tif",
+    "00/t0120.tif",
+    "00_GT/TRA/man_track0140.tif",
+    "00/t0140.tif"
+  ],
+  "derived_feature_rows": 8,
+  "derived_output": "case_studies/mlci_public_track_features_subset.csv",
+  "derived_output_sha256": "6190c3134c0fcb2e1043aa96066cd8a36d5fecb8e3d9f0926f6c07ca940d4293",
+  "raw_file_policy": "TIFF entries were range-fetched from the ZIP archive and decoded in memory only; no raw image files are written by this script."
+}

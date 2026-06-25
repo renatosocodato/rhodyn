@@ -10,9 +10,11 @@ biological interpretation.
 
 2. `rhodyn.ctc`
    Converts Cell Tracking Challenge-style lineage and pre-extracted object
-   feature tables into RhoDyn trajectory records. The v0.3.0 public case-study
-   path uses this adapter for the MLCI microbial tracking benchmark while
-   keeping raw video and segmentation-mask extraction outside the core package.
+   feature tables into RhoDyn trajectory records. It also contains a
+   dependency-light reader for the simple uncompressed grayscale TIFF masks used
+   by the public MLCI benchmark, allowing selected tracking masks and raw frames
+   to become centroid, area, and mean-intensity feature rows without retaining
+   raw image files.
 
 3. `rhodyn.residence`
    Scores signal dwell time inside a declared window and compares residence
@@ -73,7 +75,7 @@ biological interpretation.
 
 ## What stays outside the core
 
-- raw microscopy reading;
+- general raw microscopy reading;
 - image segmentation;
 - manuscript figure composition;
 - disease-specific claims;
