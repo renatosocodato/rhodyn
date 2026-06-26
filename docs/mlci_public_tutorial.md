@@ -1,14 +1,15 @@
-# v0.3.0 public tutorial lane
+# v0.3.x public tutorial lane
 
 This tutorial starts the first public-data case study for RhoDyn using the
 Tracking one-in-a-million microbial single-cell tracking benchmark. The public
 benchmark is a live-cell tracking dataset distributed through Zenodo in Cell
 Tracking Challenge format. RhoDyn does not read raw videos or segmentation masks
-as a persistent local dataset in v0.3.1. Instead, the public helper range-fetches
-selected tracking masks and raw frames, derives centroid, area, and mean
-intensity features, and keeps only the resulting feature table plus provenance.
-Those features are then converted into the standard trajectory schema used by
-the residence, sensitivity, uncertainty, and plotting layers.
+as a persistent local dataset in v0.3.3. Instead, the public helper range-fetches
+selected tracking masks and raw frames across declared CTC sequences, derives
+centroid, area, and mean intensity features, and keeps only the resulting
+feature table plus provenance. Those features are then converted into the
+standard trajectory schema used by the residence, sensitivity, uncertainty, and
+plotting layers.
 
 Public source: https://zenodo.org/records/7260137  
 Concept DOI: https://doi.org/10.5281/zenodo.7260136  
@@ -31,6 +32,7 @@ Prepare a feature table with these columns.
 
 | column | meaning |
 | --- | --- |
+| `sequence` | optional CTC sequence identifier, such as `00` or `01` |
 | `track_id` | CTC object or track label |
 | `frame` | frame index |
 | `x` | centroid x coordinate |
@@ -43,12 +45,13 @@ uses it to check that feature frames fall within the lineage interval declared
 for each track.
 
 The repository includes two small real public subsets from the benchmark. The
-primary v0.3.2 subset is
+primary v0.3.3 subset is
 `case_studies/mlci_public_track_features_subset.csv`, a derived table of
 centroids, areas, and mean raw intensities from selected tracking masks and raw
-frames sampled every 10 frames from frame 0 through frame 140. The companion
-provenance file records the Zenodo source, selected ZIP entries, checksum, and
-raw-file policy. A lighter lineage-only subset remains at
+frames in sequences `00` and `01`, sampled every 20 frames from frame 0 through
+frame 140. The companion provenance file records the Zenodo source, selected
+ZIP entries, checksum, sequence list, and raw-file policy. A lighter lineage-only
+subset remains at
 `case_studies/mlci_public_man_track_subset.txt` for fallback tests when mask
 features are not available.
 
@@ -60,8 +63,8 @@ writes the derived feature table, and does not write raw image files.
 
 ```bash
 python scripts/fetch_mlci_feature_subset.py \
-  --frames 0:140:10 \
-  --lineage-filter case_studies/mlci_public_man_track_subset.txt \
+  --sequences 00,01 \
+  --frames 0:140:20 \
   --output case_studies/mlci_public_track_features_subset.csv \
   --provenance case_studies/mlci_public_track_features_subset.provenance.json
 ```
@@ -93,14 +96,18 @@ python -m rhodyn.cli ctc-to-trajectory \
 ```
 
 The output is a normal RhoDyn trajectory table with `cell_id`, `time`,
-`condition`, `signal`, and `replicate`.
+`condition`, `signal`, and `replicate`. When the feature table includes
+`sequence`, RhoDyn keeps same-numbered labels from different sequences separate.
+For example, track `1` in sequence `00` becomes `sequence_00_track_1`, while
+track `1` in sequence `01` becomes `sequence_01_track_1`. The supplied replicate
+label is also split by sequence, such as `zenodo_7260137_sequence_00`, so grouped
+uncertainty can avoid pooling distinct public sequences as a single replicate.
 
 Example using the real public feature subset.
 
 ```bash
 python -m rhodyn.cli ctc-to-trajectory \
   case_studies/mlci_public_track_features_subset.csv \
-  --lineage case_studies/mlci_public_man_track_subset.txt \
   --signal intensity \
   --condition mlci_public_segmentation_features \
   --replicate zenodo_7260137 \
@@ -110,6 +117,11 @@ python -m rhodyn.cli ctc-to-trajectory \
 Use `--signal speed` to convert centroid movement into a trajectory table, or
 `--signal area` to analyze mask size directly. The `intensity` signal is the
 mean raw image intensity under each tracking-mask label.
+
+Do not pass the bundled `mlci_public_man_track_subset.txt` lineage file for the
+multi-sequence feature table. That fallback lineage subset covers sequence `00`
+only. Lineage validation should be used only with a matching sequence-specific
+lineage table or a future merged lineage table that carries sequence identity.
 
 ## Convert lineage intervals when mask features are not available
 

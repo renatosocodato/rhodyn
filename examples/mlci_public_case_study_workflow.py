@@ -123,6 +123,8 @@ def main() -> None:
                     "public_subset": {
                         "source": "Zenodo 7260137 ctc_format.zip tracking masks plus raw frames",
                         "feature_rows": len(public_features),
+                        "sequences": sorted({feature.sequence for feature in public_features}),
+                        "trajectory_replicates": sorted({record.replicate for record in public_intensity_trajectories}),
                         "intensity_trajectory_rows": len(public_intensity_trajectories),
                         "speed_trajectory_rows": len(public_speed_trajectories),
                         "residence_summaries": public_residence,

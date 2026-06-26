@@ -71,6 +71,13 @@ def _parse_frames(value: str) -> list[int]:
     return sorted(set(frames))
 
 
+def _parse_sequences(value: str) -> list[str]:
+    sequences = [part.strip() for part in value.split(",") if part.strip()]
+    if not sequences:
+        raise ValueError("at least one sequence is required")
+    return sequences
+
+
 def _sha256(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as handle:
@@ -83,6 +90,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--url", default=ZENODO_CTC_ZIP_URL)
     parser.add_argument("--sequence", default="00")
+    parser.add_argument("--sequences", default="", help="Optional comma-separated sequence list. Overrides --sequence.")
     parser.add_argument("--frames", default=DEFAULT_FRAMES, help="Comma-separated frames or inclusive ranges like 0:140:10.")
     parser.add_argument("--label-source", choices=["TRA", "SEG"], default="TRA")
     parser.add_argument("--lineage-filter", default="", help="Optional CTC lineage table used to keep known track ids.")
@@ -92,6 +100,7 @@ def main() -> int:
     args = parser.parse_args()
 
     frames = _parse_frames(args.frames)
+    sequences = _parse_sequences(args.sequences or args.sequence)
     allowed_track_ids: set[str] | None = None
     lineage_rows = 0
     if args.lineage_filter:
@@ -105,35 +114,42 @@ def main() -> int:
     records = []
     extracted_entries: list[str] = []
     reader = ZipRangeReader(args.url)
-    for frame in frames:
-        if args.label_source == "TRA":
-            mask_entry = f"{args.sequence}_GT/TRA/man_track{frame:04d}.tif"
-        else:
-            mask_entry = f"{args.sequence}_GT/SEG/man_seg{frame:04d}.tif"
-        raw_entry = f"{args.sequence}/t{frame:04d}.tif"
+    for sequence in sequences:
+        for frame in frames:
+            if args.label_source == "TRA":
+                mask_entry = f"{sequence}_GT/TRA/man_track{frame:04d}.tif"
+            else:
+                mask_entry = f"{sequence}_GT/SEG/man_seg{frame:04d}.tif"
+            raw_entry = f"{sequence}/t{frame:04d}.tif"
 
-        mask = read_uncompressed_grayscale_tiff(reader.extract(mask_entry))
-        intensity = None
-        extracted_entries.append(mask_entry)
-        if args.include_intensity:
-            intensity = read_uncompressed_grayscale_tiff(reader.extract(raw_entry))
-            extracted_entries.append(raw_entry)
-        records.extend(
-            ctc_mask_to_feature_records(
-                mask,
-                frame=frame,
-                intensity_image=intensity,
-                allowed_track_ids=allowed_track_ids,
+            mask = read_uncompressed_grayscale_tiff(reader.extract(mask_entry))
+            intensity = None
+            extracted_entries.append(mask_entry)
+            if args.include_intensity:
+                intensity = read_uncompressed_grayscale_tiff(reader.extract(raw_entry))
+                extracted_entries.append(raw_entry)
+            records.extend(
+                ctc_mask_to_feature_records(
+                    mask,
+                    frame=frame,
+                    intensity_image=intensity,
+                    allowed_track_ids=allowed_track_ids,
+                    sequence=sequence,
+                )
             )
-        )
 
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["track_id", "frame", "x", "y", "area", "intensity"], lineterminator="\n")
+        writer = csv.DictWriter(
+            handle,
+            fieldnames=["sequence", "track_id", "frame", "x", "y", "area", "intensity"],
+            lineterminator="\n",
+        )
         writer.writeheader()
         for record in records:
             writer.writerow(
                 {
+                    "sequence": record.sequence,
                     "track_id": record.track_id,
                     "frame": record.frame,
                     "x": f"{record.x:.6f}",
@@ -148,7 +164,7 @@ def main() -> int:
         "zenodo_record": "https://zenodo.org/records/7260137",
         "zip_url": args.url,
         "license": "CC-BY-4.0",
-        "sequence": args.sequence,
+        "sequences": sequences,
         "label_source": args.label_source,
         "frame_spec": args.frames,
         "frames": frames,
@@ -165,7 +181,18 @@ def main() -> int:
         provenance_path = Path(args.provenance)
         provenance_path.parent.mkdir(parents=True, exist_ok=True)
         provenance_path.write_text(json.dumps(provenance, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"status": "pass", "feature_rows": len(records), "output": str(output), "provenance": args.provenance}, indent=2))
+    print(
+        json.dumps(
+            {
+                "status": "pass",
+                "sequences": sequences,
+                "feature_rows": len(records),
+                "output": str(output),
+                "provenance": args.provenance,
+            },
+            indent=2,
+        )
+    )
     return 0
 
 

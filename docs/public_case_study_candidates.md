@@ -92,6 +92,9 @@ segmentation-derived feature table at
 `case_studies/mlci_public_track_features_subset.csv`, with provenance in the
 neighboring JSON file. The v0.3.2 refresh samples the public benchmark every 10
 frames from frame 0 through frame 140 while retaining only centroid, area, and
-mean-intensity rows. The earlier
+mean-intensity rows. The v0.3.3 refresh extends the retained feature table to
+sequences `00` and `01`, sampled every 20 frames from frame 0 through frame 140,
+and preserves sequence identity when converting tracks into trajectory records.
+The earlier
 `case_studies/mlci_public_man_track_subset.txt` lineage subset remains as a
 fallback for tests that need track intervals without object-level features.

@@ -14,7 +14,10 @@ biological interpretation.
    dependency-light reader for the simple uncompressed grayscale TIFF masks used
    by the public MLCI benchmark, allowing selected tracking masks and raw frames
    to become centroid, area, and mean-intensity feature rows without retaining
-   raw image files.
+   raw image files. When a feature table includes CTC sequence identifiers,
+   `rhodyn.ctc` preserves them in sequence-aware `cell_id` values and
+   per-sequence replicate labels, preventing identical track labels from
+   different sequences from being merged.
 
 3. `rhodyn.residence`
    Scores signal dwell time inside a declared window and compares residence

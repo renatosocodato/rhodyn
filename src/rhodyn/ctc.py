@@ -32,6 +32,7 @@ class CtcFeatureRecord:
     y: float
     area: float
     intensity: float | None = None
+    sequence: str = ""
 
 
 @dataclass(frozen=True)
@@ -107,6 +108,7 @@ def _as_int(value: str, row: int, field: str, issues: list[ValidationIssue]) -> 
 def read_ctc_feature_csv(
     path: str | Path,
     *,
+    sequence_column: str = "sequence",
     track_id_column: str = "track_id",
     frame_column: str = "frame",
     x_column: str = "x",
@@ -139,6 +141,7 @@ def read_ctc_feature_csv(
                     y=_as_float(row.get(y_column, ""), row_number, y_column, issues),
                     area=_as_float(row.get(area_column, ""), row_number, area_column, issues),
                     intensity=intensity,
+                    sequence=(row.get(sequence_column) or "").strip() if sequence_column in (reader.fieldnames or []) else "",
                 )
             )
     return records, issues
@@ -225,6 +228,7 @@ def ctc_mask_to_feature_records(
     frame: int,
     intensity_image: CtcTiffImage | None = None,
     allowed_track_ids: set[str] | None = None,
+    sequence: str = "",
 ) -> list[CtcFeatureRecord]:
     """Convert one labeled CTC mask into centroid, area, and intensity rows.
 
@@ -264,6 +268,7 @@ def ctc_mask_to_feature_records(
                 y=y_sum / count,
                 area=count,
                 intensity=intensity,
+                sequence=sequence,
             )
         )
     return records
@@ -287,11 +292,25 @@ def ctc_lineage_coverage_issues(
     return issues
 
 
-def _group_by_track(features: Iterable[CtcFeatureRecord]) -> dict[str, list[CtcFeatureRecord]]:
-    grouped: dict[str, list[CtcFeatureRecord]] = {}
+def _group_by_track(features: Iterable[CtcFeatureRecord]) -> dict[tuple[str, str], list[CtcFeatureRecord]]:
+    grouped: dict[tuple[str, str], list[CtcFeatureRecord]] = {}
     for feature in features:
-        grouped.setdefault(feature.track_id, []).append(feature)
+        grouped.setdefault((feature.sequence, feature.track_id), []).append(feature)
     return grouped
+
+
+def _trajectory_cell_id(sequence: str, track_id: str) -> str:
+    if sequence:
+        return f"sequence_{sequence}_track_{track_id}"
+    return f"track_{track_id}"
+
+
+def _trajectory_replicate(replicate: str, sequence: str) -> str:
+    if not sequence:
+        return replicate
+    if not replicate:
+        return f"sequence_{sequence}"
+    return f"{replicate}_sequence_{sequence}"
 
 
 def _signal_for_track(track: list[CtcFeatureRecord], signal: str) -> list[float]:
@@ -332,17 +351,17 @@ def ctc_features_to_trajectory_records(
         choices = ", ".join(CTC_SIGNAL_CHOICES)
         raise ValueError(f"unknown CTC signal {signal!r}; choices are {choices}")
     trajectories: list[TrajectoryRecord] = []
-    for track_id, track in sorted(_group_by_track(features).items()):
+    for (sequence, track_id), track in sorted(_group_by_track(features).items()):
         ordered = sorted(track, key=lambda item: item.frame)
         values = _signal_for_track(ordered, signal)
         for feature, value in zip(ordered, values):
             trajectories.append(
                 TrajectoryRecord(
-                    cell_id=f"track_{track_id}",
+                    cell_id=_trajectory_cell_id(sequence, track_id),
                     time=float(feature.frame),
                     condition=condition,
                     signal=value,
-                    replicate=replicate,
+                    replicate=_trajectory_replicate(replicate, sequence),
                 )
             )
     return trajectories

@@ -48,9 +48,10 @@ class CtcAdapterTests(TestCase):
     def test_mask_to_features_from_uncompressed_tiff_bytes(self):
         mask = read_uncompressed_grayscale_tiff(self._tiny_tiff(3, 2, 16, [0, 1, 1, 2, 2, 2]))
         raw = read_uncompressed_grayscale_tiff(self._tiny_tiff(3, 2, 8, [10, 20, 30, 100, 110, 120]))
-        records = ctc_mask_to_feature_records(mask, frame=5, intensity_image=raw)
+        records = ctc_mask_to_feature_records(mask, frame=5, intensity_image=raw, sequence="03")
 
         self.assertEqual(len(records), 2)
+        self.assertEqual(records[0].sequence, "03")
         self.assertEqual(records[0].track_id, "1")
         self.assertEqual(records[0].area, 2)
         self.assertAlmostEqual(records[0].x, 1.5)
@@ -88,6 +89,32 @@ class CtcAdapterTests(TestCase):
         self.assertEqual(track_1, [0.0, 5.0, 5.0])
         self.assertEqual(track_2, [0.0, 3.0, 4.0])
         self.assertTrue(all(record.condition == "mlci_fixture" for record in records))
+
+    def test_convert_ctc_features_preserves_sequence_grouping(self):
+        features = [
+            *ctc_mask_to_feature_records(
+                read_uncompressed_grayscale_tiff(self._tiny_tiff(2, 1, 16, [1, 0])),
+                frame=0,
+                sequence="00",
+            ),
+            *ctc_mask_to_feature_records(
+                read_uncompressed_grayscale_tiff(self._tiny_tiff(2, 1, 16, [1, 0])),
+                frame=0,
+                sequence="01",
+            ),
+        ]
+        records = ctc_features_to_trajectory_records(
+            features,
+            signal="area",
+            condition="mlci_fixture",
+            replicate="zenodo_7260137",
+        )
+
+        self.assertEqual([record.cell_id for record in records], ["sequence_00_track_1", "sequence_01_track_1"])
+        self.assertEqual(
+            [record.replicate for record in records],
+            ["zenodo_7260137_sequence_00", "zenodo_7260137_sequence_01"],
+        )
 
     def test_cli_ctc_to_trajectory_writes_valid_trajectory_csv(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -173,12 +200,10 @@ class CtcAdapterTests(TestCase):
         self.assertEqual(len(rows), payload["trajectory_rows"])
 
     def test_public_segmentation_feature_subset_converts_to_intensity_and_speed(self):
-        lineage, lineage_issues = read_ctc_lineage("case_studies/mlci_public_man_track_subset.txt")
         features, feature_issues = read_ctc_feature_csv("case_studies/mlci_public_track_features_subset.csv")
-        self.assertEqual(lineage_issues, [])
         self.assertEqual(feature_issues, [])
-        self.assertEqual(ctc_lineage_coverage_issues(features, lineage), [])
-        self.assertEqual(len(features), 15)
+        self.assertEqual(len(features), 62)
+        self.assertEqual(sorted({feature.sequence for feature in features}), ["00", "01"])
         self.assertTrue(all(feature.intensity is not None for feature in features))
 
         intensity_records = ctc_features_to_trajectory_records(
@@ -197,6 +222,11 @@ class CtcAdapterTests(TestCase):
         self.assertEqual(len(intensity_records), len(features))
         self.assertEqual(len(speed_records), len(features))
         self.assertTrue(all(record.signal >= 0 for record in speed_records))
+        self.assertEqual(
+            sorted({record.replicate for record in intensity_records}),
+            ["zenodo_7260137_sequence_00", "zenodo_7260137_sequence_01"],
+        )
+        self.assertTrue(all(record.cell_id.startswith("sequence_") for record in intensity_records))
 
     def test_public_case_study_ships_no_raw_image_or_archive_payloads(self):
         forbidden_suffixes = {".tif", ".tiff", ".zip"}
@@ -220,9 +250,14 @@ class CtcAdapterTests(TestCase):
         self.assertEqual(payload["status"], "pass")
         self.assertEqual(payload["trajectory_rows"], 6)
         self.assertIn("public_subset", payload)
-        self.assertEqual(payload["public_subset"]["feature_rows"], 15)
-        self.assertEqual(payload["public_subset"]["intensity_trajectory_rows"], 15)
-        self.assertEqual(payload["public_subset"]["speed_trajectory_rows"], 15)
+        self.assertEqual(payload["public_subset"]["feature_rows"], 62)
+        self.assertEqual(payload["public_subset"]["sequences"], ["00", "01"])
+        self.assertEqual(
+            payload["public_subset"]["trajectory_replicates"],
+            ["zenodo_7260137_sequence_00", "zenodo_7260137_sequence_01"],
+        )
+        self.assertEqual(payload["public_subset"]["intensity_trajectory_rows"], 62)
+        self.assertEqual(payload["public_subset"]["speed_trajectory_rows"], 62)
         self.assertIn("public_lineage_fallback", payload)
         self.assertGreater(payload["public_lineage_fallback"]["trajectory_rows"], 10)
         self.assertIn("segmentation-derived features demonstrate", payload["interpretation_boundary"])

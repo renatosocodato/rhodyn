@@ -24,8 +24,8 @@ Included now:
   microbial tracking tutorial;
 - selected CTC TIFF-mask feature extraction for centroid, area, and mean
   intensity rows without retaining raw images;
-- a denser public MLCI feature subset sampled every 10 frames from frame 0
-  through frame 140;
+- a multi-sequence public MLCI feature subset sampled from sequences `00` and
+  `01`, with sequence-aware track identities and per-sequence replicate labels;
 - residence-window scoring;
 - amplitude and dwell-time summaries;
 - reserve-style normalization helpers;
@@ -107,8 +107,8 @@ Regenerate the small public feature subset without keeping raw image files.
 
 ```bash
 python scripts/fetch_mlci_feature_subset.py \
-  --frames 0:140:10 \
-  --lineage-filter case_studies/mlci_public_man_track_subset.txt \
+  --sequences 00,01 \
+  --frames 0:140:20 \
   --output case_studies/mlci_public_track_features_subset.csv \
   --provenance case_studies/mlci_public_track_features_subset.provenance.json
 ```
@@ -152,9 +152,11 @@ rhodyn extras
 The v0.3.x public tutorial scaffold is documented in
 `docs/mlci_public_tutorial.md`. The included CTC-style fixture validates the
 adapter, and the small public feature subset demonstrates centroid, area, and
-mean-intensity ingestion from the Zenodo MLCI benchmark. Biological
-interpretation requires a declared signal, residence window, grouping
-structure, and uncertainty rule.
+mean-intensity ingestion from two Zenodo MLCI benchmark sequences. Sequence
+identity is preserved in trajectory `cell_id` values and replicate labels, so
+same-numbered CTC track labels from different sequences are not merged.
+Biological interpretation requires a declared signal, residence window,
+grouping structure, and uncertainty rule.
 
 ## Input schemas
 
