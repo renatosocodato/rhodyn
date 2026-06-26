@@ -158,6 +158,11 @@ same-numbered CTC track labels from different sequences are not merged.
 Biological interpretation requires a declared signal, residence window,
 grouping structure, and uncertainty rule.
 
+For code that needs to predict the converted identifiers before building a
+trajectory table, `ctc_track_cell_id("1", sequence="00")` returns
+`sequence_00_track_1`, and `ctc_sequence_replicate("zenodo_7260137",
+sequence="00")` returns `zenodo_7260137_sequence_00`.
+
 ## Input schemas
 
 RhoDyn accepts tidy CSV inputs. Required columns must be present and non-empty

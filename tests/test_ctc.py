@@ -6,11 +6,14 @@ import tempfile
 from pathlib import Path
 from unittest import TestCase
 
+from rhodyn import ctc_track_cell_id as package_ctc_track_cell_id
 from rhodyn.ctc import (
     ctc_features_to_trajectory_records,
     ctc_lineage_coverage_issues,
     ctc_lineage_to_trajectory_records,
     ctc_mask_to_feature_records,
+    ctc_sequence_replicate,
+    ctc_track_cell_id,
     read_ctc_feature_csv,
     read_ctc_lineage,
     read_uncompressed_grayscale_tiff,
@@ -44,6 +47,17 @@ class CtcAdapterTests(TestCase):
         header.extend(struct.pack("<I", 0))
         header.extend(pixel_bytes)
         return bytes(header)
+
+    def test_sequence_aware_ctc_naming_helpers(self):
+        self.assertEqual(ctc_track_cell_id("1"), "track_1")
+        self.assertEqual(ctc_track_cell_id("1", sequence="00"), "sequence_00_track_1")
+        self.assertEqual(package_ctc_track_cell_id("2", sequence="01"), "sequence_01_track_2")
+        self.assertEqual(ctc_sequence_replicate("zenodo_7260137"), "zenodo_7260137")
+        self.assertEqual(
+            ctc_sequence_replicate("zenodo_7260137", sequence="01"),
+            "zenodo_7260137_sequence_01",
+        )
+        self.assertEqual(ctc_sequence_replicate(sequence="03"), "sequence_03")
 
     def test_mask_to_features_from_uncompressed_tiff_bytes(self):
         mask = read_uncompressed_grayscale_tiff(self._tiny_tiff(3, 2, 16, [0, 1, 1, 2, 2, 2]))

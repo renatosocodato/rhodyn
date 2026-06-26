@@ -102,6 +102,9 @@ For example, track `1` in sequence `00` becomes `sequence_00_track_1`, while
 track `1` in sequence `01` becomes `sequence_01_track_1`. The supplied replicate
 label is also split by sequence, such as `zenodo_7260137_sequence_00`, so grouped
 uncertainty can avoid pooling distinct public sequences as a single replicate.
+The helper functions `ctc_track_cell_id()` and `ctc_sequence_replicate()` expose
+that naming rule directly for users who need stable identifiers before running
+the conversion.
 
 Example using the real public feature subset.
 

@@ -17,7 +17,9 @@ biological interpretation.
    raw image files. When a feature table includes CTC sequence identifiers,
    `rhodyn.ctc` preserves them in sequence-aware `cell_id` values and
    per-sequence replicate labels, preventing identical track labels from
-   different sequences from being merged.
+   different sequences from being merged. The public helpers
+   `ctc_track_cell_id()` and `ctc_sequence_replicate()` expose the same naming
+   rule for external workflows.
 
 3. `rhodyn.residence`
    Scores signal dwell time inside a declared window and compares residence

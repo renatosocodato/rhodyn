@@ -49,6 +49,32 @@ CTC_SIGNAL_CHOICES = ("speed", "displacement", "area", "intensity")
 CTC_LINEAGE_SIGNAL_CHOICES = ("presence", "track_age", "normalized_track_age", "duration")
 
 
+def ctc_track_cell_id(track_id: str, *, sequence: str = "") -> str:
+    """Return the stable RhoDyn cell id for one CTC track.
+
+    CTC archives often reuse numeric track labels across sequences. Including
+    the sequence in the converted cell id keeps those trajectories distinct.
+    """
+
+    track = str(track_id).strip()
+    seq = str(sequence).strip()
+    if seq:
+        return f"sequence_{seq}_track_{track}"
+    return f"track_{track}"
+
+
+def ctc_sequence_replicate(replicate: str = "", *, sequence: str = "") -> str:
+    """Return the stable RhoDyn replicate label for one CTC sequence."""
+
+    base = str(replicate).strip()
+    seq = str(sequence).strip()
+    if not seq:
+        return base
+    if not base:
+        return f"sequence_{seq}"
+    return f"{base}_sequence_{seq}"
+
+
 def read_ctc_lineage(path: str | Path) -> tuple[list[CtcLineageRecord], list[ValidationIssue]]:
     """Read a CTC ``man_track.txt`` style lineage table.
 
@@ -299,20 +325,6 @@ def _group_by_track(features: Iterable[CtcFeatureRecord]) -> dict[tuple[str, str
     return grouped
 
 
-def _trajectory_cell_id(sequence: str, track_id: str) -> str:
-    if sequence:
-        return f"sequence_{sequence}_track_{track_id}"
-    return f"track_{track_id}"
-
-
-def _trajectory_replicate(replicate: str, sequence: str) -> str:
-    if not sequence:
-        return replicate
-    if not replicate:
-        return f"sequence_{sequence}"
-    return f"{replicate}_sequence_{sequence}"
-
-
 def _signal_for_track(track: list[CtcFeatureRecord], signal: str) -> list[float]:
     ordered = sorted(track, key=lambda item: item.frame)
     if signal == "area":
@@ -357,11 +369,11 @@ def ctc_features_to_trajectory_records(
         for feature, value in zip(ordered, values):
             trajectories.append(
                 TrajectoryRecord(
-                    cell_id=_trajectory_cell_id(sequence, track_id),
+                    cell_id=ctc_track_cell_id(track_id, sequence=sequence),
                     time=float(feature.frame),
                     condition=condition,
                     signal=value,
-                    replicate=_trajectory_replicate(replicate, sequence),
+                    replicate=ctc_sequence_replicate(replicate, sequence=sequence),
                 )
             )
     return trajectories
