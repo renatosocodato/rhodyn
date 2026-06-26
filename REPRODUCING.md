@@ -11,6 +11,8 @@ rhodyn validate examples/synthetic_trajectory.csv
 rhodyn score-residence examples/synthetic_trajectory.csv --low 0.35 --high 0.75
 rhodyn simulate --duration 5 --dt 1
 rhodyn compare examples/synthetic_endpoints.csv
+python scripts/fetch_drg_calcium_benchmark.py
+python scripts/fetch_erk_gpcr_benchmark.py
 ```
 
 The manuscript reproduction repository remains separate:
@@ -22,4 +24,3 @@ The manuscript reproduction repository remains separate:
 
 Those resources are optional case-study inputs for future RhoDyn examples. They
 are not required for the RhoDyn scaffold tests.
-

@@ -1,0 +1,59 @@
+{
+  "source_title": "Single cell imaging of ERK and Akt activation dynamics and heterogeneity induced by G protein-coupled receptors - Scripts & Source data",
+  "source_creators": [
+    "Wan, Roger",
+    "Hwang, Sung Yul",
+    "Di Salvo, Matteo",
+    "Birts, Charlotte",
+    "Watson, Andrew J.",
+    "Jones, Ben",
+    "Goyette, Janelle",
+    "Gett, Ronen",
+    "Hogg, Philip J.",
+    "Bryant, Christopher E.",
+    "Alexander, Stephen P. H.",
+    "Duhme-Klair, Anne-Katrin",
+    "Ferrell, James E. Jr",
+    "Santos, Sergio D. M."
+  ],
+  "zenodo_record": "https://zenodo.org/records/5836623",
+  "zenodo_doi": "10.5281/zenodo.5836623",
+  "license": "CC-BY-4.0",
+  "archive_file": "Figure_3.zip",
+  "archive_url": "https://zenodo.org/api/records/5836623/files/Figure_3.zip/content",
+  "archive_sha256": "c99308f4918d5caf9fedfbeb4d1ca6cf9855acb82fbc0cad20c0c3934d0d9d76",
+  "source_members": [
+    "Figure_3/Data/ALL_UK.csv",
+    "Figure_3/Data/ALL_S1P.csv",
+    "Figure_3/Data/ALL_His.csv"
+  ],
+  "source_member_sha256": {
+    "Figure_3/Data/ALL_UK.csv": "29b12cf5c69cb64f8488dc8a1a3b738116746980cd9538a356b8d69da0059434",
+    "Figure_3/Data/ALL_S1P.csv": "190237be870a83c9328ccde6f3b5c765867ecbec67b15d4a5b7285ddfc7cb891",
+    "Figure_3/Data/ALL_His.csv": "fadfa6a068253210fc705db2b22c04a7456ac065a0a96a27e4b8b6d63853869f"
+  },
+  "selected_cell_count": 180,
+  "selected_ligands": [
+    "His",
+    "S1P",
+    "UK"
+  ],
+  "max_cells_per_ligand": 60,
+  "threshold_rule": "high ERK KTR residence threshold is the selected-record CN_ERK quantile",
+  "threshold_quantile": 0.75,
+  "residence_window": {
+    "low": 0.7623,
+    "high": 1000000000000.0
+  },
+  "benchmark_rows": 180,
+  "class_counts": {
+    "amplitude_and_residence_top_quartile": 34,
+    "amplitude_only_top_quartile": 11,
+    "residence_only_top_quartile": 11,
+    "neither_top_quartile": 124
+  },
+  "derived_output": "case_studies/erk_gpcr_residence_amplitude_benchmark.csv",
+  "derived_output_sha256": "40b4bd2ac59ea31923f11a4ad60c82c98a1ef4bf4cc4dc0a5541c58a9644be4e",
+  "raw_file_policy": "The Figure 3 source archive and member CSV files were downloaded into memory and converted to derived benchmark rows only; source ZIP and CSV files are not retained in the repository.",
+  "interpretation_boundary": "The retained table benchmarks amplitude and high-ERK residence summaries for a public ERK/KTR live-cell signaling dataset. The quantile threshold is analytical, not a calibrated biological activation boundary, and the table does not infer GPCR mechanism."
+}

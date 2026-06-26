@@ -7,20 +7,20 @@ different product, manuscript, or branding direction.
 
 ## Current position
 
-RhoDyn is currently at the boundary between a Stage 2 foundation and a Stage 3
-evidence-bank build. The core Python API, CLI, synthetic examples, uncertainty
-helpers, bounded-coupling helpers, residence-window sensitivity, reduced-model
-comparison, plotting helpers, the first public CTC-style adapter, and the first
-public calcium-signaling benchmark are in place. The multi-sequence public MLCI
-example demonstrates public-data ingestion and sequence-aware grouping, while
-the DRG calcium benchmark demonstrates a residence-versus-amplitude comparison
-on an independent live-cell signaling dataset. This is still not enough to
-satisfy the full Stage 3 biological generality gate.
+RhoDyn is currently in the Stage 3 evidence-bank build. The core Python API,
+CLI, synthetic examples, uncertainty helpers, bounded-coupling helpers,
+residence-window sensitivity, reduced-model comparison, plotting helpers, the
+first public CTC-style adapter, and two independent public signaling benchmarks
+are in place. The multi-sequence public MLCI example demonstrates public-data
+ingestion and sequence-aware grouping, the DRG calcium benchmark demonstrates a
+residence-versus-amplitude comparison in neuronal calcium traces, and the ERK
+GPCR benchmark demonstrates the same distinction in kinase-reporter dynamics.
+This is still not enough to satisfy the full Stage 3 biological generality gate.
 
 Current status in one sentence. RhoDyn can already analyze declared dynamic
-readouts and has one independent public signaling benchmark, but it has not yet
-earned a high-impact methods claim across multiple independent biological
-systems.
+readouts and now has two independent public signaling benchmarks, but it has not
+yet earned the perturbation endpoint and reduced-architecture case needed for a
+full high-impact methods claim.
 
 ## Non-drift principles
 
@@ -74,16 +74,21 @@ Current evidence.
   deltaF/F0 traces from von Buchholtz 2025. The retained derived table contains
   360 episode-cell rows from 120 neurons and identifies both amplitude-only and
   residence-only top-quartile cases under a declared high-calcium window.
+- A second independent kinase-signaling benchmark is in place using public ERK
+  KTR traces from Wan et al. 2021. The retained derived table contains 180
+  single-cell trajectory summaries from histamine, S1P, and UK ligand contexts
+  and identifies both amplitude-only and residence-only top-quartile cases
+  under a declared high-ERK quantile threshold.
 - No independent perturbation endpoint dataset has been promoted as the
   model-comparison case study yet.
 
-Status. Stage 3A is started and has produced the first public signaling
-benchmark. Stage 3 overall is not passed.
+Status. Stage 3A and Stage 3B have produced two independent public signaling
+benchmarks. The residence-versus-amplitude sub-gate is now supported across two
+biological signaling systems, but Stage 3 overall is not passed.
 
-Next Stage 3 work should prioritize either a second independent live-cell
-signaling dataset or a perturbation endpoint/model-comparison dataset. The
-public MLCI adapter should remain as infrastructure and tutorial proof, not as
-the main biological generality claim.
+Next Stage 3 work should prioritize a perturbation endpoint/model-comparison
+dataset. The public MLCI adapter should remain as infrastructure and tutorial
+proof, not as the main biological generality claim.
 
 ## Stage 4. Backend
 

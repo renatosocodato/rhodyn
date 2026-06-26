@@ -18,7 +18,7 @@ This is an early open-core scaffold moving into the `v0.3.x` public
 case-study lane.
 
 The staged development plan is anchored in `docs/roadmap.md`. The current
-position is Stage 3A started, not Stage 3 passed. Backend, frontend, official
+position is Stage 3B started, not Stage 3 passed. Backend, frontend, official
 release, Nature Methods, and product work should remain downstream of the
 case-study evidence bank.
 
@@ -33,6 +33,8 @@ Included now:
   `01`, with sequence-aware track identities and per-sequence replicate labels;
 - a first independent public calcium-signaling benchmark comparing amplitude
   and high-calcium residence in DRG neuron traces;
+- a second independent public kinase-signaling benchmark comparing peak ERK
+  KTR activity and high-ERK residence in GPCR-stimulated cells;
 - residence-window scoring;
 - amplitude and dwell-time summaries;
 - reserve-style normalization helpers;
@@ -175,6 +177,13 @@ The first Stage 3A signaling benchmark is documented in
 Zenodo DOI `10.5281/zenodo.14907827` to compare maximum amplitude with
 high-calcium residence. The retained derived table contains 360 episode-cell
 rows and includes both amplitude-only and residence-only top-quartile cases.
+
+The Stage 3B kinase-signaling benchmark is documented in
+`docs/erk_gpcr_public_benchmark.md`. It uses public ERK KTR source data from
+Zenodo DOI `10.5281/zenodo.5836623` to compare maximum ERK signal with
+high-ERK residence. The retained derived table contains 180 single-cell
+trajectory summaries and includes both amplitude-only and residence-only
+top-quartile cases.
 
 ## Input schemas
 

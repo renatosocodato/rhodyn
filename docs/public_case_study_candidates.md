@@ -94,35 +94,58 @@ SDK license: https://github.com/AllenInstitute/AllenSDK/blob/master/LICENSE.txt
 
 ## Watchlist
 
-ERK/KTR and NF-kB live-cell dynamics remain high-value targets because they are
-closer to signaling-residence use cases than tracking or static morphology.
-They are deliberately kept on the watchlist until a dataset has a verified URL,
-license, access format, and schema mapping. They should not be used for public
-claims or tutorials until that check is complete.
+NF-kB live-cell dynamics remains a high-value target because it is close to the
+immune-signaling residence use case. It is deliberately kept on the watchlist
+until a dataset has a verified URL, license, access format, and schema mapping.
+It should not be used for public claims or tutorials until that check is
+complete. ERK/KTR dynamics is no longer only a watchlist item because the Wan
+2021 GPCR source-data archive now provides a selected Stage 3B kinase-signaling
+benchmark.
 
-## Recommended next move
+## Current public-data surfaces
 
-Use the microbial tracking benchmark as the v0.3.0 tutorial target. It is the
-best current balance of public access, time-resolved biology, annotation quality,
-and license clarity. Use Cell Painting as a static-state comparator and keep
-Allen calcium as a scientifically strong but license-sensitive candidate.
-
-The v0.3.0 adapter and tutorial scaffold are now started in `rhodyn.ctc`, the
+The v0.3.x adapter and tutorial scaffold are in place in `rhodyn.ctc`, the
 `ctc-to-trajectory` and `ctc-lineage-to-trajectory` CLI commands, and
-`docs/mlci_public_tutorial.md`. The v0.3.1 path adds a small public
-segmentation-derived feature table at
-`case_studies/mlci_public_track_features_subset.csv`, with provenance in the
-neighboring JSON file. The v0.3.2 refresh samples the public benchmark every 10
-frames from frame 0 through frame 140 while retaining only centroid, area, and
-mean-intensity rows. The v0.3.3 refresh extends the retained feature table to
-sequences `00` and `01`, sampled every 20 frames from frame 0 through frame 140,
-and preserves sequence identity when converting tracks into trajectory records.
-The earlier
+`docs/mlci_public_tutorial.md`. The retained MLCI feature table samples public
+benchmark sequences `00` and `01`, preserves sequence identity, and demonstrates
+public-data ingestion without retaining raw TIFF masks. The earlier
 `case_studies/mlci_public_man_track_subset.txt` lineage subset remains as a
 fallback for tests that need track intervals without object-level features.
 
-The Stage 3A live-cell signaling benchmark is now started through
+The Stage 3A live-cell signaling benchmark is in place through
 `scripts/fetch_drg_calcium_benchmark.py` and the retained derived table
 `case_studies/drg_calcium_residence_amplitude_benchmark.csv`. This moves RhoDyn
-from public-data infrastructure into the first independent calcium-signaling
-benchmark, but it does not complete the full Stage 3 evidence gate by itself.
+from public-data infrastructure into an independent calcium-signaling benchmark,
+but it does not complete the full Stage 3 evidence gate by itself.
+
+### Selected Stage 3B kinase-signaling benchmark
+
+**ERK KTR dynamics after GPCR stimulation from Wan 2021.** This Zenodo source
+archive provides single-cell ERK and Akt KTR trajectories after GPCR ligand
+stimulation. RhoDyn uses the Figure 3 source archive, extracts a bounded
+DMSO-control subset from `ALL_UK.csv`, `ALL_S1P.csv`, and `ALL_His.csv`, and
+builds a derived residence-versus-amplitude benchmark from `CN_ERK`. The
+retained table shows both amplitude-only and residence-only top-quartile rows
+under a declared high-ERK quantile threshold. This is the second independent
+public live-cell signaling benchmark and extends the evidence bank from calcium
+dynamics into kinase-reporter dynamics.
+
+Source: https://zenodo.org/records/5836623
+
+DOI: https://doi.org/10.5281/zenodo.5836623
+
+License: CC-BY-4.0
+
+Tutorial: `docs/erk_gpcr_public_benchmark.md`
+
+Builder: `scripts/fetch_erk_gpcr_benchmark.py`
+
+Derived table: `case_studies/erk_gpcr_residence_amplitude_benchmark.csv`
+
+## Recommended next move
+
+Stage 3 should now prioritize a perturbation endpoint or reduced-architecture
+comparison dataset. The DRG calcium and ERK/GPCR benchmarks support the
+residence-versus-amplitude distinction across two public signaling systems, but
+the evidence bank still needs a public case where model comparison, reserve-like
+logic, or bounded coupling is the central result.

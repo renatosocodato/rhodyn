@@ -11,12 +11,15 @@ Started:
 - denser v0.3.2 public feature subset sampled every 10 frames from frame 0 through frame 140;
 - multi-sequence v0.3.3 public feature subset from sequences `00` and `01`, with sequence-aware track identifiers and per-sequence replicate labels;
 - public helper functions for stable sequence-aware CTC `cell_id` and replicate-label construction;
+- Stage 3A public DRG calcium residence-versus-amplitude benchmark;
+- Stage 3B public ERK/GPCR kinase-signaling residence-versus-amplitude benchmark;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 
 Boundary:
 
 - The bundled public feature subset validates the adapter and workflow only. Biological interpretation requires a declared signal, residence window, grouping structure, and uncertainty rule.
+- The DRG calcium and ERK/GPCR benchmarks support residence-versus-amplitude separation across two public signaling systems, but Stage 3 still needs an independent perturbation endpoint or reduced-architecture comparison case.
 
 ## v0.1.0
 
