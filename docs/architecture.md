@@ -4,9 +4,10 @@ RhoDyn separates reusable dynamic-state analysis from manuscript-specific
 biological interpretation.
 
 The staged scientific and product roadmap is anchored in `docs/roadmap.md`.
-The current architecture should prioritize the Stage 3 case-study evidence bank
-before backend, frontend, official release, Nature Methods, or commercial
-product buildout.
+The current architecture should keep the Stage 3 evidence bank frozen while
+Stage 4 turns those stable analysis surfaces into a backend service. Frontend,
+official release, Nature Methods, and commercial product buildout remain
+downstream of the backend contract.
 
 ## Core layers
 
@@ -72,14 +73,25 @@ product buildout.
    residuals. Plot labels distinguish measured signals from declared windows,
    derived decisions, and model-derived summaries.
 
-12. `rhodyn.results`
+12. `rhodyn.backend_core`
+   Provides dependency-light service functions for schema validation,
+   residence scoring, bounded-coupling decisions, reserve summaries,
+   endpoint-model comparison, and compact Markdown report export. These
+   functions are the Stage 4 backend contract and call the same library helpers
+   used by the CLI.
+
+13. `rhodyn.backend`
+   Provides the optional FastAPI application factory under `rhodyn[backend]`.
+   The app is stateless and delegates to `rhodyn.backend_core`.
+
+14. `rhodyn.results`
    Wraps residence, reserve, coupling, uncertainty, sensitivity, and
    model-comparison outputs in typed, JSON-friendly result objects. Each result
    carries grouping metadata and provenance fields so condition, cell, replicate,
    well, donor, batch, input schema, analysis parameters, and software version
    remain visible beside the quantitative value.
 
-13. `rhodyn.paper`
+15. `rhodyn.paper`
    Documents the manuscript repository and Zenodo data package as an optional
    case study without making them package dependencies.
 
@@ -90,4 +102,4 @@ product buildout.
 - manuscript figure composition;
 - disease-specific claims;
 - private data adapters;
-- dashboard or hosted analysis.
+- dashboard or hosted analysis beyond the first stateless FastAPI service.

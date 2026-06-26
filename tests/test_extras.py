@@ -16,14 +16,17 @@ class OptionalExtrasTests(TestCase):
         self.assertIn("pandas = [", text)
         self.assertIn("stats = [", text)
         self.assertIn("plots = [", text)
+        self.assertIn("backend = [", text)
         self.assertIn("notebooks = [", text)
         self.assertIn("all = [", text)
 
     def test_extra_plan_names_first_use_groups(self):
         extras = {item.name: item for item in extra_plan()}
         self.assertIn("pandas", extras)
+        self.assertIn("backend", extras)
         self.assertIn("TOST", " ".join(extras["stats"].first_uses))
         self.assertIn("margin-sensitivity curves", extras["plots"].first_uses)
+        self.assertIn("residence scoring endpoint", extras["backend"].first_uses)
 
     def test_missing_extra_message_is_actionable(self):
         with patch("rhodyn.extras.find_spec", return_value=None):
@@ -44,4 +47,4 @@ class OptionalExtrasTests(TestCase):
         payload = json.loads(result.stdout)
         self.assertEqual(payload["status"], "pass")
         names = {item["name"] for item in payload["extras"]}
-        self.assertTrue({"pandas", "stats", "plots", "notebooks"}.issubset(names))
+        self.assertTrue({"pandas", "stats", "plots", "backend", "notebooks"}.issubset(names))

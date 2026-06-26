@@ -18,6 +18,9 @@ Started:
   residence summaries;
 - Stage 3D margin-sensitivity, threshold-sensitivity, and hardening-report
   outputs for the ERK/Akt bounded-coupling benchmark;
+- Stage 4 stateless backend service core and optional FastAPI app for schema
+  validation, residence scoring, bounded-coupling decisions, reserve summaries,
+  endpoint-model comparison, and Markdown report export;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

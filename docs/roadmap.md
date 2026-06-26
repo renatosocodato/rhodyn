@@ -142,8 +142,12 @@ Gate.
 - No hidden state.
 - Jobs preserve input schema, parameter choices, and software version.
 
-Status. Not started. Backend work can now begin from the frozen v0.3 Stage 3
-case-study surfaces.
+Status. Started. The first backend service core and FastAPI app expose schema
+validation, residence scoring, bounded-coupling decisions, reserve summaries,
+endpoint-model comparison, and Markdown report export while delegating to the
+same Python library functions used by the CLI. The next backend increment
+should add durable job packaging only if it preserves exact library-output
+agreement and records input schema, parameter choices, and software version.
 
 ## Stage 5. Frontend
 

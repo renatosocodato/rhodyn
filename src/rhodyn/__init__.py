@@ -1,5 +1,13 @@
 """RhoDyn core package."""
 
+from rhodyn.backend_core import (
+    compare_endpoint_models,
+    decide_coupling_table,
+    export_markdown_report,
+    score_residence_table,
+    summarize_reserve_table,
+    validate_table,
+)
 from rhodyn.compare import ModelFit, rank_model_fits
 from rhodyn.coupling import (
     EquivalenceDecision,
@@ -90,6 +98,7 @@ __all__ = [
     "TrajectoryRecord",
     "UncertaintyInterval",
     "bootstrap_interval",
+    "compare_endpoint_models",
     "coupling_result_from_decision",
     "coupling_result_from_tost",
     "ctc_features_to_trajectory_records",
@@ -100,6 +109,8 @@ __all__ = [
     "ctc_track_cell_id",
     "equivalence_from_interval",
     "extra_plan",
+    "decide_coupling_table",
+    "export_markdown_report",
     "linear_grid",
     "model_comparison_result_from_fits",
     "one_sample_tost",
@@ -120,10 +131,13 @@ __all__ = [
     "rope_mass",
     "schema_specs",
     "score_records_window_sensitivity",
+    "score_residence_table",
     "score_trace",
     "score_trace_window_sensitivity",
     "simulate_controller",
+    "summarize_reserve_table",
     "two_sample_welch_tost",
+    "validate_table",
     "write_trajectory_csv",
 ]
 

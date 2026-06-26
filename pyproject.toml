@@ -38,6 +38,10 @@ stats = [
 plots = [
   "matplotlib>=3.8"
 ]
+backend = [
+  "fastapi>=0.115",
+  "uvicorn>=0.30"
+]
 notebooks = [
   "jupyterlab>=4.0"
 ]
@@ -45,6 +49,8 @@ all = [
   "pandas>=2.0",
   "scipy>=1.11",
   "matplotlib>=3.8",
+  "fastapi>=0.115",
+  "uvicorn>=0.30",
   "jupyterlab>=4.0"
 ]
 

@@ -1,8 +1,8 @@
 """Optional dependency helpers.
 
 The RhoDyn core package stays standard-library only. Optional extras extend
-table handling, statistics, plotting, and notebook ergonomics without changing
-the base import path.
+table handling, statistics, plotting, backend service deployment, and notebook
+ergonomics without changing the base import path.
 """
 
 from __future__ import annotations
@@ -39,6 +39,12 @@ OPTIONAL_EXTRAS: dict[str, OptionalExtra] = {
         packages=("matplotlib",),
         purpose="diagnostic plots for residence, reserve, coupling, and model comparison",
         first_uses=("residence traces", "margin-sensitivity curves", "model residual plots"),
+    ),
+    "backend": OptionalExtra(
+        name="backend",
+        packages=("fastapi", "uvicorn"),
+        purpose="stateless API service around frozen Stage 3 analysis surfaces",
+        first_uses=("schema validation endpoint", "residence scoring endpoint", "model-comparison endpoint"),
     ),
     "notebooks": OptionalExtra(
         name="notebooks",

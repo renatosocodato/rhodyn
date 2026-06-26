@@ -54,6 +54,9 @@ Included now:
 - synthetic examples;
 - a documented paper-data adapter stub;
 - a public-data candidate matrix and MLCI tutorial scaffold.
+- the first Stage 4 stateless backend service core and FastAPI app for schema
+  validation, residence scoring, bounded-coupling decisions, reserve summaries,
+  model comparison, and Markdown report export.
 
 Not included yet:
 
@@ -81,6 +84,7 @@ plotting, and notebook workflows.
 python -m pip install 'rhodyn[pandas]'
 python -m pip install 'rhodyn[stats]'
 python -m pip install 'rhodyn[plots]'
+python -m pip install 'rhodyn[backend]'
 python -m pip install 'rhodyn[notebooks]'
 ```
 
@@ -162,6 +166,12 @@ Inspect optional dependency groups.
 rhodyn extras
 ```
 
+Run the Stage 4 backend after installing the backend extra.
+
+```bash
+uvicorn rhodyn.backend:app --reload
+```
+
 The v0.3.x public tutorial scaffold is documented in
 `docs/mlci_public_tutorial.md`. The included CTC-style fixture validates the
 adapter, and the small public feature subset demonstrates centroid, area, and
@@ -205,6 +215,10 @@ while S1P and histamine do not, so the interpretation is context-limited rather
 than a broad ERK/Akt equivalence claim. Margin and threshold sensitivity outputs
 are retained to show that UK is not dependent on a single high-state threshold
 or only the widest tested margin.
+
+The Stage 4 backend start is documented in `docs/stage4_backend.md`. It exposes
+the frozen Stage 3 operations as a stateless FastAPI service while preserving
+the Python library as the source of analysis behavior.
 
 ## Input schemas
 

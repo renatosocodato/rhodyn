@@ -10,6 +10,7 @@ plotting, or interactive tutorials.
 python -m pip install 'rhodyn[pandas]'
 python -m pip install 'rhodyn[stats]'
 python -m pip install 'rhodyn[plots]'
+python -m pip install 'rhodyn[backend]'
 python -m pip install 'rhodyn[notebooks]'
 python -m pip install 'rhodyn[all]'
 ```
@@ -21,6 +22,7 @@ python -m pip install 'rhodyn[all]'
 | `pandas` | `pandas` | larger trajectory tables, paper case-study adapters, wide-to-tidy conversion |
 | `stats` | `scipy` | Welch TOST, bootstrap intervals, distribution diagnostics |
 | `plots` | `matplotlib` | residence traces, margin-sensitivity curves, model residual plots |
+| `backend` | `fastapi`, `uvicorn` | stateless service endpoints around frozen Stage 3 analysis surfaces |
 | `notebooks` | `jupyterlab` | interactive synthetic and case-study tutorials |
 
 The base package should continue to validate tables, score residence, normalize
