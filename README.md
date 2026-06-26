@@ -202,7 +202,9 @@ The Stage 3D bounded-coupling benchmark is documented in
 ERK/GPCR source-data archive to compare paired ERK and Akt high-state residence
 within cells. The UK context falls inside the declared bounded-coupling margin,
 while S1P and histamine do not, so the interpretation is context-limited rather
-than a broad ERK/Akt equivalence claim.
+than a broad ERK/Akt equivalence claim. Margin and threshold sensitivity outputs
+are retained to show that UK is not dependent on a single high-state threshold
+or only the widest tested margin.
 
 ## Input schemas
 

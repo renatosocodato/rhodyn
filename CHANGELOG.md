@@ -16,6 +16,8 @@ Started:
 - Stage 3C public Cell Painting/MitoTox endpoint model-comparison benchmark;
 - Stage 3D public ERK/Akt bounded-coupling benchmark from paired GPCR
   residence summaries;
+- Stage 3D margin-sensitivity, threshold-sensitivity, and hardening-report
+  outputs for the ERK/Akt bounded-coupling benchmark;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 
@@ -26,6 +28,9 @@ Boundary:
 - Stage 3D closes the v0.3 evidence-bank gate with a public bounded-coupling
   case. The UK ERK/Akt residence contrast is bounded under the declared margin,
   while S1P and histamine do not pass, so the result is context-limited.
+- The Stage 3D hardening pass keeps the all-ligand pooled result secondary and
+  records that within-ligand replicate sensitivity is unavailable for the
+  selected public DMSO-control slice.
 - The Cell Painting/MitoTox endpoint benchmark compares reduced morphology architectures, but it does not infer drug mechanism or convert morphology into a live dynamic-state measurement.
 
 ## v0.1.0

@@ -39,3 +39,4 @@ class PublicCandidateTests(TestCase):
         self.assertIn("Selected Stage 3D bounded-coupling benchmark", text)
         self.assertIn("NF-kB live-cell dynamics remains a high-value target", text)
         self.assertIn("ERK/KTR dynamics is no longer only a watchlist item", text)
+        self.assertIn("Stage 3 can now be frozen for the v0.3 evidence bank", text)

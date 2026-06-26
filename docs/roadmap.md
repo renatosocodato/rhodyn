@@ -94,6 +94,11 @@ Current evidence.
   residence-fraction margin, while S1P and histamine do not. The mixed
   all-ligand summary also falls inside the margin but is treated only as a
   summary check because it combines ligand-specific directional effects.
+- Stage 3D hardening adds margin sensitivity, threshold sensitivity, and an
+  explicit replicate-structure note. UK remains bounded across the tested
+  0.60-0.85 high-state threshold grid and passes at margins of 0.10 and larger.
+  S1P and histamine fail across the threshold grid at the primary +/-0.20
+  margin.
 
 Status. Stage 3A and Stage 3B have produced two independent public signaling
 benchmarks, Stage 3C has produced a public endpoint/model-comparison benchmark,
@@ -104,7 +109,9 @@ manuscript.
 The public MLCI adapter remains as infrastructure and tutorial proof, not as the
 main biological generality claim. Stage 4 backend work can begin from the
 stable Stage 3 surfaces, provided backend results match the Python library
-outputs exactly.
+outputs exactly. Additional NF-kB, ERK perturbation, reserve-like, or
+multi-reporter public datasets should be treated as Stage 7 evidence-expansion
+routes rather than prerequisites for starting the backend.
 
 ## Stage 4. Backend
 

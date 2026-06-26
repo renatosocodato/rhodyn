@@ -55,3 +55,55 @@ class ErkAktBoundedCouplingBenchmarkTests(TestCase):
         boundary = provenance["interpretation_boundary"]
         self.assertIn("not biochemical equivalence", boundary)
         self.assertIn("not absence of all GPCR pathway crosstalk", boundary)
+
+    def test_margin_sensitivity_preserves_context_specific_decision(self):
+        path = Path("case_studies/erk_gpcr_erk_akt_margin_sensitivity.csv")
+        with path.open(newline="", encoding="utf-8") as handle:
+            rows = list(csv.DictReader(handle))
+
+        self.assertEqual(len(rows), 40)
+        by_contrast: dict[str, list[dict[str, str]]] = {}
+        for row in rows:
+            by_contrast.setdefault(row["contrast"], []).append(row)
+
+        def min_passing_margin(contrast: str) -> float | None:
+            passing = [
+                float(row["tested_margin"])
+                for row in by_contrast[contrast]
+                if row["passes"] == "1"
+            ]
+            return min(passing) if passing else None
+
+        self.assertAlmostEqual(min_passing_margin("erk_minus_akt_residence_UK"), 0.10)
+        self.assertAlmostEqual(min_passing_margin("erk_minus_akt_residence_all"), 0.05)
+        self.assertAlmostEqual(min_passing_margin("erk_minus_akt_residence_His"), 0.25)
+        self.assertAlmostEqual(min_passing_margin("erk_minus_akt_residence_S1P"), 0.30)
+
+    def test_threshold_sensitivity_keeps_primary_claim_context_limited(self):
+        path = Path("case_studies/erk_gpcr_erk_akt_threshold_sensitivity.csv")
+        with path.open(newline="", encoding="utf-8") as handle:
+            rows = list(csv.DictReader(handle))
+
+        self.assertEqual(len(rows), 24)
+        by_contrast: dict[str, list[dict[str, str]]] = {}
+        for row in rows:
+            by_contrast.setdefault(row["contrast"], []).append(row)
+
+        self.assertTrue(all(row["passes"] == "1" for row in by_contrast["erk_minus_akt_residence_UK"]))
+        self.assertTrue(all(row["passes"] == "1" for row in by_contrast["erk_minus_akt_residence_all"]))
+        self.assertTrue(all(row["passes"] == "0" for row in by_contrast["erk_minus_akt_residence_His"]))
+        self.assertTrue(all(row["passes"] == "0" for row in by_contrast["erk_minus_akt_residence_S1P"]))
+
+    def test_hardening_report_records_scope_and_unavailable_replicate_sensitivity(self):
+        path = Path("case_studies/erk_gpcr_erk_akt_hardening_report.json")
+        report = json.loads(path.read_text(encoding="utf-8"))
+
+        self.assertEqual(report["status"], "pass")
+        self.assertEqual(report["replicate_sensitivity_status"], "not_available")
+        self.assertIn("one experiment label per ligand", report["replicate_sensitivity_reason"])
+        self.assertEqual(report["minimum_passing_margin_by_contrast"]["erk_minus_akt_residence_UK"], 0.1)
+        self.assertEqual(report["minimum_passing_margin_by_contrast"]["erk_minus_akt_residence_His"], 0.25)
+        self.assertEqual(report["minimum_passing_margin_by_contrast"]["erk_minus_akt_residence_S1P"], 0.3)
+        interpretation = report["stage3d_closure_interpretation"]
+        self.assertIn("public bounded-coupling case", interpretation)
+        self.assertIn("secondary", interpretation)

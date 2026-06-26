@@ -57,7 +57,10 @@
   ],
   "derived_outputs": {
     "case_studies/erk_gpcr_erk_akt_residence_summary.csv": "0e5c2b0b6879d61cb377d8519e8edfb5fc2211512f10f178835591278b6d24b5",
-    "case_studies/erk_gpcr_erk_akt_bounded_coupling.csv": "b31f5aae5cc2c875e32703d4c8e71c96f7713835584e27bcee7b5ea2a4809d6e"
+    "case_studies/erk_gpcr_erk_akt_bounded_coupling.csv": "b31f5aae5cc2c875e32703d4c8e71c96f7713835584e27bcee7b5ea2a4809d6e",
+    "case_studies/erk_gpcr_erk_akt_margin_sensitivity.csv": "fb3028da57a969660194c8ce28dd897cbed5568ab357ff6b005572a9a22ab9a2",
+    "case_studies/erk_gpcr_erk_akt_threshold_sensitivity.csv": "c5393f9ba41243ed89efdaeecfb3dbfc765a3a940407e0abc7228df423d6735d",
+    "case_studies/erk_gpcr_erk_akt_hardening_report.json": "6520eed3acd1fd899c635ab6a01641ed333d36ac9a8f3180e76196a6c019af65"
   },
   "raw_file_policy": "The Figure 3 source archive and member CSV files were downloaded into memory and converted to derived benchmark rows only; source ZIP and CSV files are not retained in the repository.",
   "interpretation_boundary": "This benchmark tests whether paired ERK-minus-Akt high-state residence differences fall inside a declared +/-0.20 residence-fraction margin. Passing contrasts support context-limited bounded coupling of derived residence summaries, not biochemical equivalence and not absence of all GPCR pathway crosstalk."

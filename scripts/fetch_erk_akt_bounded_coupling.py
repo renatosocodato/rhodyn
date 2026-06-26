@@ -202,6 +202,74 @@ def _coupling_rows(
     return rows
 
 
+def _parse_float_grid(value: str) -> list[float]:
+    grid = [float(item.strip()) for item in value.split(",") if item.strip()]
+    if not grid:
+        raise ValueError("grid must contain at least one numeric value")
+    if any(item <= 0 for item in grid):
+        raise ValueError("grid values must be positive")
+    return grid
+
+
+def _margin_sensitivity_rows(
+    summaries: list[dict[str, object]],
+    *,
+    margins: list[float],
+    alpha: float,
+) -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    for margin in margins:
+        for row in _coupling_rows(summaries, margin=margin, alpha=alpha):
+            enriched = dict(row)
+            enriched["sensitivity_axis"] = "margin"
+            enriched["tested_margin"] = margin
+            rows.append(enriched)
+    return rows
+
+
+def _threshold_sensitivity_rows(
+    source_rows: list[dict[str, object]],
+    *,
+    threshold_quantiles: list[float],
+    margin: float,
+    alpha: float,
+) -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    for quantile in threshold_quantiles:
+        summaries, thresholds = _summary_rows(source_rows, threshold_quantile=quantile)
+        for row in _coupling_rows(summaries, margin=margin, alpha=alpha):
+            enriched = dict(row)
+            enriched["sensitivity_axis"] = "threshold_quantile"
+            enriched["threshold_quantile"] = quantile
+            enriched["erk_threshold"] = thresholds["erk"]
+            enriched["akt_threshold"] = thresholds["akt"]
+            rows.append(enriched)
+    return rows
+
+
+def _min_passing_margin(rows: list[dict[str, object]]) -> dict[str, float | None]:
+    by_contrast: dict[str, list[dict[str, object]]] = defaultdict(list)
+    for row in rows:
+        by_contrast[str(row["contrast"])].append(row)
+    summary: dict[str, float | None] = {}
+    for contrast, contrast_rows in by_contrast.items():
+        passing = [
+            float(row["tested_margin"])
+            for row in contrast_rows
+            if int(row["passes"]) == 1
+        ]
+        summary[contrast] = min(passing) if passing else None
+    return summary
+
+
+def _pass_quantiles(rows: list[dict[str, object]]) -> dict[str, dict[str, list[float]]]:
+    by_contrast: dict[str, dict[str, list[float]]] = defaultdict(lambda: {"pass": [], "fail": []})
+    for row in rows:
+        key = "pass" if int(row["passes"]) == 1 else "fail"
+        by_contrast[str(row["contrast"])][key].append(float(row["threshold_quantile"]))
+    return dict(by_contrast)
+
+
 def _write_csv(path: Path, rows: list[dict[str, object]], fieldnames: list[str]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", newline="", encoding="utf-8") as handle:
@@ -241,6 +309,26 @@ def main() -> int:
         "--provenance",
         default="case_studies/erk_gpcr_erk_akt_bounded_coupling.provenance.json",
     )
+    parser.add_argument(
+        "--margin-sensitivity-output",
+        default="case_studies/erk_gpcr_erk_akt_margin_sensitivity.csv",
+    )
+    parser.add_argument(
+        "--threshold-sensitivity-output",
+        default="case_studies/erk_gpcr_erk_akt_threshold_sensitivity.csv",
+    )
+    parser.add_argument(
+        "--hardening-report",
+        default="case_studies/erk_gpcr_erk_akt_hardening_report.json",
+    )
+    parser.add_argument(
+        "--sensitivity-margins",
+        default="0.05,0.075,0.10,0.125,0.15,0.175,0.20,0.225,0.25,0.30",
+    )
+    parser.add_argument(
+        "--threshold-quantile-grid",
+        default="0.60,0.65,0.70,0.75,0.80,0.85",
+    )
     args = parser.parse_args()
 
     if args.max_cells_per_ligand <= 0:
@@ -249,6 +337,10 @@ def main() -> int:
         raise ValueError("threshold-quantile must be between 0 and 1")
     if args.margin <= 0:
         raise ValueError("margin must be positive")
+    margins = _parse_float_grid(args.sensitivity_margins)
+    threshold_grid = _parse_float_grid(args.threshold_quantile_grid)
+    if any(not 0.0 < value < 1.0 for value in threshold_grid):
+        raise ValueError("threshold-quantile-grid values must be between 0 and 1")
 
     archive_bytes, archive_sha = _download_bytes(ARCHIVE_URL)
     source_rows, member_hashes = _archive_to_rows(
@@ -257,9 +349,18 @@ def main() -> int:
     )
     summaries, thresholds = _summary_rows(source_rows, threshold_quantile=args.threshold_quantile)
     coupling = _coupling_rows(summaries, margin=args.margin, alpha=args.alpha)
+    margin_sensitivity = _margin_sensitivity_rows(summaries, margins=margins, alpha=args.alpha)
+    threshold_sensitivity = _threshold_sensitivity_rows(
+        source_rows,
+        threshold_quantiles=threshold_grid,
+        margin=args.margin,
+        alpha=args.alpha,
+    )
 
     summary_output = Path(args.summary_output)
     coupling_output = Path(args.coupling_output)
+    margin_sensitivity_output = Path(args.margin_sensitivity_output)
+    threshold_sensitivity_output = Path(args.threshold_sensitivity_output)
     _write_csv(
         summary_output,
         summaries,
@@ -301,9 +402,78 @@ def main() -> int:
             "ligand",
         ],
     )
+    _write_csv(
+        margin_sensitivity_output,
+        margin_sensitivity,
+        [
+            "contrast",
+            "estimate",
+            "ci_low",
+            "ci_high",
+            "margin",
+            "rope_mass",
+            "n",
+            "se",
+            "p_tost",
+            "interval_inside_margin",
+            "passes",
+            "method",
+            "ligand",
+            "sensitivity_axis",
+            "tested_margin",
+        ],
+    )
+    _write_csv(
+        threshold_sensitivity_output,
+        threshold_sensitivity,
+        [
+            "contrast",
+            "estimate",
+            "ci_low",
+            "ci_high",
+            "margin",
+            "rope_mass",
+            "n",
+            "se",
+            "p_tost",
+            "interval_inside_margin",
+            "passes",
+            "method",
+            "ligand",
+            "sensitivity_axis",
+            "threshold_quantile",
+            "erk_threshold",
+            "akt_threshold",
+        ],
+    )
 
     passed = [row["contrast"] for row in coupling if int(row["passes"]) == 1]
     failed = [row["contrast"] for row in coupling if int(row["passes"]) == 0]
+    ligand_replicates: dict[str, list[str]] = defaultdict(list)
+    for row in summaries:
+        ligand = str(row["ligand"])
+        replicate = str(row["replicate"])
+        if replicate not in ligand_replicates[ligand]:
+            ligand_replicates[ligand].append(replicate)
+    hardening_report = {
+        "status": "pass",
+        "source_doi": ZENODO_DOI,
+        "primary_margin": args.margin,
+        "primary_threshold_quantile": args.threshold_quantile,
+        "primary_passed_contrasts": passed,
+        "primary_failed_contrasts": failed,
+        "margin_grid": margins,
+        "minimum_passing_margin_by_contrast": _min_passing_margin(margin_sensitivity),
+        "threshold_quantile_grid": threshold_grid,
+        "threshold_quantile_pass_fail_by_contrast": _pass_quantiles(threshold_sensitivity),
+        "ligand_to_replicates": dict(ligand_replicates),
+        "replicate_sensitivity_status": "not_available",
+        "replicate_sensitivity_reason": "The selected public DMSO-control slice has one experiment label per ligand context, so within-ligand leave-one-replicate sensitivity would not test replicate robustness.",
+        "stage3d_closure_interpretation": "The UK context provides a public bounded-coupling case for paired ERK/Akt residence summaries. S1P and histamine do not pass the same declared margin, and the all-ligand passing result is secondary because it pools directional ligand-specific contrasts.",
+    }
+    hardening_report_path = Path(args.hardening_report)
+    hardening_report_path.parent.mkdir(parents=True, exist_ok=True)
+    hardening_report_path.write_text(json.dumps(hardening_report, indent=2) + "\n", encoding="utf-8")
     provenance = {
         "source_title": "Single cell imaging of ERK and Akt activation dynamics and heterogeneity induced by G protein-coupled receptors - Scripts & Source data",
         "source_creators": [
@@ -343,6 +513,9 @@ def main() -> int:
         "derived_outputs": {
             str(summary_output): _sha256(summary_output),
             str(coupling_output): _sha256(coupling_output),
+            str(margin_sensitivity_output): _sha256(margin_sensitivity_output),
+            str(threshold_sensitivity_output): _sha256(threshold_sensitivity_output),
+            str(hardening_report_path): _sha256(hardening_report_path),
         },
         "raw_file_policy": "The Figure 3 source archive and member CSV files were downloaded into memory and converted to derived benchmark rows only; source ZIP and CSV files are not retained in the repository.",
         "interpretation_boundary": "This benchmark tests whether paired ERK-minus-Akt high-state residence differences fall inside a declared +/-0.20 residence-fraction margin. Passing contrasts support context-limited bounded coupling of derived residence summaries, not biochemical equivalence and not absence of all GPCR pathway crosstalk.",
@@ -357,10 +530,15 @@ def main() -> int:
                 "status": "pass",
                 "summary_rows": len(summaries),
                 "coupling_rows": len(coupling),
+                "margin_sensitivity_rows": len(margin_sensitivity),
+                "threshold_sensitivity_rows": len(threshold_sensitivity),
                 "passed_contrasts": passed,
                 "failed_contrasts": failed,
                 "summary_output": str(summary_output),
                 "coupling_output": str(coupling_output),
+                "margin_sensitivity_output": str(margin_sensitivity_output),
+                "threshold_sensitivity_output": str(threshold_sensitivity_output),
+                "hardening_report": str(hardening_report_path),
                 "provenance": str(provenance_path),
             },
             indent=2,
