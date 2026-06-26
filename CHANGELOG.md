@@ -14,6 +14,8 @@ Started:
 - Stage 3A public DRG calcium residence-versus-amplitude benchmark;
 - Stage 3B public ERK/GPCR kinase-signaling residence-versus-amplitude benchmark;
 - Stage 3C public Cell Painting/MitoTox endpoint model-comparison benchmark;
+- Stage 3D public ERK/Akt bounded-coupling benchmark from paired GPCR
+  residence summaries;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 
@@ -21,7 +23,9 @@ Boundary:
 
 - The bundled public feature subset validates the adapter and workflow only. Biological interpretation requires a declared signal, residence window, grouping structure, and uncertainty rule.
 - The DRG calcium and ERK/GPCR benchmarks support residence-versus-amplitude separation across two public signaling systems, and the Cell Painting/MitoTox benchmark adds an independent endpoint model-comparison case.
-- Full Stage 3 closure still needs a public bounded-coupling or reserve-like case, unless the project explicitly treats the synthetic bounded-coupling examples as sufficient for that gate.
+- Stage 3D closes the v0.3 evidence-bank gate with a public bounded-coupling
+  case. The UK ERK/Akt residence contrast is bounded under the declared margin,
+  while S1P and histamine do not pass, so the result is context-limited.
 - The Cell Painting/MitoTox endpoint benchmark compares reduced morphology architectures, but it does not infer drug mechanism or convert morphology into a live dynamic-state measurement.
 
 ## v0.1.0

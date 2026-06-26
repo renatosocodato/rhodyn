@@ -166,12 +166,37 @@ Builder: `scripts/fetch_erk_gpcr_benchmark.py`
 
 Derived table: `case_studies/erk_gpcr_residence_amplitude_benchmark.csv`
 
+### Selected Stage 3D bounded-coupling benchmark
+
+**ERK and Akt residence after GPCR stimulation from Wan 2021.** This benchmark
+uses the same public Figure 3 source archive but reads paired ERK and Akt KTR
+trajectories from the same selected cells. RhoDyn summarizes high-state
+residence for each reporter, computes the paired ERK-minus-Akt residence
+contrast, and applies one-sample TOST under a declared +/-0.20 residence
+fraction margin. The UK context falls inside the declared bounded-coupling
+margin, while S1P and histamine do not. The all-ligand summary also falls
+inside the margin, but it mixes ligand-specific directional effects and should
+be treated as a summary check rather than as the biological conclusion.
+
+Source: https://zenodo.org/records/5836623
+
+DOI: https://doi.org/10.5281/zenodo.5836623
+
+License: CC-BY-4.0
+
+Tutorial: `docs/erk_akt_bounded_coupling_benchmark.md`
+
+Builder: `scripts/fetch_erk_akt_bounded_coupling.py`
+
+Derived summary: `case_studies/erk_gpcr_erk_akt_residence_summary.csv`
+
+Derived coupling table: `case_studies/erk_gpcr_erk_akt_bounded_coupling.csv`
+
 ## Recommended next move
 
-Stage 3 should now prioritize a public bounded-coupling or reserve-like case if
-a suitable dataset is accessible. The DRG calcium and ERK/GPCR benchmarks
-support the residence-versus-amplitude distinction across two public signaling
-systems, and the Cell Painting/MitoTox benchmark now supplies a public endpoint
-model-comparison case. The remaining Stage 3 question is whether to add a public
-bounded-coupling or reserve-like case, or to treat the synthetic
-bounded-coupling examples as sufficient for the v0.3 evidence bank.
+Stage 3 can now be frozen for the v0.3 evidence bank. The DRG calcium and
+ERK/GPCR benchmarks support the residence-versus-amplitude distinction across
+two public signaling systems. The Cell Painting/MitoTox benchmark supplies a
+public endpoint model-comparison case. The ERK/Akt benchmark supplies a public
+bounded-coupling case with an explicit context limit. The next aligned build is
+Stage 4 backend work around these stable Python and file-output surfaces.

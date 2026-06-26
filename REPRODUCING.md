@@ -14,6 +14,7 @@ rhodyn compare examples/synthetic_endpoints.csv
 python scripts/fetch_drg_calcium_benchmark.py
 python scripts/fetch_erk_gpcr_benchmark.py
 python scripts/fetch_cell_painting_endpoint_benchmark.py
+python scripts/fetch_erk_akt_bounded_coupling.py
 ```
 
 The manuscript reproduction repository remains separate:

@@ -7,24 +7,23 @@ different product, manuscript, or branding direction.
 
 ## Current position
 
-RhoDyn is currently in the Stage 3 evidence-bank build. The core Python API,
+RhoDyn has completed the v0.3 Stage 3 evidence-bank build. The core Python API,
 CLI, synthetic examples, uncertainty helpers, bounded-coupling helpers,
 residence-window sensitivity, reduced-model comparison, plotting helpers, the
-first public CTC-style adapter, and two independent public signaling benchmarks
-are in place. The multi-sequence public MLCI example demonstrates public-data
-ingestion and sequence-aware grouping, the DRG calcium benchmark demonstrates a
-residence-versus-amplitude comparison in neuronal calcium traces, and the ERK
-GPCR benchmark demonstrates the same distinction in kinase-reporter dynamics.
-The Cell Painting/MitoTox endpoint benchmark adds the first public
-reduced-architecture comparison case. This is close to the Stage 3 evidence
-target, but full closure still depends on deciding whether the current synthetic
-bounded-coupling examples are enough or whether a public bounded-coupling or
-reserve-like case should be added.
+first public CTC-style adapter, two independent public signaling benchmarks, one
+public endpoint/model-comparison benchmark, and one public bounded-coupling
+benchmark are in place. The multi-sequence public MLCI example demonstrates
+public-data ingestion and sequence-aware grouping, the DRG calcium benchmark
+demonstrates a residence-versus-amplitude comparison in neuronal calcium
+traces, the ERK GPCR benchmark demonstrates the same distinction in
+kinase-reporter dynamics, the Cell Painting/MitoTox endpoint benchmark adds a
+public reduced-architecture comparison case, and the ERK/Akt residence
+benchmark adds a context-limited public bounded-coupling case.
 
-Current status in one sentence. RhoDyn can already analyze declared dynamic
-readouts, now has two independent public signaling benchmarks, and has one
-public perturbation endpoint/model-comparison benchmark, but still needs an
-explicit Stage 3 decision on the bounded-coupling or reserve-like gate.
+Current status in one sentence. RhoDyn can analyze declared dynamic readouts and
+the v0.3 Stage 3 evidence bank is closable, with two public signaling systems,
+one public endpoint/model-comparison case, and one public bounded-coupling
+case.
 
 ## Non-drift principles
 
@@ -88,18 +87,24 @@ Current evidence.
   model-ranking table compares endpoint prevalence, one-dimensional morphology,
   single-compartment morphology, and routed compartment architectures. The
   routed compartment model is best by BIC and endpoint-balanced weighted RMSE.
+- A public bounded-coupling benchmark is in place using paired ERK and Akt KTR
+  trajectories from Wan et al. 2021. The retained derived tables contain 180
+  paired single-cell summaries from histamine, S1P, and UK ligand contexts. The
+  UK ERK-minus-Akt residence contrast falls inside a declared +/-0.20
+  residence-fraction margin, while S1P and histamine do not. The mixed
+  all-ligand summary also falls inside the margin but is treated only as a
+  summary check because it combines ligand-specific directional effects.
 
 Status. Stage 3A and Stage 3B have produced two independent public signaling
-benchmarks, and Stage 3C has produced a public endpoint/model-comparison
-benchmark. The residence-versus-amplitude and endpoint-model-comparison
-sub-gates are supported, but Stage 3 should remain open until the
-bounded-coupling or reserve-like gate is explicitly resolved.
+benchmarks, Stage 3C has produced a public endpoint/model-comparison benchmark,
+and Stage 3D has produced a public bounded-coupling benchmark. The v0.3 Stage 3
+gate is satisfied without tying the software's generality to the RhoA/microglia
+manuscript.
 
-Next Stage 3 work should prioritize a public bounded-coupling or reserve-like
-case, or formally decide that the existing synthetic bounded-coupling examples
-are sufficient for the v0.3 evidence bank. The public MLCI adapter should
-remain as infrastructure and tutorial proof, not as the main biological
-generality claim.
+The public MLCI adapter remains as infrastructure and tutorial proof, not as the
+main biological generality claim. Stage 4 backend work can begin from the
+stable Stage 3 surfaces, provided backend results match the Python library
+outputs exactly.
 
 ## Stage 4. Backend
 
@@ -130,8 +135,8 @@ Gate.
 - No hidden state.
 - Jobs preserve input schema, parameter choices, and software version.
 
-Status. Not started. Backend work should wait until the Stage 3 case-study
-surfaces are stable enough to define real service payloads.
+Status. Not started. Backend work can now begin from the frozen v0.3 Stage 3
+case-study surfaces.
 
 ## Stage 5. Frontend
 
@@ -251,8 +256,10 @@ Gate.
 Do not submit until RhoDyn has at least two independent biological
 demonstrations beyond the original manuscript logic.
 
-Status. Not ready. The core methods scaffold exists, but the independent
-biological demonstrations are not yet complete.
+Status. Not ready. The v0.3 evidence bank now supports method development, but
+Nature Methods readiness still requires a broader formal methods campaign and
+at least two independent biological demonstrations beyond the original
+manuscript logic.
 
 ## Stage 8. Product and commercial alignment
 
@@ -297,16 +304,16 @@ evidence path. Stage 8 inherits from Stage 7, and Stage 7 depends on Stage 3.
 
 ## Immediate next path
 
-The next scientifically aligned move is Stage 3D.
+The next scientifically aligned move is Stage 4 backend work.
 
-1. Add a public bounded-coupling or reserve-like benchmark if a suitable
-   dataset is accessible.
-2. Otherwise, make an explicit project decision that the synthetic
-   bounded-coupling examples satisfy the remaining v0.3 evidence-bank gate and
-   keep the public case studies focused on residence/amplitude and endpoint
-   model comparison.
-3. After that decision, freeze the Stage 3 evidence bank before backend work.
+1. Freeze the v0.3 Stage 3 evidence bank as the reference public case-study
+   surface.
+2. Build a FastAPI service around the stable Python API, beginning with schema
+   validation, residence scoring, bounded-coupling decisions, reserve summaries,
+   and reduced-architecture comparison.
+3. Require every backend result to match the Python library output exactly and
+   preserve input schema, parameter choices, and software version in the job
+   record.
 
-Only after Stage 3D or an explicit Stage 3 closure decision should RhoDyn move
-toward backend service work. The backend should be built around proven analysis
-surfaces, not speculative screens.
+Frontend, official release, Nature Methods, and product work should remain
+downstream of this service contract rather than replacing it.

@@ -14,13 +14,13 @@ future examples.
 
 ## Current status
 
-This is an early open-core scaffold moving into the `v0.3.x` public
+This is an early open-core scaffold at the end of the `v0.3.x` public
 case-study lane.
 
 The staged development plan is anchored in `docs/roadmap.md`. The current
-position is Stage 3C completed, not full Stage 3 passed. Backend, frontend, official
-release, Nature Methods, and product work should remain downstream of the
-case-study evidence bank.
+position is Stage 3D completed and the Stage 3 evidence bank is closable for
+v0.3. Backend, frontend, official release, Nature Methods, and product work
+remain downstream of this evidence bank.
 
 Included now:
 
@@ -37,6 +37,8 @@ Included now:
   KTR activity and high-ERK residence in GPCR-stimulated cells;
 - a first public perturbation endpoint/model-comparison benchmark using Cell
   Painting morphology profiles and MitoTox endpoints;
+- a public bounded-coupling benchmark comparing ERK and Akt residence
+  summaries in paired GPCR-stimulated cells;
 - residence-window scoring;
 - amplitude and dwell-time summaries;
 - reserve-style normalization helpers;
@@ -194,6 +196,13 @@ endpoint prevalence, one-dimensional morphology, single-compartment morphology,
 and routed compartment architectures. The retained ranking shows that the
 three-coordinate compartment-route architecture fits the endpoint table better
 than the reduced alternatives under endpoint-balanced residuals.
+
+The Stage 3D bounded-coupling benchmark is documented in
+`docs/erk_akt_bounded_coupling_benchmark.md`. It uses the same public Wan 2021
+ERK/GPCR source-data archive to compare paired ERK and Akt high-state residence
+within cells. The UK context falls inside the declared bounded-coupling margin,
+while S1P and histamine do not, so the interpretation is context-limited rather
+than a broad ERK/Akt equivalence claim.
 
 ## Input schemas
 
