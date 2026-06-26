@@ -17,6 +17,11 @@ future examples.
 This is an early open-core scaffold moving into the `v0.3.x` public
 case-study lane.
 
+The staged development plan is anchored in `docs/roadmap.md`. The current
+position is Stage 3 seeded, not Stage 3 passed. Backend, frontend, official
+release, Nature Methods, and product work should remain downstream of the
+case-study evidence bank.
+
 Included now:
 
 - tidy live-cell trajectory validation;

@@ -3,6 +3,11 @@
 RhoDyn separates reusable dynamic-state analysis from manuscript-specific
 biological interpretation.
 
+The staged scientific and product roadmap is anchored in `docs/roadmap.md`.
+The current architecture should prioritize the Stage 3 case-study evidence bank
+before backend, frontend, official release, Nature Methods, or commercial
+product buildout.
+
 ## Core layers
 
 1. `rhodyn.schema`
