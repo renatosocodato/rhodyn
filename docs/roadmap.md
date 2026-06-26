@@ -286,15 +286,14 @@ evidence path. Stage 8 inherits from Stage 7, and Stage 7 depends on Stage 3.
 
 ## Immediate next path
 
-The next scientifically aligned move is Stage 3B.
+The next scientifically aligned move is Stage 3C.
 
-1. Add one perturbation endpoint dataset where model comparison matters, or add
-   a second independent live-cell signaling dataset if an endpoint dataset is
-   not yet accessible.
+1. Add one perturbation endpoint dataset where model comparison matters.
 2. Produce a benchmark table that makes the amplitude-only, endpoint-only, or
    reduced-architecture comparator explicit.
-3. Decide whether the new case strengthens the Stage 3 gate or only functions
-   as a tutorial.
+3. Decide whether the new case contributes bounded coupling, reserve-like
+   logic, or reduced-architecture discrimination strongly enough to close the
+   remaining Stage 3 evidence gap.
 
-Only after Stage 3B should RhoDyn move toward backend service work. The backend
+Only after Stage 3C should RhoDyn move toward backend service work. The backend
 should be built around proven analysis surfaces, not speculative screens.
