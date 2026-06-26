@@ -1,0 +1,34 @@
+{
+  "source_title": "A distributed coding logic for thermosensation and inflammatory pain",
+  "source_creators": [
+    "von Buchholtz, Lars Johann"
+  ],
+  "zenodo_record": "https://zenodo.org/records/14907827",
+  "zenodo_doi": "10.5281/zenodo.14907827",
+  "license": "CC-BY-4.0",
+  "trace_file": "sstlineage_ly_drg_traces.csv",
+  "trace_url": "https://zenodo.org/api/records/14907827/files/sstlineage_ly_drg_traces.csv/content",
+  "trace_sha256": "923985a34a81e5f4d2b3252e28e5b145f5eef3cedc397890e05315e5c092f8c5",
+  "info_file": "sstlineage_ly_drg_info.csv",
+  "info_url": "https://zenodo.org/api/records/14907827/files/sstlineage_ly_drg_info.csv/content",
+  "info_sha256": "23eb2dda1cd5bb69c440699302319a69057a71427341a2e4e592b6f5efb5a8be",
+  "selected_cell_count": 120,
+  "episode_count": 3,
+  "episode_length_frames": 200,
+  "frame_interval_seconds": 0.2,
+  "residence_window": {
+    "low": 10.0,
+    "high": 1000000000000.0
+  },
+  "benchmark_rows": 360,
+  "class_counts": {
+    "amplitude_and_residence_top_quartile": 74,
+    "amplitude_only_top_quartile": 16,
+    "residence_only_top_quartile": 16,
+    "neither_top_quartile": 254
+  },
+  "derived_output": "case_studies/drg_calcium_residence_amplitude_benchmark.csv",
+  "derived_output_sha256": "223ca597bb97e7a385ab73398c7acebf35f1c73f355db50cb74b20f1954e65c8",
+  "raw_file_policy": "Source trace and metadata CSV files were downloaded into memory and converted to derived benchmark rows only; source CSV files are not retained in the repository.",
+  "interpretation_boundary": "The retained table benchmarks amplitude and high-calcium residence summaries for a public calcium-imaging trace dataset. It does not assign stimulus identity or claim a calibrated biological calcium threshold."
+}

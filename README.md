@@ -18,7 +18,7 @@ This is an early open-core scaffold moving into the `v0.3.x` public
 case-study lane.
 
 The staged development plan is anchored in `docs/roadmap.md`. The current
-position is Stage 3 seeded, not Stage 3 passed. Backend, frontend, official
+position is Stage 3A started, not Stage 3 passed. Backend, frontend, official
 release, Nature Methods, and product work should remain downstream of the
 case-study evidence bank.
 
@@ -31,6 +31,8 @@ Included now:
   intensity rows without retaining raw images;
 - a multi-sequence public MLCI feature subset sampled from sequences `00` and
   `01`, with sequence-aware track identities and per-sequence replicate labels;
+- a first independent public calcium-signaling benchmark comparing amplitude
+  and high-calcium residence in DRG neuron traces;
 - residence-window scoring;
 - amplitude and dwell-time summaries;
 - reserve-style normalization helpers;
@@ -167,6 +169,12 @@ For code that needs to predict the converted identifiers before building a
 trajectory table, `ctc_track_cell_id("1", sequence="00")` returns
 `sequence_00_track_1`, and `ctc_sequence_replicate("zenodo_7260137",
 sequence="00")` returns `zenodo_7260137_sequence_00`.
+
+The first Stage 3A signaling benchmark is documented in
+`docs/drg_calcium_public_benchmark.md`. It uses public DRG calcium traces from
+Zenodo DOI `10.5281/zenodo.14907827` to compare maximum amplitude with
+high-calcium residence. The retained derived table contains 360 episode-cell
+rows and includes both amplitude-only and residence-only top-quartile cases.
 
 ## Input schemas
 

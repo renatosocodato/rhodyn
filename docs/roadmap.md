@@ -10,14 +10,17 @@ different product, manuscript, or branding direction.
 RhoDyn is currently at the boundary between a Stage 2 foundation and a Stage 3
 evidence-bank build. The core Python API, CLI, synthetic examples, uncertainty
 helpers, bounded-coupling helpers, residence-window sensitivity, reduced-model
-comparison, plotting helpers, and the first public CTC-style adapter are in
-place. The multi-sequence public MLCI example now demonstrates public-data
-ingestion and sequence-aware grouping, but it is not enough to satisfy the
-Stage 3 biological generality gate.
+comparison, plotting helpers, the first public CTC-style adapter, and the first
+public calcium-signaling benchmark are in place. The multi-sequence public MLCI
+example demonstrates public-data ingestion and sequence-aware grouping, while
+the DRG calcium benchmark demonstrates a residence-versus-amplitude comparison
+on an independent live-cell signaling dataset. This is still not enough to
+satisfy the full Stage 3 biological generality gate.
 
 Current status in one sentence. RhoDyn can already analyze declared dynamic
-readouts, but it has not yet earned a high-impact methods claim across multiple
-independent biological systems.
+readouts and has one independent public signaling benchmark, but it has not yet
+earned a high-impact methods claim across multiple independent biological
+systems.
 
 ## Non-drift principles
 
@@ -67,17 +70,20 @@ Current evidence.
 - The public MLCI/CTC adapter exists and preserves multi-sequence track identity.
   This is useful as public-data infrastructure, but it is a microbial tracking
   demonstration rather than an ideal live-cell signaling benchmark.
-- No independent ERK, NF-kB, calcium, Rho-family, or kinase signaling benchmark
-  is complete yet.
+- A first independent calcium-signaling benchmark is in place using public DRG
+  deltaF/F0 traces from von Buchholtz 2025. The retained derived table contains
+  360 episode-cell rows from 120 neurons and identifies both amplitude-only and
+  residence-only top-quartile cases under a declared high-calcium window.
 - No independent perturbation endpoint dataset has been promoted as the
   model-comparison case study yet.
 
-Status. Stage 3 is seeded, not passed.
+Status. Stage 3A is started and has produced the first public signaling
+benchmark. Stage 3 overall is not passed.
 
-Next Stage 3 work should prioritize one public live-cell signaling dataset and
-one perturbation endpoint/model-comparison dataset. The public MLCI adapter
-should remain as infrastructure and tutorial proof, not as the main biological
-generality claim.
+Next Stage 3 work should prioritize either a second independent live-cell
+signaling dataset or a perturbation endpoint/model-comparison dataset. The
+public MLCI adapter should remain as infrastructure and tutorial proof, not as
+the main biological generality claim.
 
 ## Stage 4. Backend
 
@@ -275,15 +281,15 @@ evidence path. Stage 8 inherits from Stage 7, and Stage 7 depends on Stage 3.
 
 ## Immediate next path
 
-The next scientifically aligned move is Stage 3A.
+The next scientifically aligned move is Stage 3B.
 
-1. Select one independent public live-cell signaling dataset with compatible
-   licensing and time-resolved single-cell traces.
-2. Build a minimal adapter that maps the public traces to `TrajectoryRecord`
-   rows while preserving condition, replicate, cell, and time metadata.
-3. Produce a benchmark table comparing residence summaries with amplitude-only
-   summaries.
-4. Decide whether the dataset genuinely shows a residence/amplitude distinction.
+1. Add one perturbation endpoint dataset where model comparison matters, or add
+   a second independent live-cell signaling dataset if an endpoint dataset is
+   not yet accessible.
+2. Produce a benchmark table that makes the amplitude-only, endpoint-only, or
+   reduced-architecture comparator explicit.
+3. Decide whether the new case strengthens the Stage 3 gate or only functions
+   as a tutorial.
 
-Only after Stage 3A should RhoDyn move toward backend service work. The backend
+Only after Stage 3B should RhoDyn move toward backend service work. The backend
 should be built around proven analysis surfaces, not speculative screens.

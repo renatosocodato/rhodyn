@@ -55,6 +55,28 @@ CC0, it is also attractive for documentation and product-facing examples.
 
 Source: https://registry.opendata.aws/cellpainting-gallery/
 
+### Selected Stage 3A live-cell signaling benchmark
+
+**DRG calcium dynamics from von Buchholtz 2025.** This Zenodo dataset provides
+deltaF/F0 calcium traces for individual dorsal-root-ganglion neurons, with
+40 second episodes concatenated across 200 frames. It is a better Stage 3A
+signaling benchmark than the microbial tracking example because the measured
+quantity is a calcium activity trace rather than motion or morphology. RhoDyn
+uses the `sstlineage_ly_drg_traces.csv` trace file and
+`sstlineage_ly_drg_info.csv` metadata file to build a derived
+residence-versus-amplitude benchmark. The retained table shows both
+amplitude-only and residence-only top-quartile rows under a declared
+high-calcium window, which is the first independent public-data example of the
+distinction RhoDyn is designed to expose.
+
+Source: https://zenodo.org/records/14907827
+
+DOI: https://doi.org/10.5281/zenodo.14907827
+
+License: CC-BY-4.0
+
+Tutorial: `docs/drg_calcium_public_benchmark.md`
+
 ### Secondary calcium-dynamics candidate with license review
 
 **Allen Brain Observatory visual coding two-photon calcium imaging.** The Allen
@@ -98,3 +120,9 @@ and preserves sequence identity when converting tracks into trajectory records.
 The earlier
 `case_studies/mlci_public_man_track_subset.txt` lineage subset remains as a
 fallback for tests that need track intervals without object-level features.
+
+The Stage 3A live-cell signaling benchmark is now started through
+`scripts/fetch_drg_calcium_benchmark.py` and the retained derived table
+`case_studies/drg_calcium_residence_amplitude_benchmark.csv`. This moves RhoDyn
+from public-data infrastructure into the first independent calcium-signaling
+benchmark, but it does not complete the full Stage 3 evidence gate by itself.
