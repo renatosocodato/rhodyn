@@ -1,0 +1,55 @@
+endpoint,model,weighted_n,rss,weighted_rmse,mean_predicted_probability_on_active_endpoints
+ER stress,compartment_route_5nn,1,0.36327262,0.60272102,0.19784946
+ER stress,endpoint_prevalence,1,0.37979238,0.61627297,0.14003044
+ER stress,cells_block_5nn,1,0.38885451,0.623582,0.16344086
+ER stress,nuclei_block_5nn,1,0.3890334,0.62372542,0.15483871
+ER stress,morphology_magnitude_5nn,1,0.39343762,0.62724606,0.15698925
+ER stress,cytoplasm_block_5nn,1,0.39501228,0.62850002,0.15913978
+apoptosis up,compartment_route_5nn,1,0.29164113,0.54003808,0.36538462
+apoptosis up,morphology_magnitude_5nn,1,0.29735315,0.54530097,0.35897436
+apoptosis up,endpoint_prevalence,1,0.32009804,0.56577208,0.23592085
+apoptosis up,cytoplasm_block_5nn,1,0.32047656,0.56610649,0.29615385
+apoptosis up,nuclei_block_5nn,1,0.32693585,0.57178304,0.27564103
+apoptosis up,cells_block_5nn,1,0.33022168,0.57464918,0.28205128
+cytotoxicity BLA,cytoplasm_block_5nn,1,0.3179122,0.56383703,0.28484848
+cytotoxicity BLA,cells_block_5nn,1,0.32502881,0.57011298,0.27121212
+cytotoxicity BLA,compartment_route_5nn,1,0.32576679,0.57075984,0.26666667
+cytotoxicity BLA,morphology_magnitude_5nn,1,0.33383512,0.57778467,0.26212121
+cytotoxicity BLA,endpoint_prevalence,1,0.34067031,0.5836697,0.19939117
+cytotoxicity BLA,nuclei_block_5nn,1,0.37742828,0.61435191,0.18484848
+cytotoxicity SRB,compartment_route_5nn,1,0.41004116,0.64034456,0.12280702
+cytotoxicity SRB,cells_block_5nn,1,0.41524944,0.64439851,0.1122807
+cytotoxicity SRB,endpoint_prevalence,1,0.42216013,0.64973851,0.085235921
+cytotoxicity SRB,nuclei_block_5nn,1,0.43128704,0.65672448,0.09122807
+cytotoxicity SRB,morphology_magnitude_5nn,1,0.4322159,0.65743129,0.09122807
+cytotoxicity SRB,cytoplasm_block_5nn,1,0.43804128,0.66184687,0.084210526
+heat shock,compartment_route_5nn,1,0.38387593,0.61957722,0.16315789
+heat shock,endpoint_prevalence,1,0.39905108,0.6317049,0.11415525
+heat shock,cytoplasm_block_5nn,1,0.40764514,0.63847094,0.13684211
+heat shock,morphology_magnitude_5nn,1,0.4176153,0.64623162,0.11842105
+heat shock,cells_block_5nn,1,0.42360553,0.65084986,0.10789474
+heat shock,nuclei_block_5nn,1,0.43273377,0.65782503,0.092105263
+microtubule up,cells_block_5nn,1,0.43688194,0.66097046,0.077777778
+microtubule up,nuclei_block_5nn,1,0.442125,0.66492481,0.066666667
+microtubule up,compartment_route_5nn,1,0.4628125,0.68030324,0.044444444
+microtubule up,cytoplasm_block_5nn,1,0.4721875,0.68715901,0.033333333
+microtubule up,endpoint_prevalence,1,0.47483488,0.68908263,0.02587519
+microtubule up,morphology_magnitude_5nn,1,0.4824375,0.69457721,0.022222222
+mitochondrial disruption up,compartment_route_5nn,1,0.39531012,0.62873692,0.14909091
+mitochondrial disruption up,endpoint_prevalence,1,0.42468997,0.65168241,0.082191781
+mitochondrial disruption up,morphology_magnitude_5nn,1,0.43540841,0.65985484,0.087272727
+mitochondrial disruption up,cytoplasm_block_5nn,1,0.44971808,0.67061023,0.069090909
+mitochondrial disruption up,cells_block_5nn,1,0.45140118,0.67186396,0.065454545
+mitochondrial disruption up,nuclei_block_5nn,1,0.45884215,0.67737888,0.058181818
+oxidative stress up,endpoint_prevalence,1,0.36700421,0.60580872,0.15829528
+oxidative stress up,compartment_route_5nn,1,0.37974201,0.61623211,0.18095238
+oxidative stress up,cells_block_5nn,1,0.38343098,0.61921804,0.17714286
+oxidative stress up,nuclei_block_5nn,1,0.39875347,0.63146929,0.14666667
+oxidative stress up,morphology_magnitude_5nn,1,0.40751778,0.63837119,0.13904762
+oxidative stress up,cytoplasm_block_5nn,1,0.40781917,0.63860721,0.14095238
+proliferation decrease,endpoint_prevalence,1,0.39095886,0.62526703,0.12480974
+proliferation decrease,compartment_route_5nn,1,0.3919736,0.62607795,0.16144578
+proliferation decrease,nuclei_block_5nn,1,0.41026883,0.64052231,0.12048193
+proliferation decrease,morphology_magnitude_5nn,1,0.4112109,0.64125728,0.12771084
+proliferation decrease,cytoplasm_block_5nn,1,0.42331566,0.65062713,0.1060241
+proliferation decrease,cells_block_5nn,1,0.42621477,0.65285126,0.10361446

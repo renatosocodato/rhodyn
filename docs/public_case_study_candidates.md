@@ -55,6 +55,30 @@ CC0, it is also attractive for documentation and product-facing examples.
 
 Source: https://registry.opendata.aws/cellpainting-gallery/
 
+### Selected Stage 3C endpoint/model-comparison benchmark
+
+**Cell Painting and MitoTox endpoints from Seal 2023.** This Zenodo record
+pairs scaled Cell Painting morphology profiles with nine MitoTox biological
+endpoint labels for the same 658 compounds. RhoDyn uses the scaled Cell
+Painting profile table and the endpoint table to build leave-one-compound-out
+predictions from reduced architectures. The retained ranking compares endpoint
+prevalence, one-dimensional morphology magnitude, single-compartment
+morphology, and a routed three-compartment summary. The routed compartment
+architecture is best by BIC and endpoint-balanced weighted RMSE, showing that
+the endpoint table retains structure missed by simpler summaries.
+
+Source: https://zenodo.org/records/10011861
+
+DOI: https://doi.org/10.5281/zenodo.10011861
+
+License: CC-BY-4.0
+
+Tutorial: `docs/cell_painting_endpoint_benchmark.md`
+
+Builder: `scripts/fetch_cell_painting_endpoint_benchmark.py`
+
+Derived ranking: `case_studies/cell_painting_mitotox_model_ranking.csv`
+
 ### Selected Stage 3A live-cell signaling benchmark
 
 **DRG calcium dynamics from von Buchholtz 2025.** This Zenodo dataset provides
@@ -144,8 +168,10 @@ Derived table: `case_studies/erk_gpcr_residence_amplitude_benchmark.csv`
 
 ## Recommended next move
 
-Stage 3 should now prioritize a perturbation endpoint or reduced-architecture
-comparison dataset. The DRG calcium and ERK/GPCR benchmarks support the
-residence-versus-amplitude distinction across two public signaling systems, but
-the evidence bank still needs a public case where model comparison, reserve-like
-logic, or bounded coupling is the central result.
+Stage 3 should now prioritize a public bounded-coupling or reserve-like case if
+a suitable dataset is accessible. The DRG calcium and ERK/GPCR benchmarks
+support the residence-versus-amplitude distinction across two public signaling
+systems, and the Cell Painting/MitoTox benchmark now supplies a public endpoint
+model-comparison case. The remaining Stage 3 question is whether to add a public
+bounded-coupling or reserve-like case, or to treat the synthetic
+bounded-coupling examples as sufficient for the v0.3 evidence bank.

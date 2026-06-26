@@ -15,12 +15,16 @@ are in place. The multi-sequence public MLCI example demonstrates public-data
 ingestion and sequence-aware grouping, the DRG calcium benchmark demonstrates a
 residence-versus-amplitude comparison in neuronal calcium traces, and the ERK
 GPCR benchmark demonstrates the same distinction in kinase-reporter dynamics.
-This is still not enough to satisfy the full Stage 3 biological generality gate.
+The Cell Painting/MitoTox endpoint benchmark adds the first public
+reduced-architecture comparison case. This is close to the Stage 3 evidence
+target, but full closure still depends on deciding whether the current synthetic
+bounded-coupling examples are enough or whether a public bounded-coupling or
+reserve-like case should be added.
 
 Current status in one sentence. RhoDyn can already analyze declared dynamic
-readouts and now has two independent public signaling benchmarks, but it has not
-yet earned the perturbation endpoint and reduced-architecture case needed for a
-full high-impact methods claim.
+readouts, now has two independent public signaling benchmarks, and has one
+public perturbation endpoint/model-comparison benchmark, but still needs an
+explicit Stage 3 decision on the bounded-coupling or reserve-like gate.
 
 ## Non-drift principles
 
@@ -79,16 +83,23 @@ Current evidence.
   single-cell trajectory summaries from histamine, S1P, and UK ligand contexts
   and identifies both amplitude-only and residence-only top-quartile cases
   under a declared high-ERK quantile threshold.
-- No independent perturbation endpoint dataset has been promoted as the
-  model-comparison case study yet.
+- A public perturbation endpoint/model-comparison benchmark is in place using
+  Cell Painting and MitoTox endpoint tables from Seal et al. 2023. The retained
+  model-ranking table compares endpoint prevalence, one-dimensional morphology,
+  single-compartment morphology, and routed compartment architectures. The
+  routed compartment model is best by BIC and endpoint-balanced weighted RMSE.
 
 Status. Stage 3A and Stage 3B have produced two independent public signaling
-benchmarks. The residence-versus-amplitude sub-gate is now supported across two
-biological signaling systems, but Stage 3 overall is not passed.
+benchmarks, and Stage 3C has produced a public endpoint/model-comparison
+benchmark. The residence-versus-amplitude and endpoint-model-comparison
+sub-gates are supported, but Stage 3 should remain open until the
+bounded-coupling or reserve-like gate is explicitly resolved.
 
-Next Stage 3 work should prioritize a perturbation endpoint/model-comparison
-dataset. The public MLCI adapter should remain as infrastructure and tutorial
-proof, not as the main biological generality claim.
+Next Stage 3 work should prioritize a public bounded-coupling or reserve-like
+case, or formally decide that the existing synthetic bounded-coupling examples
+are sufficient for the v0.3 evidence bank. The public MLCI adapter should
+remain as infrastructure and tutorial proof, not as the main biological
+generality claim.
 
 ## Stage 4. Backend
 
@@ -286,14 +297,16 @@ evidence path. Stage 8 inherits from Stage 7, and Stage 7 depends on Stage 3.
 
 ## Immediate next path
 
-The next scientifically aligned move is Stage 3C.
+The next scientifically aligned move is Stage 3D.
 
-1. Add one perturbation endpoint dataset where model comparison matters.
-2. Produce a benchmark table that makes the amplitude-only, endpoint-only, or
-   reduced-architecture comparator explicit.
-3. Decide whether the new case contributes bounded coupling, reserve-like
-   logic, or reduced-architecture discrimination strongly enough to close the
-   remaining Stage 3 evidence gap.
+1. Add a public bounded-coupling or reserve-like benchmark if a suitable
+   dataset is accessible.
+2. Otherwise, make an explicit project decision that the synthetic
+   bounded-coupling examples satisfy the remaining v0.3 evidence-bank gate and
+   keep the public case studies focused on residence/amplitude and endpoint
+   model comparison.
+3. After that decision, freeze the Stage 3 evidence bank before backend work.
 
-Only after Stage 3C should RhoDyn move toward backend service work. The backend
-should be built around proven analysis surfaces, not speculative screens.
+Only after Stage 3D or an explicit Stage 3 closure decision should RhoDyn move
+toward backend service work. The backend should be built around proven analysis
+surfaces, not speculative screens.

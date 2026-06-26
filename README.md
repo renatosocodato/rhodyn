@@ -18,7 +18,7 @@ This is an early open-core scaffold moving into the `v0.3.x` public
 case-study lane.
 
 The staged development plan is anchored in `docs/roadmap.md`. The current
-position is Stage 3B started, not Stage 3 passed. Backend, frontend, official
+position is Stage 3C completed, not full Stage 3 passed. Backend, frontend, official
 release, Nature Methods, and product work should remain downstream of the
 case-study evidence bank.
 
@@ -35,6 +35,8 @@ Included now:
   and high-calcium residence in DRG neuron traces;
 - a second independent public kinase-signaling benchmark comparing peak ERK
   KTR activity and high-ERK residence in GPCR-stimulated cells;
+- a first public perturbation endpoint/model-comparison benchmark using Cell
+  Painting morphology profiles and MitoTox endpoints;
 - residence-window scoring;
 - amplitude and dwell-time summaries;
 - reserve-style normalization helpers;
@@ -184,6 +186,14 @@ Zenodo DOI `10.5281/zenodo.5836623` to compare maximum ERK signal with
 high-ERK residence. The retained derived table contains 180 single-cell
 trajectory summaries and includes both amplitude-only and residence-only
 top-quartile cases.
+
+The Stage 3C endpoint/model-comparison benchmark is documented in
+`docs/cell_painting_endpoint_benchmark.md`. It uses public Cell Painting and
+MitoTox endpoint tables from Zenodo DOI `10.5281/zenodo.10011861` to compare
+endpoint prevalence, one-dimensional morphology, single-compartment morphology,
+and routed compartment architectures. The retained ranking shows that the
+three-coordinate compartment-route architecture fits the endpoint table better
+than the reduced alternatives under endpoint-balanced residuals.
 
 ## Input schemas
 

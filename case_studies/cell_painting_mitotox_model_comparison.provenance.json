@@ -1,0 +1,55 @@
+{
+  "source_title": "From Pixels to Phenotypes: Integrating Image-Based Profiling with Cell Health Data Improves Interpretability",
+  "source_creators": [
+    "Srijit Seal",
+    "Jordi Carreras-Puigvert",
+    "Anne E. Carpenter",
+    "Ola Spjuth",
+    "Andreas Bender"
+  ],
+  "zenodo_record": "https://zenodo.org/records/10011861",
+  "zenodo_doi": "10.5281/zenodo.10011861",
+  "license": "CC-BY-4.0",
+  "endpoint_file": "Endpoints_9_Mitotox_biological_activities_658_compounds.csv",
+  "endpoint_url": "https://zenodo.org/api/records/10011861/files/Endpoints_9_Mitotox_biological_activities_658_compounds.csv/content",
+  "endpoint_sha256": "d1dcb8dcab59d848cbf2b2aa17ee9d05e52a11c8e6594f0670bc2fd079be355f",
+  "feature_file": "Cell_Painting_data_658_compounds_827_Features_scaled.csv",
+  "feature_url": "https://zenodo.org/api/records/10011861/files/Cell_Painting_data_658_compounds_827_Features_scaled.csv/content",
+  "feature_sha256": "9e766f43b9d4afc4e993e0a423e6183a4826945efbc98e478aab60c44f861f60",
+  "model_architectures": [
+    "endpoint_prevalence",
+    "morphology_magnitude_5nn",
+    "cells_block_5nn",
+    "cytoplasm_block_5nn",
+    "nuclei_block_5nn",
+    "compartment_route_5nn"
+  ],
+  "prediction_rule": "leave-one-compound-out nearest-neighbor endpoint prediction for morphology architectures; leave-one-compound-out endpoint prevalence for endpoint_prevalence",
+  "weighting_rule": "within each endpoint, positive and negative labels each receive total weight 0.5",
+  "diagnostics": {
+    "compound_count": 658,
+    "endpoint_count": 9,
+    "feature_count": 827,
+    "k_neighbors": 5,
+    "endpoint_positive_counts": {
+      "apoptosis up": 156,
+      "cytotoxicity BLA": 132,
+      "cytotoxicity SRB": 57,
+      "ER stress": 93,
+      "heat shock": 76,
+      "microtubule up": 18,
+      "mitochondrial disruption up": 55,
+      "oxidative stress up": 105,
+      "proliferation decrease": 83
+    },
+    "best_model_by_bic": "compartment_route_5nn",
+    "best_model_by_weighted_rmse": "compartment_route_5nn"
+  },
+  "derived_outputs": {
+    "case_studies/cell_painting_mitotox_endpoint_model_rows.csv": "931638514a199b29391c57da7a255a64919f12da778968ab1b091c77efb2cb4a",
+    "case_studies/cell_painting_mitotox_model_ranking.csv": "32cc2bd056b520aa8fa0060c8a1263c40c65db60e191c0258dffc3f4f2370b3f",
+    "case_studies/cell_painting_mitotox_endpoint_summary.csv": "c237d1f2aa2f186843a64ecd16fa4af825c97df40544bca8ded793271ef20f75"
+  },
+  "raw_file_policy": "Source endpoint and Cell Painting feature CSV files were downloaded into memory and converted to derived benchmark rows only; source CSV files are not retained in the repository.",
+  "interpretation_boundary": "This benchmark compares endpoint compatibility among declared reduced morphology architectures. It does not infer drug mechanism, does not train a production classifier, and does not treat Cell Painting morphology as a direct dynamic-state measurement."
+}
