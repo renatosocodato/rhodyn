@@ -257,6 +257,25 @@ Retention policy is deliberately simple in Stage 4. Jobs are pruned by age,
 then count, then total bundle bytes, always removing the oldest stored jobs
 first. Pruning never changes a retained job's result JSON or bundle.
 
+## Service-contract audit
+
+Run the Stage 4 service-contract audit from the repository root.
+
+```bash
+PYTHONPATH=src python scripts/audit_stage4_service_contract.py
+```
+
+The audit checks every retained Stage 4 operation against four surfaces.
+
+- Direct backend helper.
+- Generic `/jobs/run` dispatcher logic through `run_backend_operation`.
+- Deterministic downloadable bundle and manifest checksums.
+- Durable filesystem job store result and bundle retrieval.
+
+The audit passes only when all four surfaces return the same result for the
+same submitted rows and declared parameters. It does not add a new biological
+case study or new interpretation.
+
 ## Stage 4 gate
 
 - Backend outputs must match the Python library outputs exactly.

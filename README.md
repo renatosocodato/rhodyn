@@ -190,6 +190,12 @@ Run the backend with explicit durable job storage.
 RHODYN_JOB_STORE_DIR=.rhodyn_jobs uvicorn rhodyn.backend:app --reload
 ```
 
+Audit the Stage 4 service contract.
+
+```bash
+PYTHONPATH=src python scripts/audit_stage4_service_contract.py
+```
+
 Deployment environment examples live in `deploy/stage4.env.example`. Retention
 limits can be configured with `RHODYN_JOB_RETENTION_MAX_JOBS`,
 `RHODYN_JOB_RETENTION_MAX_BYTES`, and

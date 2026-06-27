@@ -35,6 +35,9 @@ Started:
 - Stage 4 service-contract hardening for optional API-key authentication,
   row/upload quotas, raw CSV upload routes, and Docker/Compose deployment
   templates;
+- Stage 4 service-contract audit checking direct backend helpers, generic job
+  dispatch, deterministic bundles, and durable stored jobs against the same
+  submitted rows and declared parameters;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

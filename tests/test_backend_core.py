@@ -28,6 +28,7 @@ from rhodyn.coupling import equivalence_from_interval
 from rhodyn.report import to_plain
 from rhodyn.residence import ResidenceWindow, score_records
 from rhodyn.schema import read_coupling_csv, read_endpoint_csv, read_trajectory_csv
+from scripts.audit_stage4_service_contract import audit_stage4_service_contract
 
 
 def _rows(path: str) -> list[dict[str, str]]:
@@ -127,6 +128,13 @@ class BackendCoreTests(TestCase):
         dispatched = run_backend_operation("score_residence", rows, parameters={"low": 0.35, "high": 0.75})
         self.assertEqual(to_plain(dispatched["summaries"]), to_plain(direct["summaries"]))
         self.assertEqual(dispatched["job"], direct["job"])
+
+    def test_stage4_service_contract_audit_passes(self):
+        payload = audit_stage4_service_contract()
+        self.assertEqual(payload["status"], "pass")
+        self.assertEqual(payload["operation_count"], 6)
+        self.assertEqual(payload["failures"], [])
+        self.assertTrue(all(case["status"] == "pass" for case in payload["operations"]))
 
     def test_analysis_bundle_is_deterministic_and_checksummed(self):
         rows = _rows("examples/synthetic_endpoints.csv")

@@ -20,6 +20,7 @@ REQUIRED_FILES = [
     "pyproject.toml",
     "docs/roadmap.md",
     "docs/roadmap_execution_memory.json",
+    "scripts/audit_stage4_service_contract.py",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
