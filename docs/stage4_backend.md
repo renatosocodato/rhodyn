@@ -18,6 +18,10 @@ uvicorn rhodyn.backend:app --reload
 
 ## Endpoint contract
 
+Every analysis response carries a `job` object with a deterministic job ID,
+input-row count, input hash, parameter choices, operation name, table kind, and
+RhoDyn version. The same submitted rows and parameters produce the same job ID.
+
 ### Health and schemas
 
 - `GET /health`
@@ -123,11 +127,48 @@ by `rhodyn.compare.rank_model_fits`.
 This endpoint converts submitted rows into a compact Markdown table. It is a
 first report-export surface, not a substitute for full figure generation.
 
+### Durable job run and bundle export
+
+- `POST /jobs/run`
+- `POST /jobs/bundle`
+
+The job endpoint accepts an `operation`, `parameters`, and `rows`, then routes
+to the same service core used by the specific endpoints above. Supported
+operations are `validate`, `score_residence`, `decide_coupling`,
+`summarize_reserve`, `compare_models`, and `export_markdown`.
+
+```json
+{
+  "operation": "compare_models",
+  "parameters": {"parameter_count": 1},
+  "rows": [
+    {"model": "amplitude_only", "endpoint": "src", "observed": 0.3, "predicted": 0.5},
+    {"model": "residence_gated", "endpoint": "src", "observed": 0.3, "predicted": 0.32}
+  ]
+}
+```
+
+The bundle endpoint returns a ZIP archive containing:
+
+- `README.md`
+- `input_rows.csv`
+- `parameters.json`
+- `result.json`
+- `result_rows.csv`
+- `report.md`
+- `manifest.json`
+
+The archive uses fixed internal timestamps and a manifest with SHA-256
+checksums for every file. The HTTP response also carries
+`X-RhoDyn-Bundle-SHA256` so downloaded bundles can be checked immediately.
+
 ## Stage 4 gate
 
 - Backend outputs must match the Python library outputs exactly.
 - Each response carries a deterministic job identifier, input-row count,
   input hash, parameter choices, and RhoDyn version.
+- Downloadable bundles must preserve submitted rows, parameters, exact JSON
+  result, result table, Markdown report, and file checksums.
 - No uploaded table is stored by the service core.
 - Biological interpretation remains scoped to the submitted rows and declared
   parameters.

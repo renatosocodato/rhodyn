@@ -142,12 +142,15 @@ Gate.
 - No hidden state.
 - Jobs preserve input schema, parameter choices, and software version.
 
-Status. Started. The first backend service core and FastAPI app expose schema
-validation, residence scoring, bounded-coupling decisions, reserve summaries,
-endpoint-model comparison, and Markdown report export while delegating to the
-same Python library functions used by the CLI. The next backend increment
-should add durable job packaging only if it preserves exact library-output
-agreement and records input schema, parameter choices, and software version.
+Status. Started and hardened. The first backend service core and FastAPI app
+expose schema validation, residence scoring, bounded-coupling decisions,
+reserve summaries, endpoint-model comparison, Markdown report export, and
+downloadable analysis bundles while delegating to the same Python library
+functions used by the CLI. Bundle outputs preserve submitted rows, parameters,
+exact result JSON, result rows, Markdown reports, manifests, and SHA-256
+checksums. The next backend increment should add durable server-side job
+storage only if it preserves exact library-output agreement and records input
+schema, parameter choices, and software version.
 
 ## Stage 5. Frontend
 

@@ -11,6 +11,9 @@ import csv
 import hashlib
 import json
 import tempfile
+import zipfile
+from dataclasses import dataclass
+from io import BytesIO, StringIO
 from pathlib import Path
 from typing import Any
 
@@ -32,6 +35,19 @@ from rhodyn.schema import read_coupling_csv, read_endpoint_csv, read_reserve_csv
 
 
 API_SOURCE = "api_payload"
+BUNDLE_FORMAT = "rhodyn.analysis_bundle.v1"
+ZIP_TIMESTAMP = (1980, 1, 1, 0, 0, 0)
+
+
+@dataclass(frozen=True)
+class AnalysisBundle:
+    """A deterministic downloadable bundle for one backend job."""
+
+    filename: str
+    content_type: str
+    data: bytes
+    sha256: str
+    manifest: dict[str, Any]
 
 
 def _stable_payload_hash(payload: object) -> str:
@@ -71,6 +87,36 @@ def _write_rows_csv(path: Path, kind: str, rows: list[dict[str, Any]]) -> None:
             writer.writerow({field: row.get(field, "") for field in fields})
 
 
+def _rows_to_csv_bytes(kind: str, rows: list[dict[str, Any]]) -> bytes:
+    fields = _fieldnames(kind, rows)
+    buffer = StringIO()
+    writer = csv.DictWriter(buffer, fieldnames=fields, lineterminator="\n")
+    writer.writeheader()
+    for row in rows:
+        writer.writerow({field: row.get(field, "") for field in fields})
+    return buffer.getvalue().encode("utf-8")
+
+
+def _dict_rows_to_csv_bytes(rows: list[dict[str, Any]]) -> bytes:
+    if not rows:
+        return b""
+    fields: list[str] = []
+    for row in rows:
+        for key in row:
+            if key not in fields:
+                fields.append(str(key))
+    buffer = StringIO()
+    writer = csv.DictWriter(buffer, fieldnames=fields, lineterminator="\n")
+    writer.writeheader()
+    for row in rows:
+        flat = {
+            field: json.dumps(row.get(field), sort_keys=True) if isinstance(row.get(field), (dict, list)) else row.get(field)
+            for field in fields
+        }
+        writer.writerow(flat)
+    return buffer.getvalue().encode("utf-8")
+
+
 def _read_table(
     kind: str,
     rows: list[dict[str, Any]],
@@ -102,6 +148,65 @@ def _job(operation: str, kind: str, rows: list[dict[str, Any]], parameters: dict
         "software_version": software_version(),
     }
     return {"job_id": _stable_payload_hash(payload)[:20], **payload}
+
+
+def _require_float(parameters: dict[str, Any], key: str) -> float:
+    if key not in parameters:
+        raise ValueError(f"missing required parameter {key!r}")
+    return float(parameters[key])
+
+
+def _require_int(parameters: dict[str, Any], key: str, default: int) -> int:
+    return int(parameters.get(key, default))
+
+
+def run_backend_operation(
+    operation: str,
+    rows: list[dict[str, Any]],
+    *,
+    parameters: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Run one declared backend operation through the stable library API."""
+
+    params = dict(parameters or {})
+    if operation == "validate":
+        return validate_table(
+            str(params.get("kind", "trajectory")),
+            rows,
+            signal_column=str(params.get("signal_column", "signal")),
+        )
+    if operation == "score_residence":
+        return score_residence_table(
+            rows,
+            low=_require_float(params, "low"),
+            high=_require_float(params, "high"),
+            signal_column=str(params.get("signal_column", "signal")),
+        )
+    if operation == "decide_coupling":
+        return decide_coupling_table(rows, rope_threshold=float(params.get("rope_threshold", 0.95)))
+    if operation == "summarize_reserve":
+        return summarize_reserve_table(
+            rows,
+            floor=_require_float(params, "floor"),
+            ceiling=_require_float(params, "ceiling"),
+            baseline_points=_require_int(params, "baseline_points", 3),
+            normalize=bool(params.get("normalize", True)),
+        )
+    if operation == "compare_models":
+        return compare_endpoint_models(rows, parameter_count=_require_int(params, "parameter_count", 1))
+    if operation == "export_markdown":
+        return export_markdown_report(str(params.get("title", "RhoDyn report")), rows)
+    known = ", ".join(
+        [
+            "validate",
+            "score_residence",
+            "decide_coupling",
+            "summarize_reserve",
+            "compare_models",
+            "export_markdown",
+        ]
+    )
+    raise ValueError(f"unsupported backend operation {operation!r}; known operations are {known}")
 
 
 def validate_table(kind: str, rows: list[dict[str, Any]], *, signal_column: str = "signal") -> dict[str, Any]:
@@ -273,3 +378,121 @@ def export_markdown_report(title: str, rows: list[dict[str, Any]]) -> dict[str, 
         "job": _job("export_markdown", "report", rows, parameters),
         "markdown": markdown_summary(title, rows),
     }
+
+
+def _result_summary_rows(result: dict[str, Any]) -> list[dict[str, Any]]:
+    plain = to_plain(result)
+    for key in ("summaries", "fits", "typed_results", "decisions", "records"):
+        value = plain.get(key)
+        if isinstance(value, list) and all(isinstance(row, dict) for row in value):
+            return value
+    if "typed_result" in plain and isinstance(plain["typed_result"], dict):
+        return [plain["typed_result"]]
+    return [{"status": plain.get("status", ""), "operation": plain.get("job", {}).get("operation", "")}]
+
+
+def _readme_text(operation: str, result: dict[str, Any]) -> str:
+    job = result.get("job", {})
+    status = result.get("status", "")
+    lines = [
+        "# RhoDyn analysis bundle",
+        "",
+        f"Operation: `{operation}`",
+        f"Status: `{status}`",
+        f"Job ID: `{job.get('job_id', '')}`",
+        f"Software version: `{job.get('software_version', software_version())}`",
+        "",
+        "This bundle contains the submitted rows, declared parameters, exact JSON result,",
+        "a compact result table, a Markdown report, and a manifest with SHA-256 checksums.",
+        "The analysis result is generated by the same Python library functions exposed by",
+        "the RhoDyn CLI and public API.",
+        "",
+        "A passing bounded-coupling decision means the submitted interval lies inside the",
+        "declared biological margin. It does not mean zero coupling.",
+        "",
+    ]
+    return "\n".join(lines)
+
+
+def _markdown_job_report(operation: str, result: dict[str, Any]) -> str:
+    plain = to_plain(result)
+    rows = _result_summary_rows(plain)
+    title = f"RhoDyn {operation} result"
+    return markdown_summary(title, rows)
+
+
+def _zip_bytes(files: dict[str, bytes]) -> bytes:
+    buffer = BytesIO()
+    with zipfile.ZipFile(buffer, mode="w", compression=zipfile.ZIP_DEFLATED) as archive:
+        for name in sorted(files):
+            info = zipfile.ZipInfo(name, ZIP_TIMESTAMP)
+            info.compress_type = zipfile.ZIP_DEFLATED
+            info.external_attr = 0o644 << 16
+            archive.writestr(info, files[name])
+    return buffer.getvalue()
+
+
+def build_analysis_bundle(
+    operation: str,
+    rows: list[dict[str, Any]],
+    *,
+    parameters: dict[str, Any] | None = None,
+) -> AnalysisBundle:
+    """Build a deterministic ZIP bundle for one backend analysis job."""
+
+    params = dict(parameters or {})
+    result = run_backend_operation(operation, rows, parameters=params)
+    plain_result = to_plain(result)
+    job = plain_result.get("job", _job(operation, "unknown", rows, params))
+    kind = str(job.get("kind", operation))
+    files: dict[str, bytes] = {
+        "README.md": _readme_text(operation, plain_result).encode("utf-8"),
+        "input_rows.csv": _rows_to_csv_bytes(kind, _coerce_rows(rows)),
+        "parameters.json": json.dumps(params, indent=2, sort_keys=True).encode("utf-8") + b"\n",
+        "result.json": json.dumps(plain_result, indent=2, sort_keys=True).encode("utf-8") + b"\n",
+        "result_rows.csv": _dict_rows_to_csv_bytes(_result_summary_rows(plain_result)),
+        "report.md": _markdown_job_report(operation, plain_result).encode("utf-8"),
+    }
+    file_records = [
+        {
+            "path": path,
+            "bytes": len(data),
+            "sha256": hashlib.sha256(data).hexdigest(),
+        }
+        for path, data in sorted(files.items())
+    ]
+    manifest = {
+        "bundle_format": BUNDLE_FORMAT,
+        "operation": operation,
+        "status": plain_result.get("status", ""),
+        "job": job,
+        "files": file_records,
+        "interpretation_boundary": "Results are scoped to submitted rows and declared parameters. No backend bundle upgrades an association, interval, or model fit into a direct biological mechanism.",
+    }
+    files["manifest.json"] = json.dumps(manifest, indent=2, sort_keys=True).encode("utf-8") + b"\n"
+    data = _zip_bytes(files)
+    sha = hashlib.sha256(data).hexdigest()
+    filename = f"rhodyn_{operation}_{job.get('job_id', 'job')}.zip"
+    return AnalysisBundle(
+        filename=filename,
+        content_type="application/zip",
+        data=data,
+        sha256=sha,
+        manifest=manifest,
+    )
+
+
+def write_analysis_bundle(
+    path: str | Path,
+    operation: str,
+    rows: list[dict[str, Any]],
+    *,
+    parameters: dict[str, Any] | None = None,
+) -> AnalysisBundle:
+    """Write an analysis bundle to disk and return its manifest metadata."""
+
+    bundle = build_analysis_bundle(operation, rows, parameters=parameters)
+    output = Path(path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_bytes(bundle.data)
+    return bundle

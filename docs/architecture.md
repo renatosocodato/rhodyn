@@ -76,9 +76,9 @@ downstream of the backend contract.
 12. `rhodyn.backend_core`
    Provides dependency-light service functions for schema validation,
    residence scoring, bounded-coupling decisions, reserve summaries,
-   endpoint-model comparison, and compact Markdown report export. These
-   functions are the Stage 4 backend contract and call the same library helpers
-   used by the CLI.
+   endpoint-model comparison, compact Markdown report export, and deterministic
+   analysis bundle creation. These functions are the Stage 4 backend contract
+   and call the same library helpers used by the CLI.
 
 13. `rhodyn.backend`
    Provides the optional FastAPI application factory under `rhodyn[backend]`.

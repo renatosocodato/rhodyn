@@ -42,7 +42,7 @@ OPTIONAL_EXTRAS: dict[str, OptionalExtra] = {
     ),
     "backend": OptionalExtra(
         name="backend",
-        packages=("fastapi", "uvicorn"),
+        packages=("fastapi", "httpx2", "uvicorn"),
         purpose="stateless API service around frozen Stage 3 analysis surfaces",
         first_uses=("schema validation endpoint", "residence scoring endpoint", "model-comparison endpoint"),
     ),

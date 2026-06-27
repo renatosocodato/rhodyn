@@ -56,7 +56,7 @@ Included now:
 - a public-data candidate matrix and MLCI tutorial scaffold.
 - the first Stage 4 stateless backend service core and FastAPI app for schema
   validation, residence scoring, bounded-coupling decisions, reserve summaries,
-  model comparison, and Markdown report export.
+  model comparison, Markdown report export, and downloadable analysis bundles.
 
 Not included yet:
 
@@ -218,7 +218,9 @@ or only the widest tested margin.
 
 The Stage 4 backend start is documented in `docs/stage4_backend.md`. It exposes
 the frozen Stage 3 operations as a stateless FastAPI service while preserving
-the Python library as the source of analysis behavior.
+the Python library as the source of analysis behavior. The job-bundle endpoint
+returns a ZIP archive with submitted rows, parameters, exact result JSON,
+summary rows, Markdown report, manifest, and SHA-256 checksums.
 
 ## Input schemas
 

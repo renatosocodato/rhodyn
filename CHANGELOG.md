@@ -20,7 +20,8 @@ Started:
   outputs for the ERK/Akt bounded-coupling benchmark;
 - Stage 4 stateless backend service core and optional FastAPI app for schema
   validation, residence scoring, bounded-coupling decisions, reserve summaries,
-  endpoint-model comparison, and Markdown report export;
+  endpoint-model comparison, Markdown report export, and downloadable analysis
+  bundles with manifests and checksums;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

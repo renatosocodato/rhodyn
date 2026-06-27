@@ -1,15 +1,22 @@
 import csv
+import hashlib
 import importlib.util
+import json
+import tempfile
+import zipfile
 from pathlib import Path
 from unittest import TestCase, skipUnless
 
 from rhodyn.backend_core import (
+    build_analysis_bundle,
     compare_endpoint_models,
     decide_coupling_table,
     export_markdown_report,
+    run_backend_operation,
     score_residence_table,
     summarize_reserve_table,
     validate_table,
+    write_analysis_bundle,
 )
 from rhodyn.compare import rank_model_fits
 from rhodyn.coupling import equivalence_from_interval
@@ -98,6 +105,67 @@ class BackendCoreTests(TestCase):
         self.assertIn("# Coupling", payload["markdown"])
         self.assertIn("rock_src", payload["markdown"])
 
+    def test_run_backend_operation_dispatches_to_same_residence_result(self):
+        rows = _rows("examples/synthetic_trajectory.csv")
+        direct = score_residence_table(rows, low=0.35, high=0.75)
+        dispatched = run_backend_operation("score_residence", rows, parameters={"low": 0.35, "high": 0.75})
+        self.assertEqual(to_plain(dispatched["summaries"]), to_plain(direct["summaries"]))
+        self.assertEqual(dispatched["job"], direct["job"])
+
+    def test_analysis_bundle_is_deterministic_and_checksummed(self):
+        rows = _rows("examples/synthetic_endpoints.csv")
+        parameters = {"parameter_count": 1}
+        bundle = build_analysis_bundle("compare_models", rows, parameters=parameters)
+        repeated = build_analysis_bundle("compare_models", rows, parameters=parameters)
+
+        self.assertEqual(bundle.data, repeated.data)
+        self.assertEqual(bundle.sha256, hashlib.sha256(bundle.data).hexdigest())
+        self.assertTrue(bundle.filename.startswith("rhodyn_compare_models_"))
+        self.assertEqual(bundle.content_type, "application/zip")
+
+        with tempfile.TemporaryDirectory() as tmp:
+            bundle_file = Path(tmp) / "rhodyn_bundle_test.zip"
+            bundle_file.write_bytes(bundle.data)
+            with zipfile.ZipFile(bundle_file) as archive:
+                names = set(archive.namelist())
+                self.assertEqual(
+                    names,
+                    {
+                        "README.md",
+                        "input_rows.csv",
+                        "manifest.json",
+                        "parameters.json",
+                        "report.md",
+                        "result.json",
+                        "result_rows.csv",
+                    },
+                )
+                manifest = json.loads(archive.read("manifest.json").decode("utf-8"))
+                self.assertEqual(manifest["bundle_format"], "rhodyn.analysis_bundle.v1")
+                self.assertEqual(manifest["operation"], "compare_models")
+                self.assertEqual(manifest["status"], "pass")
+                files = {item["path"]: item for item in manifest["files"]}
+                for name in names - {"manifest.json"}:
+                    data = archive.read(name)
+                    self.assertEqual(files[name]["sha256"], hashlib.sha256(data).hexdigest())
+                result = json.loads(archive.read("result.json").decode("utf-8"))
+                self.assertEqual(result["typed_result"]["best_model"], "residence_gated")
+                self.assertIn("residence_gated", archive.read("result_rows.csv").decode("utf-8"))
+
+    def test_write_analysis_bundle_creates_downloadable_zip(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "bundle.zip"
+            bundle = write_analysis_bundle(
+                path,
+                "decide_coupling",
+                _rows("examples/synthetic_coupling.csv"),
+                parameters={"rope_threshold": 0.95},
+            )
+            self.assertEqual(path.read_bytes(), bundle.data)
+            with zipfile.ZipFile(path) as archive:
+                manifest = json.loads(archive.read("manifest.json").decode("utf-8"))
+            self.assertEqual(manifest["operation"], "decide_coupling")
+
 
 @skipUnless(
     importlib.util.find_spec("fastapi") and importlib.util.find_spec("httpx2"),
@@ -122,3 +190,29 @@ class BackendFastApiTests(TestCase):
         payload = response.json()
         self.assertEqual(payload["status"], "pass")
         self.assertEqual(len(payload["summaries"]), 3)
+
+        run_response = client.post(
+            "/jobs/run",
+            json={
+                "operation": "score_residence",
+                "parameters": {"low": 0.35, "high": 0.75},
+                "rows": _rows("examples/synthetic_trajectory.csv"),
+            },
+        )
+        self.assertEqual(run_response.status_code, 200)
+        self.assertEqual(run_response.json()["job"]["operation"], "score_residence")
+
+        bundle_response = client.post(
+            "/jobs/bundle",
+            json={
+                "operation": "compare_models",
+                "parameters": {"parameter_count": 1},
+                "rows": _rows("examples/synthetic_endpoints.csv"),
+            },
+        )
+        self.assertEqual(bundle_response.status_code, 200)
+        self.assertEqual(bundle_response.headers["content-type"], "application/zip")
+        self.assertEqual(
+            bundle_response.headers["x-rhodyn-bundle-sha256"],
+            hashlib.sha256(bundle_response.content).hexdigest(),
+        )

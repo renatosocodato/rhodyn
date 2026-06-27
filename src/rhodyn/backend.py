@@ -2,12 +2,15 @@
 
 from __future__ import annotations
 
+from io import BytesIO
 from typing import Any, Callable
 
 from rhodyn.backend_core import (
+    build_analysis_bundle,
     compare_endpoint_models,
     decide_coupling_table,
     export_markdown_report,
+    run_backend_operation,
     score_residence_table,
     summarize_reserve_table,
     validate_table,
@@ -41,6 +44,7 @@ def create_app() -> Any:
 
     try:
         from fastapi import FastAPI
+        from fastapi.responses import JSONResponse, StreamingResponse
     except ImportError as exc:  # pragma: no cover - exercised only without optional extra
         raise RuntimeError("FastAPI backend requires installing rhodyn[backend]") from exc
 
@@ -123,6 +127,29 @@ def create_app() -> Any:
             return export_markdown_report(title, _require_rows(payload))
 
         return _call(run)
+
+    @app.post("/jobs/run")
+    def job_run(payload: dict[str, Any]) -> dict[str, Any]:
+        def run() -> dict[str, Any]:
+            operation = str(payload.get("operation", ""))
+            parameters = dict(payload.get("parameters") or {})
+            return run_backend_operation(operation, _require_rows(payload), parameters=parameters)
+
+        return _call(run)
+
+    @app.post("/jobs/bundle")
+    def job_bundle(payload: dict[str, Any]) -> Any:
+        try:
+            operation = str(payload.get("operation", ""))
+            parameters = dict(payload.get("parameters") or {})
+            bundle = build_analysis_bundle(operation, _require_rows(payload), parameters=parameters)
+        except Exception as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=400)
+        headers = {
+            "Content-Disposition": f'attachment; filename="{bundle.filename}"',
+            "X-RhoDyn-Bundle-SHA256": bundle.sha256,
+        }
+        return StreamingResponse(BytesIO(bundle.data), media_type=bundle.content_type, headers=headers)
 
     return app
 

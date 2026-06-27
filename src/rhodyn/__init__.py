@@ -1,12 +1,16 @@
 """RhoDyn core package."""
 
 from rhodyn.backend_core import (
+    AnalysisBundle,
+    build_analysis_bundle,
     compare_endpoint_models,
     decide_coupling_table,
     export_markdown_report,
+    run_backend_operation,
     score_residence_table,
     summarize_reserve_table,
     validate_table,
+    write_analysis_bundle,
 )
 from rhodyn.compare import ModelFit, rank_model_fits
 from rhodyn.coupling import (
@@ -72,6 +76,7 @@ from rhodyn.uncertainty import BootstrapResult, PermutationResult, bootstrap_int
 __all__ = [
     "ControllerParams",
     "BootstrapResult",
+    "AnalysisBundle",
     "CTC_LINEAGE_SIGNAL_CHOICES",
     "CTC_SIGNAL_CHOICES",
     "CouplingIntervalRecord",
@@ -98,6 +103,7 @@ __all__ = [
     "TrajectoryRecord",
     "UncertaintyInterval",
     "bootstrap_interval",
+    "build_analysis_bundle",
     "compare_endpoint_models",
     "coupling_result_from_decision",
     "coupling_result_from_tost",
@@ -130,6 +136,7 @@ __all__ = [
     "rope_decision",
     "rope_mass",
     "schema_specs",
+    "run_backend_operation",
     "score_records_window_sensitivity",
     "score_residence_table",
     "score_trace",
@@ -138,6 +145,7 @@ __all__ = [
     "summarize_reserve_table",
     "two_sample_welch_tost",
     "validate_table",
+    "write_analysis_bundle",
     "write_trajectory_csv",
 ]
 
