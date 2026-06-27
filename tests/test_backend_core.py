@@ -419,3 +419,111 @@ class BackendFastApiTests(TestCase):
             self.assertEqual(health["retention_policy"]["max_jobs"], 1)
             self.assertEqual(health["retention_policy"]["max_bytes"], 1000000)
             self.assertEqual(health["retention_policy"]["max_age_seconds"], 3600.0)
+
+    def test_fastapi_api_key_protects_analysis_and_stored_jobs_when_configured(self):
+        from fastapi.testclient import TestClient
+
+        from rhodyn.backend import create_app
+
+        client = TestClient(create_app(api_keys=("secret-key",)))
+        health = client.get("/health")
+        self.assertEqual(health.status_code, 200)
+        self.assertTrue(health.json()["authentication_required"])
+        self.assertEqual(client.get("/schemas").status_code, 200)
+
+        payload = {
+            "operation": "score_residence",
+            "parameters": {"low": 0.35, "high": 0.75},
+            "rows": _rows("examples/synthetic_trajectory.csv"),
+        }
+        self.assertEqual(client.post("/jobs/run", json=payload).status_code, 401)
+        self.assertEqual(client.post("/jobs/run", json=payload, headers={"x-rhodyn-api-key": "wrong"}).status_code, 401)
+
+        authorized = client.post("/jobs/run", json=payload, headers={"x-rhodyn-api-key": "secret-key"})
+        self.assertEqual(authorized.status_code, 200)
+        self.assertEqual(authorized.json()["status"], "pass")
+
+        bearer = client.post("/jobs/run", json=payload, headers={"authorization": "Bearer secret-key"})
+        self.assertEqual(bearer.status_code, 200)
+        self.assertEqual(bearer.json()["job"], authorized.json()["job"])
+
+        self.assertEqual(client.get("/jobs").status_code, 401)
+
+    def test_fastapi_enforces_row_and_upload_limits(self):
+        from fastapi.testclient import TestClient
+
+        from rhodyn.backend import BackendServiceLimits, create_app
+
+        rows = _rows("examples/synthetic_trajectory.csv")
+        client = TestClient(create_app(service_limits=BackendServiceLimits(max_rows=2, max_upload_bytes=20)))
+        health = client.get("/health").json()
+        self.assertEqual(health["service_limits"]["max_rows"], 2)
+        self.assertEqual(health["service_limits"]["max_upload_bytes"], 20)
+
+        json_limit = client.post("/residence/score", json={"rows": rows, "low": 0.35, "high": 0.75})
+        self.assertEqual(json_limit.status_code, 413)
+        self.assertIn("RHODYN_MAX_ROWS", json_limit.json()["error"])
+
+        upload_limit = client.post(
+            "/jobs/upload/run",
+            params={"operation": "score_residence", "parameters_json": json.dumps({"low": 0.35, "high": 0.75})},
+            content=Path("examples/synthetic_trajectory.csv").read_bytes(),
+            headers={"content-type": "text/csv"},
+        )
+        self.assertEqual(upload_limit.status_code, 413)
+        self.assertIn("RHODYN_MAX_UPLOAD_BYTES", upload_limit.json()["error"])
+
+    def test_fastapi_csv_upload_routes_match_json_jobs_and_bundles(self):
+        from fastapi.testclient import TestClient
+
+        from rhodyn.backend import create_app
+
+        client = TestClient(create_app())
+        csv_data = Path("examples/synthetic_trajectory.csv").read_bytes()
+        parameters = {"low": 0.35, "high": 0.75}
+        uploaded = client.post(
+            "/jobs/upload/run",
+            params={"operation": "score_residence", "parameters_json": json.dumps(parameters)},
+            content=csv_data,
+            headers={"content-type": "text/csv"},
+        )
+        direct = client.post(
+            "/jobs/run",
+            json={
+                "operation": "score_residence",
+                "parameters": parameters,
+                "rows": _rows("examples/synthetic_trajectory.csv"),
+            },
+        )
+        self.assertEqual(uploaded.status_code, 200)
+        self.assertEqual(uploaded.json()["status"], "pass")
+        self.assertEqual(uploaded.json()["job"], direct.json()["job"])
+        self.assertEqual(uploaded.json()["summaries"], direct.json()["summaries"])
+
+        bundle = client.post(
+            "/jobs/upload/bundle",
+            params={"operation": "compare_models", "parameters_json": json.dumps({"parameter_count": 1})},
+            content=Path("examples/synthetic_endpoints.csv").read_bytes(),
+            headers={"content-type": "text/csv"},
+        )
+        self.assertEqual(bundle.status_code, 200)
+        self.assertEqual(bundle.headers["content-type"], "application/zip")
+        self.assertEqual(bundle.headers["x-rhodyn-bundle-sha256"], hashlib.sha256(bundle.content).hexdigest())
+
+    def test_fastapi_csv_upload_submit_persists_job(self):
+        from fastapi.testclient import TestClient
+
+        from rhodyn.backend import create_app
+
+        with tempfile.TemporaryDirectory() as tmp:
+            client = TestClient(create_app(job_store_dir=tmp))
+            response = client.post(
+                "/jobs/upload/submit",
+                params={"operation": "compare_models", "parameters_json": json.dumps({"parameter_count": 1})},
+                content=Path("examples/synthetic_endpoints.csv").read_bytes(),
+                headers={"content-type": "text/csv"},
+            )
+            self.assertEqual(response.status_code, 200)
+            job_id = response.json()["stored_job"]["job_id"]
+            self.assertEqual(response.json()["result"]["typed_result"]["best_model"], "residence_gated")
+            self.assertEqual(client.get(f"/jobs/{job_id}/result").json()["result"], response.json()["result"])

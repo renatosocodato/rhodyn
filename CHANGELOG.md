@@ -32,6 +32,9 @@ Started:
   bundles only when a job-store directory is configured;
 - Stage 4 retention-policy controls, storage summary and prune routes,
   concurrent submit/read stress tests, and deployment environment example;
+- Stage 4 service-contract hardening for optional API-key authentication,
+  row/upload quotas, raw CSV upload routes, and Docker/Compose deployment
+  templates;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

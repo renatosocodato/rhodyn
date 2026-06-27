@@ -180,10 +180,14 @@ Retrieval returns persisted outputs rather than re-running analysis.
 The current operational hardening pass adds retention-policy controls, storage
 summary and prune routes, concurrent submit/read stress tests, and a deployment
 environment template while keeping analysis results delegated to the library.
+The service-contract completion pass adds optional API-key authentication,
+explicit row and upload quotas, raw CSV upload routes for run, bundle, and
+durable-submit jobs, and Docker/Compose deployment templates.
 
-The next backend increment should focus on authentication, quota behavior,
-larger-file upload handling, and deployment templates, while preserving exact
-library-output agreement.
+The remaining Stage 4 work before Stage 5 should be limited to defects found by
+service-contract testing or deployment smoke tests. New analysis capabilities or
+additional public biological systems belong to later stages unless they repair a
+documented Stage 4 contract failure.
 
 ## Stage 5. Frontend
 

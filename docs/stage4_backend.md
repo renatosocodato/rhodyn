@@ -24,14 +24,31 @@ RHODYN_JOB_STORE_DIR=.rhodyn_jobs uvicorn rhodyn.backend:app --reload
 ```
 
 An example deployment environment file is provided at
-`deploy/stage4.env.example`.
+`deploy/stage4.env.example`. Container templates are provided at
+`deploy/stage4.Dockerfile` and `deploy/docker-compose.stage4.yml`.
 
 | variable | meaning |
 | --- | --- |
 | `RHODYN_JOB_STORE_DIR` | Persistent directory for stored jobs. If unset, durable routes return HTTP 503. |
+| `RHODYN_API_KEYS` | Optional comma-separated API keys. If set, protected analysis and job routes require `X-RhoDyn-API-Key` or `Authorization: Bearer`. |
+| `RHODYN_MAX_ROWS` | Optional maximum number of rows accepted in one submitted table. |
+| `RHODYN_MAX_UPLOAD_BYTES` | Optional maximum byte size for raw CSV upload routes. |
 | `RHODYN_JOB_RETENTION_MAX_JOBS` | Optional maximum number of stored jobs. Oldest jobs are pruned first. |
 | `RHODYN_JOB_RETENTION_MAX_BYTES` | Optional maximum total stored bundle bytes. Oldest jobs are pruned first. |
 | `RHODYN_JOB_RETENTION_MAX_AGE_SECONDS` | Optional maximum job age in seconds. |
+
+## Authentication and limits
+
+Authentication is optional in Stage 4 so local development remains simple. If
+`RHODYN_API_KEYS` is unset, routes behave as an open local service. If one or
+more keys are configured, `/health` and `/schemas` remain public, while analysis
+routes, CSV upload routes, bundle routes, and durable job routes require either
+`X-RhoDyn-API-Key: <key>` or `Authorization: Bearer <key>`.
+
+Service limits are explicit and deterministic. `RHODYN_MAX_ROWS` bounds the
+number of submitted rows for JSON and CSV-upload jobs. `RHODYN_MAX_UPLOAD_BYTES`
+bounds raw CSV upload size before the table is parsed. Limit violations return
+HTTP 413 and do not run analysis or write durable job files.
 
 ## Endpoint contract
 
@@ -148,6 +165,8 @@ first report-export surface, not a substitute for full figure generation.
 
 - `POST /jobs/run`
 - `POST /jobs/bundle`
+- `POST /jobs/upload/run`
+- `POST /jobs/upload/bundle`
 
 The job endpoint accepts an `operation`, `parameters`, and `rows`, then routes
 to the same service core used by the specific endpoints above. Supported
@@ -163,6 +182,19 @@ operations are `validate`, `score_residence`, `decide_coupling`,
     {"model": "residence_gated", "endpoint": "src", "observed": 0.3, "predicted": 0.32}
   ]
 }
+```
+
+The CSV upload routes are intended for larger tables that should not be encoded
+as JSON rows by the client. They accept a raw CSV request body, an `operation`
+query parameter, and an optional `parameters_json` query parameter containing a
+JSON object. They return the same result JSON or bundle ZIP that the equivalent
+JSON `/jobs/run` or `/jobs/bundle` request would produce.
+
+```bash
+curl -X POST \
+  -H 'Content-Type: text/csv' \
+  --data-binary @examples/synthetic_trajectory.csv \
+  'http://localhost:8000/jobs/upload/run?operation=score_residence&parameters_json=%7B%22low%22%3A0.35%2C%22high%22%3A0.75%7D'
 ```
 
 The bundle endpoint returns a ZIP archive containing:
@@ -185,6 +217,7 @@ checksums for every payload file. The HTTP response also carries
 - `GET /jobs`
 - `GET /jobs/summary`
 - `POST /jobs/prune`
+- `POST /jobs/upload/submit`
 - `GET /jobs/{job_id}`
 - `GET /jobs/{job_id}/result`
 - `GET /jobs/{job_id}/bundle`
@@ -211,6 +244,10 @@ analysis. The stored job ID remains a function of operation, input rows,
 parameters, table kind, and RhoDyn version, so repeated submission of identical
 payloads resolves to the same stored job.
 
+`POST /jobs/upload/submit` combines the CSV upload route with durable job
+storage. It accepts the same query parameters as `/jobs/upload/run` and writes
+the same stored job files as `/jobs/submit`.
+
 `GET /jobs/summary` returns job count, stored bundle bytes, configured
 retention policy, and stored job IDs without reading submitted input tables.
 `POST /jobs/prune` applies the configured retention policy. Pass
@@ -227,6 +264,12 @@ first. Pruning never changes a retained job's result JSON or bundle.
   input hash, parameter choices, and RhoDyn version.
 - Downloadable bundles must preserve submitted rows, parameters, exact JSON
   result, result table, Markdown report, and file checksums.
+- Optional authentication must protect analysis, upload, bundle, and durable job
+  routes when API keys are configured, while keeping local unauthenticated
+  development possible when no key is configured.
+- Configured row and upload limits must fail before analysis or durable writes.
+- CSV upload routes must return the same results and bundles as equivalent JSON
+  jobs.
 - No uploaded table is stored by default. Durable storage occurs only through
   explicit job-store configuration and the `/jobs/submit` route.
 - Stored jobs must preserve submitted rows, parameters, exact JSON result,

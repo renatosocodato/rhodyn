@@ -1,0 +1,20 @@
+services:
+  rhodyn-backend:
+    build:
+      context: ..
+      dockerfile: deploy/stage4.Dockerfile
+    ports:
+      - "${RHODYN_PORT:-8000}:8000"
+    environment:
+      RHODYN_JOB_STORE_DIR: /var/lib/rhodyn/jobs
+      RHODYN_API_KEYS: ${RHODYN_API_KEYS:-}
+      RHODYN_MAX_ROWS: ${RHODYN_MAX_ROWS:-100000}
+      RHODYN_MAX_UPLOAD_BYTES: ${RHODYN_MAX_UPLOAD_BYTES:-52428800}
+      RHODYN_JOB_RETENTION_MAX_JOBS: ${RHODYN_JOB_RETENTION_MAX_JOBS:-500}
+      RHODYN_JOB_RETENTION_MAX_BYTES: ${RHODYN_JOB_RETENTION_MAX_BYTES:-1073741824}
+      RHODYN_JOB_RETENTION_MAX_AGE_SECONDS: ${RHODYN_JOB_RETENTION_MAX_AGE_SECONDS:-604800}
+    volumes:
+      - rhodyn_jobs:/var/lib/rhodyn/jobs
+
+volumes:
+  rhodyn_jobs:

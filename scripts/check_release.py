@@ -49,6 +49,7 @@ def _text_files(root: Path) -> list[Path]:
             ".in",
             ".ipynb",
             ".example",
+            ".Dockerfile",
         }:
             files.append(path)
     return files

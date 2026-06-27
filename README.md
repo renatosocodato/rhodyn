@@ -193,7 +193,10 @@ RHODYN_JOB_STORE_DIR=.rhodyn_jobs uvicorn rhodyn.backend:app --reload
 Deployment environment examples live in `deploy/stage4.env.example`. Retention
 limits can be configured with `RHODYN_JOB_RETENTION_MAX_JOBS`,
 `RHODYN_JOB_RETENTION_MAX_BYTES`, and
-`RHODYN_JOB_RETENTION_MAX_AGE_SECONDS`.
+`RHODYN_JOB_RETENTION_MAX_AGE_SECONDS`. Optional API-key protection uses
+`RHODYN_API_KEYS`, and service limits use `RHODYN_MAX_ROWS` plus
+`RHODYN_MAX_UPLOAD_BYTES`. Container templates live in
+`deploy/stage4.Dockerfile` and `deploy/docker-compose.stage4.yml`.
 
 The v0.3.x public tutorial scaffold is documented in
 `docs/mlci_public_tutorial.md`. The included CTC-style fixture validates the
@@ -246,7 +249,9 @@ ZIP archive with submitted rows, parameters, exact result JSON, summary rows,
 Markdown report, manifest, and SHA-256 checksums. Durable job storage is
 available only when a job-store directory is explicitly configured, so uploaded
 tables are not silently written to disk by default. The store also supports
-summary and prune routes for simple retention policy checks.
+summary and prune routes for simple retention policy checks. Stage 4 also
+supports raw CSV upload routes for larger tables, optional API-key protection,
+and explicit row/upload quotas for service deployments.
 
 The Stage 3 bank is summarized in `docs/stage3_case_study_bank.md` and audited
 by `case_studies/stage3_case_study_bank_gate_report.json`. Three lightweight
