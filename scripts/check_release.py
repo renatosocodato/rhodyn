@@ -48,6 +48,7 @@ def _text_files(root: Path) -> list[Path]:
             ".csv",
             ".in",
             ".ipynb",
+            ".example",
         }:
             files.append(path)
     return files

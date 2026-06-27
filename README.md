@@ -14,13 +14,14 @@ future examples.
 
 ## Current status
 
-This is an early open-core scaffold at the end of the `v0.3.x` public
-case-study lane.
+This is an early open-core scaffold with the `v0.3.x` public case-study lane
+closed for the current evidence gate and Stage 4 backend hardening underway.
 
 The staged development plan is anchored in `docs/roadmap.md`. The current
-position is Stage 3D completed and the Stage 3 evidence bank is closable for
-v0.3. Backend, frontend, official release, Nature Methods, and product work
-remain downstream of this evidence bank.
+position is Stage 3D completed, the Stage 3 evidence bank is closable for v0.3,
+and Stage 4 is the active engineering stage. Frontend, official release, Nature
+Methods, and product work remain downstream of this evidence bank and backend
+contract.
 
 Included now:
 
@@ -189,6 +190,11 @@ Run the backend with explicit durable job storage.
 RHODYN_JOB_STORE_DIR=.rhodyn_jobs uvicorn rhodyn.backend:app --reload
 ```
 
+Deployment environment examples live in `deploy/stage4.env.example`. Retention
+limits can be configured with `RHODYN_JOB_RETENTION_MAX_JOBS`,
+`RHODYN_JOB_RETENTION_MAX_BYTES`, and
+`RHODYN_JOB_RETENTION_MAX_AGE_SECONDS`.
+
 The v0.3.x public tutorial scaffold is documented in
 `docs/mlci_public_tutorial.md`. The included CTC-style fixture validates the
 adapter, and the small public feature subset demonstrates centroid, area, and
@@ -239,7 +245,8 @@ library as the source of analysis behavior. The job-bundle endpoint returns a
 ZIP archive with submitted rows, parameters, exact result JSON, summary rows,
 Markdown report, manifest, and SHA-256 checksums. Durable job storage is
 available only when a job-store directory is explicitly configured, so uploaded
-tables are not silently written to disk by default.
+tables are not silently written to disk by default. The store also supports
+summary and prune routes for simple retention policy checks.
 
 The Stage 3 bank is summarized in `docs/stage3_case_study_bank.md` and audited
 by `case_studies/stage3_case_study_bank_gate_report.json`. Three lightweight

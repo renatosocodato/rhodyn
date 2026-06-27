@@ -9,6 +9,7 @@ from typing import Any, Callable
 
 from rhodyn.backend_core import (
     FileJobStore,
+    JobRetentionPolicy,
     build_analysis_bundle,
     compare_endpoint_models,
     decide_coupling_table,
@@ -37,7 +38,30 @@ def _call(func: Callable[[], dict[str, Any]]) -> dict[str, Any]:
         return {"status": "fail", "error": str(exc)}
 
 
-def create_app(job_store_dir: str | Path | None = None) -> Any:
+def _env_int(name: str) -> int | None:
+    value = os.environ.get(name)
+    return int(value) if value not in (None, "") else None
+
+
+def _env_float(name: str) -> float | None:
+    value = os.environ.get(name)
+    return float(value) if value not in (None, "") else None
+
+
+def _retention_from_env() -> JobRetentionPolicy | None:
+    policy = JobRetentionPolicy(
+        max_jobs=_env_int("RHODYN_JOB_RETENTION_MAX_JOBS"),
+        max_bytes=_env_int("RHODYN_JOB_RETENTION_MAX_BYTES"),
+        max_age_seconds=_env_float("RHODYN_JOB_RETENTION_MAX_AGE_SECONDS"),
+    )
+    return policy if policy.is_enabled() else None
+
+
+def create_app(
+    job_store_dir: str | Path | None = None,
+    *,
+    retention_policy: JobRetentionPolicy | None = None,
+) -> Any:
     """Create the FastAPI app.
 
     FastAPI is optional so importing :mod:`rhodyn.backend` does not add runtime
@@ -52,7 +76,8 @@ def create_app(job_store_dir: str | Path | None = None) -> Any:
         raise RuntimeError("FastAPI backend requires installing rhodyn[backend]") from exc
 
     store_dir = job_store_dir if job_store_dir is not None else os.environ.get("RHODYN_JOB_STORE_DIR")
-    job_store = FileJobStore(store_dir) if store_dir else None
+    policy = retention_policy if retention_policy is not None else _retention_from_env()
+    job_store = FileJobStore(store_dir, retention_policy=policy) if store_dir else None
 
     app = FastAPI(
         title="RhoDyn backend",
@@ -66,6 +91,7 @@ def create_app(job_store_dir: str | Path | None = None) -> Any:
             "status": "pass",
             "software_version": software_version(),
             "durable_job_storage": bool(job_store),
+            "retention_policy": policy.as_dict() if policy else None,
         }
 
     @app.get("/schemas")
@@ -186,6 +212,22 @@ def create_app(job_store_dir: str | Path | None = None) -> Any:
     def job_list() -> Any:
         try:
             return {"status": "pass", "jobs": require_job_store().list_jobs()}
+        except RuntimeError as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=503)
+
+    @app.get("/jobs/summary")
+    def job_summary() -> Any:
+        try:
+            return {"status": "pass", "summary": require_job_store().storage_summary()}
+        except RuntimeError as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=503)
+
+    @app.post("/jobs/prune")
+    def job_prune(payload: dict[str, Any] | None = None) -> Any:
+        try:
+            body = dict(payload or {})
+            dry_run = bool(body.get("dry_run", False))
+            return {"status": "pass", "prune": require_job_store().prune(dry_run=dry_run)}
         except RuntimeError as exc:
             return JSONResponse({"status": "fail", "error": str(exc)}, status_code=503)
 

@@ -2,13 +2,17 @@ import csv
 import hashlib
 import importlib.util
 import json
+import os
 import tempfile
 import zipfile
+from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 from unittest import TestCase, skipUnless
+from unittest.mock import patch
 
 from rhodyn.backend_core import (
     FileJobStore,
+    JobRetentionPolicy,
     build_analysis_bundle,
     compare_endpoint_models,
     decide_coupling_table,
@@ -29,6 +33,17 @@ from rhodyn.schema import read_coupling_csv, read_endpoint_csv, read_trajectory_
 def _rows(path: str) -> list[dict[str, str]]:
     with Path(path).open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
+
+
+class _StepClock:
+    def __init__(self, start: float = 1000.0, step: float = 1.0):
+        self.value = start
+        self.step = step
+
+    def __call__(self) -> float:
+        current = self.value
+        self.value += self.step
+        return current
 
 
 class BackendCoreTests(TestCase):
@@ -199,6 +214,75 @@ class BackendCoreTests(TestCase):
             with self.assertRaises(ValueError):
                 store.get_metadata("../not_a_job")
 
+    def test_file_job_store_retention_prunes_oldest_jobs_by_count(self):
+        clock = _StepClock()
+        with tempfile.TemporaryDirectory() as tmp:
+            store = FileJobStore(tmp, retention_policy=JobRetentionPolicy(max_jobs=2), clock=clock)
+            first = store.submit("score_residence", _rows("examples/synthetic_trajectory.csv"), parameters={"low": 0.30, "high": 0.75})
+            second = store.submit("score_residence", _rows("examples/synthetic_trajectory.csv"), parameters={"low": 0.35, "high": 0.75})
+            third = store.submit("score_residence", _rows("examples/synthetic_trajectory.csv"), parameters={"low": 0.40, "high": 0.75})
+
+            remaining = {job["job_id"] for job in store.list_jobs()}
+            self.assertEqual(remaining, {second.job_id, third.job_id})
+            with self.assertRaises(KeyError):
+                store.get_metadata(first.job_id)
+
+    def test_file_job_store_retention_supports_age_dry_run_and_prune(self):
+        clock = _StepClock(start=10.0, step=10.0)
+        with tempfile.TemporaryDirectory() as tmp:
+            store = FileJobStore(tmp, clock=clock)
+            old = store.submit("score_residence", _rows("examples/synthetic_trajectory.csv"), parameters={"low": 0.30, "high": 0.75})
+            recent = store.submit("score_residence", _rows("examples/synthetic_trajectory.csv"), parameters={"low": 0.40, "high": 0.75})
+            policy = JobRetentionPolicy(max_age_seconds=15.0)
+
+            dry = store.prune(policy, now_epoch=30.0, dry_run=True)
+            self.assertEqual(dry["removed_jobs"], [old.job_id])
+            self.assertEqual(sorted(job["job_id"] for job in store.list_jobs()), sorted([old.job_id, recent.job_id]))
+
+            pruned = store.prune(policy, now_epoch=30.0)
+            self.assertEqual(pruned["removed_jobs"], [old.job_id])
+            self.assertEqual([job["job_id"] for job in store.list_jobs()], [recent.job_id])
+
+    def test_file_job_store_concurrent_submit_and_read_preserves_one_bundle(self):
+        rows = _rows("examples/synthetic_endpoints.csv")
+        parameters = {"parameter_count": 1}
+        with tempfile.TemporaryDirectory() as tmp:
+            store = FileJobStore(tmp)
+
+            def submit_job() -> tuple[str, str]:
+                stored = store.submit("compare_models", rows, parameters=parameters)
+                metadata, bundle = store.read_bundle(stored.job_id)
+                return stored.job_id, metadata["bundle_sha256"], hashlib.sha256(bundle).hexdigest()
+
+            with ThreadPoolExecutor(max_workers=8) as executor:
+                submitted = list(executor.map(lambda _: submit_job(), range(24)))
+
+            job_ids = {item[0] for item in submitted}
+            self.assertEqual(len(job_ids), 1)
+            self.assertEqual(len(store.list_jobs()), 1)
+            self.assertTrue(all(item[1] == item[2] for item in submitted))
+            job_id = next(iter(job_ids))
+
+            def read_job() -> tuple[str, str]:
+                metadata, bundle = store.read_bundle(job_id)
+                result = store.get_result(job_id)
+                return (
+                    result["typed_result"]["best_model"],
+                    hashlib.sha256(bundle).hexdigest(),
+                    metadata["bundle_sha256"],
+                )
+
+            with ThreadPoolExecutor(max_workers=8) as executor:
+                reads = list(executor.map(lambda _: read_job(), range(24)))
+
+            self.assertEqual({item[0] for item in reads}, {"residence_gated"})
+            self.assertTrue(all(item[1] == item[2] for item in reads))
+            summary = store.storage_summary()
+            self.assertEqual(summary["job_count"], 1)
+            self.assertGreater(summary["total_bundle_bytes"], 0)
+            self.assertEqual(summary["storage_backend"], "filesystem")
+            self.assertNotIn("root", summary)
+
 
 @skipUnless(
     importlib.util.find_spec("fastapi") and importlib.util.find_spec("httpx2"),
@@ -214,6 +298,7 @@ class BackendFastApiTests(TestCase):
         health = client.get("/health")
         self.assertEqual(health.status_code, 200)
         self.assertEqual(health.json()["status"], "pass")
+        self.assertFalse(health.json()["durable_job_storage"])
 
         response = client.post(
             "/residence/score",
@@ -266,7 +351,9 @@ class BackendFastApiTests(TestCase):
         from rhodyn.backend import create_app
 
         with tempfile.TemporaryDirectory() as tmp:
-            client = TestClient(create_app(job_store_dir=tmp))
+            client = TestClient(create_app(job_store_dir=tmp, retention_policy=JobRetentionPolicy(max_jobs=10)))
+            health = client.get("/health")
+            self.assertEqual(health.json()["retention_policy"]["max_jobs"], 10)
             rows = _rows("examples/synthetic_endpoints.csv")
             response = client.post(
                 "/jobs/submit",
@@ -286,6 +373,12 @@ class BackendFastApiTests(TestCase):
             self.assertEqual(listing.status_code, 200)
             self.assertEqual([job["job_id"] for job in listing.json()["jobs"]], [job_id])
 
+            summary = client.get("/jobs/summary")
+            self.assertEqual(summary.status_code, 200)
+            self.assertEqual(summary.json()["summary"]["job_count"], 1)
+            self.assertEqual(summary.json()["summary"]["storage_backend"], "filesystem")
+            self.assertNotIn("root", summary.json()["summary"])
+
             metadata = client.get(f"/jobs/{job_id}")
             self.assertEqual(metadata.status_code, 200)
             self.assertEqual(metadata.json()["stored_job"]["bundle_sha256"], payload["stored_job"]["bundle_sha256"])
@@ -301,3 +394,28 @@ class BackendFastApiTests(TestCase):
                 bundle.headers["x-rhodyn-bundle-sha256"],
                 hashlib.sha256(bundle.content).hexdigest(),
             )
+
+            dry_prune = client.post("/jobs/prune", json={"dry_run": True})
+            self.assertEqual(dry_prune.status_code, 200)
+            self.assertEqual(dry_prune.json()["prune"]["removed_jobs"], [])
+
+    def test_fastapi_reads_store_and_retention_from_environment(self):
+        from fastapi.testclient import TestClient
+
+        from rhodyn.backend import create_app
+
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(
+            os.environ,
+            {
+                "RHODYN_JOB_STORE_DIR": tmp,
+                "RHODYN_JOB_RETENTION_MAX_JOBS": "1",
+                "RHODYN_JOB_RETENTION_MAX_BYTES": "1000000",
+                "RHODYN_JOB_RETENTION_MAX_AGE_SECONDS": "3600",
+            },
+        ):
+            client = TestClient(create_app())
+            health = client.get("/health").json()
+            self.assertTrue(health["durable_job_storage"])
+            self.assertEqual(health["retention_policy"]["max_jobs"], 1)
+            self.assertEqual(health["retention_policy"]["max_bytes"], 1000000)
+            self.assertEqual(health["retention_policy"]["max_age_seconds"], 3600.0)

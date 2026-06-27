@@ -11,11 +11,14 @@ import csv
 import hashlib
 import json
 import re
+import shutil
 import tempfile
+import time
 import zipfile
 from dataclasses import dataclass
 from io import BytesIO, StringIO
 from pathlib import Path
+from threading import RLock
 from typing import Any
 
 from rhodyn.compare import rank_model_fits
@@ -61,6 +64,25 @@ class StoredJob:
     metadata: dict[str, Any]
     result: dict[str, Any]
     bundle_path: Path
+
+
+@dataclass(frozen=True)
+class JobRetentionPolicy:
+    """Optional retention limits for durable job storage."""
+
+    max_jobs: int | None = None
+    max_bytes: int | None = None
+    max_age_seconds: float | None = None
+
+    def is_enabled(self) -> bool:
+        return self.max_jobs is not None or self.max_bytes is not None or self.max_age_seconds is not None
+
+    def as_dict(self) -> dict[str, Any]:
+        return {
+            "max_jobs": self.max_jobs,
+            "max_bytes": self.max_bytes,
+            "max_age_seconds": self.max_age_seconds,
+        }
 
 
 def _stable_payload_hash(payload: object) -> str:
@@ -478,6 +500,10 @@ def _validate_job_id(job_id: str) -> str:
     return job_id
 
 
+def _now_epoch() -> float:
+    return time.time()
+
+
 def build_analysis_bundle(
     operation: str,
     rows: list[dict[str, Any]],
@@ -552,8 +578,17 @@ class FileJobStore:
     retrieval. It does not re-run or reinterpret results on read.
     """
 
-    def __init__(self, root: str | Path):
+    def __init__(
+        self,
+        root: str | Path,
+        *,
+        retention_policy: JobRetentionPolicy | None = None,
+        clock: Any | None = None,
+    ):
         self.root = Path(root)
+        self.retention_policy = retention_policy
+        self._clock = clock or _now_epoch
+        self._lock = RLock()
 
     def _job_dir(self, job_id: str) -> Path:
         return self.root / _validate_job_id(job_id)
@@ -576,106 +611,192 @@ class FileJobStore:
     ) -> StoredJob:
         """Run, bundle, and durably store one backend job."""
 
-        bundle = build_analysis_bundle(operation, rows, parameters=parameters)
-        result = _zip_json_member(bundle.data, "result.json")
-        job = dict(bundle.manifest["job"])
-        job_id = _validate_job_id(str(job["job_id"]))
-        job_dir = self._job_dir(job_id)
-        existing_metadata = self._metadata_path(job_id)
-        if existing_metadata.exists():
-            metadata = json.loads(existing_metadata.read_text(encoding="utf-8"))
-            if metadata.get("bundle_sha256") != bundle.sha256:
-                raise ValueError(f"stored job {job_id} has a conflicting bundle hash")
-            return StoredJob(
-                job_id=job_id,
-                metadata=metadata,
-                result=self.get_result(job_id),
-                bundle_path=self._bundle_path(job_id),
-            )
+        with self._lock:
+            bundle = build_analysis_bundle(operation, rows, parameters=parameters)
+            result = _zip_json_member(bundle.data, "result.json")
+            job = dict(bundle.manifest["job"])
+            job_id = _validate_job_id(str(job["job_id"]))
+            job_dir = self._job_dir(job_id)
+            if self.retention_policy and self.retention_policy.is_enabled():
+                self.prune()
+            existing_metadata = self._metadata_path(job_id)
+            if existing_metadata.exists():
+                metadata = json.loads(existing_metadata.read_text(encoding="utf-8"))
+                if metadata.get("bundle_sha256") != bundle.sha256:
+                    raise ValueError(f"stored job {job_id} has a conflicting bundle hash")
+                return StoredJob(
+                    job_id=job_id,
+                    metadata=metadata,
+                    result=self.get_result(job_id),
+                    bundle_path=self._bundle_path(job_id),
+                )
 
-        job_dir.mkdir(parents=True, exist_ok=True)
-        extracted_files = {
-            "input_rows.csv": _zip_member(bundle.data, "input_rows.csv"),
-            "parameters.json": _zip_member(bundle.data, "parameters.json"),
-            "result.json": _zip_member(bundle.data, "result.json"),
-            "result_rows.csv": _zip_member(bundle.data, "result_rows.csv"),
-            "report.md": _zip_member(bundle.data, "report.md"),
-            "bundle_manifest.json": _zip_member(bundle.data, "manifest.json"),
-        }
-        for name, data in sorted(extracted_files.items()):
-            _atomic_write(job_dir / name, data)
-        _atomic_write(self._bundle_path(job_id), bundle.data)
-        metadata = {
-            "store_format": JOB_STORE_FORMAT,
-            "job_id": job_id,
-            "operation": operation,
-            "status": result.get("status", ""),
-            "job": job,
-            "bundle_filename": bundle.filename,
-            "bundle_sha256": bundle.sha256,
-            "bundle_bytes": len(bundle.data),
-            "stored_files": [
-                {
-                    "path": name,
-                    "bytes": len(data),
-                    "sha256": hashlib.sha256(data).hexdigest(),
-                }
-                for name, data in sorted(extracted_files.items())
-            ]
-            + [
-                {
-                    "path": "bundle.zip",
-                    "bytes": len(bundle.data),
-                    "sha256": bundle.sha256,
-                }
-            ],
-            "interpretation_boundary": (
-                "Stored jobs preserve submitted rows, declared parameters, exact result JSON, "
-                "and the downloadable bundle. Reading a stored job does not re-run analysis or "
-                "upgrade a result into a biological mechanism."
-            ),
-        }
-        _atomic_write(
-            self._metadata_path(job_id),
-            json.dumps(metadata, indent=2, sort_keys=True).encode("utf-8") + b"\n",
-        )
-        return StoredJob(job_id=job_id, metadata=metadata, result=result, bundle_path=self._bundle_path(job_id))
+            stored_at_epoch = float(self._clock())
+            job_dir.mkdir(parents=True, exist_ok=True)
+            extracted_files = {
+                "input_rows.csv": _zip_member(bundle.data, "input_rows.csv"),
+                "parameters.json": _zip_member(bundle.data, "parameters.json"),
+                "result.json": _zip_member(bundle.data, "result.json"),
+                "result_rows.csv": _zip_member(bundle.data, "result_rows.csv"),
+                "report.md": _zip_member(bundle.data, "report.md"),
+                "bundle_manifest.json": _zip_member(bundle.data, "manifest.json"),
+            }
+            for name, data in sorted(extracted_files.items()):
+                _atomic_write(job_dir / name, data)
+            _atomic_write(self._bundle_path(job_id), bundle.data)
+            metadata = {
+                "store_format": JOB_STORE_FORMAT,
+                "job_id": job_id,
+                "operation": operation,
+                "status": result.get("status", ""),
+                "job": job,
+                "bundle_filename": bundle.filename,
+                "bundle_sha256": bundle.sha256,
+                "bundle_bytes": len(bundle.data),
+                "stored_at_epoch": stored_at_epoch,
+                "retention_policy": self.retention_policy.as_dict() if self.retention_policy else None,
+                "stored_files": [
+                    {
+                        "path": name,
+                        "bytes": len(data),
+                        "sha256": hashlib.sha256(data).hexdigest(),
+                    }
+                    for name, data in sorted(extracted_files.items())
+                ]
+                + [
+                    {
+                        "path": "bundle.zip",
+                        "bytes": len(bundle.data),
+                        "sha256": bundle.sha256,
+                    }
+                ],
+                "interpretation_boundary": (
+                    "Stored jobs preserve submitted rows, declared parameters, exact result JSON, "
+                    "and the downloadable bundle. Reading a stored job does not re-run analysis or "
+                    "upgrade a result into a biological mechanism."
+                ),
+            }
+            _atomic_write(
+                self._metadata_path(job_id),
+                json.dumps(metadata, indent=2, sort_keys=True).encode("utf-8") + b"\n",
+            )
+            stored = StoredJob(job_id=job_id, metadata=metadata, result=result, bundle_path=self._bundle_path(job_id))
+            if self.retention_policy and self.retention_policy.is_enabled():
+                self.prune()
+            return stored
 
     def get_metadata(self, job_id: str) -> dict[str, Any]:
         """Return stored job metadata without re-running analysis."""
 
-        path = self._metadata_path(job_id)
-        if not path.exists():
-            raise KeyError(f"stored job not found: {job_id}")
-        return json.loads(path.read_text(encoding="utf-8"))
+        with self._lock:
+            path = self._metadata_path(job_id)
+            if not path.exists():
+                raise KeyError(f"stored job not found: {job_id}")
+            return json.loads(path.read_text(encoding="utf-8"))
 
     def get_result(self, job_id: str) -> dict[str, Any]:
         """Return the persisted result JSON for one job."""
 
-        path = self._result_path(job_id)
-        if not path.exists():
-            raise KeyError(f"stored job result not found: {job_id}")
-        return json.loads(path.read_text(encoding="utf-8"))
+        with self._lock:
+            path = self._result_path(job_id)
+            if not path.exists():
+                raise KeyError(f"stored job result not found: {job_id}")
+            return json.loads(path.read_text(encoding="utf-8"))
 
     def read_bundle(self, job_id: str) -> tuple[dict[str, Any], bytes]:
         """Return stored job metadata and ZIP bundle bytes."""
 
-        metadata = self.get_metadata(job_id)
-        bundle_path = self._bundle_path(job_id)
-        if not bundle_path.exists():
-            raise KeyError(f"stored job bundle not found: {job_id}")
-        data = bundle_path.read_bytes()
-        if hashlib.sha256(data).hexdigest() != metadata.get("bundle_sha256"):
-            raise ValueError(f"stored job bundle hash mismatch: {job_id}")
-        return metadata, data
+        with self._lock:
+            metadata = self.get_metadata(job_id)
+            bundle_path = self._bundle_path(job_id)
+            if not bundle_path.exists():
+                raise KeyError(f"stored job bundle not found: {job_id}")
+            data = bundle_path.read_bytes()
+            if hashlib.sha256(data).hexdigest() != metadata.get("bundle_sha256"):
+                raise ValueError(f"stored job bundle hash mismatch: {job_id}")
+            return metadata, data
 
     def list_jobs(self) -> list[dict[str, Any]]:
         """List stored jobs in deterministic job-id order."""
 
-        if not self.root.exists():
-            return []
-        jobs: list[dict[str, Any]] = []
-        for path in sorted(self.root.iterdir()):
-            if path.is_dir() and JOB_ID_PATTERN.match(path.name):
-                jobs.append(self.get_metadata(path.name))
-        return jobs
+        with self._lock:
+            if not self.root.exists():
+                return []
+            jobs: list[dict[str, Any]] = []
+            for path in sorted(self.root.iterdir()):
+                if path.is_dir() and JOB_ID_PATTERN.match(path.name):
+                    try:
+                        jobs.append(self.get_metadata(path.name))
+                    except (KeyError, json.JSONDecodeError):
+                        continue
+            return jobs
+
+    def storage_summary(self) -> dict[str, Any]:
+        """Summarize durable storage without reading submitted input tables."""
+
+        with self._lock:
+            jobs = self.list_jobs()
+            total_bytes = sum(int(job.get("bundle_bytes", 0)) for job in jobs)
+            return {
+                "store_format": JOB_STORE_FORMAT,
+                "storage_backend": "filesystem",
+                "job_count": len(jobs),
+                "total_bundle_bytes": total_bytes,
+                "retention_policy": self.retention_policy.as_dict() if self.retention_policy else None,
+                "job_ids": [job["job_id"] for job in jobs],
+            }
+
+    def prune(
+        self,
+        retention_policy: JobRetentionPolicy | None = None,
+        *,
+        now_epoch: float | None = None,
+        dry_run: bool = False,
+    ) -> dict[str, Any]:
+        """Prune stored jobs according to age, count, or bundle-byte limits."""
+
+        policy = retention_policy or self.retention_policy
+        if policy is None or not policy.is_enabled():
+            return {
+                "status": "pass",
+                "dry_run": dry_run,
+                "removed_jobs": [],
+                "kept_jobs": [job["job_id"] for job in self.list_jobs()],
+                "retention_policy": policy.as_dict() if policy else None,
+                "reason": "no retention limits configured",
+            }
+        with self._lock:
+            jobs = sorted(self.list_jobs(), key=lambda job: (float(job.get("stored_at_epoch", 0.0)), job["job_id"]))
+            now = float(self._clock() if now_epoch is None else now_epoch)
+            remove: set[str] = set()
+            if policy.max_age_seconds is not None:
+                for job in jobs:
+                    age = now - float(job.get("stored_at_epoch", 0.0))
+                    if age > policy.max_age_seconds:
+                        remove.add(job["job_id"])
+            remaining = [job for job in jobs if job["job_id"] not in remove]
+            if policy.max_jobs is not None and policy.max_jobs >= 0 and len(remaining) > policy.max_jobs:
+                for job in remaining[: len(remaining) - policy.max_jobs]:
+                    remove.add(job["job_id"])
+            remaining = [job for job in jobs if job["job_id"] not in remove]
+            if policy.max_bytes is not None and policy.max_bytes >= 0:
+                total = sum(int(job.get("bundle_bytes", 0)) for job in remaining)
+                for job in remaining:
+                    if total <= policy.max_bytes:
+                        break
+                    remove.add(job["job_id"])
+                    total -= int(job.get("bundle_bytes", 0))
+            removed_jobs = sorted(remove)
+            if not dry_run:
+                for job_id in removed_jobs:
+                    shutil.rmtree(self._job_dir(job_id), ignore_errors=True)
+            kept_jobs = [job["job_id"] for job in self.list_jobs()] if not dry_run else [
+                job["job_id"] for job in jobs if job["job_id"] not in remove
+            ]
+            return {
+                "status": "pass",
+                "dry_run": dry_run,
+                "removed_jobs": removed_jobs,
+                "kept_jobs": kept_jobs,
+                "retention_policy": policy.as_dict(),
+            }

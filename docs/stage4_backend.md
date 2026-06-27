@@ -23,6 +23,16 @@ service should persist uploaded rows, parameters, result JSON, and bundles.
 RHODYN_JOB_STORE_DIR=.rhodyn_jobs uvicorn rhodyn.backend:app --reload
 ```
 
+An example deployment environment file is provided at
+`deploy/stage4.env.example`.
+
+| variable | meaning |
+| --- | --- |
+| `RHODYN_JOB_STORE_DIR` | Persistent directory for stored jobs. If unset, durable routes return HTTP 503. |
+| `RHODYN_JOB_RETENTION_MAX_JOBS` | Optional maximum number of stored jobs. Oldest jobs are pruned first. |
+| `RHODYN_JOB_RETENTION_MAX_BYTES` | Optional maximum total stored bundle bytes. Oldest jobs are pruned first. |
+| `RHODYN_JOB_RETENTION_MAX_AGE_SECONDS` | Optional maximum job age in seconds. |
+
 ## Endpoint contract
 
 Every analysis response carries a `job` object with a deterministic job ID,
@@ -173,6 +183,8 @@ checksums for every payload file. The HTTP response also carries
 
 - `POST /jobs/submit`
 - `GET /jobs`
+- `GET /jobs/summary`
+- `POST /jobs/prune`
 - `GET /jobs/{job_id}`
 - `GET /jobs/{job_id}/result`
 - `GET /jobs/{job_id}/bundle`
@@ -199,6 +211,15 @@ analysis. The stored job ID remains a function of operation, input rows,
 parameters, table kind, and RhoDyn version, so repeated submission of identical
 payloads resolves to the same stored job.
 
+`GET /jobs/summary` returns job count, stored bundle bytes, configured
+retention policy, and stored job IDs without reading submitted input tables.
+`POST /jobs/prune` applies the configured retention policy. Pass
+`{"dry_run": true}` to preview removal without deleting job directories.
+
+Retention policy is deliberately simple in Stage 4. Jobs are pruned by age,
+then count, then total bundle bytes, always removing the oldest stored jobs
+first. Pruning never changes a retained job's result JSON or bundle.
+
 ## Stage 4 gate
 
 - Backend outputs must match the Python library outputs exactly.
@@ -211,5 +232,7 @@ payloads resolves to the same stored job.
 - Stored jobs must preserve submitted rows, parameters, exact JSON result,
   downloadable bundle bytes, and RhoDyn version without re-running analysis on
   retrieval.
+- Retention policy must remove whole job directories only. It must not edit
+  retained result JSON, input rows, reports, or bundles.
 - Biological interpretation remains scoped to the submitted rows and declared
   parameters.

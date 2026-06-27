@@ -30,6 +30,8 @@ Started:
 - explicit Stage 4 filesystem job store that persists submitted rows,
   parameters, exact result JSON, result rows, reports, bundle manifests, and ZIP
   bundles only when a job-store directory is configured;
+- Stage 4 retention-policy controls, storage summary and prune routes,
+  concurrent submit/read stress tests, and deployment environment example;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

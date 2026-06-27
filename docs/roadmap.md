@@ -25,6 +25,21 @@ the v0.3 Stage 3 evidence bank is closable, with two public signaling systems,
 one public endpoint/model-comparison case, and one public bounded-coupling
 case.
 
+## Roadmap lock
+
+This section binds the original Stage 3 to Stage 8 blueprint to the current
+execution state. New work should map to one of these stages before it is treated
+as roadmap work.
+
+| stage | current state | binding rule |
+| --- | --- | --- |
+| Stage 3. Case-study evidence bank | Complete for the v0.3 gate. | Keep the evidence bank stable. Additional public biological systems are Stage 7 evidence expansion unless they repair a documented Stage 3 defect. |
+| Stage 4. Backend | Active. | Continue only where service outputs match the Python library exactly and preserve input schema, parameters, software version, and downloadable bundles. |
+| Stage 5. Frontend | Not started. | Do not build the workbench until the backend contract is stable enough for uploaded-table jobs and reproducible exports. |
+| Stage 6. Official software release | Partly prepared. | Do not call the package professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene are complete. |
+| Stage 7. Nature Methods first | Not ready. | Treat this as a later scientific-methods campaign, not as a rebranding of the RhoA/microglia manuscript or the Stage 3 examples. |
+| Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Nature Methods framing and should not lead the scientific evidence path. |
+
 ## Non-drift principles
 
 - RhoDyn is a general method for dynamic operating-state analysis in live-cell
@@ -162,10 +177,13 @@ job store. The service persists submitted rows, parameters, exact result JSON,
 result rows, Markdown reports, bundle manifests, and bundle ZIP files only when
 `RHODYN_JOB_STORE_DIR` or `create_app(job_store_dir=...)` is configured.
 Retrieval returns persisted outputs rather than re-running analysis.
+The current operational hardening pass adds retention-policy controls, storage
+summary and prune routes, concurrent submit/read stress tests, and a deployment
+environment template while keeping analysis results delegated to the library.
 
-The next backend increment should harden operational behavior around this
-store, including retention policy, concurrency stress tests, and deployment
-configuration, while preserving exact library-output agreement.
+The next backend increment should focus on authentication, quota behavior,
+larger-file upload handling, and deployment templates, while preserving exact
+library-output agreement.
 
 ## Stage 5. Frontend
 

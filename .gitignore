@@ -12,4 +12,4 @@ htmlcov/
 .coverage
 tmp/
 outputs/
-
+.rhodyn_jobs/

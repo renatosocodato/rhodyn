@@ -3,6 +3,7 @@
 from rhodyn.backend_core import (
     AnalysisBundle,
     FileJobStore,
+    JobRetentionPolicy,
     StoredJob,
     build_analysis_bundle,
     compare_endpoint_models,
@@ -80,6 +81,7 @@ __all__ = [
     "BootstrapResult",
     "AnalysisBundle",
     "FileJobStore",
+    "JobRetentionPolicy",
     "StoredJob",
     "CTC_LINEAGE_SIGNAL_CHOICES",
     "CTC_SIGNAL_CHOICES",

@@ -6,6 +6,7 @@ include CHANGELOG.md
 include REPRODUCING.md
 recursive-include docs *.md
 recursive-include case_studies *.csv *.json *.tsv *.txt
+recursive-include deploy *.example
 recursive-include examples *.csv *.py *.txt
 recursive-include notebooks *.ipynb
 recursive-include scripts *.py
