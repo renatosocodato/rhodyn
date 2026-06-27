@@ -41,6 +41,9 @@ Started:
 - Stage 4 FastAPI upload stress audit for larger synthetic tables,
   authentication, row/upload quotas, durable submit/retrieve behavior,
   concurrent upload determinism, and retention pruning;
+- Stage 4 Docker deployment smoke audit for hosted-service environment
+  variables, image build, container startup, HTTP upload/job routes, bundle
+  hashes, authentication, quotas, and retention behavior;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

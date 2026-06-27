@@ -202,6 +202,12 @@ Stress-test FastAPI upload, quota, auth, and durable-job behavior.
 PYTHONPATH=src python scripts/audit_stage4_upload_stress.py
 ```
 
+Smoke-test the Docker deployment template against the same upload/job contract.
+
+```bash
+python scripts/audit_stage4_docker_smoke.py
+```
+
 Deployment environment examples live in `deploy/stage4.env.example`. Retention
 limits can be configured with `RHODYN_JOB_RETENTION_MAX_JOBS`,
 `RHODYN_JOB_RETENTION_MAX_BYTES`, and

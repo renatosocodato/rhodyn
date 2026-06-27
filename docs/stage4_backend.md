@@ -288,6 +288,19 @@ durable submit/retrieve behavior, repeated concurrent uploads, authentication,
 row limits, upload-byte limits, and retention pruning. It remains a service
 contract test, not a new biological example.
 
+Run the Docker deployment smoke audit when a Docker daemon is available.
+
+```bash
+python scripts/audit_stage4_docker_smoke.py
+```
+
+This audit checks the Dockerfile and Compose template, builds the Stage 4 image,
+starts the service with deployment-like `RHODYN_*` environment variables, and
+exercises the HTTP upload, bundle, durable job, authentication, quota, and
+retention paths through the running container. The audit records when the
+Compose CLI is unavailable, but it still checks that the Compose template and
+environment example declare the required hosted-service variables.
+
 ## Stage 4 gate
 
 - Backend outputs must match the Python library outputs exactly.
@@ -314,3 +327,6 @@ contract test, not a new biological example.
   retained result JSON, input rows, reports, or bundles.
 - Biological interpretation remains scoped to the submitted rows and declared
   parameters.
+- Docker deployment must start with explicit job-store, authentication, quota,
+  and retention environment variables, and the running service must preserve
+  the same upload/job/bundle behavior as the Python service.
