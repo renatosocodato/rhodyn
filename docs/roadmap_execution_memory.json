@@ -1,0 +1,89 @@
+{
+  "project": "RhoDyn",
+  "purpose": "Roadmap execution memory for the original Stage 3 to Stage 8 blueprint.",
+  "updated": "2026-06-27",
+  "current_position": {
+    "after_v0_2_0": "Core-methods pass completed.",
+    "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
+    "active_stage": "Stage 4. Backend",
+    "next_stage_not_active_until": "Stage 5 begins only after the Stage 4 backend contract is stable for uploaded-table jobs and reproducible exports."
+  },
+  "stage_lock": [
+    {
+      "stage": 3,
+      "name": "Case-study evidence bank",
+      "status": "complete_for_current_gate",
+      "scope_rule": "Keep the evidence bank stable. Additional public biological systems are Stage 7 evidence expansion unless they repair a documented Stage 3 defect.",
+      "gate": [
+        "At least two biological systems show a residence/amplitude distinction.",
+        "At least one case shows bounded coupling or reserve logic.",
+        "Examples do not imply RhoDyn generated the original manuscript results."
+      ]
+    },
+    {
+      "stage": 4,
+      "name": "Backend",
+      "status": "active",
+      "scope_rule": "Continue only where service outputs match the Python library exactly and preserve input schema, parameter choices, software version, and downloadable bundles.",
+      "gate": [
+        "Every backend result matches the Python library output exactly.",
+        "No hidden state.",
+        "Jobs preserve input schema, parameter choices, and software version."
+      ]
+    },
+    {
+      "stage": 5,
+      "name": "Frontend",
+      "status": "not_started",
+      "scope_rule": "Do not build the workbench until the backend contract is stable enough for uploaded-table jobs, parameter inspection, and reproducible exports.",
+      "gate": [
+        "A biologist can upload a tidy table and interpret amplitude-like versus residence-like behavior without reading code.",
+        "A quantitative user can inspect every parameter and reproduce the result from CLI."
+      ]
+    },
+    {
+      "stage": 6,
+      "name": "Official software release",
+      "status": "partly_prepared_not_citable",
+      "scope_rule": "Do not call RhoDyn professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene pass together.",
+      "gate": [
+        "Wheel and source distribution install cleanly.",
+        "Documentation builds cleanly.",
+        "Examples run from scratch.",
+        "Release archive contains no private data, manuscript-private files, raw microscopy, or local paths."
+      ]
+    },
+    {
+      "stage": 7,
+      "name": "Nature Methods first",
+      "status": "not_ready",
+      "scope_rule": "Treat this as a future scientific-methods campaign, not a rebranding of the RhoA/microglia manuscript or the Stage 3 examples.",
+      "gate": [
+        "Formal method definition and mathematical model are complete.",
+        "Benchmarks cover amplitude-only, endpoint-only, threshold-only, and generic time-series summaries.",
+        "At least two independent biological demonstrations beyond the original manuscript logic are in place.",
+        "Software implementation, uncertainty handling, tutorials, GUI or hosted demo, and limitations section are ready."
+      ]
+    },
+    {
+      "stage": 8,
+      "name": "Product and commercial alignment",
+      "status": "conceptual_only",
+      "scope_rule": "Product strategy inherits the Nature Methods framing and must not lead the scientific evidence path.",
+      "gate": [
+        "Open-core library, CLI, public adapters, examples, and basic reports remain useful without paid features.",
+        "Paid or hosted features add collaboration, private data, batch jobs, richer dashboards, export logs, adapters, and deployments without changing scientific claims.",
+        "Commercial positioning remains dynamic operating-state interpretation for live-cell perturbation data."
+      ]
+    }
+  ],
+  "non_drift_rules": [
+    "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
+    "RhoDyn is not a reproduction pipeline for the RhoA/microglia manuscript.",
+    "The manuscript and Zenodo data remain an optional reference use case.",
+    "Stage 3 public examples teach what residence, buffering, bounded coupling, and routed outputs reveal beyond amplitude-only summaries.",
+    "Stage 4 backend work must delegate to stable Python library functions.",
+    "Stage 7 method evidence can expand the biological systems but should not reopen the Stage 3 closure unless a Stage 3 defect is found.",
+    "Stage 8 cannot reshape the Nature Methods evidence path."
+  ]
+}

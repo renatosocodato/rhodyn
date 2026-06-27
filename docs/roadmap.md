@@ -25,6 +25,42 @@ the v0.3 Stage 3 evidence bank is closable, with two public signaling systems,
 one public endpoint/model-comparison case, and one public bounded-coupling
 case.
 
+## Execution memory
+
+This file is the roadmap memory for RhoDyn. When a future change modifies
+scope, evidence, backend behavior, release posture, Nature Methods strategy, or
+commercial positioning, it must be mapped to one of the stages below before it
+is treated as project-direction work. The original Stage 3 to Stage 8 blueprint
+is retained as the controlling sequence, not as loose inspiration.
+The compact machine-readable companion is
+`docs/roadmap_execution_memory.json`.
+
+Current position after the v0.2.0 core-methods pass and v0.3.x public-data
+passes.
+
+1. Stage 3 is satisfied for the current evidence-bank gate and should be
+   frozen unless a documented defect in the evidence bank is found.
+2. Stage 4 is the active execution stage. Work here is backend/service
+   alignment around the already stable Python library surfaces.
+3. Stage 5 is not active until the Stage 4 backend contract is stable enough
+   for uploaded-table jobs, reproducible exports, and parameter inspection.
+4. Stage 6 is preparatory only until PyPI, Docker, Zenodo, docs, citation
+   metadata, release hygiene, and cross-version CI all pass together.
+5. Stage 7 is the future Nature Methods-first scientific-methods campaign. It
+   is not a rebranding of the RhoA/microglia manuscript and not a replacement
+   for Stage 3.
+6. Stage 8 inherits from Stage 7. Product strategy should not lead or reshape
+   the evidence path.
+
+Decision rule for new work. If a proposed task adds another public biological
+system, it is Stage 7 evidence expansion unless it fixes a Stage 3 defect. If a
+task adds service routes, storage, authentication, upload handling, or export
+bundles, it is Stage 4. If a task adds visual screens or user interaction, it is
+Stage 5. If a task adds packaging, DOI, distribution, or public citation
+surfaces, it is Stage 6. If a task changes commercial packaging, pricing,
+deployment, or team features, it is Stage 8 and must remain downstream of the
+Nature Methods method frame.
+
 ## Roadmap lock
 
 This section binds the original Stage 3 to Stage 8 blueprint to the current

@@ -18,6 +18,8 @@ REQUIRED_FILES = [
     "CHANGELOG.md",
     "REPRODUCING.md",
     "pyproject.toml",
+    "docs/roadmap.md",
+    "docs/roadmap_execution_memory.json",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
@@ -100,6 +102,36 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         failures.append("README does not preserve manuscript independence boundary")
     if "optional reference case study" not in readme:
         failures.append("README does not describe the manuscript package as an optional case study")
+
+    memory_path = root / "docs" / "roadmap_execution_memory.json"
+    gate_path = root / "case_studies" / "stage3_case_study_bank_gate_report.json"
+    if memory_path.exists():
+        try:
+            memory = json.loads(memory_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"roadmap execution memory is not valid JSON: {exc}")
+            memory = {}
+        current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
+        if current.get("active_stage") != "Stage 4. Backend":
+            failures.append("roadmap execution memory does not mark Stage 4 as the active stage")
+        stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
+        if stages.get(3, {}).get("status") != "complete_for_current_gate":
+            failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
+        if stages.get(7, {}).get("status") != "not_ready":
+            failures.append("roadmap execution memory does not keep Stage 7 as not ready")
+        if stages.get(8, {}).get("status") != "conceptual_only":
+            failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
+    if gate_path.exists():
+        try:
+            gate = json.loads(gate_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 3 gate report is not valid JSON: {exc}")
+            gate = {}
+        if gate.get("status") != "pass":
+            failures.append("Stage 3 case-study gate report does not pass")
+        boundary = str(gate.get("interpretation_boundary", ""))
+        if "do not imply that RhoDyn generated" not in boundary:
+            failures.append("Stage 3 gate report does not preserve manuscript-independence boundary")
 
     for path in _text_files(root):
         text = path.read_text(encoding="utf-8", errors="ignore")
