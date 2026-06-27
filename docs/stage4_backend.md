@@ -1,10 +1,10 @@
 # Stage 4 backend
 
-Stage 4 starts by making the frozen Stage 3 analysis surfaces executable as a
-stateless service. The backend does not introduce new biological interpretation
-or new fitting logic. Each endpoint delegates to the same Python functions used
-by the library and CLI, then returns JSON with the input schema, parameter
-choices, software version, and a deterministic job identifier.
+Stage 4 makes the frozen Stage 3 analysis surfaces executable as a service. The
+backend does not introduce new biological interpretation or new fitting logic.
+Each endpoint delegates to the same Python functions used by the library and
+CLI, then returns JSON with the input schema, parameter choices, software
+version, and a deterministic job identifier.
 
 ## Install
 
@@ -14,6 +14,13 @@ backend extra only when the FastAPI service is needed.
 ```bash
 python -m pip install 'rhodyn[backend]'
 uvicorn rhodyn.backend:app --reload
+```
+
+Durable server-side storage is explicit. Set `RHODYN_JOB_STORE_DIR` when the
+service should persist uploaded rows, parameters, result JSON, and bundles.
+
+```bash
+RHODYN_JOB_STORE_DIR=.rhodyn_jobs uvicorn rhodyn.backend:app --reload
 ```
 
 ## Endpoint contract
@@ -127,7 +134,7 @@ by `rhodyn.compare.rank_model_fits`.
 This endpoint converts submitted rows into a compact Markdown table. It is a
 first report-export surface, not a substitute for full figure generation.
 
-### Durable job run and bundle export
+### Job run and bundle export
 
 - `POST /jobs/run`
 - `POST /jobs/bundle`
@@ -159,8 +166,38 @@ The bundle endpoint returns a ZIP archive containing:
 - `manifest.json`
 
 The archive uses fixed internal timestamps and a manifest with SHA-256
-checksums for every file. The HTTP response also carries
+checksums for every payload file. The HTTP response also carries
 `X-RhoDyn-Bundle-SHA256` so downloaded bundles can be checked immediately.
+
+### Durable server-side job storage
+
+- `POST /jobs/submit`
+- `GET /jobs`
+- `GET /jobs/{job_id}`
+- `GET /jobs/{job_id}/result`
+- `GET /jobs/{job_id}/bundle`
+
+Durable routes require `RHODYN_JOB_STORE_DIR` or
+`create_app(job_store_dir=...)`. Without an explicit store, these routes return
+HTTP 503 instead of silently writing uploaded tables to a hidden location.
+
+Submitting a job runs the same operation path as `/jobs/run`, builds the same
+downloadable bundle as `/jobs/bundle`, then writes one directory named by the
+deterministic job ID. The stored directory contains:
+
+- `job.json`
+- `input_rows.csv`
+- `parameters.json`
+- `result.json`
+- `result_rows.csv`
+- `report.md`
+- `bundle_manifest.json`
+- `bundle.zip`
+
+Reading a stored job returns the persisted JSON or ZIP. It does not re-run the
+analysis. The stored job ID remains a function of operation, input rows,
+parameters, table kind, and RhoDyn version, so repeated submission of identical
+payloads resolves to the same stored job.
 
 ## Stage 4 gate
 
@@ -169,6 +206,10 @@ checksums for every file. The HTTP response also carries
   input hash, parameter choices, and RhoDyn version.
 - Downloadable bundles must preserve submitted rows, parameters, exact JSON
   result, result table, Markdown report, and file checksums.
-- No uploaded table is stored by the service core.
+- No uploaded table is stored by default. Durable storage occurs only through
+  explicit job-store configuration and the `/jobs/submit` route.
+- Stored jobs must preserve submitted rows, parameters, exact JSON result,
+  downloadable bundle bytes, and RhoDyn version without re-running analysis on
+  retrieval.
 - Biological interpretation remains scoped to the submitted rows and declared
   parameters.

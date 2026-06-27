@@ -8,6 +8,7 @@ from pathlib import Path
 from unittest import TestCase, skipUnless
 
 from rhodyn.backend_core import (
+    FileJobStore,
     build_analysis_bundle,
     compare_endpoint_models,
     decide_coupling_table,
@@ -166,6 +167,38 @@ class BackendCoreTests(TestCase):
                 manifest = json.loads(archive.read("manifest.json").decode("utf-8"))
             self.assertEqual(manifest["operation"], "decide_coupling")
 
+    def test_file_job_store_persists_exact_result_and_bundle(self):
+        rows = _rows("examples/synthetic_trajectory.csv")
+        parameters = {"low": 0.35, "high": 0.75}
+        direct = run_backend_operation("score_residence", rows, parameters=parameters)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            store = FileJobStore(tmp)
+            stored = store.submit("score_residence", rows, parameters=parameters)
+            repeated = store.submit("score_residence", rows, parameters=parameters)
+
+            self.assertEqual(stored.job_id, direct["job"]["job_id"])
+            self.assertEqual(stored.metadata, repeated.metadata)
+            self.assertEqual(stored.result, to_plain(direct))
+            self.assertEqual(store.get_result(stored.job_id), to_plain(direct))
+            self.assertEqual(
+                store.get_metadata(stored.job_id)["job"]["parameters"],
+                {"low": 0.35, "high": 0.75, "signal_column": "signal"},
+            )
+            self.assertEqual(store.list_jobs()[0]["job_id"], stored.job_id)
+
+            metadata, bundle_data = store.read_bundle(stored.job_id)
+            self.assertEqual(metadata["bundle_sha256"], hashlib.sha256(bundle_data).hexdigest())
+            with zipfile.ZipFile(Path(tmp) / stored.job_id / "bundle.zip") as archive:
+                result = json.loads(archive.read("result.json").decode("utf-8"))
+            self.assertEqual(result, to_plain(direct))
+
+    def test_file_job_store_rejects_unsafe_job_ids(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            store = FileJobStore(tmp)
+            with self.assertRaises(ValueError):
+                store.get_metadata("../not_a_job")
+
 
 @skipUnless(
     importlib.util.find_spec("fastapi") and importlib.util.find_spec("httpx2"),
@@ -216,3 +249,55 @@ class BackendFastApiTests(TestCase):
             bundle_response.headers["x-rhodyn-bundle-sha256"],
             hashlib.sha256(bundle_response.content).hexdigest(),
         )
+
+    def test_fastapi_durable_job_routes_require_configured_store(self):
+        from fastapi.testclient import TestClient
+
+        from rhodyn.backend import create_app
+
+        client = TestClient(create_app())
+        response = client.get("/jobs")
+        self.assertEqual(response.status_code, 503)
+        self.assertEqual(response.json()["status"], "fail")
+
+    def test_fastapi_durable_job_routes_persist_and_retrieve_bundle(self):
+        from fastapi.testclient import TestClient
+
+        from rhodyn.backend import create_app
+
+        with tempfile.TemporaryDirectory() as tmp:
+            client = TestClient(create_app(job_store_dir=tmp))
+            rows = _rows("examples/synthetic_endpoints.csv")
+            response = client.post(
+                "/jobs/submit",
+                json={
+                    "operation": "compare_models",
+                    "parameters": {"parameter_count": 1},
+                    "rows": rows,
+                },
+            )
+            self.assertEqual(response.status_code, 200)
+            payload = response.json()
+            self.assertEqual(payload["status"], "pass")
+            job_id = payload["stored_job"]["job_id"]
+            self.assertEqual(payload["result"]["typed_result"]["best_model"], "residence_gated")
+
+            listing = client.get("/jobs")
+            self.assertEqual(listing.status_code, 200)
+            self.assertEqual([job["job_id"] for job in listing.json()["jobs"]], [job_id])
+
+            metadata = client.get(f"/jobs/{job_id}")
+            self.assertEqual(metadata.status_code, 200)
+            self.assertEqual(metadata.json()["stored_job"]["bundle_sha256"], payload["stored_job"]["bundle_sha256"])
+
+            result = client.get(f"/jobs/{job_id}/result")
+            self.assertEqual(result.status_code, 200)
+            self.assertEqual(result.json()["result"], payload["result"])
+
+            bundle = client.get(f"/jobs/{job_id}/bundle")
+            self.assertEqual(bundle.status_code, 200)
+            self.assertEqual(bundle.headers["content-type"], "application/zip")
+            self.assertEqual(
+                bundle.headers["x-rhodyn-bundle-sha256"],
+                hashlib.sha256(bundle.content).hexdigest(),
+            )

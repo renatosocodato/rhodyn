@@ -2,6 +2,8 @@
 
 from rhodyn.backend_core import (
     AnalysisBundle,
+    FileJobStore,
+    StoredJob,
     build_analysis_bundle,
     compare_endpoint_models,
     decide_coupling_table,
@@ -77,6 +79,8 @@ __all__ = [
     "ControllerParams",
     "BootstrapResult",
     "AnalysisBundle",
+    "FileJobStore",
+    "StoredJob",
     "CTC_LINEAGE_SIGNAL_CHOICES",
     "CTC_SIGNAL_CHOICES",
     "CouplingIntervalRecord",

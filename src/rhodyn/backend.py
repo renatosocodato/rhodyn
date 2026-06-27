@@ -2,10 +2,13 @@
 
 from __future__ import annotations
 
+import os
 from io import BytesIO
+from pathlib import Path
 from typing import Any, Callable
 
 from rhodyn.backend_core import (
+    FileJobStore,
     build_analysis_bundle,
     compare_endpoint_models,
     decide_coupling_table,
@@ -34,7 +37,7 @@ def _call(func: Callable[[], dict[str, Any]]) -> dict[str, Any]:
         return {"status": "fail", "error": str(exc)}
 
 
-def create_app() -> Any:
+def create_app(job_store_dir: str | Path | None = None) -> Any:
     """Create the FastAPI app.
 
     FastAPI is optional so importing :mod:`rhodyn.backend` does not add runtime
@@ -48,15 +51,22 @@ def create_app() -> Any:
     except ImportError as exc:  # pragma: no cover - exercised only without optional extra
         raise RuntimeError("FastAPI backend requires installing rhodyn[backend]") from exc
 
+    store_dir = job_store_dir if job_store_dir is not None else os.environ.get("RHODYN_JOB_STORE_DIR")
+    job_store = FileJobStore(store_dir) if store_dir else None
+
     app = FastAPI(
         title="RhoDyn backend",
         version=software_version(),
-        description="Stateless API around RhoDyn dynamic-state analysis helpers.",
+        description="API around RhoDyn dynamic-state analysis helpers with optional durable job storage.",
     )
 
     @app.get("/health")
     def health() -> dict[str, Any]:
-        return {"status": "pass", "software_version": software_version()}
+        return {
+            "status": "pass",
+            "software_version": software_version(),
+            "durable_job_storage": bool(job_store),
+        }
 
     @app.get("/schemas")
     def schemas() -> dict[str, Any]:
@@ -150,6 +160,66 @@ def create_app() -> Any:
             "X-RhoDyn-Bundle-SHA256": bundle.sha256,
         }
         return StreamingResponse(BytesIO(bundle.data), media_type=bundle.content_type, headers=headers)
+
+    def require_job_store() -> FileJobStore:
+        if job_store is None:
+            raise RuntimeError("durable job storage requires RHODYN_JOB_STORE_DIR or create_app(job_store_dir=...)")
+        return job_store
+
+    @app.post("/jobs/submit")
+    def job_submit(payload: dict[str, Any]) -> Any:
+        try:
+            operation = str(payload.get("operation", ""))
+            parameters = dict(payload.get("parameters") or {})
+            stored = require_job_store().submit(operation, _require_rows(payload), parameters=parameters)
+            return {
+                "status": "pass",
+                "stored_job": stored.metadata,
+                "result": to_plain(stored.result),
+            }
+        except RuntimeError as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=503)
+        except Exception as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=400)
+
+    @app.get("/jobs")
+    def job_list() -> Any:
+        try:
+            return {"status": "pass", "jobs": require_job_store().list_jobs()}
+        except RuntimeError as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=503)
+
+    @app.get("/jobs/{job_id}")
+    def job_metadata(job_id: str) -> Any:
+        try:
+            return {"status": "pass", "stored_job": require_job_store().get_metadata(job_id)}
+        except RuntimeError as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=503)
+        except (KeyError, ValueError) as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=404)
+
+    @app.get("/jobs/{job_id}/result")
+    def job_result(job_id: str) -> Any:
+        try:
+            return {"status": "pass", "result": require_job_store().get_result(job_id)}
+        except RuntimeError as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=503)
+        except (KeyError, ValueError) as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=404)
+
+    @app.get("/jobs/{job_id}/bundle")
+    def job_stored_bundle(job_id: str) -> Any:
+        try:
+            metadata, data = require_job_store().read_bundle(job_id)
+        except RuntimeError as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=503)
+        except (KeyError, ValueError) as exc:
+            return JSONResponse({"status": "fail", "error": str(exc)}, status_code=404)
+        headers = {
+            "Content-Disposition": f'attachment; filename="{metadata["bundle_filename"]}"',
+            "X-RhoDyn-Bundle-SHA256": metadata["bundle_sha256"],
+        }
+        return StreamingResponse(BytesIO(data), media_type="application/zip", headers=headers)
 
     return app
 

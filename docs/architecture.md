@@ -77,12 +77,14 @@ downstream of the backend contract.
    Provides dependency-light service functions for schema validation,
    residence scoring, bounded-coupling decisions, reserve summaries,
    endpoint-model comparison, compact Markdown report export, and deterministic
-   analysis bundle creation. These functions are the Stage 4 backend contract
-   and call the same library helpers used by the CLI.
+   analysis bundle creation. It also provides the explicit filesystem-backed
+   durable job store. These functions are the Stage 4 backend contract and call
+   the same library helpers used by the CLI.
 
 13. `rhodyn.backend`
    Provides the optional FastAPI application factory under `rhodyn[backend]`.
-   The app is stateless and delegates to `rhodyn.backend_core`.
+   The app delegates to `rhodyn.backend_core`; durable storage is enabled only
+   when a job-store directory is configured.
 
 14. `rhodyn.results`
    Wraps residence, reserve, coupling, uncertainty, sensitivity, and

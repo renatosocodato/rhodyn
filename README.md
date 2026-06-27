@@ -57,6 +57,8 @@ Included now:
 - the first Stage 4 stateless backend service core and FastAPI app for schema
   validation, residence scoring, bounded-coupling decisions, reserve summaries,
   model comparison, Markdown report export, and downloadable analysis bundles.
+- explicit durable server-side job storage for backend jobs when
+  `RHODYN_JOB_STORE_DIR` or `create_app(job_store_dir=...)` is configured.
 - a machine-checkable Stage 3 gate report and three tutorial notebooks covering
   the synthetic primer, public signaling benchmarks, and public endpoint plus
   bounded-coupling benchmarks.
@@ -181,6 +183,12 @@ Run the Stage 4 backend after installing the backend extra.
 uvicorn rhodyn.backend:app --reload
 ```
 
+Run the backend with explicit durable job storage.
+
+```bash
+RHODYN_JOB_STORE_DIR=.rhodyn_jobs uvicorn rhodyn.backend:app --reload
+```
+
 The v0.3.x public tutorial scaffold is documented in
 `docs/mlci_public_tutorial.md`. The included CTC-style fixture validates the
 adapter, and the small public feature subset demonstrates centroid, area, and
@@ -226,10 +234,12 @@ are retained to show that UK is not dependent on a single high-state threshold
 or only the widest tested margin.
 
 The Stage 4 backend start is documented in `docs/stage4_backend.md`. It exposes
-the frozen Stage 3 operations as a stateless FastAPI service while preserving
-the Python library as the source of analysis behavior. The job-bundle endpoint
-returns a ZIP archive with submitted rows, parameters, exact result JSON,
-summary rows, Markdown report, manifest, and SHA-256 checksums.
+the frozen Stage 3 operations through FastAPI while preserving the Python
+library as the source of analysis behavior. The job-bundle endpoint returns a
+ZIP archive with submitted rows, parameters, exact result JSON, summary rows,
+Markdown report, manifest, and SHA-256 checksums. Durable job storage is
+available only when a job-store directory is explicitly configured, so uploaded
+tables are not silently written to disk by default.
 
 The Stage 3 bank is summarized in `docs/stage3_case_study_bank.md` and audited
 by `case_studies/stage3_case_study_bank_gate_report.json`. Three lightweight

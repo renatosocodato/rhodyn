@@ -27,6 +27,9 @@ Started:
   validation, residence scoring, bounded-coupling decisions, reserve summaries,
   endpoint-model comparison, Markdown report export, and downloadable analysis
   bundles with manifests and checksums;
+- explicit Stage 4 filesystem job store that persists submitted rows,
+  parameters, exact result JSON, result rows, reports, bundle manifests, and ZIP
+  bundles only when a job-store directory is configured;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

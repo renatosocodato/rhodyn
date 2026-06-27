@@ -157,9 +157,15 @@ reserve summaries, endpoint-model comparison, Markdown report export, and
 downloadable analysis bundles while delegating to the same Python library
 functions used by the CLI. Bundle outputs preserve submitted rows, parameters,
 exact result JSON, result rows, Markdown reports, manifests, and SHA-256
-checksums. The next backend increment should add durable server-side job
-storage only if it preserves exact library-output agreement and records input
-schema, parameter choices, and software version.
+checksums. Durable job storage is now available through an explicit filesystem
+job store. The service persists submitted rows, parameters, exact result JSON,
+result rows, Markdown reports, bundle manifests, and bundle ZIP files only when
+`RHODYN_JOB_STORE_DIR` or `create_app(job_store_dir=...)` is configured.
+Retrieval returns persisted outputs rather than re-running analysis.
+
+The next backend increment should harden operational behavior around this
+store, including retention policy, concurrency stress tests, and deployment
+configuration, while preserving exact library-output agreement.
 
 ## Stage 5. Frontend
 
