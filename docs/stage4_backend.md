@@ -294,12 +294,14 @@ Run the Docker deployment smoke audit when a Docker daemon is available.
 python scripts/audit_stage4_docker_smoke.py
 ```
 
-This audit checks the Dockerfile and Compose template, builds the Stage 4 image,
+This audit checks the Dockerfile and Compose template, including service name,
+Stage 4 Dockerfile binding, configurable port mapping, durable job volume, and
+required hosted-service environment variables. It then builds the Stage 4 image,
 starts the service with deployment-like `RHODYN_*` environment variables, and
 exercises the HTTP upload, bundle, durable job, authentication, quota, and
 retention paths through the running container. The audit records when the
 Compose CLI is unavailable, but it still checks that the Compose template and
-environment example declare the required hosted-service variables.
+environment example declare the required hosted-service structure.
 
 ## Stage 4 gate
 

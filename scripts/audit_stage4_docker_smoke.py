@@ -183,12 +183,23 @@ def _compose_command_status() -> dict[str, Any]:
 def audit_stage4_docker_smoke(root: Path = ROOT) -> dict[str, Any]:
     """Build and run the Stage 4 backend container, then exercise HTTP routes."""
 
+    compose_path = root / "deploy" / "docker-compose.stage4.yml"
+    env_example_path = root / "deploy" / "stage4.env.example"
+    compose_text = compose_path.read_text(encoding="utf-8") if compose_path.exists() else ""
     checks: dict[str, bool] = {
         "dockerfile_exists": (root / "deploy" / "stage4.Dockerfile").exists(),
-        "compose_file_exists": (root / "deploy" / "docker-compose.stage4.yml").exists(),
-        "env_example_exists": (root / "deploy" / "stage4.env.example").exists(),
-        "compose_template_declares_required_env": _template_declares_env(root / "deploy" / "docker-compose.stage4.yml"),
-        "env_example_declares_required_env": _template_declares_env(root / "deploy" / "stage4.env.example"),
+        "compose_file_exists": compose_path.exists(),
+        "env_example_exists": env_example_path.exists(),
+        "compose_template_declares_required_env": _template_declares_env(compose_path) if compose_path.exists() else False,
+        "env_example_declares_required_env": _template_declares_env(env_example_path) if env_example_path.exists() else False,
+        "compose_template_declares_backend_service": "rhodyn-backend:" in compose_text,
+        "compose_template_uses_stage4_dockerfile": "dockerfile: deploy/stage4.Dockerfile" in compose_text,
+        "compose_template_exposes_configurable_port": "${RHODYN_PORT:-8000}:8000" in compose_text,
+        "compose_template_uses_durable_job_volume": (
+            "rhodyn_jobs:" in compose_text
+            and "rhodyn_jobs:/var/lib/rhodyn/jobs" in compose_text
+            and "RHODYN_JOB_STORE_DIR: /var/lib/rhodyn/jobs" in compose_text
+        ),
     }
     details: dict[str, Any] = {"compose": _compose_command_status()}
     failures: list[str] = [name for name, passed in checks.items() if not passed]
