@@ -57,6 +57,9 @@ Included now:
 - the first Stage 4 stateless backend service core and FastAPI app for schema
   validation, residence scoring, bounded-coupling decisions, reserve summaries,
   model comparison, Markdown report export, and downloadable analysis bundles.
+- a machine-checkable Stage 3 gate report and three tutorial notebooks covering
+  the synthetic primer, public signaling benchmarks, and public endpoint plus
+  bounded-coupling benchmarks.
 
 Not included yet:
 
@@ -118,6 +121,12 @@ Run the public case-study workflow scaffold.
 
 ```bash
 PYTHONPATH=src python examples/mlci_public_case_study_workflow.py
+```
+
+Audit the Stage 3 public case-study bank.
+
+```bash
+python scripts/audit_stage3_case_study_bank.py
 ```
 
 Regenerate the small public feature subset without keeping raw image files.
@@ -221,6 +230,11 @@ the frozen Stage 3 operations as a stateless FastAPI service while preserving
 the Python library as the source of analysis behavior. The job-bundle endpoint
 returns a ZIP archive with submitted rows, parameters, exact result JSON,
 summary rows, Markdown report, manifest, and SHA-256 checksums.
+
+The Stage 3 bank is summarized in `docs/stage3_case_study_bank.md` and audited
+by `case_studies/stage3_case_study_bank_gate_report.json`. Three lightweight
+tutorial notebooks live under `notebooks/` and use retained derived tables
+rather than raw public archives.
 
 ## Input schemas
 

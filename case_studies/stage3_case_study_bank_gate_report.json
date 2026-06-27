@@ -1,0 +1,151 @@
+{
+  "case_studies": {
+    "public_cell_painting_mitotox": {
+      "best_model": "compartment_route_5nn",
+      "dataset": "public Cell Painting morphology and MitoTox endpoints",
+      "model_count": 6,
+      "role": "public perturbation endpoint/model-comparison benchmark",
+      "runner_up_delta_bic": 248.55993,
+      "status": "pass",
+      "table": "case_studies/cell_painting_mitotox_model_ranking.csv"
+    },
+    "public_drg_calcium": {
+      "cell_count": 120,
+      "class_counts": {
+        "amplitude_and_residence_top_quartile": 74,
+        "amplitude_only_top_quartile": 16,
+        "neither_top_quartile": 254,
+        "residence_only_top_quartile": 16
+      },
+      "condition_counts": {
+        "drg_calcium_episode_1": 120,
+        "drg_calcium_episode_2": 120,
+        "drg_calcium_episode_3": 120
+      },
+      "dataset": "public DRG calcium traces",
+      "residence_amplitude_distinction": true,
+      "rows": 360,
+      "status": "pass",
+      "table": "case_studies/drg_calcium_residence_amplitude_benchmark.csv"
+    },
+    "public_erk_akt_bounded_coupling": {
+      "dataset": "paired public ERK and Akt KTR GPCR traces",
+      "failed_contexts": [
+        "erk_minus_akt_residence_His",
+        "erk_minus_akt_residence_S1P"
+      ],
+      "minimum_passing_margin_UK": 0.1,
+      "passed_contexts": [
+        "erk_minus_akt_residence_all",
+        "erk_minus_akt_residence_UK"
+      ],
+      "primary_margin": 0.2,
+      "replicate_sensitivity_status": "not_available",
+      "role": "context-limited public bounded-coupling benchmark",
+      "status": "pass",
+      "table": "case_studies/erk_gpcr_erk_akt_bounded_coupling.csv"
+    },
+    "public_erk_gpcr": {
+      "class_counts": {
+        "amplitude_and_residence_top_quartile": 34,
+        "amplitude_only_top_quartile": 11,
+        "neither_top_quartile": 124,
+        "residence_only_top_quartile": 11
+      },
+      "dataset": "public ERK KTR GPCR traces",
+      "ligand_counts": {
+        "His": 60,
+        "S1P": 60,
+        "UK": 60
+      },
+      "residence_amplitude_distinction": true,
+      "rows": 180,
+      "status": "pass",
+      "table": "case_studies/erk_gpcr_residence_amplitude_benchmark.csv"
+    }
+  },
+  "current_position": "Stage 3 evidence bank is satisfied for v0.3 if all gates pass. Additional public systems are Stage 7 evidence-expansion work, not prerequisites for Stage 4.",
+  "deliverables": {
+    "benchmark_tables": {
+      "files": {
+        "case_studies/cell_painting_mitotox_model_ranking.csv": true,
+        "case_studies/drg_calcium_residence_amplitude_benchmark.csv": true,
+        "case_studies/erk_gpcr_erk_akt_bounded_coupling.csv": true,
+        "case_studies/erk_gpcr_residence_amplitude_benchmark.csv": true,
+        "case_studies/public_data_candidates.tsv": true
+      },
+      "status": "pass"
+    },
+    "manuscript_independence_boundary": {
+      "required_phrases": [
+        "The manuscript was not generated with RhoDyn",
+        "optional reference case study"
+      ],
+      "source": "README.md",
+      "status": "pass"
+    },
+    "public_data_adapters": {
+      "files": {
+        "scripts/fetch_cell_painting_endpoint_benchmark.py": true,
+        "scripts/fetch_drg_calcium_benchmark.py": true,
+        "scripts/fetch_erk_akt_bounded_coupling.py": true,
+        "scripts/fetch_erk_gpcr_benchmark.py": true,
+        "scripts/fetch_mlci_feature_subset.py": true
+      },
+      "status": "pass"
+    },
+    "reproducible_case_study_docs": {
+      "files": {
+        "docs/cell_painting_endpoint_benchmark.md": true,
+        "docs/drg_calcium_public_benchmark.md": true,
+        "docs/erk_akt_bounded_coupling_benchmark.md": true,
+        "docs/erk_gpcr_public_benchmark.md": true,
+        "docs/stage3_case_study_bank.md": true
+      },
+      "status": "pass"
+    },
+    "tutorial_notebooks": {
+      "files": {
+        "notebooks/01_synthetic_residence_primer.ipynb": true,
+        "notebooks/02_public_signaling_benchmarks.ipynb": true,
+        "notebooks/03_public_endpoint_and_coupling_benchmarks.ipynb": true
+      },
+      "status": "pass"
+    }
+  },
+  "gates": {
+    "examples_do_not_imply_manuscript_generated_original_results": {
+      "required_phrases": [
+        "The manuscript was not generated with RhoDyn",
+        "optional reference case study"
+      ],
+      "source": "README.md",
+      "status": "pass"
+    },
+    "one_case_shows_bounded_coupling_or_reserve_logic": {
+      "case": "erk_gpcr_erk_akt",
+      "passed_contexts": [
+        "erk_minus_akt_residence_all",
+        "erk_minus_akt_residence_UK"
+      ],
+      "role": "bounded coupling",
+      "status": "pass"
+    },
+    "one_public_endpoint_case_shows_model_comparison": {
+      "best_model": "compartment_route_5nn",
+      "case": "cell_painting_mitotox",
+      "status": "pass"
+    },
+    "two_biological_systems_show_residence_amplitude_distinction": {
+      "passing_systems": [
+        "public_drg_calcium",
+        "public_erk_gpcr"
+      ],
+      "status": "pass"
+    }
+  },
+  "interpretation_boundary": "The public case studies demonstrate RhoDyn analysis behavior on retained derived public tables. They do not imply that RhoDyn generated the original RhoA/microglia manuscript results.",
+  "report_format": "rhodyn.stage3_case_study_bank_gate_report.v1",
+  "roadmap_scope": "Stage 3 case-study evidence bank",
+  "status": "pass"
+}

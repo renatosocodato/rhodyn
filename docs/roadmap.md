@@ -68,6 +68,10 @@ Current evidence.
 
 - Synthetic examples exist and exercise residence, reserve-like behavior,
   coupling decisions, uncertainty, sensitivity, and model comparison.
+- Three lightweight tutorial notebooks now expose the synthetic primer, the
+  public signaling residence-versus-amplitude benchmarks, and the public
+  endpoint plus bounded-coupling benchmarks without requiring raw public
+  archives.
 - The RhoA/microglia manuscript is represented as an optional reference case
   study through metadata and local table discovery.
 - The public MLCI/CTC adapter exists and preserves multi-sequence track identity.
@@ -99,6 +103,11 @@ Current evidence.
   0.60-0.85 high-state threshold grid and passes at margins of 0.10 and larger.
   S1P and histamine fail across the threshold grid at the primary +/-0.20
   margin.
+- The machine-checkable Stage 3 gate report at
+  `case_studies/stage3_case_study_bank_gate_report.json` records the current
+  pass state for notebooks, case-study docs, public-data adapters, benchmark
+  tables, the two-system residence/amplitude gate, the endpoint model-comparison
+  gate, the bounded-coupling gate, and the manuscript-independence boundary.
 
 Status. Stage 3A and Stage 3B have produced two independent public signaling
 benchmarks, Stage 3C has produced a public endpoint/model-comparison benchmark,
@@ -318,16 +327,16 @@ evidence path. Stage 8 inherits from Stage 7, and Stage 7 depends on Stage 3.
 
 ## Immediate next path
 
-The next scientifically aligned move is Stage 4 backend work.
+The current roadmap should not drift away from the original Stage 3 to Stage 8
+sequence.
 
-1. Freeze the v0.3 Stage 3 evidence bank as the reference public case-study
-   surface.
-2. Build a FastAPI service around the stable Python API, beginning with schema
-   validation, residence scoring, bounded-coupling decisions, reserve summaries,
-   and reduced-architecture comparison.
-3. Require every backend result to match the Python library output exactly and
-   preserve input schema, parameter choices, and software version in the job
-   record.
+1. Treat the v0.3 Stage 3 evidence bank and its gate report as the reference
+   public case-study surface.
+2. Continue Stage 4 only where backend results match the Python library output
+   exactly and preserve input schema, parameter choices, and software version.
+3. For the Nature Methods trajectory, expand evidence through additional
+   independent public systems only as Stage 7 method-evidence work, not as a
+   rebranding of the RhoA/microglia paper or a substitute for the Stage 3 gate.
 
-Frontend, official release, Nature Methods, and product work should remain
-downstream of this service contract rather than replacing it.
+Frontend, official release, Nature Methods, and product work remain downstream
+of the evidence bank and service contract rather than replacing them.

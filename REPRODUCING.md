@@ -15,6 +15,8 @@ python scripts/fetch_drg_calcium_benchmark.py
 python scripts/fetch_erk_gpcr_benchmark.py
 python scripts/fetch_cell_painting_endpoint_benchmark.py
 python scripts/fetch_erk_akt_bounded_coupling.py
+python scripts/audit_stage3_case_study_bank.py \
+  --write case_studies/stage3_case_study_bank_gate_report.json
 ```
 
 The manuscript reproduction repository remains separate:

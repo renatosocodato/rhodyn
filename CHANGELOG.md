@@ -18,6 +18,11 @@ Started:
   residence summaries;
 - Stage 3D margin-sensitivity, threshold-sensitivity, and hardening-report
   outputs for the ERK/Akt bounded-coupling benchmark;
+- Stage 3 case-study bank gate audit and report tying the public examples back
+  to the original roadmap gate;
+- three tutorial notebooks covering the synthetic primer, public
+  residence-versus-amplitude benchmarks, and public endpoint/coupling
+  benchmarks;
 - Stage 4 stateless backend service core and optional FastAPI app for schema
   validation, residence scoring, bounded-coupling decisions, reserve summaries,
   endpoint-model comparison, Markdown report export, and downloadable analysis

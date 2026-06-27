@@ -37,7 +37,18 @@ def _text_files(root: Path) -> list[Path]:
     for path in root.rglob("*"):
         if ".git" in path.parts or not path.is_file():
             continue
-        if path.suffix.lower() in {".py", ".md", ".toml", ".yml", ".yaml", ".cff", ".txt", ".csv", ".in"}:
+        if path.suffix.lower() in {
+            ".py",
+            ".md",
+            ".toml",
+            ".yml",
+            ".yaml",
+            ".cff",
+            ".txt",
+            ".csv",
+            ".in",
+            ".ipynb",
+        }:
             files.append(path)
     return files
 
