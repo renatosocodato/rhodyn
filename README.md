@@ -196,6 +196,12 @@ Audit the Stage 4 service contract.
 PYTHONPATH=src python scripts/audit_stage4_service_contract.py
 ```
 
+Stress-test FastAPI upload, quota, auth, and durable-job behavior.
+
+```bash
+PYTHONPATH=src python scripts/audit_stage4_upload_stress.py
+```
+
 Deployment environment examples live in `deploy/stage4.env.example`. Retention
 limits can be configured with `RHODYN_JOB_RETENTION_MAX_JOBS`,
 `RHODYN_JOB_RETENTION_MAX_BYTES`, and

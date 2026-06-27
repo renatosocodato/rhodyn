@@ -29,6 +29,7 @@ from rhodyn.report import to_plain
 from rhodyn.residence import ResidenceWindow, score_records
 from rhodyn.schema import read_coupling_csv, read_endpoint_csv, read_trajectory_csv
 from scripts.audit_stage4_service_contract import audit_stage4_service_contract
+from scripts.audit_stage4_upload_stress import audit_stage4_upload_stress
 
 
 def _rows(path: str) -> list[dict[str, str]]:
@@ -535,3 +536,14 @@ class BackendFastApiTests(TestCase):
             job_id = response.json()["stored_job"]["job_id"]
             self.assertEqual(response.json()["result"]["typed_result"]["best_model"], "residence_gated")
             self.assertEqual(client.get(f"/jobs/{job_id}/result").json()["result"], response.json()["result"])
+
+    @skipUnless(
+        importlib.util.find_spec("fastapi") and importlib.util.find_spec("httpx2"),
+        "FastAPI stress dependencies are not installed",
+    )
+    def test_stage4_upload_stress_audit_passes(self):
+        payload = audit_stage4_upload_stress()
+        self.assertEqual(payload["status"], "pass")
+        self.assertEqual(payload["failures"], [])
+        self.assertGreaterEqual(payload["details"]["row_count"], 2000)
+        self.assertTrue(all(payload["checks"].values()))

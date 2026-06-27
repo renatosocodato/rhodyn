@@ -38,6 +38,9 @@ Started:
 - Stage 4 service-contract audit checking direct backend helpers, generic job
   dispatch, deterministic bundles, and durable stored jobs against the same
   submitted rows and declared parameters;
+- Stage 4 FastAPI upload stress audit for larger synthetic tables,
+  authentication, row/upload quotas, durable submit/retrieve behavior,
+  concurrent upload determinism, and retention pruning;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

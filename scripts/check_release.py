@@ -21,6 +21,7 @@ REQUIRED_FILES = [
     "docs/roadmap.md",
     "docs/roadmap_execution_memory.json",
     "scripts/audit_stage4_service_contract.py",
+    "scripts/audit_stage4_upload_stress.py",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),

@@ -276,6 +276,18 @@ The audit passes only when all four surfaces return the same result for the
 same submitted rows and declared parameters. It does not add a new biological
 case study or new interpretation.
 
+Run the FastAPI upload stress audit when the backend extra is installed.
+
+```bash
+PYTHONPATH=src python scripts/audit_stage4_upload_stress.py
+```
+
+The upload stress audit uses a larger deterministic synthetic trajectory table
+to exercise raw CSV upload routes, JSON job equivalence, downloadable bundles,
+durable submit/retrieve behavior, repeated concurrent uploads, authentication,
+row limits, upload-byte limits, and retention pruning. It remains a service
+contract test, not a new biological example.
+
 ## Stage 4 gate
 
 - Backend outputs must match the Python library outputs exactly.
@@ -289,6 +301,10 @@ case study or new interpretation.
 - Configured row and upload limits must fail before analysis or durable writes.
 - CSV upload routes must return the same results and bundles as equivalent JSON
   jobs.
+- Larger raw CSV uploads must obey configured row and byte limits before
+  analysis or durable writes.
+- Repeated larger uploads with the same rows and parameters must return stable
+  job identifiers and equivalent results.
 - No uploaded table is stored by default. Durable storage occurs only through
   explicit job-store configuration and the `/jobs/submit` route.
 - Stored jobs must preserve submitted rows, parameters, exact JSON result,
