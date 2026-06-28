@@ -64,6 +64,8 @@ REQUIRED_FILES = [
     "frontend/stage5/app.js",
     "docs/stage4_closeout.md",
     "docs/stage5_frontend.md",
+    "docs/stage5_public_mlci_workflow.md",
+    "examples/mlci_public_intensity_trajectory.csv",
 ]
 
 
@@ -115,6 +117,14 @@ def audit_stage5_frontend_scaffold(root: Path = ROOT) -> dict[str, Any]:
     )
     checks["frontend_exposes_required_screens"] = all(screen in index for screen in EXPECTED_SCREENS)
     checks["frontend_exposes_parameter_inspection"] = all(token in index for token in ["operationMeta", "schemaPanel", "parameterPayload", "routePanel", "validationState", "sampleButton"])
+    checks["frontend_exposes_richer_trajectory_inspection"] = all(
+        token in index + app_js
+        for token in ["trajectoryStats", "traceSummaryTable", "trajectoryInspection", "residenceForPoints"]
+    )
+    checks["frontend_exposes_public_mlci_workflow"] = all(
+        token in index + app_js
+        for token in ["publicWorkflowButton", "PUBLIC_WORKFLOW", "mlci_public_intensity_trajectory.csv", "Zenodo 7260137"]
+    )
     checks["frontend_not_marketing_hero"] = "hero" not in index.lower() and "hero" not in (root / "frontend/stage5/styles.css").read_text(encoding="utf-8").lower()
     checks["frontend_uses_local_upload_preflight"] = "localValidationIssues" in app_js and "Load a CSV table" in app_js
     checks["docs_state_stage4_frozen"] = "Stage 4 API contract is frozen" in closeout_doc

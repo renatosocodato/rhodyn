@@ -2,6 +2,7 @@
   "current_position": {
     "active_stage": "Stage 5. Frontend",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
+    "after_stage5_ux_depth": "Stage 5 now has richer trajectory inspection, explicit exported parameter provenance, and a guided MLCI public trajectory workflow that can be reproduced from CLI and the frozen upload route.",
     "after_stage5_upload_parity": "Stage 5 now has real CSV upload-flow hardening, visible parameter/schema inspection, and CLI/API/frontend parity audits for all six frozen contract operations.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
@@ -44,13 +45,13 @@
       "status": "frozen_for_stage5"
     },
     {
-      "current_gate": "Harden contract-bound frontend around real upload flows, parameter inspection, and CLI/API/frontend parity before adding richer visualization.",
+      "current_gate": "Deepen the contract-bound frontend around trajectory inspection, export provenance, and one guided public workflow before moving to full workbench polish.",
       "gate": [
         "A biologist can upload a tidy table and interpret amplitude-like versus residence-like behavior without reading code.",
         "A quantitative user can inspect every parameter and reproduce the result from CLI.",
         "The workbench consumes the frozen Stage 4 API contract rather than inventing new analysis routes."
       ],
-      "latest_evidence": "scripts/audit_stage5_upload_flow_parity.py passes across all six frozen contract operations.",
+      "latest_evidence": "scripts/audit_stage5_upload_flow_parity.py passes across all six frozen contract operations, and the Stage 5 frontend scaffold includes the MLCI public trajectory workflow.",
       "name": "Frontend",
       "scope_rule": "Build only frontend behavior that consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility.",
       "stage": 5,

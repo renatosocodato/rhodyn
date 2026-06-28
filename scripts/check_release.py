@@ -31,9 +31,11 @@ REQUIRED_FILES = [
     "api/stage4/contract_manifest.json",
     "docs/stage4_closeout.md",
     "docs/stage5_frontend.md",
+    "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
     "frontend/stage5/app.js",
+    "examples/mlci_public_intensity_trajectory.csv",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),

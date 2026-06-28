@@ -251,13 +251,15 @@ Gate.
 - A quantitative user can inspect every parameter and reproduce the result from
   CLI.
 
-Status. Active scaffold. The first static workbench lives under
-`frontend/stage5/` and loads the frozen Stage 4 contract files from
-`api/stage4/`. It exposes upload, schema validation, trajectory preview,
-residence tuning, coupling/equivalence, reserve, model-comparison, and report
-export surfaces without adding new analysis routes. Frontend work should keep
-following the frozen backend/API contract and should not replace the Stage 3
-evidence bank.
+Status. Active scaffold. The static workbench lives under `frontend/stage5/`
+and loads the frozen Stage 4 contract files from `api/stage4/`. It exposes
+upload, schema validation, trajectory preview, residence tuning,
+coupling/equivalence, reserve, model-comparison, and report export surfaces
+without adding new analysis routes. The current Stage 5 depth pass adds
+per-trace residence inspection for uploaded trajectories, clearer parameter
+provenance in exported bundles, and a guided MLCI public trajectory workflow
+that can be reproduced from CLI. Frontend work should keep following the frozen
+backend/API contract and should not replace the Stage 3 evidence bank.
 
 ## Stage 6. Official software release
 

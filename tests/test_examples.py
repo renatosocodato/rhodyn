@@ -42,3 +42,47 @@ class ExampleWorkflowTests(TestCase):
         payload = json.loads(result.stdout)
         self.assertEqual(payload["status"], "pass")
         self.assertEqual(payload["rows"], 2)
+
+    def test_stage5_public_mlci_workflow_validates_and_scores(self):
+        validate = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "rhodyn.cli",
+                "validate",
+                "examples/mlci_public_intensity_trajectory.csv",
+                "--kind",
+                "trajectory",
+            ],
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+        )
+        validate_payload = json.loads(validate.stdout)
+        self.assertEqual(validate_payload["status"], "pass")
+        self.assertEqual(validate_payload["rows"], 62)
+
+        score = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "rhodyn.cli",
+                "score-residence",
+                "examples/mlci_public_intensity_trajectory.csv",
+                "--low",
+                "13.0",
+                "--high",
+                "14.5",
+                "--signal-column",
+                "signal",
+            ],
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+        )
+        score_payload = json.loads(score.stdout)
+        self.assertEqual(score_payload["status"], "pass")
+        self.assertGreater(len(score_payload["summaries"]), 5)
+        self.assertEqual(score_payload["window"], {"low": 13.0, "high": 14.5})

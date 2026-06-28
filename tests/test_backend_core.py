@@ -159,6 +159,8 @@ class BackendCoreTests(TestCase):
                         "README.md",
                         "input_rows.csv",
                         "manifest.json",
+                        "parameter_provenance.json",
+                        "parameter_provenance.md",
                         "parameters.json",
                         "report.md",
                         "result.json",
@@ -176,6 +178,12 @@ class BackendCoreTests(TestCase):
                 result = json.loads(archive.read("result.json").decode("utf-8"))
                 self.assertEqual(result["typed_result"]["best_model"], "residence_gated")
                 self.assertIn("residence_gated", archive.read("result_rows.csv").decode("utf-8"))
+                provenance = json.loads(archive.read("parameter_provenance.json").decode("utf-8"))
+                self.assertEqual(provenance["operation"], "compare_models")
+                self.assertEqual(provenance["submitted_parameters"], parameters)
+                self.assertEqual(provenance["effective_parameters"], {"parameter_count": 1})
+                self.assertEqual(manifest["parameter_provenance"], provenance)
+                self.assertIn("Effective parameters", archive.read("parameter_provenance.md").decode("utf-8"))
 
     def test_write_analysis_bundle_creates_downloadable_zip(self):
         with tempfile.TemporaryDirectory() as tmp:

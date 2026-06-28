@@ -51,6 +51,8 @@ Started:
   operations, schema and parameter inspection in the static workbench, and a
   parity audit comparing CLI output, backend-core output, and frozen upload
   fixtures;
+- Stage 5 UX-depth pass with richer trajectory inspection, explicit exported
+  parameter provenance, and a guided MLCI public trajectory workflow;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

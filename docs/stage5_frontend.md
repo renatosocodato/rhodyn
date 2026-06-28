@@ -4,7 +4,7 @@ Stage 5 scaffold is contract-bound to the frozen Stage 4 API contract.
 
 ## Scope
 
-The scaffold in `frontend/stage5/` is a static scientific workbench shell. It loads `api/stage4/frontend_contract.json`, `api/stage4/openapi.json`, and the frozen schema fixture, then exposes the Stage 4 upload, bundle, and durable-submit routes without introducing new analysis logic. The upload screen now shows the selected operation, expected schema columns, editable parameters, serialized parameter payload, route preview, local schema preflight status, and a contract example loader.
+The scaffold in `frontend/stage5/` is a static scientific workbench shell. It loads `api/stage4/frontend_contract.json`, `api/stage4/openapi.json`, and the frozen schema fixture, then exposes the Stage 4 upload, bundle, and durable-submit routes without introducing new analysis logic. The upload screen now shows the selected operation, expected schema columns, editable parameters, serialized parameter payload, route preview, local schema preflight status, and a contract example loader. The trajectory explorer also reports trace counts, condition and replicate counts, signal and time ranges, and per-trace residence summaries for the current signal column and window.
 
 ## Screens
 
@@ -42,6 +42,26 @@ PYTHONPATH=src python scripts/audit_stage5_upload_flow_parity.py
 ```
 
 Passing this audit means the frontend route contract, CLI command, and backend core agree for the retained example tables. It does not add a new biological case study or change the interpretation of any result.
+
+## Public MLCI workflow
+
+The dashboard includes **Load MLCI workflow**, which selects residence scoring,
+loads `examples/mlci_public_intensity_trajectory.csv`, applies the `13.0` to
+`14.5` intensity window, and displays local trajectory inspection before the
+user runs the backend upload route. The same result can be reproduced from the
+CLI.
+
+```bash
+PYTHONPATH=src python -m rhodyn.cli score-residence \
+  examples/mlci_public_intensity_trajectory.csv \
+  --low 13.0 \
+  --high 14.5 \
+  --signal-column signal
+```
+
+This is a public live-cell tracking workflow derived from Zenodo 7260137. The
+intensity signal is a trajectory-analysis example, not a molecular activity
+reporter or disease-state measurement.
 
 ## Contract rule
 

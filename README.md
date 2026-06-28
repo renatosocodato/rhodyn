@@ -67,6 +67,9 @@ Included now:
 - a first Stage 5 static frontend scaffold under `frontend/stage5/` that
   consumes the frozen contract, inspects operation parameters and schemas, and
   exercises real CSV upload routes against the backend.
+- a Stage 5 public MLCI workflow that loads a Zenodo-derived trajectory table,
+  inspects per-trace residence behavior, and runs the same upload route used by
+  CLI/API parity checks.
 - a machine-checkable Stage 3 gate report and three tutorial notebooks covering
   the synthetic primer, public signaling benchmarks, and public endpoint plus
   bounded-coupling benchmarks.
@@ -77,7 +80,7 @@ Not included yet:
 - general raw microscopy ingestion beyond the selected CTC TIFF path;
 - manuscript-specific figure generation;
 - disease-state prediction;
-- a complete graphical dashboard beyond the first Stage 5 scaffold.
+- a complete graphical dashboard beyond the contract-bound Stage 5 workbench.
 
 ## Install for development
 
@@ -240,6 +243,20 @@ python -m http.server 9000
 
 Then open `http://127.0.0.1:9000/frontend/stage5/` while the backend runs on
 `http://127.0.0.1:8000`.
+
+For a public-data upload walkthrough, choose **Load MLCI workflow** in the
+dashboard. The workbench loads `examples/mlci_public_intensity_trajectory.csv`,
+sets the residence window to `13.0` through `14.5`, shows per-trace residence
+summaries, and prepares the same upload-route payload that can be reproduced
+from the CLI.
+
+```bash
+PYTHONPATH=src python -m rhodyn.cli score-residence \
+  examples/mlci_public_intensity_trajectory.csv \
+  --low 13.0 \
+  --high 14.5 \
+  --signal-column signal
+```
 
 Deployment environment examples live in `deploy/stage4.env.example`. Retention
 limits can be configured with `RHODYN_JOB_RETENTION_MAX_JOBS`,
