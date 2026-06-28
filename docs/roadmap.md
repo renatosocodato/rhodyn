@@ -260,9 +260,11 @@ per-trace residence inspection for uploaded trajectories, clearer parameter
 provenance in exported bundles, and a guided MLCI public trajectory workflow
 that can be reproduced from CLI. It also adds operation-specific comparison
 panels for residence, bounded coupling, reserve, and reduced-model ranking,
-with one-click JSON, CSV, and Markdown exports for the last run. Frontend work
-should keep following the frozen backend/API contract and should not replace the
-Stage 3 evidence bank.
+with one-click JSON, CSV, and Markdown exports for the last run. The current
+hardening pass adds Playwright screenshot regression across desktop and mobile
+viewports, adversarial bounded-coupling labels, horizontal-overflow guards, and
+CI wiring. Frontend work should keep following the frozen backend/API contract
+and should not replace the Stage 3 evidence bank.
 
 ## Stage 6. Official software release
 

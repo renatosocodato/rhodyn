@@ -43,6 +43,26 @@ PYTHONPATH=src python scripts/audit_stage5_upload_flow_parity.py
 
 Passing this audit means the frontend route contract, CLI command, and backend core agree for the retained example tables. It does not add a new biological case study or change the interpretation of any result.
 
+## Browser regression
+
+The Stage 5 workbench has a Playwright screenshot-regression harness for the
+operation-specific comparison panels, the public MLCI trajectory workflow, and
+an adversarial bounded-coupling case with long labels and near-margin intervals.
+The tests run in desktop and mobile Chromium viewports, verify that the page
+does not create horizontal overflow, and keep formal bounded-coupling language
+from drifting into a claim of zero coupling.
+
+```bash
+npm ci
+npx playwright install chromium
+npm run test:stage5
+```
+
+Use `npm run test:stage5:update-screenshots` only when a deliberate visual
+change has been reviewed. The committed baselines are platform-independent and
+separated by Playwright project name, so CI and local runs use the same snapshot
+filenames.
+
 ## Public MLCI workflow
 
 The dashboard includes **Load MLCI workflow**, which selects residence scoring,

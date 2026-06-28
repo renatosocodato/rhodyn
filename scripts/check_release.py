@@ -25,7 +25,12 @@ REQUIRED_FILES = [
     "scripts/audit_stage4_docker_smoke.py",
     "scripts/freeze_stage4_api_contract.py",
     "scripts/audit_stage5_frontend_scaffold.py",
+    "scripts/audit_stage5_premium_workbench.py",
     "scripts/audit_stage5_upload_flow_parity.py",
+    "package.json",
+    "package-lock.json",
+    "playwright.config.mjs",
+    "tests/playwright/stage5.visual.spec.mjs",
     "api/stage4/openapi.json",
     "api/stage4/frontend_contract.json",
     "api/stage4/contract_manifest.json",
@@ -47,13 +52,15 @@ LEAK_PATTERNS = [
     re.compile(r"xox[baprs]-[A-Za-z0-9-]+"),
 ]
 RAW_EXTENSIONS = {".lif", ".czi", ".nd2", ".oir", ".oib", ".lsm", ".tif", ".tiff", ".prism", ".xml"}
-GENERATED_DIRS = {"dist", "build", "htmlcov", ".pytest_cache"}
+GENERATED_DIRS = {"dist", "build", "htmlcov", ".pytest_cache", "node_modules", "playwright-report", "test-results", "blob-report"}
 
 
 def _text_files(root: Path) -> list[Path]:
     files: list[Path] = []
     for path in root.rglob("*"):
         if ".git" in path.parts or not path.is_file():
+            continue
+        if any(part in GENERATED_DIRS for part in path.parts):
             continue
         if path.suffix.lower() in {
             ".py",
@@ -184,6 +191,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
 
     for script, label in [
         ("scripts/audit_stage5_frontend_scaffold.py", "Stage 5 frontend scaffold audit"),
+        ("scripts/audit_stage5_premium_workbench.py", "Stage 5 premium workbench audit"),
         ("scripts/audit_stage5_upload_flow_parity.py", "Stage 5 upload-flow parity audit"),
     ]:
         check = subprocess.run(

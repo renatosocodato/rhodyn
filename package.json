@@ -1,0 +1,13 @@
+{
+  "name": "rhodyn-stage5-workbench",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Dev-only browser regression harness for the RhoDyn Stage 5 workbench.",
+  "scripts": {
+    "test:stage5": "playwright test",
+    "test:stage5:update-screenshots": "playwright test --update-snapshots"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.61.1"
+  }
+}

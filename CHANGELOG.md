@@ -56,6 +56,9 @@ Started:
 - Stage 5 report-builder polish with operation-specific comparison panels for
   residence, bounded coupling, reserve, and reduced-model ranking, plus JSON,
   CSV, Markdown, and bundle export ergonomics;
+- Stage 5 Playwright browser-regression hardening with desktop/mobile
+  screenshots, adversarial bounded-coupling labels, horizontal-overflow guards,
+  CI wiring, and platform-independent snapshot baselines;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

@@ -13,3 +13,7 @@ htmlcov/
 tmp/
 outputs/
 .rhodyn_jobs/
+node_modules/
+playwright-report/
+test-results/
+blob-report/

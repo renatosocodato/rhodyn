@@ -73,6 +73,8 @@ Included now:
 - Stage 5 operation-specific comparison panels for residence, bounded coupling,
   reserve, and reduced-model ranking, with JSON, CSV, Markdown, and
   backend-generated analysis bundle exports.
+- Stage 5 browser screenshot regression for desktop and mobile comparison
+  panels, the public MLCI workflow, and adversarial bounded-coupling labels.
 - a machine-checkable Stage 3 gate report and three tutorial notebooks covering
   the synthetic primer, public signaling benchmarks, and public endpoint plus
   bounded-coupling benchmarks.
@@ -235,7 +237,17 @@ Freeze the Stage 4 API contract and audit the Stage 5 scaffold.
 ```bash
 python scripts/freeze_stage4_api_contract.py
 python scripts/audit_stage5_frontend_scaffold.py
+python scripts/audit_stage5_premium_workbench.py
 python scripts/audit_stage5_upload_flow_parity.py
+```
+
+Run the Stage 5 browser regression after installing the dev-only Node
+dependencies and Chromium.
+
+```bash
+npm ci
+npx playwright install chromium
+npm run test:stage5
 ```
 
 Serve the first Stage 5 static workbench from the repository root.

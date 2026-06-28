@@ -1,4 +1,5 @@
 * { box-sizing: border-box; }
+html { max-width: 100%; overflow-x: hidden; }
 :root {
   color-scheme: light;
   --ink: #17211b;
@@ -13,12 +14,14 @@
 }
 body {
   margin: 0;
+  max-width: 100%;
   min-height: 100vh;
   display: grid;
   grid-template-columns: 280px 1fr;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
   background: var(--paper);
+  overflow-x: hidden;
 }
 .sidebar {
   position: sticky;
@@ -56,6 +59,8 @@ p { margin: 4px 0 0; color: var(--muted); }
 .connection { display: grid; gap: 8px; margin-top: 22px; }
 label { display: grid; gap: 6px; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; }
 input, select, button {
+  min-width: 0;
+  max-width: 100%;
   min-height: 36px;
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -64,17 +69,19 @@ input, select, button {
   background: white;
   color: var(--ink);
 }
-button { cursor: pointer; font-weight: 700; background: var(--green); color: white; border-color: var(--green); }
+button { cursor: pointer; font-weight: 700; background: var(--green); color: white; border-color: var(--green); white-space: normal; overflow-wrap: anywhere; }
 button.secondary { background: white; color: var(--blue); border-color: var(--blue); }
 output { font-size: 12px; color: var(--muted); }
-.workspace { padding: 22px; display: grid; gap: 18px; align-content: start; }
+.workspace { min-width: 0; padding: 22px; display: grid; gap: 18px; align-content: start; overflow: hidden; }
 .band {
+  min-width: 0;
+  max-width: 100%;
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 16px;
 }
-.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.section-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; min-width: 0; }
 .section-heading span, #contractBadge {
   font-size: 12px;
   color: var(--muted);
@@ -88,6 +95,7 @@ output { font-size: 12px; color: var(--muted); }
 .metric span { display: block; font-size: 12px; color: var(--muted); }
 .metric strong { display: block; margin-top: 5px; font-size: 18px; }
 .workflow-panel {
+  min-width: 0;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 12px;
@@ -101,8 +109,9 @@ output { font-size: 12px; color: var(--muted); }
 }
 .workflow-panel p { max-width: 760px; }
 .control-grid, .parameter-panel { display: grid; grid-template-columns: repeat(4, minmax(160px, 1fr)); gap: 12px; margin-bottom: 12px; }
-.button-row { display: flex; flex-wrap: wrap; gap: 10px; }
-.plot-surface { border: 1px solid var(--line); border-radius: 8px; background: white; min-height: 320px; overflow: hidden; }
+.button-row { display: flex; flex-wrap: wrap; gap: 10px; min-width: 0; }
+.button-row > * { max-width: 100%; }
+.plot-surface { max-width: 100%; border: 1px solid var(--line); border-radius: 8px; background: white; min-height: 320px; overflow: hidden; }
 #trajectoryPlot { width: 100%; height: 320px; display: block; }
 .table-preview { overflow: auto; margin-top: 12px; max-height: 260px; border: 1px solid var(--line); border-radius: 8px; }
 .table-preview.compact { max-height: 220px; }
@@ -110,6 +119,7 @@ table { border-collapse: collapse; width: 100%; font-size: 12px; }
 th, td { border-bottom: 1px solid var(--line); padding: 6px 8px; text-align: left; white-space: nowrap; }
 th { background: #f7faf8; position: sticky; top: 0; }
 .result-grid, .result-panel {
+  max-width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #111713;
@@ -125,6 +135,8 @@ th { background: #f7faf8; position: sticky; top: 0; }
 }
 .comparison-suite {
   display: grid;
+  min-width: 0;
+  max-width: 100%;
   gap: 12px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -133,6 +145,7 @@ th { background: #f7faf8; position: sticky; top: 0; }
 }
 .comparison-head {
   display: flex;
+  min-width: 0;
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
@@ -150,6 +163,7 @@ th { background: #f7faf8; position: sticky; top: 0; }
 }
 .metric-strip {
   display: grid;
+  min-width: 0;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 8px;
 }
@@ -179,6 +193,8 @@ th { background: #f7faf8; position: sticky; top: 0; }
   line-height: 1.35;
 }
 .comparison-plot {
+  min-width: 0;
+  max-width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;
   padding: 10px;
@@ -206,6 +222,7 @@ th { background: #f7faf8; position: sticky; top: 0; }
 }
 .ranked-row {
   display: grid;
+  min-width: 0;
   grid-template-columns: 28px minmax(120px, 1.2fr) minmax(180px, 2fr) 78px;
   gap: 10px;
   align-items: center;
@@ -213,6 +230,7 @@ th { background: #f7faf8; position: sticky; top: 0; }
 }
 .interval-row {
   display: grid;
+  min-width: 0;
   grid-template-columns: minmax(150px, 1.2fr) minmax(180px, 2fr) 92px;
   gap: 10px;
   align-items: center;
@@ -322,7 +340,13 @@ pre { margin: 0; white-space: pre-wrap; font-size: 12px; line-height: 1.45; }
   .workflow-panel { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
+  h1 { font-size: 18px; }
+  h2 { font-size: 17px; }
+  .section-heading { flex-wrap: wrap; }
   .metric-row, .control-grid, .parameter-panel { grid-template-columns: 1fr; }
+  .meta-panel, .schema-panel, .inspection-grid, .trajectory-stats { grid-template-columns: 1fr; }
+  .workflow-panel { grid-template-columns: 1fr; }
+  .workflow-panel button { width: 100%; }
   .ranked-row, .interval-row { grid-template-columns: 1fr; }
   .margin-axis { margin: 0; }
   .workspace { padding: 12px; }
