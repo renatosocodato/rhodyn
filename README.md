@@ -70,6 +70,8 @@ Included now:
 - a Stage 5 public MLCI workflow that loads a Zenodo-derived trajectory table,
   inspects per-trace residence behavior, and runs the same upload route used by
   CLI/API parity checks.
+- Stage 5 result visualization and export controls for JSON, CSV, Markdown,
+  and backend-generated analysis bundles with parameter provenance.
 - a machine-checkable Stage 3 gate report and three tutorial notebooks covering
   the synthetic primer, public signaling benchmarks, and public endpoint plus
   bounded-coupling benchmarks.

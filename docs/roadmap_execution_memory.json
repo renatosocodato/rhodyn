@@ -2,6 +2,7 @@
   "current_position": {
     "active_stage": "Stage 5. Frontend",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
+    "after_stage5_report_polish": "Stage 5 now has operation-specific result visualization and report export ergonomics for JSON, CSV, Markdown, and backend bundles.",
     "after_stage5_ux_depth": "Stage 5 now has richer trajectory inspection, explicit exported parameter provenance, and a guided MLCI public trajectory workflow that can be reproduced from CLI and the frozen upload route.",
     "after_stage5_upload_parity": "Stage 5 now has real CSV upload-flow hardening, visible parameter/schema inspection, and CLI/API/frontend parity audits for all six frozen contract operations.",
     "after_v0_2_0": "Core-methods pass completed.",

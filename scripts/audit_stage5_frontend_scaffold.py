@@ -121,6 +121,14 @@ def audit_stage5_frontend_scaffold(root: Path = ROOT) -> dict[str, Any]:
         token in index + app_js
         for token in ["trajectoryStats", "traceSummaryTable", "trajectoryInspection", "residenceForPoints"]
     )
+    checks["frontend_exposes_result_visualization"] = all(
+        token in index + app_js
+        for token in ["resultVisual", "renderResultVisual", "barRows", "intervalRows", "result-cards"]
+    )
+    checks["frontend_exposes_report_export_controls"] = all(
+        token in index + app_js
+        for token in ["downloadJsonButton", "downloadCsvButton", "downloadMarkdownButton", "copyJsonButton", "resultMarkdown"]
+    )
     checks["frontend_exposes_public_mlci_workflow"] = all(
         token in index + app_js
         for token in ["publicWorkflowButton", "PUBLIC_WORKFLOW", "mlci_public_intensity_trajectory.csv", "Zenodo 7260137"]

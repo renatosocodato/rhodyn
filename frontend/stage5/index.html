@@ -110,6 +110,13 @@
 
     <section id="report" class="band" data-screen="Report builder">
       <div class="section-heading"><h2>Report builder</h2><span id="jobState">no job submitted</span></div>
+      <div id="resultVisual" class="result-visual" aria-label="Result visualization"></div>
+      <div class="button-row export-actions" aria-label="Result export actions">
+        <button id="downloadJsonButton" type="button" class="secondary">Download JSON</button>
+        <button id="downloadCsvButton" type="button" class="secondary">Download CSV</button>
+        <button id="downloadMarkdownButton" type="button" class="secondary">Download Markdown</button>
+        <button id="copyJsonButton" type="button" class="secondary">Copy JSON</button>
+      </div>
       <pre id="resultPanel" class="result-panel"></pre>
     </section>
   </main>

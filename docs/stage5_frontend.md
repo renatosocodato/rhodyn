@@ -63,6 +63,20 @@ This is a public live-cell tracking workflow derived from Zenodo 7260137. The
 intensity signal is a trajectory-analysis example, not a molecular activity
 reporter or disease-state measurement.
 
+## Result visualization and export
+
+After a run, the report builder keeps the exact JSON result visible and adds a
+compact operation-specific view. Residence results show per-trace residence
+fractions, coupling results show interval placement against the declared margin,
+reserve results show reserve summaries by sample, and model-comparison results
+show ranked fit summaries. These views are presentation surfaces only. The raw
+JSON result remains the reproducible source.
+
+The report builder can download the last result as JSON, result rows as CSV,
+or a Markdown report with parameter provenance. The bundle route still provides
+the backend-generated ZIP with submitted rows, result JSON, result rows,
+parameter provenance, and checksums.
+
 ## Contract rule
 
 The frontend must consume the frozen Stage 4 contract rather than hard-coding a new biological or analytical surface. New screens may rearrange upload, visualization, parameter inspection, and export workflows, but any new backend route, new algorithm, new public biological system, or new release surface belongs to the relevant roadmap stage before it belongs in this scaffold.

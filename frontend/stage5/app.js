@@ -58,6 +58,91 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;");
 }
 
+function compactJson(value) {
+  return JSON.stringify(value, null, 2);
+}
+
+function flattenValue(value) {
+  if (value === null || value === undefined) return "";
+  if (typeof value === "object") return JSON.stringify(value);
+  return String(value);
+}
+
+function resultOperation(payload = state.lastResult) {
+  return payload?.job?.operation || state.operation?.upload_operation || "";
+}
+
+function resultRows(payload = state.lastResult) {
+  if (!payload) return [];
+  for (const key of ["summaries", "fits", "decisions", "records", "typed_results"]) {
+    if (Array.isArray(payload[key])) return payload[key];
+  }
+  if (payload.typed_result && typeof payload.typed_result === "object") return [payload.typed_result];
+  if (payload.markdown) return [{ markdown: payload.markdown }];
+  return [{ status: payload.status || "", operation: resultOperation(payload) }];
+}
+
+function rowsToCsv(rows) {
+  if (!rows.length) return "";
+  const fields = [];
+  rows.forEach((row) => Object.keys(row).forEach((key) => { if (!fields.includes(key)) fields.push(key); }));
+  const quote = (value) => {
+    const text = flattenValue(value);
+    return /[",\n]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+  };
+  return [fields.join(","), ...rows.map((row) => fields.map((field) => quote(row[field])).join(","))].join("\n") + "\n";
+}
+
+function rowsToMarkdown(title, rows) {
+  if (!rows.length) return `# ${title}\n\nNo rows.\n`;
+  const fields = [];
+  rows.forEach((row) => Object.keys(row).forEach((key) => { if (!fields.includes(key)) fields.push(key); }));
+  const header = `| ${fields.join(" | ")} |`;
+  const sep = `| ${fields.map(() => "---").join(" | ")} |`;
+  const body = rows.map((row) => `| ${fields.map((field) => flattenValue(row[field]).replaceAll("|", "\\|")).join(" | ")} |`);
+  return [`# ${title}`, "", header, sep, ...body, ""].join("\n");
+}
+
+function downloadText(filename, text, mimeType) {
+  const blob = new Blob([text], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  link.click();
+  URL.revokeObjectURL(url);
+}
+
+function resultFilename(extension) {
+  const operation = resultOperation() || "result";
+  const job = state.lastResult?.job?.job_id || "preview";
+  return `rhodyn_${operation}_${job}.${extension}`;
+}
+
+function resultMarkdown() {
+  if (!state.lastResult) return "# RhoDyn result\n\nNo result is loaded.\n";
+  if (state.lastResult.markdown) return state.lastResult.markdown;
+  const operation = resultOperation();
+  const job = state.lastResult.job || {};
+  const rows = resultRows();
+  const table = rowsToMarkdown(`RhoDyn ${operation} result`, rows);
+  return [
+    table.trimEnd(),
+    "",
+    "## Parameter provenance",
+    "",
+    `Operation: \`${operation}\``,
+    `Job ID: \`${job.job_id || ""}\``,
+    `Software version: \`${job.software_version || ""}\``,
+    "",
+    "```json",
+    compactJson(job.parameters || currentParameters()),
+    "```",
+    "",
+    "Results are scoped to the submitted rows and declared parameters."
+  ].join("\n") + "\n";
+}
+
 function renderOperationMeta(operation) {
   $("operationMeta").innerHTML = `
     <div><span>Operation</span><strong>${operation.upload_operation}</strong></div>
@@ -323,10 +408,89 @@ function updateValidationState() {
   $("validationState").textContent = issues.length ? issues.join("; ") : "Local schema check passed for the selected operation.";
 }
 
+function card(label, value, detail = "") {
+  return `<div><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong>${detail ? `<p>${escapeHtml(detail)}</p>` : ""}</div>`;
+}
+
+function barRows(rows, valueField, labelField, { lowerIsBetter = false, maxRows = 12 } = {}) {
+  const visible = rows.slice(0, maxRows);
+  const values = visible.map((row) => Number(row[valueField])).filter(Number.isFinite);
+  if (!values.length) return "";
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const span = Math.max(max - min, Math.abs(max), 1);
+  return `<div class="bar-list">${visible.map((row) => {
+    const value = Number(row[valueField]);
+    const width = lowerIsBetter ? ((max - value) / span) * 100 : (Math.abs(value) / Math.max(...values.map(Math.abs), 1)) * 100;
+    return `<div class="bar-row"><span>${escapeHtml(row[labelField] ?? "")}</span><div><i style="width:${Math.max(4, Math.min(100, width)).toFixed(1)}%"></i></div><strong>${fmt(value)}</strong></div>`;
+  }).join("")}</div>`;
+}
+
+function intervalRows(records, decisions) {
+  if (!records.length || !decisions.length) return "";
+  const rows = records.map((record, index) => ({ ...record, ...(decisions[index] || {}) }));
+  return `<div class="interval-list">${rows.map((row) => {
+    const margin = Math.max(Math.abs(Number(row.margin)), 1e-9);
+    const left = Math.max(0, Math.min(100, ((Number(row.ci_low) + margin) / (2 * margin)) * 100));
+    const right = Math.max(0, Math.min(100, ((Number(row.ci_high) + margin) / (2 * margin)) * 100));
+    const estimate = Math.max(0, Math.min(100, ((Number(row.estimate) + margin) / (2 * margin)) * 100));
+    return `<div class="interval-row"><span>${escapeHtml(row.contrast || "")}</span><div><b style="left:${left.toFixed(1)}%;width:${Math.max(1, right - left).toFixed(1)}%"></b><i style="left:${estimate.toFixed(1)}%"></i></div><strong>${row.passes ? "inside" : "outside"}</strong></div>`;
+  }).join("")}</div>`;
+}
+
+function renderResultVisual(payload) {
+  if (!payload) {
+    $("resultVisual").innerHTML = "";
+    return;
+  }
+  const operation = resultOperation(payload);
+  const job = payload.job || {};
+  const rows = resultRows(payload);
+  const cards = [
+    card("Operation", operation || "-"),
+    card("Status", payload.status || "-"),
+    card("Rows", String(job.input_rows ?? rows.length)),
+    card("Job", job.job_id || "not stored")
+  ];
+  let detail = "";
+  if (operation === "score_residence") {
+    const summaries = payload.summaries || [];
+    const meanResidence = summaries.length ? summaries.reduce((total, row) => total + Number(row.residence_fraction || 0), 0) / summaries.length : NaN;
+    cards.push(card("Traces", String(summaries.length)), card("Mean residence", fmt(meanResidence)));
+    detail = barRows(summaries, "residence_fraction", "cell_id");
+  } else if (operation === "decide_coupling") {
+    const decisions = payload.decisions || [];
+    const passing = decisions.filter((row) => row.passes).length;
+    cards.push(card("Contrasts", String(decisions.length)), card("Inside margin", `${passing}/${decisions.length}`));
+    detail = intervalRows(payload.records || [], decisions);
+  } else if (operation === "summarize_reserve") {
+    const summaries = payload.summaries || [];
+    const meanReserve = summaries.length ? summaries.reduce((total, row) => total + Number(row.reserve || 0), 0) / summaries.length : NaN;
+    cards.push(card("Samples", String(summaries.length)), card("Mean reserve", fmt(meanReserve)));
+    detail = barRows(summaries, "reserve", "sample_id");
+  } else if (operation === "compare_models") {
+    const fits = payload.fits || [];
+    const best = fits[0] || {};
+    cards.push(card("Models", String(fits.length)), card("Best model", best.model || "-"), card("Best BIC", fmt(Number(best.bic))));
+    detail = barRows(fits, "bic", "model", { lowerIsBetter: true });
+  } else if (operation === "validate") {
+    const issues = payload.issues || [];
+    cards.push(card("Schema", payload.kind || "-"), card("Issues", String(issues.length)));
+    detail = issues.length ? `<pre class="markdown-preview">${escapeHtml(rowsToMarkdown("Validation issues", issues))}</pre>` : "<p class=\"result-note\">Schema validation passed for the submitted rows.</p>";
+  } else if (operation === "export_markdown") {
+    detail = `<pre class="markdown-preview">${escapeHtml(payload.markdown || "")}</pre>`;
+  }
+  $("resultVisual").innerHTML = `
+    <div class="result-cards">${cards.join("")}</div>
+    ${detail ? `<div class="result-chart">${detail}</div>` : ""}
+  `;
+}
+
 function assignResult(payload) {
   state.lastResult = payload;
-  const text = JSON.stringify(payload, null, 2);
+  const text = compactJson(payload);
   $("resultPanel").textContent = text;
+  renderResultVisual(payload);
   $("residenceSummary").textContent = operationById("score_residence") === state.operation ? text : $("residenceSummary").textContent;
   $("couplingSummary").textContent = operationById("decide_coupling") === state.operation ? text : $("couplingSummary").textContent;
   $("reserveSummary").textContent = operationById("summarize_reserve") === state.operation ? text : $("reserveSummary").textContent;
@@ -400,6 +564,32 @@ async function runOperation(endpoint) {
   assignResult(payload);
 }
 
+function requireResult() {
+  if (!state.lastResult) throw new Error("Run an operation before exporting a result.");
+  return state.lastResult;
+}
+
+function exportJson() {
+  const payload = requireResult();
+  downloadText(resultFilename("json"), compactJson(payload) + "\n", "application/json");
+}
+
+function exportCsv() {
+  requireResult();
+  downloadText(resultFilename("csv"), rowsToCsv(resultRows()), "text/csv");
+}
+
+function exportMarkdown() {
+  requireResult();
+  downloadText(resultFilename("md"), resultMarkdown(), "text/markdown");
+}
+
+async function copyJson() {
+  const payload = requireResult();
+  await navigator.clipboard.writeText(compactJson(payload));
+  $("jobState").textContent = "result JSON copied";
+}
+
 $("operationSelect").addEventListener("change", (event) => renderParameters(operationById(event.target.value)));
 $("parameterPanel").addEventListener("input", () => { renderParameterPayload(); renderTrajectory(state.rows); });
 $("parameterPanel").addEventListener("change", () => { renderParameterPayload(); renderTrajectory(state.rows); });
@@ -419,6 +609,10 @@ $("publicWorkflowButton").addEventListener("click", () => loadPublicWorkflow().c
 $("runButton").addEventListener("click", () => runOperation(state.operation.endpoint).catch((error) => { $("resultPanel").textContent = error.message; }));
 $("submitButton").addEventListener("click", () => runOperation(state.operation.submit_endpoint).catch((error) => { $("resultPanel").textContent = error.message; }));
 $("bundleButton").addEventListener("click", () => runOperation(state.operation.bundle_endpoint).catch((error) => { $("resultPanel").textContent = error.message; }));
+$("downloadJsonButton").addEventListener("click", () => { try { exportJson(); } catch (error) { $("jobState").textContent = error.message; } });
+$("downloadCsvButton").addEventListener("click", () => { try { exportCsv(); } catch (error) { $("jobState").textContent = error.message; } });
+$("downloadMarkdownButton").addEventListener("click", () => { try { exportMarkdown(); } catch (error) { $("jobState").textContent = error.message; } });
+$("copyJsonButton").addEventListener("click", () => copyJson().catch((error) => { $("jobState").textContent = error.message; }));
 
 loadContract().catch((error) => {
   $("contractBadge").textContent = "contract unavailable";

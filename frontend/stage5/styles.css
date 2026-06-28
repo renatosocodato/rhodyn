@@ -118,6 +118,96 @@ th { background: #f7faf8; position: sticky; top: 0; }
   overflow: auto;
   padding: 12px;
 }
+.result-visual {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.result-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 8px;
+}
+.result-cards div {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  background: #f8faf8;
+}
+.result-cards span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+.result-cards strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+.result-cards p, .result-note {
+  margin: 4px 0 0;
+  font-size: 12px;
+}
+.result-chart {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  background: #fbfcfb;
+}
+.bar-list, .interval-list {
+  display: grid;
+  gap: 8px;
+}
+.bar-row, .interval-row {
+  display: grid;
+  grid-template-columns: minmax(160px, 1fr) minmax(180px, 2fr) 80px;
+  gap: 10px;
+  align-items: center;
+  font-size: 12px;
+}
+.bar-row span, .interval-row span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.bar-row div, .interval-row div {
+  position: relative;
+  height: 14px;
+  border: 1px solid #cdd8d3;
+  border-radius: 999px;
+  background: white;
+  overflow: hidden;
+}
+.bar-row i {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: rgba(27, 91, 143, 0.72);
+}
+.interval-row b {
+  position: absolute;
+  top: 2px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(20, 119, 90, 0.45);
+}
+.interval-row i {
+  position: absolute;
+  top: 1px;
+  width: 2px;
+  height: 10px;
+  background: var(--red);
+}
+.markdown-preview {
+  max-height: 280px;
+  overflow: auto;
+  background: #111713;
+  color: #dce8df;
+  border-radius: 6px;
+  padding: 10px;
+}
+.export-actions { margin-bottom: 12px; }
 pre { margin: 0; white-space: pre-wrap; font-size: 12px; line-height: 1.45; }
 .axis { stroke: #76867b; stroke-width: 1; }
 .trace { fill: none; stroke-width: 2; opacity: 0.82; }
@@ -132,6 +222,7 @@ pre { margin: 0; white-space: pre-wrap; font-size: 12px; line-height: 1.45; }
 }
 @media (max-width: 640px) {
   .metric-row, .control-grid, .parameter-panel { grid-template-columns: 1fr; }
+  .bar-row, .interval-row { grid-template-columns: 1fr; }
   .workspace { padding: 12px; }
 }
 
