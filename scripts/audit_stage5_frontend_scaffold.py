@@ -109,11 +109,14 @@ def audit_stage5_frontend_scaffold(root: Path = ROOT) -> dict[str, Any]:
     )
     checks["manifest_allows_stage5_handoff"] = manifest.get("stage5_handoff", {}).get("allowed") is True
     checks["frontend_loads_frozen_contract"] = "../../api/stage4/frontend_contract.json" in app_js and "../../api/stage4/openapi.json" in app_js
+    checks["frontend_loads_frozen_schema_fixture"] = "SCHEMA_FIXTURE_URL" in app_js and "schemas.response.json" in app_js
     checks["frontend_uses_contract_upload_bundle_submit_routes"] = all(
         token in app_js for token in ["operation.endpoint", "operation.bundle_endpoint", "operation.submit_endpoint"]
     )
     checks["frontend_exposes_required_screens"] = all(screen in index for screen in EXPECTED_SCREENS)
+    checks["frontend_exposes_parameter_inspection"] = all(token in index for token in ["operationMeta", "schemaPanel", "parameterPayload", "routePanel", "validationState", "sampleButton"])
     checks["frontend_not_marketing_hero"] = "hero" not in index.lower() and "hero" not in (root / "frontend/stage5/styles.css").read_text(encoding="utf-8").lower()
+    checks["frontend_uses_local_upload_preflight"] = "localValidationIssues" in app_js and "Load a CSV table" in app_js
     checks["docs_state_stage4_frozen"] = "Stage 4 API contract is frozen" in closeout_doc
     checks["docs_state_stage5_contract_bound"] = "Stage 5 scaffold is contract-bound" in stage5_doc
     checks["boundary_no_new_biology"] = all(

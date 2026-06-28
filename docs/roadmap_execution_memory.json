@@ -1,85 +1,12 @@
 {
-  "project": "RhoDyn",
-  "purpose": "Roadmap execution memory for the original Stage 3 to Stage 8 blueprint.",
-  "updated": "2026-06-28",
   "current_position": {
+    "active_stage": "Stage 5. Frontend",
+    "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
+    "after_stage5_upload_parity": "Stage 5 now has real CSV upload-flow hardening, visible parameter/schema inspection, and CLI/API/frontend parity audits for all six frozen contract operations.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "active_stage": "Stage 5. Frontend",
-    "next_stage_not_active_until": "Stage 6 begins only after the Stage 5 workbench can reproduce backend results from the frozen contract and the release surfaces pass together.",
-    "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold."
+    "next_stage_not_active_until": "Stage 6 begins only after the Stage 5 workbench can reproduce backend results from the frozen contract and the release surfaces pass together."
   },
-  "stage_lock": [
-    {
-      "stage": 3,
-      "name": "Case-study evidence bank",
-      "status": "complete_for_current_gate",
-      "scope_rule": "Keep the evidence bank stable. Additional public biological systems are Stage 7 evidence expansion unless they repair a documented Stage 3 defect.",
-      "gate": [
-        "At least two biological systems show a residence/amplitude distinction.",
-        "At least one case shows bounded coupling or reserve logic.",
-        "Examples do not imply RhoDyn generated the original manuscript results."
-      ]
-    },
-    {
-      "stage": 4,
-      "name": "Backend",
-      "status": "frozen_for_stage5",
-      "scope_rule": "Treat the committed OpenAPI schema, frontend contract, fixtures, and closeout document as the Stage 5 dependency. Reopen Stage 4 only for documented contract defects.",
-      "gate": [
-        "Every backend result matches the Python library output exactly.",
-        "No hidden state outside explicit durable job storage.",
-        "Jobs preserve input schema, parameter choices, software version, and bundle hashes.",
-        "Frozen OpenAPI, frontend contract, and fixtures are committed for Stage 5."
-      ]
-    },
-    {
-      "stage": 5,
-      "name": "Frontend",
-      "status": "active_scaffold",
-      "scope_rule": "Build only frontend behavior that consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility.",
-      "gate": [
-        "A biologist can upload a tidy table and interpret amplitude-like versus residence-like behavior without reading code.",
-        "A quantitative user can inspect every parameter and reproduce the result from CLI.",
-        "The workbench consumes the frozen Stage 4 API contract rather than inventing new analysis routes."
-      ]
-    },
-    {
-      "stage": 6,
-      "name": "Official software release",
-      "status": "partly_prepared_not_citable",
-      "scope_rule": "Do not call RhoDyn professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene pass together.",
-      "gate": [
-        "Wheel and source distribution install cleanly.",
-        "Documentation builds cleanly.",
-        "Examples run from scratch.",
-        "Release archive contains no private data, manuscript-private files, raw microscopy, or local paths."
-      ]
-    },
-    {
-      "stage": 7,
-      "name": "Nature Methods first",
-      "status": "not_ready",
-      "scope_rule": "Treat this as a future scientific-methods campaign, not a rebranding of the RhoA/microglia manuscript or the Stage 3 examples.",
-      "gate": [
-        "Formal method definition and mathematical model are complete.",
-        "Benchmarks cover amplitude-only, endpoint-only, threshold-only, and generic time-series summaries.",
-        "At least two independent biological demonstrations beyond the original manuscript logic are in place.",
-        "Software implementation, uncertainty handling, tutorials, GUI or hosted demo, and limitations section are ready."
-      ]
-    },
-    {
-      "stage": 8,
-      "name": "Product and commercial alignment",
-      "status": "conceptual_only",
-      "scope_rule": "Product strategy inherits the Nature Methods framing and must not lead the scientific evidence path.",
-      "gate": [
-        "Open-core library, CLI, public adapters, examples, and basic reports remain useful without paid features.",
-        "Paid or hosted features add collaboration, private data, batch jobs, richer dashboards, export logs, adapters, and deployments without changing scientific claims.",
-        "Commercial positioning remains dynamic operating-state interpretation for live-cell perturbation data."
-      ]
-    }
-  ],
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
     "RhoDyn is not a reproduction pipeline for the RhoA/microglia manuscript.",
@@ -89,5 +16,81 @@
     "Stage 7 method evidence can expand the biological systems but should not reopen the Stage 3 closure unless a Stage 3 defect is found.",
     "Stage 8 cannot reshape the Nature Methods evidence path.",
     "Stage 5 frontend work must consume the frozen Stage 4 API contract."
-  ]
+  ],
+  "project": "RhoDyn",
+  "purpose": "Roadmap execution memory for the original Stage 3 to Stage 8 blueprint.",
+  "stage_lock": [
+    {
+      "gate": [
+        "At least two biological systems show a residence/amplitude distinction.",
+        "At least one case shows bounded coupling or reserve logic.",
+        "Examples do not imply RhoDyn generated the original manuscript results."
+      ],
+      "name": "Case-study evidence bank",
+      "scope_rule": "Keep the evidence bank stable. Additional public biological systems are Stage 7 evidence expansion unless they repair a documented Stage 3 defect.",
+      "stage": 3,
+      "status": "complete_for_current_gate"
+    },
+    {
+      "gate": [
+        "Every backend result matches the Python library output exactly.",
+        "No hidden state outside explicit durable job storage.",
+        "Jobs preserve input schema, parameter choices, software version, and bundle hashes.",
+        "Frozen OpenAPI, frontend contract, and fixtures are committed for Stage 5."
+      ],
+      "name": "Backend",
+      "scope_rule": "Treat the committed OpenAPI schema, frontend contract, fixtures, and closeout document as the Stage 5 dependency. Reopen Stage 4 only for documented contract defects.",
+      "stage": 4,
+      "status": "frozen_for_stage5"
+    },
+    {
+      "current_gate": "Harden contract-bound frontend around real upload flows, parameter inspection, and CLI/API/frontend parity before adding richer visualization.",
+      "gate": [
+        "A biologist can upload a tidy table and interpret amplitude-like versus residence-like behavior without reading code.",
+        "A quantitative user can inspect every parameter and reproduce the result from CLI.",
+        "The workbench consumes the frozen Stage 4 API contract rather than inventing new analysis routes."
+      ],
+      "latest_evidence": "scripts/audit_stage5_upload_flow_parity.py passes across all six frozen contract operations.",
+      "name": "Frontend",
+      "scope_rule": "Build only frontend behavior that consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility.",
+      "stage": 5,
+      "status": "active_scaffold"
+    },
+    {
+      "gate": [
+        "Wheel and source distribution install cleanly.",
+        "Documentation builds cleanly.",
+        "Examples run from scratch.",
+        "Release archive contains no private data, manuscript-private files, raw microscopy, or local paths."
+      ],
+      "name": "Official software release",
+      "scope_rule": "Do not call RhoDyn professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene pass together.",
+      "stage": 6,
+      "status": "partly_prepared_not_citable"
+    },
+    {
+      "gate": [
+        "Formal method definition and mathematical model are complete.",
+        "Benchmarks cover amplitude-only, endpoint-only, threshold-only, and generic time-series summaries.",
+        "At least two independent biological demonstrations beyond the original manuscript logic are in place.",
+        "Software implementation, uncertainty handling, tutorials, GUI or hosted demo, and limitations section are ready."
+      ],
+      "name": "Nature Methods first",
+      "scope_rule": "Treat this as a future scientific-methods campaign, not a rebranding of the RhoA/microglia manuscript or the Stage 3 examples.",
+      "stage": 7,
+      "status": "not_ready"
+    },
+    {
+      "gate": [
+        "Open-core library, CLI, public adapters, examples, and basic reports remain useful without paid features.",
+        "Paid or hosted features add collaboration, private data, batch jobs, richer dashboards, export logs, adapters, and deployments without changing scientific claims.",
+        "Commercial positioning remains dynamic operating-state interpretation for live-cell perturbation data."
+      ],
+      "name": "Product and commercial alignment",
+      "scope_rule": "Product strategy inherits the Nature Methods framing and must not lead the scientific evidence path.",
+      "stage": 8,
+      "status": "conceptual_only"
+    }
+  ],
+  "updated": "2026-06-28"
 }

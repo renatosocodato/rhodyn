@@ -3,9 +3,12 @@
 from __future__ import annotations
 
 import argparse
+import csv
 import json
+from pathlib import Path
 
 from rhodyn.compare import rank_model_fits
+from rhodyn.coupling import equivalence_from_interval
 from rhodyn.ctc import (
     CTC_LINEAGE_SIGNAL_CHOICES,
     CTC_SIGNAL_CHOICES,
@@ -19,9 +22,17 @@ from rhodyn.ctc import (
 from rhodyn.extras import extra_plan
 from rhodyn.models import simulate_controller
 from rhodyn.paper import inspect_case_study_root, paper_case_study_metadata
-from rhodyn.report import to_plain
+from rhodyn.report import markdown_summary, to_plain
+from rhodyn.reserve import ff_over_f0, reserve_coordinate
 from rhodyn.residence import ResidenceWindow, score_records
-from rhodyn.results import model_comparison_result_from_fits, residence_result_from_summary
+from rhodyn.results import (
+    GroupMetadata,
+    ReserveResult,
+    ResultProvenance,
+    coupling_result_from_decision,
+    model_comparison_result_from_fits,
+    residence_result_from_summary,
+)
 from rhodyn.schema import read_coupling_csv, read_endpoint_csv, read_reserve_csv, read_trajectory_csv, schema_specs
 from rhodyn.sensitivity import residence_window_grid, score_records_window_sensitivity
 
@@ -30,9 +41,19 @@ def _print_json(payload: object) -> None:
     print(json.dumps(to_plain(payload), indent=2))
 
 
+def _read_dict_csv(path: str | Path) -> tuple[list[dict[str, str]], list[dict[str, object]]]:
+    issues: list[dict[str, object]] = []
+    with Path(path).open(newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        if not reader.fieldnames:
+            return [], [{"row": 0, "field": "header", "message": "CSV must include a header row"}]
+        rows = [dict(row) for row in reader]
+    return rows, issues
+
+
 def cmd_validate(args: argparse.Namespace) -> int:
     if args.kind == "trajectory":
-        rows, issues = read_trajectory_csv(args.csv)
+        rows, issues = read_trajectory_csv(args.csv, signal_column=args.signal_column)
     elif args.kind == "endpoint":
         rows, issues = read_endpoint_csv(args.csv)
     elif args.kind == "reserve":
@@ -74,6 +95,91 @@ def cmd_score_residence(args: argparse.Namespace) -> int:
             "typed_results": typed,
         }
     )
+    return 0
+
+
+def cmd_decide_coupling(args: argparse.Namespace) -> int:
+    rows, issues = read_coupling_csv(args.csv)
+    if issues:
+        _print_json({"status": "fail", "issues": issues})
+        return 1
+    parameters = {"rope_threshold": args.rope_threshold}
+    decisions = [
+        equivalence_from_interval(
+            row.estimate,
+            row.ci_low,
+            row.ci_high,
+            row.margin,
+            rope_mass=row.rope_mass,
+            rope_threshold=args.rope_threshold,
+        )
+        for row in rows
+    ]
+    typed = [
+        coupling_result_from_decision(
+            row.contrast,
+            decision,
+            parameters=parameters,
+            source=str(args.csv),
+        )
+        for row, decision in zip(rows, decisions)
+    ]
+    _print_json({"status": "pass", "records": rows, "decisions": decisions, "typed_results": typed})
+    return 0
+
+
+def cmd_summarize_reserve(args: argparse.Namespace) -> int:
+    rows, issues = read_reserve_csv(args.csv)
+    if issues:
+        _print_json({"status": "fail", "issues": issues})
+        return 1
+    parameters = {
+        "floor": args.floor,
+        "ceiling": args.ceiling,
+        "baseline_points": args.baseline_points,
+        "normalize": args.normalize,
+    }
+    grouped: dict[tuple[str, str], list[object]] = {}
+    for row in rows:
+        grouped.setdefault((row.condition, row.sample_id), []).append(row)
+    summaries: list[dict[str, object]] = []
+    typed: list[ReserveResult] = []
+    for (condition, sample_id), sample_rows in sorted(grouped.items()):
+        ordered = sorted(sample_rows, key=lambda item: item.time)  # type: ignore[attr-defined]
+        values = [row.response for row in ordered]  # type: ignore[attr-defined]
+        normalized = ff_over_f0(values, baseline_points=args.baseline_points) if args.normalize else values
+        reserve = reserve_coordinate(normalized, floor=args.floor, ceiling=args.ceiling)
+        peak_response = max(normalized)
+        replicate = ordered[0].replicate  # type: ignore[attr-defined]
+        summaries.append(
+            {
+                "condition": condition,
+                "sample_id": sample_id,
+                "replicate": replicate,
+                "n_points": len(ordered),
+                "peak_response": peak_response,
+                "reserve": reserve,
+            }
+        )
+        typed.append(
+            ReserveResult(
+                group=GroupMetadata(condition=condition, sample_id=sample_id, replicate=replicate),
+                reserve=reserve,
+                peak_response=peak_response,
+                n_points=len(ordered),
+                provenance=ResultProvenance(schema_kind="reserve", parameters=parameters, source=str(args.csv)),
+            )
+        )
+    _print_json({"status": "pass", "summaries": summaries, "typed_results": typed})
+    return 0
+
+
+def cmd_export_markdown(args: argparse.Namespace) -> int:
+    rows, issues = _read_dict_csv(args.csv)
+    if issues:
+        _print_json({"status": "fail", "issues": issues})
+        return 1
+    _print_json({"status": "pass", "markdown": markdown_summary(args.title, rows)})
     return 0
 
 
@@ -221,6 +327,7 @@ def build_parser() -> argparse.ArgumentParser:
     validate = sub.add_parser("validate", help="Validate a tidy input CSV.")
     validate.add_argument("csv")
     validate.add_argument("--kind", choices=["trajectory", "endpoint", "reserve", "coupling"], default="trajectory")
+    validate.add_argument("--signal-column", default="signal")
     validate.set_defaults(func=cmd_validate)
 
     score = sub.add_parser("score-residence", help="Score residence-window summaries for a trajectory table.")
@@ -229,6 +336,24 @@ def build_parser() -> argparse.ArgumentParser:
     score.add_argument("--high", type=float, required=True)
     score.add_argument("--signal-column", default="signal")
     score.set_defaults(func=cmd_score_residence)
+
+    coupling = sub.add_parser("decide-coupling", help="Classify bounded-coupling interval rows.")
+    coupling.add_argument("csv")
+    coupling.add_argument("--rope-threshold", type=float, default=0.95)
+    coupling.set_defaults(func=cmd_decide_coupling)
+
+    reserve = sub.add_parser("summarize-reserve", help="Summarize reserve-like response rows.")
+    reserve.add_argument("csv")
+    reserve.add_argument("--floor", type=float, required=True)
+    reserve.add_argument("--ceiling", type=float, required=True)
+    reserve.add_argument("--baseline-points", type=int, default=3)
+    reserve.add_argument("--normalize", action=argparse.BooleanOptionalAction, default=True)
+    reserve.set_defaults(func=cmd_summarize_reserve)
+
+    report = sub.add_parser("export-markdown", help="Export a compact Markdown summary for a CSV table.")
+    report.add_argument("csv")
+    report.add_argument("--title", default="RhoDyn report")
+    report.set_defaults(func=cmd_export_markdown)
 
     sim = sub.add_parser("simulate", help="Run a minimal controller simulation.")
     sim.add_argument("--duration", type=float, default=20.0)

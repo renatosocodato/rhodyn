@@ -57,8 +57,16 @@
         <label>Table kind<input id="tableKind" readonly></label>
         <label>Rows<input id="rowCount" readonly></label>
       </div>
+      <div id="operationMeta" class="meta-panel" aria-label="Operation route metadata"></div>
+      <div id="schemaPanel" class="schema-panel" aria-label="Selected table schema"></div>
       <div id="parameterPanel" class="parameter-panel" aria-label="Operation parameters"></div>
+      <div class="inspection-grid">
+        <div><strong>Parameter payload</strong><pre id="parameterPayload"></pre></div>
+        <div><strong>Run route preview</strong><pre id="routePanel"></pre></div>
+      </div>
+      <output id="validationState" class="status-bad">load a CSV table before running an operation</output>
       <div class="button-row">
+        <button id="sampleButton" type="button">Load example</button>
         <button id="runButton" type="button">Run</button>
         <button id="submitButton" type="button">Submit job</button>
         <button id="bundleButton" type="button">Bundle</button>

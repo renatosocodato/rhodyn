@@ -65,7 +65,8 @@ Included now:
 - a frozen Stage 4 API contract under `api/stage4/`, including OpenAPI,
   frontend operation metadata, and canonical request/response fixtures.
 - a first Stage 5 static frontend scaffold under `frontend/stage5/` that
-  consumes the frozen contract.
+  consumes the frozen contract, inspects operation parameters and schemas, and
+  exercises real CSV upload routes against the backend.
 - a machine-checkable Stage 3 gate report and three tutorial notebooks covering
   the synthetic primer, public signaling benchmarks, and public endpoint plus
   bounded-coupling benchmarks.
@@ -160,6 +161,15 @@ Compare reduced model predictions from a tidy endpoint table.
 rhodyn compare examples/synthetic_endpoints.csv
 ```
 
+Classify bounded-coupling intervals, summarize reserve rows, or export a compact
+Markdown report from the same tidy tables used by the backend upload routes.
+
+```bash
+rhodyn decide-coupling examples/synthetic_coupling.csv
+rhodyn summarize-reserve examples/synthetic_reserve.csv --floor 1.0 --ceiling 1.7 --baseline-points 1
+rhodyn export-markdown examples/synthetic_coupling.csv --title "RhoDyn report"
+```
+
 Run the dependency-free synthetic walkthrough.
 
 ```bash
@@ -219,6 +229,7 @@ Freeze the Stage 4 API contract and audit the Stage 5 scaffold.
 ```bash
 python scripts/freeze_stage4_api_contract.py
 python scripts/audit_stage5_frontend_scaffold.py
+python scripts/audit_stage5_upload_flow_parity.py
 ```
 
 Serve the first Stage 5 static workbench from the repository root.

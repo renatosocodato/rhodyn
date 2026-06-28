@@ -25,6 +25,7 @@ REQUIRED_FILES = [
     "scripts/audit_stage4_docker_smoke.py",
     "scripts/freeze_stage4_api_contract.py",
     "scripts/audit_stage5_frontend_scaffold.py",
+    "scripts/audit_stage5_upload_flow_parity.py",
     "api/stage4/openapi.json",
     "api/stage4/frontend_contract.json",
     "api/stage4/contract_manifest.json",
@@ -179,16 +180,20 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"raw or manuscript-private data-like file should not be packaged: {rel}")
 
 
-    scaffold_check = subprocess.run(
-        [sys.executable, "scripts/audit_stage5_frontend_scaffold.py"],
-        cwd=root,
-        text=True,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-        check=False,
-    )
-    if scaffold_check.returncode != 0:
-        failures.append("Stage 5 frontend scaffold audit does not pass")
+    for script, label in [
+        ("scripts/audit_stage5_frontend_scaffold.py", "Stage 5 frontend scaffold audit"),
+        ("scripts/audit_stage5_upload_flow_parity.py", "Stage 5 upload-flow parity audit"),
+    ]:
+        check = subprocess.run(
+            [sys.executable, script],
+            cwd=root,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=False,
+        )
+        if check.returncode != 0:
+            failures.append(f"{label} does not pass")
 
     if not (root / ".github" / "workflows" / "package.yml").exists():
         warnings.append("package build workflow is missing")

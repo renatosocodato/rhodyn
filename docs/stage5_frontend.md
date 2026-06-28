@@ -4,7 +4,7 @@ Stage 5 scaffold is contract-bound to the frozen Stage 4 API contract.
 
 ## Scope
 
-The scaffold in `frontend/stage5/` is a static scientific workbench shell. It loads `api/stage4/frontend_contract.json` and `api/stage4/openapi.json`, then exposes the Stage 4 upload, bundle, and durable-submit routes without introducing new analysis logic.
+The scaffold in `frontend/stage5/` is a static scientific workbench shell. It loads `api/stage4/frontend_contract.json`, `api/stage4/openapi.json`, and the frozen schema fixture, then exposes the Stage 4 upload, bundle, and durable-submit routes without introducing new analysis logic. The upload screen now shows the selected operation, expected schema columns, editable parameters, serialized parameter payload, route preview, local schema preflight status, and a contract example loader.
 
 ## Screens
 
@@ -32,6 +32,16 @@ python -m http.server 9000
 ```
 
 Then open `http://127.0.0.1:9000/frontend/stage5/` and keep the API field set to `http://127.0.0.1:8000`.
+
+## Upload-flow parity
+
+Every Stage 5 contract operation now has a CLI counterpart and a frozen example CSV. The parity audit runs each operation through the CLI, through `rhodyn.backend_core.run_backend_operation`, and against the frozen upload-run fixture after removing transport-only metadata such as job IDs and source-path labels.
+
+```bash
+PYTHONPATH=src python scripts/audit_stage5_upload_flow_parity.py
+```
+
+Passing this audit means the frontend route contract, CLI command, and backend core agree for the retained example tables. It does not add a new biological case study or change the interpretation of any result.
 
 ## Contract rule
 

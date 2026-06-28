@@ -47,6 +47,10 @@ Started:
 - Stage 4 API contract freeze with committed OpenAPI, frontend operation
   metadata, canonical request/response fixtures, and closeout documentation;
 - first Stage 5 static frontend scaffold bound to the frozen Stage 4 contract;
+- Stage 5 upload-flow hardening with CLI coverage for all six contract
+  operations, schema and parameter inspection in the static workbench, and a
+  parity audit comparing CLI output, backend-core output, and frozen upload
+  fixtures;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 
