@@ -192,6 +192,14 @@ def _operation_case(operation: dict[str, Any]) -> dict[str, Any]:
     normalized_cli = _strip_transport(cli)
     normalized_live = None if live_upload is None else _strip_transport(live_upload["body"])
     live_matches = None if normalized_live is None else live_upload["status_code"] == 200 and normalized_live == normalized_backend
+    mismatch_summary = {
+        "cli_backend_equal": normalized_cli == normalized_backend,
+        "fixture_backend_equal": normalized_fixture == normalized_backend,
+        "live_backend_equal": live_matches,
+        "cli_keys": sorted(normalized_cli) if isinstance(normalized_cli, dict) else [],
+        "backend_keys": sorted(normalized_backend) if isinstance(normalized_backend, dict) else [],
+        "fixture_keys": sorted(normalized_fixture) if isinstance(normalized_fixture, dict) else [],
+    }
     return {
         "operation_id": operation["operation_id"],
         "upload_operation": operation["upload_operation"],
@@ -207,6 +215,7 @@ def _operation_case(operation: dict[str, Any]) -> dict[str, Any]:
         "fixture_matches_backend_core": normalized_fixture == normalized_backend,
         "live_upload_route_checked": live_matches is not None,
         "live_upload_route_matches_backend_core": live_matches,
+        "mismatch_summary": mismatch_summary,
         "status": "pass" if normalized_cli == normalized_backend and normalized_fixture == normalized_backend and live_matches is not False else "fail",
     }
 

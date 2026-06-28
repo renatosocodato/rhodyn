@@ -6,8 +6,8 @@ from scripts.audit_stage5_upload_flow_parity import audit_stage5_upload_flow_par
 class Stage5UploadFlowParityTests(TestCase):
     def test_cli_api_and_frontend_contract_upload_flows_match(self):
         payload = audit_stage5_upload_flow_parity()
-        self.assertEqual(payload["status"], "pass")
-        self.assertEqual(payload["failures"], [])
+        self.assertEqual(payload["status"], "pass", payload)
+        self.assertEqual(payload["failures"], [], payload)
         self.assertEqual(payload["operation_count"], 6)
         self.assertTrue(all(payload["checks"].values()))
         self.assertTrue(all(case["cli_matches_backend_core"] for case in payload["operations"]))

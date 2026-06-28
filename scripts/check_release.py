@@ -193,7 +193,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             check=False,
         )
         if check.returncode != 0:
-            failures.append(f"{label} does not pass")
+            detail = (check.stdout or check.stderr).strip()
+            failures.append(f"{label} does not pass: {detail[:1200]}")
 
     if not (root / ".github" / "workflows" / "package.yml").exists():
         warnings.append("package build workflow is missing")
