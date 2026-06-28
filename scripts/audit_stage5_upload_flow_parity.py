@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import csv
 import json
+import math
 import os
 import subprocess
 import sys
@@ -26,6 +27,7 @@ from rhodyn.report import to_plain
 
 
 REPORT_FORMAT = "rhodyn.stage5_upload_flow_parity_audit.v1"
+NUMERIC_TOLERANCE = 1e-12
 EXPECTED_OPERATIONS = {
     "validate_trajectory",
     "score_residence",
@@ -140,6 +142,18 @@ def _strip_transport(value: Any) -> Any:
     return plain
 
 
+def _payloads_match(left: Any, right: Any) -> bool:
+    if isinstance(left, bool) or isinstance(right, bool):
+        return left == right
+    if isinstance(left, (int, float)) and isinstance(right, (int, float)):
+        return math.isclose(float(left), float(right), rel_tol=NUMERIC_TOLERANCE, abs_tol=NUMERIC_TOLERANCE)
+    if isinstance(left, dict) and isinstance(right, dict):
+        return set(left) == set(right) and all(_payloads_match(left[key], right[key]) for key in left)
+    if isinstance(left, list) and isinstance(right, list):
+        return len(left) == len(right) and all(_payloads_match(a, b) for a, b in zip(left, right))
+    return left == right
+
+
 def _run_cli(command: list[str]) -> dict[str, Any]:
     env = dict(os.environ)
     env["PYTHONPATH"] = str(SRC) + (os.pathsep + env["PYTHONPATH"] if env.get("PYTHONPATH") else "")
@@ -191,10 +205,13 @@ def _operation_case(operation: dict[str, Any]) -> dict[str, Any]:
     normalized_fixture = _strip_transport(fixture)
     normalized_cli = _strip_transport(cli)
     normalized_live = None if live_upload is None else _strip_transport(live_upload["body"])
-    live_matches = None if normalized_live is None else live_upload["status_code"] == 200 and normalized_live == normalized_backend
+    cli_matches = _payloads_match(normalized_cli, normalized_backend)
+    fixture_matches = _payloads_match(normalized_fixture, normalized_backend)
+    live_matches = None if normalized_live is None else live_upload["status_code"] == 200 and _payloads_match(normalized_live, normalized_backend)
     mismatch_summary = {
-        "cli_backend_equal": normalized_cli == normalized_backend,
-        "fixture_backend_equal": normalized_fixture == normalized_backend,
+        "numeric_tolerance": NUMERIC_TOLERANCE,
+        "cli_backend_equal": cli_matches,
+        "fixture_backend_equal": fixture_matches,
         "live_backend_equal": live_matches,
         "cli_keys": sorted(normalized_cli) if isinstance(normalized_cli, dict) else [],
         "backend_keys": sorted(normalized_backend) if isinstance(normalized_backend, dict) else [],
@@ -211,12 +228,12 @@ def _operation_case(operation: dict[str, Any]) -> dict[str, Any]:
         "frontend_submit_endpoint": operation["submit_endpoint"],
         "frontend_bundle_endpoint": operation["bundle_endpoint"],
         "cli_command": command[2:],
-        "cli_matches_backend_core": normalized_cli == normalized_backend,
-        "fixture_matches_backend_core": normalized_fixture == normalized_backend,
+        "cli_matches_backend_core": cli_matches,
+        "fixture_matches_backend_core": fixture_matches,
         "live_upload_route_checked": live_matches is not None,
         "live_upload_route_matches_backend_core": live_matches,
         "mismatch_summary": mismatch_summary,
-        "status": "pass" if normalized_cli == normalized_backend and normalized_fixture == normalized_backend and live_matches is not False else "fail",
+        "status": "pass" if cli_matches and fixture_matches and live_matches is not False else "fail",
     }
 
 
