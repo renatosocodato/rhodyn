@@ -46,6 +46,16 @@ REQUIRED_SPEC_TOKENS = [
     "not claimed",
     "does not identify every molecular edge",
 ]
+SNAPSHOT_CASES = [
+    "stage5-adversarial-coupling",
+    "stage5-coupling-comparison",
+    "stage5-model-comparison",
+    "stage5-public-trajectory-workflow",
+    "stage5-reserve-comparison",
+    "stage5-residence-comparison",
+]
+SNAPSHOT_PROJECTS = ["chromium-desktop", "chromium-mobile"]
+SNAPSHOT_PLATFORMS = ["darwin", "linux"]
 
 
 def _read(path: str) -> str:
@@ -83,10 +93,15 @@ def audit_stage5_premium_workbench(root: Path = ROOT) -> dict[str, Any]:
     checks["stage5_snapshot_update_script_present"] = "--update-snapshots" in scripts.get("test:stage5:update-screenshots", "")
     checks["playwright_uses_static_repo_server"] = "python3 -m http.server 9013" in config and "frontend/stage5" in config
     checks["playwright_has_desktop_and_mobile_projects"] = "chromium-desktop" in config and "chromium-mobile" in config
-    checks["playwright_snapshots_are_platform_independent"] = "snapshotPathTemplate" in config and all(
-        "-darwin" not in name and "-linux" not in name and "-win32" not in name for name in snapshot_names
-    )
-    checks["playwright_has_expected_snapshot_count"] = len(snapshot_names) == 12
+    expected_snapshots = {
+        f"{case}-{project}-{platform}.png"
+        for case in SNAPSHOT_CASES
+        for project in SNAPSHOT_PROJECTS
+        for platform in SNAPSHOT_PLATFORMS
+    }
+    checks["playwright_uses_platform_specific_snapshots"] = "snapshotPathTemplate" not in config
+    checks["playwright_has_darwin_and_linux_baselines"] = expected_snapshots.issubset(set(snapshot_names))
+    checks["playwright_has_expected_snapshot_count"] = len(snapshot_names) == len(expected_snapshots)
     checks["comparison_panel_functions_present"] = all(token in app_js for token in REQUIRED_VISUAL_TOKENS)
     checks["comparison_panel_css_present"] = all(token in css for token in REQUIRED_CSS_TOKENS)
     checks["spec_covers_all_core_comparison_operations"] = all(token in spec for token in REQUIRED_OPERATIONS)

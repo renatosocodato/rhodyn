@@ -59,9 +59,10 @@ npm run test:stage5
 ```
 
 Use `npm run test:stage5:update-screenshots` only when a deliberate visual
-change has been reviewed. The committed baselines are platform-independent and
-separated by Playwright project name, so CI and local runs use the same snapshot
-filenames.
+change has been reviewed. The committed baselines are platform-specific for
+Darwin and Linux, because Chromium font metrics differ slightly between local
+macOS review and Ubuntu CI. Both platforms retain separate desktop and mobile
+Chromium snapshots.
 
 ## Public MLCI workflow
 
