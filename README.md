@@ -15,13 +15,15 @@ future examples.
 ## Current status
 
 This is an early open-core scaffold with the `v0.3.x` public case-study lane
-closed for the current evidence gate and Stage 4 backend hardening underway.
+closed for the current evidence gate, the Stage 4 API contract frozen, and the
+first Stage 5 frontend scaffold underway.
 
 The staged development plan is anchored in `docs/roadmap.md`. The current
 position is Stage 3D completed, the Stage 3 evidence bank is closable for v0.3,
-and Stage 4 is the active engineering stage. Frontend, official release, Nature
-Methods, and product work remain downstream of this evidence bank and backend
-contract.
+Stage 4 is frozen for the frontend handoff, and Stage 5 is active as a
+contract-bound scaffold. Official release, Nature Methods, and product work
+remain downstream of this evidence bank, frozen backend contract, and frontend
+workbench.
 
 Included now:
 
@@ -60,6 +62,10 @@ Included now:
   model comparison, Markdown report export, and downloadable analysis bundles.
 - explicit durable server-side job storage for backend jobs when
   `RHODYN_JOB_STORE_DIR` or `create_app(job_store_dir=...)` is configured.
+- a frozen Stage 4 API contract under `api/stage4/`, including OpenAPI,
+  frontend operation metadata, and canonical request/response fixtures.
+- a first Stage 5 static frontend scaffold under `frontend/stage5/` that
+  consumes the frozen contract.
 - a machine-checkable Stage 3 gate report and three tutorial notebooks covering
   the synthetic primer, public signaling benchmarks, and public endpoint plus
   bounded-coupling benchmarks.
@@ -70,7 +76,7 @@ Not included yet:
 - general raw microscopy ingestion beyond the selected CTC TIFF path;
 - manuscript-specific figure generation;
 - disease-state prediction;
-- a graphical dashboard.
+- a complete graphical dashboard beyond the first Stage 5 scaffold.
 
 ## Install for development
 
@@ -207,6 +213,22 @@ Smoke-test the Docker deployment template against the same upload/job contract.
 ```bash
 python scripts/audit_stage4_docker_smoke.py
 ```
+
+Freeze the Stage 4 API contract and audit the Stage 5 scaffold.
+
+```bash
+python scripts/freeze_stage4_api_contract.py
+python scripts/audit_stage5_frontend_scaffold.py
+```
+
+Serve the first Stage 5 static workbench from the repository root.
+
+```bash
+python -m http.server 9000
+```
+
+Then open `http://127.0.0.1:9000/frontend/stage5/` while the backend runs on
+`http://127.0.0.1:8000`.
 
 Deployment environment examples live in `deploy/stage4.env.example`. Retention
 limits can be configured with `RHODYN_JOB_RETENTION_MAX_JOBS`,

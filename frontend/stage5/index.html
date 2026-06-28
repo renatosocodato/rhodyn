@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RhoDyn Stage 5 Workbench</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <aside class="sidebar" aria-label="Workspace navigation">
+    <div class="brand">
+      <div class="mark">R</div>
+      <div>
+        <h1>RhoDyn</h1>
+        <p>Stage 5 workbench scaffold</p>
+      </div>
+    </div>
+    <nav class="screen-list">
+      <a href="#dashboard" data-screen-link="Project dashboard">Dashboard</a>
+      <a href="#upload" data-screen-link="Data upload and schema validation">Upload</a>
+      <a href="#trajectory" data-screen-link="Trajectory explorer">Trajectories</a>
+      <a href="#residence" data-screen-link="Residence-window tuner">Residence</a>
+      <a href="#coupling" data-screen-link="Coupling/equivalence decision panel">Coupling</a>
+      <a href="#reserve" data-screen-link="Reserve-buffering panel">Reserve</a>
+      <a href="#models" data-screen-link="Model-comparison panel">Models</a>
+      <a href="#report" data-screen-link="Report builder">Report</a>
+    </nav>
+    <section class="connection">
+      <label for="apiBase">API</label>
+      <input id="apiBase" value="http://127.0.0.1:8000" autocomplete="off">
+      <label for="apiKey">Key</label>
+      <input id="apiKey" type="password" autocomplete="off" placeholder="optional">
+      <button id="healthButton" type="button">Check</button>
+      <output id="healthState">not checked</output>
+    </section>
+  </aside>
+
+  <main class="workspace">
+    <section id="dashboard" class="band" data-screen="Project dashboard">
+      <div class="section-heading">
+        <h2>Project dashboard</h2>
+        <span id="contractBadge">contract loading</span>
+      </div>
+      <div class="metric-row">
+        <div class="metric"><span>Contract</span><strong id="contractVersion">-</strong></div>
+        <div class="metric"><span>Operations</span><strong id="operationCount">-</strong></div>
+        <div class="metric"><span>Screens</span><strong id="screenCount">-</strong></div>
+        <div class="metric"><span>Source</span><strong>Stage 4 API</strong></div>
+      </div>
+    </section>
+
+    <section id="upload" class="band" data-screen="Data upload and schema validation">
+      <div class="section-heading"><h2>Data upload and schema validation</h2></div>
+      <div class="control-grid">
+        <label>CSV table<input id="csvFile" type="file" accept=".csv,text/csv"></label>
+        <label>Operation<select id="operationSelect"></select></label>
+        <label>Table kind<input id="tableKind" readonly></label>
+        <label>Rows<input id="rowCount" readonly></label>
+      </div>
+      <div id="parameterPanel" class="parameter-panel" aria-label="Operation parameters"></div>
+      <div class="button-row">
+        <button id="runButton" type="button">Run</button>
+        <button id="submitButton" type="button">Submit job</button>
+        <button id="bundleButton" type="button">Bundle</button>
+      </div>
+    </section>
+
+    <section id="trajectory" class="band" data-screen="Trajectory explorer">
+      <div class="section-heading"><h2>Trajectory explorer</h2><span id="trajectoryState">waiting for CSV</span></div>
+      <div class="plot-surface"><svg id="trajectoryPlot" viewBox="0 0 900 320" role="img" aria-label="Trajectory preview"></svg></div>
+      <div id="tablePreview" class="table-preview"></div>
+    </section>
+
+    <section id="residence" class="band" data-screen="Residence-window tuner">
+      <div class="section-heading"><h2>Residence-window tuner</h2></div>
+      <div class="result-grid"><pre id="residenceSummary"></pre></div>
+    </section>
+
+    <section id="coupling" class="band" data-screen="Coupling/equivalence decision panel">
+      <div class="section-heading"><h2>Coupling/equivalence decision panel</h2></div>
+      <div class="result-grid"><pre id="couplingSummary"></pre></div>
+    </section>
+
+    <section id="reserve" class="band" data-screen="Reserve-buffering panel">
+      <div class="section-heading"><h2>Reserve-buffering panel</h2></div>
+      <div class="result-grid"><pre id="reserveSummary"></pre></div>
+    </section>
+
+    <section id="models" class="band" data-screen="Model-comparison panel">
+      <div class="section-heading"><h2>Model-comparison panel</h2></div>
+      <div class="result-grid"><pre id="modelSummary"></pre></div>
+    </section>
+
+    <section id="report" class="band" data-screen="Report builder">
+      <div class="section-heading"><h2>Report builder</h2><span id="jobState">no job submitted</span></div>
+      <pre id="resultPanel" class="result-panel"></pre>
+    </section>
+  </main>
+  <script src="app.js" type="module"></script>
+</body>
+</html>

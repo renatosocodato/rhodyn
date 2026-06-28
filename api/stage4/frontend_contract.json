@@ -1,0 +1,125 @@
+{
+  "auth_header": "x-rhodyn-api-key",
+  "bundle_endpoint": "/jobs/upload/bundle",
+  "contract_version": "stage4-api-v1",
+  "interpretation_boundary": "The Stage 5 scaffold calls the frozen Stage 4 backend contract. It does not add new biological systems, algorithms, or manuscript interpretation.",
+  "openapi_path": "api/stage4/openapi.json",
+  "operation_endpoint": "/jobs/upload/run",
+  "operations": [
+    {
+      "biological_boundary": "Schema validation checks table structure only. It does not interpret a biological state.",
+      "bundle_endpoint": "/jobs/upload/bundle",
+      "endpoint": "/jobs/upload/run",
+      "example_csv": "examples/synthetic_trajectory.csv",
+      "label": "Validate trajectory table",
+      "method": "POST",
+      "operation_id": "validate_trajectory",
+      "parameters": {
+        "kind": "trajectory",
+        "signal_column": "signal"
+      },
+      "screen": "Data upload and schema validation",
+      "submit_endpoint": "/jobs/upload/submit",
+      "table_kind": "trajectory",
+      "upload_operation": "validate"
+    },
+    {
+      "biological_boundary": "Residence scores are scoped to the declared signal column and window bounds.",
+      "bundle_endpoint": "/jobs/upload/bundle",
+      "endpoint": "/jobs/upload/run",
+      "example_csv": "examples/synthetic_trajectory.csv",
+      "label": "Score residence window",
+      "method": "POST",
+      "operation_id": "score_residence",
+      "parameters": {
+        "high": 0.75,
+        "low": 0.35,
+        "signal_column": "signal"
+      },
+      "screen": "Residence-window tuner",
+      "submit_endpoint": "/jobs/upload/submit",
+      "table_kind": "trajectory",
+      "upload_operation": "score_residence"
+    },
+    {
+      "biological_boundary": "A passing bounded-coupling decision means the supplied interval lies inside the declared margin. It does not prove zero coupling.",
+      "bundle_endpoint": "/jobs/upload/bundle",
+      "endpoint": "/jobs/upload/run",
+      "example_csv": "examples/synthetic_coupling.csv",
+      "label": "Decide bounded coupling",
+      "method": "POST",
+      "operation_id": "decide_coupling",
+      "parameters": {
+        "rope_threshold": 0.95
+      },
+      "screen": "Coupling/equivalence decision panel",
+      "submit_endpoint": "/jobs/upload/submit",
+      "table_kind": "coupling",
+      "upload_operation": "decide_coupling"
+    },
+    {
+      "biological_boundary": "Reserve summaries are derived from submitted response rows and declared normalization parameters.",
+      "bundle_endpoint": "/jobs/upload/bundle",
+      "endpoint": "/jobs/upload/run",
+      "example_csv": "examples/synthetic_reserve.csv",
+      "label": "Summarize reserve",
+      "method": "POST",
+      "operation_id": "summarize_reserve",
+      "parameters": {
+        "baseline_points": 1,
+        "ceiling": 1.7,
+        "floor": 1.0,
+        "normalize": true
+      },
+      "screen": "Reserve-buffering panel",
+      "submit_endpoint": "/jobs/upload/submit",
+      "table_kind": "reserve",
+      "upload_operation": "summarize_reserve"
+    },
+    {
+      "biological_boundary": "Model comparison ranks supplied endpoint rows under declared assumptions. It does not identify every molecular edge.",
+      "bundle_endpoint": "/jobs/upload/bundle",
+      "endpoint": "/jobs/upload/run",
+      "example_csv": "examples/synthetic_endpoints.csv",
+      "label": "Compare reduced architectures",
+      "method": "POST",
+      "operation_id": "compare_models",
+      "parameters": {
+        "parameter_count": 1
+      },
+      "screen": "Model-comparison panel",
+      "submit_endpoint": "/jobs/upload/submit",
+      "table_kind": "endpoint",
+      "upload_operation": "compare_models"
+    },
+    {
+      "biological_boundary": "Report export summarizes submitted rows and does not add new inference.",
+      "bundle_endpoint": "/jobs/upload/bundle",
+      "endpoint": "/jobs/upload/run",
+      "example_csv": "examples/synthetic_coupling.csv",
+      "label": "Export Markdown report",
+      "method": "POST",
+      "operation_id": "export_markdown",
+      "parameters": {
+        "title": "RhoDyn report"
+      },
+      "screen": "Report builder",
+      "submit_endpoint": "/jobs/upload/submit",
+      "table_kind": "report",
+      "upload_operation": "export_markdown"
+    }
+  ],
+  "screens": [
+    "Project dashboard",
+    "Data upload and schema validation",
+    "Trajectory explorer",
+    "Residence-window tuner",
+    "Coupling/equivalence decision panel",
+    "Reserve-buffering panel",
+    "Model-comparison panel",
+    "Report builder"
+  ],
+  "source_api_stage": "Stage 4 backend",
+  "stage": "Stage 5 frontend scaffold",
+  "submit_endpoint": "/jobs/upload/submit"
+}

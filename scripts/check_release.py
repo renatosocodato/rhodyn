@@ -23,6 +23,16 @@ REQUIRED_FILES = [
     "scripts/audit_stage4_service_contract.py",
     "scripts/audit_stage4_upload_stress.py",
     "scripts/audit_stage4_docker_smoke.py",
+    "scripts/freeze_stage4_api_contract.py",
+    "scripts/audit_stage5_frontend_scaffold.py",
+    "api/stage4/openapi.json",
+    "api/stage4/frontend_contract.json",
+    "api/stage4/contract_manifest.json",
+    "docs/stage4_closeout.md",
+    "docs/stage5_frontend.md",
+    "frontend/stage5/index.html",
+    "frontend/stage5/styles.css",
+    "frontend/stage5/app.js",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
@@ -50,6 +60,10 @@ def _text_files(root: Path) -> list[Path]:
             ".yaml",
             ".cff",
             ".txt",
+            ".json",
+            ".html",
+            ".css",
+            ".js",
             ".csv",
             ".in",
             ".ipynb",
@@ -115,11 +129,15 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 4. Backend":
-            failures.append("roadmap execution memory does not mark Stage 4 as the active stage")
+        if current.get("active_stage") != "Stage 5. Frontend":
+            failures.append("roadmap execution memory does not mark Stage 5 as the active stage")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
+        if stages.get(4, {}).get("status") != "frozen_for_stage5":
+            failures.append("roadmap execution memory does not mark Stage 4 frozen for Stage 5")
+        if stages.get(5, {}).get("status") != "active_scaffold":
+            failures.append("roadmap execution memory does not mark Stage 5 as active scaffold")
         if stages.get(7, {}).get("status") != "not_ready":
             failures.append("roadmap execution memory does not keep Stage 7 as not ready")
         if stages.get(8, {}).get("status") != "conceptual_only":
@@ -159,6 +177,18 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 warnings.append(f"ignoring untracked egg-info directory: {rel}")
         if path.is_file() and path.suffix.lower() in RAW_EXTENSIONS and _tracked_or_unknown(rel, tracked):
             failures.append(f"raw or manuscript-private data-like file should not be packaged: {rel}")
+
+
+    scaffold_check = subprocess.run(
+        [sys.executable, "scripts/audit_stage5_frontend_scaffold.py"],
+        cwd=root,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    if scaffold_check.returncode != 0:
+        failures.append("Stage 5 frontend scaffold audit does not pass")
 
     if not (root / ".github" / "workflows" / "package.yml").exists():
         warnings.append("package build workflow is missing")

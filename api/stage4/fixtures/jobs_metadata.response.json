@@ -1,0 +1,70 @@
+{
+  "body": {
+    "status": "pass",
+    "stored_job": {
+      "bundle_bytes": 2984,
+      "bundle_filename": "rhodyn_compare_models_6c319616f9177e865073.zip",
+      "bundle_sha256": "2256edd544bde5054f826e23000b2b2537a28062a4bd7a0c336232799eec7d6a",
+      "interpretation_boundary": "Stored jobs preserve submitted rows, declared parameters, exact result JSON, and the downloadable bundle. Reading a stored job does not re-run analysis or upgrade a result into a biological mechanism.",
+      "job": {
+        "input_hash": "10f212809f511d79509f9d531aaa7f5ca9f99f32a476800444a4d4dc59748094",
+        "input_rows": 9,
+        "job_id": "6c319616f9177e865073",
+        "kind": "endpoint",
+        "operation": "compare_models",
+        "parameters": {
+          "parameter_count": 1
+        },
+        "software_version": "0.1.0"
+      },
+      "job_id": "6c319616f9177e865073",
+      "operation": "compare_models",
+      "retention_policy": {
+        "max_age_seconds": null,
+        "max_bytes": null,
+        "max_jobs": 20
+      },
+      "status": "pass",
+      "store_format": "rhodyn.file_job_store.v1",
+      "stored_at_epoch": 0.0,
+      "stored_files": [
+        {
+          "bytes": 1500,
+          "path": "bundle_manifest.json",
+          "sha256": "dcf3be6211d04b98cc1267dd998c261bc7daa970b7ece2c576921649a9ba4aec"
+        },
+        {
+          "bytes": 380,
+          "path": "input_rows.csv",
+          "sha256": "a6f2da395d3ef94c7551d67dc9698f08bc139e05f9a82b341369249a464db434"
+        },
+        {
+          "bytes": 27,
+          "path": "parameters.json",
+          "sha256": "b23297464cb1cbf6a6dda2a42e96ac7d7abf20607109f110513cd9710b1e28c2"
+        },
+        {
+          "bytes": 433,
+          "path": "report.md",
+          "sha256": "86d5e06ac8306988ee42b7b0f42561b35ae4fad3a7f6aa2cb3778bf82dc1c77a"
+        },
+        {
+          "bytes": 1884,
+          "path": "result.json",
+          "sha256": "42d053a12fae7b2aae9656419a87e66e7df83764b26fed97cad8382dd3e3b065"
+        },
+        {
+          "bytes": 307,
+          "path": "result_rows.csv",
+          "sha256": "616e80c05e5114e3fb98f9c24655b5ff7d4a78d7b93772dc1b6fa493ec18706b"
+        },
+        {
+          "bytes": 2984,
+          "path": "bundle.zip",
+          "sha256": "2256edd544bde5054f826e23000b2b2537a28062a4bd7a0c336232799eec7d6a"
+        }
+      ]
+    }
+  },
+  "status_code": 200
+}

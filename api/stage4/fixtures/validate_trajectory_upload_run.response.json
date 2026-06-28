@@ -1,0 +1,32 @@
+{
+  "body": {
+    "issues": [],
+    "job": {
+      "input_hash": "ce411df7eae390533c14f97ca8b42d6ded8e382630b865a1f37c1c06422adf6b",
+      "input_rows": 15,
+      "job_id": "1d2dc75470cf6ff21daf",
+      "kind": "trajectory",
+      "operation": "validate",
+      "parameters": {
+        "signal_column": "signal"
+      },
+      "software_version": "0.1.0"
+    },
+    "kind": "trajectory",
+    "rows": 15,
+    "schema": {
+      "name": "trajectory",
+      "optional": [
+        "replicate"
+      ],
+      "required": [
+        "cell_id",
+        "time",
+        "condition",
+        "signal"
+      ]
+    },
+    "status": "pass"
+  },
+  "status_code": 200
+}

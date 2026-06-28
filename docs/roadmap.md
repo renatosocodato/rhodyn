@@ -18,12 +18,12 @@ demonstrates a residence-versus-amplitude comparison in neuronal calcium
 traces, the ERK GPCR benchmark demonstrates the same distinction in
 kinase-reporter dynamics, the Cell Painting/MitoTox endpoint benchmark adds a
 public reduced-architecture comparison case, and the ERK/Akt residence
-benchmark adds a context-limited public bounded-coupling case.
+benchmark adds a context-limited public bounded-coupling case. The Stage 4
+API contract is now frozen for a first Stage 5 frontend scaffold.
 
-Current status in one sentence. RhoDyn can analyze declared dynamic readouts and
-the v0.3 Stage 3 evidence bank is closable, with two public signaling systems,
-one public endpoint/model-comparison case, and one public bounded-coupling
-case.
+Current status in one sentence. RhoDyn can analyze declared dynamic readouts,
+the v0.3 Stage 3 evidence bank is closable, the Stage 4 API contract is
+frozen, and Stage 5 has started as a contract-bound frontend scaffold.
 
 ## Execution memory
 
@@ -40,10 +40,12 @@ passes.
 
 1. Stage 3 is satisfied for the current evidence-bank gate and should be
    frozen unless a documented defect in the evidence bank is found.
-2. Stage 4 is the active execution stage. Work here is backend/service
-   alignment around the already stable Python library surfaces.
-3. Stage 5 is not active until the Stage 4 backend contract is stable enough
-   for uploaded-table jobs, reproducible exports, and parameter inspection.
+2. Stage 4 is frozen for the first Stage 5 scaffold. The committed OpenAPI
+   schema, frontend contract, fixtures, and closeout document are now the
+   frontend dependency.
+3. Stage 5 is the active execution stage. Work here is frontend behavior around
+   the frozen Stage 4 contract, uploaded-table jobs, reproducible exports, and
+   parameter inspection.
 4. Stage 6 is preparatory only until PyPI, Docker, Zenodo, docs, citation
    metadata, release hygiene, and cross-version CI all pass together.
 5. Stage 7 is the future Nature Methods-first scientific-methods campaign. It
@@ -70,8 +72,8 @@ as roadmap work.
 | stage | current state | binding rule |
 | --- | --- | --- |
 | Stage 3. Case-study evidence bank | Complete for the v0.3 gate. | Keep the evidence bank stable. Additional public biological systems are Stage 7 evidence expansion unless they repair a documented Stage 3 defect. |
-| Stage 4. Backend | Active. | Continue only where service outputs match the Python library exactly and preserve input schema, parameters, software version, and downloadable bundles. |
-| Stage 5. Frontend | Not started. | Do not build the workbench until the backend contract is stable enough for uploaded-table jobs and reproducible exports. |
+| Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
+| Stage 5. Frontend | Active scaffold. | Build only frontend behavior that consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility. |
 | Stage 6. Official software release | Partly prepared. | Do not call the package professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene are complete. |
 | Stage 7. Nature Methods first | Not ready. | Treat this as a later scientific-methods campaign, not as a rebranding of the RhoA/microglia manuscript or the Stage 3 examples. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Nature Methods framing and should not lead the scientific evidence path. |
@@ -86,6 +88,7 @@ as roadmap work.
 - Public examples must teach what residence, buffering, bounded coupling, or
   routed outputs reveal beyond amplitude-only summaries.
 - Product and interface work should not outrun the evidence bank.
+- Stage 5 frontend work must consume the frozen Stage 4 API contract.
 - Nature Methods remains the first high-impact scientific-methods target once
   the evidence gate is met.
 
@@ -202,28 +205,22 @@ Gate.
 - No hidden state.
 - Jobs preserve input schema, parameter choices, and software version.
 
-Status. Started and hardened. The first backend service core and FastAPI app
-expose schema validation, residence scoring, bounded-coupling decisions,
-reserve summaries, endpoint-model comparison, Markdown report export, and
-downloadable analysis bundles while delegating to the same Python library
-functions used by the CLI. Bundle outputs preserve submitted rows, parameters,
-exact result JSON, result rows, Markdown reports, manifests, and SHA-256
-checksums. Durable job storage is now available through an explicit filesystem
-job store. The service persists submitted rows, parameters, exact result JSON,
-result rows, Markdown reports, bundle manifests, and bundle ZIP files only when
-`RHODYN_JOB_STORE_DIR` or `create_app(job_store_dir=...)` is configured.
-Retrieval returns persisted outputs rather than re-running analysis.
-The current operational hardening pass adds retention-policy controls, storage
-summary and prune routes, concurrent submit/read stress tests, and a deployment
-environment template while keeping analysis results delegated to the library.
-The service-contract completion pass adds optional API-key authentication,
-explicit row and upload quotas, raw CSV upload routes for run, bundle, and
-durable-submit jobs, and Docker/Compose deployment templates.
+Status. Frozen for Stage 5. The backend service core and FastAPI app expose
+schema validation, residence scoring, bounded-coupling decisions, reserve
+summaries, endpoint-model comparison, Markdown report export, upload routes,
+durable jobs, and downloadable analysis bundles while delegating to the same
+Python library functions used by the CLI. Bundle outputs preserve submitted
+rows, parameters, exact result JSON, result rows, Markdown reports, manifests,
+and SHA-256 checksums. Durable job storage remains explicit through
+`RHODYN_JOB_STORE_DIR` or `create_app(job_store_dir=...)`, and retrieval returns
+persisted outputs rather than re-running analysis.
 
-The remaining Stage 4 work before Stage 5 should be limited to defects found by
-service-contract testing or deployment smoke tests. New analysis capabilities or
-additional public biological systems belong to later stages unless they repair a
-documented Stage 4 contract failure.
+The Stage 4 closeout surface now contains `api/stage4/openapi.json`,
+`api/stage4/frontend_contract.json`, `api/stage4/contract_manifest.json`,
+canonical fixtures under `api/stage4/fixtures/`, and `docs/stage4_closeout.md`.
+Reopen Stage 4 only for a documented API-contract defect. New analysis
+capabilities or additional public biological systems belong to later stages
+unless they repair a documented contract failure.
 
 ## Stage 5. Frontend
 
@@ -254,8 +251,13 @@ Gate.
 - A quantitative user can inspect every parameter and reproduce the result from
   CLI.
 
-Status. Not started. Frontend work should follow a backend/API contract and
-should not replace the Stage 3 evidence bank.
+Status. Active scaffold. The first static workbench lives under
+`frontend/stage5/` and loads the frozen Stage 4 contract files from
+`api/stage4/`. It exposes upload, schema validation, trajectory preview,
+residence tuning, coupling/equivalence, reserve, model-comparison, and report
+export surfaces without adding new analysis routes. Frontend work should keep
+following the frozen backend/API contract and should not replace the Stage 3
+evidence bank.
 
 ## Stage 6. Official software release
 
@@ -396,11 +398,13 @@ sequence.
 
 1. Treat the v0.3 Stage 3 evidence bank and its gate report as the reference
    public case-study surface.
-2. Continue Stage 4 only where backend results match the Python library output
-   exactly and preserve input schema, parameter choices, and software version.
+2. Continue Stage 5 only where frontend behavior consumes the frozen Stage 4
+   contract and preserves input schema, parameter choices, software version,
+   and reproducible exports.
 3. For the Nature Methods trajectory, expand evidence through additional
    independent public systems only as Stage 7 method-evidence work, not as a
    rebranding of the RhoA/microglia paper or a substitute for the Stage 3 gate.
 
-Frontend, official release, Nature Methods, and product work remain downstream
-of the evidence bank and service contract rather than replacing them.
+Official release, Nature Methods, and product work remain downstream of the
+evidence bank, frozen service contract, and Stage 5 workbench rather than
+replacing them.

@@ -1,0 +1,68 @@
+{
+  "parameter_count": 1,
+  "rows": [
+    {
+      "endpoint": "rhoa_mean",
+      "model": "amplitude_only",
+      "observed": "0.55",
+      "predicted": "0.57",
+      "weight": "1.0"
+    },
+    {
+      "endpoint": "src_late",
+      "model": "amplitude_only",
+      "observed": "0.31",
+      "predicted": "0.48",
+      "weight": "1.0"
+    },
+    {
+      "endpoint": "reserve",
+      "model": "amplitude_only",
+      "observed": "0.72",
+      "predicted": "0.50",
+      "weight": "1.0"
+    },
+    {
+      "endpoint": "rhoa_mean",
+      "model": "residence_gated",
+      "observed": "0.55",
+      "predicted": "0.56",
+      "weight": "1.0"
+    },
+    {
+      "endpoint": "src_late",
+      "model": "residence_gated",
+      "observed": "0.31",
+      "predicted": "0.33",
+      "weight": "1.0"
+    },
+    {
+      "endpoint": "reserve",
+      "model": "residence_gated",
+      "observed": "0.72",
+      "predicted": "0.70",
+      "weight": "1.0"
+    },
+    {
+      "endpoint": "rhoa_mean",
+      "model": "reserve_free",
+      "observed": "0.55",
+      "predicted": "0.56",
+      "weight": "1.0"
+    },
+    {
+      "endpoint": "src_late",
+      "model": "reserve_free",
+      "observed": "0.31",
+      "predicted": "0.35",
+      "weight": "1.0"
+    },
+    {
+      "endpoint": "reserve",
+      "model": "reserve_free",
+      "observed": "0.72",
+      "predicted": "0.43",
+      "weight": "1.0"
+    }
+  ]
+}

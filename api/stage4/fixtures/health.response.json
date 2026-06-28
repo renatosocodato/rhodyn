@@ -1,0 +1,18 @@
+{
+  "body": {
+    "authentication_required": true,
+    "durable_job_storage": true,
+    "retention_policy": {
+      "max_age_seconds": null,
+      "max_bytes": null,
+      "max_jobs": 20
+    },
+    "service_limits": {
+      "max_rows": 100000,
+      "max_upload_bytes": 10000000
+    },
+    "software_version": "0.1.0",
+    "status": "pass"
+  },
+  "status_code": 200
+}

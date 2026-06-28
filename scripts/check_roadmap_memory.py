@@ -39,14 +39,14 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 4. Backend":
-        failures.append("active stage must remain Stage 4. Backend")
+    if current.get("active_stage") != "Stage 5. Frontend":
+        failures.append("active stage must be Stage 5. Frontend after the Stage 4 API freeze")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
         3: "complete_for_current_gate",
-        4: "active",
-        5: "not_started",
+        4: "frozen_for_stage5",
+        5: "active_scaffold",
         6: "partly_prepared_not_citable",
         7: "not_ready",
         8: "conceptual_only",
@@ -59,7 +59,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     required_roadmap_phrases = [
         "The original Stage 3 to Stage 8 blueprint is retained as the controlling sequence",
         "Stage 3 is satisfied for the current evidence-bank gate",
-        "Stage 4 is the active execution stage",
+        "Stage 4 is frozen for the first Stage 5 scaffold",
+        "Stage 5 is the active execution stage",
         "Stage 7 is the future Nature Methods-first scientific-methods campaign",
         "Stage 8 inherits from Stage 7",
     ]
@@ -76,6 +77,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
 
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
+        warnings.append("Stage 5 is active only as a contract-bound frontend scaffold; Stage 6 remains downstream")
 
     return {
         "status": "pass" if not failures else "fail",

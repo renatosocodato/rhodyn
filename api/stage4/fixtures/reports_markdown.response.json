@@ -1,0 +1,18 @@
+{
+  "body": {
+    "job": {
+      "input_hash": "79d6c89310f83492e97995510e65ce5d0b649749ac6f1992f8d27f4e43c94760",
+      "input_rows": 2,
+      "job_id": "6ab661bf325965f4e712",
+      "kind": "report",
+      "operation": "export_markdown",
+      "parameters": {
+        "title": "RhoDyn report"
+      },
+      "software_version": "0.1.0"
+    },
+    "markdown": "# RhoDyn report\n\n| contrast | estimate | ci_low | ci_high | margin | rope_mass |\n| --- | --- | --- | --- | --- | --- |\n| rock_src | 0.01 | -0.03 | 0.04 | 0.20 | 0.99 |\n| myh10_src | 0.08 | -0.05 | 0.21 | 0.20 | 0.80 |\n",
+    "status": "pass"
+  },
+  "status_code": 200
+}

@@ -1,0 +1,92 @@
+{
+  "baseline_points": 1,
+  "ceiling": 1.7,
+  "floor": 1.0,
+  "normalize": true,
+  "rows": [
+    {
+      "condition": "control",
+      "replicate": "rep1",
+      "response": "1.00",
+      "sample_id": "reserve_001",
+      "time": "0"
+    },
+    {
+      "condition": "control",
+      "replicate": "rep1",
+      "response": "1.08",
+      "sample_id": "reserve_001",
+      "time": "1"
+    },
+    {
+      "condition": "control",
+      "replicate": "rep1",
+      "response": "1.12",
+      "sample_id": "reserve_001",
+      "time": "2"
+    },
+    {
+      "condition": "control",
+      "replicate": "rep1",
+      "response": "1.16",
+      "sample_id": "reserve_001",
+      "time": "3"
+    },
+    {
+      "condition": "control",
+      "replicate": "rep1",
+      "response": "1.00",
+      "sample_id": "reserve_002",
+      "time": "0"
+    },
+    {
+      "condition": "control",
+      "replicate": "rep1",
+      "response": "1.05",
+      "sample_id": "reserve_002",
+      "time": "1"
+    },
+    {
+      "condition": "control",
+      "replicate": "rep1",
+      "response": "1.09",
+      "sample_id": "reserve_002",
+      "time": "2"
+    },
+    {
+      "condition": "control",
+      "replicate": "rep1",
+      "response": "1.11",
+      "sample_id": "reserve_002",
+      "time": "3"
+    },
+    {
+      "condition": "perturbed",
+      "replicate": "rep1",
+      "response": "1.00",
+      "sample_id": "reserve_003",
+      "time": "0"
+    },
+    {
+      "condition": "perturbed",
+      "replicate": "rep1",
+      "response": "1.22",
+      "sample_id": "reserve_003",
+      "time": "1"
+    },
+    {
+      "condition": "perturbed",
+      "replicate": "rep1",
+      "response": "1.46",
+      "sample_id": "reserve_003",
+      "time": "2"
+    },
+    {
+      "condition": "perturbed",
+      "replicate": "rep1",
+      "response": "1.61",
+      "sample_id": "reserve_003",
+      "time": "3"
+    }
+  ]
+}

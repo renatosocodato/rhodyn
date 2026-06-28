@@ -1,0 +1,20 @@
+{
+  "body": {
+    "status": "pass",
+    "summary": {
+      "job_count": 1,
+      "job_ids": [
+        "6c319616f9177e865073"
+      ],
+      "retention_policy": {
+        "max_age_seconds": null,
+        "max_bytes": null,
+        "max_jobs": 20
+      },
+      "storage_backend": "filesystem",
+      "store_format": "rhodyn.file_job_store.v1",
+      "total_bundle_bytes": 2984
+    }
+  },
+  "status_code": 200
+}

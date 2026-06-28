@@ -1,0 +1,13 @@
+sample_id,time,condition,response,replicate
+reserve_001,0,control,1.00,rep1
+reserve_001,1,control,1.08,rep1
+reserve_001,2,control,1.12,rep1
+reserve_001,3,control,1.16,rep1
+reserve_002,0,control,1.00,rep1
+reserve_002,1,control,1.05,rep1
+reserve_002,2,control,1.09,rep1
+reserve_002,3,control,1.11,rep1
+reserve_003,0,perturbed,1.00,rep1
+reserve_003,1,perturbed,1.22,rep1
+reserve_003,2,perturbed,1.46,rep1
+reserve_003,3,perturbed,1.61,rep1

@@ -1,12 +1,13 @@
 {
   "project": "RhoDyn",
   "purpose": "Roadmap execution memory for the original Stage 3 to Stage 8 blueprint.",
-  "updated": "2026-06-27",
+  "updated": "2026-06-28",
   "current_position": {
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "active_stage": "Stage 4. Backend",
-    "next_stage_not_active_until": "Stage 5 begins only after the Stage 4 backend contract is stable for uploaded-table jobs and reproducible exports."
+    "active_stage": "Stage 5. Frontend",
+    "next_stage_not_active_until": "Stage 6 begins only after the Stage 5 workbench can reproduce backend results from the frozen contract and the release surfaces pass together.",
+    "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold."
   },
   "stage_lock": [
     {
@@ -23,22 +24,24 @@
     {
       "stage": 4,
       "name": "Backend",
-      "status": "active",
-      "scope_rule": "Continue only where service outputs match the Python library exactly and preserve input schema, parameter choices, software version, and downloadable bundles.",
+      "status": "frozen_for_stage5",
+      "scope_rule": "Treat the committed OpenAPI schema, frontend contract, fixtures, and closeout document as the Stage 5 dependency. Reopen Stage 4 only for documented contract defects.",
       "gate": [
         "Every backend result matches the Python library output exactly.",
-        "No hidden state.",
-        "Jobs preserve input schema, parameter choices, and software version."
+        "No hidden state outside explicit durable job storage.",
+        "Jobs preserve input schema, parameter choices, software version, and bundle hashes.",
+        "Frozen OpenAPI, frontend contract, and fixtures are committed for Stage 5."
       ]
     },
     {
       "stage": 5,
       "name": "Frontend",
-      "status": "not_started",
-      "scope_rule": "Do not build the workbench until the backend contract is stable enough for uploaded-table jobs, parameter inspection, and reproducible exports.",
+      "status": "active_scaffold",
+      "scope_rule": "Build only frontend behavior that consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility.",
       "gate": [
         "A biologist can upload a tidy table and interpret amplitude-like versus residence-like behavior without reading code.",
-        "A quantitative user can inspect every parameter and reproduce the result from CLI."
+        "A quantitative user can inspect every parameter and reproduce the result from CLI.",
+        "The workbench consumes the frozen Stage 4 API contract rather than inventing new analysis routes."
       ]
     },
     {
@@ -84,6 +87,7 @@
     "Stage 3 public examples teach what residence, buffering, bounded coupling, and routed outputs reveal beyond amplitude-only summaries.",
     "Stage 4 backend work must delegate to stable Python library functions.",
     "Stage 7 method evidence can expand the biological systems but should not reopen the Stage 3 closure unless a Stage 3 defect is found.",
-    "Stage 8 cannot reshape the Nature Methods evidence path."
+    "Stage 8 cannot reshape the Nature Methods evidence path.",
+    "Stage 5 frontend work must consume the frozen Stage 4 API contract."
   ]
 }

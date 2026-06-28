@@ -1,0 +1,57 @@
+{
+  "body": {
+    "schemas": {
+      "coupling": {
+        "name": "coupling",
+        "optional": [
+          "rope_mass"
+        ],
+        "required": [
+          "contrast",
+          "estimate",
+          "ci_low",
+          "ci_high",
+          "margin"
+        ]
+      },
+      "endpoint": {
+        "name": "endpoint",
+        "optional": [
+          "weight"
+        ],
+        "required": [
+          "model",
+          "endpoint",
+          "observed",
+          "predicted"
+        ]
+      },
+      "reserve": {
+        "name": "reserve",
+        "optional": [
+          "replicate"
+        ],
+        "required": [
+          "sample_id",
+          "time",
+          "condition",
+          "response"
+        ]
+      },
+      "trajectory": {
+        "name": "trajectory",
+        "optional": [
+          "replicate"
+        ],
+        "required": [
+          "cell_id",
+          "time",
+          "condition",
+          "signal"
+        ]
+      }
+    },
+    "status": "pass"
+  },
+  "status_code": 200
+}

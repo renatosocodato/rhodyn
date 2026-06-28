@@ -44,6 +44,9 @@ Started:
 - Stage 4 Docker deployment smoke audit for hosted-service environment
   variables, image build, container startup, HTTP upload/job routes, bundle
   hashes, authentication, quotas, and retention behavior;
+- Stage 4 API contract freeze with committed OpenAPI, frontend operation
+  metadata, canonical request/response fixtures, and closeout documentation;
+- first Stage 5 static frontend scaffold bound to the frozen Stage 4 contract;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

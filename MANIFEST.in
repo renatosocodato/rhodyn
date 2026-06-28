@@ -11,3 +11,5 @@ recursive-include examples *.csv *.py *.txt
 recursive-include notebooks *.ipynb
 recursive-include scripts *.py
 recursive-include tests *.py
+recursive-include api *.json *.csv *.md *.txt
+recursive-include frontend *.html *.css *.js *.json *.md

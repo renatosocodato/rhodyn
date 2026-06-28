@@ -1,0 +1,21 @@
+{
+  "rows": [
+    {
+      "ci_high": "0.04",
+      "ci_low": "-0.03",
+      "contrast": "rock_src",
+      "estimate": "0.01",
+      "margin": "0.20",
+      "rope_mass": "0.99"
+    },
+    {
+      "ci_high": "0.21",
+      "ci_low": "-0.05",
+      "contrast": "myh10_src",
+      "estimate": "0.08",
+      "margin": "0.20",
+      "rope_mass": "0.80"
+    }
+  ],
+  "title": "RhoDyn report"
+}

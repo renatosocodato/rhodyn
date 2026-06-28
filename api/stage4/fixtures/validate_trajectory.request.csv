@@ -1,0 +1,17 @@
+cell_id,time,condition,signal,replicate
+cell_001,0,control,0.30,rep1
+cell_001,1,control,0.42,rep1
+cell_001,2,control,0.55,rep1
+cell_001,3,control,0.68,rep1
+cell_001,4,control,0.82,rep1
+cell_002,0,control,0.28,rep1
+cell_002,1,control,0.36,rep1
+cell_002,2,control,0.48,rep1
+cell_002,3,control,0.52,rep1
+cell_002,4,control,0.58,rep1
+cell_003,0,perturbed,0.88,rep1
+cell_003,1,perturbed,0.84,rep1
+cell_003,2,perturbed,0.79,rep1
+cell_003,3,perturbed,0.70,rep1
+cell_003,4,perturbed,0.64,rep1
+

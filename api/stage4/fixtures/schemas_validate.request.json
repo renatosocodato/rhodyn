@@ -1,0 +1,111 @@
+{
+  "kind": "trajectory",
+  "rows": [
+    {
+      "cell_id": "cell_001",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.30",
+      "time": "0"
+    },
+    {
+      "cell_id": "cell_001",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.42",
+      "time": "1"
+    },
+    {
+      "cell_id": "cell_001",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.55",
+      "time": "2"
+    },
+    {
+      "cell_id": "cell_001",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.68",
+      "time": "3"
+    },
+    {
+      "cell_id": "cell_001",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.82",
+      "time": "4"
+    },
+    {
+      "cell_id": "cell_002",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.28",
+      "time": "0"
+    },
+    {
+      "cell_id": "cell_002",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.36",
+      "time": "1"
+    },
+    {
+      "cell_id": "cell_002",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.48",
+      "time": "2"
+    },
+    {
+      "cell_id": "cell_002",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.52",
+      "time": "3"
+    },
+    {
+      "cell_id": "cell_002",
+      "condition": "control",
+      "replicate": "rep1",
+      "signal": "0.58",
+      "time": "4"
+    },
+    {
+      "cell_id": "cell_003",
+      "condition": "perturbed",
+      "replicate": "rep1",
+      "signal": "0.88",
+      "time": "0"
+    },
+    {
+      "cell_id": "cell_003",
+      "condition": "perturbed",
+      "replicate": "rep1",
+      "signal": "0.84",
+      "time": "1"
+    },
+    {
+      "cell_id": "cell_003",
+      "condition": "perturbed",
+      "replicate": "rep1",
+      "signal": "0.79",
+      "time": "2"
+    },
+    {
+      "cell_id": "cell_003",
+      "condition": "perturbed",
+      "replicate": "rep1",
+      "signal": "0.70",
+      "time": "3"
+    },
+    {
+      "cell_id": "cell_003",
+      "condition": "perturbed",
+      "replicate": "rep1",
+      "signal": "0.64",
+      "time": "4"
+    }
+  ],
+  "signal_column": "signal"
+}

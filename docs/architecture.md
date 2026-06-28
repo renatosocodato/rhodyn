@@ -105,3 +105,15 @@ downstream of the backend contract.
 - disease-specific claims;
 - private data adapters;
 - dashboard or hosted analysis beyond the first stateless FastAPI service.
+
+## Stage 4 to Stage 5 boundary
+
+The frozen backend contract lives under `api/stage4/`. `openapi.json` is the
+FastAPI schema, `frontend_contract.json` is the UI-facing operation map, and
+`contract_manifest.json` records hashes plus the handoff state. The first
+frontend scaffold in `frontend/stage5/` must consume those files and must not
+add backend routes, biological systems, algorithms, or release surfaces.
+
+Regenerate the contract only with `scripts/freeze_stage4_api_contract.py`, then
+run `scripts/audit_stage5_frontend_scaffold.py` before changing frontend
+behavior.

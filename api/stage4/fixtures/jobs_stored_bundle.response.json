@@ -1,0 +1,54 @@
+{
+  "bundle_manifest": {
+    "bundle_format": "rhodyn.analysis_bundle.v1",
+    "files": [
+      {
+        "bytes": 536,
+        "path": "README.md",
+        "sha256": "a4aa0029156e3f8236ef62e83b1037a6bbf90c560e4eb3bbc6d705528aee9c74"
+      },
+      {
+        "bytes": 380,
+        "path": "input_rows.csv",
+        "sha256": "a6f2da395d3ef94c7551d67dc9698f08bc139e05f9a82b341369249a464db434"
+      },
+      {
+        "bytes": 27,
+        "path": "parameters.json",
+        "sha256": "b23297464cb1cbf6a6dda2a42e96ac7d7abf20607109f110513cd9710b1e28c2"
+      },
+      {
+        "bytes": 433,
+        "path": "report.md",
+        "sha256": "86d5e06ac8306988ee42b7b0f42561b35ae4fad3a7f6aa2cb3778bf82dc1c77a"
+      },
+      {
+        "bytes": 1884,
+        "path": "result.json",
+        "sha256": "42d053a12fae7b2aae9656419a87e66e7df83764b26fed97cad8382dd3e3b065"
+      },
+      {
+        "bytes": 307,
+        "path": "result_rows.csv",
+        "sha256": "616e80c05e5114e3fb98f9c24655b5ff7d4a78d7b93772dc1b6fa493ec18706b"
+      }
+    ],
+    "interpretation_boundary": "Results are scoped to submitted rows and declared parameters. No backend bundle upgrades an association, interval, or model fit into a direct biological mechanism.",
+    "job": {
+      "input_hash": "10f212809f511d79509f9d531aaa7f5ca9f99f32a476800444a4d4dc59748094",
+      "input_rows": 9,
+      "job_id": "6c319616f9177e865073",
+      "kind": "endpoint",
+      "operation": "compare_models",
+      "parameters": {
+        "parameter_count": 1
+      },
+      "software_version": "0.1.0"
+    },
+    "operation": "compare_models",
+    "status": "pass"
+  },
+  "bundle_sha256": "2256edd544bde5054f826e23000b2b2537a28062a4bd7a0c336232799eec7d6a",
+  "content_type": "application/zip",
+  "status_code": 200
+}

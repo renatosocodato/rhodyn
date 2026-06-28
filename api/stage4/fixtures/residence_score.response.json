@@ -1,0 +1,213 @@
+{
+  "body": {
+    "job": {
+      "input_hash": "ce411df7eae390533c14f97ca8b42d6ded8e382630b865a1f37c1c06422adf6b",
+      "input_rows": 15,
+      "job_id": "ddb37565e877ae996f6b",
+      "kind": "trajectory",
+      "operation": "score_residence",
+      "parameters": {
+        "high": 0.75,
+        "low": 0.35,
+        "signal_column": "signal"
+      },
+      "software_version": "0.1.0"
+    },
+    "status": "pass",
+    "summaries": [
+      {
+        "cell_id": "cell_001",
+        "condition": "control",
+        "max_signal": 0.82,
+        "mean_signal": 0.554,
+        "min_signal": 0.3,
+        "n_points": 5,
+        "residence_fraction": 0.75,
+        "residence_time": 3.0,
+        "segments": [
+          {
+            "duration": 2.0,
+            "end": 3.0,
+            "start": 1.0
+          }
+        ],
+        "total_time": 4.0
+      },
+      {
+        "cell_id": "cell_002",
+        "condition": "control",
+        "max_signal": 0.58,
+        "mean_signal": 0.444,
+        "min_signal": 0.28,
+        "n_points": 5,
+        "residence_fraction": 0.75,
+        "residence_time": 3.0,
+        "segments": [
+          {
+            "duration": 3.0,
+            "end": 4.0,
+            "start": 1.0
+          }
+        ],
+        "total_time": 4.0
+      },
+      {
+        "cell_id": "cell_003",
+        "condition": "perturbed",
+        "max_signal": 0.88,
+        "mean_signal": 0.77,
+        "min_signal": 0.64,
+        "n_points": 5,
+        "residence_fraction": 0.25,
+        "residence_time": 1.0,
+        "segments": [
+          {
+            "duration": 1.0,
+            "end": 4.0,
+            "start": 3.0
+          }
+        ],
+        "total_time": 4.0
+      }
+    ],
+    "typed_results": [
+      {
+        "group": {
+          "batch": "",
+          "cell_id": "cell_001",
+          "condition": "control",
+          "donor": "",
+          "experiment": "",
+          "extra": {},
+          "field": "",
+          "grouping_levels": [
+            "condition",
+            "cell_id"
+          ],
+          "replicate": "",
+          "sample_id": "",
+          "well": ""
+        },
+        "max_signal": 0.82,
+        "mean_signal": 0.554,
+        "min_signal": 0.3,
+        "n_points": 5,
+        "provenance": {
+          "parameters": {
+            "high": 0.75,
+            "low": 0.35,
+            "signal_column": "signal"
+          },
+          "schema_kind": "trajectory",
+          "software_version": "0.1.0",
+          "source": "api_payload"
+        },
+        "residence_fraction": 0.75,
+        "residence_time": 3.0,
+        "segment_count": 1,
+        "segments": [
+          {
+            "duration": 2.0,
+            "end": 3.0,
+            "start": 1.0
+          }
+        ],
+        "total_time": 4.0,
+        "value_kind": "derived_summary"
+      },
+      {
+        "group": {
+          "batch": "",
+          "cell_id": "cell_002",
+          "condition": "control",
+          "donor": "",
+          "experiment": "",
+          "extra": {},
+          "field": "",
+          "grouping_levels": [
+            "condition",
+            "cell_id"
+          ],
+          "replicate": "",
+          "sample_id": "",
+          "well": ""
+        },
+        "max_signal": 0.58,
+        "mean_signal": 0.444,
+        "min_signal": 0.28,
+        "n_points": 5,
+        "provenance": {
+          "parameters": {
+            "high": 0.75,
+            "low": 0.35,
+            "signal_column": "signal"
+          },
+          "schema_kind": "trajectory",
+          "software_version": "0.1.0",
+          "source": "api_payload"
+        },
+        "residence_fraction": 0.75,
+        "residence_time": 3.0,
+        "segment_count": 1,
+        "segments": [
+          {
+            "duration": 3.0,
+            "end": 4.0,
+            "start": 1.0
+          }
+        ],
+        "total_time": 4.0,
+        "value_kind": "derived_summary"
+      },
+      {
+        "group": {
+          "batch": "",
+          "cell_id": "cell_003",
+          "condition": "perturbed",
+          "donor": "",
+          "experiment": "",
+          "extra": {},
+          "field": "",
+          "grouping_levels": [
+            "condition",
+            "cell_id"
+          ],
+          "replicate": "",
+          "sample_id": "",
+          "well": ""
+        },
+        "max_signal": 0.88,
+        "mean_signal": 0.77,
+        "min_signal": 0.64,
+        "n_points": 5,
+        "provenance": {
+          "parameters": {
+            "high": 0.75,
+            "low": 0.35,
+            "signal_column": "signal"
+          },
+          "schema_kind": "trajectory",
+          "software_version": "0.1.0",
+          "source": "api_payload"
+        },
+        "residence_fraction": 0.25,
+        "residence_time": 1.0,
+        "segment_count": 1,
+        "segments": [
+          {
+            "duration": 1.0,
+            "end": 4.0,
+            "start": 3.0
+          }
+        ],
+        "total_time": 4.0,
+        "value_kind": "derived_summary"
+      }
+    ],
+    "window": {
+      "high": 0.75,
+      "low": 0.35
+    }
+  },
+  "status_code": 200
+}

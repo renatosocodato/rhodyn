@@ -1,0 +1,85 @@
+{
+  "body": {
+    "result": {
+      "fits": [
+        {
+          "aic": -22.33518424992421,
+          "bic": -23.2365719612561,
+          "model": "residence_gated",
+          "n": 3,
+          "rmse": 0.01732050807568879,
+          "rss": 0.0009000000000000016
+        },
+        {
+          "aic": -8.960536930829935,
+          "bic": -9.861924642161826,
+          "model": "amplitude_only",
+          "n": 3,
+          "rmse": 0.1609347693943108,
+          "rss": 0.07769999999999998
+        },
+        {
+          "aic": -8.66304568346899,
+          "bic": -9.564433394800881,
+          "model": "reserve_free",
+          "n": 3,
+          "rmse": 0.1691153452528776,
+          "rss": 0.08579999999999999
+        }
+      ],
+      "job": {
+        "input_hash": "10f212809f511d79509f9d531aaa7f5ca9f99f32a476800444a4d4dc59748094",
+        "input_rows": 9,
+        "job_id": "6c319616f9177e865073",
+        "kind": "endpoint",
+        "operation": "compare_models",
+        "parameters": {
+          "parameter_count": 1
+        },
+        "software_version": "0.1.0"
+      },
+      "status": "pass",
+      "typed_result": {
+        "best_model": "residence_gated",
+        "fits": [
+          {
+            "aic": -22.33518424992421,
+            "bic": -23.2365719612561,
+            "model": "residence_gated",
+            "n": 3,
+            "rmse": 0.01732050807568879,
+            "rss": 0.0009000000000000016
+          },
+          {
+            "aic": -8.960536930829935,
+            "bic": -9.861924642161826,
+            "model": "amplitude_only",
+            "n": 3,
+            "rmse": 0.1609347693943108,
+            "rss": 0.07769999999999998
+          },
+          {
+            "aic": -8.66304568346899,
+            "bic": -9.564433394800881,
+            "model": "reserve_free",
+            "n": 3,
+            "rmse": 0.1691153452528776,
+            "rss": 0.08579999999999999
+          }
+        ],
+        "provenance": {
+          "parameters": {
+            "parameter_count": 1
+          },
+          "schema_kind": "endpoint",
+          "software_version": "0.1.0",
+          "source": "api_payload"
+        },
+        "ranking_metric": "bic",
+        "value_kind": "model_comparison"
+      }
+    },
+    "status": "pass"
+  },
+  "status_code": 200
+}

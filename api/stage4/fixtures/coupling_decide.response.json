@@ -1,0 +1,145 @@
+{
+  "body": {
+    "decisions": [
+      {
+        "ci_high": 0.04,
+        "ci_low": -0.03,
+        "estimate": 0.01,
+        "interval_inside_margin": true,
+        "margin": 0.2,
+        "rope_mass": 0.99,
+        "rope_threshold": 0.95
+      },
+      {
+        "ci_high": 0.21,
+        "ci_low": -0.05,
+        "estimate": 0.08,
+        "interval_inside_margin": false,
+        "margin": 0.2,
+        "rope_mass": 0.8,
+        "rope_threshold": 0.95
+      }
+    ],
+    "job": {
+      "input_hash": "79d6c89310f83492e97995510e65ce5d0b649749ac6f1992f8d27f4e43c94760",
+      "input_rows": 2,
+      "job_id": "5f8bd2b80e36868a5286",
+      "kind": "coupling",
+      "operation": "decide_coupling",
+      "parameters": {
+        "rope_threshold": 0.95
+      },
+      "software_version": "0.1.0"
+    },
+    "records": [
+      {
+        "ci_high": 0.04,
+        "ci_low": -0.03,
+        "contrast": "rock_src",
+        "estimate": 0.01,
+        "margin": 0.2,
+        "rope_mass": 0.99
+      },
+      {
+        "ci_high": 0.21,
+        "ci_low": -0.05,
+        "contrast": "myh10_src",
+        "estimate": 0.08,
+        "margin": 0.2,
+        "rope_mass": 0.8
+      }
+    ],
+    "status": "pass",
+    "typed_results": [
+      {
+        "alpha": null,
+        "ci_high": 0.04,
+        "ci_low": -0.03,
+        "contrast": "rock_src",
+        "decision_rule": "interval_inside_margin_and_rope",
+        "df": null,
+        "estimate": 0.01,
+        "group": {
+          "batch": "",
+          "cell_id": "",
+          "condition": "",
+          "donor": "",
+          "experiment": "",
+          "extra": {},
+          "field": "",
+          "grouping_levels": [],
+          "replicate": "",
+          "sample_id": "",
+          "well": ""
+        },
+        "interval_inside_margin": true,
+        "margin": 0.2,
+        "method": "",
+        "n": null,
+        "n_a": null,
+        "n_b": null,
+        "p_lower": null,
+        "p_tost": null,
+        "p_upper": null,
+        "passes": true,
+        "provenance": {
+          "parameters": {
+            "rope_threshold": 0.95
+          },
+          "schema_kind": "coupling",
+          "software_version": "0.1.0",
+          "source": "api_payload"
+        },
+        "rope_mass": 0.99,
+        "rope_threshold": 0.95,
+        "se": null,
+        "value_kind": "decision_rule"
+      },
+      {
+        "alpha": null,
+        "ci_high": 0.21,
+        "ci_low": -0.05,
+        "contrast": "myh10_src",
+        "decision_rule": "interval_inside_margin_and_rope",
+        "df": null,
+        "estimate": 0.08,
+        "group": {
+          "batch": "",
+          "cell_id": "",
+          "condition": "",
+          "donor": "",
+          "experiment": "",
+          "extra": {},
+          "field": "",
+          "grouping_levels": [],
+          "replicate": "",
+          "sample_id": "",
+          "well": ""
+        },
+        "interval_inside_margin": false,
+        "margin": 0.2,
+        "method": "",
+        "n": null,
+        "n_a": null,
+        "n_b": null,
+        "p_lower": null,
+        "p_tost": null,
+        "p_upper": null,
+        "passes": false,
+        "provenance": {
+          "parameters": {
+            "rope_threshold": 0.95
+          },
+          "schema_kind": "coupling",
+          "software_version": "0.1.0",
+          "source": "api_payload"
+        },
+        "rope_mass": 0.8,
+        "rope_threshold": 0.95,
+        "se": null,
+        "value_kind": "decision_rule"
+      }
+    ]
+  },
+  "status_code": 200
+}

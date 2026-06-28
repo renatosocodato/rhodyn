@@ -1,0 +1,150 @@
+{
+  "body": {
+    "job": {
+      "input_hash": "e585c81fb494b51c5b9b9e5b97252cb9e418acbbd0d2e99539bf399ca04b2ab3",
+      "input_rows": 12,
+      "job_id": "7790f619864f20aab087",
+      "kind": "reserve",
+      "operation": "summarize_reserve",
+      "parameters": {
+        "baseline_points": 1,
+        "ceiling": 1.7,
+        "floor": 1.0,
+        "normalize": true
+      },
+      "software_version": "0.1.0"
+    },
+    "status": "pass",
+    "summaries": [
+      {
+        "condition": "control",
+        "n_points": 4,
+        "peak_response": 1.16,
+        "replicate": "rep1",
+        "reserve": 0.7714285714285716,
+        "sample_id": "reserve_001"
+      },
+      {
+        "condition": "control",
+        "n_points": 4,
+        "peak_response": 1.11,
+        "replicate": "rep1",
+        "reserve": 0.8428571428571427,
+        "sample_id": "reserve_002"
+      },
+      {
+        "condition": "perturbed",
+        "n_points": 4,
+        "peak_response": 1.61,
+        "replicate": "rep1",
+        "reserve": 0.12857142857142834,
+        "sample_id": "reserve_003"
+      }
+    ],
+    "typed_results": [
+      {
+        "group": {
+          "batch": "",
+          "cell_id": "",
+          "condition": "control",
+          "donor": "",
+          "experiment": "",
+          "extra": {},
+          "field": "",
+          "grouping_levels": [
+            "condition",
+            "sample_id",
+            "replicate"
+          ],
+          "replicate": "rep1",
+          "sample_id": "reserve_001",
+          "well": ""
+        },
+        "n_points": 4,
+        "peak_response": 1.16,
+        "provenance": {
+          "parameters": {
+            "baseline_points": 1,
+            "ceiling": 1.7,
+            "floor": 1.0,
+            "normalize": true
+          },
+          "schema_kind": "reserve",
+          "software_version": "0.1.0",
+          "source": "api_payload"
+        },
+        "reserve": 0.7714285714285716,
+        "value_kind": "derived_summary"
+      },
+      {
+        "group": {
+          "batch": "",
+          "cell_id": "",
+          "condition": "control",
+          "donor": "",
+          "experiment": "",
+          "extra": {},
+          "field": "",
+          "grouping_levels": [
+            "condition",
+            "sample_id",
+            "replicate"
+          ],
+          "replicate": "rep1",
+          "sample_id": "reserve_002",
+          "well": ""
+        },
+        "n_points": 4,
+        "peak_response": 1.11,
+        "provenance": {
+          "parameters": {
+            "baseline_points": 1,
+            "ceiling": 1.7,
+            "floor": 1.0,
+            "normalize": true
+          },
+          "schema_kind": "reserve",
+          "software_version": "0.1.0",
+          "source": "api_payload"
+        },
+        "reserve": 0.8428571428571427,
+        "value_kind": "derived_summary"
+      },
+      {
+        "group": {
+          "batch": "",
+          "cell_id": "",
+          "condition": "perturbed",
+          "donor": "",
+          "experiment": "",
+          "extra": {},
+          "field": "",
+          "grouping_levels": [
+            "condition",
+            "sample_id",
+            "replicate"
+          ],
+          "replicate": "rep1",
+          "sample_id": "reserve_003",
+          "well": ""
+        },
+        "n_points": 4,
+        "peak_response": 1.61,
+        "provenance": {
+          "parameters": {
+            "baseline_points": 1,
+            "ceiling": 1.7,
+            "floor": 1.0,
+            "normalize": true
+          },
+          "schema_kind": "reserve",
+          "software_version": "0.1.0",
+          "source": "api_payload"
+        },
+        "reserve": 0.12857142857142834,
+        "value_kind": "derived_summary"
+      }
+    ]
+  },
+  "status_code": 200
+}
