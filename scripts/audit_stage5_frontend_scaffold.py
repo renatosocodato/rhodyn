@@ -123,7 +123,22 @@ def audit_stage5_frontend_scaffold(root: Path = ROOT) -> dict[str, Any]:
     )
     checks["frontend_exposes_result_visualization"] = all(
         token in index + app_js
-        for token in ["resultVisual", "renderResultVisual", "barRows", "intervalRows", "result-cards"]
+        for token in ["resultVisual", "renderResultVisual", "comparisonSuite", "rankedBarRows", "couplingIntervalPlot"]
+    )
+    checks["frontend_exposes_operation_specific_comparison_suites"] = all(
+        token in app_js
+        for token in [
+            "renderResidenceComparison",
+            "renderCouplingComparison",
+            "renderReserveComparison",
+            "renderModelComparison",
+            "Delta BIC",
+            "Zero coupling",
+        ]
+    )
+    checks["frontend_styles_professional_comparison_panels"] = all(
+        token in (root / "frontend/stage5/styles.css").read_text(encoding="utf-8")
+        for token in ["comparison-suite", "metric-strip", "metric-card", "ranked-bars", "margin-axis", "status-chip"]
     )
     checks["frontend_exposes_report_export_controls"] = all(
         token in index + app_js

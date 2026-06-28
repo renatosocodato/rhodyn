@@ -53,8 +53,9 @@ Started:
   fixtures;
 - Stage 5 UX-depth pass with richer trajectory inspection, explicit exported
   parameter provenance, and a guided MLCI public trajectory workflow;
-- Stage 5 report-builder polish with operation-specific result summaries and
-  JSON, CSV, Markdown, and bundle export ergonomics;
+- Stage 5 report-builder polish with operation-specific comparison panels for
+  residence, bounded coupling, reserve, and reduced-model ranking, plus JSON,
+  CSV, Markdown, and bundle export ergonomics;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 

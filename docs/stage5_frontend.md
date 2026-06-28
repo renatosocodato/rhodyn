@@ -66,11 +66,14 @@ reporter or disease-state measurement.
 ## Result visualization and export
 
 After a run, the report builder keeps the exact JSON result visible and adds a
-compact operation-specific view. Residence results show per-trace residence
-fractions, coupling results show interval placement against the declared margin,
-reserve results show reserve summaries by sample, and model-comparison results
-show ranked fit summaries. These views are presentation surfaces only. The raw
-JSON result remains the reproducible source.
+professional operation-specific comparison suite. Residence results show a
+metric strip, ranked per-trace residence fractions, and a compact trace table.
+Coupling results place confidence intervals against each declared margin and
+label bounded-coupling decisions without implying zero coupling. Reserve
+results rank samples by the derived reserve coordinate, and model-comparison
+results rank reduced architectures by delta BIC, BIC, AIC, RMSE, and RSS. These
+views are presentation surfaces only. The raw JSON result remains the
+reproducible source.
 
 The report builder can download the last result as JSON, result rows as CSV,
 or a Markdown report with parameter provenance. The bundle route still provides

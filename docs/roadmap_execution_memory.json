@@ -2,7 +2,7 @@
   "current_position": {
     "active_stage": "Stage 5. Frontend",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
-    "after_stage5_report_polish": "Stage 5 now has operation-specific result visualization and report export ergonomics for JSON, CSV, Markdown, and backend bundles.",
+    "after_stage5_report_polish": "Stage 5 now has professional operation-specific comparison panels for residence, bounded coupling, reserve, and reduced-model ranking, with report export ergonomics for JSON, CSV, Markdown, and backend bundles.",
     "after_stage5_ux_depth": "Stage 5 now has richer trajectory inspection, explicit exported parameter provenance, and a guided MLCI public trajectory workflow that can be reproduced from CLI and the frozen upload route.",
     "after_stage5_upload_parity": "Stage 5 now has real CSV upload-flow hardening, visible parameter/schema inspection, and CLI/API/frontend parity audits for all six frozen contract operations.",
     "after_v0_2_0": "Core-methods pass completed.",
@@ -46,13 +46,13 @@
       "status": "frozen_for_stage5"
     },
     {
-      "current_gate": "Deepen the contract-bound frontend around trajectory inspection, export provenance, and one guided public workflow before moving to full workbench polish.",
+      "current_gate": "Harden the contract-bound frontend into a serious scientific workbench around trajectory inspection, operation-specific comparison panels, export provenance, and one guided public workflow.",
       "gate": [
         "A biologist can upload a tidy table and interpret amplitude-like versus residence-like behavior without reading code.",
         "A quantitative user can inspect every parameter and reproduce the result from CLI.",
         "The workbench consumes the frozen Stage 4 API contract rather than inventing new analysis routes."
       ],
-      "latest_evidence": "scripts/audit_stage5_upload_flow_parity.py passes across all six frozen contract operations, and the Stage 5 frontend scaffold includes the MLCI public trajectory workflow.",
+      "latest_evidence": "scripts/audit_stage5_upload_flow_parity.py passes across all six frozen contract operations, and the Stage 5 frontend scaffold includes the MLCI public trajectory workflow plus comparison-suite result panels.",
       "name": "Frontend",
       "scope_rule": "Build only frontend behavior that consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility.",
       "stage": 5,

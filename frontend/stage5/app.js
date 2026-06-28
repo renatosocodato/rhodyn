@@ -408,34 +408,200 @@ function updateValidationState() {
   $("validationState").textContent = issues.length ? issues.join("; ") : "Local schema check passed for the selected operation.";
 }
 
-function card(label, value, detail = "") {
-  return `<div><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong>${detail ? `<p>${escapeHtml(detail)}</p>` : ""}</div>`;
+function statusChip(label, passed = true) {
+  return `<span class="status-chip ${passed ? "pass" : "warn"}">${escapeHtml(label)}</span>`;
 }
 
-function barRows(rows, valueField, labelField, { lowerIsBetter = false, maxRows = 12 } = {}) {
+function metricCard(label, value, detail = "") {
+  return `<div class="metric-card"><span>${escapeHtml(label)}</span><strong>${escapeHtml(value)}</strong>${detail ? `<p>${escapeHtml(detail)}</p>` : ""}</div>`;
+}
+
+function resultTable(rows, columns) {
+  if (!rows.length) return "";
+  return `
+    <div class="comparison-table">
+      <table>
+        <thead><tr>${columns.map((column) => `<th>${escapeHtml(column.label)}</th>`).join("")}</tr></thead>
+        <tbody>${rows.map((row) => `<tr>${columns.map((column) => `<td>${escapeHtml(column.format ? column.format(row) : row[column.key] ?? "")}</td>`).join("")}</tr>`).join("")}</tbody>
+      </table>
+    </div>
+  `;
+}
+
+function comparisonSuite({ title, subtitle, cards, plot = "", table = "", note = "" }) {
+  return `
+    <div class="comparison-suite">
+      <div class="comparison-head">
+        <div>
+          <h3>${escapeHtml(title)}</h3>
+          <p>${escapeHtml(subtitle)}</p>
+        </div>
+      </div>
+      <div class="metric-strip">${cards.join("")}</div>
+      ${plot ? `<div class="comparison-plot">${plot}</div>` : ""}
+      ${table}
+      ${note ? `<p class="comparison-note">${escapeHtml(note)}</p>` : ""}
+    </div>
+  `;
+}
+
+function rankedBarRows(rows, valueField, labelField, { maxRows = 12, scale = "absolute", formatter = fmt } = {}) {
   const visible = rows.slice(0, maxRows);
   const values = visible.map((row) => Number(row[valueField])).filter(Number.isFinite);
   if (!values.length) return "";
+  const maxAbs = Math.max(...values.map(Math.abs), 1e-9);
   const min = Math.min(...values);
   const max = Math.max(...values);
-  const span = Math.max(max - min, Math.abs(max), 1);
-  return `<div class="bar-list">${visible.map((row) => {
+  const span = Math.max(max - min, 1e-9);
+  return `<div class="ranked-bars">${visible.map((row, index) => {
     const value = Number(row[valueField]);
-    const width = lowerIsBetter ? ((max - value) / span) * 100 : (Math.abs(value) / Math.max(...values.map(Math.abs), 1)) * 100;
-    return `<div class="bar-row"><span>${escapeHtml(row[labelField] ?? "")}</span><div><i style="width:${Math.max(4, Math.min(100, width)).toFixed(1)}%"></i></div><strong>${fmt(value)}</strong></div>`;
+    const width = scale === "inverse" ? ((max - value) / span) * 100 : (Math.abs(value) / maxAbs) * 100;
+    return `
+      <div class="ranked-row">
+        <span class="rank">${index + 1}</span>
+        <span class="label">${escapeHtml(row[labelField] ?? "")}</span>
+        <div class="track"><i style="width:${Math.max(3, Math.min(100, width)).toFixed(1)}%"></i></div>
+        <strong>${escapeHtml(formatter(value, row))}</strong>
+      </div>
+    `;
   }).join("")}</div>`;
 }
 
-function intervalRows(records, decisions) {
+function couplingIntervalPlot(records, decisions) {
   if (!records.length || !decisions.length) return "";
   const rows = records.map((record, index) => ({ ...record, ...(decisions[index] || {}) }));
-  return `<div class="interval-list">${rows.map((row) => {
-    const margin = Math.max(Math.abs(Number(row.margin)), 1e-9);
-    const left = Math.max(0, Math.min(100, ((Number(row.ci_low) + margin) / (2 * margin)) * 100));
-    const right = Math.max(0, Math.min(100, ((Number(row.ci_high) + margin) / (2 * margin)) * 100));
-    const estimate = Math.max(0, Math.min(100, ((Number(row.estimate) + margin) / (2 * margin)) * 100));
-    return `<div class="interval-row"><span>${escapeHtml(row.contrast || "")}</span><div><b style="left:${left.toFixed(1)}%;width:${Math.max(1, right - left).toFixed(1)}%"></b><i style="left:${estimate.toFixed(1)}%"></i></div><strong>${row.passes ? "inside" : "outside"}</strong></div>`;
-  }).join("")}</div>`;
+  return `
+    <div class="margin-axis"><span>-margin</span><span>0</span><span>+margin</span></div>
+    <div class="interval-list">${rows.map((row) => {
+      const margin = Math.max(Math.abs(Number(row.margin)), 1e-9);
+      const toPct = (value) => Math.max(0, Math.min(100, ((Number(value) + margin) / (2 * margin)) * 100));
+      const left = toPct(row.ci_low);
+      const right = toPct(row.ci_high);
+      const estimate = toPct(row.estimate);
+      return `
+        <div class="interval-row ${row.passes ? "pass" : "warn"}">
+          <span class="label">${escapeHtml(row.contrast || "")}</span>
+          <div class="interval-track">
+            <em class="zero"></em>
+            <b style="left:${left.toFixed(1)}%;width:${Math.max(1, right - left).toFixed(1)}%"></b>
+            <i style="left:${estimate.toFixed(1)}%"></i>
+          </div>
+          ${statusChip(row.passes ? "inside" : "outside", row.passes)}
+        </div>
+      `;
+    }).join("")}</div>
+  `;
+}
+
+function renderResidenceComparison(payload) {
+  const summaries = [...(payload.summaries || [])].sort((a, b) => Number(b.residence_fraction || 0) - Number(a.residence_fraction || 0));
+  const meanResidence = summaries.length ? summaries.reduce((total, row) => total + Number(row.residence_fraction || 0), 0) / summaries.length : NaN;
+  const meanMax = summaries.length ? summaries.reduce((total, row) => total + Number(row.max_signal || 0), 0) / summaries.length : NaN;
+  const plot = rankedBarRows(summaries, "residence_fraction", "cell_id", { formatter: (value) => fmt(value) });
+  const table = resultTable(summaries.slice(0, 12), [
+    { label: "Trace", key: "cell_id" },
+    { label: "Condition", key: "condition" },
+    { label: "Residence", format: (row) => fmt(Number(row.residence_fraction)) },
+    { label: "Residence time", format: (row) => fmt(Number(row.residence_time)) },
+    { label: "Max signal", format: (row) => fmt(Number(row.max_signal)) },
+    { label: "Segments", format: (row) => String((row.segments || []).length) }
+  ]);
+  return comparisonSuite({
+    title: "Residence-window comparison",
+    subtitle: "Traces are ranked by fraction of observed time inside the declared signal window.",
+    cards: [
+      metricCard("Traces", String(summaries.length)),
+      metricCard("Mean residence", fmt(meanResidence)),
+      metricCard("Mean max signal", fmt(meanMax)),
+      metricCard("Window", `${fmt(Number(payload.window?.low))} to ${fmt(Number(payload.window?.high))}`)
+    ],
+    plot,
+    table,
+    note: "Residence summaries are derived from submitted trajectories and the visible window parameters."
+  });
+}
+
+function renderCouplingComparison(payload) {
+  const records = payload.records || [];
+  const decisions = payload.decisions || [];
+  const passing = decisions.filter((row) => row.passes).length;
+  const rows = records.map((record, index) => ({ ...record, ...(decisions[index] || {}) }));
+  const table = resultTable(rows, [
+    { label: "Contrast", key: "contrast" },
+    { label: "Estimate", format: (row) => fmt(Number(row.estimate)) },
+    { label: "90% CI low", format: (row) => fmt(Number(row.ci_low)) },
+    { label: "90% CI high", format: (row) => fmt(Number(row.ci_high)) },
+    { label: "Margin", format: (row) => fmt(Number(row.margin)) },
+    { label: "Decision", format: (row) => row.passes ? "inside margin" : "outside margin" }
+  ]);
+  return comparisonSuite({
+    title: "Bounded-coupling comparison",
+    subtitle: "Intervals are placed against each contrast's declared equivalence or coupling margin.",
+    cards: [
+      metricCard("Contrasts", String(decisions.length)),
+      metricCard("Inside margin", `${passing}/${decisions.length}`),
+      metricCard("Rule", "interval + ROPE"),
+      metricCard("Zero coupling", "not claimed")
+    ],
+    plot: couplingIntervalPlot(records, decisions),
+    table,
+    note: "A passing interval supports bounded coupling within the declared margin, not absence of all coupling."
+  });
+}
+
+function renderReserveComparison(payload) {
+  const summaries = [...(payload.summaries || [])].sort((a, b) => Number(b.reserve || 0) - Number(a.reserve || 0));
+  const meanReserve = summaries.length ? summaries.reduce((total, row) => total + Number(row.reserve || 0), 0) / summaries.length : NaN;
+  const meanPeak = summaries.length ? summaries.reduce((total, row) => total + Number(row.peak_response || 0), 0) / summaries.length : NaN;
+  const table = resultTable(summaries.slice(0, 12), [
+    { label: "Sample", key: "sample_id" },
+    { label: "Condition", key: "condition" },
+    { label: "Replicate", key: "replicate" },
+    { label: "Reserve", format: (row) => fmt(Number(row.reserve)) },
+    { label: "Peak", format: (row) => fmt(Number(row.peak_response)) },
+    { label: "Points", key: "n_points" }
+  ]);
+  return comparisonSuite({
+    title: "Reserve-buffering comparison",
+    subtitle: "Samples are ranked by reserve coordinate under the declared floor, ceiling, and normalization choices.",
+    cards: [
+      metricCard("Samples", String(summaries.length)),
+      metricCard("Mean reserve", fmt(meanReserve)),
+      metricCard("Mean peak", fmt(meanPeak)),
+      metricCard("Scale", "derived")
+    ],
+    plot: rankedBarRows(summaries, "reserve", "sample_id"),
+    table,
+    note: "Reserve is a derived response summary, not a direct measurement of inflammatory injury."
+  });
+}
+
+function renderModelComparison(payload) {
+  const fits = [...(payload.fits || [])].sort((a, b) => Number(a.bic || 0) - Number(b.bic || 0));
+  const best = fits[0] || {};
+  const bestBic = Number(best.bic);
+  const withDelta = fits.map((row) => ({ ...row, delta_bic: Number(row.bic) - bestBic }));
+  const table = resultTable(withDelta, [
+    { label: "Model", key: "model" },
+    { label: "Delta BIC", format: (row) => fmt(Number(row.delta_bic)) },
+    { label: "BIC", format: (row) => fmt(Number(row.bic)) },
+    { label: "AIC", format: (row) => fmt(Number(row.aic)) },
+    { label: "RMSE", format: (row) => fmt(Number(row.rmse)) },
+    { label: "RSS", format: (row) => fmt(Number(row.rss)) }
+  ]);
+  return comparisonSuite({
+    title: "Reduced-architecture ranking",
+    subtitle: "Models are ordered by BIC, with delta BIC shown relative to the best retained fit.",
+    cards: [
+      metricCard("Models", String(fits.length)),
+      metricCard("Best model", best.model || "-"),
+      metricCard("Best BIC", fmt(bestBic)),
+      metricCard("Metric", "lower BIC")
+    ],
+    plot: rankedBarRows(withDelta, "delta_bic", "model", { formatter: (value) => fmt(value) }),
+    table,
+    note: "Model comparison ranks submitted endpoint rows under declared assumptions; it does not identify every molecular edge."
+  });
 }
 
 function renderResultVisual(payload) {
@@ -446,44 +612,43 @@ function renderResultVisual(payload) {
   const operation = resultOperation(payload);
   const job = payload.job || {};
   const rows = resultRows(payload);
-  const cards = [
-    card("Operation", operation || "-"),
-    card("Status", payload.status || "-"),
-    card("Rows", String(job.input_rows ?? rows.length)),
-    card("Job", job.job_id || "not stored")
+  const shellCards = [
+    metricCard("Operation", operation || "-"),
+    metricCard("Status", payload.status || "-"),
+    metricCard("Rows", String(job.input_rows ?? rows.length)),
+    metricCard("Job", job.job_id || "not stored")
   ];
-  let detail = "";
+  let detail = comparisonSuite({
+    title: "Result overview",
+    subtitle: "The raw JSON result is retained below for exact reproducibility.",
+    cards: shellCards,
+    table: resultTable(rows.slice(0, 12), Object.keys(rows[0] || {}).slice(0, 8).map((key) => ({ label: key, key })))
+  });
   if (operation === "score_residence") {
-    const summaries = payload.summaries || [];
-    const meanResidence = summaries.length ? summaries.reduce((total, row) => total + Number(row.residence_fraction || 0), 0) / summaries.length : NaN;
-    cards.push(card("Traces", String(summaries.length)), card("Mean residence", fmt(meanResidence)));
-    detail = barRows(summaries, "residence_fraction", "cell_id");
+    detail = renderResidenceComparison(payload);
   } else if (operation === "decide_coupling") {
-    const decisions = payload.decisions || [];
-    const passing = decisions.filter((row) => row.passes).length;
-    cards.push(card("Contrasts", String(decisions.length)), card("Inside margin", `${passing}/${decisions.length}`));
-    detail = intervalRows(payload.records || [], decisions);
+    detail = renderCouplingComparison(payload);
   } else if (operation === "summarize_reserve") {
-    const summaries = payload.summaries || [];
-    const meanReserve = summaries.length ? summaries.reduce((total, row) => total + Number(row.reserve || 0), 0) / summaries.length : NaN;
-    cards.push(card("Samples", String(summaries.length)), card("Mean reserve", fmt(meanReserve)));
-    detail = barRows(summaries, "reserve", "sample_id");
+    detail = renderReserveComparison(payload);
   } else if (operation === "compare_models") {
-    const fits = payload.fits || [];
-    const best = fits[0] || {};
-    cards.push(card("Models", String(fits.length)), card("Best model", best.model || "-"), card("Best BIC", fmt(Number(best.bic))));
-    detail = barRows(fits, "bic", "model", { lowerIsBetter: true });
+    detail = renderModelComparison(payload);
   } else if (operation === "validate") {
     const issues = payload.issues || [];
-    cards.push(card("Schema", payload.kind || "-"), card("Issues", String(issues.length)));
-    detail = issues.length ? `<pre class="markdown-preview">${escapeHtml(rowsToMarkdown("Validation issues", issues))}</pre>` : "<p class=\"result-note\">Schema validation passed for the submitted rows.</p>";
+    detail = comparisonSuite({
+      title: "Schema validation",
+      subtitle: "The submitted rows are checked against the selected table schema.",
+      cards: [...shellCards, metricCard("Schema", payload.kind || "-"), metricCard("Issues", String(issues.length))],
+      plot: issues.length ? `<pre class="markdown-preview">${escapeHtml(rowsToMarkdown("Validation issues", issues))}</pre>` : "<p class=\"result-note\">Schema validation passed for the submitted rows.</p>"
+    });
   } else if (operation === "export_markdown") {
-    detail = `<pre class="markdown-preview">${escapeHtml(payload.markdown || "")}</pre>`;
+    detail = comparisonSuite({
+      title: "Markdown report",
+      subtitle: "This export summarizes submitted rows and does not add inference.",
+      cards: shellCards,
+      plot: `<pre class="markdown-preview">${escapeHtml(payload.markdown || "")}</pre>`
+    });
   }
-  $("resultVisual").innerHTML = `
-    <div class="result-cards">${cards.join("")}</div>
-    ${detail ? `<div class="result-chart">${detail}</div>` : ""}
-  `;
+  $("resultVisual").innerHTML = detail;
 }
 
 function assignResult(payload) {

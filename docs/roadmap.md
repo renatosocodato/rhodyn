@@ -258,8 +258,9 @@ coupling/equivalence, reserve, model-comparison, and report export surfaces
 without adding new analysis routes. The current Stage 5 depth pass adds
 per-trace residence inspection for uploaded trajectories, clearer parameter
 provenance in exported bundles, and a guided MLCI public trajectory workflow
-that can be reproduced from CLI. It also adds report-builder result summaries
-and one-click JSON, CSV, and Markdown exports for the last run. Frontend work
+that can be reproduced from CLI. It also adds operation-specific comparison
+panels for residence, bounded coupling, reserve, and reduced-model ranking,
+with one-click JSON, CSV, and Markdown exports for the last run. Frontend work
 should keep following the frozen backend/API contract and should not replace the
 Stage 3 evidence bank.
 
