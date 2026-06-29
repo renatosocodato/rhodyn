@@ -1,0 +1,78 @@
+{
+  "checks": {
+    "checksum_manifest_present": true,
+    "citation_file_present": true,
+    "citation_names_rhodyn": true,
+    "citation_version_matches_package": true,
+    "no_zenodo_upload_attempted": true,
+    "release_notes_present": true,
+    "sdist_archive_built": true,
+    "zenodo_creators_present": true,
+    "zenodo_description_present": true,
+    "zenodo_license_present": true,
+    "zenodo_metadata_present": true,
+    "zenodo_title_names_rhodyn": true,
+    "zenodo_upload_type_software": true
+  },
+  "commands": [
+    {
+      "command": [
+        "$ZENODO_DRY_RUN/build-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--upgrade",
+        "pip"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "Requirement already satisfied: pip in /private$ZENODO_DRY_RUN/build-env/lib/python3.14/site-packages (26.0)\nCollecting pip\n  Using cached pip-26.1.2-py3-none-any.whl.metadata (4.6 kB)\nUsing cached pip-26.1.2-py3-none-any.whl (1.8 MB)\nInstalling collected packages: pip\n  Attempting uninstall: pip\n    Found existing installation: pip 26.0\n    Uninstalling pip-26.0:\n      Successfully uninstalled pip-26.0\nSuccessfully installed pip-26.1.2\n"
+    },
+    {
+      "command": [
+        "$ZENODO_DRY_RUN/build-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "build>=1.2"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "Collecting build>=1.2\n  Using cached build-1.5.0-py3-none-any.whl.metadata (5.7 kB)\nCollecting packaging>=24.0 (from build>=1.2)\n  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)\nCollecting pyproject_hooks (from build>=1.2)\n  Using cached pyproject_hooks-1.2.0-py3-none-any.whl.metadata (1.3 kB)\nUsing cached build-1.5.0-py3-none-any.whl (26 kB)\nUsing cached packaging-26.2-py3-none-any.whl (100 kB)\nUsing cached pyproject_hooks-1.2.0-py3-none-any.whl (10 kB)\nInstalling collected packages: pyproject_hooks, packaging, build\n\nSuccessfully installed build-1.5.0 packaging-26.2 pyproject_hooks-1.2.0\n"
+    },
+    {
+      "command": [
+        "$ZENODO_DRY_RUN/build-env/bin/python",
+        "-m",
+        "build",
+        "--sdist",
+        "--outdir",
+        "$ZENODO_DRY_RUN/dist",
+        "."
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "* Creating isolated environment: venv+pip...\n* Installing packages in isolated environment:\n  - setuptools>=68\n  - wheel\n* Getting build dependencies for sdist...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'\n* Building sdist...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'\n",
+      "stdout": "enodo_dry_run_report.md -> rhodyn-0.1.0/docs\ncopying examples/mlci_ctc_features.csv -> rhodyn-0.1.0/examples\ncopying examples/mlci_man_track.txt -> rhodyn-0.1.0/examples\ncopying examples/mlci_public_case_study_workflow.py -> rhodyn-0.1.0/examples\ncopying examples/mlci_public_intensity_trajectory.csv -> rhodyn-0.1.0/examples\ncopying examples/residence_reserve_workflow.py -> rhodyn-0.1.0/examples\ncopying examples/synthetic_coupling.csv -> rhodyn-0.1.0/examples\ncopying examples/synthetic_endpoints.csv -> rhodyn-0.1.0/examples\ncopying examples/synthetic_reserve.csv -> rhodyn-0.1.0/examples\ncopying examples/synthetic_trajectory.csv -> rhodyn-0.1.0/examples\ncopying frontend/stage5/app.js -> rhodyn-0.1.0/frontend/stage5\ncopying frontend/stage5/index.html -> rhodyn-0.1.0/frontend/stage5\ncopying frontend/stage5/styles.css -> rhodyn-0.1.0/frontend/stage5\ncopying notebooks/01_synthetic_residence_primer.ipynb -> rhodyn-0.1.0/notebooks\ncopying notebooks/02_public_signaling_benchmarks.ipynb -> rhodyn-0.1.0/notebooks\ncopying notebooks/03_public_endpoint_and_coupling_benchmarks.ipynb -> rhodyn-0.1.0/notebooks\ncopying scripts/audit_phase6_release_readiness.py -> rhodyn-0.1.0/scripts\ncopying scripts/audit_stage3_case_study_bank.py -> rhodyn-0.1.0/scripts\ncopying scripts/audit_stage4_docker_smoke.py -> rhodyn-0.1.0/scripts\ncopying scripts/audit_stage4_service_contract.py -> rhodyn-0.1.0/scripts\ncopying scripts/audit_stage4_upload_stress.py -> rhodyn-0.1.0/scripts\ncopying scripts/audit_stage5_frontend_scaffold.py -> rhodyn-0.1.0/scripts\ncopying scripts/audit_stage5_premium_workbench.py -> rhodyn-0.1.0/scripts\ncopying scripts/audit_stage5_simulation_workbench.py -> rhodyn-0.1.0/scripts\ncopying scripts/audit_stage5_upload_flow_parity.py -> rhodyn-0.1.0/scripts\ncopying scripts/check_dependency_security.py -> rhodyn-0.1.0/scripts\ncopying scripts/check_docs_links.py -> rhodyn-0.1.0/scripts\ncopying scripts/check_release.py -> rhodyn-0.1.0/scripts\ncopying scripts/check_roadmap_memory.py -> rhodyn-0.1.0/scripts\ncopying scripts/fetch_cell_painting_endpoint_benchmark.py -> rhodyn-0.1.0/scripts\ncopying scripts/fetch_drg_calcium_benchmark.py -> rhodyn-0.1.0/scripts\ncopying scripts/fetch_erk_akt_bounded_coupling.py -> rhodyn-0.1.0/scripts\ncopying scripts/fetch_erk_gpcr_benchmark.py -> rhodyn-0.1.0/scripts\ncopying scripts/fetch_mlci_feature_subset.py -> rhodyn-0.1.0/scripts\ncopying scripts/fetch_mlci_lineage_subset.py -> rhodyn-0.1.0/scripts\ncopying scripts/freeze_stage4_api_contract.py -> rhodyn-0.1.0/scripts\ncopying scripts/pypi_dry_run.py -> rhodyn-0.1.0/scripts\ncopying scripts/run_clean_room_reproducibility.py -> rhodyn-0.1.0/scripts\ncopying scripts/run_stage5_screenshot_regression.py -> rhodyn-0.1.0/scripts\ncopying scripts/write_release_checksums.py -> rhodyn-0.1.0/scripts\ncopying scripts/zenodo_dry_run.py -> rhodyn-0.1.0/scripts\ncopying src/rhodyn/__init__.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/backend.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/backend_core.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/cli.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/compare.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/coupling.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/ctc.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/extras.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/models.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/paper.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/plots.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/report.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/reserve.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/residence.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/results.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/schema.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/sensitivity.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/sim.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn/uncertainty.py -> rhodyn-0.1.0/src/rhodyn\ncopying src/rhodyn.egg-info/PKG-INFO -> rhodyn-0.1.0/src/rhodyn.egg-info\ncopying src/rhodyn.egg-info/SOURCES.txt -> rhodyn-0.1.0/src/rhodyn.egg-info\ncopying src/rhodyn.egg-info/dependency_links.txt -> rhodyn-0.1.0/src/rhodyn.egg-info\ncopying src/rhodyn.egg-info/entry_points.txt -> rhodyn-0.1.0/src/rhodyn.egg-info\ncopying src/rhodyn.egg-info/requires.txt -> rhodyn-0.1.0/src/rhodyn.egg-info\ncopying src/rhodyn.egg-info/top_level.txt -> rhodyn-0.1.0/src/rhodyn.egg-info\ncopying tests/test_backend_core.py -> rhodyn-0.1.0/tests\ncopying tests/test_cell_painting_endpoint_benchmark.py -> rhodyn-0.1.0/tests\ncopying tests/test_cli_and_paper.py -> rhodyn-0.1.0/tests\ncopying tests/test_ctc.py -> rhodyn-0.1.0/tests\ncopying tests/test_drg_calcium_benchmark.py -> rhodyn-0.1.0/tests\ncopying tests/test_erk_akt_bounded_coupling.py -> rhodyn-0.1.0/tests\ncopying tests/test_erk_gpcr_benchmark.py -> rhodyn-0.1.0/tests\ncopying tests/test_examples.py -> rhodyn-0.1.0/tests\ncopying tests/test_extras.py -> rhodyn-0.1.0/tests\ncopying tests/test_models_sim_compare.py -> rhodyn-0.1.0/tests\ncopying tests/test_phase6_release_readiness.py -> rhodyn-0.1.0/tests\ncopying tests/test_plots.py -> rhodyn-0.1.0/tests\ncopying tests/test_public_candidates.py -> rhodyn-0.1.0/tests\ncopying tests/test_release_check.py -> rhodyn-0.1.0/tests\ncopying tests/test_reserve_coupling.py -> rhodyn-0.1.0/tests\ncopying tests/test_residence.py -> rhodyn-0.1.0/tests\ncopying tests/test_results.py -> rhodyn-0.1.0/tests\ncopying tests/test_schema.py -> rhodyn-0.1.0/tests\ncopying tests/test_sensitivity.py -> rhodyn-0.1.0/tests\ncopying tests/test_stage3_case_study_bank.py -> rhodyn-0.1.0/tests\ncopying tests/test_stage5_frontend_scaffold.py -> rhodyn-0.1.0/tests\ncopying tests/test_stage5_upload_flow_parity.py -> rhodyn-0.1.0/tests\ncopying tests/test_uncertainty.py -> rhodyn-0.1.0/tests\ncopying src/rhodyn.egg-info/SOURCES.txt -> rhodyn-0.1.0/src/rhodyn.egg-info\nWriting rhodyn-0.1.0/setup.cfg\nCreating tar archive\nremoving 'rhodyn-0.1.0' (and everything under it)\nSuccessfully built rhodyn-0.1.0.tar.gz\n"
+    }
+  ],
+  "distribution_artifacts": [
+    "rhodyn-0.1.0.tar.gz"
+  ],
+  "failures": [],
+  "generated_utc": "2026-06-29T14:09:43.926457Z",
+  "interpretation_boundary": "This dry run validates the local software-record payload only. It does not create, upload, reserve, or publish a Zenodo record.",
+  "report_format": "rhodyn.zenodo_dry_run.v1",
+  "status": "pass",
+  "zenodo_metadata_summary": {
+    "creator_count": 1,
+    "license": "Apache-2.0",
+    "title": "RhoDyn: dynamic residence-state analysis for live-cell signaling and perturbation data",
+    "upload_type": "software"
+  }
+}

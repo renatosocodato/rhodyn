@@ -57,6 +57,16 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         if stages.get(stage, {}).get("status") != status:
             failures.append(f"Stage {stage} status must be {status}")
 
+    stage6 = stages.get(6, {})
+    subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []
+    subphase_ids = [entry.get("id") for entry in subphases if isinstance(entry, dict)]
+    expected_subphase_ids = ["6.1", "6.2", "6.3", "6.4", "6.5", "6.6", "6.7"]
+    if subphase_ids != expected_subphase_ids:
+        failures.append("Stage 6 subphases must be bound as 6.1 through 6.7 in roadmap execution memory")
+    for entry in subphases:
+        if isinstance(entry, dict) and (not entry.get("goal") or not entry.get("gate")):
+            failures.append(f"Stage 6 subphase {entry.get('id', '?')} must include goal and gate")
+
     roadmap_flat = " ".join(roadmap.split())
     required_roadmap_phrases = [
         "The original Stage 3 to Stage 8 blueprint is retained as the controlling sequence",
@@ -64,6 +74,13 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 4 is frozen for the first Stage 5 scaffold",
         "Stage 5 is completed as a contract-bound scientific workbench",
         "Stage 6 is the active execution stage",
+        "6.1 Release boundary",
+        "6.2 Packaging",
+        "6.3 Documentation",
+        "6.4 Release automation",
+        "6.5 Archive and citation",
+        "6.6 Clean-room reproducibility",
+        "6.7 Final ultra-hardening",
         "Stage 7 is the future Nature Methods-first scientific-methods campaign",
         "Stage 8 inherits from Stage 7",
     ]
@@ -92,7 +109,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
 
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
-        warnings.append("Stage 6 is active but RhoDyn is not professionally citable until the official release surfaces pass together")
+        warnings.append("Stage 6 hardening gates can pass before publication; RhoDyn is not professionally citable until a tag, archive, and DOI record are intentionally cut or published")
 
     return {
         "status": "pass" if not failures else "fail",

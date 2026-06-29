@@ -8,6 +8,7 @@ synthetic rows only and does not add a biological case study.
 
 from __future__ import annotations
 
+import argparse
 import csv
 import hashlib
 import json
@@ -364,7 +365,13 @@ def audit_stage4_docker_smoke(root: Path = ROOT) -> dict[str, Any]:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--out", type=Path, default=None, help="Optional JSON report path.")
+    args = parser.parse_args()
     payload = audit_stage4_docker_smoke()
+    if args.out is not None:
+        args.out.parent.mkdir(parents=True, exist_ok=True)
+        args.out.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
     print(json.dumps(payload, indent=2, sort_keys=True))
     return 0 if payload["status"] == "pass" else 1
 

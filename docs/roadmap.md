@@ -79,7 +79,7 @@ as roadmap work.
 | Stage 3. Case-study evidence bank | Complete for the v0.3 gate. | Keep the evidence bank stable. Additional public biological systems are Stage 7 evidence expansion unless they repair a documented Stage 3 defect. |
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
 | Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract, exposes the existing deterministic simulation surface, and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
-| Stage 6. Official software release | Active release candidate. | Do not call the package professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene are complete. |
+| Stage 6. Official software release | Active release candidate with hardening gates passing. | Do not call the package professionally citable until a version tag, GitHub archive, and Zenodo software record are intentionally cut or published. |
 | Stage 7. Nature Methods first | Not ready. | Treat this as a later scientific-methods campaign, not as a rebranding of the RhoA/microglia manuscript or the Stage 3 examples. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Nature Methods framing and should not lead the scientific evidence path. |
 
@@ -276,7 +276,7 @@ new release, distribution, and citation surfaces belong to Stage 6.
 
 ## Stage 6. Official software release
 
-Goal. Make RhoDyn professionally citable.
+Goal. Prepare RhoDyn for a professionally citable software release.
 
 Release surfaces.
 
@@ -304,6 +304,48 @@ Status. Active release candidate. The repository has CI, docs, examples, and
 release checks, but it is not yet a professional public/citable release with
 PyPI, Docker, Zenodo, documentation site, citation metadata, and cross-version
 CI. Stage 6 now owns those public release surfaces.
+
+### Stage 6 subphase horizon
+
+6.1 Release boundary. Define the first official RhoDyn release as a Python
+library plus CLI for residence-window scoring, bounded coupling, reserve
+summaries, reduced-architecture comparison, uncertainty, diagnostics, reports,
+and the Stage 5 workbench. Gate. The release contains no manuscript-private
+data, hidden local paths, raw microscopy, or claim that RhoDyn generated the
+RhoA/microglia manuscript.
+
+6.2 Packaging. Make installation professional with a clean `pyproject.toml`,
+wheel and source distribution, optional extras such as `rhodyn[stats]`,
+`rhodyn[plots]`, `rhodyn[backend]`, and `rhodyn[dev]`, CLI entry points, and
+version stamping in outputs. Gate. A fresh clone can install the package and
+run examples from scratch.
+
+6.3 Documentation. Make the user path obvious through a quickstart, API
+reference, CLI reference, input-schema guide, interpretation guide, tutorials,
+example reports, and reproducibility card. Gate. A biologist can run the basic
+workflow, and a quantitative user can audit parameter choices.
+
+6.4 Release automation. Make releases repeatable through CI across Python
+versions, package-build workflow, documentation-build workflow, release
+checklist, changelog discipline, citation metadata, license and contribution
+docs, and Docker build. Gate. Every release surface builds from CI rather than
+from a local machine.
+
+6.5 Archive and citation. Make RhoDyn independently citable through a GitHub
+release, Zenodo DOI for RhoDyn itself, `CITATION.cff`, release notes, archived
+source tarball, and checksum manifest. Gate. The archive contains only intended
+software and public examples.
+
+6.6 Clean-room reproducibility. Test from zero with a fresh clone, fresh virtual
+environment, installed wheel, CLI examples, notebooks, documentation build,
+workbench run, and report export. Gate. No release path depends on the
+developer's local machine.
+
+6.7 Final ultra-hardening. Close the release through local-path and secret
+scans, dependency review, broken-link docs scan, screenshot regression, CLI/API
+parity, Docker parity, PyPI dry run, Zenodo dry run, clean-room
+reproducibility, and frontend/backend output parity. Gate. All official release
+surfaces pass together.
 
 ## Stage 7. Nature Methods first
 

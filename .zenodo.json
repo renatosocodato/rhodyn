@@ -1,0 +1,32 @@
+{
+  "title": "RhoDyn: dynamic residence-state analysis for live-cell signaling and perturbation data",
+  "upload_type": "software",
+  "description": "RhoDyn is a standalone Python toolkit for residence-window scoring, bounded-coupling decisions, reserve-like buffering summaries, stochastic timing utilities, reduced-architecture comparison, reproducible reports, a command-line interface, a backend service, and a contract-bound browser workbench for live-cell signaling and perturbation data. The software is independent from the RhoA/microglia manuscript; manuscript materials are optional reference use cases, not runtime dependencies.",
+  "creators": [
+    {
+      "name": "Socodato, Renato"
+    }
+  ],
+  "license": "Apache-2.0",
+  "version": "0.1.0",
+  "publication_date": "2026-06-29",
+  "keywords": [
+    "live-cell signaling",
+    "residence time",
+    "bounded coupling",
+    "reserve buffering",
+    "perturbation analysis",
+    "systems biology",
+    "scientific software"
+  ],
+  "access_right": "open",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/renatosocodato/rhodyn",
+      "relation": "isSupplementTo",
+      "scheme": "url",
+      "resource_type": "software"
+    }
+  ],
+  "notes": "Prepared archive metadata for the RhoDyn v0.1.0 software release. The archive excludes raw microscopy, manuscript-private files, credentials, local paths, and generated debug outputs. The RhoA/microglia manuscript materials are optional reference use cases and are not required for normal software operation."
+}

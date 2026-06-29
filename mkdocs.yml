@@ -1,0 +1,18 @@
+site_name: RhoDyn
+site_description: Dynamic residence-state analysis for live-cell signaling and perturbation data.
+repo_url: https://github.com/renatosocodato/rhodyn
+theme:
+  name: mkdocs
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - API reference: api_reference.md
+  - CLI reference: cli_reference.md
+  - Input schemas: input_schema_guide.md
+  - Interpretation guide: interpretation_guide.md
+  - Example workflows: example_workflows.md
+  - Optional extras: optional_extras.md
+  - Reproducibility card: reproducibility_card.md
+  - Clean-room reproducibility: clean_room_reproducibility.md
+  - Final release hardening: final_release_hardening.md
+  - Release checklist: release_checklist.md

@@ -1,0 +1,51 @@
+{
+  "checks": {
+    "auth_blocks_unauthorized_upload": true,
+    "authorized_upload_run_passes": true,
+    "bundle_hash_valid": true,
+    "bundle_result_matches_upload_run": true,
+    "byte_limit_blocks_large_upload": true,
+    "compose_file_exists": true,
+    "compose_template_declares_backend_service": true,
+    "compose_template_declares_required_env": true,
+    "compose_template_exposes_configurable_port": true,
+    "compose_template_uses_durable_job_volume": true,
+    "compose_template_uses_stage4_dockerfile": true,
+    "docker_build_passes": true,
+    "docker_cli_available": true,
+    "docker_daemon_available": true,
+    "docker_run_starts_container": true,
+    "dockerfile_exists": true,
+    "env_example_declares_required_env": true,
+    "env_example_exists": true,
+    "health_reports_env_controls": true,
+    "retention_prunes_to_configured_job_limit": true,
+    "row_limit_blocks_large_upload": true,
+    "stored_bundle_hash_valid": true,
+    "stored_result_matches_submit": true,
+    "upload_submit_matches_run": true
+  },
+  "details": {
+    "compose": {
+      "available": false,
+      "command": null,
+      "note": "Compose CLI not available in this shell; compose template was still checked.",
+      "version": null
+    },
+    "container_id": "465e7e4cd861",
+    "csv_bytes": 112680,
+    "docker_build_tail": "Step 10/11 : EXPOSE 8000\n ---> Using cache\n ---> c8e4b176de1f\nStep 11/11 : CMD [\"uvicorn\", \"rhodyn.backend:app\", \"--host\", \"0.0.0.0\", \"--port\", \"8000\"]\n ---> Using cache\n ---> 4767a6b0240c\nSuccessfully built 4767a6b0240c\nSuccessfully tagged rhodyn-stage4-smoke:local\nDEPRECATED: The legacy builder is deprecated and will be removed in a future release.\n            Install the buildx component to build images with BuildKit:\n            https://docs.docker.com/go/buildx/\n",
+    "docker_daemon": "\"28.4.0\"",
+    "docker_version": "Docker version 29.1.5, build 0e6fee6c52",
+    "host_port": 52430,
+    "retained_job_ids": [
+      "abec0a6b39246d8f8f74",
+      "bcd97985a2be4cd842e6"
+    ],
+    "row_count": 2560
+  },
+  "failures": [],
+  "interpretation_boundary": "This Docker smoke audit uses deterministic synthetic upload rows. It exercises Stage 4 deployment behavior and does not add a biological case study or new interpretation.",
+  "report_format": "rhodyn.stage4_docker_smoke_audit.v1",
+  "status": "pass"
+}

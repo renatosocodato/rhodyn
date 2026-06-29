@@ -1,0 +1,305 @@
+{
+  "check_remote": false,
+  "failures": [],
+  "generated_utc": "2026-06-29T14:09:44.042134Z",
+  "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
+  "link_count": 49,
+  "records": [
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "README.md",
+      "status": "pass",
+      "target": "http://127.0.0.1:9000/frontend/stage5/"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "README.md",
+      "status": "pass",
+      "target": "http://127.0.0.1:8000"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "README.md",
+      "status": "pass",
+      "target": "https://github.com/renatosocodato/windowed_rhoA_model"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "REPRODUCING.md",
+      "status": "pass",
+      "target": "https://github.com/renatosocodato/windowed_rhoA_model"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/cell_painting_endpoint_benchmark.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/10011861"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/cell_painting_endpoint_benchmark.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.10011861"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/drg_calcium_public_benchmark.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/14907827"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/drg_calcium_public_benchmark.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.14907827"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/erk_akt_bounded_coupling_benchmark.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/5836623"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/erk_akt_bounded_coupling_benchmark.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.5836623"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/erk_gpcr_public_benchmark.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/5836623"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/erk_gpcr_public_benchmark.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.5836623"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/mlci_public_tutorial.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/7260137"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/mlci_public_tutorial.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.7260136"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/mlci_public_tutorial.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.7260137"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/7260137"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.7260136"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.7260137"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://registry.opendata.aws/cellpainting-gallery/"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/10011861"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.10011861"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/14907827"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.14907827"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://allensdk.readthedocs.io/en/latest/brain_observatory.html"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://github.com/AllenInstitute/AllenSDK/blob/master/LICENSE.txt"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/5836623"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.5836623"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/5836623"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_case_study_candidates.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.5836623"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage4_backend.md",
+      "status": "pass",
+      "target": "http://localhost:8000/jobs/upload/run?operation=score_residence&parameters_json=%7B%22low%22%3A0.35%2C%22high%22%3A0.75%7D'"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage5_frontend.md",
+      "status": "pass",
+      "target": "http://127.0.0.1:9000/frontend/stage5/"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage5_frontend.md",
+      "status": "pass",
+      "target": "http://127.0.0.1:8000"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage5_public_mlci_workflow.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/7260137"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage5_public_mlci_workflow.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.7260136"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage5_public_mlci_workflow.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.7260137"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage5_public_mlci_workflow.md",
+      "status": "pass",
+      "target": "http://127.0.0.1:9000/frontend/stage5/"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "index.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "architecture.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "api_reference.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "cli_reference.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "input_schema_guide.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "interpretation_guide.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "example_workflows.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "optional_extras.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "reproducibility_card.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "clean_room_reproducibility.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "final_release_hardening.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "release_checklist.md"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "https://github.com/renatosocodato/rhodyn"
+    }
+  ],
+  "report_format": "rhodyn.docs_link_scan.v1",
+  "status": "pass"
+}

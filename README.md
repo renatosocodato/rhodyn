@@ -15,15 +15,16 @@ future examples.
 ## Current status
 
 This is an early open-core scaffold with the `v0.3.x` public case-study lane
-closed for the current evidence gate, the Stage 4 API contract frozen, and the
-first Stage 5 frontend scaffold underway.
+closed for the current evidence gate, the Stage 4 API contract frozen, and
+Stage 5 completed as a contract-bound scientific workbench.
 
 The staged development plan is anchored in `docs/roadmap.md`. The current
-position is Stage 3D completed, the Stage 3 evidence bank is closable for v0.3,
-Stage 4 is frozen for the frontend handoff, and Stage 5 is active as a
-contract-bound scaffold. Official release, Nature Methods, and product work
-remain downstream of this evidence bank, frozen backend contract, and frontend
-workbench.
+position is Stage 6. Official software release work is active and covers clean
+packaging, documentation, cross-version automation, Docker, citation metadata,
+Zenodo/GitHub release surfaces, clean-room reproducibility, and final release
+hygiene. Nature Methods and product work remain downstream of this release
+gate and should not reshape the evidence bank or the manuscript reference use
+case.
 
 Included now:
 
@@ -107,6 +108,24 @@ python -m pip install 'rhodyn[stats]'
 python -m pip install 'rhodyn[plots]'
 python -m pip install 'rhodyn[backend]'
 python -m pip install 'rhodyn[notebooks]'
+python -m pip install 'rhodyn[dev]'
+```
+
+## Documentation
+
+The Phase 6 documentation entry points are:
+
+- `docs/api_reference.md` for the stable Python API.
+- `docs/cli_reference.md` for command-line use.
+- `docs/input_schema_guide.md` for tidy table contracts.
+- `docs/interpretation_guide.md` for scientific interpretation boundaries.
+- `docs/reproducibility_card.md` for clean-room and release checks.
+
+Build the local documentation site after installing the dev extra.
+
+```bash
+python -m pip install 'rhodyn[dev]'
+mkdocs build --strict
 ```
 
 ## Quick examples

@@ -8,6 +8,6 @@ authors:
 version: 0.1.0
 license: Apache-2.0
 repository-code: "https://github.com/renatosocodato/rhodyn"
-date-released: 2026-06-23
+date-released: 2026-06-29
 abstract: "RhoDyn is a standalone toolkit for residence-time, reserve-like buffering, bounded coupling, stochastic timing, and reduced-controller analysis from live-cell signaling and perturbation data."
 

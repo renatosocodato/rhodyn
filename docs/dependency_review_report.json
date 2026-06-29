@@ -1,0 +1,171 @@
+{
+  "checks": {
+    "core_dependencies_empty": true,
+    "no_blocked_dependency_names": true,
+    "node_dependencies_locked": true,
+    "node_lockfile_present": true,
+    "optional_dependencies_declared": true,
+    "playwright_is_dev_only": true,
+    "pyproject_present": true,
+    "static_review_completed": true
+  },
+  "failures": [],
+  "generated_utc": "2026-06-29T14:09:44.086084Z",
+  "interpretation_boundary": "This is an offline static dependency review. A live advisory scan should still be run immediately before public release if credentials and network policy allow it.",
+  "node_dependencies": [
+    {
+      "dev": true,
+      "ecosystem": "node",
+      "name": "@playwright/test",
+      "path": "node_modules/@playwright/test",
+      "version": "1.61.1"
+    },
+    {
+      "dev": true,
+      "ecosystem": "node",
+      "name": "fsevents",
+      "path": "node_modules/fsevents",
+      "version": "2.3.2"
+    },
+    {
+      "dev": true,
+      "ecosystem": "node",
+      "name": "playwright",
+      "path": "node_modules/playwright",
+      "version": "1.61.1"
+    },
+    {
+      "dev": true,
+      "ecosystem": "node",
+      "name": "playwright-core",
+      "path": "node_modules/playwright-core",
+      "version": "1.61.1"
+    }
+  ],
+  "node_dependency_count": 4,
+  "python_dependencies": [
+    {
+      "ecosystem": "python",
+      "group": "all",
+      "name": "pandas",
+      "requirement": "pandas>=2.0",
+      "specifier": ">=2.0"
+    },
+    {
+      "ecosystem": "python",
+      "group": "all",
+      "name": "scipy",
+      "requirement": "scipy>=1.11",
+      "specifier": ">=1.11"
+    },
+    {
+      "ecosystem": "python",
+      "group": "all",
+      "name": "matplotlib",
+      "requirement": "matplotlib>=3.8",
+      "specifier": ">=3.8"
+    },
+    {
+      "ecosystem": "python",
+      "group": "all",
+      "name": "fastapi",
+      "requirement": "fastapi>=0.115",
+      "specifier": ">=0.115"
+    },
+    {
+      "ecosystem": "python",
+      "group": "all",
+      "name": "httpx",
+      "requirement": "httpx>=0.25",
+      "specifier": ">=0.25"
+    },
+    {
+      "ecosystem": "python",
+      "group": "all",
+      "name": "uvicorn",
+      "requirement": "uvicorn>=0.30",
+      "specifier": ">=0.30"
+    },
+    {
+      "ecosystem": "python",
+      "group": "all",
+      "name": "jupyterlab",
+      "requirement": "jupyterlab>=4.0",
+      "specifier": ">=4.0"
+    },
+    {
+      "ecosystem": "python",
+      "group": "backend",
+      "name": "fastapi",
+      "requirement": "fastapi>=0.115",
+      "specifier": ">=0.115"
+    },
+    {
+      "ecosystem": "python",
+      "group": "backend",
+      "name": "httpx",
+      "requirement": "httpx>=0.25",
+      "specifier": ">=0.25"
+    },
+    {
+      "ecosystem": "python",
+      "group": "backend",
+      "name": "uvicorn",
+      "requirement": "uvicorn>=0.30",
+      "specifier": ">=0.30"
+    },
+    {
+      "ecosystem": "python",
+      "group": "dev",
+      "name": "build",
+      "requirement": "build>=1.2",
+      "specifier": ">=1.2"
+    },
+    {
+      "ecosystem": "python",
+      "group": "dev",
+      "name": "mkdocs",
+      "requirement": "mkdocs>=1.6",
+      "specifier": ">=1.6"
+    },
+    {
+      "ecosystem": "python",
+      "group": "dev",
+      "name": "twine",
+      "requirement": "twine>=5.0",
+      "specifier": ">=5.0"
+    },
+    {
+      "ecosystem": "python",
+      "group": "notebooks",
+      "name": "jupyterlab",
+      "requirement": "jupyterlab>=4.0",
+      "specifier": ">=4.0"
+    },
+    {
+      "ecosystem": "python",
+      "group": "pandas",
+      "name": "pandas",
+      "requirement": "pandas>=2.0",
+      "specifier": ">=2.0"
+    },
+    {
+      "ecosystem": "python",
+      "group": "plots",
+      "name": "matplotlib",
+      "requirement": "matplotlib>=3.8",
+      "specifier": ">=3.8"
+    },
+    {
+      "ecosystem": "python",
+      "group": "stats",
+      "name": "scipy",
+      "requirement": "scipy>=1.11",
+      "specifier": ">=1.11"
+    }
+  ],
+  "python_dependency_count": 17,
+  "report_format": "rhodyn.dependency_review.v1",
+  "status": "pass",
+  "warnings": []
+}

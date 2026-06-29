@@ -1,16 +1,17 @@
 {
   "current_position": {
     "active_stage": "Stage 6. Official software release",
+    "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
     "after_stage5_closeout": "Stage 5 is completed as a contract-bound scientific workbench with upload parity, operation-specific visualizations, export provenance, browser regression, and adversarial layout guards.",
-    "after_stage5_report_polish": "Stage 5 now has professional operation-specific comparison panels for residence, bounded coupling, reserve, and reduced-model ranking, with report export ergonomics for JSON, CSV, Markdown, and backend bundles.",
     "after_stage5_final_ui_ux_polish": "Stage 5.1 added a Simulation Workbench for the existing deterministic controller with parameter presets, trajectory visualization, first-passage timing, route readouts, exports, and browser regression coverage.",
+    "after_stage5_report_polish": "Stage 5 now has professional operation-specific comparison panels for residence, bounded coupling, reserve, and reduced-model ranking, with report export ergonomics for JSON, CSV, Markdown, and backend bundles.",
     "after_stage5_upload_parity": "Stage 5 now has real CSV upload-flow hardening, visible parameter/schema inspection, and CLI/API/frontend parity audits for all six frozen contract operations.",
     "after_stage5_ux_depth": "Stage 5 now has richer trajectory inspection, explicit exported parameter provenance, and a guided MLCI public trajectory workflow that can be reproduced from CLI and the frozen upload route.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "stage6_active_gate": "Stage 6 is active and must make RhoDyn professionally citable through PyPI, Docker, Zenodo, documentation, citation metadata, release archives, and cross-version CI."
+    "stage6_active_gate": "Stage 6 release-hardening gates now pass through subphases 6.1-6.7. RhoDyn remains an active release candidate rather than a professionally citable public release until a version tag, GitHub archive, and Zenodo software record are intentionally cut or published."
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -62,17 +63,63 @@
       "status": "completed"
     },
     {
-      "current_gate": "Build the official release surfaces without calling RhoDyn professionally citable until installation, documentation, archive, citation, Docker, Zenodo, and cross-version CI checks pass together.",
+      "current_gate": "Release-hardening evidence passes across subphases 6.1-6.7. Do not call RhoDyn professionally citable until an intentional tag, GitHub archive, and Zenodo software record are cut or published.",
       "gate": [
         "Wheel and source distribution install cleanly.",
         "Documentation builds cleanly.",
-        "Examples run from scratch.",
-        "Release archive contains no private data, manuscript-private files, raw microscopy, or local paths."
+        "Examples and notebooks run from scratch.",
+        "Release automation covers tests, packaging, docs, Docker, and browser regression in CI.",
+        "GitHub and Zenodo archive/citation surfaces are ready with checksum manifests.",
+        "Release archive contains no private data, manuscript-private files, raw microscopy, local paths, or secrets."
       ],
       "name": "Official software release",
-      "scope_rule": "Do not call RhoDyn professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene pass together.",
+      "scope_rule": "Hardening gates can pass before publication. Professional citability requires the release-candidate evidence plus an intentional tag/archive/DOI action.",
       "stage": 6,
-      "status": "active_release_candidate"
+      "status": "active_release_candidate",
+      "subphases": [
+        {
+          "gate": "No manuscript-private data, hidden local paths, raw microscopy, or claim that RhoDyn generated the RhoA/microglia manuscript.",
+          "goal": "Define the first official RhoDyn release as a Python library plus CLI and Stage 5 workbench surface.",
+          "id": "6.1",
+          "name": "Release boundary"
+        },
+        {
+          "gate": "A fresh clone can install the package and run examples from scratch.",
+          "goal": "Make installation professional with clean pyproject metadata, wheel, source distribution, optional extras, CLI entry points, and version stamping.",
+          "id": "6.2",
+          "name": "Packaging"
+        },
+        {
+          "gate": "A biologist can run the basic workflow and a quantitative user can audit parameters.",
+          "goal": "Provide quickstart, API reference, CLI reference, schema guide, interpretation guide, tutorials, example reports, and reproducibility card.",
+          "id": "6.3",
+          "name": "Documentation"
+        },
+        {
+          "gate": "Every release surface builds from CI rather than from a local machine.",
+          "goal": "Make releases repeatable through cross-version CI, package builds, docs builds, release checklist, changelog discipline, citation metadata, license and contribution docs, and Docker build.",
+          "id": "6.4",
+          "name": "Release automation"
+        },
+        {
+          "gate": "The archive contains only intended software and public examples.",
+          "goal": "Make RhoDyn independently citable through GitHub release, Zenodo DOI, CITATION.cff, release notes, archived source tarball, and checksum manifest.",
+          "id": "6.5",
+          "name": "Archive and citation"
+        },
+        {
+          "gate": "No release path depends on the developer local machine.",
+          "goal": "Test from zero with fresh clone, fresh virtual environment, installed wheel, CLI examples, notebooks, docs build, workbench run, and report export.",
+          "id": "6.6",
+          "name": "Clean-room reproducibility"
+        },
+        {
+          "gate": "All official release surfaces pass together.",
+          "goal": "Run local-path and secret scans, dependency review, broken-link docs scan, screenshot regression, CLI/API parity, Docker parity, PyPI dry run, Zenodo dry run, clean-room reproducibility, and frontend/backend output parity.",
+          "id": "6.7",
+          "name": "Final ultra-hardening"
+        }
+      ]
     },
     {
       "gate": [

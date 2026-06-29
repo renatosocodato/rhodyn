@@ -26,3 +26,20 @@ jobs:
         run: python -m pip install --force-reinstall --no-deps dist/*.tar.gz
       - name: Run tests
         run: python -m unittest discover tests
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install documentation tooling
+        run: python -m pip install -e '.[dev]'
+      - name: Build documentation site
+        run: mkdocs build --strict
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build Stage 4 service image
+        run: docker build -f deploy/stage4.Dockerfile -t rhodyn-stage4:ci .

@@ -302,7 +302,7 @@ class BackendCoreTests(TestCase):
 
 
 @skipUnless(
-    importlib.util.find_spec("fastapi") and importlib.util.find_spec("httpx2"),
+    importlib.util.find_spec("fastapi") and importlib.util.find_spec("httpx"),
     "FastAPI test-client dependencies are not installed",
 )
 class BackendFastApiTests(TestCase):
@@ -546,7 +546,7 @@ class BackendFastApiTests(TestCase):
             self.assertEqual(client.get(f"/jobs/{job_id}/result").json()["result"], response.json()["result"])
 
     @skipUnless(
-        importlib.util.find_spec("fastapi") and importlib.util.find_spec("httpx2"),
+        importlib.util.find_spec("fastapi") and importlib.util.find_spec("httpx"),
         "FastAPI stress dependencies are not installed",
     )
     def test_stage4_upload_stress_audit_passes(self):

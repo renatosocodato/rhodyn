@@ -42,7 +42,7 @@ OPTIONAL_EXTRAS: dict[str, OptionalExtra] = {
     ),
     "backend": OptionalExtra(
         name="backend",
-        packages=("fastapi", "httpx2", "uvicorn"),
+        packages=("fastapi", "httpx", "uvicorn"),
         purpose="stateless API service around frozen Stage 3 analysis surfaces",
         first_uses=("schema validation endpoint", "residence scoring endpoint", "model-comparison endpoint"),
     ),
@@ -51,6 +51,12 @@ OPTIONAL_EXTRAS: dict[str, OptionalExtra] = {
         packages=("jupyterlab",),
         purpose="interactive tutorial notebooks",
         first_uses=("synthetic workflows", "case-study walkthroughs"),
+    ),
+    "dev": OptionalExtra(
+        name="dev",
+        packages=("build", "mkdocs", "twine"),
+        purpose="release engineering, documentation builds, and package publication dry runs",
+        first_uses=("wheel and source builds", "documentation site builds", "PyPI publication checks"),
     ),
 }
 

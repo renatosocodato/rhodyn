@@ -72,7 +72,7 @@ def _client_post_upload(client: Any, path: str, csv_data: bytes, params: dict[st
 def audit_stage4_upload_stress(root: Path = ROOT) -> dict[str, Any]:
     """Return a machine-readable FastAPI upload stress audit."""
 
-    if not importlib.util.find_spec("fastapi") or not importlib.util.find_spec("httpx2"):
+    if not importlib.util.find_spec("fastapi") or not importlib.util.find_spec("httpx"):
         return {
             "report_format": REPORT_FORMAT,
             "status": "fail",

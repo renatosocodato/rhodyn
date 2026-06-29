@@ -1,0 +1,156 @@
+{
+  "artifacts": [
+    "rhodyn-0.1.0-py3-none-any.whl",
+    "rhodyn-0.1.0.tar.gz"
+  ],
+  "checks": {
+    "core_dependencies_empty": true,
+    "installed_cli_help_passed": true,
+    "installed_wheel_imported": true,
+    "metadata_name_is_rhodyn": true,
+    "metadata_version_is_0_1_0": true,
+    "no_upload_attempted": true,
+    "sdist_built": true,
+    "twine_check_passed": true,
+    "wheel_built": true
+  },
+  "commands": [
+    {
+      "command": [
+        "$PYPI_DRY_RUN/build-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--upgrade",
+        "pip"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "Requirement already satisfied: pip in /private$PYPI_DRY_RUN/build-env/lib/python3.14/site-packages (26.0)\nCollecting pip\n  Using cached pip-26.1.2-py3-none-any.whl.metadata (4.6 kB)\nUsing cached pip-26.1.2-py3-none-any.whl (1.8 MB)\nInstalling collected packages: pip\n  Attempting uninstall: pip\n    Found existing installation: pip 26.0\n    Uninstalling pip-26.0:\n      Successfully uninstalled pip-26.0\nSuccessfully installed pip-26.1.2\n"
+    },
+    {
+      "command": [
+        "$PYPI_DRY_RUN/build-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "build>=1.2",
+        "twine>=5.0"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "Collecting build>=1.2\n  Using cached build-1.5.0-py3-none-any.whl.metadata (5.7 kB)\nCollecting twine>=5.0\n  Using cached twine-6.2.0-py3-none-any.whl.metadata (3.6 kB)\nCollecting packaging>=24.0 (from build>=1.2)\n  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)\nCollecting pyproject_hooks (from build>=1.2)\n  Using cached pyproject_hooks-1.2.0-py3-none-any.whl.metadata (1.3 kB)\nCollecting readme-renderer>=35.0 (from twine>=5.0)\n  Using cached readme_renderer-45.0-py3-none-any.whl.metadata (3.0 kB)\nCollecting requests>=2.20 (from twine>=5.0)\n  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)\nCollecting requests-toolbelt!=0.9.0,>=0.8.0 (from twine>=5.0)\n  Using cached requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)\nCollecting urllib3>=1.26.0 (from twine>=5.0)\n  Using cached urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)\nCollecting keyring>=21.2.0 (from twine>=5.0)\n  Using cached keyring-25.7.0-py3-none-any.whl.metadata (21 kB)\nCollecting rfc3986>=1.4.0 (from twine>=5.0)\n  Using cached rfc3986-2.0.0-py2.py3-none-any.whl.metadata (6.6 kB)\nCollecting rich>=12.0.0 (from twine>=5.0)\n  Using cached rich-15.0.0-py3-none-any.whl.metadata (18 kB)\nCollecting id (from twine>=5.0)\n  Using cached id-1.6.1-py3-none-any.whl.metadata (5.1 kB)\nCollecting jaraco.classes (from keyring>=21.2.0->twine>=5.0)\n  Using cached jaraco.classes-3.4.0-py3-none-any.whl.metadata (2.6 kB)\nCollecting jaraco.functools (from keyring>=21.2.0->twine>=5.0)\n  Using cached jaraco_functools-4.5.0-py3-none-any.whl.metadata (2.9 kB)\nCollecting jaraco.context (from keyring>=21.2.0->twine>=5.0)\n  Using cached jaraco_context-6.1.2-py3-none-any.whl.metadata (4.2 kB)\nCollecting nh3>=0.2.14 (from readme-renderer>=35.0->twine>=5.0)\n  Using cached nh3-0.3.6-cp38-abi3-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl.metadata (2.0 kB)\nCollecting docutils>=0.21.2 (from readme-renderer>=35.0->twine>=5.0)\n  Using cached docutils-0.23-py3-none-any.whl.metadata (15 kB)\nCollecting Pygments>=2.5.1 (from readme-renderer>=35.0->twine>=5.0)\n  Using cached pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)\nCollecting charset_normalizer<4,>=2 (from requests>=2.20->twine>=5.0)\n  Using cached charset_normalizer-3.4.7-cp314-cp314-macosx_10_15_universal2.whl.metadata (40 kB)\nCollecting idna<4,>=2.5 (from requests>=2.20->twine>=5.0)\n  Using cached idna-3.18-py3-none-any.whl.metadata (6.1 kB)\nCollecting certifi>=2023.5.7 (from requests>=2.20->twine>=5.0)\n  Using cached certifi-2026.6.17-py3-none-any.whl.metadata (2.5 kB)\nCollecting markdown-it-py>=2.2.0 (from rich>=12.0.0->twine>=5.0)\n  Using cached markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)\nCollecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=12.0.0->twine>=5.0)\n  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)\nCollecting more-itertools (from jaraco.classes->keyring>=21.2.0->twine>=5.0)\n  Using cached more_itertools-11.1.0-py3-none-any.whl.metadata (41 kB)\nUsing cached build-1.5.0-py3-none-any.whl (26 kB)\nUsing cached twine-6.2.0-py3-none-any.whl (42 kB)\nUsing cached keyring-25.7.0-py3-none-any.whl (39 kB)\nUsing cached packaging-26.2-py3-none-any.whl (100 kB)\nUsing cached readme_renderer-45.0-py3-none-any.whl (14 kB)\nUsing cached docutils-0.23-py3-none-any.whl (634 kB)\nUsing cached nh3-0.3.6-cp38-abi3-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl (1.4 MB)\nUsing cached pygments-2.20.0-py3-none-any.whl (1.2 MB)\nUsing cached requests-2.34.2-py3-none-any.whl (73 kB)\nUsing cached charset_normalizer-3.4.7-cp314-cp314-macosx_10_15_universal2.whl (309 kB)\nUsing cached idna-3.18-py3-none-any.whl (65 kB)\nUsing cached urllib3-2.7.0-py3-none-any.whl (131 kB)\nUsing cached certifi-2026.6.17-py3-none-any.whl (133 kB)\nUsing cached requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)\nUsing cached rfc3986-2.0.0-py2.py3-none-any.whl (31 kB)\nUsing cached rich-15.0.0-py3-none-any.whl (310 kB)\nUsing cached markdown_it_py-4.2.0-py3-none-any.whl (91 kB)\nUsing cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)\nUsing cached id-1.6.1-py3-none-any.whl (14 kB)\nUsing cached jaraco.classes-3.4.0-py3-none-any.whl (6.8 kB)\nUsing cached jaraco_context-6.1.2-py3-none-any.whl (7.9 kB)\nUsing cached jaraco_functools-4.5.0-py3-none-any.whl (10 kB)\nUsing cached more_itertools-11.1.0-py3-none-any.whl (72 kB)\nUsing cached pyproject_hooks-1.2.0-py3-none-any.whl (10 kB)\nInstalling collected packages: urllib3, rfc3986, pyproject_hooks, Pygments, packaging, nh3, more-itertools, mdurl, jaraco.context, idna, docutils, charset_normalizer, certifi, requests, readme-renderer, markdown-it-py, jaraco.functools, jaraco.classes, id, build, rich, requests-toolbelt, keyring, twine\n\nSuccessfully installed Pygments-2.20.0 build-1.5.0 certifi-2026.6.17 charset_normalizer-3.4.7 docutils-0.23 id-1.6.1 idna-3.18 jaraco.classes-3.4.0 jaraco.context-6.1.2 jaraco.functools-4.5.0 keyring-25.7.0 markdown-it-py-4.2.0 mdurl-0.1.2 more-itertools-11.1.0 nh3-0.3.6 packaging-26.2 pyproject_hooks-1.2.0 readme-renderer-45.0 requests-2.34.2 requests-toolbelt-1.0.0 rfc3986-2.0.0 rich-15.0.0 twine-6.2.0 urllib3-2.7.0\n"
+    },
+    {
+      "command": [
+        "$PYPI_DRY_RUN/build-env/bin/python",
+        "-m",
+        "build",
+        "--sdist",
+        "--wheel",
+        "--outdir",
+        "$PYPI_DRY_RUN/dist",
+        "."
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "* Creating isolated environment: venv+pip...\n* Installing packages in isolated environment:\n  - setuptools>=68\n  - wheel\n* Getting build dependencies for sdist...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'\n* Building sdist...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'\n* Creating isolated environment: venv+pip...\n* Installing packages in isolated environment:\n  - setuptools>=68\n  - wheel\n* Getting build dependencies for wheel...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'\n* Building wheel...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'\n",
+      "stdout": "s\ncopying tests/test_plots.py -> rhodyn-0.1.0/tests\ncopying tests/test_public_candidates.py -> rhodyn-0.1.0/tests\ncopying tests/test_release_check.py -> rhodyn-0.1.0/tests\ncopying tests/test_reserve_coupling.py -> rhodyn-0.1.0/tests\ncopying tests/test_residence.py -> rhodyn-0.1.0/tests\ncopying tests/test_results.py -> rhodyn-0.1.0/tests\ncopying tests/test_schema.py -> rhodyn-0.1.0/tests\ncopying tests/test_sensitivity.py -> rhodyn-0.1.0/tests\ncopying tests/test_stage3_case_study_bank.py -> rhodyn-0.1.0/tests\ncopying tests/test_stage5_frontend_scaffold.py -> rhodyn-0.1.0/tests\ncopying tests/test_stage5_upload_flow_parity.py -> rhodyn-0.1.0/tests\ncopying tests/test_uncertainty.py -> rhodyn-0.1.0/tests\ncopying src/rhodyn.egg-info/SOURCES.txt -> rhodyn-0.1.0/src/rhodyn.egg-info\nWriting rhodyn-0.1.0/setup.cfg\nCreating tar archive\nremoving 'rhodyn-0.1.0' (and everything under it)\nrunning egg_info\nwriting src/rhodyn.egg-info/PKG-INFO\nwriting dependency_links to src/rhodyn.egg-info/dependency_links.txt\nwriting entry points to src/rhodyn.egg-info/entry_points.txt\nwriting requirements to src/rhodyn.egg-info/requires.txt\nwriting top-level names to src/rhodyn.egg-info/top_level.txt\nreading manifest file 'src/rhodyn.egg-info/SOURCES.txt'\nreading manifest template 'MANIFEST.in'\nadding license file 'LICENSE'\nadding license file 'NOTICE'\nwriting manifest file 'src/rhodyn.egg-info/SOURCES.txt'\nrunning bdist_wheel\nrunning build\nrunning build_py\ncreating build/lib/rhodyn\ncopying src/rhodyn/extras.py -> build/lib/rhodyn\ncopying src/rhodyn/sim.py -> build/lib/rhodyn\ncopying src/rhodyn/backend.py -> build/lib/rhodyn\ncopying src/rhodyn/models.py -> build/lib/rhodyn\ncopying src/rhodyn/results.py -> build/lib/rhodyn\ncopying src/rhodyn/ctc.py -> build/lib/rhodyn\ncopying src/rhodyn/residence.py -> build/lib/rhodyn\ncopying src/rhodyn/coupling.py -> build/lib/rhodyn\ncopying src/rhodyn/paper.py -> build/lib/rhodyn\ncopying src/rhodyn/__init__.py -> build/lib/rhodyn\ncopying src/rhodyn/sensitivity.py -> build/lib/rhodyn\ncopying src/rhodyn/reserve.py -> build/lib/rhodyn\ncopying src/rhodyn/uncertainty.py -> build/lib/rhodyn\ncopying src/rhodyn/plots.py -> build/lib/rhodyn\ncopying src/rhodyn/cli.py -> build/lib/rhodyn\ncopying src/rhodyn/backend_core.py -> build/lib/rhodyn\ncopying src/rhodyn/compare.py -> build/lib/rhodyn\ncopying src/rhodyn/report.py -> build/lib/rhodyn\ncopying src/rhodyn/schema.py -> build/lib/rhodyn\nrunning egg_info\nwriting src/rhodyn.egg-info/PKG-INFO\nwriting dependency_links to src/rhodyn.egg-info/dependency_links.txt\nwriting entry points to src/rhodyn.egg-info/entry_points.txt\nwriting requirements to src/rhodyn.egg-info/requires.txt\nwriting top-level names to src/rhodyn.egg-info/top_level.txt\nreading manifest file 'src/rhodyn.egg-info/SOURCES.txt'\nreading manifest template 'MANIFEST.in'\nadding license file 'LICENSE'\nadding license file 'NOTICE'\nwriting manifest file 'src/rhodyn.egg-info/SOURCES.txt'\ninstalling to build/bdist.macosx-26.0-arm64/wheel\nrunning install\nrunning install_lib\ncreating build/bdist.macosx-26.0-arm64/wheel\ncreating build/bdist.macosx-26.0-arm64/wheel/rhodyn\ncopying build/lib/rhodyn/extras.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/sim.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/backend.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/models.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/results.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/ctc.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/residence.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/coupling.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/paper.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/__init__.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/sensitivity.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/reserve.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/uncertainty.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/plots.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/cli.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/backend_core.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/compare.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/report.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\ncopying build/lib/rhodyn/schema.py -> build/bdist.macosx-26.0-arm64/wheel/./rhodyn\nrunning install_egg_info\nCopying src/rhodyn.egg-info to build/bdist.macosx-26.0-arm64/wheel/./rhodyn-0.1.0-py3.14.egg-info\nrunning install_scripts\ncreating build/bdist.macosx-26.0-arm64/wheel/rhodyn-0.1.0.dist-info/WHEEL\ncreating '$PYPI_DRY_RUN/dist/.tmp-lhrc7970/rhodyn-0.1.0-py3-none-any.whl' and adding 'build/bdist.macosx-26.0-arm64/wheel' to it\nadding 'rhodyn/__init__.py'\nadding 'rhodyn/backend.py'\nadding 'rhodyn/backend_core.py'\nadding 'rhodyn/cli.py'\nadding 'rhodyn/compare.py'\nadding 'rhodyn/coupling.py'\nadding 'rhodyn/ctc.py'\nadding 'rhodyn/extras.py'\nadding 'rhodyn/models.py'\nadding 'rhodyn/paper.py'\nadding 'rhodyn/plots.py'\nadding 'rhodyn/report.py'\nadding 'rhodyn/reserve.py'\nadding 'rhodyn/residence.py'\nadding 'rhodyn/results.py'\nadding 'rhodyn/schema.py'\nadding 'rhodyn/sensitivity.py'\nadding 'rhodyn/sim.py'\nadding 'rhodyn/uncertainty.py'\nadding 'rhodyn-0.1.0.dist-info/licenses/LICENSE'\nadding 'rhodyn-0.1.0.dist-info/licenses/NOTICE'\nadding 'rhodyn-0.1.0.dist-info/METADATA'\nadding 'rhodyn-0.1.0.dist-info/WHEEL'\nadding 'rhodyn-0.1.0.dist-info/entry_points.txt'\nadding 'rhodyn-0.1.0.dist-info/top_level.txt'\nadding 'rhodyn-0.1.0.dist-info/RECORD'\nremoving build/bdist.macosx-26.0-arm64/wheel\nSuccessfully built rhodyn-0.1.0.tar.gz and rhodyn-0.1.0-py3-none-any.whl\n"
+    },
+    {
+      "command": [
+        "$PYPI_DRY_RUN/build-env/bin/python",
+        "-m",
+        "twine",
+        "check",
+        "--strict",
+        "$PYPI_DRY_RUN/dist/rhodyn-0.1.0-py3-none-any.whl",
+        "$PYPI_DRY_RUN/dist/rhodyn-0.1.0.tar.gz"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "Checking \n$PYPI_DRY_RUN/di\nst/rhodyn-0.1.0-py3-none-any.whl: PASSED\nChecking \n$PYPI_DRY_RUN/di\nst/rhodyn-0.1.0.tar.gz: PASSED\n"
+    },
+    {
+      "command": [
+        "$PYPI_DRY_RUN/install-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "--upgrade",
+        "pip"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "Requirement already satisfied: pip in /private$PYPI_DRY_RUN/install-env/lib/python3.14/site-packages (26.0)\nCollecting pip\n  Using cached pip-26.1.2-py3-none-any.whl.metadata (4.6 kB)\nUsing cached pip-26.1.2-py3-none-any.whl (1.8 MB)\nInstalling collected packages: pip\n  Attempting uninstall: pip\n    Found existing installation: pip 26.0\n    Uninstalling pip-26.0:\n      Successfully uninstalled pip-26.0\nSuccessfully installed pip-26.1.2\n"
+    },
+    {
+      "command": [
+        "$PYPI_DRY_RUN/install-env/bin/python",
+        "-m",
+        "pip",
+        "install",
+        "$PYPI_DRY_RUN/dist/rhodyn-0.1.0-py3-none-any.whl"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "Processing $PYPI_DRY_RUN/dist/rhodyn-0.1.0-py3-none-any.whl\nInstalling collected packages: rhodyn\nSuccessfully installed rhodyn-0.1.0\n"
+    },
+    {
+      "command": [
+        "$PYPI_DRY_RUN/install-env/bin/python",
+        "-c",
+        "import rhodyn; print(rhodyn.__version__)"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "0.1.0\n"
+    },
+    {
+      "command": [
+        "$PYPI_DRY_RUN/install-env/bin/python",
+        "-m",
+        "rhodyn.cli",
+        "--help"
+      ],
+      "cwd": ".",
+      "returncode": 0,
+      "status": "pass",
+      "stderr": "",
+      "stdout": "usage: rhodyn [-h]\n              {validate,score-residence,decide-coupling,summarize-reserve,export-markdown,simulate,compare,sensitivity,ctc-to-trajectory,ctc-lineage-to-trajectory,paper-case-study,extras} ...\n\nDynamic residence-state analysis toolkit.\n\npositional arguments:\n  {validate,score-residence,decide-coupling,summarize-reserve,export-markdown,simulate,compare,sensitivity,ctc-to-trajectory,ctc-lineage-to-trajectory,paper-case-study,extras}\n    validate            Validate a tidy input CSV.\n    score-residence     Score residence-window summaries for a trajectory\n                        table.\n    decide-coupling     Classify bounded-coupling interval rows.\n    summarize-reserve   Summarize reserve-like response rows.\n    export-markdown     Export a compact Markdown summary for a CSV table.\n    simulate            Run a minimal controller simulation.\n    compare             Rank reduced-model endpoint fits.\n    sensitivity         Score residence summaries across a low/high window\n                        grid.\n    ctc-to-trajectory   Convert CTC-style track features into trajectory CSV.\n    ctc-lineage-to-trajectory\n                        Convert a CTC man_track.txt lineage table into\n                        trajectory CSV.\n    paper-case-study    Print optional manuscript case-study metadata.\n    extras              Print optional dependency groups and planned first\n                        uses.\n\noptions:\n  -h, --help            show this help message and exit\n"
+    }
+  ],
+  "failures": [],
+  "generated_utc": "2026-06-29T14:09:39.750607Z",
+  "interpretation_boundary": "This dry run validates packaging and installation only. It does not upload to PyPI or change RhoDyn analysis behavior.",
+  "metadata": {
+    "core_dependencies": [],
+    "name": "rhodyn",
+    "optional_dependency_groups": [
+      "all",
+      "backend",
+      "dev",
+      "notebooks",
+      "pandas",
+      "plots",
+      "stats"
+    ],
+    "requires_python": ">=3.10",
+    "version": "0.1.0"
+  },
+  "report_format": "rhodyn.pypi_dry_run.v1",
+  "status": "pass"
+}

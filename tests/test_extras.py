@@ -18,12 +18,14 @@ class OptionalExtrasTests(TestCase):
         self.assertIn("plots = [", text)
         self.assertIn("backend = [", text)
         self.assertIn("notebooks = [", text)
+        self.assertIn("dev = [", text)
         self.assertIn("all = [", text)
 
     def test_extra_plan_names_first_use_groups(self):
         extras = {item.name: item for item in extra_plan()}
         self.assertIn("pandas", extras)
         self.assertIn("backend", extras)
+        self.assertIn("dev", extras)
         self.assertIn("TOST", " ".join(extras["stats"].first_uses))
         self.assertIn("margin-sensitivity curves", extras["plots"].first_uses)
         self.assertIn("residence scoring endpoint", extras["backend"].first_uses)
@@ -47,4 +49,4 @@ class OptionalExtrasTests(TestCase):
         payload = json.loads(result.stdout)
         self.assertEqual(payload["status"], "pass")
         names = {item["name"] for item in payload["extras"]}
-        self.assertTrue({"pandas", "stats", "plots", "backend", "notebooks"}.issubset(names))
+        self.assertTrue({"pandas", "stats", "plots", "backend", "notebooks", "dev"}.issubset(names))
