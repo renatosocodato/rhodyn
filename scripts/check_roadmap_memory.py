@@ -113,6 +113,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Independent biological demonstration strategy",
         "Software maturity roadmap",
         "Publication alignment roadmap",
+        "Subphase dependency and success-metric matrix",
         "Nature Methods is the primary reference point",
         "No Stage 7 implementation begins",
     ]:
@@ -123,6 +124,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "7.0. Planning freeze and evidence source register",
         "7.8. Methods manuscript readiness package",
         "No downstream subphase should begin",
+        "Subphase bookkeeping and roadmap updates",
     ]:
         if phrase not in stage7_execution:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")

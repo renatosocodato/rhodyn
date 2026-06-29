@@ -368,7 +368,7 @@
     },
     {
       "path": "docs/broken_link_scan_report.json",
-      "sha256": "e42f909bc60406fb655e1bdfe3d8bdf9d1dba1b22ddd253198d688de33aabac2",
+      "sha256": "c5b3336ae99198db6a2303fd55ce8c8f9a5fdec0c5a977e5b2c2eba60ad596a9",
       "size_bytes": 13374
     },
     {
@@ -563,13 +563,13 @@
     },
     {
       "path": "docs/stage7_methods_program.md",
-      "sha256": "466e135e94ac1c70b7ff8c95ad4e269f438b28224619f904986d394808ff16dc",
-      "size_bytes": 29133
+      "sha256": "8f1b2a5b512664171b214e713876cc62578e09b5f51fa4bf621621ad8ad8685f",
+      "size_bytes": 31924
     },
     {
       "path": "docs/stage7_serialized_execution_plan.md",
-      "sha256": "351fe937058688466a0bea6391824e27fb53c59fe49241ffc479f81ddd8b39f7",
-      "size_bytes": 13816
+      "sha256": "1ebffa22f7a7d0d66189731b1ead1b5341149f2ca4a4e3a8e8df0e21fafd0e46",
+      "size_bytes": 16011
     },
     {
       "path": "docs/zenodo_dry_run_report.json",
@@ -753,8 +753,8 @@
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "1c332dbd2f95f111683a9e033dc7e30055c1f48dbf3f7254e083c18caaa1fa48",
-      "size_bytes": 7473
+      "sha256": "67553d562619f9e3b01d4cd9cf6dd71ac547ae4e1667ae5161d71a6f6c5b6f77",
+      "size_bytes": 7582
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -1032,7 +1032,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-29T15:14:38.597322Z",
+  "generated_utc": "2026-06-29T15:19:11.020644Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

@@ -312,6 +312,22 @@ Quality gates.
 - Nature Methods remains a reference point, not an acceptance claim.
 - Alternative venues are chosen based on evidence shape, not on aspiration.
 
+## Subphase dependency and success-metric matrix
+
+This matrix makes the dependencies and success metrics explicit for every Stage 7 subphase. It complements the objectives, deliverables, entry criteria, exit criteria, and quality gates above.
+
+| subphase | dependencies | success metrics |
+| --- | --- | --- |
+| 7.0 Planning freeze and evidence source register | Public v0.1.0 release, Stage 3 gate report, Stage 4 contract, Stage 5 closeout, current roadmap memory. | Source register, dataset rubric, baseline inventory, and artifact map exist and no implementation artifacts are created. |
+| 7.1 Formal method definition and assumption ledger | 7.0 source register, dataset rubric, baseline inventory, and artifact map. | Every method component has a formal definition, executable example, counterexample, failure boundary, and mapped API or documented API gap. |
+| 7.2 Benchmark harness against baselines and alternatives | 7.1 formal definitions, synthetic truth generators, and baseline inventory. | Benchmarks report RhoDyn-positive, baseline-sufficient, and inconclusive regimes with uncertainty, sensitivity, runtime, and memory summaries. |
+| 7.3 Independent public live-cell signaling demonstrations | 7.2 benchmark harness and public dataset selection rubric. | At least two independent public live-cell systems beyond the original manuscript logic pass reproducibility, grouping, and scoped-interpretation checks. |
+| 7.4 Perturbation endpoint, reserve, and routed-output demonstrations | 7.3 public signaling demonstrations plus endpoint, paired-reporter, or reserve-like input schemas. | At least one non-trajectory or multi-readout case supports bounded coupling, reserve logic, or routed-output comparison without overclaiming mechanism. |
+| 7.5 External or held-out biological validation | 7.3 and 7.4 demonstrations, stable intake schema, and collaborator or held-out data access. | A predeclared held-out analysis reports success, failure, or inconclusive status with no hidden tuning and reviewable reproducibility metadata. |
+| 7.6 Software maturity for methods-paper reproducibility | 7.2 to 7.5 benchmark and demonstration outputs. | Fresh-environment reproduction regenerates the methods evidence tables, reports, tutorials, and workbench outputs without local paths or private data. |
+| 7.7 Usability and adoption rehearsal | 7.6 stable software, tutorials, reports, and workbench flows. | A biologist can complete a tutorial-level interpretation task, and a quantitative user can reproduce the same result from CLI or Python. |
+| 7.8 Methods manuscript readiness package | 7.1 to 7.7 completed or explicitly scoped with documented limitations. | Every planned manuscript figure and claim maps to a reproducible artifact, validation result, and limitation entry. |
+
 ## Independent biological demonstration strategy
 
 The Stage 7 demonstrations should be selected to stress different parts of the method.

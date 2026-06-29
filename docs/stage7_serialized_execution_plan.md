@@ -13,6 +13,22 @@ Each subphase must close with four records before the next one starts.
 3. A validation output that reports pass, fail, or inconclusive status against the predeclared gate.
 4. A roadmap update that states whether the next phase proceeds, pivots, narrows, or stops.
 
+## Subphase bookkeeping and roadmap updates
+
+For every Stage 7 subphase, repository bookkeeping and roadmap updates are part of the completion gate rather than optional cleanup.
+
+| subphase | repository bookkeeping | roadmap update |
+| --- | --- | --- |
+| 7.0 | Add source register, dataset rubric, baseline inventory, and artifact map without adding analysis outputs. | Mark 7.0 complete only if implementation has not started and 7.1 is authorized as the next action. |
+| 7.1 | Add method specification, synthetic truth fixtures, limitation matrix, and any API-gap notes. | Record which method objects are stable, which remain scoped, and whether 7.2 can start. |
+| 7.2 | Add benchmark harness outputs, baseline summaries, performance reports, and uncertainty reports. | Record value-added, no-added-value, and inconclusive benchmark regimes before selecting biological demonstrations. |
+| 7.3 | Add public-data adapters, trajectory tables, provenance records, notebooks, and interpretation reports. | Record which public systems count as independent demonstrations and which remain exploratory. |
+| 7.4 | Add endpoint, reserve-like, paired-reporter, routed-output, margin, and model-comparison reports. | Record whether bounded coupling, reserve logic, or routed-output evidence is strong enough for methods-manuscript planning. |
+| 7.5 | Add held-out analysis plan, intake checklist, validation report, and controlled-access note if needed. | Record whether external validation supports, narrows, or challenges the Stage 7 method claim. |
+| 7.6 | Add API stability policy, CI reports, clean-room reproduction report, docs updates, and release-candidate metadata. | Record whether the methods evidence set is reproducible from a clean environment. |
+| 7.7 | Add usability protocol, task results, export examples, and any tutorial or workbench fixes. | Record whether the user path is ready for a methods manuscript or needs another usability iteration. |
+| 7.8 | Add claim-to-evidence, figure-to-artifact, limitations, reproducibility, and submission-readiness crosswalks. | Record whether manuscript drafting can begin, which venue frame fits the evidence, and what remains out of scope. |
+
 ## 7.0. Planning freeze and evidence source register
 
 Objectives.
