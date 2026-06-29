@@ -64,6 +64,7 @@ REQUIRED_FILES = [
     "frontend/stage5/app.js",
     "docs/stage4_closeout.md",
     "docs/stage5_frontend.md",
+    "docs/stage5_closeout.md",
     "docs/stage5_public_mlci_workflow.md",
     "examples/mlci_public_intensity_trajectory.csv",
 ]
@@ -96,6 +97,7 @@ def audit_stage5_frontend_scaffold(root: Path = ROOT) -> dict[str, Any]:
     index = (root / "frontend/stage5/index.html").read_text(encoding="utf-8")
     app_js = (root / "frontend/stage5/app.js").read_text(encoding="utf-8")
     stage5_doc = (root / "docs/stage5_frontend.md").read_text(encoding="utf-8")
+    stage5_closeout_doc = (root / "docs/stage5_closeout.md").read_text(encoding="utf-8")
     closeout_doc = (root / "docs/stage4_closeout.md").read_text(encoding="utf-8")
 
     paths = set(openapi.get("paths", {}))
@@ -152,6 +154,11 @@ def audit_stage5_frontend_scaffold(root: Path = ROOT) -> dict[str, Any]:
     checks["frontend_uses_local_upload_preflight"] = "localValidationIssues" in app_js and "Load a CSV table" in app_js
     checks["docs_state_stage4_frozen"] = "Stage 4 API contract is frozen" in closeout_doc
     checks["docs_state_stage5_contract_bound"] = "Stage 5 scaffold is contract-bound" in stage5_doc
+    checks["docs_state_stage5_completed"] = (
+        "Stage 5 status. Completed." in stage5_closeout_doc
+        and "Stage 6 handoff. Active." in stage5_closeout_doc
+        and "No blocking Stage 5 technical debt remains." in stage5_closeout_doc
+    )
     checks["boundary_no_new_biology"] = all(
         phrase in text
         for phrase, text in [

@@ -59,6 +59,7 @@ Started:
 - Stage 5 Playwright browser-regression hardening with desktop/mobile
   screenshots, adversarial bounded-coupling labels, horizontal-overflow guards,
   CI wiring, and platform-specific Darwin/Linux snapshot baselines;
+- Stage 5 release-candidate closeout with the active roadmap pointer advanced to Stage 6 official software release;
 - tiny CTC-style schema fixture and runnable public-case-study workflow scaffold;
 - MLCI tutorial documentation connecting conversion, residence scoring, sensitivity, uncertainty, and optional plots.
 
@@ -73,6 +74,7 @@ Boundary:
   records that within-ligand replicate sensitivity is unavailable for the
   selected public DMSO-control slice.
 - The Cell Painting/MitoTox endpoint benchmark compares reduced morphology architectures, but it does not infer drug mechanism or convert morphology into a live dynamic-state measurement.
+- Stage 5 is closed as a contract-bound scientific workbench. Public packaging, distribution, citation, Zenodo, Docker, and documentation-site work belongs to Stage 6.
 
 ## v0.1.0
 

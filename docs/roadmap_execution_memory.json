@@ -1,14 +1,15 @@
 {
   "current_position": {
-    "active_stage": "Stage 5. Frontend",
+    "active_stage": "Stage 6. Official software release",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
+    "after_stage5_closeout": "Stage 5 is completed as a contract-bound scientific workbench with upload parity, operation-specific visualizations, export provenance, browser regression, and adversarial layout guards.",
     "after_stage5_report_polish": "Stage 5 now has professional operation-specific comparison panels for residence, bounded coupling, reserve, and reduced-model ranking, with report export ergonomics for JSON, CSV, Markdown, and backend bundles.",
-    "after_stage5_ux_depth": "Stage 5 now has richer trajectory inspection, explicit exported parameter provenance, and a guided MLCI public trajectory workflow that can be reproduced from CLI and the frozen upload route.",
     "after_stage5_upload_parity": "Stage 5 now has real CSV upload-flow hardening, visible parameter/schema inspection, and CLI/API/frontend parity audits for all six frozen contract operations.",
+    "after_stage5_ux_depth": "Stage 5 now has richer trajectory inspection, explicit exported parameter provenance, and a guided MLCI public trajectory workflow that can be reproduced from CLI and the frozen upload route.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "next_stage_not_active_until": "Stage 6 begins only after the Stage 5 workbench can reproduce backend results from the frozen contract and the release surfaces pass together."
+    "stage6_active_gate": "Stage 6 is active and must make RhoDyn professionally citable through PyPI, Docker, Zenodo, documentation, citation metadata, release archives, and cross-version CI."
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -47,19 +48,20 @@
       "status": "frozen_for_stage5"
     },
     {
-      "current_gate": "Harden the contract-bound frontend into a serious scientific workbench around trajectory inspection, operation-specific comparison panels, export provenance, one guided public workflow, browser screenshot regression, and adversarial layout guards.",
+      "current_gate": "Closed on 2026-06-29 after frontend contract binding, upload parity, operation-specific comparison panels, export provenance, browser regression, and adversarial layout guards passed as a release-candidate workbench.",
       "gate": [
         "A biologist can upload a tidy table and interpret amplitude-like versus residence-like behavior without reading code.",
         "A quantitative user can inspect every parameter and reproduce the result from CLI.",
         "The workbench consumes the frozen Stage 4 API contract rather than inventing new analysis routes."
       ],
-      "latest_evidence": "scripts/audit_stage5_upload_flow_parity.py passes across all six frozen contract operations, the Stage 5 frontend scaffold includes the MLCI public trajectory workflow plus comparison-suite result panels, and npm run test:stage5 exercises desktop/mobile screenshot baselines plus adversarial bounded-coupling labels without horizontal overflow.",
+      "latest_evidence": "docs/stage5_closeout.md records the closeout. The Stage 5 audit suite covers the frozen contract binding, upload-flow parity, premium workbench screenshot-regression readiness, and no-new-biology boundary.",
       "name": "Frontend",
       "scope_rule": "Build only frontend behavior that consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility.",
       "stage": 5,
-      "status": "active_scaffold"
+      "status": "completed"
     },
     {
+      "current_gate": "Build the official release surfaces without calling RhoDyn professionally citable until installation, documentation, archive, citation, Docker, Zenodo, and cross-version CI checks pass together.",
       "gate": [
         "Wheel and source distribution install cleanly.",
         "Documentation builds cleanly.",
@@ -69,7 +71,7 @@
       "name": "Official software release",
       "scope_rule": "Do not call RhoDyn professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene pass together.",
       "stage": 6,
-      "status": "partly_prepared_not_citable"
+      "status": "active_release_candidate"
     },
     {
       "gate": [
@@ -95,5 +97,5 @@
       "status": "conceptual_only"
     }
   ],
-  "updated": "2026-06-28"
+  "updated": "2026-06-29"
 }

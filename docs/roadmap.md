@@ -19,11 +19,14 @@ traces, the ERK GPCR benchmark demonstrates the same distinction in
 kinase-reporter dynamics, the Cell Painting/MitoTox endpoint benchmark adds a
 public reduced-architecture comparison case, and the ERK/Akt residence
 benchmark adds a context-limited public bounded-coupling case. The Stage 4
-API contract is now frozen for a first Stage 5 frontend scaffold.
+API contract is frozen, and Stage 5 has closed as a contract-bound scientific
+workbench.
 
 Current status in one sentence. RhoDyn can analyze declared dynamic readouts,
-the v0.3 Stage 3 evidence bank is closable, the Stage 4 API contract is
-frozen, and Stage 5 has started as a contract-bound frontend scaffold.
+the v0.3 Stage 3 evidence bank is closed for the current gate, the Stage 4 API
+contract is frozen, Stage 5 is completed as a contract-bound scientific
+workbench, and Stage 6 is the active execution stage for making the software
+professionally citable.
 
 ## Execution memory
 
@@ -40,14 +43,16 @@ passes.
 
 1. Stage 3 is satisfied for the current evidence-bank gate and should be
    frozen unless a documented defect in the evidence bank is found.
-2. Stage 4 is frozen for the first Stage 5 scaffold. The committed OpenAPI
-   schema, frontend contract, fixtures, and closeout document are now the
-   frontend dependency.
-3. Stage 5 is the active execution stage. Work here is frontend behavior around
-   the frozen Stage 4 contract, uploaded-table jobs, reproducible exports, and
-   parameter inspection.
-4. Stage 6 is preparatory only until PyPI, Docker, Zenodo, docs, citation
-   metadata, release hygiene, and cross-version CI all pass together.
+2. Stage 4 is frozen for the first Stage 5 scaffold and remains the service
+   dependency. The committed OpenAPI schema, frontend contract, fixtures, and
+   closeout document are now the frontend dependency.
+3. Stage 5 is completed as a contract-bound scientific workbench. The closed
+   surface covers uploaded-table jobs, reproducible exports, parameter
+   inspection, operation-specific comparison panels, and browser regression
+   around the frozen Stage 4 contract.
+4. Stage 6 is the active execution stage. Work here makes RhoDyn professionally
+   citable through PyPI, Docker, Zenodo, docs, citation metadata, release
+   hygiene, and cross-version CI.
 5. Stage 7 is the future Nature Methods-first scientific-methods campaign. It
    is not a rebranding of the RhoA/microglia manuscript and not a replacement
    for Stage 3.
@@ -73,8 +78,8 @@ as roadmap work.
 | --- | --- | --- |
 | Stage 3. Case-study evidence bank | Complete for the v0.3 gate. | Keep the evidence bank stable. Additional public biological systems are Stage 7 evidence expansion unless they repair a documented Stage 3 defect. |
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
-| Stage 5. Frontend | Active scaffold. | Build only frontend behavior that consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility. |
-| Stage 6. Official software release | Partly prepared. | Do not call the package professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene are complete. |
+| Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
+| Stage 6. Official software release | Active release candidate. | Do not call the package professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene are complete. |
 | Stage 7. Nature Methods first | Not ready. | Treat this as a later scientific-methods campaign, not as a rebranding of the RhoA/microglia manuscript or the Stage 3 examples. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Nature Methods framing and should not lead the scientific evidence path. |
 
@@ -251,20 +256,20 @@ Gate.
 - A quantitative user can inspect every parameter and reproduce the result from
   CLI.
 
-Status. Active scaffold. The static workbench lives under `frontend/stage5/`
-and loads the frozen Stage 4 contract files from `api/stage4/`. It exposes
-upload, schema validation, trajectory preview, residence tuning,
-coupling/equivalence, reserve, model-comparison, and report export surfaces
-without adding new analysis routes. The current Stage 5 depth pass adds
-per-trace residence inspection for uploaded trajectories, clearer parameter
-provenance in exported bundles, and a guided MLCI public trajectory workflow
-that can be reproduced from CLI. It also adds operation-specific comparison
-panels for residence, bounded coupling, reserve, and reduced-model ranking,
-with one-click JSON, CSV, and Markdown exports for the last run. The current
-hardening pass adds Playwright screenshot regression across desktop and mobile
-viewports, adversarial bounded-coupling labels, horizontal-overflow guards, and
-CI wiring. Frontend work should keep following the frozen backend/API contract
-and should not replace the Stage 3 evidence bank.
+Status. Completed. The static workbench lives under `frontend/stage5/` and
+loads the frozen Stage 4 contract files from `api/stage4/`. It exposes upload,
+schema validation, trajectory preview, residence tuning, coupling/equivalence,
+reserve, model-comparison, and report export surfaces without adding new
+analysis routes. The completed Stage 5 surface adds per-trace residence
+inspection for uploaded trajectories, clearer parameter provenance in exported
+bundles, a guided MLCI public trajectory workflow that can be reproduced from
+CLI, operation-specific comparison panels for residence, bounded coupling,
+reserve, and reduced-model ranking, and one-click JSON, CSV, and Markdown
+exports for the last run. The hardening pass adds Playwright screenshot
+regression across desktop and mobile viewports, adversarial bounded-coupling
+labels, horizontal-overflow guards, and CI wiring. `docs/stage5_closeout.md`
+records the closeout. Reopen Stage 5 only for a documented frontend defect;
+new release, distribution, and citation surfaces belong to Stage 6.
 
 ## Stage 6. Official software release
 
@@ -292,10 +297,10 @@ Gate.
 - Release archive contains no private data, manuscript-private files, raw
   microscopy, or local paths.
 
-Status. Partly prepared, not complete. The repository has CI, docs, examples,
-and release checks, but it is not yet a professional public/citable release with
+Status. Active release candidate. The repository has CI, docs, examples, and
+release checks, but it is not yet a professional public/citable release with
 PyPI, Docker, Zenodo, documentation site, citation metadata, and cross-version
-CI.
+CI. Stage 6 now owns those public release surfaces.
 
 ## Stage 7. Nature Methods first
 
@@ -405,13 +410,14 @@ sequence.
 
 1. Treat the v0.3 Stage 3 evidence bank and its gate report as the reference
    public case-study surface.
-2. Continue Stage 5 only where frontend behavior consumes the frozen Stage 4
-   contract and preserves input schema, parameter choices, software version,
-   and reproducible exports.
-3. For the Nature Methods trajectory, expand evidence through additional
+2. Treat Stage 5 as closed unless a documented frontend defect is found.
+3. Execute Stage 6 by hardening the official software release surfaces, including
+   PyPI packaging, Docker, Zenodo release metadata, documentation, citation
+   files, archive scans, and cross-version CI.
+4. For the Nature Methods trajectory, expand evidence through additional
    independent public systems only as Stage 7 method-evidence work, not as a
    rebranding of the RhoA/microglia paper or a substitute for the Stage 3 gate.
 
-Official release, Nature Methods, and product work remain downstream of the
-evidence bank, frozen service contract, and Stage 5 workbench rather than
-replacing them.
+Official release work now sits downstream of the evidence bank, frozen service
+contract, and completed Stage 5 workbench. Nature Methods and product work remain
+later stages rather than replacements for the current Stage 6 release gate.

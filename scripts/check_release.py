@@ -36,6 +36,7 @@ REQUIRED_FILES = [
     "api/stage4/contract_manifest.json",
     "docs/stage4_closeout.md",
     "docs/stage5_frontend.md",
+    "docs/stage5_closeout.md",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
@@ -139,15 +140,17 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 5. Frontend":
-            failures.append("roadmap execution memory does not mark Stage 5 as the active stage")
+        if current.get("active_stage") != "Stage 6. Official software release":
+            failures.append("roadmap execution memory does not mark Stage 6 as the active stage")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
         if stages.get(4, {}).get("status") != "frozen_for_stage5":
             failures.append("roadmap execution memory does not mark Stage 4 frozen for Stage 5")
-        if stages.get(5, {}).get("status") != "active_scaffold":
-            failures.append("roadmap execution memory does not mark Stage 5 as active scaffold")
+        if stages.get(5, {}).get("status") != "completed":
+            failures.append("roadmap execution memory does not mark Stage 5 completed")
+        if stages.get(6, {}).get("status") != "active_release_candidate":
+            failures.append("roadmap execution memory does not mark Stage 6 as active release candidate")
         if stages.get(7, {}).get("status") != "not_ready":
             failures.append("roadmap execution memory does not keep Stage 7 as not ready")
         if stages.get(8, {}).get("status") != "conceptual_only":

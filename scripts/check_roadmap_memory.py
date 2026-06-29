@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MEMORY_PATH = ROOT / "docs" / "roadmap_execution_memory.json"
 ROADMAP_PATH = ROOT / "docs" / "roadmap.md"
 STAGE3_GATE_PATH = ROOT / "case_studies" / "stage3_case_study_bank_gate_report.json"
+STAGE5_CLOSEOUT_PATH = ROOT / "docs" / "stage5_closeout.md"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -19,6 +20,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     memory_path = root / MEMORY_PATH.relative_to(ROOT)
     roadmap_path = root / ROADMAP_PATH.relative_to(ROOT)
     gate_path = root / STAGE3_GATE_PATH.relative_to(ROOT)
+    stage5_closeout_path = root / STAGE5_CLOSEOUT_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -39,15 +41,15 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 5. Frontend":
-        failures.append("active stage must be Stage 5. Frontend after the Stage 4 API freeze")
+    if current.get("active_stage") != "Stage 6. Official software release":
+        failures.append("active stage must be Stage 6. Official software release after Stage 5 closeout")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
         3: "complete_for_current_gate",
         4: "frozen_for_stage5",
-        5: "active_scaffold",
-        6: "partly_prepared_not_citable",
+        5: "completed",
+        6: "active_release_candidate",
         7: "not_ready",
         8: "conceptual_only",
     }
@@ -60,7 +62,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "The original Stage 3 to Stage 8 blueprint is retained as the controlling sequence",
         "Stage 3 is satisfied for the current evidence-bank gate",
         "Stage 4 is frozen for the first Stage 5 scaffold",
-        "Stage 5 is the active execution stage",
+        "Stage 5 is completed as a contract-bound scientific workbench",
+        "Stage 6 is the active execution stage",
         "Stage 7 is the future Nature Methods-first scientific-methods campaign",
         "Stage 8 inherits from Stage 7",
     ]
@@ -70,6 +73,18 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
 
     if gate.get("status") != "pass":
         failures.append("Stage 3 gate report must pass")
+
+    if not stage5_closeout_path.exists():
+        failures.append("missing docs/stage5_closeout.md")
+        stage5_closeout = ""
+    else:
+        stage5_closeout = stage5_closeout_path.read_text(encoding="utf-8")
+    if "Stage 5 status. Completed." not in stage5_closeout:
+        failures.append("Stage 5 closeout must mark Stage 5 completed")
+    if "Stage 6 handoff. Active." not in stage5_closeout:
+        failures.append("Stage 5 closeout must mark Stage 6 active")
+    if "No blocking Stage 5 technical debt remains." not in stage5_closeout:
+        failures.append("Stage 5 closeout must declare no blocking Stage 5 technical debt")
     if "Stage 7 evidence-expansion" not in str(gate.get("current_position", "")):
         failures.append("Stage 3 gate report must keep additional public systems in Stage 7")
     if "They do not imply that RhoDyn generated" not in str(gate.get("interpretation_boundary", "")):
@@ -77,7 +92,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
 
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
-        warnings.append("Stage 5 is active only as a contract-bound frontend scaffold; Stage 6 remains downstream")
+        warnings.append("Stage 6 is active but RhoDyn is not professionally citable until the official release surfaces pass together")
 
     return {
         "status": "pass" if not failures else "fail",
