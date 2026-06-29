@@ -39,6 +39,9 @@ REQUIRED_FILES = [
     "docs/pypi_dry_run_report.md",
     "docs/zenodo_dry_run_report.json",
     "docs/zenodo_dry_run_report.md",
+    "docs/zenodo_publication_report.json",
+    "docs/public_release_integrity_report.json",
+    "docs/public_release_integrity_report.md",
     "docs/broken_link_scan_report.json",
     "docs/broken_link_scan_report.md",
     "docs/dependency_review_report.json",
@@ -59,6 +62,7 @@ REQUIRED_FILES = [
     "scripts/run_clean_room_reproducibility.py",
     "scripts/pypi_dry_run.py",
     "scripts/zenodo_dry_run.py",
+    "scripts/check_public_release_integrity.py",
     "scripts/check_docs_links.py",
     "scripts/check_dependency_security.py",
     "scripts/run_stage5_screenshot_regression.py",
@@ -184,8 +188,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 4 frozen for Stage 5")
         if stages.get(5, {}).get("status") != "completed":
             failures.append("roadmap execution memory does not mark Stage 5 completed")
-        if stages.get(6, {}).get("status") != "active_release_candidate":
-            failures.append("roadmap execution memory does not mark Stage 6 as active release candidate")
+        if stages.get(6, {}).get("status") != "public_citable_v0.1.0":
+            failures.append("roadmap execution memory does not mark Stage 6 as public_citable_v0.1.0")
         if stages.get(7, {}).get("status") != "not_ready":
             failures.append("roadmap execution memory does not keep Stage 7 as not ready")
         if stages.get(8, {}).get("status") != "conceptual_only":
@@ -201,6 +205,42 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         boundary = str(gate.get("interpretation_boundary", ""))
         if "do not imply that RhoDyn generated" not in boundary:
             failures.append("Stage 3 gate report does not preserve manuscript-independence boundary")
+
+    zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
+    if zenodo_publication_path.exists():
+        try:
+            zenodo_publication = json.loads(zenodo_publication_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Zenodo publication report is not valid JSON: {exc}")
+            zenodo_publication = {}
+        if zenodo_publication.get("status") != "pass":
+            failures.append("Zenodo publication report does not pass")
+        if zenodo_publication.get("doi") != "10.5281/zenodo.21036616":
+            failures.append("Zenodo publication report does not record the v0.1.0 version DOI")
+        if zenodo_publication.get("conceptdoi") != "10.5281/zenodo.21036615":
+            failures.append("Zenodo publication report does not record the concept DOI")
+
+    public_release_path = root / "docs" / "public_release_integrity_report.json"
+    if public_release_path.exists():
+        try:
+            public_release = json.loads(public_release_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"public release integrity report is not valid JSON: {exc}")
+            public_release = {}
+        if public_release.get("status") != "pass":
+            failures.append("public release integrity report does not pass")
+        public_checks = public_release.get("checks", {}) if isinstance(public_release.get("checks", {}), dict) else {}
+        for check_name in [
+            "github_repo_api_public",
+            "github_release_api_public",
+            "github_tag_archive_public",
+            "github_release_expected_assets_public",
+            "zenodo_version_doi_resolves",
+            "zenodo_concept_doi_resolves",
+            "zenodo_expected_assets_present",
+        ]:
+            if not public_checks.get(check_name):
+                failures.append(f"public release integrity check failed or missing: {check_name}")
 
     for path in _text_files(root):
         text = path.read_text(encoding="utf-8", errors="ignore")

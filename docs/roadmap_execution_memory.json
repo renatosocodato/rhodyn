@@ -9,9 +9,10 @@
     "after_stage5_report_polish": "Stage 5 now has professional operation-specific comparison panels for residence, bounded coupling, reserve, and reduced-model ranking, with report export ergonomics for JSON, CSV, Markdown, and backend bundles.",
     "after_stage5_upload_parity": "Stage 5 now has real CSV upload-flow hardening, visible parameter/schema inspection, and CLI/API/frontend parity audits for all six frozen contract operations.",
     "after_stage5_ux_depth": "Stage 5 now has richer trajectory inspection, explicit exported parameter provenance, and a guided MLCI public trajectory workflow that can be reproduced from CLI and the frozen upload route.",
+    "after_stage6_public_release": "RhoDyn v0.1.0 public release is live at https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0 with Zenodo version DOI 10.5281/zenodo.21036616 and concept DOI 10.5281/zenodo.21036615.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "stage6_active_gate": "Stage 6 release-hardening gates now pass through subphases 6.1-6.7. RhoDyn remains an active release candidate rather than a professionally citable public release until a version tag, GitHub archive, and Zenodo software record are intentionally cut or published."
+    "stage6_active_gate": "Stage 6 v0.1.0 is now publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 Nature Methods evidence expansion and Stage 8 product alignment remain downstream."
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -63,19 +64,20 @@
       "status": "completed"
     },
     {
-      "current_gate": "Release-hardening evidence passes across subphases 6.1-6.7. Do not call RhoDyn professionally citable until an intentional tag, GitHub archive, and Zenodo software record are cut or published.",
+      "current_gate": "Public v0.1.0 software release is live through GitHub and Zenodo. PyPI remains dry-run only and is not required for the current citable release state.",
       "gate": [
         "Wheel and source distribution install cleanly.",
         "Documentation builds cleanly.",
         "Examples and notebooks run from scratch.",
         "Release automation covers tests, packaging, docs, Docker, and browser regression in CI.",
         "GitHub and Zenodo archive/citation surfaces are ready with checksum manifests.",
-        "Release archive contains no private data, manuscript-private files, raw microscopy, local paths, or secrets."
+        "Release archive contains no private data, manuscript-private files, raw microscopy, local paths, or secrets.",
+        "Public GitHub repository, release page, tag archive, release assets, Zenodo record, and version/concept DOI resolve without authentication."
       ],
       "name": "Official software release",
-      "scope_rule": "Hardening gates can pass before publication. Professional citability requires the release-candidate evidence plus an intentional tag/archive/DOI action.",
+      "scope_rule": "RhoDyn v0.1.0 is professionally citable through the GitHub release archive and Zenodo software DOI. Do not imply PyPI publication until an explicit package-index upload is completed.",
       "stage": 6,
-      "status": "active_release_candidate",
+      "status": "public_citable_v0.1.0",
       "subphases": [
         {
           "gate": "No manuscript-private data, hidden local paths, raw microscopy, or claim that RhoDyn generated the RhoA/microglia manuscript.",

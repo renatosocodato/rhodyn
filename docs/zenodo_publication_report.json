@@ -1,13 +1,19 @@
 {
+  "asset_count": 4,
+  "concept_doi": "10.5281/zenodo.21036615",
   "conceptdoi": "10.5281/zenodo.21036615",
   "conceptrecid": "21036615",
   "deposition_id": 21036616,
   "doi": "10.5281/zenodo.21036616",
   "github_release": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0",
+  "github_repository": "https://github.com/renatosocodato/rhodyn",
   "metadata_title": "RhoDyn: dynamic residence-state analysis for live-cell signaling and perturbation data",
   "metadata_version": "0.1.0",
   "record_id": 21036616,
   "record_url": "https://zenodo.org/records/21036616",
+  "release_commit": "4b1211cadd1fb3af34a1ec3e21f62383ffd9e368",
+  "release_publication_boundary": "Published GitHub and Zenodo software release only; no PyPI upload is claimed.",
+  "release_tag": "v0.1.0",
   "status": "pass",
   "uploads": [
     {
@@ -30,5 +36,6 @@
       "filename": "rhodyn-v0.1.0-release-checksums.json",
       "size_bytes": 35088
     }
-  ]
+  ],
+  "version_doi": "10.5281/zenodo.21036616"
 }

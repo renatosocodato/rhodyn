@@ -25,8 +25,9 @@ workbench.
 Current status in one sentence. RhoDyn can analyze declared dynamic readouts,
 the v0.3 Stage 3 evidence bank is closed for the current gate, the Stage 4 API
 contract is frozen, Stage 5 is completed as a contract-bound scientific
-workbench with a narrow simulation UX repair, and Stage 6 is the active execution
-stage for making the software professionally citable.
+workbench with a narrow simulation UX repair, and Stage 6 has produced a
+publicly citable `v0.1.0` GitHub and Zenodo software release while PyPI remains
+a future distribution decision.
 
 ## Execution memory
 
@@ -50,9 +51,9 @@ passes.
    surface covers uploaded-table jobs, reproducible exports, parameter
    inspection, operation-specific comparison panels, simulation parameter exploration, and
    browser regression around the frozen Stage 4 contract.
-4. Stage 6 is the active execution stage. Work here makes RhoDyn professionally
-   citable through PyPI, Docker, Zenodo, docs, citation metadata, release
-   hygiene, and cross-version CI.
+4. Stage 6 is the active release-hardening stage. RhoDyn `v0.1.0` is now
+   professionally citable through the GitHub release archive and Zenodo DOI;
+   PyPI remains a future distribution decision and should not be implied.
 5. Stage 7 is the future Nature Methods-first scientific-methods campaign. It
    is not a rebranding of the RhoA/microglia manuscript and not a replacement
    for Stage 3.
@@ -79,7 +80,7 @@ as roadmap work.
 | Stage 3. Case-study evidence bank | Complete for the v0.3 gate. | Keep the evidence bank stable. Additional public biological systems are Stage 7 evidence expansion unless they repair a documented Stage 3 defect. |
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
 | Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract, exposes the existing deterministic simulation surface, and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
-| Stage 6. Official software release | Active release candidate with hardening gates passing. | Do not call the package professionally citable until a version tag, GitHub archive, and Zenodo software record are intentionally cut or published. |
+| Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
 | Stage 7. Nature Methods first | Not ready. | Treat this as a later scientific-methods campaign, not as a rebranding of the RhoA/microglia manuscript or the Stage 3 examples. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Nature Methods framing and should not lead the scientific evidence path. |
 
@@ -300,10 +301,13 @@ Gate.
 - Release archive contains no private data, manuscript-private files, raw
   microscopy, or local paths.
 
-Status. Active release candidate. The repository has CI, docs, examples, and
-release checks, but it is not yet a professional public/citable release with
-PyPI, Docker, Zenodo, documentation site, citation metadata, and cross-version
-CI. Stage 6 now owns those public release surfaces.
+Status. Public GitHub and Zenodo software release live for `v0.1.0`. The
+repository is public, the `v0.1.0` GitHub release and tag archive are available,
+and the Zenodo software record provides version DOI `10.5281/zenodo.21036616`
+and concept DOI `10.5281/zenodo.21036615`. PyPI publication remains a future
+distribution decision and should not be implied by the current release. Stage 6
+now remains the active post-release hardening lane for public accessibility,
+checksums, documentation, and future distribution surfaces.
 
 ### Stage 6 subphase horizon
 

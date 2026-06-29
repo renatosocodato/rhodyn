@@ -19,12 +19,12 @@ closed for the current evidence gate, the Stage 4 API contract frozen, and
 Stage 5 completed as a contract-bound scientific workbench.
 
 The staged development plan is anchored in `docs/roadmap.md`. The current
-position is Stage 6. Official software release work is active and covers clean
-packaging, documentation, cross-version automation, Docker, citation metadata,
-Zenodo/GitHub release surfaces, clean-room reproducibility, and final release
-hygiene. Nature Methods and product work remain downstream of this release
-gate and should not reshape the evidence bank or the manuscript reference use
-case.
+position is Stage 6. RhoDyn `v0.1.0` is publicly citable through the GitHub
+release archive and Zenodo software record. Phase 6 remains the active
+hardening lane for post-release checks, checksum refreshes, and future
+distribution decisions such as PyPI. Nature Methods and product work remain
+downstream of this release gate and should not reshape the evidence bank or the
+manuscript reference use case.
 
 Included now:
 
@@ -114,6 +114,12 @@ python -m pip install 'rhodyn[dev]'
 ## Documentation
 
 The Phase 6 documentation entry points are:
+
+The public RhoDyn software release is archived at:
+
+- GitHub release. https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0
+- Zenodo version DOI. https://doi.org/10.5281/zenodo.21036616
+- Zenodo concept DOI. https://doi.org/10.5281/zenodo.21036615
 
 - `docs/api_reference.md` for the stable Python API.
 - `docs/cli_reference.md` for command-line use.

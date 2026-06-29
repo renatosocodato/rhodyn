@@ -89,6 +89,17 @@ def _json_status(root: Path, rel: str) -> str:
     return str(payload.get("status", "missing_status"))
 
 
+def _json_payload(root: Path, rel: str) -> dict[str, Any]:
+    path = root / rel
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
 def _text_files(root: Path) -> list[Path]:
     paths: list[Path] = []
     for path in root.rglob("*"):
@@ -142,7 +153,7 @@ def audit_phase6_release_readiness(root: Path = ROOT) -> dict[str, Any]:
     phase_checks = {
         "readme_declares_standalone_toolkit": "standalone Python toolkit" in readme,
         "readme_preserves_manuscript_independence": "The manuscript was not generated with RhoDyn" in readme,
-        "roadmap_stage6_active": "Stage 6 is the active execution stage" in roadmap,
+        "roadmap_stage6_public_release_state": "Stage 6 is the active release-hardening stage" in roadmap and "v0.1.0` is now" in roadmap,
         "subphase_horizon_documented": all(f"{sid} {name}" in roadmap for sid, name in SUBPHASES),
         "release_checklist_preserves_safety_boundary": "must not contain raw microscopy files" in release_checklist,
     }
@@ -208,16 +219,32 @@ def audit_phase6_release_readiness(root: Path = ROOT) -> dict[str, Any]:
     # 6.5 Archive and citation.
     release_notes = _read(root, "docs/release_notes_v0.1.0.md") or _read(root, "RELEASE_NOTES.md")
     zenodo_metadata = _read(root, ".zenodo.json")
+    zenodo_publication = _json_payload(root, "docs/zenodo_publication_report.json")
+    public_release = _json_payload(root, "docs/public_release_integrity_report.json")
+    public_release_checks = public_release.get("checks", {}) if isinstance(public_release.get("checks", {}), dict) else {}
     phase_checks = {
         "citation_file_present": bool(citation),
         "citation_version_matches_package": "version: 0.1.0" in citation,
+        "citation_points_to_version_doi": "10.5281/zenodo.21036616" in citation,
         "license_present": _exists(root, "LICENSE"),
         "notice_present": _exists(root, "NOTICE"),
         "changelog_present": _exists(root, "CHANGELOG.md"),
         "github_release_notes_present": _exists(root, "docs/release_notes_v0.1.0.md") or _exists(root, "RELEASE_NOTES.md"),
         "release_notes_name_version": "RhoDyn v0.1.0" in release_notes,
+        "release_notes_include_public_doi": "10.5281/zenodo.21036616" in release_notes and "10.5281/zenodo.21036615" in release_notes,
         "zenodo_metadata_present": _exists(root, ".zenodo.json"),
         "zenodo_metadata_declares_software": '"upload_type": "software"' in zenodo_metadata,
+        "zenodo_publication_report_present": _exists(root, "docs/zenodo_publication_report.json"),
+        "zenodo_publication_report_passed": zenodo_publication.get("status") == "pass",
+        "zenodo_publication_version_doi_present": zenodo_publication.get("doi") == "10.5281/zenodo.21036616",
+        "zenodo_publication_concept_doi_present": zenodo_publication.get("conceptdoi") == "10.5281/zenodo.21036615",
+        "public_release_integrity_report_present": _exists(root, "docs/public_release_integrity_report.json"),
+        "public_release_integrity_passed": public_release.get("status") == "pass",
+        "public_github_repo_verified": bool(public_release_checks.get("github_repo_api_public")),
+        "public_github_release_verified": bool(public_release_checks.get("github_release_api_public")),
+        "public_github_tag_archive_verified": bool(public_release_checks.get("github_tag_archive_public")),
+        "public_zenodo_version_doi_verified": bool(public_release_checks.get("zenodo_version_doi_resolves")),
+        "public_zenodo_concept_doi_verified": bool(public_release_checks.get("zenodo_concept_doi_resolves")),
         "checksum_manifest_present": any(_exists(root, rel) for rel in ["release_checksums.csv", "release_checksums.json", "docs/release_checksums.csv"]),
         "checksum_json_present": _exists(root, "docs/release_checksums.json") or _exists(root, "release_checksums.json"),
         "checksum_writer_present": _exists(root, "scripts/write_release_checksums.py"),
@@ -268,6 +295,9 @@ def audit_phase6_release_readiness(root: Path = ROOT) -> dict[str, Any]:
         "dependency_review_script_present": _exists(root, "scripts/check_dependency_security.py"),
         "dependency_review_report_present": _exists(root, "docs/dependency_review_report.json"),
         "dependency_review_passed": _json_status(root, "docs/dependency_review_report.json") == "pass",
+        "public_release_integrity_script_present": _exists(root, "scripts/check_public_release_integrity.py"),
+        "public_release_integrity_report_present": _exists(root, "docs/public_release_integrity_report.json"),
+        "public_release_integrity_report_passed": _json_status(root, "docs/public_release_integrity_report.json") == "pass",
     }
     notes = []
     if leak_hits:
@@ -283,10 +313,7 @@ def audit_phase6_release_readiness(root: Path = ROOT) -> dict[str, Any]:
                 failures.append(f"{phase_id}::{name}")
 
     if failures:
-        warnings.append("Phase 6 is active but the official citable-release gate is not yet closed")
-    if checks.get("6.2::backend_extra_uses_httpx") and checks.get("6.2::backend_extra_no_httpx2_typo"):
-        warnings.append("backend optional dependency now names httpx rather than the previous typo-like httpx2 string")
-
+        warnings.append("Phase 6 public-release hardening still has unresolved checks")
     return {
         "report_format": REPORT_FORMAT,
         "status": "pass" if not failures else "needs_work",

@@ -1,5 +1,5 @@
 {
-  "file_count": 201,
+  "file_count": 210,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -48,8 +48,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "e37f582db5a7beeef00ca56eb60e9dd0ab62d7d2aeb4abc80160ec0f80af4eff",
-      "size_bytes": 16887
+      "sha256": "7424f74d2ccaa55eceb2e9886597c99a0f015f9ba1ffeadc1f02a4529974c414",
+      "size_bytes": 17153
     },
     {
       "path": "REPRODUCING.md",
@@ -368,12 +368,12 @@
     },
     {
       "path": "docs/broken_link_scan_report.json",
-      "sha256": "a76f21016ed907c12237fab2380985c4dfe8b8fcb8fa63471a6f6e6263d00506",
-      "size_bytes": 9419
+      "sha256": "b3b21beaf094f71900c6227b836bb22ef1d527e7687617b8153b3681d3599ccf",
+      "size_bytes": 11575
     },
     {
       "path": "docs/broken_link_scan_report.md",
-      "sha256": "2b252191706973b4f3cbd8d3f07a4c0ea10b9407070840a77ca68df772236e09",
+      "sha256": "d155ca35ab7f4920d254d763e239426eb604a45759095cf8fcd3a5fd5d778d32",
       "size_bytes": 153
     },
     {
@@ -398,7 +398,7 @@
     },
     {
       "path": "docs/dependency_review_report.json",
-      "sha256": "bb6b297b92d1681f453c09948ef4e65b037418a7c97d58a06af2eb52999cf032",
+      "sha256": "d5379eaf6295080ccdf7976044f63f304116d06bc3bdf310b8e97dc5defea7ca",
       "size_bytes": 4068
     },
     {
@@ -433,13 +433,13 @@
     },
     {
       "path": "docs/final_release_hardening.md",
-      "sha256": "b34b3ac417bb77734c46731a974f781a47de654fa710988747603bc4206ad57f",
-      "size_bytes": 1390
+      "sha256": "1714ad49b50bfabd4c8856ed8887f1cf84e0a8af235f8feef604e7004d5932ef",
+      "size_bytes": 1523
     },
     {
       "path": "docs/index.md",
-      "sha256": "e1075ac11ee6127d592048bf5885c57767ae85dc370f770bba18d0940246a7c1",
-      "size_bytes": 767
+      "sha256": "76d22a84cb770c93dc19fa336b38f67c8cedbcbc860c0d9d1639070596a5b41c",
+      "size_bytes": 818
     },
     {
       "path": "docs/input_schema_guide.md",
@@ -472,6 +472,16 @@
       "size_bytes": 9787
     },
     {
+      "path": "docs/public_release_integrity_report.json",
+      "sha256": "a7ce6e2f8b17c45ba82ff12aba1ef711446562c4687fbe2368c410d429157e33",
+      "size_bytes": 3610
+    },
+    {
+      "path": "docs/public_release_integrity_report.md",
+      "sha256": "2874a70560518f63c44c1c112d04720f7bea30540157da632c6a23ea18e85a4e",
+      "size_bytes": 1297
+    },
+    {
       "path": "docs/pypi_dry_run_report.json",
       "sha256": "58eaaa47a197d09eff475cc735a93f0c2e2ba6fe0e52791efebd40308c211c6f",
       "size_bytes": 18170
@@ -483,8 +493,8 @@
     },
     {
       "path": "docs/release_checklist.md",
-      "sha256": "e6eb91e1475d407e5ce3a447db6baf647e65bc1dac0218d954acd14cbde436ef",
-      "size_bytes": 4276
+      "sha256": "684cdb152467437c6be4921630a699657c4bd58227603c0b6af55a77043232f5",
+      "size_bytes": 4666
     },
     {
       "path": "docs/release_notes_v0.1.0.md",
@@ -498,13 +508,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "d642cffc65cb9f1e237e5ed41fb6dc3413304cd7da6aea965495b567b9a0b3a8",
-      "size_bytes": 21588
+      "sha256": "b0c618e090e34f95504db800e9bcdad14d975dd86e68cce1ded5c3fe6d82605c",
+      "size_bytes": 21911
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "a95db8325885350dcab21024f2d930ea7710fe227f86b622a0c1826c5a5acd9e",
-      "size_bytes": 10391
+      "sha256": "79a2219bc2f872645f8d0e5dbeeabcb3073d0dbaa9e7ef211c100e4196f0e114",
+      "size_bytes": 10730
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -563,8 +573,8 @@
     },
     {
       "path": "docs/zenodo_publication_report.json",
-      "sha256": "8547475bf7b654d64e7fee321daf1b6572a459b7339f9922d666b92e6052eaf8",
-      "size_bytes": 1081
+      "sha256": "6a9eb8c96c010ec54e2f9fcbae11fafb10c6a81ee7ddf330c3d2e84399f460ca",
+      "size_bytes": 1462
     },
     {
       "path": "examples/mlci_ctc_features.csv",
@@ -668,8 +678,8 @@
     },
     {
       "path": "scripts/audit_phase6_release_readiness.py",
-      "sha256": "796a17ccc30c4377710e9114bdeb92bfefef7c6315c1a3e8b79170b9b822f5a3",
-      "size_bytes": 15269
+      "sha256": "0c2d7f6dfb010e10d9e25407019c24e7b207022513eb890a8801d1cebeaba3bb",
+      "size_bytes": 17385
     },
     {
       "path": "scripts/audit_stage3_case_study_bank.py",
@@ -722,14 +732,19 @@
       "size_bytes": 7476
     },
     {
+      "path": "scripts/check_public_release_integrity.py",
+      "sha256": "687d90a520953935653ff5bfee321f01805e215132aae613c11b0856ef14586f",
+      "size_bytes": 10998
+    },
+    {
       "path": "scripts/check_release.py",
-      "sha256": "74929086f892b193d3ac75f4079c269b421142b1bca4dfc82037e6face113b4e",
-      "size_bytes": 10571
+      "sha256": "d3967d39c0d3956f7467a9d3b0af5814243b981c3dc8d2b52eff6efca2a75dd4",
+      "size_bytes": 12733
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "afe844af33be070b3609d6d66845d2e0839ce56c78274061f94dd09b28ae28c1",
-      "size_bytes": 5712
+      "sha256": "fa0276651991d930ea07ff47823d542de7db9c87c81e9bfda38888d0320dd52d",
+      "size_bytes": 5679
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -887,6 +902,36 @@
       "size_bytes": 7083
     },
     {
+      "path": "src/rhodyn.egg-info/PKG-INFO",
+      "sha256": "fe9481b9012a38a151077bbe0746dabea9b51cb3e5844b0d2d46730eebfa0543",
+      "size_bytes": 18907
+    },
+    {
+      "path": "src/rhodyn.egg-info/SOURCES.txt",
+      "sha256": "67bff863446f8b906dce1795622956489e1121cbdc0b68747396209d1ca0d5f8",
+      "size_bytes": 7444
+    },
+    {
+      "path": "src/rhodyn.egg-info/dependency_links.txt",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "src/rhodyn.egg-info/entry_points.txt",
+      "sha256": "48bcd0143835d6274b450cb062e3b7d25d32070ce9420b7cb8b72b832860ffef",
+      "size_bytes": 43
+    },
+    {
+      "path": "src/rhodyn.egg-info/requires.txt",
+      "sha256": "ef9a0389776e9987d6b9b883a82b316c6e1321ddde547398f1a5bed681e3608c",
+      "size_bytes": 294
+    },
+    {
+      "path": "src/rhodyn.egg-info/top_level.txt",
+      "sha256": "4284619994248a8c96e8a7106bdd9ee0ee9f8cf8c68d01d3cfbacd48f867fd29",
+      "size_bytes": 7
+    },
+    {
       "path": "tests/playwright/stage5.visual.spec.mjs",
       "sha256": "e7965aff793328e5eb323d8cf7b93a02b5ad076c8da3e296eb85826e8007f928",
       "size_bytes": 11171
@@ -1007,7 +1052,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-29T14:15:57.281649Z",
+  "generated_utc": "2026-06-29T14:45:54.061061Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

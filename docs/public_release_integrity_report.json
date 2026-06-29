@@ -1,0 +1,94 @@
+{
+  "checks": {
+    "github_release_api_public": true,
+    "github_release_expected_assets_present": true,
+    "github_release_expected_assets_public": true,
+    "github_release_html_public": true,
+    "github_release_not_prerelease": true,
+    "github_repo_api_public": true,
+    "github_repo_html_public": true,
+    "github_tag_archive_public": true,
+    "local_tag_exists": true,
+    "zenodo_concept_doi_resolves": true,
+    "zenodo_expected_assets_present": true,
+    "zenodo_metadata_resource_type_software": true,
+    "zenodo_metadata_version_matches": true,
+    "zenodo_record_api_public": true,
+    "zenodo_record_html_public": true,
+    "zenodo_version_doi_resolves": true
+  },
+  "failures": [],
+  "generated_utc": "2026-06-29T14:45:37Z",
+  "github": {
+    "asset_names": [
+      "rhodyn-0.1.0-py3-none-any.whl",
+      "rhodyn-0.1.0.tar.gz",
+      "rhodyn-v0.1.0-release-checksums.csv",
+      "rhodyn-v0.1.0-release-checksums.json"
+    ],
+    "assets": [
+      {
+        "download_url": "https://github.com/renatosocodato/rhodyn/releases/download/v0.1.0/rhodyn-0.1.0-py3-none-any.whl",
+        "name": "rhodyn-0.1.0-py3-none-any.whl",
+        "public_access_ok": true,
+        "public_access_status": 200,
+        "size": 55221,
+        "state": "uploaded"
+      },
+      {
+        "download_url": "https://github.com/renatosocodato/rhodyn/releases/download/v0.1.0/rhodyn-0.1.0.tar.gz",
+        "name": "rhodyn-0.1.0.tar.gz",
+        "public_access_ok": true,
+        "public_access_status": 200,
+        "size": 421916,
+        "state": "uploaded"
+      },
+      {
+        "download_url": "https://github.com/renatosocodato/rhodyn/releases/download/v0.1.0/rhodyn-v0.1.0-release-checksums.csv",
+        "name": "rhodyn-v0.1.0-release-checksums.csv",
+        "public_access_ok": true,
+        "public_access_status": 200,
+        "size": 21155,
+        "state": "uploaded"
+      },
+      {
+        "download_url": "https://github.com/renatosocodato/rhodyn/releases/download/v0.1.0/rhodyn-v0.1.0-release-checksums.json",
+        "name": "rhodyn-v0.1.0-release-checksums.json",
+        "public_access_ok": true,
+        "public_access_status": 200,
+        "size": 35088,
+        "state": "uploaded"
+      }
+    ],
+    "local_tag_commit": "4b1211cadd1fb3af34a1ec3e21f62383ffd9e368",
+    "release_target_commitish": "main",
+    "release_url": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0",
+    "repository": "https://github.com/renatosocodato/rhodyn",
+    "tag": "v0.1.0",
+    "tag_archive_url": "https://github.com/renatosocodato/rhodyn/archive/refs/tags/v0.1.0.tar.gz",
+    "visibility": "public"
+  },
+  "interpretation_boundary": "This report verifies public accessibility of the v0.1.0 software release surfaces. It does not upload to PyPI, mutate GitHub or Zenodo records, or change RhoDyn analysis behavior.",
+  "report_format": "rhodyn.public_release_integrity.v1",
+  "status": "pass",
+  "warnings": [],
+  "zenodo": {
+    "api_url": "https://zenodo.org/api/records/21036616",
+    "concept_doi": "10.5281/zenodo.21036615",
+    "concept_doi_resolved_url": "https://zenodo.org/records/21036616",
+    "file_names": [
+      "rhodyn-0.1.0-py3-none-any.whl",
+      "rhodyn-0.1.0.tar.gz",
+      "rhodyn-v0.1.0-release-checksums.csv",
+      "rhodyn-v0.1.0-release-checksums.json"
+    ],
+    "metadata_resource_type": {
+      "title": "Software",
+      "type": "software"
+    },
+    "metadata_version": "0.1.0",
+    "record_url": "https://zenodo.org/records/21036616",
+    "version_doi": "10.5281/zenodo.21036616",
+    "version_doi_resolved_url": "https://zenodo.org/records/21036616"
+  }
+}

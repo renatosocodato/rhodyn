@@ -49,7 +49,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         3: "complete_for_current_gate",
         4: "frozen_for_stage5",
         5: "completed",
-        6: "active_release_candidate",
+        6: "public_citable_v0.1.0",
         7: "not_ready",
         8: "conceptual_only",
     }
@@ -73,7 +73,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 3 is satisfied for the current evidence-bank gate",
         "Stage 4 is frozen for the first Stage 5 scaffold",
         "Stage 5 is completed as a contract-bound scientific workbench",
-        "Stage 6 is the active execution stage",
+        "Stage 6 is the active release-hardening stage",
         "6.1 Release boundary",
         "6.2 Packaging",
         "6.3 Documentation",
@@ -109,7 +109,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
 
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
-        warnings.append("Stage 6 hardening gates can pass before publication; RhoDyn is not professionally citable until a tag, archive, and DOI record are intentionally cut or published")
+        warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
 
     return {
         "status": "pass" if not failures else "fail",

@@ -1,8 +1,11 @@
-# Private v0.1.0 release checklist
+# RhoDyn v0.1.0 public release checklist
 
-RhoDyn `v0.1.0` is a private software hardening release. It is not a public
-scientific claim surface and does not replace the manuscript reproducibility
-repository. Phase 6 is active, and the hardening gates can pass before publication. RhoDyn should not be described as professionally citable until the release-candidate evidence is paired with an intentional version tag, GitHub archive, and Zenodo software record.
+RhoDyn `v0.1.0` is a public software release through GitHub and Zenodo. It is
+not a public scientific-claim surface and does not replace the manuscript
+reproducibility repository. Phase 6 remains active for post-release hardening.
+RhoDyn can now be cited through the GitHub release archive and Zenodo software
+record, while PyPI publication remains intentionally unclaimed until a separate
+package-index upload is completed.
 
 ## Phase 6 release horizon
 
@@ -48,12 +51,14 @@ Gate. Every release surface builds from CI, not from a local machine.
 
 ### 6.5 Archive and citation
 
-- GitHub release is prepared.
-- Zenodo DOI for RhoDyn itself is prepared.
-- `CITATION.cff`, release notes, source archive, and checksum manifest are
-  complete.
+- GitHub release is public.
+- Zenodo version DOI and concept DOI for RhoDyn resolve publicly.
+- `CITATION.cff`, release notes, source archive, release assets, and checksum
+  manifest are complete.
 
-Gate. The archive contains only intended software and public examples.
+Gate. The archive contains only intended software and public examples, and the
+GitHub repository, release page, tag archive, release assets, Zenodo record, and
+DOI links resolve without authentication.
 
 ### 6.6 Clean-room reproducibility
 
@@ -80,9 +85,13 @@ Gate. No step depends on the developer's local machine.
 - Zenodo dry run.
 - Frontend/backend output parity.
 
-Gate. All official release surfaces pass together. The current final-hardening evidence is recorded in `docs/final_release_hardening.md` and the paired PyPI, Zenodo, link-scan, and dependency-review reports.
+Gate. All official release surfaces pass together. The current final-hardening
+evidence is recorded in `docs/final_release_hardening.md`,
+`docs/public_release_integrity_report.md`, and the paired PyPI dry-run, Zenodo
+publication, Zenodo dry-run, link-scan, dependency-review, Docker, screenshot,
+and clean-room reports.
 
-## Required before a private archive
+## Required before or after a public archive
 
 - README, LICENSE, NOTICE, CITATION, CHANGELOG, and REPRODUCING files are
   present.
@@ -92,16 +101,18 @@ Gate. All official release surfaces pass together. The current final-hardening e
 - Source distribution and wheel build successfully.
 - Wheel and source distribution install in a clean environment.
 - `scripts/check_release.py` reports no release-safety failures.
-- `scripts/audit_phase6_release_readiness.py` reports the remaining Phase 6
-  readiness gaps before any release is cut.
+- `scripts/audit_phase6_release_readiness.py` reports Phase 6 readiness with
+  no unresolved public-release gaps.
+- `scripts/check_public_release_integrity.py` verifies the public GitHub and
+  Zenodo release surfaces after publication.
 - GitHub Actions tests pass on `main`.
 
 ## Distribution decision
 
-The first private archive should remain GitHub-only until the Phase 6 archive
-and citation checks are complete. A Zenodo software mirror can be created after
-the public API stabilizes and after deciding whether RhoDyn should receive an
-independent DOI separate from the manuscript software archive.
+The first public archive is GitHub plus Zenodo. The current citable software
+record is the Zenodo version DOI `10.5281/zenodo.21036616`, with concept DOI
+`10.5281/zenodo.21036615`. PyPI remains a later distribution decision and is
+not claimed by the v0.1.0 public release.
 
 ## Safety boundary
 

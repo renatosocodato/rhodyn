@@ -1,10 +1,28 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-29T14:09:44.042134Z",
+  "generated_utc": "2026-06-29T14:45:28.548622Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 49,
+  "link_count": 60,
   "records": [
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "README.md",
+      "status": "pass",
+      "target": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "README.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.21036616"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "README.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.21036615"
+    },
     {
       "detail": "remote URL syntax checked only",
       "source": "README.md",
@@ -178,6 +196,54 @@
       "source": "docs/public_case_study_candidates.md",
       "status": "pass",
       "target": "https://doi.org/10.5281/zenodo.5836623"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_release_integrity_report.md",
+      "status": "pass",
+      "target": "https://github.com/renatosocodato/rhodyn"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_release_integrity_report.md",
+      "status": "pass",
+      "target": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_release_integrity_report.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.21036616"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_release_integrity_report.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.21036615"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/public_release_integrity_report.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/21036616"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/release_notes_v0.1.0.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.21036616"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/release_notes_v0.1.0.md",
+      "status": "pass",
+      "target": "https://doi.org/10.5281/zenodo.21036615"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/release_notes_v0.1.0.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/21036616"
     },
     {
       "detail": "remote URL syntax checked only",
