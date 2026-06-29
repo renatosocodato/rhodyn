@@ -11,6 +11,7 @@ The scaffold in `frontend/stage5/` is a static scientific workbench shell. It lo
 - Project dashboard.
 - Data upload and schema validation.
 - Trajectory explorer.
+- Simulation Workbench.
 - Residence-window tuner.
 - Coupling/equivalence decision panel.
 - Reserve-buffering panel.
@@ -83,6 +84,13 @@ PYTHONPATH=src python -m rhodyn.cli score-residence \
 This is a public live-cell tracking workflow derived from Zenodo 7260137. The
 intensity signal is a trajectory-analysis example, not a molecular activity
 reporter or disease-state measurement.
+
+
+## Simulation Workbench
+
+The Simulation Workbench exposes the existing deterministic controller simulation from `rhodyn.models.simulate_controller` and the `rhodyn simulate` CLI command. It provides declared presets, editable controller parameters, RhoA window, Src, reserve, burden, and Myh9/Myh10 route trajectories, first-passage timing for a burden threshold, a compact row table, and JSON, CSV, and Markdown exports.
+
+This is a narrow Stage 5.1 repair. The screen mirrors the deterministic controller for parameter exploration. It is not a new backend route, does not add stochastic inference, does not fit data, and does not create a biological result.
 
 ## Result visualization and export
 

@@ -5,6 +5,7 @@
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
     "after_stage5_closeout": "Stage 5 is completed as a contract-bound scientific workbench with upload parity, operation-specific visualizations, export provenance, browser regression, and adversarial layout guards.",
     "after_stage5_report_polish": "Stage 5 now has professional operation-specific comparison panels for residence, bounded coupling, reserve, and reduced-model ranking, with report export ergonomics for JSON, CSV, Markdown, and backend bundles.",
+    "after_stage5_simulation_ux": "Stage 5.1 added a Simulation Workbench for the existing deterministic controller with parameter presets, trajectory visualization, first-passage timing, route readouts, exports, and browser regression coverage.",
     "after_stage5_upload_parity": "Stage 5 now has real CSV upload-flow hardening, visible parameter/schema inspection, and CLI/API/frontend parity audits for all six frozen contract operations.",
     "after_stage5_ux_depth": "Stage 5 now has richer trajectory inspection, explicit exported parameter provenance, and a guided MLCI public trajectory workflow that can be reproduced from CLI and the frozen upload route.",
     "after_v0_2_0": "Core-methods pass completed.",
@@ -48,13 +49,13 @@
       "status": "frozen_for_stage5"
     },
     {
-      "current_gate": "Closed on 2026-06-29 after frontend contract binding, upload parity, operation-specific comparison panels, export provenance, browser regression, and adversarial layout guards passed as a release-candidate workbench.",
+      "current_gate": "Closed on 2026-06-29 after frontend contract binding, upload parity, operation-specific comparison panels, simulation UX repair, export provenance, browser regression, and adversarial layout guards passed as a release-candidate workbench.",
       "gate": [
         "A biologist can upload a tidy table and interpret amplitude-like versus residence-like behavior without reading code.",
         "A quantitative user can inspect every parameter and reproduce the result from CLI.",
         "The workbench consumes the frozen Stage 4 API contract rather than inventing new analysis routes."
       ],
-      "latest_evidence": "docs/stage5_closeout.md records the closeout. The Stage 5 audit suite covers the frozen contract binding, upload-flow parity, premium workbench screenshot-regression readiness, and no-new-biology boundary.",
+      "latest_evidence": "docs/stage5_closeout.md records the closeout. The Stage 5 audit suite covers frozen contract binding, upload-flow parity, simulation workbench parity, premium screenshot-regression readiness, and no-new-biology boundary.",
       "name": "Frontend",
       "scope_rule": "Build only frontend behavior that consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility.",
       "stage": 5,

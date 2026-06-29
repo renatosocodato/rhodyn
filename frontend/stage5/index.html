@@ -19,6 +19,7 @@
       <a href="#dashboard" data-screen-link="Project dashboard">Dashboard</a>
       <a href="#upload" data-screen-link="Data upload and schema validation">Upload</a>
       <a href="#trajectory" data-screen-link="Trajectory explorer">Trajectories</a>
+      <a href="#simulation" data-screen-link="Simulation workbench">Simulation</a>
       <a href="#residence" data-screen-link="Residence-window tuner">Residence</a>
       <a href="#coupling" data-screen-link="Coupling/equivalence decision panel">Coupling</a>
       <a href="#reserve" data-screen-link="Reserve-buffering panel">Reserve</a>
@@ -86,6 +87,36 @@
       <div class="plot-surface"><svg id="trajectoryPlot" viewBox="0 0 900 320" role="img" aria-label="Trajectory preview"></svg></div>
       <div id="traceSummaryTable" class="table-preview compact"></div>
       <div id="tablePreview" class="table-preview"></div>
+    </section>
+
+
+    <section id="simulation" class="band simulation-band" data-screen="Simulation workbench">
+      <div class="section-heading"><h2>Simulation workbench</h2><span id="simulationState">local controller simulation</span></div>
+      <div class="simulation-layout">
+        <div class="simulation-controls">
+          <div class="control-grid simulation-topline">
+            <label>Preset<select id="simulationPreset"></select></label>
+            <label>Duration<input id="simulationDuration" type="number" step="0.5"></label>
+            <label>dt<input id="simulationDt" type="number" step="0.1"></label>
+            <label>Burden threshold<input id="simulationBurdenThreshold" type="number" step="0.01"></label>
+          </div>
+          <div id="simulationParameterPanel" class="parameter-panel simulation-parameter-panel" aria-label="Simulation parameters"></div>
+          <div class="button-row">
+            <button id="simulationRunButton" type="button">Run simulation</button>
+            <button id="simulationResetButton" type="button" class="secondary">Reset preset</button>
+            <button id="simulationExportJsonButton" type="button" class="secondary">Export JSON</button>
+            <button id="simulationExportCsvButton" type="button" class="secondary">Export CSV</button>
+            <button id="simulationExportMarkdownButton" type="button" class="secondary">Export Markdown</button>
+          </div>
+          <pre id="simulationCommand" class="simulation-command"></pre>
+        </div>
+        <div class="simulation-summary">
+          <div id="simulationMetrics" class="metric-strip"></div>
+          <div class="plot-surface simulation-plot-surface"><svg id="simulationPlot" viewBox="0 0 960 360" role="img" aria-label="Deterministic controller simulation trajectories"></svg></div>
+          <div id="simulationTable" class="table-preview compact"></div>
+          <p class="comparison-note">This browser preview mirrors the deterministic minimal controller used by <code>rhodyn simulate</code>. It is an exploratory simulation surface, not a new backend route or a biological-data claim.</p>
+        </div>
+      </div>
     </section>
 
     <section id="residence" class="band" data-screen="Residence-window tuner">

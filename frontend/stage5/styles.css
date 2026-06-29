@@ -333,12 +333,52 @@ pre { margin: 0; white-space: pre-wrap; font-size: 12px; line-height: 1.45; }
 .trace-a { stroke: var(--blue); }
 .trace-b { stroke: var(--amber); }
 .window-band { fill: rgba(20, 119, 90, 0.08); stroke: rgba(20, 119, 90, 0.4); }
+
+.simulation-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.6fr);
+  gap: 14px;
+  align-items: start;
+}
+.simulation-controls, .simulation-summary {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+}
+.simulation-topline, .simulation-parameter-panel {
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+}
+.simulation-command {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: 8px;
+  background: #f7fafc;
+  color: #23352f;
+  padding: 10px;
+}
+.simulation-plot-surface { min-height: 360px; }
+#simulationPlot { width: 100%; height: 360px; display: block; }
+.sim-trace { fill: none; stroke-width: 2.25; opacity: 0.9; }
+.sim-rhoa { stroke: var(--green); }
+.sim-src { stroke: var(--red); }
+.sim-reserve { stroke: var(--blue); }
+.sim-burden { stroke: var(--amber); }
+.sim-gate { stroke: #6b4fa1; stroke-dasharray: 5 5; }
+.sim-threshold { stroke: #8a3b3f; stroke-dasharray: 4 6; opacity: 0.75; }
+.sim-legend {
+  font-size: 12px;
+  fill: #30443a;
+}
+.sim-legend-swatch { stroke-width: 3; }
+
 @media (max-width: 980px) {
   body { grid-template-columns: 1fr; }
   .sidebar { position: static; height: auto; }
   .metric-row, .control-grid, .parameter-panel { grid-template-columns: 1fr 1fr; }
   .workflow-panel { grid-template-columns: 1fr; }
+  .simulation-layout { grid-template-columns: 1fr; }
 }
+
 @media (max-width: 640px) {
   h1 { font-size: 18px; }
   h2 { font-size: 17px; }
@@ -347,6 +387,7 @@ pre { margin: 0; white-space: pre-wrap; font-size: 12px; line-height: 1.45; }
   .meta-panel, .schema-panel, .inspection-grid, .trajectory-stats { grid-template-columns: 1fr; }
   .workflow-panel { grid-template-columns: 1fr; }
   .workflow-panel button { width: 100%; }
+  .simulation-topline, .simulation-parameter-panel { grid-template-columns: 1fr; }
   .ranked-row, .interval-row { grid-template-columns: 1fr; }
   .margin-axis { margin: 0; }
   .workspace { padding: 12px; }

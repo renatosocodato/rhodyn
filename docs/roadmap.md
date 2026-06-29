@@ -25,8 +25,8 @@ workbench.
 Current status in one sentence. RhoDyn can analyze declared dynamic readouts,
 the v0.3 Stage 3 evidence bank is closed for the current gate, the Stage 4 API
 contract is frozen, Stage 5 is completed as a contract-bound scientific
-workbench, and Stage 6 is the active execution stage for making the software
-professionally citable.
+workbench with a narrow simulation UX repair, and Stage 6 is the active execution
+stage for making the software professionally citable.
 
 ## Execution memory
 
@@ -48,8 +48,8 @@ passes.
    closeout document are now the frontend dependency.
 3. Stage 5 is completed as a contract-bound scientific workbench. The closed
    surface covers uploaded-table jobs, reproducible exports, parameter
-   inspection, operation-specific comparison panels, and browser regression
-   around the frozen Stage 4 contract.
+   inspection, operation-specific comparison panels, simulation parameter exploration, and
+   browser regression around the frozen Stage 4 contract.
 4. Stage 6 is the active execution stage. Work here makes RhoDyn professionally
    citable through PyPI, Docker, Zenodo, docs, citation metadata, release
    hygiene, and cross-version CI.
@@ -78,7 +78,7 @@ as roadmap work.
 | --- | --- | --- |
 | Stage 3. Case-study evidence bank | Complete for the v0.3 gate. | Keep the evidence bank stable. Additional public biological systems are Stage 7 evidence expansion unless they repair a documented Stage 3 defect. |
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
-| Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
+| Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract, exposes the existing deterministic simulation surface, and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
 | Stage 6. Official software release | Active release candidate. | Do not call the package professionally citable until PyPI, Docker, Zenodo, docs, citation metadata, CI, and release hygiene are complete. |
 | Stage 7. Nature Methods first | Not ready. | Treat this as a later scientific-methods campaign, not as a rebranding of the RhoA/microglia manuscript or the Stage 3 examples. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Nature Methods framing and should not lead the scientific evidence path. |
@@ -265,10 +265,13 @@ inspection for uploaded trajectories, clearer parameter provenance in exported
 bundles, a guided MLCI public trajectory workflow that can be reproduced from
 CLI, operation-specific comparison panels for residence, bounded coupling,
 reserve, and reduced-model ranking, and one-click JSON, CSV, and Markdown
-exports for the last run. The hardening pass adds Playwright screenshot
-regression across desktop and mobile viewports, adversarial bounded-coupling
-labels, horizontal-overflow guards, and CI wiring. `docs/stage5_closeout.md`
-records the closeout. Reopen Stage 5 only for a documented frontend defect;
+exports for the last run. A narrow simulation UX repair adds a local Simulation
+Workbench for the existing deterministic controller, with parameter presets,
+trajectory plots, first-passage timing, route readouts, and exports. The
+hardening pass adds Playwright screenshot regression across desktop and mobile
+viewports, adversarial bounded-coupling labels, simulation workbench coverage,
+horizontal-overflow guards, and CI wiring. `docs/stage5_closeout.md` records the
+closeout. Reopen Stage 5 only for a documented frontend defect;
 new release, distribution, and citation surfaces belong to Stage 6.
 
 ## Stage 6. Official software release

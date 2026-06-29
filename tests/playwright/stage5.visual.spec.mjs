@@ -74,7 +74,7 @@ async function runOperation(page, operationId) {
   await page.getByRole('button', { name: 'Load example' }).click();
   await expect(page.locator('#validationState')).toContainText('passed');
   await expect(page.locator('#rowCount')).not.toHaveValue('');
-  await page.getByRole('button', { name: 'Run' }).click();
+  await page.locator('#runButton').click();
   const suite = page.locator('#resultVisual .comparison-suite');
   await expect(suite).toBeVisible();
   await expect(page.locator('#resultPanel')).toContainText('"status": "pass"');
@@ -134,6 +134,34 @@ test.describe('Stage 5 comparison-suite screenshots', () => {
       await expectNoDocumentOverflow(page);
       await expect(suite).toHaveScreenshot(item.snapshot);
     });
+  }
+});
+
+
+test('simulation workbench mirrors the deterministic controller and stays readable', async ({ page }) => {
+  await openWorkbench(page);
+  await page.getByRole('link', { name: 'Simulation' }).click();
+  const section = page.locator('#simulation');
+  await expect(section).toContainText('Simulation workbench');
+  await expect(section).toContainText('Residence fraction');
+  await expect(section).toContainText('Peak burden');
+  await expect(section).toContainText('First passage');
+  await expect(section).toContainText('rhodyn simulate');
+  const reference = await page.evaluate(() => {
+    const api = window.__RHODYN_STAGE5_SIM__;
+    const rows = api.simulateControllerLocal({ ...api.SIMULATION_DEFAULTS });
+    return { length: rows.length, first: rows[0], middle: rows[20], final: rows[40] };
+  });
+  expect(reference.length).toBe(41);
+  expect(reference.first.window_gate).toBeCloseTo(0.8786191987, 9);
+  expect(reference.middle.src).toBeCloseTo(0.6484494667, 9);
+  expect(reference.final.burden).toBeCloseTo(0.7990020641, 9);
+  await page.locator('#simulationPreset').selectOption('buffered_window');
+  await expect(page.locator('#simulationState')).toContainText('Buffered window');
+  await expectNoUnsafeText(section);
+  await expectNoDocumentOverflow(page);
+  if (process.platform === 'darwin') {
+    await expect(section).toHaveScreenshot('stage5-simulation-workbench.png');
   }
 });
 

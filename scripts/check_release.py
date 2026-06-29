@@ -27,6 +27,7 @@ REQUIRED_FILES = [
     "scripts/audit_stage5_frontend_scaffold.py",
     "scripts/audit_stage5_premium_workbench.py",
     "scripts/audit_stage5_upload_flow_parity.py",
+    "scripts/audit_stage5_simulation_workbench.py",
     "package.json",
     "package-lock.json",
     "playwright.config.mjs",
@@ -196,6 +197,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         ("scripts/audit_stage5_frontend_scaffold.py", "Stage 5 frontend scaffold audit"),
         ("scripts/audit_stage5_premium_workbench.py", "Stage 5 premium workbench audit"),
         ("scripts/audit_stage5_upload_flow_parity.py", "Stage 5 upload-flow parity audit"),
+        ("scripts/audit_stage5_simulation_workbench.py", "Stage 5 simulation workbench audit"),
     ]:
         check = subprocess.run(
             [sys.executable, script],

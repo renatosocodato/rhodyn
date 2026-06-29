@@ -29,6 +29,8 @@ REQUIRED_VISUAL_TOKENS = [
     "renderCouplingComparison",
     "renderReserveComparison",
     "renderModelComparison",
+    "renderSimulationWorkbench",
+    "simulateControllerLocal",
 ]
 REQUIRED_CSS_TOKENS = [
     "comparison-suite",
@@ -37,6 +39,8 @@ REQUIRED_CSS_TOKENS = [
     "comparison-table",
     "status-chip",
     "margin-axis",
+    "simulation-layout",
+    "sim-trace",
 ]
 REQUIRED_SPEC_TOKENS = [
     "toHaveScreenshot",
@@ -45,6 +49,8 @@ REQUIRED_SPEC_TOKENS = [
     "expectNoDocumentOverflow",
     "not claimed",
     "does not identify every molecular edge",
+    "simulation workbench mirrors",
+    "rhodyn simulate",
 ]
 SNAPSHOT_CASES = [
     "stage5-adversarial-coupling",
@@ -56,6 +62,7 @@ SNAPSHOT_CASES = [
 ]
 SNAPSHOT_PROJECTS = ["chromium-desktop", "chromium-mobile"]
 SNAPSHOT_PLATFORMS = ["darwin", "linux"]
+SIMULATION_SNAPSHOT_CASE = "stage5-simulation-workbench"
 
 
 def _read(path: str) -> str:
@@ -99,9 +106,12 @@ def audit_stage5_premium_workbench(root: Path = ROOT) -> dict[str, Any]:
         for project in SNAPSHOT_PROJECTS
         for platform in SNAPSHOT_PLATFORMS
     }
+    simulation_snapshots = {f"{SIMULATION_SNAPSHOT_CASE}-{project}-darwin.png" for project in SNAPSHOT_PROJECTS}
+    all_expected_snapshots = expected_snapshots | simulation_snapshots
     checks["playwright_uses_platform_specific_snapshots"] = "snapshotPathTemplate" not in config
     checks["playwright_has_darwin_and_linux_baselines"] = expected_snapshots.issubset(set(snapshot_names))
-    checks["playwright_has_expected_snapshot_count"] = len(snapshot_names) == len(expected_snapshots)
+    checks["playwright_has_simulation_darwin_baselines"] = simulation_snapshots.issubset(set(snapshot_names))
+    checks["playwright_has_expected_snapshot_count"] = len(snapshot_names) == len(all_expected_snapshots)
     checks["comparison_panel_functions_present"] = all(token in app_js for token in REQUIRED_VISUAL_TOKENS)
     checks["comparison_panel_css_present"] = all(token in css for token in REQUIRED_CSS_TOKENS)
     checks["spec_covers_all_core_comparison_operations"] = all(token in spec for token in REQUIRED_OPERATIONS)

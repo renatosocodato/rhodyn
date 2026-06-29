@@ -18,7 +18,8 @@ const state = {
   loadedSource: "",
   operation: null,
   lastResult: null,
-  lastJob: null
+  lastJob: null,
+  lastSimulation: null
 };
 
 const $ = (id) => document.getElementById(id);
@@ -755,6 +756,306 @@ async function copyJson() {
   $("jobState").textContent = "result JSON copied";
 }
 
+
+const SIMULATION_DEFAULTS = {
+  duration: 20,
+  dt: 0.5,
+  burden_threshold: 0.5,
+  initial_rhoa: 0.45,
+  initial_src: 0.20,
+  initial_reserve: 0.80,
+  rhoa_input: 0.08,
+  rhoa_decay: 0.04,
+  window_low: 0.35,
+  window_high: 0.75,
+  window_slope: 0.05,
+  src_drive: 0.15,
+  src_decay: 0.08,
+  reserve_decay: 0.06,
+  reserve_recovery: 0.02,
+  myh9_gain: 0.20,
+  myh10_gain: 0.25
+};
+
+const SIMULATION_PARAMETER_FIELDS = [
+  ["initial_rhoa", "Initial RhoA"],
+  ["initial_src", "Initial Src"],
+  ["initial_reserve", "Initial reserve"],
+  ["rhoa_input", "RhoA input"],
+  ["rhoa_decay", "RhoA decay"],
+  ["window_low", "Window low"],
+  ["window_high", "Window high"],
+  ["window_slope", "Window slope"],
+  ["src_drive", "Src drive"],
+  ["src_decay", "Src decay"],
+  ["reserve_decay", "Reserve decay"],
+  ["reserve_recovery", "Reserve recovery"],
+  ["myh9_gain", "Myh9 gain"],
+  ["myh10_gain", "Myh10 gain"]
+];
+
+const SIMULATION_PRESETS = {
+  default: {
+    label: "Default controller",
+    description: "Mirrors rhodyn simulate defaults.",
+    values: SIMULATION_DEFAULTS
+  },
+  buffered_window: {
+    label: "Buffered window",
+    description: "Starts in the permissive RhoA window with stronger reserve recovery.",
+    values: { ...SIMULATION_DEFAULTS, initial_rhoa: 0.52, initial_reserve: 0.9, rhoa_input: 0.035, src_drive: 0.10, reserve_recovery: 0.045 }
+  },
+  low_residence: {
+    label: "Low residence pressure",
+    description: "Starts below the RhoA window and allows Src-linked burden to rise.",
+    values: { ...SIMULATION_DEFAULTS, initial_rhoa: 0.22, rhoa_input: 0.035, initial_src: 0.28, reserve_decay: 0.075 }
+  },
+  excessive_engagement: {
+    label: "Excessive engagement",
+    description: "Keeps RhoA high enough that window residence collapses late.",
+    values: { ...SIMULATION_DEFAULTS, initial_rhoa: 0.82, rhoa_input: 0.11, rhoa_decay: 0.025, src_drive: 0.12 }
+  }
+};
+
+function sigmoid(value) {
+  return 1 / (1 + Math.exp(-value));
+}
+
+function windowGateLocal(rhoa, params) {
+  const lower = sigmoid((rhoa - params.window_low) / params.window_slope);
+  const upper = sigmoid((params.window_high - rhoa) / params.window_slope);
+  return lower * upper;
+}
+
+function simulateControllerLocal(params) {
+  if (!(params.dt > 0) || params.duration < 0) throw new Error("duration must be non-negative and dt must be positive");
+  let rhoa = params.initial_rhoa;
+  let src = params.initial_src;
+  let reserve = params.initial_reserve;
+  const rows = [];
+  const steps = Math.trunc(params.duration / params.dt) + 1;
+  for (let step = 0; step < steps; step += 1) {
+    const time = step * params.dt;
+    const gate = windowGateLocal(rhoa, params);
+    const myh9 = params.myh9_gain * rhoa;
+    const myh10 = params.myh10_gain * src * (1 - reserve);
+    const burden = src * (1 - reserve);
+    rows.push({
+      time,
+      rhoa,
+      window_gate: gate,
+      src,
+      reserve,
+      myh9_route: myh9,
+      myh10_route: myh10,
+      burden
+    });
+    rhoa += params.dt * (params.rhoa_input - params.rhoa_decay * rhoa);
+    src += params.dt * (params.src_drive * (1 - gate) - params.src_decay * src);
+    reserve += params.dt * (params.reserve_recovery * gate - params.reserve_decay * src * reserve);
+    reserve = Math.max(0, Math.min(1, reserve));
+  }
+  return rows;
+}
+
+function firstPassage(rows, field, threshold, direction = "above") {
+  for (const row of rows) {
+    const value = Number(row[field]);
+    if (direction === "above" && value >= threshold) return row.time;
+    if (direction === "below" && value <= threshold) return row.time;
+  }
+  return null;
+}
+
+function simulationResidence(rows, params) {
+  const points = rows.map((row) => ({ time: row.time, signal: row.rhoa }));
+  return residenceForPoints(points, params.window_low, params.window_high);
+}
+
+function simulationParameters() {
+  const params = { ...SIMULATION_DEFAULTS };
+  params.duration = Number($("simulationDuration").value);
+  params.dt = Number($("simulationDt").value);
+  params.burden_threshold = Number($("simulationBurdenThreshold").value);
+  document.querySelectorAll("[data-sim-param]").forEach((input) => {
+    params[input.dataset.simParam] = Number(input.value);
+  });
+  for (const [key, value] of Object.entries(params)) {
+    if (!Number.isFinite(value)) throw new Error(`Simulation parameter ${key} is not numeric.`);
+  }
+  return params;
+}
+
+function setSimulationParameters(values) {
+  $("simulationDuration").value = values.duration;
+  $("simulationDt").value = values.dt;
+  $("simulationBurdenThreshold").value = values.burden_threshold;
+  for (const [key] of SIMULATION_PARAMETER_FIELDS) {
+    const input = document.querySelector(`[data-sim-param="${key}"]`);
+    if (input) input.value = values[key];
+  }
+}
+
+function renderSimulationControls() {
+  $("simulationPreset").innerHTML = Object.entries(SIMULATION_PRESETS)
+    .map(([key, preset]) => `<option value="${key}">${escapeHtml(preset.label)}</option>`)
+    .join("");
+  $("simulationParameterPanel").innerHTML = SIMULATION_PARAMETER_FIELDS.map(([key, label]) => `
+    <label>${escapeHtml(label)}<input data-sim-param="${key}" type="number" step="0.005"><small>${escapeHtml(key)}</small></label>
+  `).join("");
+  setSimulationParameters(SIMULATION_DEFAULTS);
+}
+
+function simulationSummary(rows, params) {
+  const final = rows[rows.length - 1] || {};
+  const residence = simulationResidence(rows, params);
+  const peakBurden = Math.max(...rows.map((row) => row.burden));
+  const minReserve = Math.min(...rows.map((row) => row.reserve));
+  const peakSrc = Math.max(...rows.map((row) => row.src));
+  const peakMyh9 = Math.max(...rows.map((row) => row.myh9_route));
+  const peakMyh10 = Math.max(...rows.map((row) => row.myh10_route));
+  return {
+    rows: rows.length,
+    residence_fraction: residence.residenceFraction,
+    residence_time: residence.residenceTime,
+    residence_segments: residence.segmentCount,
+    peak_src: peakSrc,
+    min_reserve: minReserve,
+    peak_burden: peakBurden,
+    final_reserve: final.reserve,
+    final_burden: final.burden,
+    peak_myh9_route: peakMyh9,
+    peak_myh10_route: peakMyh10,
+    burden_first_passage: firstPassage(rows, "burden", params.burden_threshold)
+  };
+}
+
+function simulationPayload(rows, params, presetKey) {
+  const preset = SIMULATION_PRESETS[presetKey] || SIMULATION_PRESETS.default;
+  return {
+    status: "pass",
+    operation: "simulate_controller_local",
+    source: "frontend Stage 5.1 Simulation Workbench; mirrors rhodyn.models.simulate_controller",
+    preset: preset.label,
+    preset_description: preset.description,
+    parameters: params,
+    summary: simulationSummary(rows, params),
+    rows,
+    interpretation_boundary: "This is a deterministic controller simulation for parameter exploration. It does not add a backend route, fit data, or establish a biological claim."
+  };
+}
+
+function simulationCommand(params) {
+  return [
+    "CLI parity",
+    `rhodyn simulate --duration ${fmt(params.duration, 2)} --dt ${fmt(params.dt, 2)}`,
+    "Python API",
+    "from rhodyn.models import ControllerParams, simulate_controller"
+  ].join("\n");
+}
+
+function renderSimulationPlot(rows, params) {
+  const svg = $("simulationPlot");
+  svg.innerHTML = "";
+  if (!rows.length) return;
+  const series = [
+    { key: "rhoa", label: "RhoA", cls: "sim-rhoa" },
+    { key: "window_gate", label: "Window gate", cls: "sim-gate" },
+    { key: "src", label: "Src", cls: "sim-src" },
+    { key: "reserve", label: "Reserve", cls: "sim-reserve" },
+    { key: "burden", label: "Burden", cls: "sim-burden" }
+  ];
+  const minT = Math.min(...rows.map((row) => row.time));
+  const maxT = Math.max(...rows.map((row) => row.time));
+  const values = rows.flatMap((row) => series.map((item) => row[item.key])).concat([params.burden_threshold]);
+  const minY = Math.min(0, ...values);
+  const maxY = Math.max(1, ...values);
+  const x = (value) => 58 + ((value - minT) / Math.max(maxT - minT, 1)) * 790;
+  const y = (value) => 292 - ((value - minY) / Math.max(maxY - minY, 1e-9)) * 244;
+  svg.insertAdjacentHTML("beforeend", `<line class="axis" x1="58" y1="292" x2="848" y2="292"></line><line class="axis" x1="58" y1="48" x2="58" y2="292"></line>`);
+  const thresholdY = y(params.burden_threshold);
+  svg.insertAdjacentHTML("beforeend", `<line class="sim-threshold" x1="58" y1="${thresholdY.toFixed(1)}" x2="848" y2="${thresholdY.toFixed(1)}"></line><text class="sim-legend" x="854" y="${thresholdY.toFixed(1)}">burden threshold</text>`);
+  series.forEach((item, index) => {
+    const points = rows.map((row) => `${x(row.time).toFixed(1)},${y(row[item.key]).toFixed(1)}`).join(" ");
+    const legendY = 58 + index * 20;
+    svg.insertAdjacentHTML("beforeend", `<polyline class="sim-trace ${item.cls}" points="${points}"></polyline><line class="sim-legend-swatch ${item.cls}" x1="854" y1="${legendY}" x2="876" y2="${legendY}"></line><text class="sim-legend" x="882" y="${legendY + 4}">${item.label}</text>`);
+  });
+}
+
+function renderSimulationTable(rows) {
+  const indices = new Set([0, rows.length - 1]);
+  const stride = Math.max(1, Math.floor(rows.length / 8));
+  for (let index = 0; index < rows.length; index += stride) indices.add(index);
+  const visible = Array.from(indices).sort((a, b) => a - b).map((index) => rows[index]).filter(Boolean);
+  const columns = ["time", "rhoa", "window_gate", "src", "reserve", "burden", "myh9_route", "myh10_route"];
+  $("simulationTable").innerHTML = `
+    <table>
+      <thead><tr>${columns.map((column) => `<th>${escapeHtml(column)}</th>`).join("")}</tr></thead>
+      <tbody>${visible.map((row) => `<tr>${columns.map((column) => `<td>${fmt(Number(row[column]))}</td>`).join("")}</tr>`).join("")}</tbody>
+    </table>
+  `;
+}
+
+function renderSimulationWorkbench(payload) {
+  const summary = payload.summary;
+  const firstPassageText = summary.burden_first_passage === null ? "not reached" : `${fmt(summary.burden_first_passage)} time units`;
+  $("simulationState").textContent = `${payload.rows.length} simulated points; ${payload.preset}`;
+  $("simulationMetrics").innerHTML = [
+    metricCard("Residence fraction", fmt(summary.residence_fraction), `${fmt(summary.residence_time)} time units inside the RhoA window`),
+    metricCard("Peak burden", fmt(summary.peak_burden), `threshold ${fmt(payload.parameters.burden_threshold)}`),
+    metricCard("First passage", firstPassageText, "burden threshold crossing"),
+    metricCard("Final reserve", fmt(summary.final_reserve), `minimum ${fmt(summary.min_reserve)}`),
+    metricCard("Peak Src", fmt(summary.peak_src), "deterministic trajectory"),
+    metricCard("Route split", `${fmt(summary.peak_myh9_route)} / ${fmt(summary.peak_myh10_route)}`, "peak Myh9 / peak Myh10")
+  ].join("");
+  renderSimulationPlot(payload.rows, payload.parameters);
+  renderSimulationTable(payload.rows);
+  $("simulationCommand").textContent = simulationCommand(payload.parameters);
+}
+
+function runSimulationWorkbench() {
+  const params = simulationParameters();
+  const rows = simulateControllerLocal(params);
+  const payload = simulationPayload(rows, params, $("simulationPreset").value);
+  state.lastSimulation = payload;
+  renderSimulationWorkbench(payload);
+  $("resultPanel").textContent = compactJson(payload);
+  $("jobState").textContent = "local deterministic simulation preview";
+  return payload;
+}
+
+function simulationMarkdown() {
+  if (!state.lastSimulation) runSimulationWorkbench();
+  const payload = state.lastSimulation;
+  return [
+    `# RhoDyn simulation workbench`,
+    "",
+    `Preset: ${payload.preset}`,
+    `Rows: ${payload.rows.length}`,
+    `Residence fraction: ${fmt(payload.summary.residence_fraction)}`,
+    `Peak burden: ${fmt(payload.summary.peak_burden)}`,
+    `Final reserve: ${fmt(payload.summary.final_reserve)}`,
+    "",
+    "The simulation is deterministic and parameter-declared. It mirrors the minimal controller API and does not fit data or add a biological claim."
+  ].join("\n") + "\n";
+}
+
+function exportSimulationJson() {
+  if (!state.lastSimulation) runSimulationWorkbench();
+  downloadText("rhodyn_simulation_workbench.json", compactJson(state.lastSimulation) + "\n", "application/json");
+}
+
+function exportSimulationCsv() {
+  if (!state.lastSimulation) runSimulationWorkbench();
+  downloadText("rhodyn_simulation_workbench.csv", rowsToCsv(state.lastSimulation.rows), "text/csv");
+}
+
+function exportSimulationMarkdown() {
+  downloadText("rhodyn_simulation_workbench.md", simulationMarkdown(), "text/markdown");
+}
+
+window.__RHODYN_STAGE5_SIM__ = { simulateControllerLocal, windowGateLocal, SIMULATION_DEFAULTS };
+
 $("operationSelect").addEventListener("change", (event) => renderParameters(operationById(event.target.value)));
 $("parameterPanel").addEventListener("input", () => { renderParameterPayload(); renderTrajectory(state.rows); });
 $("parameterPanel").addEventListener("change", () => { renderParameterPayload(); renderTrajectory(state.rows); });
@@ -778,6 +1079,20 @@ $("downloadJsonButton").addEventListener("click", () => { try { exportJson(); } 
 $("downloadCsvButton").addEventListener("click", () => { try { exportCsv(); } catch (error) { $("jobState").textContent = error.message; } });
 $("downloadMarkdownButton").addEventListener("click", () => { try { exportMarkdown(); } catch (error) { $("jobState").textContent = error.message; } });
 $("copyJsonButton").addEventListener("click", () => copyJson().catch((error) => { $("jobState").textContent = error.message; }));
+
+$("simulationPreset").addEventListener("change", () => { setSimulationParameters(SIMULATION_PRESETS[$("simulationPreset").value].values); runSimulationWorkbench(); });
+$("simulationRunButton").addEventListener("click", () => { try { runSimulationWorkbench(); } catch (error) { $("simulationState").textContent = error.message; } });
+$("simulationResetButton").addEventListener("click", () => { setSimulationParameters(SIMULATION_PRESETS[$("simulationPreset").value].values); runSimulationWorkbench(); });
+$("simulationParameterPanel").addEventListener("input", () => { try { runSimulationWorkbench(); } catch (error) { $("simulationState").textContent = error.message; } });
+$("simulationDuration").addEventListener("input", () => { try { runSimulationWorkbench(); } catch (error) { $("simulationState").textContent = error.message; } });
+$("simulationDt").addEventListener("input", () => { try { runSimulationWorkbench(); } catch (error) { $("simulationState").textContent = error.message; } });
+$("simulationBurdenThreshold").addEventListener("input", () => { try { runSimulationWorkbench(); } catch (error) { $("simulationState").textContent = error.message; } });
+$("simulationExportJsonButton").addEventListener("click", () => { try { exportSimulationJson(); } catch (error) { $("simulationState").textContent = error.message; } });
+$("simulationExportCsvButton").addEventListener("click", () => { try { exportSimulationCsv(); } catch (error) { $("simulationState").textContent = error.message; } });
+$("simulationExportMarkdownButton").addEventListener("click", () => { try { exportSimulationMarkdown(); } catch (error) { $("simulationState").textContent = error.message; } });
+
+renderSimulationControls();
+runSimulationWorkbench();
 
 loadContract().catch((error) => {
   $("contractBadge").textContent = "contract unavailable";
