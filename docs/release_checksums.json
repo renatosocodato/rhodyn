@@ -1,5 +1,5 @@
 {
-  "file_count": 206,
+  "file_count": 211,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -363,17 +363,17 @@
     },
     {
       "path": "docs/architecture.md",
-      "sha256": "feaa31911b43c8a9110e0df7fea7f1ff6c52d24f9011a06ca1fb49fe050cd8e4",
-      "size_bytes": 6049
+      "sha256": "9e7b0fd78be25d326262c49e6365a591da0208ee2c68e2e0f1e178671446cd1c",
+      "size_bytes": 6151
     },
     {
       "path": "docs/broken_link_scan_report.json",
-      "sha256": "c5b3336ae99198db6a2303fd55ce8c8f9a5fdec0c5a977e5b2c2eba60ad596a9",
-      "size_bytes": 13374
+      "sha256": "260e8b2472db65f87f522d376a0a17c25c5dfb237233609f9e08b59b7f870d29",
+      "size_bytes": 16165
     },
     {
       "path": "docs/broken_link_scan_report.md",
-      "sha256": "ca712009f3f22651a9d2a084c40e89e6dbc7ba5bce782e2e3c40172f14983d49",
+      "sha256": "609b68fc175f09bb68327a79ced627441955194d3c7775aca931debe3816e3a6",
       "size_bytes": 153
     },
     {
@@ -438,8 +438,8 @@
     },
     {
       "path": "docs/index.md",
-      "sha256": "368bf0a4bf62d2810342ca33f7c65c295e383a56a3b79957411cc263cec122e2",
-      "size_bytes": 1042
+      "sha256": "b52b763652d43bf3c14efe141e089b4c6e4450db02680b35a72a134c38ac9cd4",
+      "size_bytes": 1178
     },
     {
       "path": "docs/input_schema_guide.md",
@@ -473,12 +473,12 @@
     },
     {
       "path": "docs/public_release_integrity_report.json",
-      "sha256": "a7ce6e2f8b17c45ba82ff12aba1ef711446562c4687fbe2368c410d429157e33",
+      "sha256": "c169f0bf20c4c4d18d01a3f9d9d99c88d9b0c0acb73245d0318c5a2c14a17908",
       "size_bytes": 3610
     },
     {
       "path": "docs/public_release_integrity_report.md",
-      "sha256": "2874a70560518f63c44c1c112d04720f7bea30540157da632c6a23ea18e85a4e",
+      "sha256": "fc0837f8623d96c0401d6b12c4083ab351e4ba93aece9ba707620f1d45471571",
       "size_bytes": 1297
     },
     {
@@ -508,13 +508,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "7bd1cfeb39fbb829b188b95586f95f899e167aaba3f36c779be2654872eb53fb",
-      "size_bytes": 25230
+      "sha256": "609a11acca96e59a110787ef1cf3940d1a4b08bc4d16f75ada84504f353b3cc8",
+      "size_bytes": 25452
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "a6405e32a81fce3f7c4e31c5188ce1b8b9448ea3058eabbd018f40df08a630cb",
-      "size_bytes": 15212
+      "sha256": "df29141ba51653eb2cacf62159c7c8216720bf684efd1abf870793db1cc973d0",
+      "size_bytes": 15983
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -562,14 +562,39 @@
       "size_bytes": 2877
     },
     {
+      "path": "docs/stage7_0_artifact_map.md",
+      "sha256": "69e5d9d9a6a81f2420dda6af82aa570672bb27547e887597e0793dfabb8a62bd",
+      "size_bytes": 4885
+    },
+    {
+      "path": "docs/stage7_0_baseline_method_inventory.md",
+      "sha256": "a20062cffaae0da39b39cf7b959e8e1ab505b8b1e8187c24abeadbdf23356008",
+      "size_bytes": 5802
+    },
+    {
+      "path": "docs/stage7_0_dataset_selection_rubric.md",
+      "sha256": "a2ab987c2ef77e75afbcbb995f75f957fbdb71463b9603374e96134df1571a4c",
+      "size_bytes": 5622
+    },
+    {
+      "path": "docs/stage7_0_gate_report.json",
+      "sha256": "494b57ee6449e9bd8843ae80ce3d6ed75ac6b969e8701463105324be3b3e24ec",
+      "size_bytes": 1745
+    },
+    {
+      "path": "docs/stage7_0_source_register.md",
+      "sha256": "f5c2a483dab919a2a8af476f064d34943765c1f1a48566568521b1c8c5b3c400",
+      "size_bytes": 8273
+    },
+    {
       "path": "docs/stage7_methods_program.md",
-      "sha256": "8f1b2a5b512664171b214e713876cc62578e09b5f51fa4bf621621ad8ad8685f",
-      "size_bytes": 31924
+      "sha256": "374f706bbe43c069f9d75ae44d7f8231e63eccb4cdb08b45be973c998d87fc25",
+      "size_bytes": 33111
     },
     {
       "path": "docs/stage7_serialized_execution_plan.md",
-      "sha256": "1ebffa22f7a7d0d66189731b1ead1b5341149f2ca4a4e3a8e8df0e21fafd0e46",
-      "size_bytes": 16011
+      "sha256": "35d606d9a4c4e0a5210ddfe2c768184af8de8e0c139f79c1a8994338d1f720c3",
+      "size_bytes": 16334
     },
     {
       "path": "docs/zenodo_dry_run_report.json",
@@ -648,8 +673,8 @@
     },
     {
       "path": "mkdocs.yml",
-      "sha256": "68b25b8bb45a51c39abe3b3e5af12d3edb6f516a4a2c53e1293f0847f6e60eec",
-      "size_bytes": 825
+      "sha256": "5132d0f81360aa5b29100a6f8e6a528ad3dd3e4c69339f578082d6e89a7986ea",
+      "size_bytes": 1076
     },
     {
       "path": "notebooks/01_synthetic_residence_primer.ipynb",
@@ -748,13 +773,13 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "ca13fc36b64aac12bb6fdff0785753b1911edb56d44e8ebad5347ea04d358e80",
-      "size_bytes": 12882
+      "sha256": "7bfb57d24529ccbf8938db53c3517c6e3519da7cca586b8699be9324dbe41a57",
+      "size_bytes": 14381
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "67553d562619f9e3b01d4cd9cf6dd71ac547ae4e1667ae5161d71a6f6c5b6f77",
-      "size_bytes": 7582
+      "sha256": "f1c4297b6f225b0c27de6d31874c73718462e0aab15144cc0aea6d673c41ab9d",
+      "size_bytes": 10567
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -1032,7 +1057,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-29T15:19:11.020644Z",
+  "generated_utc": "2026-06-29T15:34:55.944854Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

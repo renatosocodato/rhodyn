@@ -31,6 +31,8 @@ For every Stage 7 subphase, repository bookkeeping and roadmap updates are part 
 
 ## 7.0. Planning freeze and evidence source register
 
+Stage 7.0 execution status. Complete as a planning-only phase. The created planning artifacts are `docs/stage7_0_source_register.md`, `docs/stage7_0_baseline_method_inventory.md`, `docs/stage7_0_dataset_selection_rubric.md`, `docs/stage7_0_artifact_map.md`, and `docs/stage7_0_gate_report.json`. Stage 7.1 is not started.
+
 Objectives.
 
 - Freeze Stage 7 as an independent methods-program roadmap.

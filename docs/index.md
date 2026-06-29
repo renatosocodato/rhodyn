@@ -15,5 +15,7 @@ The RhoA/microglia manuscript and Zenodo data package remain optional reference
 use cases. They are not required for normal RhoDyn installation or examples.
 
 The Stage 7 methods-program roadmap records the future independent biological
-demonstration and methods-manuscript readiness path. It is a planning surface
-only and does not start new software or manuscript implementation.
+demonstration and methods-manuscript readiness path. Stage 7.0 is complete as a
+planning-freeze phase through the source register, baseline inventory, dataset
+rubric, artifact map, and gate report. It does not start new software,
+biological analysis, or manuscript implementation.

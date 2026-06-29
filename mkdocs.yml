@@ -16,5 +16,9 @@ nav:
   - Clean-room reproducibility: clean_room_reproducibility.md
   - Final release hardening: final_release_hardening.md
   - Stage 7 methods program: stage7_methods_program.md
+  - Stage 7.0 source register: stage7_0_source_register.md
+  - Stage 7.0 baseline inventory: stage7_0_baseline_method_inventory.md
+  - Stage 7.0 dataset rubric: stage7_0_dataset_selection_rubric.md
+  - Stage 7.0 artifact map: stage7_0_artifact_map.md
   - Stage 7 execution plan: stage7_serialized_execution_plan.md
   - Release checklist: release_checklist.md

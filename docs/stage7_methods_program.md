@@ -62,6 +62,18 @@ These strengths support Stage 7 entry. They do not yet satisfy Stage 7 readiness
 | Medium | Documentation lacks a methods-paper limitations matrix. | Failure modes increase trust and prevent overclaiming. | Interpretation guide contains scientific boundaries. | Stage 7.1 and 7.8 must produce a limitations table tied to each method component. |
 | Future enhancement | Commercial product alignment is intentionally deferred. | Product claims should not lead scientific evidence. | Stage 8 is conceptual only. | Stage 8 remains downstream until Stage 7 demonstrates method generality. |
 
+## Stage 7.0 planning-freeze outputs
+
+Stage 7.0 has now been executed as a planning-only phase. It created the source register, baseline-method inventory, dataset selection rubric, artifact map, and gate report required to begin the Stage 7 program without starting analysis implementation.
+
+- `docs/stage7_0_source_register.md` records official guidance, representative methods papers, current RhoDyn state, and candidate dataset classes.
+- `docs/stage7_0_baseline_method_inventory.md` records amplitude, endpoint, threshold, generic trajectory, domain-standard, null-control, and method-ablation comparators.
+- `docs/stage7_0_dataset_selection_rubric.md` records inclusion, rejection, scoring, and fallback rules for future datasets.
+- `docs/stage7_0_artifact_map.md` distinguishes created planning artifacts from future analysis, software, and manuscript-support artifacts.
+- `docs/stage7_0_gate_report.json` records prerequisite and completion status for the planning-freeze phase.
+
+Stage 7.0 does not add biological analyses, benchmark code, public-data adapters, manuscript text, figures, or product features. Stage 7.1 remains the next phase and requires explicit authorization.
+
 ## Stage 7 architecture
 
 Stage 7 is a sequential program. Each subphase must close before the next begins unless the stated contingency route is activated.

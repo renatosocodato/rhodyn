@@ -1,0 +1,53 @@
+{
+  "completion_state": "complete_planning_only",
+  "created_planning_artifacts": [
+    "docs/stage7_0_source_register.md",
+    "docs/stage7_0_baseline_method_inventory.md",
+    "docs/stage7_0_dataset_selection_rubric.md",
+    "docs/stage7_0_artifact_map.md",
+    "docs/stage7_0_gate_report.json"
+  ],
+  "generated_utc": "2026-06-29T15:31:01.355338Z",
+  "manuscript_drafting_started": false,
+  "next_phase": "Stage 7.1 Formal method definition and assumption ledger",
+  "next_phase_authorization_required": true,
+  "prerequisites": {
+    "github_repository_public": {
+      "evidence": "gh repo view renatosocodato/rhodyn reports visibility PUBLIC",
+      "status": "pass"
+    },
+    "public_release_integrity": {
+      "status": "pass"
+    },
+    "stage3_gate_report": {
+      "status": "pass"
+    },
+    "stage4_contract_files": {
+      "files": [
+        "api/stage4/openapi.json",
+        "api/stage4/frontend_contract.json"
+      ],
+      "status": "pass"
+    },
+    "stage5_closeout": {
+      "file": "docs/stage5_closeout.md",
+      "status": "pass"
+    },
+    "zenodo_release_resolves": {
+      "conceptdoi": "10.5281/zenodo.21036615",
+      "doi": "10.5281/zenodo.21036616",
+      "status": "pass"
+    }
+  },
+  "report_format": "rhodyn.stage7_0_gate_report.v1",
+  "scientific_implementation_started": false,
+  "software_implementation_started": false,
+  "stage": "7.0",
+  "stage_label": "Planning freeze and evidence source register",
+  "status": "pass",
+  "validation_checkpoints": {
+    "artifact_map_distinguishes_planning_outputs_from_future_analysis_outputs": "pass",
+    "dataset_rubric_rejects_missing_metadata_time_grouping_or_reviewable_access": "pass",
+    "source_register_contains_guidance_and_methods_papers": "pass"
+  }
+}
