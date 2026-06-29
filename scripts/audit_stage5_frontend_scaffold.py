@@ -154,6 +154,26 @@ def audit_stage5_frontend_scaffold(root: Path = ROOT) -> dict[str, Any]:
         token in index + app_js
         for token in ["Simulation workbench", "simulationPreset", "simulateControllerLocal", "renderSimulationWorkbench", "rhodyn simulate"]
     )
+    checks["frontend_exposes_polished_operation_views"] = all(
+        token in index + app_js
+        for token in [
+            "residenceVisual",
+            "couplingVisual",
+            "reserveVisual",
+            "modelVisual",
+            "renderAnalysisDestination",
+            "renderAnalysisPlaceholders",
+            "data-operation-jump",
+        ]
+    )
+    checks["frontend_exposes_navigation_and_action_state"] = all(
+        token in index + app_js
+        for token in ["skip-link", "aria-current", "initScreenNavigation", "updateActionControls", "disabled"]
+    )
+    checks["frontend_keeps_simulation_report_separate"] = all(
+        token in index + app_js
+        for token in ["simulationPinButton", "pinSimulationToReport", "simulate_controller_local", "local simulation pinned to report"]
+    )
     checks["frontend_not_marketing_hero"] = "hero" not in index.lower() and "hero" not in (root / "frontend/stage5/styles.css").read_text(encoding="utf-8").lower()
     checks["frontend_uses_local_upload_preflight"] = "localValidationIssues" in app_js and "Load a CSV table" in app_js
     checks["docs_state_stage4_frozen"] = "Stage 4 API contract is frozen" in closeout_doc

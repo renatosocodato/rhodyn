@@ -22,6 +22,33 @@ const state = {
   lastSimulation: null
 };
 
+const ANALYSIS_DESTINATIONS = {
+  score_residence: {
+    visual: "residenceVisual",
+    summary: "residenceSummary",
+    title: "Residence output waiting",
+    text: "Run a residence-window operation to populate the ranked trajectory view."
+  },
+  decide_coupling: {
+    visual: "couplingVisual",
+    summary: "couplingSummary",
+    title: "Coupling output waiting",
+    text: "Run a coupling or equivalence operation to populate interval and margin summaries."
+  },
+  summarize_reserve: {
+    visual: "reserveVisual",
+    summary: "reserveSummary",
+    title: "Reserve output waiting",
+    text: "Run a reserve-buffering operation to populate reserve ranking and peak response summaries."
+  },
+  compare_models: {
+    visual: "modelVisual",
+    summary: "modelSummary",
+    title: "Model output waiting",
+    text: "Run a reduced-architecture comparison to populate the BIC ranking surface."
+  }
+};
+
 const $ = (id) => document.getElementById(id);
 
 function headers() {
@@ -34,7 +61,7 @@ function apiBase() {
 }
 
 function operationById(id) {
-  return state.contract.operations.find((item) => item.operation_id === id);
+  return state.contract?.operations.find((item) => item.operation_id === id) || null;
 }
 
 function schemaForOperation(operation) {
@@ -70,12 +97,12 @@ function flattenValue(value) {
 }
 
 function resultOperation(payload = state.lastResult) {
-  return payload?.job?.operation || state.operation?.upload_operation || "";
+  return payload?.job?.operation || payload?.operation || state.operation?.upload_operation || "";
 }
 
 function resultRows(payload = state.lastResult) {
   if (!payload) return [];
-  for (const key of ["summaries", "fits", "decisions", "records", "typed_results"]) {
+  for (const key of ["summaries", "fits", "decisions", "records", "typed_results", "rows"]) {
     if (Array.isArray(payload[key])) return payload[key];
   }
   if (payload.typed_result && typeof payload.typed_result === "object") return [payload.typed_result];
@@ -403,10 +430,16 @@ function localValidationIssues() {
   return schema.required.filter((field) => !fields.has(field)).map((field) => `Missing required column: ${field}`);
 }
 
+function updateActionControls(issues = localValidationIssues()) {
+  const ready = issues.length === 0;
+  ["runButton", "submitButton", "bundleButton"].forEach((id) => { $(id).disabled = !ready; });
+}
+
 function updateValidationState() {
   const issues = localValidationIssues();
   $("validationState").className = issues.length ? "status-bad" : "status-good";
   $("validationState").textContent = issues.length ? issues.join("; ") : "Local schema check passed for the selected operation.";
+  updateActionControls(issues);
 }
 
 function statusChip(label, passed = true) {
@@ -428,6 +461,24 @@ function resultTable(rows, columns) {
     </div>
   `;
 }
+function emptyAnalysisPanel(title, text) {
+  return `<div class="empty-state"><strong>${escapeHtml(title)}</strong><p>${escapeHtml(text)}</p></div>`;
+}
+
+function renderAnalysisPlaceholders() {
+  for (const destination of Object.values(ANALYSIS_DESTINATIONS)) {
+    $(destination.visual).innerHTML = emptyAnalysisPanel(destination.title, destination.text);
+    $(destination.summary).textContent = "No result loaded.";
+  }
+}
+
+function renderAnalysisDestination(operation, payload, text) {
+  const destination = ANALYSIS_DESTINATIONS[operation];
+  if (!destination) return;
+  $(destination.visual).innerHTML = renderResultVisualMarkup(payload);
+  $(destination.summary).textContent = text;
+}
+
 
 function comparisonSuite({ title, subtitle, cards, plot = "", table = "", note = "" }) {
   return `
@@ -605,11 +656,7 @@ function renderModelComparison(payload) {
   });
 }
 
-function renderResultVisual(payload) {
-  if (!payload) {
-    $("resultVisual").innerHTML = "";
-    return;
-  }
+function renderResultVisualMarkup(payload) {
   const operation = resultOperation(payload);
   const job = payload.job || {};
   const rows = resultRows(payload);
@@ -633,6 +680,27 @@ function renderResultVisual(payload) {
     detail = renderReserveComparison(payload);
   } else if (operation === "compare_models") {
     detail = renderModelComparison(payload);
+  } else if (operation === "simulate_controller_local") {
+    const summary = payload.summary || {};
+    const params = payload.parameters || {};
+    detail = comparisonSuite({
+      title: "Simulation preview",
+      subtitle: "Deterministic controller trajectories are shown for the declared parameter set.",
+      cards: [
+        metricCard("Preset", payload.preset || "-"),
+        metricCard("Rows", String(payload.rows?.length || 0)),
+        metricCard("Residence", fmt(Number(summary.residence_fraction))),
+        metricCard("Peak burden", fmt(Number(summary.peak_burden)))
+      ],
+      table: resultTable((payload.rows || []).slice(0, 12), [
+        { label: "Time", format: (row) => fmt(Number(row.time)) },
+        { label: "RhoA", format: (row) => fmt(Number(row.rhoa)) },
+        { label: "Src", format: (row) => fmt(Number(row.src)) },
+        { label: "Reserve", format: (row) => fmt(Number(row.reserve)) },
+        { label: "Burden", format: (row) => fmt(Number(row.burden)) }
+      ]),
+      note: `Simulation is parameter-declared and deterministic; burden threshold ${fmt(Number(params.burden_threshold))}.`
+    });
   } else if (operation === "validate") {
     const issues = payload.issues || [];
     detail = comparisonSuite({
@@ -649,18 +717,20 @@ function renderResultVisual(payload) {
       plot: `<pre class="markdown-preview">${escapeHtml(payload.markdown || "")}</pre>`
     });
   }
-  $("resultVisual").innerHTML = detail;
+  return detail;
+}
+
+function renderResultVisual(payload) {
+  $("resultVisual").innerHTML = payload ? renderResultVisualMarkup(payload) : "";
 }
 
 function assignResult(payload) {
   state.lastResult = payload;
   const text = compactJson(payload);
+  const operation = resultOperation(payload);
   $("resultPanel").textContent = text;
   renderResultVisual(payload);
-  $("residenceSummary").textContent = operationById("score_residence") === state.operation ? text : $("residenceSummary").textContent;
-  $("couplingSummary").textContent = operationById("decide_coupling") === state.operation ? text : $("couplingSummary").textContent;
-  $("reserveSummary").textContent = operationById("summarize_reserve") === state.operation ? text : $("reserveSummary").textContent;
-  $("modelSummary").textContent = operationById("compare_models") === state.operation ? text : $("modelSummary").textContent;
+  renderAnalysisDestination(operation, payload, text);
 }
 
 async function loadCsvFromPath(path, label) {
@@ -1000,6 +1070,7 @@ function renderSimulationWorkbench(payload) {
   const summary = payload.summary;
   const firstPassageText = summary.burden_first_passage === null ? "not reached" : `${fmt(summary.burden_first_passage)} time units`;
   $("simulationState").textContent = `${payload.rows.length} simulated points; ${payload.preset}`;
+  $("simulationPresetDescription").textContent = payload.preset_description;
   $("simulationMetrics").innerHTML = [
     metricCard("Residence fraction", fmt(summary.residence_fraction), `${fmt(summary.residence_time)} time units inside the RhoA window`),
     metricCard("Peak burden", fmt(summary.peak_burden), `threshold ${fmt(payload.parameters.burden_threshold)}`),
@@ -1019,9 +1090,13 @@ function runSimulationWorkbench() {
   const payload = simulationPayload(rows, params, $("simulationPreset").value);
   state.lastSimulation = payload;
   renderSimulationWorkbench(payload);
-  $("resultPanel").textContent = compactJson(payload);
-  $("jobState").textContent = "local deterministic simulation preview";
   return payload;
+}
+
+function pinSimulationToReport() {
+  if (!state.lastSimulation) runSimulationWorkbench();
+  assignResult(state.lastSimulation);
+  $("jobState").textContent = "local simulation pinned to report";
 }
 
 function simulationMarkdown() {
@@ -1054,6 +1129,43 @@ function exportSimulationMarkdown() {
   downloadText("rhodyn_simulation_workbench.md", simulationMarkdown(), "text/markdown");
 }
 
+function setActiveScreen(screenId) {
+  document.querySelectorAll("[data-screen-link]").forEach((link) => {
+    const active = link.getAttribute("href") === `#${screenId}`;
+    if (active) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  });
+}
+
+function activeScreenFromScroll() {
+  const sections = Array.from(document.querySelectorAll("[data-screen]"));
+  let active = sections[0];
+  for (const section of sections) {
+    if (section.getBoundingClientRect().top <= 120) active = section;
+  }
+  if (active?.id) setActiveScreen(active.id);
+}
+
+function initScreenNavigation() {
+  document.querySelectorAll("[data-screen]").forEach((section) => section.setAttribute("tabindex", "-1"));
+  document.querySelectorAll("[data-screen-link]").forEach((link) => {
+    link.addEventListener("click", () => setActiveScreen(link.getAttribute("href").slice(1)));
+  });
+  window.addEventListener("scroll", activeScreenFromScroll, { passive: true });
+  window.addEventListener("hashchange", () => setActiveScreen((window.location.hash || "#dashboard").slice(1)));
+  setActiveScreen((window.location.hash || "#dashboard").slice(1));
+  requestAnimationFrame(activeScreenFromScroll);
+}
+
+function prepareOperation(operationId) {
+  const operation = operationById(operationId);
+  if (!operation) return;
+  $("operationSelect").value = operation.operation_id;
+  renderParameters(operation);
+  window.location.hash = "upload";
+  $("sampleButton").focus();
+}
+
 window.__RHODYN_STAGE5_SIM__ = { simulateControllerLocal, windowGateLocal, SIMULATION_DEFAULTS };
 
 $("operationSelect").addEventListener("change", (event) => renderParameters(operationById(event.target.value)));
@@ -1079,6 +1191,9 @@ $("downloadJsonButton").addEventListener("click", () => { try { exportJson(); } 
 $("downloadCsvButton").addEventListener("click", () => { try { exportCsv(); } catch (error) { $("jobState").textContent = error.message; } });
 $("downloadMarkdownButton").addEventListener("click", () => { try { exportMarkdown(); } catch (error) { $("jobState").textContent = error.message; } });
 $("copyJsonButton").addEventListener("click", () => copyJson().catch((error) => { $("jobState").textContent = error.message; }));
+document.querySelectorAll("[data-operation-jump]").forEach((button) => {
+  button.addEventListener("click", () => prepareOperation(button.dataset.operationJump));
+});
 
 $("simulationPreset").addEventListener("change", () => { setSimulationParameters(SIMULATION_PRESETS[$("simulationPreset").value].values); runSimulationWorkbench(); });
 $("simulationRunButton").addEventListener("click", () => { try { runSimulationWorkbench(); } catch (error) { $("simulationState").textContent = error.message; } });
@@ -1087,12 +1202,16 @@ $("simulationParameterPanel").addEventListener("input", () => { try { runSimulat
 $("simulationDuration").addEventListener("input", () => { try { runSimulationWorkbench(); } catch (error) { $("simulationState").textContent = error.message; } });
 $("simulationDt").addEventListener("input", () => { try { runSimulationWorkbench(); } catch (error) { $("simulationState").textContent = error.message; } });
 $("simulationBurdenThreshold").addEventListener("input", () => { try { runSimulationWorkbench(); } catch (error) { $("simulationState").textContent = error.message; } });
+$("simulationPinButton").addEventListener("click", () => { try { pinSimulationToReport(); } catch (error) { $("simulationState").textContent = error.message; } });
 $("simulationExportJsonButton").addEventListener("click", () => { try { exportSimulationJson(); } catch (error) { $("simulationState").textContent = error.message; } });
 $("simulationExportCsvButton").addEventListener("click", () => { try { exportSimulationCsv(); } catch (error) { $("simulationState").textContent = error.message; } });
 $("simulationExportMarkdownButton").addEventListener("click", () => { try { exportSimulationMarkdown(); } catch (error) { $("simulationState").textContent = error.message; } });
 
+renderAnalysisPlaceholders();
+initScreenNavigation();
 renderSimulationControls();
 runSimulationWorkbench();
+updateActionControls();
 
 loadContract().catch((error) => {
   $("contractBadge").textContent = "contract unavailable";

@@ -114,3 +114,8 @@ parameter provenance, and checksums.
 The frontend must consume the frozen Stage 4 contract rather than hard-coding a new biological or analytical surface. New screens may rearrange upload, visualization, parameter inspection, and export workflows, but any new backend route, new algorithm, new public biological system, or new release surface belongs to the relevant roadmap stage before it belongs in this scaffold.
 
 This scaffold does not add new biological systems, algorithms, manuscript interpretation, or product/commercial claims.
+
+
+## Final UI and UX polish pass
+
+The final Stage 5 polish pass makes the workbench feel coherent across screens rather than only inside the report builder. The sidebar now exposes active screen state, run and submit controls are disabled until local table checks pass, and the Residence, Coupling, Reserve, and Models screens render the same polished comparison surfaces used by the report view. Simulation remains separated from submitted analysis by default and can be pinned to the report only by explicit user action. These changes are presentation and workflow improvements only. They do not change Stage 4 routes, backend calculations, submitted payloads, model outputs, or biological interpretation.

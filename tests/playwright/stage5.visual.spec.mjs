@@ -138,6 +138,40 @@ test.describe('Stage 5 comparison-suite screenshots', () => {
 });
 
 
+test('navigation and action states stay coherent after polish', async ({ page }) => {
+  await openWorkbench(page);
+  await expect(page.getByRole('link', { name: 'Dashboard' })).toHaveAttribute('aria-current', 'page');
+  await expect(page.locator('#runButton')).toBeDisabled();
+  await expect(page.locator('#jobState')).toHaveText('no job submitted');
+  await expect(page.locator('#resultPanel')).not.toContainText('simulate_controller_local');
+
+  await page.getByRole('link', { name: 'Simulation' }).click();
+  await expect(page.getByRole('link', { name: 'Simulation' })).toHaveAttribute('aria-current', 'page');
+  await page.locator('#simulationPinButton').click();
+  await expect(page.locator('#jobState')).toContainText('simulation pinned');
+  await expect(page.locator('#resultVisual')).toContainText('Simulation preview');
+  await expect(page.locator('#resultPanel')).toContainText('simulate_controller_local');
+  await expectNoUnsafeText(page.locator('#simulation'));
+  await expectNoDocumentOverflow(page);
+});
+
+test('operation-specific panels accept polished results', async ({ page }) => {
+  await openWorkbench(page);
+  await page.getByRole('link', { name: 'Residence' }).click();
+  await expect(page.locator('#residenceVisual')).toContainText('Residence output waiting');
+  await page.locator('[data-operation-jump="score_residence"]').click();
+  await expect(page.locator('#operationSelect')).toHaveValue('score_residence');
+  await expect(page.locator('#runButton')).toBeDisabled();
+  await page.getByRole('button', { name: 'Load example' }).click();
+  await expect(page.locator('#runButton')).toBeEnabled();
+  await page.locator('#runButton').click();
+  await expect(page.locator('#residenceVisual .comparison-suite')).toBeVisible();
+  await expect(page.locator('#residenceVisual')).toContainText('Residence-window comparison');
+  await expect(page.locator('#residenceSummary')).toContainText('"status": "pass"');
+  await expectNoUnsafeText(page.locator('#residenceVisual'));
+  await expectNoDocumentOverflow(page);
+});
+
 test('simulation workbench mirrors the deterministic controller and stays readable', async ({ page }) => {
   await openWorkbench(page);
   await page.getByRole('link', { name: 'Simulation' }).click();

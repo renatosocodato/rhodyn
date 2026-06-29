@@ -41,6 +41,10 @@ REQUIRED_CSS_TOKENS = [
     "margin-axis",
     "simulation-layout",
     "sim-trace",
+    "skip-link",
+    "empty-state",
+    "compact-action",
+    "simulation-preset-description",
 ]
 REQUIRED_SPEC_TOKENS = [
     "toHaveScreenshot",
@@ -51,6 +55,8 @@ REQUIRED_SPEC_TOKENS = [
     "does not identify every molecular edge",
     "simulation workbench mirrors",
     "rhodyn simulate",
+    "operation-specific panels accept polished results",
+    "navigation and action states stay coherent",
 ]
 SNAPSHOT_CASES = [
     "stage5-adversarial-coupling",

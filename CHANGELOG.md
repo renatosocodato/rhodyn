@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Polished the Stage 5 workbench across screens with active navigation, disabled run controls until local validation passes, operation-specific result panels, and explicit simulation-to-report separation.
 Started:
 
 - CTC-style public live-cell tracking adapter for the MLCI benchmark tutorial;

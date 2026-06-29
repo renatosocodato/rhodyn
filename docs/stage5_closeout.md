@@ -5,6 +5,7 @@ Stage 5 status. Completed.
 Completed date. 2026-06-29.
 
 Simulation UX repair date. 2026-06-29.
+Final UI and UX polish date. 2026-06-29.
 
 Stage 6 handoff. Active.
 
@@ -33,7 +34,7 @@ Stage 5 built and hardened the contract-bound RhoDyn scientific workbench around
 
 ## Non-blocking technical debt
 
-No blocking Stage 5 technical debt remains. Remaining work belongs to Stage 6 because it concerns public release surfaces rather than frontend hardening. Those items include PyPI packaging, Docker release hygiene, Zenodo release metadata, documentation-site buildout, citation metadata, release archive scanning, and cross-version CI.
+No blocking Stage 5 technical debt remains. The simulation UX and cross-screen polish pass are included in this closure state. Remaining work belongs to Stage 6 because it concerns public release surfaces rather than frontend hardening. Those items include PyPI packaging, Docker release hygiene, Zenodo release metadata, documentation-site buildout, citation metadata, release archive scanning, and cross-version CI.
 
 ## Closeout rationale
 
