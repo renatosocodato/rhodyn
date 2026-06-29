@@ -27,7 +27,8 @@ the v0.3 Stage 3 evidence bank is closed for the current gate, the Stage 4 API
 contract is frozen, Stage 5 is completed as a contract-bound scientific
 workbench with a narrow simulation UX repair, and Stage 6 has produced a
 publicly citable `v0.1.0` GitHub and Zenodo software release while PyPI remains
-a future distribution decision.
+a future distribution decision. Stage 7 is now defined as a planning-complete
+methods-program roadmap, with implementation not yet started.
 
 ## Execution memory
 
@@ -51,12 +52,13 @@ passes.
    surface covers uploaded-table jobs, reproducible exports, parameter
    inspection, operation-specific comparison panels, simulation parameter exploration, and
    browser regression around the frozen Stage 4 contract.
-4. Stage 6 is the active release-hardening stage. RhoDyn `v0.1.0` is now
-   professionally citable through the GitHub release archive and Zenodo DOI;
-   PyPI remains a future distribution decision and should not be implied.
-5. Stage 7 is the future Nature Methods-first scientific-methods campaign. It
-   is not a rebranding of the RhoA/microglia manuscript and not a replacement
-   for Stage 3.
+4. Stage 6 has produced a professionally citable RhoDyn `v0.1.0` GitHub
+   release archive and Zenodo DOI; PyPI remains a future distribution decision
+   and should not be implied.
+5. Stage 7 is roadmap-defined but not implemented. It is an independent
+   biological demonstration and methods-manuscript readiness program aligned to
+   standards exemplified by strong computational methods papers, with Nature
+   Methods as the primary reference point rather than a guaranteed formula.
 6. Stage 8 inherits from Stage 7. Product strategy should not lead or reshape
    the evidence path.
 
@@ -81,8 +83,8 @@ as roadmap work.
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
 | Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract, exposes the existing deterministic simulation surface, and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
-| Stage 7. Nature Methods first | Not ready. | Treat this as a later scientific-methods campaign, not as a rebranding of the RhoA/microglia manuscript or the Stage 3 examples. |
-| Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Nature Methods framing and should not lead the scientific evidence path. |
+| Stage 7. Independent methods-program roadmap | Roadmap defined, implementation not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
+| Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
 
 ## Non-drift principles
 
@@ -95,8 +97,10 @@ as roadmap work.
   routed outputs reveal beyond amplitude-only summaries.
 - Product and interface work should not outrun the evidence bank.
 - Stage 5 frontend work must consume the frozen Stage 4 API contract.
-- Nature Methods remains the first high-impact scientific-methods target once
-  the evidence gate is met.
+- Nature Methods remains the primary reference point for a future methods
+  manuscript once the Stage 7 evidence gate is met, but the project should align
+  to standards exemplified by strong methodology papers rather than overfitting
+  to a venue.
 
 ## Stage 3. Case-study evidence bank
 
@@ -351,69 +355,106 @@ parity, Docker parity, PyPI dry run, Zenodo dry run, clean-room
 reproducibility, and frontend/backend output parity. Gate. All official release
 surfaces pass together.
 
-## Stage 7. Nature Methods first
+## Stage 7. Independent biological demonstration and methods manuscript roadmap
 
-Goal. Build the main scientific-methods campaign.
+Goal. Build the independent biological validation and methods-platform maturity
+program needed before RhoDyn can support a high-impact computational methods
+manuscript.
 
-Nature Methods framing.
+Planning stance.
 
-RhoDyn is a computational method for detecting dynamic control regimes in
-live-cell perturbation biology, where cell state depends on dwell time,
-buffering, and routed output structure rather than endpoint amplitude.
+RhoDyn should align to standards exemplified by strong computational methods
+papers. Nature Methods is the primary reference point for rigor, biological
+breadth, software maturity, reproducibility, and methodological clarity, but the
+roadmap does not assume that any venue has a formula for acceptance.
 
-The Nature Methods paper should not be software for the RhoA paper. The core
-paper-level claim should be:
+Core methods-program claim to test.
 
-Residence-state inference reveals hidden dynamic control variables in live-cell
-perturbation data.
+Residence-state inference can reveal dynamic control variables in live-cell
+perturbation data when cell state depends on dwell time, buffering, routed
+output structure, and bounded coupling rather than endpoint amplitude alone.
 
-Required evidence.
+Detailed planning surfaces.
 
-- Formal method definition.
-- Clear mathematical model.
-- Benchmark against amplitude-only, endpoint-only, threshold-only, and generic
-  time-series summaries.
-- Multiple biological systems.
-- Robust uncertainty handling.
-- Practical software implementation.
-- Usability proof through tutorials and GUI or hosted demo.
-- Strong limitations section.
+- `docs/stage7_methods_program.md` records the evidence-based editorial
+  reconnaissance, gap analysis, Stage 7 architecture, biological demonstration
+  strategy, software maturity roadmap, and publication alignment roadmap.
+- `docs/stage7_serialized_execution_plan.md` records the strictly ordered future
+  execution plan for Stage 7 subphases.
 
-Figure plan.
+Subphase horizon.
 
-1. Method concept and workflow.
-2. Synthetic benchmarking across known regimes.
-3. Public live-cell signaling benchmark.
-4. RhoA/microglia case study as biological depth.
-5. Cross-system generalization.
-6. Software workbench and reproducibility architecture.
+7.0 Planning freeze and evidence source register. Freeze Stage 7 as a methods
+program and define source guidance, candidate datasets, baselines, and artifact
+maps. Gate. No implementation begins until the source register, dataset rubric,
+and artifact map are approved.
 
-Primary target. Nature Methods.
+7.1 Formal method definition and assumption ledger. Define residence-state
+inference, bounded coupling, reserve-like summaries, routed-output comparison,
+uncertainty, and failure modes as formal method objects. Gate. Every method
+claim has an executable example and counterexample.
+
+7.2 Benchmark harness against baselines and alternatives. Compare RhoDyn against
+amplitude-only, endpoint-only, threshold-only, generic trajectory, and reduced
+architecture alternatives. Gate. Benchmarks show value-added, no-added-value,
+and inconclusive regimes with runtime, uncertainty, and sensitivity evidence.
+
+7.3 Independent public live-cell signaling demonstrations. Add public biological
+systems that stress residence-versus-amplitude behavior outside the
+RhoA/microglia manuscript. Gate. At least two independent public systems beyond
+the original manuscript logic pass reproducibility and interpretation checks.
+
+7.4 Perturbation endpoint, reserve, and routed-output demonstrations. Test
+bounded coupling, reserve-like buffering, and routed-output model comparison in
+non-trajectory or multi-readout cases. Gate. At least one case supports bounded
+coupling, reserve logic, or routed-output interpretation without overclaiming
+mechanism.
+
+7.5 External or held-out biological validation. Run RhoDyn on a collaborator or
+held-out dataset under predeclared criteria. Gate. Success, failure, or
+inconclusive outcome is reported without hidden tuning.
+
+7.6 Software maturity for methods-paper reproducibility. Harden APIs,
+documentation, examples, CI, notebooks, Docker, benchmark fixtures, and clean-room
+reproduction for the methods evidence set. Gate. A fresh environment reproduces
+planned benchmark tables, reports, and tutorials.
+
+7.7 Usability and adoption rehearsal. Test whether biological and quantitative
+users can run and interpret RhoDyn results through tutorials and the workbench.
+Gate. Biologist-facing interpretation and quantitative CLI/Python reproduction
+both pass without adding unvalidated analysis routes.
+
+7.8 Methods manuscript readiness package. Assemble the figure-to-artifact,
+claim-to-evidence, reproducibility, limitations, and release-candidate surfaces
+needed before manuscript drafting. Gate. Every planned manuscript component maps
+to a reproducible output and documented limitation.
+
+Primary reference venue. Nature Methods, if the completed evidence demonstrates
+methodological novelty, biological breadth, benchmark rigor, and software
+maturity.
 
 Strong pivots.
 
-- Nature Biotechnology, if the product/workbench becomes broadly enabling.
-- Nature Computational Science, if the computational method dominates.
-- Cell Systems, if the dynamic systems biology story is strongest.
+- Nature Biotechnology, if the workbench becomes broadly enabling for
+  perturbation biology and screening.
+- Nature Computational Science, if the computational method and benchmark theory
+  dominate.
+- Cell Systems, if the dynamic systems-biology story is strongest.
 - Science Advances, if generality is broad but method novelty is less
   platform-level.
-- PLOS Computational Biology or Bioinformatics Advances as safer
-  software-methods venues.
-- JOSS only for software credit, not as the main high-impact target.
+- PLOS Computational Biology, Bioinformatics Advances, or JOSS only if the
+  evidence shape supports a software-methods or software-credit route rather
+  than the primary high-impact methods claim.
 
-Gate.
-
-Do not submit until RhoDyn has at least two independent biological
-demonstrations beyond the original manuscript logic.
-
-Status. Not ready. The v0.3 evidence bank now supports method development, but
-Nature Methods readiness still requires a broader formal methods campaign and
-at least two independent biological demonstrations beyond the original
-manuscript logic.
+Status. Roadmap defined, implementation not started. The v0.3 evidence bank and
+v0.1.0 release support entry into Stage 7 planning, but methods-manuscript
+readiness still requires formal method specification, broader benchmarks,
+independent biological demonstrations, held-out validation, software maturity,
+and usability evidence.
 
 ## Stage 8. Product and commercial alignment
 
-Goal. Let product development inherit the Nature Methods framing.
+Goal. Let product development inherit the Stage 7 methods-program evidence.
 
 Open-core.
 
@@ -450,7 +491,8 @@ Many labs collect time-lapse signaling data but reduce it to endpoints. RhoDyn
 sells the missing layer, dynamic operating-state interpretation.
 
 Status. Conceptual only. Commercial buildout should not lead the scientific
-evidence path. Stage 8 inherits from Stage 7, and Stage 7 depends on Stage 3.
+evidence path. Stage 8 inherits from Stage 7, and Stage 7 depends on the Stage 3
+evidence bank plus the Stage 7 independent-demonstration program.
 
 ## Immediate next path
 
@@ -460,13 +502,13 @@ sequence.
 1. Treat the v0.3 Stage 3 evidence bank and its gate report as the reference
    public case-study surface.
 2. Treat Stage 5 as closed unless a documented frontend defect is found.
-3. Execute Stage 6 by hardening the official software release surfaces, including
-   PyPI packaging, Docker, Zenodo release metadata, documentation, citation
-   files, archive scans, and cross-version CI.
-4. For the Nature Methods trajectory, expand evidence through additional
-   independent public systems only as Stage 7 method-evidence work, not as a
-   rebranding of the RhoA/microglia paper or a substitute for the Stage 3 gate.
+3. Treat Stage 6 as publicly citable through GitHub and Zenodo while keeping
+   PyPI as a future distribution decision.
+4. Execute Stage 7 only from the serialized plan in
+   `docs/stage7_serialized_execution_plan.md`. Additional independent biological
+   systems are Stage 7 method-evidence work, not a rebranding of the
+   RhoA/microglia paper or a substitute for the Stage 3 gate.
 
 Official release work now sits downstream of the evidence bank, frozen service
-contract, and completed Stage 5 workbench. Nature Methods and product work remain
-later stages rather than replacements for the current Stage 6 release gate.
+contract, and completed Stage 5 workbench. Stage 7 is roadmap-defined but not
+implemented, and product work remains downstream of Stage 7 evidence.

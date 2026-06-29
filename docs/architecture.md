@@ -4,10 +4,12 @@ RhoDyn separates reusable dynamic-state analysis from manuscript-specific
 biological interpretation.
 
 The staged scientific and product roadmap is anchored in `docs/roadmap.md`.
-The current architecture should keep the Stage 3 evidence bank frozen while
-Stage 4 turns those stable analysis surfaces into a backend service. Frontend,
-official release, Nature Methods, and commercial product buildout remain
-downstream of the backend contract.
+The current architecture keeps the Stage 3 evidence bank frozen, preserves
+the Stage 4 service contract, and treats the Stage 5 workbench plus Stage 6
+public release as completed foundations. Stage 7 is now a roadmap-defined
+methods-program layer for independent biological demonstrations, benchmark
+expansion, software maturity, and future methods-manuscript readiness. Stage 8
+commercial product work remains downstream of Stage 7 evidence.
 
 ## Core layers
 
@@ -104,7 +106,9 @@ downstream of the backend contract.
 - manuscript figure composition;
 - disease-specific claims;
 - private data adapters;
-- dashboard or hosted analysis beyond the first stateless FastAPI service.
+- dashboard or hosted analysis beyond the first stateless FastAPI service;
+- Stage 7 biological demonstrations before they are explicitly selected by the
+  Stage 7 dataset rubric.
 
 ## Stage 4 to Stage 5 boundary
 
@@ -117,3 +121,11 @@ add backend routes, biological systems, algorithms, or release surfaces.
 Regenerate the contract only with `scripts/freeze_stage4_api_contract.py`, then
 run `scripts/audit_stage5_frontend_scaffold.py` before changing frontend
 behavior.
+
+## Stage 7 boundary
+
+The Stage 7 planning surfaces live in `docs/stage7_methods_program.md` and
+`docs/stage7_serialized_execution_plan.md`. They do not change the core API by
+themselves. Future Stage 7 implementation may add adapters, benchmarks,
+reproducibility fixtures, or usability evidence only after the relevant subphase
+gate is authorized.

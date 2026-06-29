@@ -76,6 +76,8 @@ REQUIRED_FILES = [
     "docs/stage4_closeout.md",
     "docs/stage5_frontend.md",
     "docs/stage5_closeout.md",
+    "docs/stage7_serialized_execution_plan.md",
+    "docs/stage7_methods_program.md",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
@@ -179,8 +181,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 6. Official software release":
-            failures.append("roadmap execution memory does not mark Stage 6 as the active stage")
+        if current.get("active_stage") != "Stage 7. Independent methods-program roadmap":
+            failures.append("roadmap execution memory does not mark Stage 7 roadmap planning as the active stage")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -190,8 +192,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 5 completed")
         if stages.get(6, {}).get("status") != "public_citable_v0.1.0":
             failures.append("roadmap execution memory does not mark Stage 6 as public_citable_v0.1.0")
-        if stages.get(7, {}).get("status") != "not_ready":
-            failures.append("roadmap execution memory does not keep Stage 7 as not ready")
+        if stages.get(7, {}).get("status") != "roadmap_defined_not_started":
+            failures.append("roadmap execution memory does not mark Stage 7 as roadmap_defined_not_started")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
     if gate_path.exists():

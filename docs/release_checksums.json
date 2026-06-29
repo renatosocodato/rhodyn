@@ -1,5 +1,5 @@
 {
-  "file_count": 210,
+  "file_count": 206,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -363,17 +363,17 @@
     },
     {
       "path": "docs/architecture.md",
-      "sha256": "445d961ba8a7ae74fa75f035ba784c3ea48094334e25ff5d2ef83136b0fe076d",
-      "size_bytes": 5416
+      "sha256": "feaa31911b43c8a9110e0df7fea7f1ff6c52d24f9011a06ca1fb49fe050cd8e4",
+      "size_bytes": 6049
     },
     {
       "path": "docs/broken_link_scan_report.json",
-      "sha256": "b3b21beaf094f71900c6227b836bb22ef1d527e7687617b8153b3681d3599ccf",
-      "size_bytes": 11575
+      "sha256": "e42f909bc60406fb655e1bdfe3d8bdf9d1dba1b22ddd253198d688de33aabac2",
+      "size_bytes": 13374
     },
     {
       "path": "docs/broken_link_scan_report.md",
-      "sha256": "d155ca35ab7f4920d254d763e239426eb604a45759095cf8fcd3a5fd5d778d32",
+      "sha256": "ca712009f3f22651a9d2a084c40e89e6dbc7ba5bce782e2e3c40172f14983d49",
       "size_bytes": 153
     },
     {
@@ -438,8 +438,8 @@
     },
     {
       "path": "docs/index.md",
-      "sha256": "76d22a84cb770c93dc19fa336b38f67c8cedbcbc860c0d9d1639070596a5b41c",
-      "size_bytes": 818
+      "sha256": "368bf0a4bf62d2810342ca33f7c65c295e383a56a3b79957411cc263cec122e2",
+      "size_bytes": 1042
     },
     {
       "path": "docs/input_schema_guide.md",
@@ -508,13 +508,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "b0c618e090e34f95504db800e9bcdad14d975dd86e68cce1ded5c3fe6d82605c",
-      "size_bytes": 21911
+      "sha256": "7bd1cfeb39fbb829b188b95586f95f899e167aaba3f36c779be2654872eb53fb",
+      "size_bytes": 25230
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "79a2219bc2f872645f8d0e5dbeeabcb3073d0dbaa9e7ef211c100e4196f0e114",
-      "size_bytes": 10730
+      "sha256": "a6405e32a81fce3f7c4e31c5188ce1b8b9448ea3058eabbd018f40df08a630cb",
+      "size_bytes": 15212
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -560,6 +560,16 @@
       "path": "docs/stage5_public_mlci_workflow.md",
       "sha256": "699735bfca55dae60e1d4523718aa30171d3cf1c1d7aec948bdd1b1d3283d6a9",
       "size_bytes": 2877
+    },
+    {
+      "path": "docs/stage7_methods_program.md",
+      "sha256": "466e135e94ac1c70b7ff8c95ad4e269f438b28224619f904986d394808ff16dc",
+      "size_bytes": 29133
+    },
+    {
+      "path": "docs/stage7_serialized_execution_plan.md",
+      "sha256": "351fe937058688466a0bea6391824e27fb53c59fe49241ffc479f81ddd8b39f7",
+      "size_bytes": 13816
     },
     {
       "path": "docs/zenodo_dry_run_report.json",
@@ -638,8 +648,8 @@
     },
     {
       "path": "mkdocs.yml",
-      "sha256": "78be17f0e9daff8b5e7b08acc211548d2c1b5b8bd9eee16ec692cbde21776a73",
-      "size_bytes": 706
+      "sha256": "68b25b8bb45a51c39abe3b3e5af12d3edb6f516a4a2c53e1293f0847f6e60eec",
+      "size_bytes": 825
     },
     {
       "path": "notebooks/01_synthetic_residence_primer.ipynb",
@@ -738,13 +748,13 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "d3967d39c0d3956f7467a9d3b0af5814243b981c3dc8d2b52eff6efca2a75dd4",
-      "size_bytes": 12733
+      "sha256": "ca13fc36b64aac12bb6fdff0785753b1911edb56d44e8ebad5347ea04d358e80",
+      "size_bytes": 12882
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "fa0276651991d930ea07ff47823d542de7db9c87c81e9bfda38888d0320dd52d",
-      "size_bytes": 5679
+      "sha256": "1c332dbd2f95f111683a9e033dc7e30055c1f48dbf3f7254e083c18caaa1fa48",
+      "size_bytes": 7473
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -902,36 +912,6 @@
       "size_bytes": 7083
     },
     {
-      "path": "src/rhodyn.egg-info/PKG-INFO",
-      "sha256": "fe9481b9012a38a151077bbe0746dabea9b51cb3e5844b0d2d46730eebfa0543",
-      "size_bytes": 18907
-    },
-    {
-      "path": "src/rhodyn.egg-info/SOURCES.txt",
-      "sha256": "67bff863446f8b906dce1795622956489e1121cbdc0b68747396209d1ca0d5f8",
-      "size_bytes": 7444
-    },
-    {
-      "path": "src/rhodyn.egg-info/dependency_links.txt",
-      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-      "size_bytes": 1
-    },
-    {
-      "path": "src/rhodyn.egg-info/entry_points.txt",
-      "sha256": "48bcd0143835d6274b450cb062e3b7d25d32070ce9420b7cb8b72b832860ffef",
-      "size_bytes": 43
-    },
-    {
-      "path": "src/rhodyn.egg-info/requires.txt",
-      "sha256": "ef9a0389776e9987d6b9b883a82b316c6e1321ddde547398f1a5bed681e3608c",
-      "size_bytes": 294
-    },
-    {
-      "path": "src/rhodyn.egg-info/top_level.txt",
-      "sha256": "4284619994248a8c96e8a7106bdd9ee0ee9f8cf8c68d01d3cfbacd48f867fd29",
-      "size_bytes": 7
-    },
-    {
       "path": "tests/playwright/stage5.visual.spec.mjs",
       "sha256": "e7965aff793328e5eb323d8cf7b93a02b5ad076c8da3e296eb85826e8007f928",
       "size_bytes": 11171
@@ -1052,7 +1032,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-29T14:45:54.061061Z",
+  "generated_utc": "2026-06-29T15:14:38.597322Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

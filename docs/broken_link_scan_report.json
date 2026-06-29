@@ -1,9 +1,9 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-29T14:45:28.548622Z",
+  "generated_utc": "2026-06-29T15:14:38.488066Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 60,
+  "link_count": 69,
   "records": [
     {
       "detail": "remote URL syntax checked only",
@@ -288,6 +288,48 @@
       "target": "http://127.0.0.1:9000/frontend/stage5/"
     },
     {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage7_methods_program.md",
+      "status": "pass",
+      "target": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage7_methods_program.md",
+      "status": "pass",
+      "target": "https://journals.plos.org/ploscompbiol/s/submission-guidelines"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage7_methods_program.md",
+      "status": "pass",
+      "target": "https://joss.readthedocs.io/en/latest/review_criteria.html"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage7_methods_program.md",
+      "status": "pass",
+      "target": "https://www.nature.com/articles/s41592-020-01018-x"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage7_methods_program.md",
+      "status": "pass",
+      "target": "https://www.nature.com/articles/s41592-021-01358-2"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage7_methods_program.md",
+      "status": "pass",
+      "target": "https://www.nature.com/articles/s41592-021-01346-6"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage7_methods_program.md",
+      "status": "pass",
+      "target": "https://www.nature.com/articles/s41587-019-0071-9"
+    },
+    {
       "detail": "local target exists",
       "source": "mkdocs.yml",
       "status": "pass",
@@ -352,6 +394,18 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "final_release_hardening.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_methods_program.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_serialized_execution_plan.md"
     },
     {
       "detail": "local target exists",

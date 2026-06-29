@@ -11,6 +11,8 @@ MEMORY_PATH = ROOT / "docs" / "roadmap_execution_memory.json"
 ROADMAP_PATH = ROOT / "docs" / "roadmap.md"
 STAGE3_GATE_PATH = ROOT / "case_studies" / "stage3_case_study_bank_gate_report.json"
 STAGE5_CLOSEOUT_PATH = ROOT / "docs" / "stage5_closeout.md"
+STAGE7_PROGRAM_PATH = ROOT / "docs" / "stage7_methods_program.md"
+STAGE7_EXECUTION_PATH = ROOT / "docs" / "stage7_serialized_execution_plan.md"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -21,6 +23,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     roadmap_path = root / ROADMAP_PATH.relative_to(ROOT)
     gate_path = root / STAGE3_GATE_PATH.relative_to(ROOT)
     stage5_closeout_path = root / STAGE5_CLOSEOUT_PATH.relative_to(ROOT)
+    stage7_program_path = root / STAGE7_PROGRAM_PATH.relative_to(ROOT)
+    stage7_execution_path = root / STAGE7_EXECUTION_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -41,8 +45,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 6. Official software release":
-        failures.append("active stage must be Stage 6. Official software release after Stage 5 closeout")
+    if current.get("active_stage") != "Stage 7. Independent methods-program roadmap":
+        failures.append("active stage must be Stage 7. Independent methods-program roadmap after Stage 7 planning")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -50,7 +54,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         4: "frozen_for_stage5",
         5: "completed",
         6: "public_citable_v0.1.0",
-        7: "not_ready",
+        7: "roadmap_defined_not_started",
         8: "conceptual_only",
     }
     for stage, status in expected_status.items():
@@ -73,7 +77,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 3 is satisfied for the current evidence-bank gate",
         "Stage 4 is frozen for the first Stage 5 scaffold",
         "Stage 5 is completed as a contract-bound scientific workbench",
-        "Stage 6 is the active release-hardening stage",
+        "Stage 6 has produced a professionally citable RhoDyn `v0.1.0` GitHub",
         "6.1 Release boundary",
         "6.2 Packaging",
         "6.3 Documentation",
@@ -81,7 +85,9 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "6.5 Archive and citation",
         "6.6 Clean-room reproducibility",
         "6.7 Final ultra-hardening",
-        "Stage 7 is the future Nature Methods-first scientific-methods campaign",
+        "Stage 7 is roadmap-defined but not implemented",
+        "docs/stage7_methods_program.md",
+        "docs/stage7_serialized_execution_plan.md",
         "Stage 8 inherits from Stage 7",
     ]
     for phrase in required_roadmap_phrases:
@@ -90,6 +96,36 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
 
     if gate.get("status") != "pass":
         failures.append("Stage 3 gate report must pass")
+
+    if not stage7_program_path.exists():
+        failures.append("missing docs/stage7_methods_program.md")
+        stage7_program = ""
+    else:
+        stage7_program = stage7_program_path.read_text(encoding="utf-8")
+    if not stage7_execution_path.exists():
+        failures.append("missing docs/stage7_serialized_execution_plan.md")
+        stage7_execution = ""
+    else:
+        stage7_execution = stage7_execution_path.read_text(encoding="utf-8")
+    for phrase in [
+        "Evidence basis",
+        "Gap analysis",
+        "Independent biological demonstration strategy",
+        "Software maturity roadmap",
+        "Publication alignment roadmap",
+        "Nature Methods is the primary reference point",
+        "No Stage 7 implementation begins",
+    ]:
+        if phrase not in stage7_program:
+            failures.append(f"Stage 7 methods program is missing phrase: {phrase}")
+    for phrase in [
+        "strictly serialized",
+        "7.0. Planning freeze and evidence source register",
+        "7.8. Methods manuscript readiness package",
+        "No downstream subphase should begin",
+    ]:
+        if phrase not in stage7_execution:
+            failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
 
     if not stage5_closeout_path.exists():
         failures.append("missing docs/stage5_closeout.md")
@@ -110,6 +146,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
+        warnings.append("Stage 7 is roadmap-defined but implementation has not started; begin only with the 7.0 source-register gate")
 
     return {
         "status": "pass" if not failures else "fail",

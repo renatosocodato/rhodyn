@@ -15,4 +15,6 @@ nav:
   - Reproducibility card: reproducibility_card.md
   - Clean-room reproducibility: clean_room_reproducibility.md
   - Final release hardening: final_release_hardening.md
+  - Stage 7 methods program: stage7_methods_program.md
+  - Stage 7 execution plan: stage7_serialized_execution_plan.md
   - Release checklist: release_checklist.md

@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 6. Official software release",
+    "active_stage": "Stage 7. Independent methods-program roadmap",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -10,9 +10,11 @@
     "after_stage5_upload_parity": "Stage 5 now has real CSV upload-flow hardening, visible parameter/schema inspection, and CLI/API/frontend parity audits for all six frozen contract operations.",
     "after_stage5_ux_depth": "Stage 5 now has richer trajectory inspection, explicit exported parameter provenance, and a guided MLCI public trajectory workflow that can be reproduced from CLI and the frozen upload route.",
     "after_stage6_public_release": "RhoDyn v0.1.0 public release is live at https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0 with Zenodo version DOI 10.5281/zenodo.21036616 and concept DOI 10.5281/zenodo.21036615.",
+    "after_stage7_planning": "Stage 7 is roadmap-defined as an independent biological demonstration and methods-manuscript readiness program aligned to standards exemplified by strong computational methods papers. Implementation has not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "stage6_active_gate": "Stage 6 v0.1.0 is now publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 Nature Methods evidence expansion and Stage 8 product alignment remain downstream."
+    "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
+    "stage7_active_gate": "Stage 7 may begin only with 7.0 planning freeze and evidence source register. No biological demonstration, benchmark implementation, software expansion, or manuscript drafting starts until the 7.0 gate is authorized."
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -20,8 +22,8 @@
     "The manuscript and Zenodo data remain an optional reference use case.",
     "Stage 3 public examples teach what residence, buffering, bounded coupling, and routed outputs reveal beyond amplitude-only summaries.",
     "Stage 4 backend work must delegate to stable Python library functions.",
-    "Stage 7 method evidence can expand the biological systems but should not reopen the Stage 3 closure unless a Stage 3 defect is found.",
-    "Stage 8 cannot reshape the Nature Methods evidence path.",
+    "Stage 7 method evidence can expand biological systems only through the serialized methods-program plan and should not reopen the Stage 3 closure unless a Stage 3 defect is found.",
+    "Stage 8 cannot reshape the Stage 7 methods evidence path.",
     "Stage 5 frontend work must consume the frozen Stage 4 API contract."
   ],
   "project": "RhoDyn",
@@ -124,25 +126,84 @@
       ]
     },
     {
+      "current_gate": "Roadmap defined only. Implementation begins with Stage 7.0 after explicit authorization; no new biological demonstration, benchmark, software expansion, or manuscript drafting is started by the planning pass.",
       "gate": [
         "Formal method definition and mathematical model are complete.",
-        "Benchmarks cover amplitude-only, endpoint-only, threshold-only, and generic time-series summaries.",
+        "Benchmarks cover amplitude-only, endpoint-only, threshold-only, generic time-series summaries, and reduced architecture alternatives.",
         "At least two independent biological demonstrations beyond the original manuscript logic are in place.",
-        "Software implementation, uncertainty handling, tutorials, GUI or hosted demo, and limitations section are ready."
+        "At least one external or held-out validation route is completed or explicitly scoped.",
+        "Software implementation, uncertainty handling, tutorials, GUI or hosted demo, and limitations section are ready.",
+        "Every planned methods-manuscript component maps to a reproducible artifact and documented limitation."
       ],
-      "name": "Nature Methods first",
-      "scope_rule": "Treat this as a future scientific-methods campaign, not a rebranding of the RhoA/microglia manuscript or the Stage 3 examples.",
+      "name": "Independent biological demonstration and methods manuscript roadmap",
+      "scope_rule": "Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula.",
       "stage": 7,
-      "status": "not_ready"
+      "status": "roadmap_defined_not_started",
+      "subphases": [
+        {
+          "gate": "No implementation starts until the source register, dataset rubric, and artifact map are approved.",
+          "goal": "Freeze Stage 7 scope, source guidance, dataset rubric, baselines, and artifact map.",
+          "id": "7.0",
+          "name": "Planning freeze and evidence source register"
+        },
+        {
+          "gate": "Every method claim has an executable example and counterexample.",
+          "goal": "Define method objects, assumptions, failure modes, and synthetic truth cases.",
+          "id": "7.1",
+          "name": "Formal method definition and assumption ledger"
+        },
+        {
+          "gate": "Benchmarks report value-added, no-added-value, and inconclusive regimes with uncertainty and performance evidence.",
+          "goal": "Compare RhoDyn against simpler summaries and alternatives across synthetic and public inputs.",
+          "id": "7.2",
+          "name": "Benchmark harness against baselines and alternatives"
+        },
+        {
+          "gate": "At least two independent public systems beyond the original manuscript logic pass reproducibility and interpretation checks.",
+          "goal": "Add public biological systems that stress residence-versus-amplitude behavior beyond the manuscript logic.",
+          "id": "7.3",
+          "name": "Independent public live-cell signaling demonstrations"
+        },
+        {
+          "gate": "At least one case supports bounded coupling, reserve logic, or routed-output interpretation without overclaiming mechanism.",
+          "goal": "Test bounded coupling, reserve-like buffering, and routed-output model comparison in non-trajectory or multi-readout cases.",
+          "id": "7.4",
+          "name": "Perturbation endpoint, reserve, and routed-output demonstrations"
+        },
+        {
+          "gate": "Success, failure, or inconclusive outcome is reported without hidden tuning.",
+          "goal": "Run RhoDyn on collaborator or held-out data under predeclared criteria.",
+          "id": "7.5",
+          "name": "External or held-out biological validation"
+        },
+        {
+          "gate": "A fresh environment reproduces planned benchmark tables, reports, and tutorials.",
+          "goal": "Harden APIs, docs, examples, CI, notebooks, Docker, benchmarks, and clean-room reproduction for the methods evidence set.",
+          "id": "7.6",
+          "name": "Software maturity for methods-paper reproducibility"
+        },
+        {
+          "gate": "Biologist-facing interpretation and quantitative CLI/Python reproduction both pass without unvalidated analysis routes.",
+          "goal": "Test whether biological and quantitative users can run and interpret RhoDyn results through tutorials and the workbench.",
+          "id": "7.7",
+          "name": "Usability and adoption rehearsal"
+        },
+        {
+          "gate": "Every planned manuscript component maps to a reproducible output and documented limitation.",
+          "goal": "Assemble figure-to-artifact, claim-to-evidence, limitations, reproducibility, and release-candidate surfaces.",
+          "id": "7.8",
+          "name": "Methods manuscript readiness package"
+        }
+      ]
     },
     {
       "gate": [
         "Open-core library, CLI, public adapters, examples, and basic reports remain useful without paid features.",
         "Paid or hosted features add collaboration, private data, batch jobs, richer dashboards, export logs, adapters, and deployments without changing scientific claims.",
-        "Commercial positioning remains dynamic operating-state interpretation for live-cell perturbation data."
+        "Commercial positioning remains dynamic operating-state interpretation for live-cell perturbation data and follows the completed Stage 7 evidence frame."
       ],
       "name": "Product and commercial alignment",
-      "scope_rule": "Product strategy inherits the Nature Methods framing and must not lead the scientific evidence path.",
+      "scope_rule": "Product strategy inherits the Stage 7 methods evidence and must not lead the scientific evidence path.",
       "stage": 8,
       "status": "conceptual_only"
     }
