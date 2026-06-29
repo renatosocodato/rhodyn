@@ -1,5 +1,5 @@
 {
-  "file_count": 200,
+  "file_count": 201,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -13,8 +13,8 @@
     },
     {
       "path": ".zenodo.json",
-      "sha256": "1c675292216b2c2ba203026459ad34d94a68c92147665bace08a1a2bffd26238",
-      "size_bytes": 1541
+      "sha256": "7ea09c4fe8308c12e758ecb7ef057df53d9601a08fd2a4005b4331562a4835fa",
+      "size_bytes": 1642
     },
     {
       "path": "CHANGELOG.md",
@@ -23,8 +23,8 @@
     },
     {
       "path": "CITATION.cff",
-      "sha256": "644fdb54e9dc30553927dd491912ed0bfaabb75b58365d378697fab4bc214916",
-      "size_bytes": 617
+      "sha256": "5d8189b8139124b3e089f81c3be499d90923ecc07d5a3b7626306b9a18f5f9ad",
+      "size_bytes": 646
     },
     {
       "path": "CONTRIBUTING.md",
@@ -488,8 +488,8 @@
     },
     {
       "path": "docs/release_notes_v0.1.0.md",
-      "sha256": "8a3389df22921f080995d1d359e1fd21a92d6367e33d116a6144738b93ac5782",
-      "size_bytes": 3158
+      "sha256": "ee9f2cf4d98c8e85d43fddb6f7df3eff5809901b99a38977c6351c808a8d20d6",
+      "size_bytes": 3235
     },
     {
       "path": "docs/reproducibility_card.md",
@@ -560,6 +560,11 @@
       "path": "docs/zenodo_dry_run_report.md",
       "sha256": "871e6975184d1bc8a3ee39331a0d5b5ed8eb9cbec5fc6571b3ada9838b0c5f4f",
       "size_bytes": 689
+    },
+    {
+      "path": "docs/zenodo_publication_report.json",
+      "sha256": "8547475bf7b654d64e7fee321daf1b6572a459b7339f9922d666b92e6052eaf8",
+      "size_bytes": 1081
     },
     {
       "path": "examples/mlci_ctc_features.csv",
@@ -1002,7 +1007,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-29T14:10:04.238911Z",
+  "generated_utc": "2026-06-29T14:15:57.281649Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

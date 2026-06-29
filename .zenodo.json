@@ -28,5 +28,5 @@
       "resource_type": "software"
     }
   ],
-  "notes": "Prepared archive metadata for the RhoDyn v0.1.0 software release. The archive excludes raw microscopy, manuscript-private files, credentials, local paths, and generated debug outputs. The RhoA/microglia manuscript materials are optional reference use cases and are not required for normal software operation."
+  "notes": "Prepared archive metadata for the RhoDyn v0.1.0 software release. The published version DOI is 10.5281/zenodo.21036616 and the concept DOI is 10.5281/zenodo.21036615. The archive excludes raw microscopy, manuscript-private files, credentials, local paths, and generated debug outputs. The RhoA/microglia manuscript materials are optional reference use cases and are not required for normal software operation."
 }

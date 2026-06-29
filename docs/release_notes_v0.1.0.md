@@ -2,7 +2,7 @@
 
 Release date. 2026-06-29.
 
-Release type. Versioned software release prepared for GitHub archive and Zenodo software deposition.
+Release type. Versioned software release with GitHub archive and Zenodo software deposition.
 
 ## Summary
 
@@ -49,9 +49,9 @@ material in this software archive.
 
 The release state passes the local release-safety check, Phase 6 readiness audit through subphase 6.7, unit tests, documentation build, package dry run, Zenodo dry run, Docker smoke testing, clean-room reproducibility, and Stage 5 screenshot regression.
 
-## Known remaining release work
+## Public citation record
 
-No local hardening gate remains open for v0.1.0. Public citability still requires the intentional external actions that cannot be inferred from the source tree alone: a pushed version tag, a GitHub release archive, and a published Zenodo software record.
+The v0.1.0 tag is pushed, the GitHub release archive is published, and the Zenodo software record is public. No local hardening gate remains open for v0.1.0.
 
 ## Interpretation boundary
 
@@ -59,3 +59,12 @@ RhoDyn outputs dynamic operating-state summaries from user-supplied live-cell or
 perturbation tables. It does not infer clinical state, does not replace
 experiment-specific biological interpretation, and does not ship raw microscopy
 or manuscript-private source data.
+
+
+## Zenodo software record
+
+Version DOI. https://doi.org/10.5281/zenodo.21036616
+
+Concept DOI. https://doi.org/10.5281/zenodo.21036615
+
+Public record. https://zenodo.org/records/21036616
