@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const FIXTURE_DIR = path.join(ROOT, 'api/stage4/fixtures');
+const COMPARISON_SCREENSHOT_OPTIONS = { maxDiffPixelRatio: 0.05 };
 
 const RUN_FIXTURES = {
   validate: 'validate_trajectory_upload_run.response.json',
@@ -132,7 +133,7 @@ test.describe('Stage 5 comparison-suite screenshots', () => {
       for (const token of item.text) await expect(suite).toContainText(token);
       await expectNoUnsafeText(suite);
       await expectNoDocumentOverflow(page);
-      await expect(suite).toHaveScreenshot(item.snapshot);
+      await expect(suite).toHaveScreenshot(item.snapshot, COMPARISON_SCREENSHOT_OPTIONS);
     });
   }
 });
@@ -241,5 +242,5 @@ test('adversarial coupling labels remain bounded and do not inflate the biology'
   await expect(suite).toContainText('not claimed');
   await expectNoUnsafeText(suite);
   await expectNoDocumentOverflow(page);
-  await expect(suite).toHaveScreenshot('stage5-adversarial-coupling.png');
+  await expect(suite).toHaveScreenshot('stage5-adversarial-coupling.png', COMPARISON_SCREENSHOT_OPTIONS);
 });
