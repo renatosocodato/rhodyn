@@ -1,0 +1,182 @@
+{
+  "coupling": {
+    "ambiguous_margin_crossing": {
+      "ci_high": 0.08,
+      "ci_low": -0.12,
+      "estimate": 0.02,
+      "interval_inside_margin": false,
+      "margin": 0.1,
+      "passes": false,
+      "rope_mass": 0.92
+    },
+    "counterexample_shift": {
+      "ci_high": 0.22,
+      "ci_low": 0.11,
+      "estimate": 0.16,
+      "interval_inside_margin": false,
+      "margin": 0.1,
+      "passes": false,
+      "rope_mass": 0.4
+    },
+    "positive_equivalent": {
+      "ci_high": 0.05,
+      "ci_low": -0.04,
+      "estimate": 0.01,
+      "interval_inside_margin": true,
+      "margin": 0.1,
+      "passes": true,
+      "rope_mass": 0.99
+    }
+  },
+  "expectations": {
+    "coupling_equivalence_passes_only_positive": true,
+    "model_counterexample_endpoint_best": true,
+    "model_positive_routed_best": true,
+    "reserve_buffered_high": true,
+    "reserve_fragile_low": true,
+    "residence_ambiguous_window_dependent": true,
+    "residence_counterexample_low_residence_despite_high_peak": true,
+    "residence_positive_passes": true,
+    "timing_positive_and_ambiguous_cross_but_counterexample_not": true,
+    "uncertainty_ambiguous_broader_than_stable": true
+  },
+  "model_comparison": {
+    "ambiguous_close_fit": {
+      "best_model": "routed",
+      "fits": [
+        {
+          "aic": -25.63102111592854,
+          "bic": -26.53240882726043,
+          "model": "routed",
+          "n": 3,
+          "rmse": 0.010000000000000009,
+          "rss": 0.00030000000000000057
+        },
+        {
+          "aic": -21.472138032568875,
+          "bic": -22.373525743900764,
+          "model": "endpoint_only",
+          "n": 3,
+          "rmse": 0.02,
+          "rss": 0.0012
+        }
+      ]
+    },
+    "counterexample_endpoint_sufficient": {
+      "best_model": "endpoint_only",
+      "fits": [
+        {
+          "aic": -84.18890021378998,
+          "bic": -85.09028792512187,
+          "model": "endpoint_only",
+          "n": 3,
+          "rmse": 0.0,
+          "rss": 0.0
+        },
+        {
+          "aic": -26.847416440253035,
+          "bic": -27.748804151584924,
+          "model": "routed",
+          "n": 3,
+          "rmse": 0.008164965809277268,
+          "rss": 0.00020000000000000036
+        }
+      ]
+    },
+    "positive_routed_best": {
+      "best_model": "routed",
+      "fits": [
+        {
+          "aic": -24.098544244630567,
+          "bic": -24.999931955962456,
+          "model": "routed",
+          "n": 3,
+          "rmse": 0.012909944487358068,
+          "rss": 0.0005000000000000009
+        },
+        {
+          "aic": -5.484870956924506,
+          "bic": -6.386258668256396,
+          "model": "endpoint_only",
+          "n": 3,
+          "rmse": 0.2872281323269014,
+          "rss": 0.2475
+        }
+      ]
+    }
+  },
+  "primary_window": {
+    "high": 0.75,
+    "low": 0.35
+  },
+  "report_format": "rhodyn.stage7_1_synthetic_truth.v1",
+  "reserve": {
+    "ambiguous_midreserve": {
+      "ff_over_f0_peak": 1.5,
+      "reserve_coordinate": 0.5
+    },
+    "counterexample_fragile": {
+      "ff_over_f0_peak": 1.9,
+      "reserve_coordinate": 0.10000000000000009
+    },
+    "positive_buffered": {
+      "ff_over_f0_peak": 1.1,
+      "reserve_coordinate": 0.8999999999999999
+    }
+  },
+  "residence": {
+    "ambiguous_window_edge": {
+      "max_signal": 0.78,
+      "mean_signal": 0.588,
+      "qualifying_window_count": 6,
+      "residence_fraction": 0.5,
+      "residence_time": 2,
+      "segment_count": 2,
+      "window_count": 9
+    },
+    "counterexample_amplitude_only": {
+      "max_signal": 0.95,
+      "mean_signal": 0.47,
+      "qualifying_window_count": 0,
+      "residence_fraction": 0.0,
+      "residence_time": 0,
+      "segment_count": 0,
+      "window_count": 9
+    },
+    "positive_residence": {
+      "max_signal": 0.9,
+      "mean_signal": 0.55,
+      "qualifying_window_count": 9,
+      "residence_fraction": 0.75,
+      "residence_time": 3,
+      "segment_count": 1,
+      "window_count": 9
+    }
+  },
+  "status": "pass",
+  "timing": {
+    "ambiguous_late_crossing": 3,
+    "counterexample_no_crossing": null,
+    "positive_crossing": 2
+  },
+  "uncertainty": {
+    "ambiguous_broad": {
+      "estimate": 0.5,
+      "lower": 0.336875,
+      "upper": 0.6625,
+      "width": 0.325625
+    },
+    "counterexample_shifted": {
+      "estimate": 0.22625,
+      "lower": 0.2175,
+      "upper": 0.23506249999999998,
+      "width": 0.01756249999999998
+    },
+    "positive_stable": {
+      "estimate": 0.5,
+      "lower": 0.4925,
+      "upper": 0.50625,
+      "width": 0.013749999999999984
+    }
+  }
+}

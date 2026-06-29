@@ -1,0 +1,4 @@
+contrast,estimate,ci_low,ci_high,margin,rope_mass
+positive_equivalent,0.01,-0.04,0.05,0.1,0.99
+counterexample_shift,0.16,0.11,0.22,0.1,0.4
+ambiguous_margin_crossing,0.02,-0.12,0.08,0.1,0.92

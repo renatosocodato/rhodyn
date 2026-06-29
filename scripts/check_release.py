@@ -83,6 +83,19 @@ REQUIRED_FILES = [
     "docs/stage7_0_artifact_map.md",
     "docs/stage7_0_gate_report.json",
     "docs/stage7_methods_program.md",
+    "docs/stage7_method_specification.md",
+    "docs/stage7_synthetic_truth_cases.md",
+    "docs/stage7_limitations_matrix.md",
+    "docs/stage7_api_stability_notes.md",
+    "docs/stage7_1_gate_report.json",
+    "scripts/build_stage7_1_synthetic_truth_cases.py",
+    "tests/test_stage7_1_synthetic_truth.py",
+    "case_studies/stage7_synthetic_truth/stage7_1_synthetic_truth_report.json",
+    "case_studies/stage7_synthetic_truth/trajectory_positive_residence.csv",
+    "case_studies/stage7_synthetic_truth/trajectory_counterexample_amplitude_only.csv",
+    "case_studies/stage7_synthetic_truth/trajectory_ambiguous_window_edge.csv",
+    "case_studies/stage7_synthetic_truth/coupling_interval_cases.csv",
+    "case_studies/stage7_synthetic_truth/endpoint_positive_routed_best.csv",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
@@ -186,8 +199,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 7.0 planning freeze complete":
-            failures.append("roadmap execution memory does not mark Stage 7.0 planning freeze as complete")
+        if current.get("active_stage") != "Stage 7.1 method formalization complete":
+            failures.append("roadmap execution memory does not mark Stage 7.1 method formalization as complete")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -197,8 +210,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 5 completed")
         if stages.get(6, {}).get("status") != "public_citable_v0.1.0":
             failures.append("roadmap execution memory does not mark Stage 6 as public_citable_v0.1.0")
-        if stages.get(7, {}).get("status") != "stage7_0_complete_7_1_not_started":
-            failures.append("roadmap execution memory does not mark Stage 7.0 complete and Stage 7.1 not started")
+        if stages.get(7, {}).get("status") != "stage7_1_complete_7_2_not_started":
+            failures.append("roadmap execution memory does not mark Stage 7.1 complete and Stage 7.2 not started")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
 
@@ -207,8 +220,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
         if subphase_status.get("7.0") != "complete_planning_only":
             failures.append("Stage 7.0 must be complete_planning_only in roadmap execution memory")
-        if subphase_status.get("7.1") != "not_started_next_authorization_required":
-            failures.append("Stage 7.1 must remain not started and require authorization")
+        if subphase_status.get("7.1") != "complete_method_formalization":
+            failures.append("Stage 7.1 must be complete_method_formalization in roadmap execution memory")
+        if subphase_status.get("7.2") != "not_started_next_authorization_required":
+            failures.append("Stage 7.2 must remain not started and require authorization")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
@@ -232,6 +247,33 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.0 gate report does not pass")
         if stage7_gate.get("software_implementation_started") or stage7_gate.get("scientific_implementation_started") or stage7_gate.get("manuscript_drafting_started"):
             failures.append("Stage 7.0 gate report must remain planning-only")
+
+
+    stage7_1_gate_path = root / "docs" / "stage7_1_gate_report.json"
+    if stage7_1_gate_path.exists():
+        try:
+            stage7_1_gate = json.loads(stage7_1_gate_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.1 gate report is not valid JSON: {exc}")
+            stage7_1_gate = {}
+        if stage7_1_gate.get("status") != "pass":
+            failures.append("Stage 7.1 gate report does not pass")
+        if stage7_1_gate.get("completion_state") != "complete_method_formalization":
+            failures.append("Stage 7.1 gate report does not mark method formalization complete")
+        if stage7_1_gate.get("truth_suite_status") != "pass":
+            failures.append("Stage 7.1 truth suite does not pass")
+        if stage7_1_gate.get("validation_checkpoints", {}).get("existing_apis_can_represent_declared_results") != "pass":
+            failures.append("Stage 7.1 gate does not confirm current APIs represent declared results")
+
+    stage7_1_truth_report_path = root / "case_studies" / "stage7_synthetic_truth" / "stage7_1_synthetic_truth_report.json"
+    if stage7_1_truth_report_path.exists():
+        try:
+            truth_report = json.loads(stage7_1_truth_report_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.1 synthetic truth report is not valid JSON: {exc}")
+            truth_report = {}
+        if truth_report.get("status") != "pass":
+            failures.append("Stage 7.1 synthetic truth report does not pass")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():

@@ -21,4 +21,8 @@ nav:
   - Stage 7.0 dataset rubric: stage7_0_dataset_selection_rubric.md
   - Stage 7.0 artifact map: stage7_0_artifact_map.md
   - Stage 7 execution plan: stage7_serialized_execution_plan.md
+  - Stage 7 method specification: stage7_method_specification.md
+  - Stage 7 synthetic truth cases: stage7_synthetic_truth_cases.md
+  - Stage 7 limitations matrix: stage7_limitations_matrix.md
+  - Stage 7 API stability notes: stage7_api_stability_notes.md
   - Release checklist: release_checklist.md

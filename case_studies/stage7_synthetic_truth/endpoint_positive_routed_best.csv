@@ -1,0 +1,7 @@
+model,endpoint,observed,predicted,weight
+routed,morphology,0.2,0.2,1.0
+routed,inflammatory,0.8,0.78,1.0
+routed,reserve,0.7,0.69,1.0
+endpoint_only,morphology,0.2,0.45,1.0
+endpoint_only,inflammatory,0.8,0.45,1.0
+endpoint_only,reserve,0.7,0.45,1.0

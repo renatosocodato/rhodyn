@@ -77,6 +77,8 @@ Stop condition.
 
 ## 7.1. Formal method definition and assumption ledger
 
+Stage 7.1 execution status. Complete as a method-formalization phase. The method specification, synthetic truth documentation, limitations matrix, API stability notes, truth-case generator, tests, truth fixtures, and gate report are recorded. Stage 7.2 is not started.
+
 Objectives.
 
 - Define RhoDyn's method object in mathematical, algorithmic, and biological terms.

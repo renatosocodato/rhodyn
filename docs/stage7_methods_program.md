@@ -74,6 +74,19 @@ Stage 7.0 has now been executed as a planning-only phase. It created the source 
 
 Stage 7.0 does not add biological analyses, benchmark code, public-data adapters, manuscript text, figures, or product features. Stage 7.1 remains the next phase and requires explicit authorization.
 
+## Stage 7.1 method formalization outputs
+
+Stage 7.1 has now been executed as a method-formalization phase. It defines RhoDyn's method objects in mathematical, algorithmic, and biological terms, records failure modes and interpretation boundaries, and adds executable synthetic truth cases with positive, counterexample, and ambiguous regimes.
+
+- `docs/stage7_method_specification.md` records the formal method definitions for input tables, residence, reserve-like summaries, bounded coupling, model comparison, uncertainty, sensitivity, and timing.
+- `docs/stage7_synthetic_truth_cases.md` documents the executable synthetic cases.
+- `docs/stage7_limitations_matrix.md` records non-example cases and interpretation boundaries.
+- `docs/stage7_api_stability_notes.md` records that current APIs can represent the Stage 7.1 method objects without reopening the stable package surface.
+- `scripts/build_stage7_1_synthetic_truth_cases.py` generates the synthetic truth fixtures under `case_studies/stage7_synthetic_truth/`.
+- `docs/stage7_1_gate_report.json` records the 7.1 completion gate.
+
+Stage 7.1 does not add independent biological evidence, manuscript claims, product features, or new stable public APIs. Stage 7.2 remains the next phase and requires explicit authorization.
+
 ## Stage 7 architecture
 
 Stage 7 is a sequential program. Each subphase must close before the next begins unless the stated contingency route is activated.

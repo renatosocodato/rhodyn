@@ -1,0 +1,4 @@
+sample_id,time,condition,response,replicate
+mid_a,0,ambiguous_midreserve,1.0,r1
+mid_a,1,ambiguous_midreserve,1.35,r1
+mid_a,2,ambiguous_midreserve,1.5,r1

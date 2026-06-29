@@ -1,9 +1,9 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-29T15:34:55.832381Z",
+  "generated_utc": "2026-06-29T15:53:33.246310Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 83,
+  "link_count": 87,
   "records": [
     {
       "detail": "remote URL syntax checked only",
@@ -490,6 +490,30 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "stage7_serialized_execution_plan.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_method_specification.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_synthetic_truth_cases.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_limitations_matrix.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_api_stability_notes.md"
     },
     {
       "detail": "local target exists",

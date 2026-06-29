@@ -1,0 +1,53 @@
+{
+  "completion_state": "complete_method_formalization",
+  "created_artifacts": [
+    "docs/stage7_method_specification.md",
+    "docs/stage7_synthetic_truth_cases.md",
+    "docs/stage7_limitations_matrix.md",
+    "docs/stage7_api_stability_notes.md",
+    "scripts/build_stage7_1_synthetic_truth_cases.py",
+    "tests/test_stage7_1_synthetic_truth.py",
+    "case_studies/stage7_synthetic_truth/",
+    "docs/stage7_1_gate_report.json"
+  ],
+  "generated_utc": "2026-06-29T15:48:01.207702Z",
+  "interpretation_boundary": "Stage 7.1 synthetic truth cases validate method behavior and failure boundaries. They are not biological evidence and do not start independent biological demonstrations.",
+  "next_phase": "Stage 7.2 Benchmark harness against baselines and alternatives",
+  "next_phase_authorization_required": true,
+  "prerequisites": {
+    "baseline_inventory": {
+      "file": "docs/stage7_0_baseline_method_inventory.md",
+      "status": "pass"
+    },
+    "source_register": {
+      "file": "docs/stage7_0_source_register.md",
+      "status": "pass"
+    },
+    "stage7_0_gate_report": {
+      "status": "pass"
+    }
+  },
+  "report_format": "rhodyn.stage7_1_gate_report.v1",
+  "stage": "7.1",
+  "stage_label": "Formal method definition and assumption ledger",
+  "status": "pass",
+  "truth_suite_expectations": {
+    "coupling_equivalence_passes_only_positive": true,
+    "model_counterexample_endpoint_best": true,
+    "model_positive_routed_best": true,
+    "reserve_buffered_high": true,
+    "reserve_fragile_low": true,
+    "residence_ambiguous_window_dependent": true,
+    "residence_counterexample_low_residence_despite_high_peak": true,
+    "residence_positive_passes": true,
+    "timing_positive_and_ambiguous_cross_but_counterexample_not": true,
+    "uncertainty_ambiguous_broader_than_stable": true
+  },
+  "truth_suite_status": "pass",
+  "validation_checkpoints": {
+    "api_gap_documented": "not_required",
+    "every_definition_has_executable_example_and_counterexample": "pass",
+    "existing_apis_can_represent_declared_results": "pass",
+    "synthetic_truth_cases_include_positive_negative_ambiguous_regimes": "pass"
+  }
+}

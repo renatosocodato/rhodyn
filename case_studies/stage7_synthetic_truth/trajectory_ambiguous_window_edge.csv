@@ -1,0 +1,6 @@
+cell_id,time,condition,signal,replicate
+amb_a,0,ambiguous_window_edge,0.32,r1
+amb_a,1,ambiguous_window_edge,0.35,r1
+amb_a,2,ambiguous_window_edge,0.75,r1
+amb_a,3,ambiguous_window_edge,0.78,r1
+amb_a,4,ambiguous_window_edge,0.74,r1

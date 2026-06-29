@@ -1,0 +1,4 @@
+sample_id,time,condition,response,replicate
+buf_a,0,positive_buffered,1.0,r1
+buf_a,1,positive_buffered,1.05,r1
+buf_a,2,positive_buffered,1.1,r1

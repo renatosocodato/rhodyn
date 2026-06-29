@@ -1,0 +1,4 @@
+sample_id,time,condition,response,replicate
+frag_a,0,counterexample_fragile,1.0,r1
+frag_a,1,counterexample_fragile,1.55,r1
+frag_a,2,counterexample_fragile,1.9,r1

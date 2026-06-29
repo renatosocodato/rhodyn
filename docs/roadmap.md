@@ -27,8 +27,9 @@ the v0.3 Stage 3 evidence bank is closed for the current gate, the Stage 4 API
 contract is frozen, Stage 5 is completed as a contract-bound scientific
 workbench with a narrow simulation UX repair, and Stage 6 has produced a
 publicly citable `v0.1.0` GitHub and Zenodo software release while PyPI remains
-a future distribution decision. Stage 7.0 is now complete as a planning-freeze phase, with method
-implementation, biological analysis, and manuscript drafting not yet started.
+a future distribution decision. Stage 7.1 is now complete as a method-formalization phase. Independent
+biological analysis, benchmark-harness implementation, and manuscript drafting
+have not yet started.
 
 ## Execution memory
 
@@ -55,11 +56,11 @@ passes.
 4. Stage 6 has produced a professionally citable RhoDyn `v0.1.0` GitHub
    release archive and Zenodo DOI; PyPI remains a future distribution decision
    and should not be implied.
-5. Stage 7.0 is complete as a planning-freeze phase. Stage 7 remains an
+5. Stage 7.1 is complete as a method-formalization phase. Stage 7 remains an
    independent biological demonstration and methods-manuscript readiness program
    aligned to standards exemplified by strong computational methods papers, with
    Nature Methods as the primary reference point rather than a guaranteed
-   formula. Stage 7.1 has not started.
+   formula. Stage 7.2 has not started.
 6. Stage 8 inherits from Stage 7. Product strategy should not lead or reshape
    the evidence path.
 
@@ -84,7 +85,7 @@ as roadmap work.
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
 | Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract, exposes the existing deterministic simulation surface, and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
-| Stage 7. Independent methods-program roadmap | Stage 7.0 planning freeze complete, Stage 7.1 not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
+| Stage 7. Independent methods-program roadmap | Stage 7.1 method formalization complete, Stage 7.2 not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
 
 ## Non-drift principles
@@ -391,10 +392,11 @@ map, and gate report are now recorded under `docs/stage7_0_*`. Gate. Passed for
 planning outputs only. No biological analysis, benchmark implementation,
 software expansion, or manuscript drafting has started.
 
-7.1 Formal method definition and assumption ledger. Define residence-state
-inference, bounded coupling, reserve-like summaries, routed-output comparison,
-uncertainty, and failure modes as formal method objects. Gate. Every method
-claim has an executable example and counterexample.
+7.1 Formal method definition and assumption ledger. Complete as a
+method-formalization phase. The method specification, synthetic truth cases,
+limitations matrix, API notes, generator, tests, fixtures, and gate report are
+recorded. Gate. Passed for formal definitions and synthetic truth fixtures. No
+independent biological analysis or manuscript drafting has started.
 
 7.2 Benchmark harness against baselines and alternatives. Compare RhoDyn against
 amplitude-only, endpoint-only, threshold-only, generic trajectory, and reduced
@@ -448,11 +450,12 @@ Strong pivots.
   evidence shape supports a software-methods or software-credit route rather
   than the primary high-impact methods claim.
 
-Status. Stage 7.0 planning freeze complete, Stage 7.1 not started. The v0.3
-evidence bank and v0.1.0 release support entry into Stage 7, but
-methods-manuscript readiness still requires formal method specification, broader
-benchmarks, independent biological demonstrations, held-out validation, software
-maturity, and usability evidence.
+Status. Stage 7.1 method formalization complete, Stage 7.2 not started. The
+v0.3 evidence bank and v0.1.0 release support Stage 7, and the method objects
+now have formal definitions plus executable synthetic examples and
+counterexamples. Methods-manuscript readiness still requires broader benchmarks,
+independent biological demonstrations, held-out validation, software maturity,
+and usability evidence.
 
 ## Stage 8. Product and commercial alignment
 
@@ -512,5 +515,5 @@ sequence.
    RhoA/microglia paper or a substitute for the Stage 3 gate.
 
 Official release work now sits downstream of the evidence bank, frozen service
-contract, and completed Stage 5 workbench. Stage 7.0 is complete as a planning-only phase, Stage 7.1 has not started,
-and product work remains downstream of Stage 7 evidence.
+contract, and completed Stage 5 workbench. Stage 7.1 is complete as a method-formalization phase, Stage 7.2 has not
+started, and product work remains downstream of Stage 7 evidence.

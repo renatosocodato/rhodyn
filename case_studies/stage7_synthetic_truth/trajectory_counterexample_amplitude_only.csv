@@ -1,0 +1,6 @@
+cell_id,time,condition,signal,replicate
+neg_a,0,counterexample_amplitude_only,0.15,r1
+neg_a,1,counterexample_amplitude_only,0.95,r1
+neg_a,2,counterexample_amplitude_only,0.15,r1
+neg_a,3,counterexample_amplitude_only,0.95,r1
+neg_a,4,counterexample_amplitude_only,0.15,r1

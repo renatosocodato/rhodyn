@@ -1,0 +1,6 @@
+cell_id,time,condition,signal,replicate
+pos_a,0,positive_residence,0.2,r1
+pos_a,1,positive_residence,0.45,r1
+pos_a,2,positive_residence,0.55,r1
+pos_a,3,positive_residence,0.65,r1
+pos_a,4,positive_residence,0.9,r1
