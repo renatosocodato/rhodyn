@@ -426,13 +426,73 @@ def _result_summary_rows(result: dict[str, Any]) -> list[dict[str, Any]]:
     return [{"status": plain.get("status", ""), "operation": plain.get("job", {}).get("operation", "")}]
 
 
+def _schema_payload(kind: str, rows: list[dict[str, Any]]) -> dict[str, Any]:
+    spec = schema_specs().get(kind)
+    submitted_fields = _fieldnames(kind, rows)
+    if spec is None:
+        return {
+            "kind": kind,
+            "required": [],
+            "optional": [],
+            "submitted_fields": submitted_fields,
+            "recognized": False,
+        }
+    return {
+        "kind": spec.name,
+        "required": list(spec.required),
+        "optional": list(spec.optional),
+        "submitted_fields": submitted_fields,
+        "recognized": True,
+    }
+
+
+def _grouping_summary(kind: str, rows: list[dict[str, Any]], result: dict[str, Any]) -> dict[str, Any]:
+    plain = to_plain(result)
+    typed_results = plain.get("typed_results", [])
+    grouping_levels: set[str] = set()
+    groups: list[dict[str, Any]] = []
+    if isinstance(typed_results, list):
+        for item in typed_results:
+            if not isinstance(item, dict):
+                continue
+            group = item.get("group", {})
+            if not isinstance(group, dict):
+                continue
+            levels = group.get("grouping_levels", [])
+            if isinstance(levels, list):
+                grouping_levels.update(str(level) for level in levels if str(level))
+            compact = {
+                key: value
+                for key, value in group.items()
+                if key != "grouping_levels" and value not in ("", None, {}, [])
+            }
+            if compact:
+                groups.append(compact)
+    observed_fields = _fieldnames(kind, rows)
+    observed_grouping_fields = [
+        field
+        for field in observed_fields
+        if field in {"condition", "cell_id", "sample_id", "replicate", "field", "well", "donor", "batch", "experiment", "contrast", "model", "endpoint"}
+    ]
+    return {
+        "schema_kind": kind,
+        "observed_grouping_fields": observed_grouping_fields,
+        "result_grouping_levels": sorted(grouping_levels),
+        "result_group_count": len(groups),
+        "example_groups": groups[:5],
+    }
+
+
 def _parameter_provenance(
     operation: str,
     result: dict[str, Any],
     *,
+    rows: list[dict[str, Any]] | None = None,
     submitted_parameters: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
     job = result.get("job", {})
+    kind = str(job.get("kind", operation))
+    input_rows = rows or []
     return {
         "operation": operation,
         "status": result.get("status", ""),
@@ -440,6 +500,8 @@ def _parameter_provenance(
         "software_version": job.get("software_version", software_version()),
         "input_rows": job.get("input_rows", 0),
         "input_hash": job.get("input_hash", ""),
+        "input_schema": _schema_payload(kind, input_rows),
+        "grouping": _grouping_summary(kind, input_rows, result),
         "submitted_parameters": submitted_parameters or {},
         "effective_parameters": job.get("parameters", {}),
         "source": "submitted_rows",
@@ -459,6 +521,14 @@ def _parameter_provenance_markdown(provenance: dict[str, Any]) -> str:
         f"Software version: `{provenance.get('software_version', '')}`",
         f"Input rows: `{provenance.get('input_rows', 0)}`",
         f"Input hash: `{provenance.get('input_hash', '')}`",
+        "",
+        "## Input schema",
+        "",
+        json.dumps(provenance.get("input_schema", {}), indent=2, sort_keys=True),
+        "",
+        "## Grouping",
+        "",
+        json.dumps(provenance.get("grouping", {}), indent=2, sort_keys=True),
         "",
         "## Submitted parameters",
         "",
@@ -569,7 +639,7 @@ def build_analysis_bundle(
     plain_result = to_plain(result)
     job = plain_result.get("job", _job(operation, "unknown", rows, params))
     kind = str(job.get("kind", operation))
-    provenance = _parameter_provenance(operation, plain_result, submitted_parameters=params)
+    provenance = _parameter_provenance(operation, plain_result, rows=rows, submitted_parameters=params)
     files: dict[str, bytes] = {
         "README.md": _readme_text(operation, plain_result, provenance).encode("utf-8"),
         "input_rows.csv": _rows_to_csv_bytes(kind, _coerce_rows(rows)),
@@ -594,6 +664,8 @@ def build_analysis_bundle(
         "status": plain_result.get("status", ""),
         "job": job,
         "parameter_provenance": provenance,
+        "input_schema": provenance.get("input_schema", {}),
+        "grouping": provenance.get("grouping", {}),
         "files": file_records,
         "interpretation_boundary": "Results are scoped to submitted rows and declared parameters. No backend bundle upgrades an association, interval, or model fit into a direct biological mechanism.",
     }

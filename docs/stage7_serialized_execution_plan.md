@@ -290,7 +290,7 @@ Stop condition.
 
 ## 7.6. Software maturity for methods-paper reproducibility
 
-Stage 7.6 execution status. Complete. The API stability policy, source-distribution clean-room runner, generated reproducibility card, gate reports, cross-surface parity table, workflow wiring, and methods-output comparison table are recorded. Stage 7.7 usability and adoption rehearsal is not started and requires explicit authorization.
+Stage 7.6 execution status. Complete. The API stability policy, source-distribution clean-room runner, generated reproducibility card, gate reports, cross-surface parity table, workflow wiring, and methods-output comparison table are recorded. Stage 7.7 usability and adoption rehearsal is complete, and Stage 7.8 methods manuscript readiness has not started.
 
 Objectives.
 
@@ -417,4 +417,7 @@ Stage 7.4 execution status. Complete. The endpoint, reserve-like, and routed-out
 Stage 7.5 execution status. Complete. The held-out public validation layer is recorded in `docs/stage7_5_gate_report.json`, `docs/stage7_heldout_validation_report.md`, and `case_studies/stage7_heldout_validation/`. Stage 7.6 software maturity for methods-paper reproducibility is complete.
 
 
-Stage 7.6 execution status. Complete. The methods-program reproducibility layer is recorded in `docs/stage7_6_gate_report.json`, `docs/stage7_methods_reproducibility_card.md`, `docs/stage7_6_api_stability_policy.md`, and `case_studies/stage7_methods_reproducibility/`. Stage 7.7 usability and adoption rehearsal has not started and requires explicit authorization.
+Stage 7.6 execution status. Complete. The methods-program reproducibility layer is recorded in `docs/stage7_6_gate_report.json`, `docs/stage7_methods_reproducibility_card.md`, `docs/stage7_6_api_stability_policy.md`, and `case_studies/stage7_methods_reproducibility/`. Stage 7.7 usability and adoption rehearsal is complete.
+
+
+Stage 7.7 execution status. Complete. The usability and adoption rehearsal is recorded in `docs/stage7_7_gate_report.json`, `docs/stage7_usability_rehearsal.md`, `docs/stage7_user_path_findings.md`, and `case_studies/stage7_usability_rehearsal/`. The rehearsal checks a biologist-facing public MLCI residence interpretation path and a quantitative bounded-coupling reproduction path across Python, CLI, and backend outputs. Stage 7.8 methods manuscript readiness has not started and requires explicit authorization.

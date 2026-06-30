@@ -54,7 +54,10 @@ This artifact map names the expected Stage 7 outputs before they are created. It
 | 7.6 | Methods-paper reproducibility card | `docs/stage7_methods_reproducibility_card.md` | Created methods reproducibility artifact. |
 | 7.6 | Clean-room reproduction report | `docs/stage7_6_clean_room_report.json` | Created methods reproducibility artifact. |
 | 7.6 | API stability policy | `docs/stage7_6_api_stability_policy.md` | Created methods reproducibility artifact. |
-| 7.7 | Usability rehearsal report | `docs/stage7_usability_rehearsal.md` | Planned future artifact. |
+| 7.7 | Usability rehearsal report | `docs/stage7_usability_rehearsal.md` | Created usability artifact. |
+| 7.7 | User-path findings report | `docs/stage7_user_path_findings.md` | Created usability artifact. |
+| 7.7 | Usability gate report | `docs/stage7_7_gate_report.json` | Created usability artifact. |
+| 7.7 | Usability rehearsal outputs | `case_studies/stage7_usability_rehearsal/` | Created usability artifact. |
 | 7.8 | Figure-to-artifact crosswalk | `docs/stage7_figure_artifact_crosswalk.md` | Planned future artifact. |
 | 7.8 | Claim-to-evidence crosswalk | `docs/stage7_claim_evidence_crosswalk.md` | Planned future artifact. |
 | 7.8 | Submission-readiness checklist | `docs/stage7_methods_submission_readiness.md` | Planned future artifact. |
@@ -108,3 +111,14 @@ summary behavior, and routed-output model comparison in public-derived data.
 - `case_studies/stage7_methods_reproducibility/`
 
 These artifacts demonstrate that the Stage 7.1 to Stage 7.5 methods evidence set can be rebuilt from a release-candidate archive, that retained tutorials execute, and that shared Python, CLI, backend, and frontend-contract outputs remain aligned.
+
+
+## Stage 7.7 created artifacts
+
+- `scripts/run_stage7_7_usability_rehearsal.py`
+- `docs/stage7_usability_rehearsal.md`
+- `docs/stage7_user_path_findings.md`
+- `docs/stage7_7_gate_report.json`
+- `case_studies/stage7_usability_rehearsal/`
+
+These artifacts demonstrate that a biologist-facing public MLCI tutorial path can support a scoped residence-versus-amplitude interpretation, that a quantitative bounded-coupling result reproduces across Python, CLI, and backend outputs, and that export bundles carry parameters, input schema, grouping metadata, software version, result rows, reports, and checksums.

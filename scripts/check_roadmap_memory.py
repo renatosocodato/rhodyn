@@ -30,6 +30,8 @@ STAGE7_5_GATE_REPORT_PATH = ROOT / "docs" / "stage7_5_gate_report.json"
 STAGE7_5_CASE_REPORT_PATH = ROOT / "case_studies" / "stage7_heldout_validation" / "stage7_5_heldout_validation_gate_report.json"
 STAGE7_6_GATE_REPORT_PATH = ROOT / "docs" / "stage7_6_gate_report.json"
 STAGE7_6_CASE_REPORT_PATH = ROOT / "case_studies" / "stage7_methods_reproducibility" / "stage7_6_methods_reproducibility_gate_report.json"
+STAGE7_7_GATE_REPORT_PATH = ROOT / "docs" / "stage7_7_gate_report.json"
+STAGE7_7_CASE_REPORT_PATH = ROOT / "case_studies" / "stage7_usability_rehearsal" / "stage7_7_usability_gate_report.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -59,6 +61,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage7_5_case_report_path = root / STAGE7_5_CASE_REPORT_PATH.relative_to(ROOT)
     stage7_6_gate_report_path = root / STAGE7_6_GATE_REPORT_PATH.relative_to(ROOT)
     stage7_6_case_report_path = root / STAGE7_6_CASE_REPORT_PATH.relative_to(ROOT)
+    stage7_7_gate_report_path = root / STAGE7_7_GATE_REPORT_PATH.relative_to(ROOT)
+    stage7_7_case_report_path = root / STAGE7_7_CASE_REPORT_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -79,8 +83,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 7.6 software maturity for methods-paper reproducibility complete":
-        failures.append("active stage must be Stage 7.6 software maturity for methods-paper reproducibility complete after Stage 7.6 execution")
+    if current.get("active_stage") != "Stage 7.7 usability and adoption rehearsal complete":
+        failures.append("active stage must be Stage 7.7 usability and adoption rehearsal complete after Stage 7.7 execution")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -88,7 +92,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         4: "frozen_for_stage5",
         5: "completed",
         6: "public_citable_v0.1.0",
-        7: "stage7_6_complete_7_7_not_started",
+        7: "stage7_7_complete_7_8_not_started",
         8: "conceptual_only",
     }
     for stage, status in expected_status.items():
@@ -122,8 +126,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 7.5 must be marked complete_external_heldout_validation")
     if stage7_subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
         failures.append("Stage 7.6 must be marked complete_methods_reproducibility_hardening")
-    if stage7_subphase_status.get("7.7") != "not_started_next_authorization_required":
-        failures.append("Stage 7.7 must remain not_started_next_authorization_required")
+    if stage7_subphase_status.get("7.7") != "complete_usability_adoption_rehearsal":
+        failures.append("Stage 7.7 must be marked complete_usability_adoption_rehearsal")
+    if stage7_subphase_status.get("7.8") != "not_started_next_authorization_required":
+        failures.append("Stage 7.8 must remain not_started_next_authorization_required")
 
     roadmap_flat = " ".join(roadmap.split())
     required_roadmap_phrases = [
@@ -146,6 +152,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 7.4 is complete as a perturbation endpoint, reserve-like",
         "Stage 7.5 adds a held-out public validation route",
         "Stage 7.6 closes the methods-evidence reproducibility gate",
+        "Stage 7.7 is complete",
         "docs/stage7_methods_program.md",
         "docs/stage7_serialized_execution_plan.md",
         "docs/stage7_0_*",
@@ -183,6 +190,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 7.4 endpoint, reserve-like, and routed-output outputs",
         "Stage 7.5 held-out validation outputs",
         "Stage 7.6 methods reproducibility outputs",
+        "Stage 7.7 usability outputs",
     ]:
         if phrase not in stage7_program:
             failures.append(f"Stage 7 methods program is missing phrase: {phrase}")
@@ -197,6 +205,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 7.4 execution status. Complete",
         "Stage 7.5 execution status. Complete",
         "Stage 7.6 execution status. Complete",
+        "Stage 7.7 execution status. Complete",
     ]:
         if phrase not in stage7_execution:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
@@ -508,6 +517,51 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         if stage7_6_case_report.get("mode") != "full_release_archive":
             failures.append("Stage 7.6 methods reproducibility report must come from full release-archive mode")
 
+    stage7_7_docs = [
+        (root / "docs" / "stage7_usability_rehearsal.md", "Stage 7.7 usability rehearsal", ["public MLCI", "bounded-coupling fixture", "does not add a new biological system"]),
+        (root / "docs" / "stage7_user_path_findings.md", "Stage 7.7 user-path findings", ["Biologist residence task", "Quantitative bounded-coupling task", "Python, CLI, and backend"]),
+    ]
+    for path, label, phrases in stage7_7_docs:
+        if not path.exists():
+            failures.append(f"missing {path.relative_to(root)}")
+            continue
+        body = path.read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase not in body:
+                failures.append(f"{label} missing phrase: {phrase}")
+
+    if not stage7_7_gate_report_path.exists():
+        failures.append("missing docs/stage7_7_gate_report.json")
+    else:
+        stage7_7_gate = json.loads(stage7_7_gate_report_path.read_text(encoding="utf-8"))
+        if stage7_7_gate.get("status") != "pass":
+            failures.append("Stage 7.7 gate report must pass")
+        if stage7_7_gate.get("completion_state") != "complete_usability_adoption_rehearsal":
+            failures.append("Stage 7.7 gate report must record complete_usability_adoption_rehearsal")
+        checkpoints = stage7_7_gate.get("validation_checkpoints", {}) if isinstance(stage7_7_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "stage7_6_prerequisite_complete",
+            "biologist_task_reaches_interpretable_decision",
+            "quantitative_user_reproduces_cli_python_backend_output",
+            "workbench_public_tutorial_flow_present",
+            "exports_include_parameters_schema_grouping_version",
+            "tutorial_or_interface_fixes_preserve_analysis_contract",
+            "no_unvalidated_analysis_routes_added",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.7 gate checkpoint must pass: {checkpoint}")
+        if checkpoints.get("stop_condition_user_cannot_interpret_result") != "not_triggered":
+            failures.append("Stage 7.7 user-path stop condition must remain not_triggered")
+
+    if not stage7_7_case_report_path.exists():
+        failures.append("missing case_studies/stage7_usability_rehearsal/stage7_7_usability_gate_report.json")
+    else:
+        stage7_7_case_report = json.loads(stage7_7_case_report_path.read_text(encoding="utf-8"))
+        if stage7_7_case_report.get("status") != "pass":
+            failures.append("Stage 7.7 usability case report must pass")
+        if stage7_7_case_report.get("completion_state") != "complete_usability_adoption_rehearsal":
+            failures.append("Stage 7.7 usability case report must record complete_usability_adoption_rehearsal")
+
     if not stage5_closeout_path.exists():
         failures.append("missing docs/stage5_closeout.md")
         stage5_closeout = ""
@@ -527,7 +581,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
-        warnings.append("Stage 7.6 methods-paper reproducibility hardening is complete; Stage 7.7 usability rehearsal has not started")
+        warnings.append("Stage 7.7 usability and adoption rehearsal is complete; Stage 7.8 methods readiness has not started")
 
     return {
         "status": "pass" if not failures else "fail",

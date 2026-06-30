@@ -1,0 +1,56 @@
+{
+  "bundle_export": {
+    "bundle_sha256_from_api": "d9378f29069b44b691ea087a5fde468838b23083f7947d30fbeb386edfa4aa14",
+    "files": [
+      "README.md",
+      "input_rows.csv",
+      "manifest.json",
+      "parameter_provenance.json",
+      "parameter_provenance.md",
+      "parameters.json",
+      "report.md",
+      "result.json",
+      "result_rows.csv"
+    ],
+    "grouping_fields": "contrast",
+    "has_grouping": true,
+    "has_input_schema": true,
+    "has_parameters": true,
+    "input_schema_kind": "coupling",
+    "operation": "decide_coupling",
+    "path": "case_studies/stage7_usability_rehearsal/quantitative_bounded_coupling_bundle.zip",
+    "sha256": "d9378f29069b44b691ea087a5fde468838b23083f7947d30fbeb386edfa4aa14",
+    "software_version": "0.1.0"
+  },
+  "cli_backend_residence_parity": true,
+  "coupling_decisions": [
+    {
+      "ci_high": 0.21,
+      "ci_low": -0.05,
+      "contrast": "myh10_src",
+      "estimate": 0.08,
+      "interval_inside_margin": false,
+      "margin": 0.2,
+      "passes": false,
+      "rope_mass": 0.8,
+      "rope_threshold": 0.95
+    },
+    {
+      "ci_high": 0.04,
+      "ci_low": -0.03,
+      "contrast": "rock_src",
+      "estimate": 0.01,
+      "interval_inside_margin": true,
+      "margin": 0.2,
+      "passes": true,
+      "rope_mass": 0.99,
+      "rope_threshold": 0.95
+    }
+  ],
+  "input_table": "examples/synthetic_coupling.csv",
+  "python_cli_backend_coupling_parity": true,
+  "reproduced_decision": "The bounded-coupling fixture reproduces the same pass decision for rock_src and the same non-pass decision for myh10_src across Python, CLI, and backend outputs.",
+  "schema_issues": [],
+  "status": "pass",
+  "task_id": "quantitative_cli_python_backend_reproduction"
+}

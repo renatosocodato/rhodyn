@@ -1,0 +1,15 @@
+{
+  "checks": {
+    "bundle_export_visible": true,
+    "interpretation_boundary_visible": true,
+    "json_csv_markdown_exports_visible": true,
+    "parameter_inspection_visible": true,
+    "public_mlci_button_present": true,
+    "public_mlci_table_wired": true,
+    "route_inspection_visible": true,
+    "schema_inspection_visible": true
+  },
+  "interpretation_boundary": "This check verifies the public workflow and export controls are visible. It does not add a new frontend analysis route.",
+  "status": "pass",
+  "task_id": "stage5_workbench_public_flow_static_check"
+}

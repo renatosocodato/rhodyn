@@ -111,7 +111,7 @@ Stage 7.3 has now been executed as an independent public live-cell signaling dem
 - `notebooks/04_stage7_drg_calcium_public_signaling.ipynb` and `notebooks/05_stage7_erk_gpcr_public_signaling.ipynb` provide lightweight retained-output walkthroughs.
 - `docs/stage7_3_gate_report.json` records the Stage 7.3 completion gate.
 
-Stage 7.3 did not add manuscript claims, product features, or new stable public APIs. Stage 7.4 endpoint, reserve-like, and routed-output demonstrations are complete, Stage 7.5 held-out validation is complete, and Stage 7.6 methods-paper software reproducibility hardening is complete. Stage 7.7 usability and adoption rehearsal remains the next phase requiring explicit authorization.
+Stage 7.3 did not add manuscript claims, product features, or new stable public APIs. Stage 7.4 endpoint, reserve-like, and routed-output demonstrations are complete, Stage 7.5 held-out validation is complete, Stage 7.6 methods-paper software reproducibility hardening is complete, and Stage 7.7 usability and adoption rehearsal is complete. Stage 7.8 methods manuscript readiness remains the next phase requiring explicit authorization.
 
 ## Stage 7 architecture
 
@@ -488,3 +488,9 @@ Outputs are recorded in `case_studies/stage7_heldout_validation/`, `docs/stage7_
 Stage 7.6 completed software maturity hardening for the methods-program evidence set. The full runner builds a source-distribution archive, extracts it into a temporary clean-room workspace, installs the release-candidate package, regenerates the Stage 7.1 to Stage 7.5 evidence outputs, executes retained tutorials, builds documentation, checks the release archive for local paths or private payloads, and verifies cross-surface parity for the shared residence, bounded-coupling, reserve, and model-comparison operations.
 
 Outputs are recorded in `case_studies/stage7_methods_reproducibility/`, `docs/stage7_methods_reproducibility_card.md`, `docs/stage7_6_gate_report.json`, `docs/stage7_6_clean_room_report.json`, `docs/stage7_6_api_stability_policy.md`, and `scripts/run_stage7_6_methods_reproducibility.py`. This phase supports reproducibility of the methods evidence surface. It does not add a new biological system, does not change the held-out validation outcome, and does not imply that future user datasets will necessarily support residence-amplitude divergence, bounded coupling, reserve-like buffering, or routed-output structure.
+
+## Stage 7.7 usability outputs
+
+Stage 7.7 completed a structured usability and adoption rehearsal without adding a new biological system or a new analysis route. The biologist-facing path uses the public MLCI intensity tutorial to interpret residence-like behavior against amplitude-only summaries, while the quantitative path checks that the bounded-coupling fixture reproduces across Python, CLI, and backend surfaces.
+
+Outputs are recorded in `case_studies/stage7_usability_rehearsal/`, `docs/stage7_7_gate_report.json`, `docs/stage7_usability_rehearsal.md`, `docs/stage7_user_path_findings.md`, and `scripts/run_stage7_7_usability_rehearsal.py`. The exported bundles include declared parameters, input schema, grouping metadata, software version, result JSON, result rows, Markdown report, and checksums. This phase supports user-path clarity and reproducibility of exported results. It does not promote a new biological claim beyond the public tutorial and fixture evidence already present in the methods program.

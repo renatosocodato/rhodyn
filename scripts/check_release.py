@@ -188,6 +188,21 @@ REQUIRED_FILES = [
     "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
     "case_studies/stage7_methods_reproducibility/stage7_6_recursive_hardening_report.json",
     "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
+    "docs/stage7_usability_rehearsal.md",
+    "docs/stage7_user_path_findings.md",
+    "docs/stage7_7_gate_report.json",
+    "scripts/run_stage7_7_usability_rehearsal.py",
+    "tests/test_stage7_7_usability_rehearsal.py",
+    "case_studies/stage7_usability_rehearsal/usability_task_protocol.tsv",
+    "case_studies/stage7_usability_rehearsal/biologist_residence_task_result.json",
+    "case_studies/stage7_usability_rehearsal/biologist_residence_bundle.zip",
+    "case_studies/stage7_usability_rehearsal/quantitative_reproduction_result.json",
+    "case_studies/stage7_usability_rehearsal/quantitative_bounded_coupling_bundle.zip",
+    "case_studies/stage7_usability_rehearsal/user_path_findings.tsv",
+    "case_studies/stage7_usability_rehearsal/export_examples_manifest.tsv",
+    "case_studies/stage7_usability_rehearsal/workbench_flow_check.json",
+    "case_studies/stage7_usability_rehearsal/stage7_7_usability_gate_report.json",
+    "case_studies/stage7_usability_rehearsal/stage7_7_usability_rehearsal_report.md",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
@@ -291,8 +306,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 7.6 software maturity for methods-paper reproducibility complete":
-            failures.append("roadmap execution memory does not mark Stage 7.6 software maturity for methods-paper reproducibility as complete")
+        if current.get("active_stage") != "Stage 7.7 usability and adoption rehearsal complete":
+            failures.append("roadmap execution memory does not mark Stage 7.7 usability and adoption rehearsal as complete")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -302,8 +317,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 5 completed")
         if stages.get(6, {}).get("status") != "public_citable_v0.1.0":
             failures.append("roadmap execution memory does not mark Stage 6 as public_citable_v0.1.0")
-        if stages.get(7, {}).get("status") != "stage7_6_complete_7_7_not_started":
-            failures.append("roadmap execution memory does not mark Stage 7.6 complete and Stage 7.7 not started")
+        if stages.get(7, {}).get("status") != "stage7_7_complete_7_8_not_started":
+            failures.append("roadmap execution memory does not mark Stage 7.7 complete and Stage 7.8 not started")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
 
@@ -324,8 +339,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.5 must be complete_external_heldout_validation in roadmap execution memory")
         if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
             failures.append("Stage 7.6 must be complete_methods_reproducibility_hardening in roadmap execution memory")
-        if subphase_status.get("7.7") != "not_started_next_authorization_required":
-            failures.append("Stage 7.7 must remain not started and require authorization")
+        if subphase_status.get("7.7") != "complete_usability_adoption_rehearsal":
+            failures.append("Stage 7.7 must be complete_usability_adoption_rehearsal in roadmap execution memory")
+        if subphase_status.get("7.8") != "not_started_next_authorization_required":
+            failures.append("Stage 7.8 must remain not started and require authorization")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
@@ -646,6 +663,88 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         boundary = str(stage7_6_recursive.get("interpretation_boundary", ""))
         if "does not add biological evidence" not in boundary:
             failures.append("Stage 7.6 recursive hardening report must preserve the no-new-biological-evidence boundary")
+
+    stage7_7_gate_path = root / "docs" / "stage7_7_gate_report.json"
+    stage7_7_case_report_path = root / "case_studies" / "stage7_usability_rehearsal" / "stage7_7_usability_gate_report.json"
+    biologist_result_path = root / "case_studies" / "stage7_usability_rehearsal" / "biologist_residence_task_result.json"
+    quantitative_result_path = root / "case_studies" / "stage7_usability_rehearsal" / "quantitative_reproduction_result.json"
+    export_manifest_path = root / "case_studies" / "stage7_usability_rehearsal" / "export_examples_manifest.tsv"
+    if stage7_7_gate_path.exists():
+        try:
+            stage7_7_gate = json.loads(stage7_7_gate_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.7 gate report is not valid JSON: {exc}")
+            stage7_7_gate = {}
+        if stage7_7_gate.get("status") != "pass":
+            failures.append("Stage 7.7 gate report does not pass")
+        if stage7_7_gate.get("completion_state") != "complete_usability_adoption_rehearsal":
+            failures.append("Stage 7.7 gate report does not mark usability/adoption rehearsal complete")
+        checkpoints = stage7_7_gate.get("validation_checkpoints", {}) if isinstance(stage7_7_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "stage7_6_prerequisite_complete",
+            "biologist_task_reaches_interpretable_decision",
+            "quantitative_user_reproduces_cli_python_backend_output",
+            "workbench_public_tutorial_flow_present",
+            "exports_include_parameters_schema_grouping_version",
+            "tutorial_or_interface_fixes_preserve_analysis_contract",
+            "no_unvalidated_analysis_routes_added",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.7 gate checkpoint does not pass: {checkpoint}")
+        if checkpoints.get("stop_condition_user_cannot_interpret_result") != "not_triggered":
+            failures.append("Stage 7.7 user-path stop condition must remain not_triggered")
+        boundary = str(stage7_7_gate.get("interpretation_boundary", ""))
+        if "does not add a new biological system" not in boundary:
+            failures.append("Stage 7.7 gate report must preserve the no-new-biological-system boundary")
+
+    if stage7_7_case_report_path.exists():
+        try:
+            stage7_7_case_report = json.loads(stage7_7_case_report_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.7 case report is not valid JSON: {exc}")
+            stage7_7_case_report = {}
+        if stage7_7_case_report.get("status") != "pass":
+            failures.append("Stage 7.7 usability case report does not pass")
+        if stage7_7_case_report.get("completion_state") != "complete_usability_adoption_rehearsal":
+            failures.append("Stage 7.7 usability case report does not mark usability/adoption rehearsal complete")
+
+    if biologist_result_path.exists():
+        try:
+            biologist_result = json.loads(biologist_result_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.7 biologist task result is not valid JSON: {exc}")
+            biologist_result = {}
+        if biologist_result.get("status") != "pass":
+            failures.append("Stage 7.7 biologist residence task does not pass")
+        if biologist_result.get("python_cli_backend_parity") is not True:
+            failures.append("Stage 7.7 biologist task must preserve Python/CLI/backend parity")
+
+    if quantitative_result_path.exists():
+        try:
+            quantitative_result = json.loads(quantitative_result_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.7 quantitative task result is not valid JSON: {exc}")
+            quantitative_result = {}
+        if quantitative_result.get("status") != "pass":
+            failures.append("Stage 7.7 quantitative reproduction task does not pass")
+        if quantitative_result.get("python_cli_backend_coupling_parity") is not True:
+            failures.append("Stage 7.7 quantitative task must preserve bounded-coupling parity")
+
+    if export_manifest_path.exists():
+        rows = [line.split("\t") for line in export_manifest_path.read_text(encoding="utf-8").splitlines()]
+        if len(rows) < 3:
+            failures.append("Stage 7.7 export manifest must contain both rehearsal bundles")
+        else:
+            header = rows[0]
+            for required in ["has_parameters", "has_input_schema", "has_grouping", "software_version"]:
+                if required not in header:
+                    failures.append(f"Stage 7.7 export manifest missing column: {required}")
+            for row in rows[1:]:
+                values = dict(zip(header, row))
+                if values.get("has_parameters") != "1" or values.get("has_input_schema") != "1" or values.get("has_grouping") != "1":
+                    failures.append(f"Stage 7.7 export bundle missing required metadata: {values.get('bundle')}")
+                if values.get("software_version") != "0.1.0":
+                    failures.append(f"Stage 7.7 export bundle must record software version 0.1.0: {values.get('bundle')}")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():

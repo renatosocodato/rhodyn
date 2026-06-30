@@ -3,6 +3,7 @@ import struct
 import subprocess
 import sys
 import tempfile
+import zipfile
 from pathlib import Path
 from unittest import TestCase
 
@@ -243,13 +244,35 @@ class CtcAdapterTests(TestCase):
         self.assertTrue(all(record.cell_id.startswith("sequence_") for record in intensity_records))
 
     def test_public_case_study_ships_no_raw_image_or_archive_payloads(self):
+        allowed_analysis_bundles = {
+            Path("case_studies/stage7_usability_rehearsal/biologist_residence_bundle.zip"),
+            Path("case_studies/stage7_usability_rehearsal/quantitative_bounded_coupling_bundle.zip"),
+        }
+        expected_bundle_members = {
+            "README.md",
+            "input_rows.csv",
+            "manifest.json",
+            "parameter_provenance.json",
+            "parameter_provenance.md",
+            "parameters.json",
+            "report.md",
+            "result.json",
+            "result_rows.csv",
+        }
         forbidden_suffixes = {".tif", ".tiff", ".zip"}
         shipped_payloads = [
             path
             for path in Path("case_studies").rglob("*")
-            if path.is_file() and path.suffix.lower() in forbidden_suffixes
+            if path.is_file()
+            and path.suffix.lower() in forbidden_suffixes
+            and path not in allowed_analysis_bundles
         ]
         self.assertEqual(shipped_payloads, [])
+        for bundle in allowed_analysis_bundles:
+            self.assertTrue(bundle.exists(), bundle)
+            with zipfile.ZipFile(bundle) as archive:
+                self.assertEqual(set(archive.namelist()), expected_bundle_members)
+                self.assertFalse(any(name.lower().endswith((".tif", ".tiff", ".lif", ".czi", ".nd2", ".prism", ".xml", ".zip")) for name in archive.namelist()))
 
     def test_public_case_study_workflow_runs(self):
         result = subprocess.run(

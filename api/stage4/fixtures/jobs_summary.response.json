@@ -13,7 +13,7 @@
       },
       "storage_backend": "filesystem",
       "store_format": "rhodyn.file_job_store.v1",
-      "total_bundle_bytes": 2984
+      "total_bundle_bytes": 4757
     }
   },
   "status_code": 200

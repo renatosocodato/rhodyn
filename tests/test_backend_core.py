@@ -182,8 +182,17 @@ class BackendCoreTests(TestCase):
                 self.assertEqual(provenance["operation"], "compare_models")
                 self.assertEqual(provenance["submitted_parameters"], parameters)
                 self.assertEqual(provenance["effective_parameters"], {"parameter_count": 1})
+                self.assertEqual(provenance["input_schema"]["kind"], "endpoint")
+                self.assertEqual(provenance["input_schema"]["required"], ["model", "endpoint", "observed", "predicted"])
+                self.assertIn("model", provenance["grouping"]["observed_grouping_fields"])
+                self.assertIn("endpoint", provenance["grouping"]["observed_grouping_fields"])
+                self.assertEqual(provenance["software_version"], "0.1.0")
                 self.assertEqual(manifest["parameter_provenance"], provenance)
+                self.assertEqual(manifest["input_schema"], provenance["input_schema"])
+                self.assertEqual(manifest["grouping"], provenance["grouping"])
                 self.assertIn("Effective parameters", archive.read("parameter_provenance.md").decode("utf-8"))
+                self.assertIn("Input schema", archive.read("parameter_provenance.md").decode("utf-8"))
+                self.assertIn("Grouping", archive.read("parameter_provenance.md").decode("utf-8"))
 
     def test_write_analysis_bundle_creates_downloadable_zip(self):
         with tempfile.TemporaryDirectory() as tmp:

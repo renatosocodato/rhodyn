@@ -1,0 +1,45 @@
+{
+  "amplitude_only_count": 7,
+  "both_high_residence_and_top_amplitude_count": 0,
+  "bundle_export": {
+    "bundle_sha256_from_api": "ce7fd517c841d5f0cdf53727e52f7d55d11467ab2992f99955b7c010ce30b6ca",
+    "files": [
+      "README.md",
+      "input_rows.csv",
+      "manifest.json",
+      "parameter_provenance.json",
+      "parameter_provenance.md",
+      "parameters.json",
+      "report.md",
+      "result.json",
+      "result_rows.csv"
+    ],
+    "grouping_fields": "cell_id,condition,replicate",
+    "has_grouping": true,
+    "has_input_schema": true,
+    "has_parameters": true,
+    "input_schema_kind": "trajectory",
+    "operation": "score_residence",
+    "path": "case_studies/stage7_usability_rehearsal/biologist_residence_bundle.zip",
+    "sha256": "ce7fd517c841d5f0cdf53727e52f7d55d11467ab2992f99955b7c010ce30b6ca",
+    "software_version": "0.1.0"
+  },
+  "high_residence_count": 6,
+  "input_table": "examples/mlci_public_intensity_trajectory.csv",
+  "interpretable_decision": "Using the declared intensity window, public MLCI trajectories include residence-rich tracks that are not top-quartile by mean intensity and top-amplitude tracks that do not dwell in the window. The result is interpretable as a residence-versus-amplitude software example, not as molecular activity or disease-state biology.",
+  "mean_signal_top_quartile_threshold": 17.4085225,
+  "python_cli_backend_parity": true,
+  "residence_only_count": 6,
+  "residence_threshold_for_task": 0.25,
+  "row_count": 62,
+  "schema_issues": [],
+  "status": "pass",
+  "task_id": "biologist_public_mlci_residence_amplitude",
+  "top_amplitude_count": 7,
+  "trace_count": 24,
+  "window": {
+    "high": 14.5,
+    "low": 13.0,
+    "signal_column": "signal"
+  }
+}

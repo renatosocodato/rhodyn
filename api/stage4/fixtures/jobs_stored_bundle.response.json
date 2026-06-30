@@ -3,14 +3,24 @@
     "bundle_format": "rhodyn.analysis_bundle.v1",
     "files": [
       {
-        "bytes": 536,
+        "bytes": 663,
         "path": "README.md",
-        "sha256": "a4aa0029156e3f8236ef62e83b1037a6bbf90c560e4eb3bbc6d705528aee9c74"
+        "sha256": "14431f850fa50030b5df0a5120928069df3d1d853f008e7599222851403375fc"
       },
       {
         "bytes": 380,
         "path": "input_rows.csv",
         "sha256": "a6f2da395d3ef94c7551d67dc9698f08bc139e05f9a82b341369249a464db434"
+      },
+      {
+        "bytes": 1124,
+        "path": "parameter_provenance.json",
+        "sha256": "30d3fd3136362b1820ca0da8909ce75cbb2f604fe90ee3147c01ec5b23489bd0"
+      },
+      {
+        "bytes": 995,
+        "path": "parameter_provenance.md",
+        "sha256": "a2ae6ada4535490dadd297ae96ba6c7925103c35bb6331370ae82aa19c6dd65f"
       },
       {
         "bytes": 27,
@@ -33,6 +43,36 @@
         "sha256": "616e80c05e5114e3fb98f9c24655b5ff7d4a78d7b93772dc1b6fa493ec18706b"
       }
     ],
+    "grouping": {
+      "example_groups": [],
+      "observed_grouping_fields": [
+        "model",
+        "endpoint"
+      ],
+      "result_group_count": 0,
+      "result_grouping_levels": [],
+      "schema_kind": "endpoint"
+    },
+    "input_schema": {
+      "kind": "endpoint",
+      "optional": [
+        "weight"
+      ],
+      "recognized": true,
+      "required": [
+        "model",
+        "endpoint",
+        "observed",
+        "predicted"
+      ],
+      "submitted_fields": [
+        "model",
+        "endpoint",
+        "observed",
+        "predicted",
+        "weight"
+      ]
+    },
     "interpretation_boundary": "Results are scoped to submitted rows and declared parameters. No backend bundle upgrades an association, interval, or model fit into a direct biological mechanism.",
     "job": {
       "input_hash": "10f212809f511d79509f9d531aaa7f5ca9f99f32a476800444a4d4dc59748094",
@@ -46,9 +86,55 @@
       "software_version": "0.1.0"
     },
     "operation": "compare_models",
+    "parameter_provenance": {
+      "effective_parameters": {
+        "parameter_count": 1
+      },
+      "grouping": {
+        "example_groups": [],
+        "observed_grouping_fields": [
+          "model",
+          "endpoint"
+        ],
+        "result_group_count": 0,
+        "result_grouping_levels": [],
+        "schema_kind": "endpoint"
+      },
+      "input_hash": "10f212809f511d79509f9d531aaa7f5ca9f99f32a476800444a4d4dc59748094",
+      "input_rows": 9,
+      "input_schema": {
+        "kind": "endpoint",
+        "optional": [
+          "weight"
+        ],
+        "recognized": true,
+        "required": [
+          "model",
+          "endpoint",
+          "observed",
+          "predicted"
+        ],
+        "submitted_fields": [
+          "model",
+          "endpoint",
+          "observed",
+          "predicted",
+          "weight"
+        ]
+      },
+      "interpretation_boundary": "Parameter provenance records the declared analysis choices for this run. It does not change the submitted measurements or upgrade derived summaries into direct biological mechanisms.",
+      "job_id": "6c319616f9177e865073",
+      "operation": "compare_models",
+      "software_version": "0.1.0",
+      "source": "submitted_rows",
+      "status": "pass",
+      "submitted_parameters": {
+        "parameter_count": 1
+      }
+    },
     "status": "pass"
   },
-  "bundle_sha256": "2256edd544bde5054f826e23000b2b2537a28062a4bd7a0c336232799eec7d6a",
+  "bundle_sha256": "a5a3468574614992616c7312578082abf3170637adf153b45d4fce456d1672ce",
   "content_type": "application/zip",
   "status_code": 200
 }

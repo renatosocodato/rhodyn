@@ -333,9 +333,15 @@ def _archive_manifest_summary(rows: list[dict[str, object]]) -> dict[str, object
         "scripts/run_stage7_5_heldout_validation.py",
         "scripts/run_stage7_6_methods_reproducibility.py",
         "scripts/audit_stage7_6_recursive_hardening.py",
+        "scripts/run_stage7_7_usability_rehearsal.py",
         "docs/stage7_methods_program.md",
         "docs/stage7_6_api_stability_policy.md",
         "docs/stage7_6_recursive_hardening.md",
+        "docs/stage7_usability_rehearsal.md",
+        "docs/stage7_user_path_findings.md",
+        "docs/stage7_7_gate_report.json",
+        "case_studies/stage7_usability_rehearsal/stage7_7_usability_gate_report.json",
+        "tests/test_stage7_7_usability_rehearsal.py",
         "notebooks/01_synthetic_residence_primer.ipynb",
         "notebooks/07_stage7_heldout_validation.ipynb",
         "examples/synthetic_trajectory.csv",
@@ -383,14 +389,16 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 7.6 software maturity for methods-paper reproducibility complete":
-        failures.append("roadmap memory does not mark Stage 7.6 complete")
-    if stage7.get("status") != "stage7_6_complete_7_7_not_started":
-        failures.append("Stage 7 status is not stage7_6_complete_7_7_not_started")
+    if current.get("active_stage") != "Stage 7.7 usability and adoption rehearsal complete":
+        failures.append("roadmap memory does not mark Stage 7.7 complete")
+    if stage7.get("status") != "stage7_7_complete_7_8_not_started":
+        failures.append("Stage 7 status is not stage7_7_complete_7_8_not_started")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
         failures.append("Stage 7.6 subphase is not complete")
-    if subphase_status.get("7.7") != "not_started_next_authorization_required":
-        failures.append("Stage 7.7 subphase is not locked for authorization")
+    if subphase_status.get("7.7") != "complete_usability_adoption_rehearsal":
+        failures.append("Stage 7.7 subphase is not complete")
+    if subphase_status.get("7.8") != "not_started_next_authorization_required":
+        failures.append("Stage 7.8 subphase is not locked for authorization")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",
