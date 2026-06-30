@@ -1,9 +1,9 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-30T09:28:49.430090Z",
+  "generated_utc": "2026-06-30T10:28:35.076549Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 95,
+  "link_count": 96,
   "records": [
     {
       "detail": "remote URL syntax checked only",
@@ -562,6 +562,12 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "stage7_endpoint_reserve_routing_demonstrations.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_heldout_validation_report.md"
     },
     {
       "detail": "local target exists",

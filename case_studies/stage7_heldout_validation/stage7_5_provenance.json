@@ -1,0 +1,84 @@
+{
+  "alpha": 0.05,
+  "archive_file": "Figure_3.zip",
+  "archive_sha256": "c99308f4918d5caf9fedfbeb4d1ca6cf9855acb82fbc0cad20c0c3934d0d9d76",
+  "archive_url": "https://zenodo.org/api/records/5836623/files/Figure_3.zip/content",
+  "bootstrap_resamples": 1000,
+  "bootstrap_seed": 7505,
+  "derived_outputs": {
+    "case_studies/stage7_heldout_validation/candidate_ranking.tsv": "bfba4327303c29c439d0d1fc0fe33efd96fbf5ec282f3e1b62cea4339956cd1c",
+    "case_studies/stage7_heldout_validation/controlled_access_note.md": "5f5a5124c53c9a4e9a1966fb2b3157caaa75acdf2b04f04f8eb54764ec096e01",
+    "case_studies/stage7_heldout_validation/heldout_analysis_plan.json": "0c34a022ca76518a0b90cbdc6071c4efbbc382987a279046a4ce941b6329af42",
+    "case_studies/stage7_heldout_validation/heldout_analysis_plan.md": "084eaaabd502228ded68fe1b62be98c92a329626cd085069e6e79cc572c8cecd",
+    "case_studies/stage7_heldout_validation/heldout_bounded_coupling_decisions.csv": "38474a076513e6897dcf8b110bc6968feef249aa9aac2b9f82184940669ca8d0",
+    "case_studies/stage7_heldout_validation/heldout_margin_sensitivity.csv": "d9c66a723e1e66c1198dd32c4f143fa713d912a309cc7201fa6616bef894b342",
+    "case_studies/stage7_heldout_validation/heldout_paired_reporter_tidy_trajectories.csv": "84a1a8d46a3a825e37ce7e3ee8cf3fdc03e5ebc05959cffa1b378ec8859ce6e4",
+    "case_studies/stage7_heldout_validation/heldout_residence_summary.csv": "6db7cfb1d4929c4c2756bbd8f01a65de1755ecd305bf542b6d491693b2fcf307",
+    "case_studies/stage7_heldout_validation/heldout_validation_outcomes.tsv": "afe21d1f2e89c8d92e7cb0b5a6cddb752fb7ec2a34a95363d9e9e10af4478b54",
+    "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_gate_report.json": "90b5ec72cee1635e9434b55ed661b854639c6d2dc3137509e7b91f27a3b37947",
+    "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_report.md": "dc2dab6dfec4c1012fceb607f294e68993cc4a9dafb7bc8ec35fc60653c94380",
+    "docs/stage7_5_gate_report.json": "90b5ec72cee1635e9434b55ed661b854639c6d2dc3137509e7b91f27a3b37947",
+    "docs/stage7_heldout_validation_report.md": "dc2dab6dfec4c1012fceb607f294e68993cc4a9dafb7bc8ec35fc60653c94380",
+    "notebooks/07_stage7_heldout_validation.ipynb": "1574598cf98937e81f6caf26ee0ef24e0b327103caf4f19a0702dc1f67b6458c"
+  },
+  "diagnostics": {
+    "context_count": 7,
+    "contexts_with_group_bootstrap_crossing_margin": [
+      "heldout_His_YM_erk_minus_akt_residence",
+      "heldout_His_ymptx_erk_minus_akt_residence",
+      "heldout_S1P_YM_erk_minus_akt_residence",
+      "heldout_UK_PTx_erk_minus_akt_residence"
+    ],
+    "contexts_with_group_bootstrap_inside_margin": [
+      "heldout_His_PTx_erk_minus_akt_residence",
+      "heldout_S1P_PTx_erk_minus_akt_residence",
+      "heldout_S1P_ymptx_erk_minus_akt_residence"
+    ],
+    "fail_contexts": [],
+    "fail_count": 0,
+    "inconclusive_contexts": [
+      "heldout_His_ymptx_erk_minus_akt_residence",
+      "heldout_S1P_YM_erk_minus_akt_residence",
+      "heldout_UK_PTx_erk_minus_akt_residence"
+    ],
+    "inconclusive_count": 3,
+    "pass_contexts": [
+      "heldout_His_PTx_erk_minus_akt_residence",
+      "heldout_His_YM_erk_minus_akt_residence",
+      "heldout_S1P_PTx_erk_minus_akt_residence",
+      "heldout_S1P_ymptx_erk_minus_akt_residence"
+    ],
+    "pass_count": 4
+  },
+  "fixed_residence_thresholds": {
+    "akt": 0.5892,
+    "erk": 0.7623
+  },
+  "heldout_contexts": [
+    "His/PTx",
+    "His/YM",
+    "His/ymptx",
+    "S1P/PTx",
+    "S1P/YM",
+    "S1P/ymptx",
+    "UK/PTx"
+  ],
+  "interpretation_boundary": "This validation tests held-out bounded coupling of derived ERK/Akt residence summaries, not biochemical equivalence or absence of all GPCR pathway crosstalk.",
+  "license": "CC-BY-4.0",
+  "max_cells_per_ligand_inhibitor_experiment": 20,
+  "primary_margin": 0.2,
+  "raw_file_policy": "The Figure 3 source archive and member CSV files were downloaded into memory and converted to derived held-out validation rows only; source ZIP and CSV files are not retained in the repository.",
+  "source_member_sha256": {
+    "Figure_3/Data/ALL_His.csv": "fadfa6a068253210fc705db2b22c04a7456ac065a0a96a27e4b8b6d63853869f",
+    "Figure_3/Data/ALL_S1P.csv": "190237be870a83c9328ccde6f3b5c765867ecbec67b15d4a5b7285ddfc7cb891",
+    "Figure_3/Data/ALL_UK.csv": "29b12cf5c69cb64f8488dc8a1a3b738116746980cd9538a356b8d69da0059434"
+  },
+  "source_members": [
+    "Figure_3/Data/ALL_UK.csv",
+    "Figure_3/Data/ALL_S1P.csv",
+    "Figure_3/Data/ALL_His.csv"
+  ],
+  "source_title": "Single cell imaging of ERK and Akt activation dynamics and heterogeneity induced by G protein-coupled receptors - Scripts & Source data",
+  "zenodo_doi": "10.5281/zenodo.5836623",
+  "zenodo_record": "https://zenodo.org/records/5836623"
+}

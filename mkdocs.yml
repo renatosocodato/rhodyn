@@ -31,4 +31,5 @@ nav:
   - Stage 7 public-data adapters: stage7_public_data_adapters.md
   - Stage 7 public signaling demonstrations: stage7_public_signaling_demonstrations.md
   - Stage 7 endpoint, reserve, and routing demonstrations: stage7_endpoint_reserve_routing_demonstrations.md
+  - Stage 7 held-out validation: stage7_heldout_validation_report.md
   - Release checklist: release_checklist.md

@@ -136,3 +136,8 @@ gate is authorized.
 ## Stage 7.4 endpoint, reserve-like, and routed-output demonstrations
 
 The Stage 7.4 evidence layer exercises RhoDyn beyond single-reporter trajectories. It reads retained public-derived Cell Painting/MitoTox endpoint tables and ERK/Akt paired-reporter summaries, then writes routed-output rankings, endpoint-scoped reserve-like rows, bounded-coupling decisions, and a gate report. The reserve-like label is restricted to cell-health endpoint preservation and is not treated as live metabolic reserve.
+
+
+## Stage 7.5 held-out biological validation
+
+The Stage 7.5 evidence layer tests RhoDyn on a held-out public biological slice rather than another internally selected positive example. It uses non-DMSO inhibitor contexts from the Wan 2021 ERK/Akt GPCR archive, keeps the Stage 7.4 DMSO-derived residence thresholds and +/-0.20 ERK-minus-Akt margin fixed, and reports pass, fail, or inconclusive outcomes without retuning. The retained result is mixed, with four bounded-coupling pass contexts and three margin-boundary inconclusive contexts. This validates scoped decision behavior, not a universal GPCR coupling law.

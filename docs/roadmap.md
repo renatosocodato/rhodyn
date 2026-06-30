@@ -62,7 +62,7 @@ passes.
    and routed-output demonstration phase. Stage 7 remains a methods-manuscript
    readiness program aligned to standards exemplified by strong computational
    methods papers, with Nature Methods as the primary reference point rather
-   than a guaranteed formula. Stage 7.5 has not started.
+   than a guaranteed formula. Stage 7.5 is complete as a held-out public validation, with Stage 7.6 not started.
 6. Stage 8 inherits from Stage 7. Product strategy should not lead or reshape
    the evidence path.
 
@@ -87,7 +87,7 @@ as roadmap work.
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
 | Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract, exposes the existing deterministic simulation surface, and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
-| Stage 7. Independent methods-program roadmap | Stage 7.4 endpoint, reserve-like, and routed-output demonstrations complete, Stage 7.5 not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
+| Stage 7. Independent methods-program roadmap | Stage 7.5 external or held-out biological validation complete, Stage 7.6 not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
 
 ## Non-drift principles
@@ -434,6 +434,24 @@ non-trajectory or multi-readout cases. Gate. At least one case supports bounded
 coupling, reserve logic, or routed-output interpretation without overclaiming
 mechanism.
 
+
+
+### Stage 7.5 held-out validation status
+
+Stage 7.5 adds a held-out public validation route using non-DMSO inhibitor
+contexts from the Wan 2021 ERK/Akt GPCR archive. The validation fixes the
+Stage 7.4 DMSO-derived residence thresholds, the +/-0.20 ERK-minus-Akt
+residence-fraction margin, the alpha threshold, and the cell-selection rule
+before writing outcomes. Four held-out ligand-inhibitor contexts pass the
+bounded-coupling rule and three remain margin-boundary inconclusive. The output
+therefore enters the Stage 7 evidence set as scoped boundary validation rather
+than as a universal ERK/Akt GPCR coupling claim.
+
+The Stage 7.5 outputs are recorded under
+`case_studies/stage7_heldout_validation/`, `docs/stage7_heldout_validation_report.md`,
+and `docs/stage7_5_gate_report.json`. Stage 7.6 software maturity for
+methods-paper reproducibility has not started.
+
 7.5 External or held-out biological validation. Run RhoDyn on a collaborator or
 held-out dataset under predeclared criteria. Gate. Success, failure, or
 inconclusive outcome is reported without hidden tuning.
@@ -470,7 +488,7 @@ Strong pivots.
   evidence shape supports a software-methods or software-credit route rather
   than the primary high-impact methods claim.
 
-Status. Stage 7.4 endpoint, reserve-like, and routed-output demonstrations complete, Stage 7.5 not started. The
+Status. Stage 7.5 external or held-out biological validation complete, Stage 7.6 not started. The
 v0.3 evidence bank and v0.1.0 release support Stage 7, and the method objects
 now have formal definitions, executable synthetic examples, baseline benchmarks,
 sensitivity outputs, performance measurements, failure-behavior checks, two

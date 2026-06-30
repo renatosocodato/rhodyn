@@ -111,7 +111,7 @@ Stage 7.3 has now been executed as an independent public live-cell signaling dem
 - `notebooks/04_stage7_drg_calcium_public_signaling.ipynb` and `notebooks/05_stage7_erk_gpcr_public_signaling.ipynb` provide lightweight retained-output walkthroughs.
 - `docs/stage7_3_gate_report.json` records the Stage 7.3 completion gate.
 
-Stage 7.3 did not add manuscript claims, product features, or new stable public APIs. Stage 7.4 is now complete, and Stage 7.5 external or held-out validation remains the next phase requiring explicit authorization.
+Stage 7.3 did not add manuscript claims, product features, or new stable public APIs. Stage 7.4 is complete, Stage 7.5 held-out validation is complete, and Stage 7.6 software maturity for methods-paper reproducibility remains the next phase requiring explicit authorization.
 
 ## Stage 7 architecture
 
@@ -475,3 +475,10 @@ declared +/-0.20 residence-fraction margin, with UK promoted as the primary
 context-limited passing contrast and histamine/S1P retained as non-promoted
 contexts. These outputs demonstrate endpoint, reserve-like, and routed-output
 use without treating static endpoint labels as live reserve measurements.
+
+
+## Stage 7.5 held-out validation outputs
+
+Stage 7.5 completed a held-out public validation route using non-DMSO inhibitor contexts from the Wan 2021 ERK/Akt GPCR archive. The analysis plan fixed the Stage 7.4 DMSO-derived ERK and Akt residence thresholds, the +/-0.20 ERK-minus-Akt margin, the alpha threshold, and the replicate-aware cell selection rule before outputs were written. The retained result is mixed. Four contexts pass the bounded-coupling rule, and three contexts remain margin-boundary inconclusive.
+
+Outputs are recorded in `case_studies/stage7_heldout_validation/`, `docs/stage7_heldout_validation_report.md`, `docs/stage7_5_gate_report.json`, `scripts/run_stage7_5_heldout_validation.py`, `tests/test_stage7_5_heldout_validation.py`, and `notebooks/07_stage7_heldout_validation.ipynb`. This phase validates scoped pass and inconclusive behavior under fixed criteria. It does not promote a universal ERK/Akt GPCR coupling rule.

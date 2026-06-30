@@ -50,7 +50,7 @@ This artifact map names the expected Stage 7 outputs before they are created. It
 | 7.3 | Public signaling notebooks | `notebooks/04_stage7_drg_calcium_public_signaling.ipynb`; `notebooks/05_stage7_erk_gpcr_public_signaling.ipynb` | Created public demonstration artifact. |
 | 7.3 | Gate report | `docs/stage7_3_gate_report.json` | Created public demonstration artifact. |
 | 7.4 | Perturbation, reserve, and routed-output demonstrations | `case_studies/stage7_endpoint_reserve_routing/` | Planned future artifact. |
-| 7.5 | Held-out or collaborator validation report | `docs/stage7_external_validation_report.md` | Planned future artifact. |
+| 7.5 | Held-out validation report | `docs/stage7_heldout_validation_report.md` | Created artifact. |
 | 7.6 | Methods-paper reproducibility card | `docs/stage7_reproducibility_card.md` | Planned future artifact. |
 | 7.6 | Clean-room reproduction report | `docs/stage7_clean_room_report.md` | Planned future artifact. |
 | 7.7 | Usability rehearsal report | `docs/stage7_usability_rehearsal.md` | Planned future artifact. |
@@ -85,3 +85,13 @@ This map distinguishes created planning outputs from future analysis and impleme
 
 These artifacts demonstrate bounded coupling, endpoint-scoped reserve-like
 summary behavior, and routed-output model comparison in public-derived data.
+
+
+## Stage 7.5 created artifacts
+
+- `scripts/run_stage7_5_heldout_validation.py`
+- `tests/test_stage7_5_heldout_validation.py`
+- `notebooks/07_stage7_heldout_validation.ipynb`
+- `docs/stage7_heldout_validation_report.md`
+- `docs/stage7_5_gate_report.json`
+- `case_studies/stage7_heldout_validation/`

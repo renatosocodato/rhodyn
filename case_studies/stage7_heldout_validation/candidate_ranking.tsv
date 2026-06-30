@@ -1,0 +1,3 @@
+candidate_id	source	candidate_role	selected	biological_fit	metadata_quality	access_quality	stress_test_value	grouping_quality	total_score	decision_reason
+wan2021_erk_akt_non_dmso_inhibitor_slice	Wan et al. 2021 ERK/Akt GPCR Zenodo Figure_3.zip	heldout_bounded_coupling_validation	yes	5	5	5	5	4	24	Public non-DMSO inhibitor contexts provide a held-out paired-reporter stress test using fixed Stage 7.4 thresholds and margin.
+new_collaborator_restricted_dataset	not supplied	future_external_collaborator_validation	no	5	unknown	1	5	unknown	not_scored	No reviewable data or access metadata were available in this implementation pass, so the public held-out route was selected.

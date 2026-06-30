@@ -155,6 +155,23 @@ REQUIRED_FILES = [
     "case_studies/stage7_endpoint_reserve_routing/stage7_4_case_report.md",
     "case_studies/stage7_endpoint_reserve_routing/cell_painting_endpoint_reserve_routing_report.md",
     "case_studies/stage7_endpoint_reserve_routing/erk_akt_bounded_coupling_stage7_4_report.md",
+    "docs/stage7_heldout_validation_report.md",
+    "docs/stage7_5_gate_report.json",
+    "scripts/run_stage7_5_heldout_validation.py",
+    "tests/test_stage7_5_heldout_validation.py",
+    "notebooks/07_stage7_heldout_validation.ipynb",
+    "case_studies/stage7_heldout_validation/candidate_ranking.tsv",
+    "case_studies/stage7_heldout_validation/heldout_analysis_plan.json",
+    "case_studies/stage7_heldout_validation/heldout_analysis_plan.md",
+    "case_studies/stage7_heldout_validation/heldout_paired_reporter_tidy_trajectories.csv",
+    "case_studies/stage7_heldout_validation/heldout_residence_summary.csv",
+    "case_studies/stage7_heldout_validation/heldout_bounded_coupling_decisions.csv",
+    "case_studies/stage7_heldout_validation/heldout_margin_sensitivity.csv",
+    "case_studies/stage7_heldout_validation/heldout_validation_outcomes.tsv",
+    "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_gate_report.json",
+    "case_studies/stage7_heldout_validation/stage7_5_provenance.json",
+    "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_report.md",
+    "case_studies/stage7_heldout_validation/controlled_access_note.md",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
@@ -258,8 +275,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 7.4 endpoint, reserve, and routed-output demonstrations complete":
-            failures.append("roadmap execution memory does not mark Stage 7.4 endpoint, reserve, and routed-output demonstrations as complete")
+        if current.get("active_stage") != "Stage 7.5 external or held-out biological validation complete":
+            failures.append("roadmap execution memory does not mark Stage 7.5 external or held-out biological validation as complete")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -269,8 +286,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 5 completed")
         if stages.get(6, {}).get("status") != "public_citable_v0.1.0":
             failures.append("roadmap execution memory does not mark Stage 6 as public_citable_v0.1.0")
-        if stages.get(7, {}).get("status") != "stage7_4_complete_7_5_not_started":
-            failures.append("roadmap execution memory does not mark Stage 7.4 complete and Stage 7.5 not started")
+        if stages.get(7, {}).get("status") != "stage7_5_complete_7_6_not_started":
+            failures.append("roadmap execution memory does not mark Stage 7.5 complete and Stage 7.6 not started")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
 
@@ -287,8 +304,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.3 must be complete_public_signaling_demonstrations in roadmap execution memory")
         if subphase_status.get("7.4") != "complete_endpoint_reserve_routing_demonstrations":
             failures.append("Stage 7.4 must be complete_endpoint_reserve_routing_demonstrations in roadmap execution memory")
-        if subphase_status.get("7.5") != "not_started_next_authorization_required":
-            failures.append("Stage 7.5 must remain not started and require authorization")
+        if subphase_status.get("7.5") != "complete_external_heldout_validation":
+            failures.append("Stage 7.5 must be complete_external_heldout_validation in roadmap execution memory")
+        if subphase_status.get("7.6") != "not_started_next_authorization_required":
+            failures.append("Stage 7.6 must remain not started and require authorization")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
@@ -485,6 +504,53 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         coupling = stage7_4_case_report.get("bounded_coupling_diagnostics", {}) if isinstance(stage7_4_case_report.get("bounded_coupling_diagnostics", {}), dict) else {}
         if coupling.get("primary_passes") is not True:
             failures.append("Stage 7.4 bounded-coupling primary contrast does not pass")
+
+
+    stage7_5_gate_path = root / "docs" / "stage7_5_gate_report.json"
+    if stage7_5_gate_path.exists():
+        try:
+            stage7_5_gate = json.loads(stage7_5_gate_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.5 gate report is not valid JSON: {exc}")
+            stage7_5_gate = {}
+        if stage7_5_gate.get("status") != "pass":
+            failures.append("Stage 7.5 gate report does not pass")
+        if stage7_5_gate.get("completion_state") != "complete_external_heldout_validation":
+            failures.append("Stage 7.5 gate report does not mark external/held-out validation complete")
+        if stage7_5_gate.get("pass_context_count") != 4 or stage7_5_gate.get("inconclusive_context_count") != 3:
+            failures.append("Stage 7.5 held-out validation must preserve four pass contexts and three inconclusive contexts")
+        checkpoints = stage7_5_gate.get("validation_checkpoints", {}) if isinstance(stage7_5_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "stage7_3_and_7_4_prerequisites_complete",
+            "heldout_analysis_plan_fixed_before_outputs",
+            "public_access_reviewable",
+            "schema_validation_tidy_trajectories",
+            "schema_validation_coupling_rows",
+            "fixed_windows_margins_baselines_grouping_recorded",
+            "no_hidden_tuning_after_result",
+            "pass_fail_inconclusive_outcomes_visible",
+            "controlled_access_constraints_documented",
+            "evidence_set_decision_recorded",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.5 gate checkpoint does not pass: {checkpoint}")
+        if stage7_5_gate.get("stop_condition_access_restriction") != "not_triggered":
+            failures.append("Stage 7.5 access stop condition must remain not_triggered")
+        boundary = str(stage7_5_gate.get("interpretation_boundary", ""))
+        if "inconclusive contexts" not in boundary or "residence summaries only" not in boundary:
+            failures.append("Stage 7.5 gate report must keep held-out boundary interpretation visible")
+
+    stage7_5_case_report_path = root / "case_studies" / "stage7_heldout_validation" / "stage7_5_heldout_validation_gate_report.json"
+    if stage7_5_case_report_path.exists():
+        try:
+            stage7_5_case_report = json.loads(stage7_5_case_report_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.5 case report is not valid JSON: {exc}")
+            stage7_5_case_report = {}
+        if stage7_5_case_report.get("status") != "pass":
+            failures.append("Stage 7.5 held-out validation case report does not pass")
+        if stage7_5_case_report.get("evidence_set_decision") != "scoped_heldout_boundary_validation":
+            failures.append("Stage 7.5 case report does not keep the scoped evidence-set decision")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():

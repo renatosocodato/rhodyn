@@ -1,0 +1,54 @@
+{
+  "completion_state": "complete_external_heldout_validation",
+  "derived_outputs": {
+    "case_studies/stage7_heldout_validation/candidate_ranking.tsv": "bfba4327303c29c439d0d1fc0fe33efd96fbf5ec282f3e1b62cea4339956cd1c",
+    "case_studies/stage7_heldout_validation/controlled_access_note.md": "5f5a5124c53c9a4e9a1966fb2b3157caaa75acdf2b04f04f8eb54764ec096e01",
+    "case_studies/stage7_heldout_validation/heldout_analysis_plan.json": "0c34a022ca76518a0b90cbdc6071c4efbbc382987a279046a4ce941b6329af42",
+    "case_studies/stage7_heldout_validation/heldout_analysis_plan.md": "084eaaabd502228ded68fe1b62be98c92a329626cd085069e6e79cc572c8cecd",
+    "case_studies/stage7_heldout_validation/heldout_bounded_coupling_decisions.csv": "38474a076513e6897dcf8b110bc6968feef249aa9aac2b9f82184940669ca8d0",
+    "case_studies/stage7_heldout_validation/heldout_margin_sensitivity.csv": "d9c66a723e1e66c1198dd32c4f143fa713d912a309cc7201fa6616bef894b342",
+    "case_studies/stage7_heldout_validation/heldout_paired_reporter_tidy_trajectories.csv": "84a1a8d46a3a825e37ce7e3ee8cf3fdc03e5ebc05959cffa1b378ec8859ce6e4",
+    "case_studies/stage7_heldout_validation/heldout_residence_summary.csv": "6db7cfb1d4929c4c2756bbd8f01a65de1755ecd305bf542b6d491693b2fcf307",
+    "case_studies/stage7_heldout_validation/heldout_validation_outcomes.tsv": "afe21d1f2e89c8d92e7cb0b5a6cddb752fb7ec2a34a95363d9e9e10af4478b54",
+    "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_report.md": "dc2dab6dfec4c1012fceb607f294e68993cc4a9dafb7bc8ec35fc60653c94380",
+    "docs/stage7_heldout_validation_report.md": "dc2dab6dfec4c1012fceb607f294e68993cc4a9dafb7bc8ec35fc60653c94380",
+    "notebooks/07_stage7_heldout_validation.ipynb": "1574598cf98937e81f6caf26ee0ef24e0b327103caf4f19a0702dc1f67b6458c"
+  },
+  "evidence_set_decision": "scoped_heldout_boundary_validation",
+  "fail_context_count": 0,
+  "fail_contexts": [],
+  "fixed_threshold_source": "Stage 7.4 DMSO-control ERK/Akt residence thresholds",
+  "heldout_outcome": "mixed_pass_inconclusive",
+  "inconclusive_context_count": 3,
+  "inconclusive_contexts": [
+    "heldout_His_ymptx_erk_minus_akt_residence",
+    "heldout_S1P_YM_erk_minus_akt_residence",
+    "heldout_UK_PTx_erk_minus_akt_residence"
+  ],
+  "interpretation_boundary": "Held-out pass contexts support bounded coupling of ERK/Akt residence summaries only in their ligand-inhibitor contexts; inconclusive contexts are retained as method-boundary evidence.",
+  "pass_context_count": 4,
+  "pass_contexts": [
+    "heldout_His_PTx_erk_minus_akt_residence",
+    "heldout_His_YM_erk_minus_akt_residence",
+    "heldout_S1P_PTx_erk_minus_akt_residence",
+    "heldout_S1P_ymptx_erk_minus_akt_residence"
+  ],
+  "primary_margin": 0.2,
+  "selected_case": "wan2021_erk_akt_non_dmso_inhibitor_slice",
+  "source_doi": "10.5281/zenodo.5836623",
+  "stage": "7.5",
+  "status": "pass",
+  "stop_condition_access_restriction": "not_triggered",
+  "validation_checkpoints": {
+    "controlled_access_constraints_documented": "pass",
+    "evidence_set_decision_recorded": "pass",
+    "fixed_windows_margins_baselines_grouping_recorded": "pass",
+    "heldout_analysis_plan_fixed_before_outputs": "pass",
+    "no_hidden_tuning_after_result": "pass",
+    "pass_fail_inconclusive_outcomes_visible": "pass",
+    "public_access_reviewable": "pass",
+    "schema_validation_coupling_rows": "pass",
+    "schema_validation_tidy_trajectories": "pass",
+    "stage7_3_and_7_4_prerequisites_complete": "pass"
+  }
+}

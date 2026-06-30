@@ -26,6 +26,8 @@ STAGE7_3_GATE_REPORT_PATH = ROOT / "docs" / "stage7_3_gate_report.json"
 STAGE7_3_PUBLIC_REPORT_PATH = ROOT / "case_studies" / "stage7_public_signaling" / "stage7_3_public_signaling_gate_report.json"
 STAGE7_4_GATE_REPORT_PATH = ROOT / "docs" / "stage7_4_gate_report.json"
 STAGE7_4_CASE_REPORT_PATH = ROOT / "case_studies" / "stage7_endpoint_reserve_routing" / "stage7_4_endpoint_reserve_routing_gate_report.json"
+STAGE7_5_GATE_REPORT_PATH = ROOT / "docs" / "stage7_5_gate_report.json"
+STAGE7_5_CASE_REPORT_PATH = ROOT / "case_studies" / "stage7_heldout_validation" / "stage7_5_heldout_validation_gate_report.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -51,6 +53,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage7_3_public_report_path = root / STAGE7_3_PUBLIC_REPORT_PATH.relative_to(ROOT)
     stage7_4_gate_report_path = root / STAGE7_4_GATE_REPORT_PATH.relative_to(ROOT)
     stage7_4_case_report_path = root / STAGE7_4_CASE_REPORT_PATH.relative_to(ROOT)
+    stage7_5_gate_report_path = root / STAGE7_5_GATE_REPORT_PATH.relative_to(ROOT)
+    stage7_5_case_report_path = root / STAGE7_5_CASE_REPORT_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -71,8 +75,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 7.4 endpoint, reserve, and routed-output demonstrations complete":
-        failures.append("active stage must be Stage 7.4 endpoint, reserve, and routed-output demonstrations complete after Stage 7.3 execution")
+    if current.get("active_stage") != "Stage 7.5 external or held-out biological validation complete":
+        failures.append("active stage must be Stage 7.5 external or held-out biological validation complete after Stage 7.5 execution")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -80,7 +84,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         4: "frozen_for_stage5",
         5: "completed",
         6: "public_citable_v0.1.0",
-        7: "stage7_4_complete_7_5_not_started",
+        7: "stage7_5_complete_7_6_not_started",
         8: "conceptual_only",
     }
     for stage, status in expected_status.items():
@@ -110,8 +114,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 7.3 must be marked complete_public_signaling_demonstrations")
     if stage7_subphase_status.get("7.4") != "complete_endpoint_reserve_routing_demonstrations":
         failures.append("Stage 7.4 must be marked complete_endpoint_reserve_routing_demonstrations")
-    if stage7_subphase_status.get("7.5") != "not_started_next_authorization_required":
-        failures.append("Stage 7.5 must remain not_started_next_authorization_required")
+    if stage7_subphase_status.get("7.5") != "complete_external_heldout_validation":
+        failures.append("Stage 7.5 must be marked complete_external_heldout_validation")
+    if stage7_subphase_status.get("7.6") != "not_started_next_authorization_required":
+        failures.append("Stage 7.6 must remain not_started_next_authorization_required")
 
     roadmap_flat = " ".join(roadmap.split())
     required_roadmap_phrases = [
@@ -132,6 +138,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 7.2 is complete as a benchmark-harness phase",
         "Stage 7.3 is complete as an independent public live-cell signaling",
         "Stage 7.4 is complete as a perturbation endpoint, reserve-like",
+        "Stage 7.5 adds a held-out public validation route",
         "docs/stage7_methods_program.md",
         "docs/stage7_serialized_execution_plan.md",
         "docs/stage7_0_*",
@@ -167,6 +174,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 7.2 benchmark harness outputs",
         "Stage 7.3 public signaling outputs",
         "Stage 7.4 endpoint, reserve-like, and routed-output outputs",
+        "Stage 7.5 held-out validation outputs",
     ]:
         if phrase not in stage7_program:
             failures.append(f"Stage 7 methods program is missing phrase: {phrase}")
@@ -179,6 +187,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 7.2 execution status. Complete",
         "Stage 7.3 execution status. Complete",
         "Stage 7.4 execution status. Complete",
+        "Stage 7.5 execution status. Complete",
     ]:
         if phrase not in stage7_execution:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
@@ -394,6 +403,58 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         if stage7_4_case_report.get("routing_diagnostics", {}).get("best_model") != "compartment_route_5nn":
             failures.append("Stage 7.4 routed-output report must retain compartment_route_5nn")
 
+
+
+    stage7_5_docs = [
+        (root / "docs" / "stage7_heldout_validation_report.md", "Stage 7.5 held-out validation docs", ["held-out", "four bounded-coupling pass", "three margin-boundary inconclusive", "not establish biochemical equivalence"]),
+        (root / "notebooks" / "07_stage7_heldout_validation.ipynb", "Stage 7.5 notebook", ["heldout_bounded_coupling_decisions.csv", "not imply biochemical equivalence"]),
+    ]
+    for path, label, phrases in stage7_5_docs:
+        if not path.exists():
+            failures.append(f"missing {path.relative_to(root)}")
+            continue
+        body = path.read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase not in body:
+                failures.append(f"{label} missing phrase: {phrase}")
+
+    if not stage7_5_gate_report_path.exists():
+        failures.append("missing docs/stage7_5_gate_report.json")
+    else:
+        stage7_5_gate = json.loads(stage7_5_gate_report_path.read_text(encoding="utf-8"))
+        if stage7_5_gate.get("status") != "pass":
+            failures.append("Stage 7.5 gate report must pass")
+        if stage7_5_gate.get("completion_state") != "complete_external_heldout_validation":
+            failures.append("Stage 7.5 gate report must record complete_external_heldout_validation")
+        if stage7_5_gate.get("pass_context_count") != 4 or stage7_5_gate.get("inconclusive_context_count") != 3:
+            failures.append("Stage 7.5 gate report must preserve four pass contexts and three inconclusive contexts")
+        checkpoints = stage7_5_gate.get("validation_checkpoints", {}) if isinstance(stage7_5_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "stage7_3_and_7_4_prerequisites_complete",
+            "heldout_analysis_plan_fixed_before_outputs",
+            "public_access_reviewable",
+            "schema_validation_tidy_trajectories",
+            "schema_validation_coupling_rows",
+            "fixed_windows_margins_baselines_grouping_recorded",
+            "no_hidden_tuning_after_result",
+            "pass_fail_inconclusive_outcomes_visible",
+            "controlled_access_constraints_documented",
+            "evidence_set_decision_recorded",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.5 gate checkpoint must pass: {checkpoint}")
+        if stage7_5_gate.get("stop_condition_access_restriction") != "not_triggered":
+            failures.append("Stage 7.5 access stop condition must remain not_triggered")
+
+    if not stage7_5_case_report_path.exists():
+        failures.append("missing case_studies/stage7_heldout_validation/stage7_5_heldout_validation_gate_report.json")
+    else:
+        stage7_5_case_report = json.loads(stage7_5_case_report_path.read_text(encoding="utf-8"))
+        if stage7_5_case_report.get("status") != "pass":
+            failures.append("Stage 7.5 held-out validation report must pass")
+        if stage7_5_case_report.get("evidence_set_decision") != "scoped_heldout_boundary_validation":
+            failures.append("Stage 7.5 held-out validation report must keep the scoped evidence-set decision")
+
     if not stage5_closeout_path.exists():
         failures.append("missing docs/stage5_closeout.md")
         stage5_closeout = ""
@@ -413,7 +474,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
-        warnings.append("Stage 7.4 endpoint, reserve-like, and routed-output demonstrations are complete; Stage 7.5 external or held-out validation has not started")
+        warnings.append("Stage 7.5 external or held-out validation is complete; Stage 7.6 software maturity has not started")
 
     return {
         "status": "pass" if not failures else "fail",
