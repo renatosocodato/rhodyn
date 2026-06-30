@@ -1,0 +1,97 @@
+{
+  "baseline_methods": [
+    "amplitude_peak_threshold",
+    "mean_signal_inside_window",
+    "endpoint_inside_window",
+    "point_estimate_inside_margin",
+    "interval_only_without_rope",
+    "endpoint_only_baseline",
+    "peak_response_threshold"
+  ],
+  "created_outputs": [
+    "synthetic_residence_baseline_comparison.csv",
+    "synthetic_reserve_baseline_comparison.csv",
+    "synthetic_coupling_baseline_comparison.csv",
+    "synthetic_model_baseline_comparison.csv",
+    "window_sensitivity_summary.csv",
+    "margin_sensitivity_summary.csv",
+    "grouping_sample_size_sensitivity.csv",
+    "performance_summary.csv",
+    "public_fixture_benchmark_summary.csv",
+    "failure_behavior_summary.csv",
+    "stage7_2_benchmark_report.json"
+  ],
+  "gates": {
+    "baselines_run_on_same_inputs": {
+      "evidence": "synthetic comparison tables include RhoDyn and baseline rows for the same case_id values",
+      "status": "pass"
+    },
+    "failure_behavior_reported": {
+      "evidence": "failure_behavior_summary.csv includes an invalid trajectory schema rejection",
+      "status": "pass"
+    },
+    "negative_or_inconclusive_case_correctly_bounded": {
+      "evidence": "ambiguous synthetic cases are returned as inconclusive by RhoDyn decision rules",
+      "status": "pass"
+    },
+    "performance_measured_on_representative_sizes": {
+      "evidence": "performance_summary.csv includes RhoDyn and amplitude baselines at 10, 100, and 1000 traces",
+      "status": "pass"
+    },
+    "public_fixture_benchmarks_run_where_inputs_available": {
+      "evidence": "public_fixture_benchmark_summary.csv summarizes retained Stage 3 fixture tables",
+      "status": "pass"
+    },
+    "residence_amplitude_disagreement_with_known_truth_detected": {
+      "evidence": "counterexample_amplitude_only is correctly bounded by RhoDyn and miscalled by amplitude_peak_threshold",
+      "status": "pass"
+    },
+    "sensitivity_to_windows_margins_grouping_sample_size_reported": {
+      "evidence": "window, margin, grouping, and sample-size sensitivity tables are written",
+      "status": "pass"
+    },
+    "stop_condition_no_added_value_beyond_baselines": {
+      "evidence": "RhoDyn detects at least one residence/amplitude disagreement with known truth",
+      "status": "not_triggered"
+    },
+    "synthetic_truth_outcomes_match_known_truth": {
+      "evidence": "RhoDyn method rows match known synthetic truth labels",
+      "status": "pass"
+    }
+  },
+  "interpretation_boundary": "Stage 7.2 benchmarks test method behavior and retained public fixture summaries. This is not a new biological demonstration, does not add independent biological evidence, and does not imply that RhoDyn generated the RhoA/microglia manuscript results.",
+  "next_phase": "Stage 7.3 Independent public live-cell signaling demonstrations",
+  "next_phase_authorization_required": true,
+  "output_dir": "case_studies/stage7_benchmarks",
+  "public_fixtures": [
+    "drg_calcium",
+    "erk_gpcr",
+    "cell_painting_mitotox",
+    "erk_akt_bounded_coupling"
+  ],
+  "report_format": "rhodyn.stage7_2_benchmark_harness.v1",
+  "rhodyn_methods": [
+    "RhoDyn_residence_window_sensitivity",
+    "RhoDyn_interval_plus_rope",
+    "RhoDyn_reduced_architecture_ranking",
+    "RhoDyn_reserve_coordinate"
+  ],
+  "stage": "7.2",
+  "stage_label": "Benchmark harness against baselines and alternatives",
+  "status": "pass",
+  "summary_metrics": {
+    "amplitude_peak_baseline_accuracy": "1/3",
+    "endpoint_model_baseline_accuracy": "1/3",
+    "peak_reserve_baseline_accuracy": "2/3",
+    "point_estimate_coupling_baseline_accuracy": "2/3",
+    "rhodyn_coupling_accuracy": "3/3",
+    "rhodyn_model_accuracy": "3/3",
+    "rhodyn_reserve_accuracy": "3/3",
+    "rhodyn_residence_accuracy": "3/3"
+  },
+  "synthetic_regimes": [
+    "positive",
+    "counterexample",
+    "ambiguous"
+  ]
+}

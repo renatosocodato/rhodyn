@@ -1,0 +1,2 @@
+component,case_id,method,row_count,issue_count,first_issue_field,decision,expected_decision,correct
+failure_behavior,missing_time_column,trajectory_schema_validation,0,1,time,rejected_invalid_input,rejected_invalid_input,1

@@ -39,8 +39,11 @@ This artifact map names the expected Stage 7 outputs before they are created. It
 | 7.1 | Formal method specification | `docs/stage7_method_specification.md` | Planned future artifact. |
 | 7.1 | Synthetic truth cases | `case_studies/stage7_synthetic_truth/` | Planned future artifact. |
 | 7.1 | Limitations matrix | `docs/stage7_limitations_matrix.md` | Planned future artifact. |
-| 7.2 | Benchmark harness outputs | `case_studies/stage7_benchmarks/` | Planned future artifact. |
-| 7.2 | Baseline comparison report | `docs/stage7_benchmark_report.md` | Planned future artifact. |
+| 7.2 | Benchmark harness outputs | `case_studies/stage7_benchmarks/` | Created benchmark artifact. |
+| 7.2 | Baseline comparison report | `docs/stage7_baseline_comparison_report.md` | Created benchmark artifact. |
+| 7.2 | Benchmark harness guide | `docs/stage7_benchmark_harness_guide.md` | Created benchmark artifact. |
+| 7.2 | Performance and uncertainty report | `docs/stage7_performance_uncertainty_report.md` | Created benchmark artifact. |
+| 7.2 | Gate report | `docs/stage7_2_gate_report.json` | Created benchmark artifact. |
 | 7.3 | Public live-cell signaling demonstrations | `case_studies/stage7_public_signaling/` | Planned future artifact. |
 | 7.3 | Public-data adapter documentation | `docs/stage7_public_data_adapters.md` | Planned future artifact. |
 | 7.4 | Perturbation, reserve, and routed-output demonstrations | `case_studies/stage7_endpoint_reserve_routing/` | Planned future artifact. |

@@ -1,0 +1,4 @@
+sensitivity_axis,component,case_id,min_residence_fraction_rule,qualifying_window_count,window_count,min_residence_fraction_observed,max_residence_fraction_observed,primary_window_fraction,decision
+window_choice,residence,positive_residence,0.45,9,9,0.75,0.75,0.75,residence_supported
+window_choice,residence,counterexample_amplitude_only,0.45,0,9,0.0,0.0,0.0,not_residence
+window_choice,residence,ambiguous_window_edge,0.45,6,9,0.0,1.0,0.5,inconclusive

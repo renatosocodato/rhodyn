@@ -6,9 +6,9 @@ biological interpretation.
 The staged scientific and product roadmap is anchored in `docs/roadmap.md`.
 The current architecture keeps the Stage 3 evidence bank frozen, preserves
 the Stage 4 service contract, and treats the Stage 5 workbench plus Stage 6
-public release as completed foundations. Stage 7.1 is now complete as a method-formalization layer, and the broader
-Stage 7 program remains the independent biological demonstration, benchmark
-expansion, software maturity, and future methods-manuscript readiness path. Stage 8
+public release as completed foundations. Stage 7.2 is now complete as a benchmark-harness layer, and the broader
+Stage 7 program remains the independent biological demonstration, software
+maturity, and future methods-manuscript readiness path. Stage 8
 commercial product work remains downstream of Stage 7 evidence.
 
 ## Core layers
@@ -127,7 +127,7 @@ behavior.
 The Stage 7 planning and method-formalization surfaces live in
 `docs/stage7_methods_program.md`, `docs/stage7_serialized_execution_plan.md`,
 the Stage 7.0 planning artifacts under `docs/stage7_0_*`, and the Stage 7.1
-method artifacts under `docs/stage7_*` plus `case_studies/stage7_synthetic_truth/`.
+method artifacts under `docs/stage7_*`, `case_studies/stage7_synthetic_truth/`, and the Stage 7.2 benchmark outputs under `case_studies/stage7_benchmarks/`.
 They do not change the core API by themselves. Future Stage 7 implementation may add adapters, benchmarks,
 reproducibility fixtures, or usability evidence only after the relevant subphase
 gate is authorized.

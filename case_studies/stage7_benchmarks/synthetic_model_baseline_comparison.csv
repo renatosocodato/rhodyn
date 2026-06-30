@@ -1,0 +1,10 @@
+component,case_id,method,truth_label,decision,correct,best_model_by_bic,delta_bic_top2,top_rss,interpretation
+model_comparison,positive_routed_best,RhoDyn_reduced_architecture_ranking,routed,routed,1,routed,18.613673,0.0005,synthetic reduced-architecture truth; not molecular-edge identification
+model_comparison,positive_routed_best,endpoint_only_baseline,routed,endpoint_only,0,routed,18.613673,0.0005,synthetic reduced-architecture truth; not molecular-edge identification
+model_comparison,positive_routed_best,routed_only_assumption,routed,routed,1,routed,18.613673,0.0005,synthetic reduced-architecture truth; not molecular-edge identification
+model_comparison,counterexample_endpoint_sufficient,RhoDyn_reduced_architecture_ranking,endpoint_only,endpoint_only,1,endpoint_only,57.341484,0.0,synthetic reduced-architecture truth; not molecular-edge identification
+model_comparison,counterexample_endpoint_sufficient,endpoint_only_baseline,endpoint_only,endpoint_only,1,endpoint_only,57.341484,0.0,synthetic reduced-architecture truth; not molecular-edge identification
+model_comparison,counterexample_endpoint_sufficient,routed_only_assumption,endpoint_only,routed,0,endpoint_only,57.341484,0.0,synthetic reduced-architecture truth; not molecular-edge identification
+model_comparison,ambiguous_close_fit,RhoDyn_reduced_architecture_ranking,inconclusive,inconclusive,1,routed,4.158883,0.0003,synthetic reduced-architecture truth; not molecular-edge identification
+model_comparison,ambiguous_close_fit,endpoint_only_baseline,inconclusive,endpoint_only,0,routed,4.158883,0.0003,synthetic reduced-architecture truth; not molecular-edge identification
+model_comparison,ambiguous_close_fit,routed_only_assumption,inconclusive,routed,0,routed,4.158883,0.0003,synthetic reduced-architecture truth; not molecular-edge identification

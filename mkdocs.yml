@@ -25,4 +25,7 @@ nav:
   - Stage 7 synthetic truth cases: stage7_synthetic_truth_cases.md
   - Stage 7 limitations matrix: stage7_limitations_matrix.md
   - Stage 7 API stability notes: stage7_api_stability_notes.md
+  - Stage 7 benchmark harness guide: stage7_benchmark_harness_guide.md
+  - Stage 7 baseline comparison report: stage7_baseline_comparison_report.md
+  - Stage 7 performance and uncertainty report: stage7_performance_uncertainty_report.md
   - Release checklist: release_checklist.md

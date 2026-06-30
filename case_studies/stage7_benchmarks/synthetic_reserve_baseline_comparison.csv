@@ -1,0 +1,7 @@
+component,case_id,method,truth_label,decision,correct,ff_over_f0_peak,reserve_coordinate,interpretation
+reserve,positive_buffered,RhoDyn_reserve_coordinate,buffered,buffered,1,1.1,0.9,reserve-like synthetic truth; not biological evidence
+reserve,positive_buffered,peak_response_threshold,buffered,buffered,1,1.1,0.9,reserve-like synthetic truth; not biological evidence
+reserve,counterexample_fragile,RhoDyn_reserve_coordinate,fragile,fragile,1,1.9,0.1,reserve-like synthetic truth; not biological evidence
+reserve,counterexample_fragile,peak_response_threshold,fragile,fragile,1,1.9,0.1,reserve-like synthetic truth; not biological evidence
+reserve,ambiguous_midreserve,RhoDyn_reserve_coordinate,inconclusive,inconclusive,1,1.5,0.5,reserve-like synthetic truth; not biological evidence
+reserve,ambiguous_midreserve,peak_response_threshold,inconclusive,fragile,0,1.5,0.5,reserve-like synthetic truth; not biological evidence

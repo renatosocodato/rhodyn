@@ -1,0 +1,5 @@
+amplitude_only_count,best_model,both_count,component,delta_bic,disagreement_count,failing_or_unresolved_contrasts,fixture,interpretation,neither_count,passing_contrasts,residence_only_count,row_count,second_model
+16,,74,public_residence_amplitude,,32,,drg_calcium,retained public fixture summary; not a new biological demonstration,254,,16,360,
+11,,34,public_residence_amplitude,,22,,erk_gpcr,retained public fixture summary; not a new biological demonstration,124,,11,180,
+,compartment_route_5nn,,public_endpoint_model_comparison,248.55993,,,cell_painting_mitotox,retained public fixture summary; not a new biological demonstration,,,,5922,endpoint_prevalence
+,,,public_bounded_coupling,,,2,erk_akt_bounded_coupling,retained public fixture summary; not a new biological demonstration,,2,,4,

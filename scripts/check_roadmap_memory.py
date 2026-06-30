@@ -20,6 +20,8 @@ STAGE7_ARTIFACT_MAP_PATH = ROOT / "docs" / "stage7_0_artifact_map.md"
 STAGE7_GATE_REPORT_PATH = ROOT / "docs" / "stage7_0_gate_report.json"
 STAGE7_1_GATE_REPORT_PATH = ROOT / "docs" / "stage7_1_gate_report.json"
 STAGE7_1_TRUTH_REPORT_PATH = ROOT / "case_studies" / "stage7_synthetic_truth" / "stage7_1_synthetic_truth_report.json"
+STAGE7_2_GATE_REPORT_PATH = ROOT / "docs" / "stage7_2_gate_report.json"
+STAGE7_2_BENCHMARK_REPORT_PATH = ROOT / "case_studies" / "stage7_benchmarks" / "stage7_2_benchmark_report.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -39,6 +41,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage7_gate_report_path = root / STAGE7_GATE_REPORT_PATH.relative_to(ROOT)
     stage7_1_gate_report_path = root / STAGE7_1_GATE_REPORT_PATH.relative_to(ROOT)
     stage7_1_truth_report_path = root / STAGE7_1_TRUTH_REPORT_PATH.relative_to(ROOT)
+    stage7_2_gate_report_path = root / STAGE7_2_GATE_REPORT_PATH.relative_to(ROOT)
+    stage7_2_benchmark_report_path = root / STAGE7_2_BENCHMARK_REPORT_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -59,8 +63,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 7.1 method formalization complete":
-        failures.append("active stage must be Stage 7.1 method formalization complete after Stage 7.1 execution")
+    if current.get("active_stage") != "Stage 7.2 benchmark harness complete":
+        failures.append("active stage must be Stage 7.2 benchmark harness complete after Stage 7.2 execution")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -68,7 +72,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         4: "frozen_for_stage5",
         5: "completed",
         6: "public_citable_v0.1.0",
-        7: "stage7_1_complete_7_2_not_started",
+        7: "stage7_2_complete_7_3_not_started",
         8: "conceptual_only",
     }
     for stage, status in expected_status.items():
@@ -92,8 +96,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 7.0 must be marked complete_planning_only")
     if stage7_subphase_status.get("7.1") != "complete_method_formalization":
         failures.append("Stage 7.1 must be marked complete_method_formalization")
-    if stage7_subphase_status.get("7.2") != "not_started_next_authorization_required":
-        failures.append("Stage 7.2 must remain not_started_next_authorization_required")
+    if stage7_subphase_status.get("7.2") != "complete_benchmark_harness":
+        failures.append("Stage 7.2 must be marked complete_benchmark_harness")
+    if stage7_subphase_status.get("7.3") != "not_started_next_authorization_required":
+        failures.append("Stage 7.3 must remain not_started_next_authorization_required")
 
     roadmap_flat = " ".join(roadmap.split())
     required_roadmap_phrases = [
@@ -111,6 +117,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "6.7 Final ultra-hardening",
         "7.0 Planning freeze and evidence source register. Complete as a planning-only",
         "Stage 7.1 is complete as a method-formalization phase",
+        "Stage 7.2 is complete as a benchmark-harness phase",
         "docs/stage7_methods_program.md",
         "docs/stage7_serialized_execution_plan.md",
         "docs/stage7_0_*",
@@ -143,6 +150,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Nature Methods is the primary reference point",
         "No Stage 7 implementation begins",
         "Stage 7.1 method formalization outputs",
+        "Stage 7.2 benchmark harness outputs",
     ]:
         if phrase not in stage7_program:
             failures.append(f"Stage 7 methods program is missing phrase: {phrase}")
@@ -152,6 +160,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "7.8. Methods manuscript readiness package",
         "No downstream subphase should begin",
         "Subphase bookkeeping and roadmap updates",
+        "Stage 7.2 execution status. Complete",
     ]:
         if phrase not in stage7_execution:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
@@ -223,6 +232,54 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         if truth_report.get("status") != "pass":
             failures.append("Stage 7.1 synthetic truth report must pass")
 
+
+    stage7_2_docs = [
+        (root / "docs" / "stage7_benchmark_harness_guide.md", "Stage 7.2 benchmark harness guide", ["baseline", "method-validation", "not a new biological demonstration"]),
+        (root / "docs" / "stage7_baseline_comparison_report.md", "Stage 7.2 baseline comparison report", ["RhoDyn adds decision value", "stop condition", "not counted as new independent biological demonstrations"]),
+        (root / "docs" / "stage7_performance_uncertainty_report.md", "Stage 7.2 performance and uncertainty report", ["Sensitivity outputs", "Performance output", "Failure behavior"]),
+    ]
+    for path, label, phrases in stage7_2_docs:
+        if not path.exists():
+            failures.append(f"missing {path.relative_to(root)}")
+            continue
+        body = path.read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase not in body:
+                failures.append(f"{label} missing phrase: {phrase}")
+
+    if not stage7_2_gate_report_path.exists():
+        failures.append("missing docs/stage7_2_gate_report.json")
+    else:
+        stage7_2_gate = json.loads(stage7_2_gate_report_path.read_text(encoding="utf-8"))
+        if stage7_2_gate.get("status") != "pass":
+            failures.append("Stage 7.2 gate report must pass")
+        if stage7_2_gate.get("completion_state") != "complete_benchmark_harness":
+            failures.append("Stage 7.2 gate report must record complete_benchmark_harness")
+        checkpoints = stage7_2_gate.get("validation_checkpoints", {}) if isinstance(stage7_2_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "baselines_run_on_same_inputs",
+            "synthetic_truth_outcomes_match_known_truth",
+            "sensitivity_to_windows_margins_grouping_sample_size_reported",
+            "performance_measured_on_representative_sizes",
+            "residence_amplitude_disagreement_with_known_truth_detected",
+            "negative_or_inconclusive_case_correctly_bounded",
+            "public_fixture_benchmarks_run_where_inputs_available",
+            "failure_behavior_reported",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.2 gate checkpoint must pass: {checkpoint}")
+        if checkpoints.get("stop_condition_no_added_value_beyond_baselines") != "not_triggered":
+            failures.append("Stage 7.2 stop condition must remain not_triggered")
+
+    if not stage7_2_benchmark_report_path.exists():
+        failures.append("missing case_studies/stage7_benchmarks/stage7_2_benchmark_report.json")
+    else:
+        benchmark_report = json.loads(stage7_2_benchmark_report_path.read_text(encoding="utf-8"))
+        if benchmark_report.get("status") != "pass":
+            failures.append("Stage 7.2 benchmark report must pass")
+        if benchmark_report.get("gates", {}).get("stop_condition_no_added_value_beyond_baselines", {}).get("status") != "not_triggered":
+            failures.append("Stage 7.2 benchmark report must record stop condition as not_triggered")
+
     if not stage5_closeout_path.exists():
         failures.append("missing docs/stage5_closeout.md")
         stage5_closeout = ""
@@ -242,7 +299,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
-        warnings.append("Stage 7.1 method formalization is complete; Stage 7.2 benchmark harness has not started")
+        warnings.append("Stage 7.2 benchmark harness is complete; Stage 7.3 independent public demonstrations have not started")
 
     return {
         "status": "pass" if not failures else "fail",

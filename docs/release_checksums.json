@@ -1,5 +1,5 @@
 {
-  "file_count": 230,
+  "file_count": 248,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -342,6 +342,66 @@
       "size_bytes": 5362
     },
     {
+      "path": "case_studies/stage7_benchmarks/failure_behavior_summary.csv",
+      "sha256": "0f0251ede68489750ec4c3fd147e58458237ba4b570f00db20454c6e94c02f00",
+      "size_bytes": 223
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/grouping_sample_size_sensitivity.csv",
+      "sha256": "1d0106b0aaaa981ede9e959e22b0c3d556854c23de0d47df1ed393ad7951771a",
+      "size_bytes": 1133
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/invalid_trajectory_missing_time.csv",
+      "sha256": "8bb1c487c080d5b7bf73e8eeef0bc9a092ba6c449e6e368eb54a85839946fd47",
+      "size_bytes": 52
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/margin_sensitivity_summary.csv",
+      "sha256": "e723c764c99ee565df585d97114ad39393e20af0a43383ffa9d82da970f2bf61",
+      "size_bytes": 1814
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/performance_summary.csv",
+      "sha256": "f8e1122bf562996ee49519fabff72a14d450c4f1901e761e857b9b7885eec543",
+      "size_bytes": 468
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/public_fixture_benchmark_summary.csv",
+      "sha256": "e4e1eb64bcaae4fa75ab54efda41e9d1027674e1011ab940bf74fa877274e0c6",
+      "size_bytes": 792
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/stage7_2_benchmark_report.json",
+      "sha256": "19ee222b10dbf12890c94ebf0a1e01dcfb2f304488789d27e6626ace54d10e5d",
+      "size_bytes": 3844
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/synthetic_coupling_baseline_comparison.csv",
+      "sha256": "ea211e90f0b583d06663e8a9e5937c0932c87d17cc035017ece06df29867d810",
+      "size_bytes": 1756
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/synthetic_model_baseline_comparison.csv",
+      "sha256": "f57364a87e2b71dd49c01499837b4ec351ad189787a6a9eae80cf9be2236300b",
+      "size_bytes": 1827
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/synthetic_reserve_baseline_comparison.csv",
+      "sha256": "24d7344d8565387d42982613f1e6bcbbdefaf965006c8af43b2f6700f7e5f2f5",
+      "size_bytes": 925
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/synthetic_residence_baseline_comparison.csv",
+      "sha256": "0a76a19f5781da2bc31dd1c70848af403d44ca95534705d99f1bd38ffed23164",
+      "size_bytes": 2159
+    },
+    {
+      "path": "case_studies/stage7_benchmarks/window_sensitivity_summary.csv",
+      "sha256": "b8b79725acb1b1c60f5c979d9aa0c1e21f773b7d920a4e80ca65e81d790c3caf",
+      "size_bytes": 453
+    },
+    {
       "path": "case_studies/stage7_synthetic_truth/coupling_interval_cases.csv",
       "sha256": "37fe1f5de1ad13d661784a1e30071a12949d26ebf9ee6831169460749de69d80",
       "size_bytes": 190
@@ -423,17 +483,17 @@
     },
     {
       "path": "docs/architecture.md",
-      "sha256": "f124c1158493da2b6a7280506434f5474dfd27a7a96da192d7762e90660c41a7",
-      "size_bytes": 6279
+      "sha256": "4a2456d80dcf15740899d295bde7b752aa37e13c57d91298d65a7e36e3ee54d0",
+      "size_bytes": 6328
     },
     {
       "path": "docs/broken_link_scan_report.json",
-      "sha256": "1f81d0645f0d1ab881a695455943112af73601e430810edbea619fc9a3ef5fce",
-      "size_bytes": 16783
+      "sha256": "391b14be84de5c9080881572302631c10fcb6821a96afac476abee6cc5593578",
+      "size_bytes": 17267
     },
     {
       "path": "docs/broken_link_scan_report.md",
-      "sha256": "b4733f7c646f54b3710f509916999899741b87594f345e4d831bc1037101dd30",
+      "sha256": "988fb00623e2bc81f1060fb7f025fcd1ac9fa1b5de7257e0840401b7b09fad13",
       "size_bytes": 153
     },
     {
@@ -458,7 +518,7 @@
     },
     {
       "path": "docs/dependency_review_report.json",
-      "sha256": "d5379eaf6295080ccdf7976044f63f304116d06bc3bdf310b8e97dc5defea7ca",
+      "sha256": "c1768060b3f36318b02d98a8d071b9642c347c731f326eec4e2d60b51df00628",
       "size_bytes": 4068
     },
     {
@@ -498,8 +558,8 @@
     },
     {
       "path": "docs/index.md",
-      "sha256": "678d250fe9de490ccf45d8951d98afea308a3e1995c04cc414fd186ecab9b551",
-      "size_bytes": 1234
+      "sha256": "d76bfeced2776e1152e9d7f1dc7e30186de88ae08dc77e093ca80795bd360d46",
+      "size_bytes": 1236
     },
     {
       "path": "docs/input_schema_guide.md",
@@ -533,12 +593,12 @@
     },
     {
       "path": "docs/public_release_integrity_report.json",
-      "sha256": "56d9de7a8f832d4fd7f67a47941260919dcabd83eb17cd0c021ee1d1bb4ed06a",
+      "sha256": "bf703701614338d473774ee1ea19a94104c0100eab04ccc686cea196c434a4e2",
       "size_bytes": 3610
     },
     {
       "path": "docs/public_release_integrity_report.md",
-      "sha256": "0e3baea19eddb253e5aeb790e9836662654139c13f867c8996e37ae1666c6984",
+      "sha256": "a9e82201a972d549c8d54460d1127bbb20304bc9943163938bc0984e508dc64a",
       "size_bytes": 1297
     },
     {
@@ -568,13 +628,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "95fb0b8c9c864bcef7ef7a074bbe48f29f6ebb10f5fffb746e379e1bf23c2c18",
-      "size_bytes": 25652
+      "sha256": "5ed30ce3b9b25449e8d181c1f2730b359f20e3ae1239548c3fff25ae01cfb047",
+      "size_bytes": 25664
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "38a8ee291254f357fc26bf971ed349b33144b4b38963f599457c9075d6476ba0",
-      "size_bytes": 16736
+      "sha256": "694aac82b84cb158d5cedb83c6f6fdc6b4cf10154458165aad404882ee8edbd9",
+      "size_bytes": 17615
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -623,8 +683,8 @@
     },
     {
       "path": "docs/stage7_0_artifact_map.md",
-      "sha256": "69e5d9d9a6a81f2420dda6af82aa570672bb27547e887597e0793dfabb8a62bd",
-      "size_bytes": 4885
+      "sha256": "1f725dd2551dc0d75d2de0a8232d559026d25ef819421c0118d3d78442dcfb79",
+      "size_bytes": 5220
     },
     {
       "path": "docs/stage7_0_baseline_method_inventory.md",
@@ -652,9 +712,24 @@
       "size_bytes": 2141
     },
     {
+      "path": "docs/stage7_2_gate_report.json",
+      "sha256": "abe663824a9d11be7bc7ece05661b0ec16ef3d77641a1e2d16623411458457a0",
+      "size_bytes": 1918
+    },
+    {
       "path": "docs/stage7_api_stability_notes.md",
       "sha256": "c0a2a2175496e36a3ca9a00139432c319663876a33d6464ae885417092fa08aa",
       "size_bytes": 1855
+    },
+    {
+      "path": "docs/stage7_baseline_comparison_report.md",
+      "sha256": "5eff0a565619b15948e0026a929d770897101b3722c5cdbbde6f0c7d611bd74c",
+      "size_bytes": 2244
+    },
+    {
+      "path": "docs/stage7_benchmark_harness_guide.md",
+      "sha256": "ba5d28d7b7db0aa94d0c9a49df7f5e8020f43ea813332f015c0d0579c6c0d452",
+      "size_bytes": 1895
     },
     {
       "path": "docs/stage7_limitations_matrix.md",
@@ -668,13 +743,18 @@
     },
     {
       "path": "docs/stage7_methods_program.md",
-      "sha256": "ba061c83ceda6797ac8a3fe8e95c37ddef118b8c6a497c6d9e4eacf8378e2654",
-      "size_bytes": 34390
+      "sha256": "00bd499af8a5a86a7fa01c04b326413cdb5dc3ed6fd8718e8968c29ee0ff7a30",
+      "size_bytes": 35711
+    },
+    {
+      "path": "docs/stage7_performance_uncertainty_report.md",
+      "sha256": "05c43ccc5843a630851622cb85719273dd32638e2466c1d02eceddc7eb921257",
+      "size_bytes": 1405
     },
     {
       "path": "docs/stage7_serialized_execution_plan.md",
-      "sha256": "6a4ad0f03d0d6c501d94f5fd86a1670c22a7fea24d173e545810721df882679c",
-      "size_bytes": 16604
+      "sha256": "e40bfa90789ca822a531b003931f794830c792e174fa6480b7555e7a4782fc87",
+      "size_bytes": 16846
     },
     {
       "path": "docs/stage7_synthetic_truth_cases.md",
@@ -758,8 +838,8 @@
     },
     {
       "path": "mkdocs.yml",
-      "sha256": "c35ad486d59dcdd99036a4f49c9aa3b94835fe0d1c46cd1ff329f0dc69274fc2",
-      "size_bytes": 1332
+      "sha256": "03f5d607112d2a57fd9139874fdb86f5cd5ae38a4039db6186d9416c7df6bd39",
+      "size_bytes": 1569
     },
     {
       "path": "notebooks/01_synthetic_residence_primer.ipynb",
@@ -863,13 +943,13 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "daf96fdacc9123872148273ca47d76b41c6b6614bf5a9e3a80a0af7a3e5ace8c",
-      "size_bytes": 16934
+      "sha256": "7eba997f28ee458d9361cda928ed7663f555865d5ed99928012a603e66c8d515",
+      "size_bytes": 21341
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "348e3833b89044e280081d941d358f1b67de3a81a40b37ed41903be398f4495b",
-      "size_bytes": 13853
+      "sha256": "ffee277791244e7e2b679cec774b480b6f3ed7121740afb93d94e59b5c4aff19",
+      "size_bytes": 17589
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -920,6 +1000,11 @@
       "path": "scripts/run_stage5_screenshot_regression.py",
       "sha256": "2bc70b482863dd177eaa2a5cb4ae68c00e5307f86ac2d26aa1d2e7e04835a5c1",
       "size_bytes": 3984
+    },
+    {
+      "path": "scripts/run_stage7_2_benchmark_harness.py",
+      "sha256": "0bcc14ca7afdb3ac144a04b5051b24d77e9b2d617140cf43a0a6b3e1e2203cb4",
+      "size_bytes": 31682
     },
     {
       "path": "scripts/write_release_checksums.py",
@@ -1147,12 +1232,17 @@
       "size_bytes": 4850
     },
     {
+      "path": "tests/test_stage7_2_benchmarks.py",
+      "sha256": "98d505e3c41e606fd2ebe7b12bfd38266a77b22598fb5ae0c367bafe0c118fb9",
+      "size_bytes": 4955
+    },
+    {
       "path": "tests/test_uncertainty.py",
       "sha256": "6afbf1f6cc9d5fc4c008317b976079c7d6773210229bbeaec3fb939e9a5fe186",
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-29T15:53:48.864780Z",
+  "generated_utc": "2026-06-30T07:04:29.885854Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

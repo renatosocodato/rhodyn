@@ -96,6 +96,24 @@ REQUIRED_FILES = [
     "case_studies/stage7_synthetic_truth/trajectory_ambiguous_window_edge.csv",
     "case_studies/stage7_synthetic_truth/coupling_interval_cases.csv",
     "case_studies/stage7_synthetic_truth/endpoint_positive_routed_best.csv",
+    "docs/stage7_benchmark_harness_guide.md",
+    "docs/stage7_baseline_comparison_report.md",
+    "docs/stage7_performance_uncertainty_report.md",
+    "docs/stage7_2_gate_report.json",
+    "scripts/run_stage7_2_benchmark_harness.py",
+    "tests/test_stage7_2_benchmarks.py",
+    "case_studies/stage7_benchmarks/stage7_2_benchmark_report.json",
+    "case_studies/stage7_benchmarks/synthetic_residence_baseline_comparison.csv",
+    "case_studies/stage7_benchmarks/window_sensitivity_summary.csv",
+    "case_studies/stage7_benchmarks/synthetic_coupling_baseline_comparison.csv",
+    "case_studies/stage7_benchmarks/margin_sensitivity_summary.csv",
+    "case_studies/stage7_benchmarks/synthetic_model_baseline_comparison.csv",
+    "case_studies/stage7_benchmarks/synthetic_reserve_baseline_comparison.csv",
+    "case_studies/stage7_benchmarks/grouping_sample_size_sensitivity.csv",
+    "case_studies/stage7_benchmarks/performance_summary.csv",
+    "case_studies/stage7_benchmarks/public_fixture_benchmark_summary.csv",
+    "case_studies/stage7_benchmarks/failure_behavior_summary.csv",
+    "case_studies/stage7_benchmarks/invalid_trajectory_missing_time.csv",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
@@ -199,8 +217,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 7.1 method formalization complete":
-            failures.append("roadmap execution memory does not mark Stage 7.1 method formalization as complete")
+        if current.get("active_stage") != "Stage 7.2 benchmark harness complete":
+            failures.append("roadmap execution memory does not mark Stage 7.2 benchmark harness as complete")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -210,8 +228,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 5 completed")
         if stages.get(6, {}).get("status") != "public_citable_v0.1.0":
             failures.append("roadmap execution memory does not mark Stage 6 as public_citable_v0.1.0")
-        if stages.get(7, {}).get("status") != "stage7_1_complete_7_2_not_started":
-            failures.append("roadmap execution memory does not mark Stage 7.1 complete and Stage 7.2 not started")
+        if stages.get(7, {}).get("status") != "stage7_2_complete_7_3_not_started":
+            failures.append("roadmap execution memory does not mark Stage 7.2 complete and Stage 7.3 not started")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
 
@@ -222,8 +240,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.0 must be complete_planning_only in roadmap execution memory")
         if subphase_status.get("7.1") != "complete_method_formalization":
             failures.append("Stage 7.1 must be complete_method_formalization in roadmap execution memory")
-        if subphase_status.get("7.2") != "not_started_next_authorization_required":
-            failures.append("Stage 7.2 must remain not started and require authorization")
+        if subphase_status.get("7.2") != "complete_benchmark_harness":
+            failures.append("Stage 7.2 must be complete_benchmark_harness in roadmap execution memory")
+        if subphase_status.get("7.3") != "not_started_next_authorization_required":
+            failures.append("Stage 7.3 must remain not started and require authorization")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
@@ -274,6 +294,53 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             truth_report = {}
         if truth_report.get("status") != "pass":
             failures.append("Stage 7.1 synthetic truth report does not pass")
+
+
+    stage7_2_gate_path = root / "docs" / "stage7_2_gate_report.json"
+    if stage7_2_gate_path.exists():
+        try:
+            stage7_2_gate = json.loads(stage7_2_gate_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.2 gate report is not valid JSON: {exc}")
+            stage7_2_gate = {}
+        if stage7_2_gate.get("status") != "pass":
+            failures.append("Stage 7.2 gate report does not pass")
+        if stage7_2_gate.get("completion_state") != "complete_benchmark_harness":
+            failures.append("Stage 7.2 gate report does not mark benchmark harness complete")
+        checkpoints = stage7_2_gate.get("validation_checkpoints", {}) if isinstance(stage7_2_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "baselines_run_on_same_inputs",
+            "synthetic_truth_outcomes_match_known_truth",
+            "sensitivity_to_windows_margins_grouping_sample_size_reported",
+            "performance_measured_on_representative_sizes",
+            "residence_amplitude_disagreement_with_known_truth_detected",
+            "negative_or_inconclusive_case_correctly_bounded",
+            "public_fixture_benchmarks_run_where_inputs_available",
+            "failure_behavior_reported",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.2 gate checkpoint does not pass: {checkpoint}")
+        if checkpoints.get("stop_condition_no_added_value_beyond_baselines") != "not_triggered":
+            failures.append("Stage 7.2 stop condition must remain not_triggered")
+        boundary = str(stage7_2_gate.get("interpretation_boundary", ""))
+        if "do not add independent biological demonstrations" not in boundary:
+            failures.append("Stage 7.2 gate report must preserve biological-demonstration boundary")
+
+    stage7_2_benchmark_report_path = root / "case_studies" / "stage7_benchmarks" / "stage7_2_benchmark_report.json"
+    if stage7_2_benchmark_report_path.exists():
+        try:
+            benchmark_report = json.loads(stage7_2_benchmark_report_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.2 benchmark report is not valid JSON: {exc}")
+            benchmark_report = {}
+        if benchmark_report.get("status") != "pass":
+            failures.append("Stage 7.2 benchmark report does not pass")
+        gates = benchmark_report.get("gates", {}) if isinstance(benchmark_report.get("gates", {}), dict) else {}
+        if gates.get("stop_condition_no_added_value_beyond_baselines", {}).get("status") != "not_triggered":
+            failures.append("Stage 7.2 benchmark stop condition is not recorded as not_triggered")
+        public_fixtures = benchmark_report.get("public_fixtures", []) if isinstance(benchmark_report.get("public_fixtures", []), list) else []
+        if len(public_fixtures) < 4:
+            failures.append("Stage 7.2 benchmark report does not include all retained public fixture summaries")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():

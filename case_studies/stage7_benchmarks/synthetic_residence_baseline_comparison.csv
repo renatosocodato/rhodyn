@@ -1,0 +1,13 @@
+component,case_id,method,truth_label,decision,correct,residence_fraction,max_signal,mean_signal,endpoint_signal,qualifying_window_count,window_count,interpretation
+residence,positive_residence,RhoDyn_residence_window_sensitivity,residence_supported,residence_supported,1,0.75,0.9,0.55,0.9,9,9,known synthetic truth; not biological evidence
+residence,positive_residence,amplitude_peak_threshold,residence_supported,residence_supported,1,0.75,0.9,0.55,0.9,9,9,known synthetic truth; not biological evidence
+residence,positive_residence,mean_signal_inside_window,residence_supported,residence_supported,1,0.75,0.9,0.55,0.9,9,9,known synthetic truth; not biological evidence
+residence,positive_residence,endpoint_inside_window,residence_supported,not_residence,0,0.75,0.9,0.55,0.9,9,9,known synthetic truth; not biological evidence
+residence,counterexample_amplitude_only,RhoDyn_residence_window_sensitivity,not_residence,not_residence,1,0.0,0.95,0.47,0.15,0,9,known synthetic truth; not biological evidence
+residence,counterexample_amplitude_only,amplitude_peak_threshold,not_residence,residence_supported,0,0.0,0.95,0.47,0.15,0,9,known synthetic truth; not biological evidence
+residence,counterexample_amplitude_only,mean_signal_inside_window,not_residence,residence_supported,0,0.0,0.95,0.47,0.15,0,9,known synthetic truth; not biological evidence
+residence,counterexample_amplitude_only,endpoint_inside_window,not_residence,not_residence,1,0.0,0.95,0.47,0.15,0,9,known synthetic truth; not biological evidence
+residence,ambiguous_window_edge,RhoDyn_residence_window_sensitivity,inconclusive,inconclusive,1,0.5,0.78,0.588,0.74,6,9,known synthetic truth; not biological evidence
+residence,ambiguous_window_edge,amplitude_peak_threshold,inconclusive,not_residence,0,0.5,0.78,0.588,0.74,6,9,known synthetic truth; not biological evidence
+residence,ambiguous_window_edge,mean_signal_inside_window,inconclusive,residence_supported,0,0.5,0.78,0.588,0.74,6,9,known synthetic truth; not biological evidence
+residence,ambiguous_window_edge,endpoint_inside_window,inconclusive,residence_supported,0,0.5,0.78,0.588,0.74,6,9,known synthetic truth; not biological evidence

@@ -85,7 +85,20 @@ Stage 7.1 has now been executed as a method-formalization phase. It defines RhoD
 - `scripts/build_stage7_1_synthetic_truth_cases.py` generates the synthetic truth fixtures under `case_studies/stage7_synthetic_truth/`.
 - `docs/stage7_1_gate_report.json` records the 7.1 completion gate.
 
-Stage 7.1 does not add independent biological evidence, manuscript claims, product features, or new stable public APIs. Stage 7.2 remains the next phase and requires explicit authorization.
+Stage 7.1 does not add independent biological evidence, manuscript claims, product features, or new stable public APIs.
+
+## Stage 7.2 benchmark harness outputs
+
+Stage 7.2 has now been executed as a benchmark-harness phase. It compares RhoDyn decisions against amplitude-only, endpoint-only, point-estimate, interval-only, and one-dimensional alternatives across synthetic truth cases and retained public fixture summaries. The goal is to test method behavior, failure behavior, uncertainty sensitivity, and runtime behavior before selecting new independent biological demonstrations.
+
+- `scripts/run_stage7_2_benchmark_harness.py` runs the benchmark harness and writes outputs under `case_studies/stage7_benchmarks/`.
+- `case_studies/stage7_benchmarks/stage7_2_benchmark_report.json` records the passing benchmark gates, value-added cases, inconclusive cases, public fixture summaries, and stop-condition status.
+- `docs/stage7_benchmark_harness_guide.md` documents the command, components, and interpretation boundary.
+- `docs/stage7_baseline_comparison_report.md` summarizes the baseline-comparison results and stop condition.
+- `docs/stage7_performance_uncertainty_report.md` summarizes sensitivity, performance, and failure-behavior outputs.
+- `docs/stage7_2_gate_report.json` records the Stage 7.2 completion gate.
+
+Stage 7.2 does not add independent biological evidence, manuscript claims, product features, or new stable public APIs. Stage 7.3 remains the next phase and requires explicit authorization.
 
 ## Stage 7 architecture
 

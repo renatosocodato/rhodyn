@@ -1,0 +1,10 @@
+component,case_id,method,truth_label,decision,correct,estimate,ci_low,ci_high,margin,rope_mass,interpretation
+coupling,positive_equivalent,RhoDyn_interval_plus_rope,equivalent_within_margin,equivalent_within_margin,1,0.01,-0.04,0.05,0.1,0.99,bounded-coupling synthetic truth; not proof of zero coupling
+coupling,positive_equivalent,point_estimate_inside_margin,equivalent_within_margin,equivalent_within_margin,1,0.01,-0.04,0.05,0.1,0.99,bounded-coupling synthetic truth; not proof of zero coupling
+coupling,positive_equivalent,interval_only_without_rope,equivalent_within_margin,equivalent_within_margin,1,0.01,-0.04,0.05,0.1,0.99,bounded-coupling synthetic truth; not proof of zero coupling
+coupling,counterexample_shift,RhoDyn_interval_plus_rope,not_equivalent,not_equivalent,1,0.16,0.11,0.22,0.1,0.4,bounded-coupling synthetic truth; not proof of zero coupling
+coupling,counterexample_shift,point_estimate_inside_margin,not_equivalent,not_equivalent,1,0.16,0.11,0.22,0.1,0.4,bounded-coupling synthetic truth; not proof of zero coupling
+coupling,counterexample_shift,interval_only_without_rope,not_equivalent,not_equivalent,1,0.16,0.11,0.22,0.1,0.4,bounded-coupling synthetic truth; not proof of zero coupling
+coupling,ambiguous_margin_crossing,RhoDyn_interval_plus_rope,inconclusive,inconclusive,1,0.02,-0.12,0.08,0.1,0.92,bounded-coupling synthetic truth; not proof of zero coupling
+coupling,ambiguous_margin_crossing,point_estimate_inside_margin,inconclusive,equivalent_within_margin,0,0.02,-0.12,0.08,0.1,0.92,bounded-coupling synthetic truth; not proof of zero coupling
+coupling,ambiguous_margin_crossing,interval_only_without_rope,inconclusive,not_equivalent,0,0.02,-0.12,0.08,0.1,0.92,bounded-coupling synthetic truth; not proof of zero coupling

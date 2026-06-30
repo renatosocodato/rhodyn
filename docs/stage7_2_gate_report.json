@@ -1,0 +1,39 @@
+{
+  "benchmark_report": "case_studies/stage7_benchmarks/stage7_2_benchmark_report.json",
+  "completion_state": "complete_benchmark_harness",
+  "created_artifacts": [
+    "docs/stage7_benchmark_harness_guide.md",
+    "docs/stage7_baseline_comparison_report.md",
+    "docs/stage7_performance_uncertainty_report.md",
+    "scripts/run_stage7_2_benchmark_harness.py",
+    "tests/test_stage7_2_benchmarks.py",
+    "case_studies/stage7_benchmarks/",
+    "docs/stage7_2_gate_report.json"
+  ],
+  "interpretation_boundary": "Stage 7.2 benchmarks validate method behavior and retained fixture summaries. They do not add independent biological demonstrations, do not start manuscript drafting, and do not imply that RhoDyn generated the RhoA/microglia manuscript results.",
+  "next_phase": "Stage 7.3 Independent public live-cell signaling demonstrations",
+  "public_fixture_status": "pass",
+  "report_format": "rhodyn.stage7_2_gate_report.v1",
+  "status": "pass",
+  "summary_metrics": {
+    "amplitude_peak_baseline_accuracy": "1/3",
+    "endpoint_model_baseline_accuracy": "1/3",
+    "peak_reserve_baseline_accuracy": "2/3",
+    "point_estimate_coupling_baseline_accuracy": "2/3",
+    "rhodyn_coupling_accuracy": "3/3",
+    "rhodyn_model_accuracy": "3/3",
+    "rhodyn_reserve_accuracy": "3/3",
+    "rhodyn_residence_accuracy": "3/3"
+  },
+  "validation_checkpoints": {
+    "baselines_run_on_same_inputs": "pass",
+    "failure_behavior_reported": "pass",
+    "negative_or_inconclusive_case_correctly_bounded": "pass",
+    "performance_measured_on_representative_sizes": "pass",
+    "public_fixture_benchmarks_run_where_inputs_available": "pass",
+    "residence_amplitude_disagreement_with_known_truth_detected": "pass",
+    "sensitivity_to_windows_margins_grouping_sample_size_reported": "pass",
+    "stop_condition_no_added_value_beyond_baselines": "not_triggered",
+    "synthetic_truth_outcomes_match_known_truth": "pass"
+  }
+}

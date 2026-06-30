@@ -122,6 +122,8 @@ Stop condition.
 
 ## 7.2. Benchmark harness against baselines and alternatives
 
+Stage 7.2 execution status. Complete as a benchmark-harness phase. The benchmark harness, retained output tables, baseline comparison report, performance and uncertainty report, tests, and gate report are recorded. Stage 7.3 is not started.
+
 Objectives.
 
 - Compare RhoDyn to simpler summaries and relevant alternative approaches.
