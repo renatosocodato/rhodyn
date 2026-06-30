@@ -298,6 +298,77 @@ def _archive_surface_scan(root: Path) -> StepResult:
     )
 
 
+def _archive_manifest_rows(root: Path) -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    for path in sorted(root.rglob("*")):
+        if ".git" in path.parts or any(part in GENERATED_DIRS for part in path.parts):
+            continue
+        if not path.is_file():
+            continue
+        rel = path.relative_to(root).as_posix()
+        suffix = path.suffix.lower()
+        is_text = suffix in TEXT_SUFFIXES
+        is_raw_like = suffix in RAW_EXTENSIONS
+        rows.append(
+            {
+                "path": rel,
+                "size_bytes": path.stat().st_size,
+                "sha256": _sha256(path),
+                "suffix": suffix,
+                "content_class": "raw_private_like" if is_raw_like else "text" if is_text else "binary_or_packaged",
+            }
+        )
+    return rows
+
+
+def _archive_manifest_summary(rows: list[dict[str, object]]) -> dict[str, object]:
+    paths = {str(row["path"]) for row in rows}
+    required = {
+        "pyproject.toml",
+        "src/rhodyn/__init__.py",
+        "scripts/build_stage7_1_synthetic_truth_cases.py",
+        "scripts/run_stage7_2_benchmark_harness.py",
+        "scripts/run_stage7_3_public_signaling.py",
+        "scripts/run_stage7_4_endpoint_reserve_routing.py",
+        "scripts/run_stage7_5_heldout_validation.py",
+        "scripts/run_stage7_6_methods_reproducibility.py",
+        "scripts/audit_stage7_6_recursive_hardening.py",
+        "docs/stage7_methods_program.md",
+        "docs/stage7_6_api_stability_policy.md",
+        "docs/stage7_6_recursive_hardening.md",
+        "notebooks/01_synthetic_residence_primer.ipynb",
+        "notebooks/07_stage7_heldout_validation.ipynb",
+        "examples/synthetic_trajectory.csv",
+        "examples/synthetic_coupling.csv",
+    }
+    missing_required = sorted(required - paths)
+    raw_private_like = sorted(str(row["path"]) for row in rows if row["content_class"] == "raw_private_like")
+    text_count = sum(row["content_class"] == "text" for row in rows)
+    binary_count = sum(row["content_class"] == "binary_or_packaged" for row in rows)
+    return {
+        "file_count": len(rows),
+        "text_file_count": text_count,
+        "binary_or_packaged_file_count": binary_count,
+        "raw_private_like_file_count": len(raw_private_like),
+        "missing_required_files": missing_required,
+        "raw_private_like_files": raw_private_like,
+        "manifest_status": "pass" if not missing_required and not raw_private_like else "fail",
+    }
+
+
+def _attach_archive_manifest(payload: dict[str, object], rows: list[dict[str, object]]) -> dict[str, object]:
+    summary = _archive_manifest_summary(rows)
+    payload["release_archive_manifest_summary"] = summary
+    payload["release_archive_manifest_rows"] = rows
+    checkpoints = payload.get("validation_checkpoints", {})
+    if isinstance(checkpoints, dict):
+        checkpoints["release_archive_manifest_is_complete"] = "pass" if summary.get("manifest_status") == "pass" else "fail"
+    if summary.get("manifest_status") != "pass":
+        payload["status"] = "fail"
+        payload["completion_state"] = "failed_methods_reproducibility_hardening"
+    return payload
+
+
 def _roadmap_state_scan(root: Path) -> StepResult:
     started = time.monotonic()
     failures: list[str] = []
@@ -562,7 +633,7 @@ def run_ci_fast(root: Path = ROOT) -> dict[str, object]:
     steps.extend(parity_steps)
     comparison_rows = _compare_outputs(root, root)
     workflow_checks = _workflow_checks(root)
-    return _payload(
+    payload = _payload(
         mode="ci_fast",
         steps=steps,
         comparison_rows=comparison_rows,
@@ -570,6 +641,7 @@ def run_ci_fast(root: Path = ROOT) -> dict[str, object]:
         workflow_checks=workflow_checks,
         archive_source="current checkout",
     )
+    return _attach_archive_manifest(payload, _archive_manifest_rows(root))
 
 
 def run_full(root: Path = ROOT) -> dict[str, object]:
@@ -620,6 +692,7 @@ def run_full(root: Path = ROOT) -> dict[str, object]:
         workflow_checks=workflow_checks,
         archive_source="built source distribution extracted into temporary clean-room workspace",
     )
+    payload = _attach_archive_manifest(payload, _archive_manifest_rows(archive_source))
     payload["dist_files"] = [
         {"name": path.name, "size_bytes": path.stat().st_size, "sha256": _sha256(path)}
         for path in sorted(dist_dir.glob("rhodyn-*"))
@@ -691,6 +764,7 @@ def _payload(
 
 def _report_markdown(payload: dict[str, object], comparison_rows: list[dict[str, object]], parity_rows: list[dict[str, object]]) -> str:
     checkpoints = payload["validation_checkpoints"]
+    archive_summary = payload.get("release_archive_manifest_summary", {})
     lines = [
         "# Stage 7.6 methods-program reproducibility card",
         "",
@@ -713,6 +787,21 @@ def _report_markdown(payload: dict[str, object], comparison_rows: list[dict[str,
     lines.extend(["", "## Cross-surface parity", "", "| Operation | Pass | Frontend status |", "|---|---:|---|"])
     for row in parity_rows:
         lines.append(f"| {row['operation']} | {row['passes']} | {row['frontend_status']} |")
+    if isinstance(archive_summary, dict) and archive_summary:
+        lines.extend(
+            [
+                "",
+                "## Release archive manifest",
+                "",
+                f"Manifest status. {archive_summary.get('manifest_status', 'not_recorded')}",
+                "",
+                f"Files inspected. {archive_summary.get('file_count', 'not_recorded')}",
+                "",
+                f"Text files inspected. {archive_summary.get('text_file_count', 'not_recorded')}",
+                "",
+                f"Raw/private-like files. {archive_summary.get('raw_private_like_file_count', 'not_recorded')}",
+            ]
+        )
     lines.extend(
         [
             "",
@@ -737,6 +826,7 @@ def main() -> int:
     output_dir = ROOT / args.output_dir
     comparison_rows = list(payload.get("comparison_rows", []))
     parity_rows = list(payload.get("parity_rows", []))
+    archive_rows = list(payload.get("release_archive_manifest_rows", []))
 
     command_rows = _commands_rows("ci_fast" if args.ci_fast else "full_release_archive")
     _write_csv(output_dir / "methods_reproducibility_commands.tsv", command_rows, ["phase", "mode", "command", "purpose"], delimiter="\t")
@@ -752,10 +842,18 @@ def main() -> int:
         ["operation", "python_value", "cli_value", "backend_value", "frontend_status", "passes"],
         delimiter="\t",
     )
-    _write_json(output_dir / "stage7_6_methods_reproducibility_gate_report.json", payload)
+    _write_csv(
+        output_dir / "release_archive_manifest.tsv",
+        archive_rows,
+        ["path", "size_bytes", "sha256", "suffix", "content_class"],
+        delimiter="\t",
+    )
+    payload_for_json = dict(payload)
+    payload_for_json.pop("release_archive_manifest_rows", None)
+    _write_json(output_dir / "stage7_6_methods_reproducibility_gate_report.json", payload_for_json)
     _write_text(output_dir / "stage7_6_methods_reproducibility_report.md", _report_markdown(payload, comparison_rows, parity_rows))
-    _write_json(ROOT / args.doc_gate, payload)
-    _write_json(ROOT / args.json_report, payload)
+    _write_json(ROOT / args.doc_gate, payload_for_json)
+    _write_json(ROOT / args.json_report, payload_for_json)
     _write_text(ROOT / args.doc_report, _report_markdown(payload, comparison_rows, parity_rows))
     print(json.dumps({"status": payload["status"], "mode": payload["mode"], "output_dir": args.output_dir.as_posix()}, indent=2))
     return 0 if payload["status"] == "pass" else 1

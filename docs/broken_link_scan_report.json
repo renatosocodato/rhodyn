@@ -1,9 +1,9 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-30T14:04:29.214431Z",
+  "generated_utc": "2026-06-30T15:55:53.301607Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 98,
+  "link_count": 99,
   "records": [
     {
       "detail": "remote URL syntax checked only",
@@ -532,6 +532,12 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "stage7_6_api_stability_policy.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_6_recursive_hardening.md"
     },
     {
       "detail": "local target exists",

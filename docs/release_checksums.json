@@ -1,5 +1,5 @@
 {
-  "file_count": 307,
+  "file_count": 311,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -508,13 +508,18 @@
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
-      "sha256": "f21bc944878a9bbff717c35ba71ecde695db95ed9ce0b88dea6c0bebedfdc10f",
-      "size_bytes": 30396
+      "sha256": "a200c24339d219926f698212179585e317e1a0ce8c792b94c5390ff40a71d9e9",
+      "size_bytes": 30674
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
-      "sha256": "7409b7123b54514368075e5493e7717751b55be8e9d38f15cd81054f4c361fa8",
-      "size_bytes": 4111
+      "sha256": "c78cbdb0de80f462b64a5a0cfc3ad52f1fb4cb87cdfb48889a4ef6d0351cb3fb",
+      "size_bytes": 4285
+    },
+    {
+      "path": "case_studies/stage7_methods_reproducibility/stage7_6_recursive_hardening_report.json",
+      "sha256": "4dc5d5f8b4d416fad0cec27840c6fc5fad1fa38c3309fe72869e2fc058890b1a",
+      "size_bytes": 758
     },
     {
       "path": "case_studies/stage7_public_signaling/drg_calcium_case_report.md",
@@ -668,12 +673,12 @@
     },
     {
       "path": "docs/broken_link_scan_report.json",
-      "sha256": "209222c835d3c8dbe9845f63c491e385ba6379028cc840b9b77a48d51c10a7f3",
-      "size_bytes": 18686
+      "sha256": "a73a317466074153e95babe13d01e39b4d5c6eedd20c6539267252b502d305bc",
+      "size_bytes": 18842
     },
     {
       "path": "docs/broken_link_scan_report.md",
-      "sha256": "146c40c32adf128ec96efa706fcd4d935fa105e019920afe912f89dc6c6204fb",
+      "sha256": "7f77cfae5272884059d597ca595a4fc05f05bdce790409f302e74c88e0468cfc",
       "size_bytes": 153
     },
     {
@@ -698,7 +703,7 @@
     },
     {
       "path": "docs/dependency_review_report.json",
-      "sha256": "f08ffd3addc1adc7830deb83aa222995a6f8d379662865d9251ee8d03be6b74f",
+      "sha256": "2f90c37a6c3950e2e835e98449a6262a1071b4305e5ae0c42d8328de57cb3646",
       "size_bytes": 4219
     },
     {
@@ -918,13 +923,23 @@
     },
     {
       "path": "docs/stage7_6_clean_room_report.json",
-      "sha256": "f21bc944878a9bbff717c35ba71ecde695db95ed9ce0b88dea6c0bebedfdc10f",
-      "size_bytes": 30396
+      "sha256": "a200c24339d219926f698212179585e317e1a0ce8c792b94c5390ff40a71d9e9",
+      "size_bytes": 30674
     },
     {
       "path": "docs/stage7_6_gate_report.json",
-      "sha256": "f21bc944878a9bbff717c35ba71ecde695db95ed9ce0b88dea6c0bebedfdc10f",
-      "size_bytes": 30396
+      "sha256": "a200c24339d219926f698212179585e317e1a0ce8c792b94c5390ff40a71d9e9",
+      "size_bytes": 30674
+    },
+    {
+      "path": "docs/stage7_6_recursive_hardening.md",
+      "sha256": "4650804844254510bda805ad97a8cf2905ee250e82810bd2fcccff8d383a30b0",
+      "size_bytes": 1915
+    },
+    {
+      "path": "docs/stage7_6_recursive_hardening_report.json",
+      "sha256": "4dc5d5f8b4d416fad0cec27840c6fc5fad1fa38c3309fe72869e2fc058890b1a",
+      "size_bytes": 758
     },
     {
       "path": "docs/stage7_api_stability_notes.md",
@@ -968,8 +983,8 @@
     },
     {
       "path": "docs/stage7_methods_reproducibility_card.md",
-      "sha256": "7409b7123b54514368075e5493e7717751b55be8e9d38f15cd81054f4c361fa8",
-      "size_bytes": 4111
+      "sha256": "c78cbdb0de80f462b64a5a0cfc3ad52f1fb4cb87cdfb48889a4ef6d0351cb3fb",
+      "size_bytes": 4285
     },
     {
       "path": "docs/stage7_performance_uncertainty_report.md",
@@ -1073,8 +1088,8 @@
     },
     {
       "path": "mkdocs.yml",
-      "sha256": "e4b335b85d6e849312e53119b81ac234035adf023b93ecc3a85879e3784e1358",
-      "size_bytes": 2049
+      "sha256": "11a2f75bff74bca3ee0756e7413635802e88c73c4a99c7ad6cc4ce72ed310bc4",
+      "size_bytes": 2116
     },
     {
       "path": "notebooks/01_synthetic_residence_primer.ipynb",
@@ -1177,6 +1192,11 @@
       "size_bytes": 10932
     },
     {
+      "path": "scripts/audit_stage7_6_recursive_hardening.py",
+      "sha256": "1d951dfff8df26204fc638d08d51f81e9a47a01b4795ca4c2dac87a03349edbf",
+      "size_bytes": 12740
+    },
+    {
       "path": "scripts/build_stage7_1_synthetic_truth_cases.py",
       "sha256": "f245cd2d66fa5244fc1406fa004131c15e9186627d45cc468886f257581a1032",
       "size_bytes": 13829
@@ -1198,8 +1218,8 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "2578497c5fd2f6dffdb9e30db5473ae1ebe1dd0471d14ec7631665060b697b87",
-      "size_bytes": 40221
+      "sha256": "9e461d6470cf0c599aaefd5f0216231071c1644b48d28bdfeee3c6c7824851e6",
+      "size_bytes": 42489
     },
     {
       "path": "scripts/check_roadmap_memory.py",
@@ -1278,8 +1298,8 @@
     },
     {
       "path": "scripts/run_stage7_6_methods_reproducibility.py",
-      "sha256": "749f5998d857d8ff901a87258e4ecd6decb51f4765dc6aac4475351db1f638d1",
-      "size_bytes": 34911
+      "sha256": "f8d736844038cba20563e6186a11beaf99016024698914d930d29704ee1cf8bb",
+      "size_bytes": 39381
     },
     {
       "path": "scripts/write_release_checksums.py",
@@ -1528,8 +1548,8 @@
     },
     {
       "path": "tests/test_stage7_6_methods_reproducibility.py",
-      "sha256": "ba339b329c1b55241f3a61551e45f37bf10cc73c6bdd0d3eb0569219c115d80a",
-      "size_bytes": 8160
+      "sha256": "c5eab0beb2da6b529cf6ae51a7186aa174c2da0fcb2d1d8bb33a33b7830e39f7",
+      "size_bytes": 13783
     },
     {
       "path": "tests/test_uncertainty.py",
@@ -1537,7 +1557,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-30T14:04:39.685866Z",
+  "generated_utc": "2026-06-30T15:56:21.327713Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

@@ -173,15 +173,20 @@ REQUIRED_FILES = [
     "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_report.md",
     "case_studies/stage7_heldout_validation/controlled_access_note.md",
     "docs/stage7_6_api_stability_policy.md",
+    "docs/stage7_6_recursive_hardening.md",
     "docs/stage7_methods_reproducibility_card.md",
     "docs/stage7_6_gate_report.json",
     "docs/stage7_6_clean_room_report.json",
+    "docs/stage7_6_recursive_hardening_report.json",
     "scripts/run_stage7_6_methods_reproducibility.py",
+    "scripts/audit_stage7_6_recursive_hardening.py",
     "tests/test_stage7_6_methods_reproducibility.py",
     "case_studies/stage7_methods_reproducibility/methods_reproducibility_commands.tsv",
     "case_studies/stage7_methods_reproducibility/methods_output_comparison.tsv",
     "case_studies/stage7_methods_reproducibility/cross_surface_parity.tsv",
+    "case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv",
     "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
+    "case_studies/stage7_methods_reproducibility/stage7_6_recursive_hardening_report.json",
     "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
@@ -567,6 +572,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
 
     stage7_6_gate_path = root / "docs" / "stage7_6_gate_report.json"
     stage7_6_case_report_path = root / "case_studies" / "stage7_methods_reproducibility" / "stage7_6_methods_reproducibility_gate_report.json"
+    stage7_6_recursive_report_path = root / "docs" / "stage7_6_recursive_hardening_report.json"
     if stage7_6_gate_path.exists():
         try:
             stage7_6_gate = json.loads(stage7_6_gate_path.read_text(encoding="utf-8"))
@@ -585,6 +591,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "frontend_backend_cli_python_outputs_agree",
             "ci_covers_selected_examples_docs_notebooks_benchmarks_package_docker_frontend",
             "clean_room_reproduction_from_release_archive",
+            "release_archive_manifest_is_complete",
         ]:
             if checkpoints.get(checkpoint) != "pass":
                 failures.append(f"Stage 7.6 gate checkpoint does not pass: {checkpoint}")
@@ -599,6 +606,11 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         boundary = str(stage7_6_gate.get("interpretation_boundary", ""))
         if "does not add biological evidence" not in boundary:
             failures.append("Stage 7.6 gate report must preserve the no-new-biological-evidence boundary")
+        archive_manifest = stage7_6_gate.get("release_archive_manifest_summary", {})
+        if not isinstance(archive_manifest, dict) or archive_manifest.get("manifest_status") != "pass":
+            failures.append("Stage 7.6 gate report must include a passing release archive manifest summary")
+        elif archive_manifest.get("raw_private_like_file_count") != 0:
+            failures.append("Stage 7.6 release archive manifest must not include raw/private-like files")
 
     if stage7_6_case_report_path.exists():
         try:
@@ -610,6 +622,30 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.6 methods reproducibility case report does not pass")
         if stage7_6_case_report.get("mode") != "full_release_archive":
             failures.append("Stage 7.6 methods reproducibility report must come from full_release_archive mode")
+
+    if stage7_6_recursive_report_path.exists():
+        try:
+            stage7_6_recursive = json.loads(stage7_6_recursive_report_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.6 recursive hardening report is not valid JSON: {exc}")
+            stage7_6_recursive = {}
+        if stage7_6_recursive.get("status") != "pass":
+            failures.append("Stage 7.6 recursive hardening report does not pass")
+        checks = stage7_6_recursive.get("checks", {}) if isinstance(stage7_6_recursive.get("checks", {}), dict) else {}
+        for check_name in [
+            "gate_reports_identical",
+            "full_archive_mode",
+            "deterministic_outputs_match",
+            "cross_surface_parity_matches",
+            "archive_manifest_complete",
+            "workflow_checks_pass",
+            "scope_boundary_preserved",
+        ]:
+            if checks.get(check_name) != "pass":
+                failures.append(f"Stage 7.6 recursive hardening check does not pass: {check_name}")
+        boundary = str(stage7_6_recursive.get("interpretation_boundary", ""))
+        if "does not add biological evidence" not in boundary:
+            failures.append("Stage 7.6 recursive hardening report must preserve the no-new-biological-evidence boundary")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():

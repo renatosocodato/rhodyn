@@ -1,6 +1,6 @@
 # Stage 7.6 methods-program reproducibility card
 
-Generated UTC. 2026-06-30T11:10:31.475502Z
+Generated UTC. 2026-06-30T15:55:21.065599Z
 
 Overall status. pass
 
@@ -17,6 +17,7 @@ Stage 7.6 hardens the methods-paper evidence set. It checks whether the Stage 7.
 - ci_covers_selected_examples_docs_notebooks_benchmarks_package_docker_frontend. pass.
 - clean_room_reproduction_from_release_archive. pass.
 - stop_condition_clean_room_failure. not_triggered.
+- release_archive_manifest_is_complete. pass.
 
 ## Regenerated output comparison
 
@@ -61,6 +62,16 @@ Stage 7.6 hardens the methods-paper evidence set. It checks whether the Stage 7.
 | decide_coupling | 1 | fixture_contract_checked |
 | summarize_reserve | 1 | fixture_contract_checked |
 | compare_models | 1 | fixture_contract_checked |
+
+## Release archive manifest
+
+Manifest status. pass
+
+Files inspected. 380
+
+Text files inspected. 313
+
+Raw/private-like files. 0
 
 ## Interpretation boundary
 

@@ -1,0 +1,23 @@
+{
+  "checks": {
+    "archive_manifest_complete": "pass",
+    "cross_surface_parity_matches": "pass",
+    "deterministic_outputs_match": "pass",
+    "full_archive_mode": "pass",
+    "gate_reports_identical": "pass",
+    "scope_boundary_preserved": "pass",
+    "workflow_checks_pass": "pass"
+  },
+  "completion_state": "stage7_6_recursive_hardened",
+  "counts": {
+    "archive_manifest_rows": 380,
+    "command_rows": 7,
+    "comparison_rows": 30,
+    "parity_rows": 4
+  },
+  "failures": [],
+  "interpretation_boundary": "This audit hardens Stage 7.6 software reproducibility evidence. It does not add biological evidence or change any method decision rule.",
+  "report_format": "rhodyn.stage7_6_recursive_hardening.v1",
+  "status": "pass",
+  "warnings": []
+}

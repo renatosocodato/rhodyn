@@ -11,6 +11,7 @@ from unittest import TestCase
 ROOT = Path(__file__).resolve().parents[1]
 STAGE7_6 = ROOT / "case_studies" / "stage7_methods_reproducibility"
 SCRIPT_PATH = ROOT / "scripts" / "run_stage7_6_methods_reproducibility.py"
+AUDIT_PATH = ROOT / "scripts" / "audit_stage7_6_recursive_hardening.py"
 
 
 def _load_runner():
@@ -23,6 +24,18 @@ def _load_runner():
 
 
 RUNNER = _load_runner()
+
+
+def _load_audit_runner():
+    spec = importlib.util.spec_from_file_location("stage7_6_recursive_audit_under_test", AUDIT_PATH)
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    assert spec.loader is not None
+    spec.loader.exec_module(module)
+    return module
+
+
+AUDIT = _load_audit_runner()
 
 
 @dataclass
@@ -79,6 +92,43 @@ class Stage76MethodsReproducibilityTests(TestCase):
         self.assertIn("local path or credential-like pattern", failed_step.stderr_tail)
         self.assertIn("raw/private-data-like file present", failed_step.stderr_tail)
 
+    def test_archive_manifest_records_required_files_and_rejects_raw_like_payloads(self):
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            for rel in [
+                "pyproject.toml",
+                "src/rhodyn/__init__.py",
+                "scripts/build_stage7_1_synthetic_truth_cases.py",
+                "scripts/run_stage7_2_benchmark_harness.py",
+                "scripts/run_stage7_3_public_signaling.py",
+                "scripts/run_stage7_4_endpoint_reserve_routing.py",
+                "scripts/run_stage7_5_heldout_validation.py",
+                "scripts/run_stage7_6_methods_reproducibility.py",
+                "scripts/audit_stage7_6_recursive_hardening.py",
+                "docs/stage7_methods_program.md",
+                "docs/stage7_6_api_stability_policy.md",
+                "docs/stage7_6_recursive_hardening.md",
+                "notebooks/01_synthetic_residence_primer.ipynb",
+                "notebooks/07_stage7_heldout_validation.ipynb",
+                "examples/synthetic_trajectory.csv",
+                "examples/synthetic_coupling.csv",
+            ]:
+                path = root / rel
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text("release file\n", encoding="utf-8")
+
+            rows = RUNNER._archive_manifest_rows(root)
+            summary = RUNNER._archive_manifest_summary(rows)
+            self.assertEqual(summary["manifest_status"], "pass")
+            self.assertEqual(summary["raw_private_like_file_count"], 0)
+            self.assertEqual(summary["missing_required_files"], [])
+
+            raw_path = root / "private_raw.tif"
+            raw_path.write_bytes(b"not for release")
+            raw_summary = RUNNER._archive_manifest_summary(RUNNER._archive_manifest_rows(root))
+            self.assertEqual(raw_summary["manifest_status"], "fail")
+            self.assertEqual(raw_summary["raw_private_like_file_count"], 1)
+
     def test_workflow_checks_cover_methods_reproducibility_surfaces(self):
         checks = RUNNER._workflow_checks(ROOT)
         expected = {
@@ -115,10 +165,15 @@ class Stage76MethodsReproducibilityTests(TestCase):
                     "frontend_backend_cli_python_outputs_agree",
                     "ci_covers_selected_examples_docs_notebooks_benchmarks_package_docker_frontend",
                     "clean_room_reproduction_from_release_archive",
+                    "release_archive_manifest_is_complete",
                 ]:
                     self.assertEqual(checkpoints[key], "pass", key)
                 self.assertEqual(checkpoints["stop_condition_clean_room_failure"], "not_triggered")
                 self.assertIn("does not add biological evidence", gate["interpretation_boundary"])
+                archive_manifest = gate["release_archive_manifest_summary"]
+                self.assertEqual(archive_manifest["manifest_status"], "pass")
+                self.assertEqual(archive_manifest["raw_private_like_file_count"], 0)
+                self.assertEqual(archive_manifest["missing_required_files"], [])
 
     def test_output_comparison_and_parity_tables_match_gate_summary(self):
         comparison_rows = _tsv_rows(STAGE7_6 / "methods_output_comparison.tsv")
@@ -134,6 +189,57 @@ class Stage76MethodsReproducibilityTests(TestCase):
             {row["operation"] for row in parity_rows},
             {"score_residence", "decide_coupling", "summarize_reserve", "compare_models"},
         )
+
+    def test_release_archive_manifest_table_matches_gate_summary(self):
+        manifest_rows = _tsv_rows(STAGE7_6 / "release_archive_manifest.tsv")
+        gate = json.loads((STAGE7_6 / "stage7_6_methods_reproducibility_gate_report.json").read_text(encoding="utf-8"))
+        summary = gate["release_archive_manifest_summary"]
+
+        self.assertEqual(len(manifest_rows), summary["file_count"])
+        self.assertGreater(summary["text_file_count"], 0)
+        self.assertEqual(summary["raw_private_like_file_count"], 0)
+        self.assertEqual(summary["manifest_status"], "pass")
+        self.assertIn("scripts/run_stage7_6_methods_reproducibility.py", {row["path"] for row in manifest_rows})
+        self.assertTrue(all(len(row["sha256"]) == 64 for row in manifest_rows))
+
+    def test_recursive_hardening_report_passes_and_catches_internal_drift(self):
+        report = json.loads((ROOT / "docs" / "stage7_6_recursive_hardening_report.json").read_text(encoding="utf-8"))
+        self.assertEqual(report["status"], "pass")
+        for key in [
+            "gate_reports_identical",
+            "full_archive_mode",
+            "deterministic_outputs_match",
+            "cross_surface_parity_matches",
+            "archive_manifest_complete",
+            "workflow_checks_pass",
+            "scope_boundary_preserved",
+        ]:
+            self.assertEqual(report["checks"][key], "pass", key)
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_root = Path(temp_dir)
+            for rel in [
+                "docs/stage7_6_gate_report.json",
+                "docs/stage7_6_clean_room_report.json",
+                "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
+                "case_studies/stage7_methods_reproducibility/methods_output_comparison.tsv",
+                "case_studies/stage7_methods_reproducibility/cross_surface_parity.tsv",
+                "case_studies/stage7_methods_reproducibility/methods_reproducibility_commands.tsv",
+                "case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv",
+            ]:
+                source = ROOT / rel
+                destination = temp_root / rel
+                destination.parent.mkdir(parents=True, exist_ok=True)
+                destination.write_text(source.read_text(encoding="utf-8"), encoding="utf-8")
+
+            gate_path = temp_root / "docs/stage7_6_gate_report.json"
+            gate = json.loads(gate_path.read_text(encoding="utf-8"))
+            gate["mode"] = "ci_fast"
+            gate_path.write_text(json.dumps(gate, indent=2) + "\n", encoding="utf-8")
+            drifted = AUDIT.audit_stage7_6_recursive_hardening(temp_root)
+
+        self.assertEqual(drifted["status"], "fail")
+        self.assertTrue(any("full_release_archive" in failure for failure in drifted["failures"]))
 
     def test_reproduction_command_table_covers_stage7_1_through_stage7_5(self):
         rows = _tsv_rows(STAGE7_6 / "methods_reproducibility_commands.tsv")

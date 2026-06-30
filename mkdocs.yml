@@ -26,6 +26,7 @@ nav:
   - Stage 7 limitations matrix: stage7_limitations_matrix.md
   - Stage 7 API stability notes: stage7_api_stability_notes.md
   - Stage 7.6 API stability policy: stage7_6_api_stability_policy.md
+  - Stage 7.6 recursive hardening: stage7_6_recursive_hardening.md
   - Stage 7 benchmark harness guide: stage7_benchmark_harness_guide.md
   - Stage 7 baseline comparison report: stage7_baseline_comparison_report.md
   - Stage 7 performance and uncertainty report: stage7_performance_uncertainty_report.md
