@@ -1,7 +1,7 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-30T11:14:36.849717Z",
+  "generated_utc": "2026-06-30T14:00:51.685857Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
   "link_count": 98,
   "records": [

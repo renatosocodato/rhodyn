@@ -177,6 +177,7 @@ REQUIRED_FILES = [
     "docs/stage7_6_gate_report.json",
     "docs/stage7_6_clean_room_report.json",
     "scripts/run_stage7_6_methods_reproducibility.py",
+    "tests/test_stage7_6_methods_reproducibility.py",
     "case_studies/stage7_methods_reproducibility/methods_reproducibility_commands.tsv",
     "case_studies/stage7_methods_reproducibility/methods_output_comparison.tsv",
     "case_studies/stage7_methods_reproducibility/cross_surface_parity.tsv",

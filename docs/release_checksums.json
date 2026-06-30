@@ -1,5 +1,5 @@
 {
-  "file_count": 306,
+  "file_count": 307,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -668,7 +668,7 @@
     },
     {
       "path": "docs/broken_link_scan_report.json",
-      "sha256": "90f7b72572d5c4ab3c1352c1fa5a8298a5b95c3280cb4a2cf0af47462310b8bb",
+      "sha256": "9a539c366156717a1c6c0bed00fd16fdfeaa510e03e2ff7c3210c3c365a87333",
       "size_bytes": 18686
     },
     {
@@ -698,7 +698,7 @@
     },
     {
       "path": "docs/dependency_review_report.json",
-      "sha256": "6a6a71184684285c6961332d4131784bc74ef4d9b5073b410c8192beded9e41d",
+      "sha256": "651e6ac8761f734fa0ee863c214181f4e9bdd64734672d5f6e8f7e7333d4170b",
       "size_bytes": 4219
     },
     {
@@ -1198,8 +1198,8 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "d94111d891f129125d57e565c43503eb3323d5255c5c3bea2841bc1a88f6e730",
-      "size_bytes": 40167
+      "sha256": "2578497c5fd2f6dffdb9e30db5473ae1ebe1dd0471d14ec7631665060b697b87",
+      "size_bytes": 40221
     },
     {
       "path": "scripts/check_roadmap_memory.py",
@@ -1527,12 +1527,17 @@
       "size_bytes": 4486
     },
     {
+      "path": "tests/test_stage7_6_methods_reproducibility.py",
+      "sha256": "ba339b329c1b55241f3a61551e45f37bf10cc73c6bdd0d3eb0569219c115d80a",
+      "size_bytes": 8160
+    },
+    {
       "path": "tests/test_uncertainty.py",
       "sha256": "6afbf1f6cc9d5fc4c008317b976079c7d6773210229bbeaec3fb939e9a5fe186",
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-30T11:14:51.473478Z",
+  "generated_utc": "2026-06-30T14:01:31.524579Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }
