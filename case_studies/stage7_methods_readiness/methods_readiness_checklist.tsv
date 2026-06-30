@@ -1,0 +1,7 @@
+item	evidence	status
+All Stage 7.1-7.7 gates pass	docs/stage7_1_gate_report.json through docs/stage7_7_gate_report.json	pass
+Every planned manuscript figure has a primary artifact	case_studies/stage7_methods_readiness/figure_artifact_crosswalk.tsv	pass
+Every planned method claim has evidence and a limitation	case_studies/stage7_methods_readiness/claim_evidence_crosswalk.tsv	pass
+No Nature Methods acceptance claim is made	docs/stage7_methods_program.md	pass
+Release checksums and archive manifest exist	docs/release_checksums.json; case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv	pass
+Known inconclusive cases are visible	case_studies/stage7_heldout_validation/heldout_validation_outcomes.tsv	pass

@@ -1,0 +1,7 @@
+source	limitation_artifact	scope
+Method concept and workflow	docs/stage7_limitations_matrix.md	Formal method definitions and executable truth cases, not biological discovery.
+Synthetic benchmarking against simpler summaries	case_studies/stage7_benchmarks/failure_behavior_summary.csv	Benchmark value over baselines is regime-dependent and includes negative and ambiguous cases.
+Independent public live-cell signaling demonstrations	docs/stage7_public_data_adapters.md	Public trajectory demonstrations show residence-amplitude separation in two systems and do not imply manuscript generation.
+Perturbation endpoint, reserve-like, and routed-output demonstrations	case_studies/stage7_endpoint_reserve_routing/stage7_4_case_report.md	Bounded coupling, reserve-like endpoint behavior, and routed-output comparison remain scoped to measured public-derived tables.
+Held-out public validation	case_studies/stage7_heldout_validation/controlled_access_note.md	Held-out validation contains four pass contexts and three margin-boundary inconclusive contexts.
+Software workbench and reproducibility architecture	docs/stage7_6_api_stability_policy.md	Reproducibility and usability evidence support inspectable software behavior, not a new biological result.

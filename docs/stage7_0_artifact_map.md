@@ -58,9 +58,11 @@ This artifact map names the expected Stage 7 outputs before they are created. It
 | 7.7 | User-path findings report | `docs/stage7_user_path_findings.md` | Created usability artifact. |
 | 7.7 | Usability gate report | `docs/stage7_7_gate_report.json` | Created usability artifact. |
 | 7.7 | Usability rehearsal outputs | `case_studies/stage7_usability_rehearsal/` | Created usability artifact. |
-| 7.8 | Figure-to-artifact crosswalk | `docs/stage7_figure_artifact_crosswalk.md` | Planned future artifact. |
-| 7.8 | Claim-to-evidence crosswalk | `docs/stage7_claim_evidence_crosswalk.md` | Planned future artifact. |
-| 7.8 | Submission-readiness checklist | `docs/stage7_methods_submission_readiness.md` | Planned future artifact. |
+| 7.8 | Figure-to-artifact crosswalk | `docs/stage7_figure_artifact_crosswalk.md` | Created readiness artifact. |
+| 7.8 | Claim-to-evidence crosswalk | `docs/stage7_claim_evidence_crosswalk.md` | Created readiness artifact. |
+| 7.8 | Submission-readiness checklist | `docs/stage7_methods_submission_readiness.md` | Created readiness artifact. |
+| 7.8 | Methods evidence index | `docs/stage7_methods_evidence_index.md` | Created readiness artifact. |
+| 7.8 | Methods readiness outputs | `case_studies/stage7_methods_readiness/` | Created readiness artifact. |
 
 ## Out of scope for Stage 7.0
 
@@ -122,3 +124,17 @@ These artifacts demonstrate that the Stage 7.1 to Stage 7.5 methods evidence set
 - `case_studies/stage7_usability_rehearsal/`
 
 These artifacts demonstrate that a biologist-facing public MLCI tutorial path can support a scoped residence-versus-amplitude interpretation, that a quantitative bounded-coupling result reproduces across Python, CLI, and backend outputs, and that export bundles carry parameters, input schema, grouping metadata, software version, result rows, reports, and checksums.
+
+
+## Stage 7.8 created artifacts
+
+- `scripts/run_stage7_8_methods_readiness.py`
+- `tests/test_stage7_8_methods_readiness.py`
+- `docs/stage7_methods_evidence_index.md`
+- `docs/stage7_figure_artifact_crosswalk.md`
+- `docs/stage7_claim_evidence_crosswalk.md`
+- `docs/stage7_methods_submission_readiness.md`
+- `docs/stage7_8_gate_report.json`
+- `case_studies/stage7_methods_readiness/`
+
+These artifacts map planned methods-manuscript figure components and claims to existing reproducible outputs, validation reports, and limitation artifacts. They support readiness to draft from the current evidence package without adding a new biological system, analysis route, benchmark result, or manuscript claim.

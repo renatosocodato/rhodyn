@@ -111,7 +111,7 @@ Stage 7.3 has now been executed as an independent public live-cell signaling dem
 - `notebooks/04_stage7_drg_calcium_public_signaling.ipynb` and `notebooks/05_stage7_erk_gpcr_public_signaling.ipynb` provide lightweight retained-output walkthroughs.
 - `docs/stage7_3_gate_report.json` records the Stage 7.3 completion gate.
 
-Stage 7.3 did not add manuscript claims, product features, or new stable public APIs. Stage 7.4 endpoint, reserve-like, and routed-output demonstrations are complete, Stage 7.5 held-out validation is complete, Stage 7.6 methods-paper software reproducibility hardening is complete, and Stage 7.7 usability and adoption rehearsal is complete. Stage 7.8 methods manuscript readiness remains the next phase requiring explicit authorization.
+Stage 7.3 did not add manuscript claims, product features, or new stable public APIs. Stage 7.4 endpoint, reserve-like, and routed-output demonstrations are complete, Stage 7.5 held-out validation is complete, Stage 7.6 methods-paper software reproducibility hardening is complete, Stage 7.7 usability and adoption rehearsal is complete, and Stage 7.8 methods manuscript readiness is complete. Stage 8 product and commercial alignment remains conceptual and must inherit the Stage 7 evidence boundaries.
 
 ## Stage 7 architecture
 
@@ -494,3 +494,9 @@ Outputs are recorded in `case_studies/stage7_methods_reproducibility/`, `docs/st
 Stage 7.7 completed a structured usability and adoption rehearsal without adding a new biological system or a new analysis route. The biologist-facing path uses the public MLCI intensity tutorial to interpret residence-like behavior against amplitude-only summaries, while the quantitative path checks that the bounded-coupling fixture reproduces across Python, CLI, and backend surfaces.
 
 Outputs are recorded in `case_studies/stage7_usability_rehearsal/`, `docs/stage7_7_gate_report.json`, `docs/stage7_usability_rehearsal.md`, `docs/stage7_user_path_findings.md`, and `scripts/run_stage7_7_usability_rehearsal.py`. The exported bundles include declared parameters, input schema, grouping metadata, software version, result JSON, result rows, Markdown report, and checksums. This phase supports user-path clarity and reproducibility of exported results. It does not promote a new biological claim beyond the public tutorial and fixture evidence already present in the methods program.
+
+## Stage 7.8 methods manuscript readiness outputs
+
+Stage 7.8 completed the methods-manuscript readiness package. The package maps planned figure components and method claims to existing evidence, validation reports, limitation artifacts, release checksums, and known inconclusive outcomes. It is a drafting-support surface, not a manuscript draft and not a new analysis.
+
+Outputs are recorded in `case_studies/stage7_methods_readiness/`, `docs/stage7_8_gate_report.json`, `docs/stage7_methods_evidence_index.md`, `docs/stage7_figure_artifact_crosswalk.md`, `docs/stage7_claim_evidence_crosswalk.md`, `docs/stage7_methods_submission_readiness.md`, and `scripts/run_stage7_8_methods_readiness.py`. This phase supports readiness to draft a methods manuscript from existing reproducible outputs. It does not add a biological system, new analysis route, new benchmark result, or manuscript claim.

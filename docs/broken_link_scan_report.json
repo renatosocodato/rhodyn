@@ -1,9 +1,9 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-30T16:28:41.966675Z",
+  "generated_utc": "2026-06-30T16:44:08.254123Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 101,
+  "link_count": 105,
   "records": [
     {
       "detail": "remote URL syntax checked only",
@@ -550,6 +550,30 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "stage7_user_path_findings.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_methods_evidence_index.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_figure_artifact_crosswalk.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_claim_evidence_crosswalk.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_methods_submission_readiness.md"
     },
     {
       "detail": "local target exists",

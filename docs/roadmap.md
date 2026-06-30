@@ -91,7 +91,7 @@ as roadmap work.
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
 | Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract, exposes the existing deterministic simulation surface, and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
-| Stage 7. Independent methods-program roadmap | Stage 7.7 usability and adoption rehearsal complete, Stage 7.8 not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
+| Stage 7. Independent methods-program roadmap | Stage 7.8 methods manuscript readiness package complete. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
 
 ## Non-drift principles
@@ -495,6 +495,16 @@ table, the bounded-coupling fixture reproduces across Python, CLI, and backend
 outputs, and the exported bundles include parameters, input schema, grouping,
 software version, result JSON, result rows, Markdown report, and checksums.
 
+Stage 7.8 is complete. The readiness package is recorded in
+`docs/stage7_8_gate_report.json`, `docs/stage7_methods_evidence_index.md`,
+`docs/stage7_figure_artifact_crosswalk.md`,
+`docs/stage7_claim_evidence_crosswalk.md`,
+`docs/stage7_methods_submission_readiness.md`, and
+`case_studies/stage7_methods_readiness/`. The package maps planned figure
+components and method claims to existing evidence, validation reports, and
+limitation artifacts. It does not add a biological system, new analysis route,
+benchmark result, or manuscript claim.
+
 7.8 Methods manuscript readiness package. Assemble the figure-to-artifact,
 claim-to-evidence, reproducibility, limitations, and release-candidate surfaces
 needed before manuscript drafting. Gate. Every planned manuscript component maps
@@ -517,15 +527,16 @@ Strong pivots.
   evidence shape supports a software-methods or software-credit route rather
   than the primary high-impact methods claim.
 
-Status. Stage 7.7 usability and adoption rehearsal complete, Stage 7.8 not started. The
+Status. Stage 7.8 methods manuscript readiness package complete. The
 v0.3 evidence bank and v0.1.0 release support Stage 7, and the method objects
 now have formal definitions, executable synthetic examples, baseline benchmarks,
 sensitivity outputs, performance measurements, failure-behavior checks, two
 independent public live-cell signaling demonstrations, and a public non-single-reporter
 demonstration layer. The held-out validation and methods-evidence
 reproducibility gates are now closed, and the first usability/adoption rehearsal
-passes. Methods-manuscript readiness still requires the final
-claim-to-evidence and figure-to-artifact package.
+passes. The methods-manuscript readiness package now links planned figures,
+claims, limitations, release evidence, and known inconclusive outcomes to
+reproducible outputs.
 
 ## Stage 8. Product and commercial alignment
 

@@ -1,0 +1,22 @@
+# Stage 7.8 methods submission readiness
+
+This checklist records whether the methods-manuscript evidence package can be drafted from existing reproducible outputs.
+
+| item | evidence | status |
+| --- | --- | --- |
+| All Stage 7.1-7.7 gates pass | docs/stage7_1_gate_report.json through docs/stage7_7_gate_report.json | pass |
+| Every planned manuscript figure has a primary artifact | case_studies/stage7_methods_readiness/figure_artifact_crosswalk.tsv | pass |
+| Every planned method claim has evidence and a limitation | case_studies/stage7_methods_readiness/claim_evidence_crosswalk.tsv | pass |
+| No Nature Methods acceptance claim is made | docs/stage7_methods_program.md | pass |
+| Release checksums and archive manifest exist | docs/release_checksums.json; case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv | pass |
+| Known inconclusive cases are visible | case_studies/stage7_heldout_validation/heldout_validation_outcomes.tsv | pass |
+
+## Gate report
+
+Status. pass.
+
+Completion state. complete_methods_manuscript_readiness_package.
+
+## Boundary
+
+Stage 7.8 assembles a methods-manuscript readiness package from existing Stage 7 evidence. It does not add a biological system, new analysis route, new benchmark result, or manuscript claim.

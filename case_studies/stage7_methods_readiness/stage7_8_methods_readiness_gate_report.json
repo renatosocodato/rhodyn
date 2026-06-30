@@ -1,0 +1,30 @@
+{
+  "claim_count": 5,
+  "completion_state": "complete_methods_manuscript_readiness_package",
+  "figure_component_count": 6,
+  "generated_utc": "2026-06-30T16:37:03.737739Z",
+  "inconclusive_context_count": 3,
+  "interpretation_boundary": "Stage 7.8 assembles a methods-manuscript readiness package from existing Stage 7 evidence. It does not add a biological system, new analysis route, new benchmark result, or manuscript claim.",
+  "missing_claim_artifacts": [],
+  "missing_figure_artifacts": [],
+  "report_format": "rhodyn.stage7_8_methods_readiness.v1",
+  "stage_gate_statuses": {
+    "stage7_1": "pass",
+    "stage7_2": "pass",
+    "stage7_3": "pass",
+    "stage7_4": "pass",
+    "stage7_5": "pass",
+    "stage7_6": "pass",
+    "stage7_7": "pass"
+  },
+  "status": "pass",
+  "validation_checkpoints": {
+    "all_planned_claims_have_evidence_and_limitations": "pass",
+    "all_planned_figures_have_artifacts": "pass",
+    "known_inconclusive_contexts_visible": "pass",
+    "nature_methods_not_used_as_acceptance_claim": "pass",
+    "release_checksums_and_archive_manifest_present": "pass",
+    "stages_7_1_to_7_7_gates_pass": "pass",
+    "stop_condition_unlinked_claim_or_figure": "not_triggered"
+  }
+}

@@ -32,6 +32,8 @@ STAGE7_6_GATE_REPORT_PATH = ROOT / "docs" / "stage7_6_gate_report.json"
 STAGE7_6_CASE_REPORT_PATH = ROOT / "case_studies" / "stage7_methods_reproducibility" / "stage7_6_methods_reproducibility_gate_report.json"
 STAGE7_7_GATE_REPORT_PATH = ROOT / "docs" / "stage7_7_gate_report.json"
 STAGE7_7_CASE_REPORT_PATH = ROOT / "case_studies" / "stage7_usability_rehearsal" / "stage7_7_usability_gate_report.json"
+STAGE7_8_GATE_REPORT_PATH = ROOT / "docs" / "stage7_8_gate_report.json"
+STAGE7_8_CASE_REPORT_PATH = ROOT / "case_studies" / "stage7_methods_readiness" / "stage7_8_methods_readiness_gate_report.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -63,6 +65,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage7_6_case_report_path = root / STAGE7_6_CASE_REPORT_PATH.relative_to(ROOT)
     stage7_7_gate_report_path = root / STAGE7_7_GATE_REPORT_PATH.relative_to(ROOT)
     stage7_7_case_report_path = root / STAGE7_7_CASE_REPORT_PATH.relative_to(ROOT)
+    stage7_8_gate_report_path = root / STAGE7_8_GATE_REPORT_PATH.relative_to(ROOT)
+    stage7_8_case_report_path = root / STAGE7_8_CASE_REPORT_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -83,8 +87,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 7.7 usability and adoption rehearsal complete":
-        failures.append("active stage must be Stage 7.7 usability and adoption rehearsal complete after Stage 7.7 execution")
+    if current.get("active_stage") != "Stage 7.8 methods manuscript readiness package complete":
+        failures.append("active stage must be Stage 7.8 methods manuscript readiness package complete after Stage 7.8 execution")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -92,7 +96,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         4: "frozen_for_stage5",
         5: "completed",
         6: "public_citable_v0.1.0",
-        7: "stage7_7_complete_7_8_not_started",
+        7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
     }
     for stage, status in expected_status.items():
@@ -128,8 +132,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 7.6 must be marked complete_methods_reproducibility_hardening")
     if stage7_subphase_status.get("7.7") != "complete_usability_adoption_rehearsal":
         failures.append("Stage 7.7 must be marked complete_usability_adoption_rehearsal")
-    if stage7_subphase_status.get("7.8") != "not_started_next_authorization_required":
-        failures.append("Stage 7.8 must remain not_started_next_authorization_required")
+    if stage7_subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
+        failures.append("Stage 7.8 must be marked complete_methods_manuscript_readiness_package")
 
     roadmap_flat = " ".join(roadmap.split())
     required_roadmap_phrases = [
@@ -153,6 +157,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 7.5 adds a held-out public validation route",
         "Stage 7.6 closes the methods-evidence reproducibility gate",
         "Stage 7.7 is complete",
+        "Stage 7.8 is complete",
         "docs/stage7_methods_program.md",
         "docs/stage7_serialized_execution_plan.md",
         "docs/stage7_0_*",
@@ -191,6 +196,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 7.5 held-out validation outputs",
         "Stage 7.6 methods reproducibility outputs",
         "Stage 7.7 usability outputs",
+        "Stage 7.8 methods manuscript readiness outputs",
     ]:
         if phrase not in stage7_program:
             failures.append(f"Stage 7 methods program is missing phrase: {phrase}")
@@ -206,6 +212,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 7.5 execution status. Complete",
         "Stage 7.6 execution status. Complete",
         "Stage 7.7 execution status. Complete",
+        "Stage 7.8 execution status. Complete",
     ]:
         if phrase not in stage7_execution:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
@@ -562,6 +569,52 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         if stage7_7_case_report.get("completion_state") != "complete_usability_adoption_rehearsal":
             failures.append("Stage 7.7 usability case report must record complete_usability_adoption_rehearsal")
 
+    stage7_8_docs = [
+        (root / "docs" / "stage7_methods_evidence_index.md", "Stage 7.8 methods evidence index", ["Figure-level evidence", "Claim-level evidence", "does not add analyses or biological claims"]),
+        (root / "docs" / "stage7_figure_artifact_crosswalk.md", "Stage 7.8 figure-artifact crosswalk", ["reproducible output", "limitation boundary"]),
+        (root / "docs" / "stage7_claim_evidence_crosswalk.md", "Stage 7.8 claim-evidence crosswalk", ["limitation artifact", "supported_for_methods_drafting"]),
+        (root / "docs" / "stage7_methods_submission_readiness.md", "Stage 7.8 submission readiness", ["Known inconclusive cases are visible", "does not add a biological system"]),
+    ]
+    for path, label, phrases in stage7_8_docs:
+        if not path.exists():
+            failures.append(f"missing {path.relative_to(root)}")
+            continue
+        body = path.read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase not in body:
+                failures.append(f"{label} missing phrase: {phrase}")
+
+    if not stage7_8_gate_report_path.exists():
+        failures.append("missing docs/stage7_8_gate_report.json")
+    else:
+        stage7_8_gate = json.loads(stage7_8_gate_report_path.read_text(encoding="utf-8"))
+        if stage7_8_gate.get("status") != "pass":
+            failures.append("Stage 7.8 gate report must pass")
+        if stage7_8_gate.get("completion_state") != "complete_methods_manuscript_readiness_package":
+            failures.append("Stage 7.8 gate report must record complete_methods_manuscript_readiness_package")
+        checkpoints = stage7_8_gate.get("validation_checkpoints", {}) if isinstance(stage7_8_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "stages_7_1_to_7_7_gates_pass",
+            "all_planned_figures_have_artifacts",
+            "all_planned_claims_have_evidence_and_limitations",
+            "known_inconclusive_contexts_visible",
+            "release_checksums_and_archive_manifest_present",
+            "nature_methods_not_used_as_acceptance_claim",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.8 gate checkpoint must pass: {checkpoint}")
+        if checkpoints.get("stop_condition_unlinked_claim_or_figure") != "not_triggered":
+            failures.append("Stage 7.8 unlinked-claim stop condition must remain not_triggered")
+
+    if not stage7_8_case_report_path.exists():
+        failures.append("missing case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json")
+    else:
+        stage7_8_case_report = json.loads(stage7_8_case_report_path.read_text(encoding="utf-8"))
+        if stage7_8_case_report.get("status") != "pass":
+            failures.append("Stage 7.8 methods readiness case report must pass")
+        if stage7_8_case_report.get("completion_state") != "complete_methods_manuscript_readiness_package":
+            failures.append("Stage 7.8 methods readiness case report must record complete_methods_manuscript_readiness_package")
+
     if not stage5_closeout_path.exists():
         failures.append("missing docs/stage5_closeout.md")
         stage5_closeout = ""
@@ -581,7 +634,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
-        warnings.append("Stage 7.7 usability and adoption rehearsal is complete; Stage 7.8 methods readiness has not started")
+        warnings.append("Stage 7.8 methods manuscript readiness package is complete; Stage 8 remains conceptual")
 
     return {
         "status": "pass" if not failures else "fail",

@@ -290,7 +290,7 @@ Stop condition.
 
 ## 7.6. Software maturity for methods-paper reproducibility
 
-Stage 7.6 execution status. Complete. The API stability policy, source-distribution clean-room runner, generated reproducibility card, gate reports, cross-surface parity table, workflow wiring, and methods-output comparison table are recorded. Stage 7.7 usability and adoption rehearsal is complete, and Stage 7.8 methods manuscript readiness has not started.
+Stage 7.6 execution status. Complete. The API stability policy, source-distribution clean-room runner, generated reproducibility card, gate reports, cross-surface parity table, workflow wiring, and methods-output comparison table are recorded. Stage 7.7 usability and adoption rehearsal is complete, and Stage 7.8 methods manuscript readiness is complete.
 
 Objectives.
 
@@ -420,4 +420,7 @@ Stage 7.5 execution status. Complete. The held-out public validation layer is re
 Stage 7.6 execution status. Complete. The methods-program reproducibility layer is recorded in `docs/stage7_6_gate_report.json`, `docs/stage7_methods_reproducibility_card.md`, `docs/stage7_6_api_stability_policy.md`, and `case_studies/stage7_methods_reproducibility/`. Stage 7.7 usability and adoption rehearsal is complete.
 
 
-Stage 7.7 execution status. Complete. The usability and adoption rehearsal is recorded in `docs/stage7_7_gate_report.json`, `docs/stage7_usability_rehearsal.md`, `docs/stage7_user_path_findings.md`, and `case_studies/stage7_usability_rehearsal/`. The rehearsal checks a biologist-facing public MLCI residence interpretation path and a quantitative bounded-coupling reproduction path across Python, CLI, and backend outputs. Stage 7.8 methods manuscript readiness has not started and requires explicit authorization.
+Stage 7.7 execution status. Complete. The usability and adoption rehearsal is recorded in `docs/stage7_7_gate_report.json`, `docs/stage7_usability_rehearsal.md`, `docs/stage7_user_path_findings.md`, and `case_studies/stage7_usability_rehearsal/`. The rehearsal checks a biologist-facing public MLCI residence interpretation path and a quantitative bounded-coupling reproduction path across Python, CLI, and backend outputs. Stage 7.8 methods manuscript readiness is complete.
+
+
+Stage 7.8 execution status. Complete. The methods manuscript readiness package is recorded in `docs/stage7_8_gate_report.json`, `docs/stage7_methods_evidence_index.md`, `docs/stage7_figure_artifact_crosswalk.md`, `docs/stage7_claim_evidence_crosswalk.md`, `docs/stage7_methods_submission_readiness.md`, and `case_studies/stage7_methods_readiness/`. The package maps planned methods-manuscript figures and claims to reproducible evidence, validation reports, and limitation artifacts without adding new analyses or biological claims.
