@@ -1,0 +1,5 @@
+dataset_id,threshold,threshold_unit,summary_rows,amplitude_and_residence_top_quartile,amplitude_only_top_quartile,residence_only_top_quartile,neither_top_quartile,amplitude_residence_disagreement_count,amplitude_residence_disagreement_fraction
+drg_calcium_vonbuchholtz2025,5,deltaF_over_F0,360,87,3,3,267,6,0.0166667
+drg_calcium_vonbuchholtz2025,10,deltaF_over_F0,360,74,16,16,254,32,0.0888889
+drg_calcium_vonbuchholtz2025,15,deltaF_over_F0,360,69,21,21,249,42,0.116667
+drg_calcium_vonbuchholtz2025,20,deltaF_over_F0,360,60,30,30,240,60,0.166667

@@ -10,7 +10,7 @@
     "static_review_completed": true
   },
   "failures": [],
-  "generated_utc": "2026-06-30T07:04:05.551923Z",
+  "generated_utc": "2026-06-30T09:03:47.908614Z",
   "interpretation_boundary": "This is an offline static dependency review. A live advisory scan should still be run immediately before public release if credentials and network policy allow it.",
   "node_dependencies": [
     {

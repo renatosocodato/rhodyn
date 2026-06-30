@@ -1,9 +1,9 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-30T07:02:57.471447Z",
+  "generated_utc": "2026-06-30T09:03:36.254854Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 90,
+  "link_count": 94,
   "records": [
     {
       "detail": "remote URL syntax checked only",
@@ -46,6 +46,18 @@
       "source": "REPRODUCING.md",
       "status": "pass",
       "target": "https://github.com/renatosocodato/windowed_rhoA_model"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "case_studies/stage7_public_signaling/drg_calcium_case_report.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/14907827"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "case_studies/stage7_public_signaling/erk_gpcr_case_report.md",
+      "status": "pass",
+      "target": "https://zenodo.org/records/5836623"
     },
     {
       "detail": "remote URL syntax checked only",
@@ -532,6 +544,18 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "stage7_performance_uncertainty_report.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_public_data_adapters.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_public_signaling_demonstrations.md"
     },
     {
       "detail": "local target exists",

@@ -1,0 +1,81 @@
+{
+  "case_summaries": [
+    {
+      "access_route": "https://zenodo.org/records/14907827",
+      "amplitude_and_residence_top_quartile": 74,
+      "amplitude_only_top_quartile": 16,
+      "amplitude_residence_disagreement_count": 32,
+      "case_report": "case_studies/stage7_public_signaling/drg_calcium_case_report.md",
+      "cell_count": 120,
+      "condition_count": 3,
+      "dataset_id": "drg_calcium_vonbuchholtz2025",
+      "neither_top_quartile": 254,
+      "provenance": "case_studies/stage7_public_signaling/drg_calcium_provenance.json",
+      "residence_only_top_quartile": 16,
+      "source_citation": "von Buchholtz 2025, Zenodo DOI 10.5281/zenodo.14907827",
+      "summary_rows": 360,
+      "system_class": "excitable-neuron calcium dynamics",
+      "trajectory_rows": 72000,
+      "what_rhodyn_adds": "residence identifies sustained high-calcium occupancy not captured by peak amplitude alone"
+    },
+    {
+      "access_route": "https://zenodo.org/records/5836623",
+      "amplitude_and_residence_top_quartile": 34,
+      "amplitude_only_top_quartile": 11,
+      "amplitude_residence_disagreement_count": 22,
+      "case_report": "case_studies/stage7_public_signaling/erk_gpcr_case_report.md",
+      "cell_count": 180,
+      "condition_count": 6,
+      "dataset_id": "erk_gpcr_wan2021",
+      "neither_top_quartile": 124,
+      "provenance": "case_studies/stage7_public_signaling/erk_gpcr_provenance.json",
+      "residence_only_top_quartile": 11,
+      "source_citation": "Wan et al. 2021, Zenodo DOI 10.5281/zenodo.5836623",
+      "summary_rows": 180,
+      "system_class": "GPCR-driven ERK kinase dynamics",
+      "trajectory_rows": 4320,
+      "what_rhodyn_adds": "residence identifies high-ERK occupancy not captured by peak ERK KTR alone"
+    }
+  ],
+  "created_outputs": [
+    "candidate_ranking.tsv",
+    "public_signaling_case_summary.tsv",
+    "drg_calcium_tidy_trajectories.csv",
+    "drg_calcium_residence_amplitude_summary.csv",
+    "drg_calcium_window_sensitivity.csv",
+    "drg_calcium_uncertainty_summary.csv",
+    "drg_calcium_provenance.json",
+    "drg_calcium_case_report.md",
+    "erk_gpcr_tidy_trajectories.csv",
+    "erk_gpcr_residence_amplitude_summary.csv",
+    "erk_gpcr_window_sensitivity.csv",
+    "erk_gpcr_uncertainty_summary.csv",
+    "erk_gpcr_provenance.json",
+    "erk_gpcr_case_report.md",
+    "stage7_3_public_signaling_gate_report.json"
+  ],
+  "interpretation_boundary": "Stage 7.3 demonstrates RhoDyn residence-state inference on independent public live-cell signaling systems. It does not imply that RhoDyn generated the RhoA/microglia manuscript results and does not convert analytical high-state windows into calibrated biological activation boundaries.",
+  "next_phase": "Stage 7.4 Perturbation endpoint, reserve, and routed-output demonstrations",
+  "next_phase_authorization_required": true,
+  "output_dir": "case_studies/stage7_public_signaling",
+  "report_format": "rhodyn.stage7_3_public_signaling.v1",
+  "selected_datasets": [
+    "drg_calcium_vonbuchholtz2025",
+    "erk_gpcr_wan2021"
+  ],
+  "stage": "7.3",
+  "stage_label": "Independent public live-cell signaling demonstrations",
+  "status": "pass",
+  "system_classes": [
+    "GPCR-driven ERK kinase dynamics",
+    "excitable-neuron calcium dynamics"
+  ],
+  "validation_checkpoints": {
+    "dataset_source_citation_access_metadata_grouping_preprocessing_notes": "pass",
+    "each_case_states_what_rhodyn_adds": "pass",
+    "examples_do_not_imply_manuscript_generation": "pass",
+    "residence_amplitude_disagreement_detected_in_each_case": "pass",
+    "stop_condition_public_dataset_failure": "not_triggered",
+    "two_independent_public_live_cell_systems_represented": "pass"
+  }
+}

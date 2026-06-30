@@ -98,7 +98,20 @@ Stage 7.2 has now been executed as a benchmark-harness phase. It compares RhoDyn
 - `docs/stage7_performance_uncertainty_report.md` summarizes sensitivity, performance, and failure-behavior outputs.
 - `docs/stage7_2_gate_report.json` records the Stage 7.2 completion gate.
 
-Stage 7.2 does not add independent biological evidence, manuscript claims, product features, or new stable public APIs. Stage 7.3 remains the next phase and requires explicit authorization.
+Stage 7.2 does not add independent biological evidence, manuscript claims, product features, or new stable public APIs.
+
+## Stage 7.3 public signaling outputs
+
+Stage 7.3 has now been executed as an independent public live-cell signaling demonstration phase. It selects two rubric-qualified public systems, converts source records into retained tidy trajectory tables, runs residence-versus-amplitude summaries, records window sensitivity and grouped uncertainty, and writes scoped case reports.
+
+- `scripts/run_stage7_3_public_signaling.py` downloads public source files in memory and writes derived outputs under `case_studies/stage7_public_signaling/`.
+- `case_studies/stage7_public_signaling/stage7_3_public_signaling_gate_report.json` records the passing 7.3 gate for DRG calcium and ERK GPCR KTR trajectories.
+- `docs/stage7_public_data_adapters.md` documents selected adapters, source access, metadata, grouping, and interpretation boundaries.
+- `docs/stage7_public_signaling_demonstrations.md` summarizes what residence-state inference adds in each public system.
+- `notebooks/04_stage7_drg_calcium_public_signaling.ipynb` and `notebooks/05_stage7_erk_gpcr_public_signaling.ipynb` provide lightweight retained-output walkthroughs.
+- `docs/stage7_3_gate_report.json` records the Stage 7.3 completion gate.
+
+Stage 7.3 does not add manuscript claims, product features, or new stable public APIs. Stage 7.4 remains the next phase and requires explicit authorization.
 
 ## Stage 7 architecture
 

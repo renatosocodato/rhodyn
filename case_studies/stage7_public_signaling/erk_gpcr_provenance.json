@@ -1,0 +1,78 @@
+{
+  "archive_file": "Figure_3.zip",
+  "archive_sha256": "c99308f4918d5caf9fedfbeb4d1ca6cf9855acb82fbc0cad20c0c3934d0d9d76",
+  "archive_url": "https://zenodo.org/api/records/5836623/files/Figure_3.zip/content",
+  "class_counts": {
+    "amplitude_and_residence_top_quartile": 34,
+    "amplitude_only_top_quartile": 11,
+    "neither_top_quartile": 124,
+    "residence_only_top_quartile": 11
+  },
+  "dataset_id": "erk_gpcr_wan2021",
+  "derived_outputs": {
+    "case_report": "case_studies/stage7_public_signaling/erk_gpcr_case_report.md",
+    "residence_amplitude_summary": "case_studies/stage7_public_signaling/erk_gpcr_residence_amplitude_summary.csv",
+    "tidy_trajectories": "case_studies/stage7_public_signaling/erk_gpcr_tidy_trajectories.csv",
+    "uncertainty_summary": "case_studies/stage7_public_signaling/erk_gpcr_uncertainty_summary.csv",
+    "window_sensitivity": "case_studies/stage7_public_signaling/erk_gpcr_window_sensitivity.csv"
+  },
+  "grouping_variables": [
+    "experiment",
+    "ligand",
+    "slide",
+    "position",
+    "source_object"
+  ],
+  "interpretation_boundary": "The high-ERK threshold is an analytical selected-record quantile, not a calibrated universal ERK activation boundary. The case does not infer GPCR mechanism or ligand-specific causality.",
+  "license": "CC-BY-4.0",
+  "output_sha256": {
+    "residence_amplitude_summary": "40b4bd2ac59ea31923f11a4ad60c82c98a1ef4bf4cc4dc0a5541c58a9644be4e",
+    "tidy_trajectories": "60cfc64f95f529f72c05fff7ba523ac9d1ca0d804999273b8b6a5126bdbb3fb7",
+    "uncertainty_summary": "228c0161a1c2778a5228fafebf763d4bc3638906e03fd675d6c8e12d1faa2141",
+    "window_sensitivity": "dc9a005d9c9ef1d69b350271768150d3af803aa876e5e39a9710c232aa02138c"
+  },
+  "preprocessing_notes": "Selected DMSO-control cells for His, S1P, and UK ligand contexts, retained up to 60 cells per ligand, and scored CN_ERK trajectories.",
+  "raw_file_policy": "The public Figure 3 archive is downloaded in memory and converted to derived trajectory and summary tables; raw source files are not retained.",
+  "residence_window": {
+    "high": 1000000000000.0,
+    "low": 0.7623
+  },
+  "selected_cell_count": 180,
+  "selected_ligands": [
+    "His",
+    "S1P",
+    "UK"
+  ],
+  "source_creators": [
+    "Wan, Roger",
+    "Hwang, Sung Yul",
+    "Di Salvo, Matteo",
+    "Birts, Charlotte",
+    "Watson, Andrew J.",
+    "Jones, Ben",
+    "Goyette, Janelle",
+    "Gett, Ronen",
+    "Hogg, Philip J.",
+    "Bryant, Christopher E.",
+    "Alexander, Stephen P. H.",
+    "Duhme-Klair, Anne-Katrin",
+    "Ferrell, James E. Jr",
+    "Santos, Sergio D. M."
+  ],
+  "source_member_sha256": {
+    "Figure_3/Data/ALL_His.csv": "fadfa6a068253210fc705db2b22c04a7456ac065a0a96a27e4b8b6d63853869f",
+    "Figure_3/Data/ALL_S1P.csv": "190237be870a83c9328ccde6f3b5c765867ecbec67b15d4a5b7285ddfc7cb891",
+    "Figure_3/Data/ALL_UK.csv": "29b12cf5c69cb64f8488dc8a1a3b738116746980cd9538a356b8d69da0059434"
+  },
+  "source_members": [
+    "Figure_3/Data/ALL_UK.csv",
+    "Figure_3/Data/ALL_S1P.csv",
+    "Figure_3/Data/ALL_His.csv"
+  ],
+  "source_title": "Single cell imaging of ERK and Akt activation dynamics and heterogeneity induced by G protein-coupled receptors - Scripts & Source data",
+  "summary_rows": 180,
+  "threshold_rule": "high ERK KTR residence threshold is the selected-record CN_ERK 75th percentile",
+  "trajectory_rows": 4320,
+  "zenodo_doi": "10.5281/zenodo.5836623",
+  "zenodo_record": "https://zenodo.org/records/5836623"
+}

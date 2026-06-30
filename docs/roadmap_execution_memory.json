@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 7.2 benchmark harness complete",
+    "active_stage": "Stage 7.3 public signaling demonstrations complete",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -12,12 +12,13 @@
     "after_stage6_public_release": "RhoDyn v0.1.0 public release is live at https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0 with Zenodo version DOI 10.5281/zenodo.21036616 and concept DOI 10.5281/zenodo.21036615.",
     "after_stage7_0_planning_freeze": "Stage 7.0 completed the planning-only source register, baseline-method inventory, dataset selection rubric, artifact map, and gate report. Stage 7.1 formal method definition has not started.",
     "after_stage7_1_method_formalization": "Stage 7.1 completed formal method definitions, synthetic truth examples, limitations matrix, API notes, truth-case generator, tests, fixtures, and gate report. This record is the immediate precondition that enabled the now-completed Stage 7.2 benchmark harness.",
-    "after_stage7_2_benchmark_harness": "Stage 7.2 completed the benchmark harness against simpler summaries and alternatives, including synthetic truth benchmarks, public fixture summaries, sensitivity outputs, performance measurements, failure behavior, tests, reports, and gate report. Stage 7.3 independent public demonstrations have not started.",
+    "after_stage7_2_benchmark_harness": "Stage 7.2 completed the benchmark harness against simpler summaries and alternatives, including synthetic truth benchmarks, public fixture summaries, sensitivity outputs, performance measurements, failure behavior, tests, reports, and gate report. This record is the immediate precondition that enabled the now-completed Stage 7.3 public signaling demonstrations.",
+    "after_stage7_3_public_signaling": "Stage 7.3 completed independent public live-cell signaling demonstrations for DRG calcium and ERK GPCR KTR trajectories, including tidy trajectory tables, residence-amplitude summaries, window sensitivity, grouped uncertainty, provenance, case reports, notebooks, tests, and gate report. Stage 7.4 perturbation endpoint, reserve, and routed-output demonstrations have not started.",
     "after_stage7_planning": "Stage 7 is roadmap-defined as an independent biological demonstration and methods-manuscript readiness program aligned to standards exemplified by strong computational methods papers. Implementation has not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
-    "stage7_active_gate": "Stage 7.3 may begin only after explicit authorization. No new independent biological demonstration, product feature, or manuscript drafting has started."
+    "stage7_active_gate": "Stage 7.4 may begin only after explicit authorization. No perturbation endpoint, reserve-like, routed-output, product feature, or manuscript drafting has started."
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -129,7 +130,7 @@
       ]
     },
     {
-      "current_gate": "Stage 7.2 benchmark harness complete. Stage 7.3 independent public live-cell signaling demonstrations are the next admissible phase but have not started.",
+      "current_gate": "Stage 7.3 public live-cell signaling demonstrations complete. Stage 7.4 perturbation endpoint, reserve, and routed-output demonstrations are the next admissible phase but have not started.",
       "gate": [
         "Formal method definition and mathematical model are complete.",
         "Benchmarks cover amplitude-only, endpoint-only, threshold-only, generic time-series summaries, and reduced architecture alternatives.",
@@ -167,7 +168,17 @@
         "case_studies/stage7_benchmarks/",
         "docs/stage7_2_gate_report.json"
       ],
-      "status": "stage7_2_complete_7_3_not_started",
+      "stage7_3_artifacts": [
+        "docs/stage7_public_data_adapters.md",
+        "docs/stage7_public_signaling_demonstrations.md",
+        "docs/stage7_3_gate_report.json",
+        "scripts/run_stage7_3_public_signaling.py",
+        "tests/test_stage7_3_public_signaling.py",
+        "notebooks/04_stage7_drg_calcium_public_signaling.ipynb",
+        "notebooks/05_stage7_erk_gpcr_public_signaling.ipynb",
+        "case_studies/stage7_public_signaling/"
+      ],
+      "status": "stage7_3_complete_7_4_not_started",
       "subphases": [
         {
           "evidence": "docs/stage7_0_gate_report.json",
@@ -194,18 +205,19 @@
           "status": "complete_benchmark_harness"
         },
         {
+          "evidence": "docs/stage7_3_gate_report.json",
           "gate": "At least two independent public systems beyond the original manuscript logic pass reproducibility and interpretation checks.",
           "goal": "Add public biological systems that stress residence-versus-amplitude behavior beyond the manuscript logic.",
           "id": "7.3",
           "name": "Independent public live-cell signaling demonstrations",
-          "status": "not_started_next_authorization_required"
+          "status": "complete_public_signaling_demonstrations"
         },
         {
           "gate": "At least one case supports bounded coupling, reserve logic, or routed-output interpretation without overclaiming mechanism.",
           "goal": "Test bounded coupling, reserve-like buffering, and routed-output model comparison in non-trajectory or multi-readout cases.",
           "id": "7.4",
           "name": "Perturbation endpoint, reserve, and routed-output demonstrations",
-          "status": "not_started"
+          "status": "not_started_next_authorization_required"
         },
         {
           "gate": "Success, failure, or inconclusive outcome is reported without hidden tuning.",

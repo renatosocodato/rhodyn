@@ -114,6 +114,28 @@ REQUIRED_FILES = [
     "case_studies/stage7_benchmarks/public_fixture_benchmark_summary.csv",
     "case_studies/stage7_benchmarks/failure_behavior_summary.csv",
     "case_studies/stage7_benchmarks/invalid_trajectory_missing_time.csv",
+    "docs/stage7_public_data_adapters.md",
+    "docs/stage7_public_signaling_demonstrations.md",
+    "docs/stage7_3_gate_report.json",
+    "scripts/run_stage7_3_public_signaling.py",
+    "tests/test_stage7_3_public_signaling.py",
+    "notebooks/04_stage7_drg_calcium_public_signaling.ipynb",
+    "notebooks/05_stage7_erk_gpcr_public_signaling.ipynb",
+    "case_studies/stage7_public_signaling/candidate_ranking.tsv",
+    "case_studies/stage7_public_signaling/public_signaling_case_summary.tsv",
+    "case_studies/stage7_public_signaling/drg_calcium_tidy_trajectories.csv",
+    "case_studies/stage7_public_signaling/drg_calcium_residence_amplitude_summary.csv",
+    "case_studies/stage7_public_signaling/drg_calcium_window_sensitivity.csv",
+    "case_studies/stage7_public_signaling/drg_calcium_uncertainty_summary.csv",
+    "case_studies/stage7_public_signaling/drg_calcium_provenance.json",
+    "case_studies/stage7_public_signaling/drg_calcium_case_report.md",
+    "case_studies/stage7_public_signaling/erk_gpcr_tidy_trajectories.csv",
+    "case_studies/stage7_public_signaling/erk_gpcr_residence_amplitude_summary.csv",
+    "case_studies/stage7_public_signaling/erk_gpcr_window_sensitivity.csv",
+    "case_studies/stage7_public_signaling/erk_gpcr_uncertainty_summary.csv",
+    "case_studies/stage7_public_signaling/erk_gpcr_provenance.json",
+    "case_studies/stage7_public_signaling/erk_gpcr_case_report.md",
+    "case_studies/stage7_public_signaling/stage7_3_public_signaling_gate_report.json",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
@@ -217,8 +239,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 7.2 benchmark harness complete":
-            failures.append("roadmap execution memory does not mark Stage 7.2 benchmark harness as complete")
+        if current.get("active_stage") != "Stage 7.3 public signaling demonstrations complete":
+            failures.append("roadmap execution memory does not mark Stage 7.3 public signaling demonstrations as complete")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -228,8 +250,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 5 completed")
         if stages.get(6, {}).get("status") != "public_citable_v0.1.0":
             failures.append("roadmap execution memory does not mark Stage 6 as public_citable_v0.1.0")
-        if stages.get(7, {}).get("status") != "stage7_2_complete_7_3_not_started":
-            failures.append("roadmap execution memory does not mark Stage 7.2 complete and Stage 7.3 not started")
+        if stages.get(7, {}).get("status") != "stage7_3_complete_7_4_not_started":
+            failures.append("roadmap execution memory does not mark Stage 7.3 complete and Stage 7.4 not started")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
 
@@ -242,8 +264,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.1 must be complete_method_formalization in roadmap execution memory")
         if subphase_status.get("7.2") != "complete_benchmark_harness":
             failures.append("Stage 7.2 must be complete_benchmark_harness in roadmap execution memory")
-        if subphase_status.get("7.3") != "not_started_next_authorization_required":
-            failures.append("Stage 7.3 must remain not started and require authorization")
+        if subphase_status.get("7.3") != "complete_public_signaling_demonstrations":
+            failures.append("Stage 7.3 must be complete_public_signaling_demonstrations in roadmap execution memory")
+        if subphase_status.get("7.4") != "not_started_next_authorization_required":
+            failures.append("Stage 7.4 must remain not started and require authorization")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
@@ -341,6 +365,53 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         public_fixtures = benchmark_report.get("public_fixtures", []) if isinstance(benchmark_report.get("public_fixtures", []), list) else []
         if len(public_fixtures) < 4:
             failures.append("Stage 7.2 benchmark report does not include all retained public fixture summaries")
+
+
+    stage7_3_gate_path = root / "docs" / "stage7_3_gate_report.json"
+    if stage7_3_gate_path.exists():
+        try:
+            stage7_3_gate = json.loads(stage7_3_gate_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.3 gate report is not valid JSON: {exc}")
+            stage7_3_gate = {}
+        if stage7_3_gate.get("status") != "pass":
+            failures.append("Stage 7.3 gate report does not pass")
+        if stage7_3_gate.get("completion_state") != "complete_public_signaling_demonstrations":
+            failures.append("Stage 7.3 gate report does not mark public signaling demonstrations complete")
+        selected = stage7_3_gate.get("selected_datasets", []) if isinstance(stage7_3_gate.get("selected_datasets", []), list) else []
+        if set(selected) != {"drg_calcium_vonbuchholtz2025", "erk_gpcr_wan2021"}:
+            failures.append("Stage 7.3 gate report does not record the selected public signaling datasets")
+        checkpoints = stage7_3_gate.get("validation_checkpoints", {}) if isinstance(stage7_3_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "dataset_source_citation_access_metadata_grouping_preprocessing_notes",
+            "each_case_states_what_rhodyn_adds",
+            "two_independent_public_live_cell_systems_represented",
+            "residence_amplitude_disagreement_detected_in_each_case",
+            "examples_do_not_imply_manuscript_generation",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.3 gate checkpoint does not pass: {checkpoint}")
+        if checkpoints.get("stop_condition_public_dataset_failure") != "not_triggered":
+            failures.append("Stage 7.3 public dataset stop condition must remain not_triggered")
+        boundary = str(stage7_3_gate.get("interpretation_boundary", ""))
+        if "does not imply that RhoDyn generated" not in boundary:
+            failures.append("Stage 7.3 gate report must preserve manuscript-independence boundary")
+
+    stage7_3_public_report_path = root / "case_studies" / "stage7_public_signaling" / "stage7_3_public_signaling_gate_report.json"
+    if stage7_3_public_report_path.exists():
+        try:
+            public_signaling_report = json.loads(stage7_3_public_report_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.3 public signaling report is not valid JSON: {exc}")
+            public_signaling_report = {}
+        if public_signaling_report.get("status") != "pass":
+            failures.append("Stage 7.3 public signaling report does not pass")
+        cases = public_signaling_report.get("case_summaries", []) if isinstance(public_signaling_report.get("case_summaries", []), list) else []
+        if len(cases) < 2:
+            failures.append("Stage 7.3 public signaling report does not include two public systems")
+        for case in cases:
+            if int(case.get("amplitude_residence_disagreement_count", 0)) <= 0:
+                failures.append(f"Stage 7.3 case lacks amplitude/residence disagreement: {case.get('dataset_id')}")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():

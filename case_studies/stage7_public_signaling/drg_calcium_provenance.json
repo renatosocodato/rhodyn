@@ -1,0 +1,52 @@
+{
+  "class_counts": {
+    "amplitude_and_residence_top_quartile": 74,
+    "amplitude_only_top_quartile": 16,
+    "neither_top_quartile": 254,
+    "residence_only_top_quartile": 16
+  },
+  "dataset_id": "drg_calcium_vonbuchholtz2025",
+  "derived_outputs": {
+    "case_report": "case_studies/stage7_public_signaling/drg_calcium_case_report.md",
+    "residence_amplitude_summary": "case_studies/stage7_public_signaling/drg_calcium_residence_amplitude_summary.csv",
+    "tidy_trajectories": "case_studies/stage7_public_signaling/drg_calcium_tidy_trajectories.csv",
+    "uncertainty_summary": "case_studies/stage7_public_signaling/drg_calcium_uncertainty_summary.csv",
+    "window_sensitivity": "case_studies/stage7_public_signaling/drg_calcium_window_sensitivity.csv"
+  },
+  "episode_count": 3,
+  "grouping_variables": [
+    "mouse",
+    "ganglion",
+    "roi",
+    "condition"
+  ],
+  "info_file": "sstlineage_ly_drg_info.csv",
+  "info_sha256": "23eb2dda1cd5bb69c440699302319a69057a71427341a2e4e592b6f5efb5a8be",
+  "info_url": "https://zenodo.org/api/records/14907827/files/sstlineage_ly_drg_info.csv/content",
+  "interpretation_boundary": "The high-calcium window is a declared analytical threshold. The case does not assign stimulus identity, infer pain mechanism, or claim a calibrated biological calcium activation boundary.",
+  "license": "CC-BY-4.0",
+  "output_sha256": {
+    "residence_amplitude_summary": "223ca597bb97e7a385ab73398c7acebf35f1c73f355db50cb74b20f1954e65c8",
+    "tidy_trajectories": "af46b43ec114ed5bd07caff46081e4cb80e2d5c3205f44791b8cfa500cd14604",
+    "uncertainty_summary": "b883cb91a19fc6de07bbb1c4fa2465e5843b772c29fd90fdedefcf59c5489a1b",
+    "window_sensitivity": "9ec93b8fb9d192d73186bef5b25a1970f02c6f038d77545036516a5661f160ff"
+  },
+  "preprocessing_notes": "Selected 120 cells, split traces into three 200-frame episodes, used 0.2 s frame spacing, and retained neutral episode labels.",
+  "raw_file_policy": "Public source CSV files are downloaded in memory and converted to derived trajectory and summary tables; raw source files are not retained.",
+  "residence_window": {
+    "high": 1000000000000.0,
+    "low": 10.0
+  },
+  "selected_cell_count": 120,
+  "source_creators": [
+    "von Buchholtz, Lars Johann"
+  ],
+  "source_title": "A distributed coding logic for thermosensation and inflammatory pain",
+  "summary_rows": 360,
+  "trace_file": "sstlineage_ly_drg_traces.csv",
+  "trace_sha256": "923985a34a81e5f4d2b3252e28e5b145f5eef3cedc397890e05315e5c092f8c5",
+  "trace_url": "https://zenodo.org/api/records/14907827/files/sstlineage_ly_drg_traces.csv/content",
+  "trajectory_rows": 72000,
+  "zenodo_doi": "10.5281/zenodo.14907827",
+  "zenodo_record": "https://zenodo.org/records/14907827"
+}

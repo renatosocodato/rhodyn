@@ -1,0 +1,4 @@
+dataset_id,metric,estimate,ci_low,ci_high,confidence_level,resample_level,group_field,unit_count,n_observations,n_resamples,seed
+drg_calcium_vonbuchholtz2025,mean_residence_fraction,0.0240089,0.015381,0.0315902,0.95,group,mouse,4,360,500,7301
+drg_calcium_vonbuchholtz2025,mean_max_signal,9.90531,9.35115,10.7024,0.95,group,mouse,4,360,500,7302
+drg_calcium_vonbuchholtz2025,amplitude_residence_disagreement_fraction,0.0888889,0.0219017,0.186275,0.95,group,mouse,4,360,500,7303

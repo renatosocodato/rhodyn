@@ -1,0 +1,34 @@
+{
+  "completion_state": "complete_public_signaling_demonstrations",
+  "created_artifacts": [
+    "scripts/run_stage7_3_public_signaling.py",
+    "tests/test_stage7_3_public_signaling.py",
+    "case_studies/stage7_public_signaling/",
+    "docs/stage7_public_data_adapters.md",
+    "docs/stage7_public_signaling_demonstrations.md",
+    "notebooks/04_stage7_drg_calcium_public_signaling.ipynb",
+    "notebooks/05_stage7_erk_gpcr_public_signaling.ipynb",
+    "docs/stage7_3_gate_report.json"
+  ],
+  "interpretation_boundary": "Stage 7.3 demonstrates RhoDyn residence-state inference on independent public live-cell signaling systems. It does not imply that RhoDyn generated the RhoA/microglia manuscript results and does not convert analytical high-state windows into calibrated biological activation boundaries.",
+  "next_phase": "Stage 7.4 Perturbation endpoint, reserve, and routed-output demonstrations",
+  "public_signaling_report": "case_studies/stage7_public_signaling/stage7_3_public_signaling_gate_report.json",
+  "report_format": "rhodyn.stage7_3_gate_report.v1",
+  "selected_datasets": [
+    "drg_calcium_vonbuchholtz2025",
+    "erk_gpcr_wan2021"
+  ],
+  "status": "pass",
+  "system_classes": [
+    "GPCR-driven ERK kinase dynamics",
+    "excitable-neuron calcium dynamics"
+  ],
+  "validation_checkpoints": {
+    "dataset_source_citation_access_metadata_grouping_preprocessing_notes": "pass",
+    "each_case_states_what_rhodyn_adds": "pass",
+    "examples_do_not_imply_manuscript_generation": "pass",
+    "residence_amplitude_disagreement_detected_in_each_case": "pass",
+    "stop_condition_public_dataset_failure": "not_triggered",
+    "two_independent_public_live_cell_systems_represented": "pass"
+  }
+}

@@ -1,0 +1,4 @@
+dataset_id,metric,estimate,ci_low,ci_high,confidence_level,resample_level,group_field,unit_count,n_observations,n_resamples,seed
+erk_gpcr_wan2021,mean_residence_fraction,0.252415,0.122464,0.503623,0.95,group,experiment,3,180,500,7302
+erk_gpcr_wan2021,mean_max_signal,0.907691,0.695188,1.14101,0.95,group,experiment,3,180,500,7303
+erk_gpcr_wan2021,amplitude_residence_disagreement_fraction,0.122222,0.1,0.133333,0.95,group,experiment,3,180,500,7304

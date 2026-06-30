@@ -1,5 +1,5 @@
 {
-  "file_count": 248,
+  "file_count": 268,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -402,6 +402,71 @@
       "size_bytes": 453
     },
     {
+      "path": "case_studies/stage7_public_signaling/drg_calcium_case_report.md",
+      "sha256": "791815658f3621fed6faf7a5cd6bb00f626abc4b45a839c1882a813a6249215f",
+      "size_bytes": 1648
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/drg_calcium_provenance.json",
+      "sha256": "77c68f9fab887c48547e536819d1e2f311f8f8af3510ebd7e3550b3ae41c38e4",
+      "size_bytes": 2723
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/drg_calcium_residence_amplitude_summary.csv",
+      "sha256": "223ca597bb97e7a385ab73398c7acebf35f1c73f355db50cb74b20f1954e65c8",
+      "size_bytes": 92711
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/drg_calcium_tidy_trajectories.csv",
+      "sha256": "af46b43ec114ed5bd07caff46081e4cb80e2d5c3205f44791b8cfa500cd14604",
+      "size_bytes": 17227918
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/drg_calcium_uncertainty_summary.csv",
+      "sha256": "b883cb91a19fc6de07bbb1c4fa2465e5843b772c29fd90fdedefcf59c5489a1b",
+      "size_bytes": 476
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/drg_calcium_window_sensitivity.csv",
+      "sha256": "9ec93b8fb9d192d73186bef5b25a1970f02c6f038d77545036516a5661f160ff",
+      "size_bytes": 546
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/erk_gpcr_case_report.md",
+      "sha256": "542f3092893571f035095c267f97b76a7cc067ae40ca6c723b8642bf4ba4a650",
+      "size_bytes": 1625
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/erk_gpcr_provenance.json",
+      "sha256": "12fb0203b049ec2f9002a6ea54e8ca81f859b5a518d21ef7fe2505dddae34c43",
+      "size_bytes": 3453
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/erk_gpcr_residence_amplitude_summary.csv",
+      "sha256": "40b4bd2ac59ea31923f11a4ad60c82c98a1ef4bf4cc4dc0a5541c58a9644be4e",
+      "size_bytes": 40594
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/erk_gpcr_tidy_trajectories.csv",
+      "sha256": "60cfc64f95f529f72c05fff7ba523ac9d1ca0d804999273b8b6a5126bdbb3fb7",
+      "size_bytes": 788067
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/erk_gpcr_uncertainty_summary.csv",
+      "sha256": "228c0161a1c2778a5228fafebf763d4bc3638906e03fd675d6c8e12d1faa2141",
+      "size_bytes": 448
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/erk_gpcr_window_sensitivity.csv",
+      "sha256": "dc9a005d9c9ef1d69b350271768150d3af803aa876e5e39a9710c232aa02138c",
+      "size_bytes": 564
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/stage7_3_public_signaling_gate_report.json",
+      "sha256": "9fd5be2156127d391c12187d5663182debacefbfa92a4f6e38873dede4dc9a28",
+      "size_bytes": 3700
+    },
+    {
       "path": "case_studies/stage7_synthetic_truth/coupling_interval_cases.csv",
       "sha256": "37fe1f5de1ad13d661784a1e30071a12949d26ebf9ee6831169460749de69d80",
       "size_bytes": 190
@@ -483,17 +548,17 @@
     },
     {
       "path": "docs/architecture.md",
-      "sha256": "4a2456d80dcf15740899d295bde7b752aa37e13c57d91298d65a7e36e3ee54d0",
-      "size_bytes": 6328
+      "sha256": "5a23a1606f92ab004d3b86c623fb77d649ab34fc63412b3feabadcbef923f85c",
+      "size_bytes": 6450
     },
     {
       "path": "docs/broken_link_scan_report.json",
-      "sha256": "391b14be84de5c9080881572302631c10fcb6821a96afac476abee6cc5593578",
-      "size_bytes": 17267
+      "sha256": "8852a5351495405b6001f8e00db4d06fc5782a3e674700b830fce59d17768dba",
+      "size_bytes": 18032
     },
     {
       "path": "docs/broken_link_scan_report.md",
-      "sha256": "988fb00623e2bc81f1060fb7f025fcd1ac9fa1b5de7257e0840401b7b09fad13",
+      "sha256": "ed6b2832086c5e9b2a9470f9e612620bbe556c58a4bb8374f24cecd9a0785e73",
       "size_bytes": 153
     },
     {
@@ -518,7 +583,7 @@
     },
     {
       "path": "docs/dependency_review_report.json",
-      "sha256": "c1768060b3f36318b02d98a8d071b9642c347c731f326eec4e2d60b51df00628",
+      "sha256": "cdf577fdbadb6b75aa1434c3db5c785fdfe81a80f30d2b0703ebe5467737e8c3",
       "size_bytes": 4068
     },
     {
@@ -558,8 +623,8 @@
     },
     {
       "path": "docs/index.md",
-      "sha256": "d76bfeced2776e1152e9d7f1dc7e30186de88ae08dc77e093ca80795bd360d46",
-      "size_bytes": 1236
+      "sha256": "31ae5c27eb6f3eccbbd84084a9f0080a08e8b6f760b013c2ae50492e0d8b1075",
+      "size_bytes": 1351
     },
     {
       "path": "docs/input_schema_guide.md",
@@ -593,12 +658,12 @@
     },
     {
       "path": "docs/public_release_integrity_report.json",
-      "sha256": "bf703701614338d473774ee1ea19a94104c0100eab04ccc686cea196c434a4e2",
+      "sha256": "690313191120290e5df337b1871453cfdcdaccebd1778ac6f1536d59bb42d450",
       "size_bytes": 3610
     },
     {
       "path": "docs/public_release_integrity_report.md",
-      "sha256": "a9e82201a972d549c8d54460d1127bbb20304bc9943163938bc0984e508dc64a",
+      "sha256": "66ff52c65186fc64369c0310a28d5f2d418daa448b4b6ae26e30892090362bd8",
       "size_bytes": 1297
     },
     {
@@ -628,13 +693,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "5ed30ce3b9b25449e8d181c1f2730b359f20e3ae1239548c3fff25ae01cfb047",
-      "size_bytes": 25664
+      "sha256": "4fb19a0424780e21348d5c2da3b5cdd2b1daad1cfb14e0150664263c66abe8fa",
+      "size_bytes": 25897
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "694aac82b84cb158d5cedb83c6f6fdc6b4cf10154458165aad404882ee8edbd9",
-      "size_bytes": 17615
+      "sha256": "81fec388a8f3ac8c56f32a23432ecc4d2ab39cf189b72da3717fc4f08d579d33",
+      "size_bytes": 18702
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -683,8 +748,8 @@
     },
     {
       "path": "docs/stage7_0_artifact_map.md",
-      "sha256": "1f725dd2551dc0d75d2de0a8232d559026d25ef819421c0118d3d78442dcfb79",
-      "size_bytes": 5220
+      "sha256": "1eb1071c88f260e68e5c81f9b5f4b2ee2bbc001806fe6d7deb412d3c4e15a472",
+      "size_bytes": 5678
     },
     {
       "path": "docs/stage7_0_baseline_method_inventory.md",
@@ -717,6 +782,11 @@
       "size_bytes": 1918
     },
     {
+      "path": "docs/stage7_3_gate_report.json",
+      "sha256": "bfd3dae51f29cdf09e533cf28e9d07646dab260ab8b3ecffb8448dc61999a3f6",
+      "size_bytes": 1712
+    },
+    {
       "path": "docs/stage7_api_stability_notes.md",
       "sha256": "c0a2a2175496e36a3ca9a00139432c319663876a33d6464ae885417092fa08aa",
       "size_bytes": 1855
@@ -743,8 +813,8 @@
     },
     {
       "path": "docs/stage7_methods_program.md",
-      "sha256": "00bd499af8a5a86a7fa01c04b326413cdb5dc3ed6fd8718e8968c29ee0ff7a30",
-      "size_bytes": 35711
+      "sha256": "c7e61cfa90965a59b3b77df70d9fd951ec00dbb2fc29b666ebb87d2a10342ed0",
+      "size_bytes": 36991
     },
     {
       "path": "docs/stage7_performance_uncertainty_report.md",
@@ -752,9 +822,19 @@
       "size_bytes": 1405
     },
     {
+      "path": "docs/stage7_public_data_adapters.md",
+      "sha256": "fd4ab5f3de75c3949b428b26cefaac680ef9019599539f401a83da21c98c0c41",
+      "size_bytes": 2022
+    },
+    {
+      "path": "docs/stage7_public_signaling_demonstrations.md",
+      "sha256": "35b03c69535d935e9b178d46a662ac901931e1afaeb3e06e04077db995f96270",
+      "size_bytes": 2607
+    },
+    {
       "path": "docs/stage7_serialized_execution_plan.md",
-      "sha256": "e40bfa90789ca822a531b003931f794830c792e174fa6480b7555e7a4782fc87",
-      "size_bytes": 16846
+      "sha256": "0bf1c1b0368f3ab57b9a9d1f53e20a266b87b1c28b267170959513eede332c4e",
+      "size_bytes": 17245
     },
     {
       "path": "docs/stage7_synthetic_truth_cases.md",
@@ -838,8 +918,8 @@
     },
     {
       "path": "mkdocs.yml",
-      "sha256": "03f5d607112d2a57fd9139874fdb86f5cd5ae38a4039db6186d9416c7df6bd39",
-      "size_bytes": 1569
+      "sha256": "98231a4800ed9316ad7067ba5c8c5f7a2d32e4cd08939e05705062afc47f9a87",
+      "size_bytes": 1721
     },
     {
       "path": "notebooks/01_synthetic_residence_primer.ipynb",
@@ -855,6 +935,16 @@
       "path": "notebooks/03_public_endpoint_and_coupling_benchmarks.ipynb",
       "sha256": "7400193f7dc6b3b957fd872f60c556c0857ab1940887322d1e998a796a629f67",
       "size_bytes": 3064
+    },
+    {
+      "path": "notebooks/04_stage7_drg_calcium_public_signaling.ipynb",
+      "sha256": "5fa7f03ebfda51ad177be566e1aa8fb7f7e87802933ffc4f389bf236f6f4c4b9",
+      "size_bytes": 1554
+    },
+    {
+      "path": "notebooks/05_stage7_erk_gpcr_public_signaling.ipynb",
+      "sha256": "a7addeb7ab3cc9d08d52345a6e424914dcfa0269723b401ad78d9264c7aecb16",
+      "size_bytes": 1558
     },
     {
       "path": "package-lock.json",
@@ -943,13 +1033,13 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "7eba997f28ee458d9361cda928ed7663f555865d5ed99928012a603e66c8d515",
-      "size_bytes": 21341
+      "sha256": "75d4b3e05effee6cae37177ab148a70bfc260ea1860fb160d1c4adaa4a4e0635",
+      "size_bytes": 26270
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "ffee277791244e7e2b679cec774b480b6f3ed7121740afb93d94e59b5c4aff19",
-      "size_bytes": 17589
+      "sha256": "89d05364aa9a3ba0408a3407a71b3e1982d4e88434171ddc99cd640e16583557",
+      "size_bytes": 21467
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -1005,6 +1095,11 @@
       "path": "scripts/run_stage7_2_benchmark_harness.py",
       "sha256": "0bcc14ca7afdb3ac144a04b5051b24d77e9b2d617140cf43a0a6b3e1e2203cb4",
       "size_bytes": 31682
+    },
+    {
+      "path": "scripts/run_stage7_3_public_signaling.py",
+      "sha256": "682cf4c0addcf369e921458e45cb2f85fe1c9358bb5777f1ecacb1179ea635b4",
+      "size_bytes": 32209
     },
     {
       "path": "scripts/write_release_checksums.py",
@@ -1237,12 +1332,17 @@
       "size_bytes": 4955
     },
     {
+      "path": "tests/test_stage7_3_public_signaling.py",
+      "sha256": "aab1c91f35e347affab9f1875110e913045c7732bda790ec3b3c92668032d109",
+      "size_bytes": 3005
+    },
+    {
       "path": "tests/test_uncertainty.py",
       "sha256": "6afbf1f6cc9d5fc4c008317b976079c7d6773210229bbeaec3fb939e9a5fe186",
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-30T07:04:29.885854Z",
+  "generated_utc": "2026-06-30T09:04:02.493720Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

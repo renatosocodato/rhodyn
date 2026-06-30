@@ -28,4 +28,6 @@ nav:
   - Stage 7 benchmark harness guide: stage7_benchmark_harness_guide.md
   - Stage 7 baseline comparison report: stage7_baseline_comparison_report.md
   - Stage 7 performance and uncertainty report: stage7_performance_uncertainty_report.md
+  - Stage 7 public-data adapters: stage7_public_data_adapters.md
+  - Stage 7 public signaling demonstrations: stage7_public_signaling_demonstrations.md
   - Release checklist: release_checklist.md

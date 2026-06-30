@@ -22,6 +22,8 @@ STAGE7_1_GATE_REPORT_PATH = ROOT / "docs" / "stage7_1_gate_report.json"
 STAGE7_1_TRUTH_REPORT_PATH = ROOT / "case_studies" / "stage7_synthetic_truth" / "stage7_1_synthetic_truth_report.json"
 STAGE7_2_GATE_REPORT_PATH = ROOT / "docs" / "stage7_2_gate_report.json"
 STAGE7_2_BENCHMARK_REPORT_PATH = ROOT / "case_studies" / "stage7_benchmarks" / "stage7_2_benchmark_report.json"
+STAGE7_3_GATE_REPORT_PATH = ROOT / "docs" / "stage7_3_gate_report.json"
+STAGE7_3_PUBLIC_REPORT_PATH = ROOT / "case_studies" / "stage7_public_signaling" / "stage7_3_public_signaling_gate_report.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -43,6 +45,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage7_1_truth_report_path = root / STAGE7_1_TRUTH_REPORT_PATH.relative_to(ROOT)
     stage7_2_gate_report_path = root / STAGE7_2_GATE_REPORT_PATH.relative_to(ROOT)
     stage7_2_benchmark_report_path = root / STAGE7_2_BENCHMARK_REPORT_PATH.relative_to(ROOT)
+    stage7_3_gate_report_path = root / STAGE7_3_GATE_REPORT_PATH.relative_to(ROOT)
+    stage7_3_public_report_path = root / STAGE7_3_PUBLIC_REPORT_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -63,8 +67,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 7.2 benchmark harness complete":
-        failures.append("active stage must be Stage 7.2 benchmark harness complete after Stage 7.2 execution")
+    if current.get("active_stage") != "Stage 7.3 public signaling demonstrations complete":
+        failures.append("active stage must be Stage 7.3 public signaling demonstrations complete after Stage 7.3 execution")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -72,7 +76,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         4: "frozen_for_stage5",
         5: "completed",
         6: "public_citable_v0.1.0",
-        7: "stage7_2_complete_7_3_not_started",
+        7: "stage7_3_complete_7_4_not_started",
         8: "conceptual_only",
     }
     for stage, status in expected_status.items():
@@ -98,8 +102,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 7.1 must be marked complete_method_formalization")
     if stage7_subphase_status.get("7.2") != "complete_benchmark_harness":
         failures.append("Stage 7.2 must be marked complete_benchmark_harness")
-    if stage7_subphase_status.get("7.3") != "not_started_next_authorization_required":
-        failures.append("Stage 7.3 must remain not_started_next_authorization_required")
+    if stage7_subphase_status.get("7.3") != "complete_public_signaling_demonstrations":
+        failures.append("Stage 7.3 must be marked complete_public_signaling_demonstrations")
+    if stage7_subphase_status.get("7.4") != "not_started_next_authorization_required":
+        failures.append("Stage 7.4 must remain not_started_next_authorization_required")
 
     roadmap_flat = " ".join(roadmap.split())
     required_roadmap_phrases = [
@@ -118,6 +124,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "7.0 Planning freeze and evidence source register. Complete as a planning-only",
         "Stage 7.1 is complete as a method-formalization phase",
         "Stage 7.2 is complete as a benchmark-harness phase",
+        "Stage 7.3 is complete as an independent public live-cell signaling",
         "docs/stage7_methods_program.md",
         "docs/stage7_serialized_execution_plan.md",
         "docs/stage7_0_*",
@@ -151,6 +158,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "No Stage 7 implementation begins",
         "Stage 7.1 method formalization outputs",
         "Stage 7.2 benchmark harness outputs",
+        "Stage 7.3 public signaling outputs",
     ]:
         if phrase not in stage7_program:
             failures.append(f"Stage 7 methods program is missing phrase: {phrase}")
@@ -161,6 +169,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "No downstream subphase should begin",
         "Subphase bookkeeping and roadmap updates",
         "Stage 7.2 execution status. Complete",
+        "Stage 7.3 execution status. Complete",
     ]:
         if phrase not in stage7_execution:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
@@ -280,6 +289,53 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         if benchmark_report.get("gates", {}).get("stop_condition_no_added_value_beyond_baselines", {}).get("status") != "not_triggered":
             failures.append("Stage 7.2 benchmark report must record stop condition as not_triggered")
 
+
+    stage7_3_docs = [
+        (root / "docs" / "stage7_public_data_adapters.md", "Stage 7.3 public-data adapters", ["drg_calcium_vonbuchholtz2025", "erk_gpcr_wan2021", "Interpretation boundary"]),
+        (root / "docs" / "stage7_public_signaling_demonstrations.md", "Stage 7.3 public signaling demonstrations", ["DRG calcium", "ERK GPCR", "What RhoDyn adds"]),
+        (root / "notebooks" / "04_stage7_drg_calcium_public_signaling.ipynb", "Stage 7.3 DRG notebook", ["drg_calcium_residence_amplitude_summary.csv", "drg_calcium_tidy_trajectories.csv"]),
+        (root / "notebooks" / "05_stage7_erk_gpcr_public_signaling.ipynb", "Stage 7.3 ERK notebook", ["erk_gpcr_residence_amplitude_summary.csv", "erk_gpcr_tidy_trajectories.csv"]),
+    ]
+    for path, label, phrases in stage7_3_docs:
+        if not path.exists():
+            failures.append(f"missing {path.relative_to(root)}")
+            continue
+        body = path.read_text(encoding="utf-8")
+        for phrase in phrases:
+            if phrase not in body:
+                failures.append(f"{label} missing phrase: {phrase}")
+
+    if not stage7_3_gate_report_path.exists():
+        failures.append("missing docs/stage7_3_gate_report.json")
+    else:
+        stage7_3_gate = json.loads(stage7_3_gate_report_path.read_text(encoding="utf-8"))
+        if stage7_3_gate.get("status") != "pass":
+            failures.append("Stage 7.3 gate report must pass")
+        if stage7_3_gate.get("completion_state") != "complete_public_signaling_demonstrations":
+            failures.append("Stage 7.3 gate report must record complete_public_signaling_demonstrations")
+        checkpoints = stage7_3_gate.get("validation_checkpoints", {}) if isinstance(stage7_3_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "dataset_source_citation_access_metadata_grouping_preprocessing_notes",
+            "each_case_states_what_rhodyn_adds",
+            "two_independent_public_live_cell_systems_represented",
+            "residence_amplitude_disagreement_detected_in_each_case",
+            "examples_do_not_imply_manuscript_generation",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.3 gate checkpoint must pass: {checkpoint}")
+        if checkpoints.get("stop_condition_public_dataset_failure") != "not_triggered":
+            failures.append("Stage 7.3 stop condition must remain not_triggered")
+
+    if not stage7_3_public_report_path.exists():
+        failures.append("missing case_studies/stage7_public_signaling/stage7_3_public_signaling_gate_report.json")
+    else:
+        public_report = json.loads(stage7_3_public_report_path.read_text(encoding="utf-8"))
+        if public_report.get("status") != "pass":
+            failures.append("Stage 7.3 public signaling report must pass")
+        selected = set(public_report.get("selected_datasets", []))
+        if selected != {"drg_calcium_vonbuchholtz2025", "erk_gpcr_wan2021"}:
+            failures.append("Stage 7.3 public signaling report must select DRG calcium and ERK GPCR")
+
     if not stage5_closeout_path.exists():
         failures.append("missing docs/stage5_closeout.md")
         stage5_closeout = ""
@@ -299,7 +355,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     if not failures and gate.get("status") == "pass":
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
-        warnings.append("Stage 7.2 benchmark harness is complete; Stage 7.3 independent public demonstrations have not started")
+        warnings.append("Stage 7.3 public signaling demonstrations are complete; Stage 7.4 perturbation endpoint, reserve, and routed-output demonstrations have not started")
 
     return {
         "status": "pass" if not failures else "fail",

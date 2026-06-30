@@ -44,8 +44,11 @@ This artifact map names the expected Stage 7 outputs before they are created. It
 | 7.2 | Benchmark harness guide | `docs/stage7_benchmark_harness_guide.md` | Created benchmark artifact. |
 | 7.2 | Performance and uncertainty report | `docs/stage7_performance_uncertainty_report.md` | Created benchmark artifact. |
 | 7.2 | Gate report | `docs/stage7_2_gate_report.json` | Created benchmark artifact. |
-| 7.3 | Public live-cell signaling demonstrations | `case_studies/stage7_public_signaling/` | Planned future artifact. |
-| 7.3 | Public-data adapter documentation | `docs/stage7_public_data_adapters.md` | Planned future artifact. |
+| 7.3 | Public live-cell signaling demonstrations | `case_studies/stage7_public_signaling/` | Created public demonstration artifact. |
+| 7.3 | Public-data adapter documentation | `docs/stage7_public_data_adapters.md` | Created public demonstration artifact. |
+| 7.3 | Public signaling demonstration report | `docs/stage7_public_signaling_demonstrations.md` | Created public demonstration artifact. |
+| 7.3 | Public signaling notebooks | `notebooks/04_stage7_drg_calcium_public_signaling.ipynb`; `notebooks/05_stage7_erk_gpcr_public_signaling.ipynb` | Created public demonstration artifact. |
+| 7.3 | Gate report | `docs/stage7_3_gate_report.json` | Created public demonstration artifact. |
 | 7.4 | Perturbation, reserve, and routed-output demonstrations | `case_studies/stage7_endpoint_reserve_routing/` | Planned future artifact. |
 | 7.5 | Held-out or collaborator validation report | `docs/stage7_external_validation_report.md` | Planned future artifact. |
 | 7.6 | Methods-paper reproducibility card | `docs/stage7_reproducibility_card.md` | Planned future artifact. |

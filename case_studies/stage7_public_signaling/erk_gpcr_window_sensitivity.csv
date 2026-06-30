@@ -1,0 +1,6 @@
+dataset_id,threshold,threshold_unit,summary_rows,amplitude_and_residence_top_quartile,amplitude_only_top_quartile,residence_only_top_quartile,neither_top_quartile,amplitude_residence_disagreement_count,amplitude_residence_disagreement_fraction
+erk_gpcr_wan2021,0.6434,CN_ERK_KTR,180,32,13,13,122,26,0.144444
+erk_gpcr_wan2021,0.7172,CN_ERK_KTR,180,32,13,13,122,26,0.144444
+erk_gpcr_wan2021,0.7623,CN_ERK_KTR,180,34,11,11,124,22,0.122222
+erk_gpcr_wan2021,0.8135,CN_ERK_KTR,180,32,13,13,122,26,0.144444
+erk_gpcr_wan2021,0.9873,CN_ERK_KTR,180,35,10,10,125,20,0.111111

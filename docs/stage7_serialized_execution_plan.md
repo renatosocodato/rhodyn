@@ -122,7 +122,7 @@ Stop condition.
 
 ## 7.2. Benchmark harness against baselines and alternatives
 
-Stage 7.2 execution status. Complete as a benchmark-harness phase. The benchmark harness, retained output tables, baseline comparison report, performance and uncertainty report, tests, and gate report are recorded. Stage 7.3 is not started.
+Stage 7.2 execution status. Complete as a benchmark-harness phase. The benchmark harness, retained output tables, baseline comparison report, performance and uncertainty report, tests, and gate report are recorded. This phase provided the prerequisite for the now-completed Stage 7.3 public signaling demonstrations.
 
 Objectives.
 
@@ -166,6 +166,8 @@ Stop condition.
 - If benchmarks show no added value beyond amplitude or endpoint summaries, stop and re-evaluate the method claim before choosing biological demonstrations.
 
 ## 7.3. Independent public live-cell signaling demonstrations
+
+Stage 7.3 execution status. Complete as an independent public live-cell signaling demonstration phase. The selected public-data adapters, tidy trajectory tables, residence-amplitude summaries, window sensitivity, grouped uncertainty, case reports, notebooks, tests, and gate report are recorded. Stage 7.4 is not started.
 
 Objectives.
 
