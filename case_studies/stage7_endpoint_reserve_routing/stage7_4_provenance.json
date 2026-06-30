@@ -1,0 +1,32 @@
+{
+  "derived_outputs": {
+    "case_studies/stage7_endpoint_reserve_routing/candidate_ranking.tsv": "894b4f3c562e0962cbe5990432d36e486dd5f67bef6a2242a18156bab67e7fea",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_endpoint_reserve_routing_report.md": "a76eca3809ce3f6a079f1897d90daa0a598cc4f904dbf869b13843217c051d74",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_reduced_alternative_decisions.tsv": "bf319de661b9cdcf8c8312d4a54140a56bdae6ac174988213a3e3db1129e1e08",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_endpoint_rows.csv": "28b631795eac887c1ea4a250041d1ccbd3830924bb0da5b872114c978edcfd0a",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_model_summary.csv": "c6a719b2303d37c66e70836c57cbc4163578b467ee42099b1c53caeb10f2d6ed",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_uncertainty.csv": "08e49e04d2e680444e010508016e84b781684383c45457c8ba65a8741e59865c",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_routed_model_comparison.csv": "ae7d9935d08a2c18623d71c8f4374cd1a005768039533b926ff1692b821e6d9b",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_tidy_endpoint_model_rows.csv": "b376227611a8d757024faf5a7f42e2fe236fcc3a287a847bd04d739569259f94",
+    "case_studies/stage7_endpoint_reserve_routing/erk_akt_bounded_coupling_decisions.csv": "2e348a07c12e9e9e7b91f88dd607ebabaa500a50fd81f5f797e13ed131f58920",
+    "case_studies/stage7_endpoint_reserve_routing/erk_akt_bounded_coupling_stage7_4_report.md": "16bfcff3b8437f88a022daaaae0da90b154dde9fc545b847e77ab30a6d864ece",
+    "case_studies/stage7_endpoint_reserve_routing/stage7_4_case_report.md": "39f6b8ee3ac1ff126ea6a1d34b67f6493d08a49578b2c08844ae588a93d774d0",
+    "case_studies/stage7_endpoint_reserve_routing/stage7_4_case_summary.tsv": "0ed946da29c92d4134aad64f36d53cd6480d668afacb3fcd99d2d63a03d2526d",
+    "case_studies/stage7_endpoint_reserve_routing/stage7_4_endpoint_reserve_routing_gate_report.json": "78f26cc84b7b2ebe84f676d463f8cbdb0125edd3bdbf1a560aea576a84593e71",
+    "case_studies/stage7_endpoint_reserve_routing/stage7_4_provenance.json": "feef9098432f23dbeba4ae2f684a9237c6e34d7101f00420e31f38ac8ce4afbd"
+  },
+  "interpretation_boundary": "Stage 7.4 demonstrates non-single-reporter RhoDyn workflows on public-derived outputs. Cell-health endpoint preservation is reserve-like only at the endpoint-label level, not live metabolic reserve, and bounded coupling is context-limited to declared margins.",
+  "raw_file_policy": "Stage 7.4 reads retained public-derived tables only. Public source CSV and ZIP files remain non-retained and are recoverable through the cited public Zenodo records.",
+  "source_outputs": {
+    "case_studies/cell_painting_mitotox_endpoint_model_rows.csv": "931638514a199b29391c57da7a255a64919f12da778968ab1b091c77efb2cb4a",
+    "case_studies/cell_painting_mitotox_endpoint_summary.csv": "c237d1f2aa2f186843a64ecd16fa4af825c97df40544bca8ded793271ef20f75",
+    "case_studies/cell_painting_mitotox_model_comparison.provenance.json": "71b9391afcce3df5a174b642fc299d4bb768d59ed73edc24c907439c7e87d9da",
+    "case_studies/cell_painting_mitotox_model_ranking.csv": "32cc2bd056b520aa8fa0060c8a1263c40c65db60e191c0258dffc3f4f2370b3f",
+    "case_studies/erk_gpcr_erk_akt_bounded_coupling.csv": "b31f5aae5cc2c875e32703d4c8e71c96f7713835584e27bcee7b5ea2a4809d6e",
+    "case_studies/erk_gpcr_erk_akt_bounded_coupling.provenance.json": "72fa63ebe5f0ee0fee77c47c13a9e94db54271f854ea2ecad834f18f1a610501",
+    "case_studies/erk_gpcr_erk_akt_hardening_report.json": "6520eed3acd1fd899c635ab6a01641ed333d36ac9a8f3180e76196a6c019af65",
+    "case_studies/erk_gpcr_erk_akt_margin_sensitivity.csv": "fb3028da57a969660194c8ce28dd897cbed5568ab357ff6b005572a9a22ab9a2",
+    "case_studies/erk_gpcr_erk_akt_threshold_sensitivity.csv": "c5393f9ba41243ed89efdaeecfb3dbfc765a3a940407e0abc7228df423d6735d"
+  },
+  "stage": "7.4"
+}

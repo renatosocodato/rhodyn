@@ -136,6 +136,25 @@ REQUIRED_FILES = [
     "case_studies/stage7_public_signaling/erk_gpcr_provenance.json",
     "case_studies/stage7_public_signaling/erk_gpcr_case_report.md",
     "case_studies/stage7_public_signaling/stage7_3_public_signaling_gate_report.json",
+    "docs/stage7_endpoint_reserve_routing_demonstrations.md",
+    "docs/stage7_4_gate_report.json",
+    "scripts/run_stage7_4_endpoint_reserve_routing.py",
+    "tests/test_stage7_4_endpoint_reserve_routing.py",
+    "notebooks/06_stage7_endpoint_reserve_routing.ipynb",
+    "case_studies/stage7_endpoint_reserve_routing/candidate_ranking.tsv",
+    "case_studies/stage7_endpoint_reserve_routing/stage7_4_case_summary.tsv",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_tidy_endpoint_model_rows.csv",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_routed_model_comparison.csv",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_reduced_alternative_decisions.tsv",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_endpoint_rows.csv",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_model_summary.csv",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_uncertainty.csv",
+    "case_studies/stage7_endpoint_reserve_routing/erk_akt_bounded_coupling_decisions.csv",
+    "case_studies/stage7_endpoint_reserve_routing/stage7_4_endpoint_reserve_routing_gate_report.json",
+    "case_studies/stage7_endpoint_reserve_routing/stage7_4_provenance.json",
+    "case_studies/stage7_endpoint_reserve_routing/stage7_4_case_report.md",
+    "case_studies/stage7_endpoint_reserve_routing/cell_painting_endpoint_reserve_routing_report.md",
+    "case_studies/stage7_endpoint_reserve_routing/erk_akt_bounded_coupling_stage7_4_report.md",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
@@ -239,8 +258,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 7.3 public signaling demonstrations complete":
-            failures.append("roadmap execution memory does not mark Stage 7.3 public signaling demonstrations as complete")
+        if current.get("active_stage") != "Stage 7.4 endpoint, reserve, and routed-output demonstrations complete":
+            failures.append("roadmap execution memory does not mark Stage 7.4 endpoint, reserve, and routed-output demonstrations as complete")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -250,8 +269,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 5 completed")
         if stages.get(6, {}).get("status") != "public_citable_v0.1.0":
             failures.append("roadmap execution memory does not mark Stage 6 as public_citable_v0.1.0")
-        if stages.get(7, {}).get("status") != "stage7_3_complete_7_4_not_started":
-            failures.append("roadmap execution memory does not mark Stage 7.3 complete and Stage 7.4 not started")
+        if stages.get(7, {}).get("status") != "stage7_4_complete_7_5_not_started":
+            failures.append("roadmap execution memory does not mark Stage 7.4 complete and Stage 7.5 not started")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
 
@@ -266,8 +285,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.2 must be complete_benchmark_harness in roadmap execution memory")
         if subphase_status.get("7.3") != "complete_public_signaling_demonstrations":
             failures.append("Stage 7.3 must be complete_public_signaling_demonstrations in roadmap execution memory")
-        if subphase_status.get("7.4") != "not_started_next_authorization_required":
-            failures.append("Stage 7.4 must remain not started and require authorization")
+        if subphase_status.get("7.4") != "complete_endpoint_reserve_routing_demonstrations":
+            failures.append("Stage 7.4 must be complete_endpoint_reserve_routing_demonstrations in roadmap execution memory")
+        if subphase_status.get("7.5") != "not_started_next_authorization_required":
+            failures.append("Stage 7.5 must remain not started and require authorization")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
@@ -412,6 +433,58 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         for case in cases:
             if int(case.get("amplitude_residence_disagreement_count", 0)) <= 0:
                 failures.append(f"Stage 7.3 case lacks amplitude/residence disagreement: {case.get('dataset_id')}")
+
+
+
+    stage7_4_gate_path = root / "docs" / "stage7_4_gate_report.json"
+    if stage7_4_gate_path.exists():
+        try:
+            stage7_4_gate = json.loads(stage7_4_gate_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.4 gate report is not valid JSON: {exc}")
+            stage7_4_gate = {}
+        if stage7_4_gate.get("status") != "pass":
+            failures.append("Stage 7.4 gate report does not pass")
+        if stage7_4_gate.get("completion_state") != "complete_endpoint_reserve_routing_demonstrations":
+            failures.append("Stage 7.4 gate report does not mark endpoint/reserve/routing demonstrations complete")
+        selected = set(stage7_4_gate.get("selected_cases", [])) if isinstance(stage7_4_gate.get("selected_cases", []), list) else set()
+        if selected != {"cell_painting_mitotox_seal2023", "erk_akt_wan2021_bounded_coupling"}:
+            failures.append("Stage 7.4 gate report does not record the selected endpoint and paired-reporter cases")
+        checkpoints = stage7_4_gate.get("validation_checkpoints", {}) if isinstance(stage7_4_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "declared_margins_present_for_bounded_coupling",
+            "model_comparisons_include_reduced_alternatives",
+            "routed_output_comparison_distinguishes_alternatives",
+            "reserve_like_labels_scoped_to_measurement",
+            "schema_validation_endpoint_rows",
+            "schema_validation_reserve_like_rows",
+            "schema_validation_coupling_rows",
+            "uncertainty_present_for_reserve_like_coordinate",
+            "examples_do_not_imply_manuscript_generation",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.4 gate checkpoint does not pass: {checkpoint}")
+        if checkpoints.get("stop_condition_non_trajectory_model_indistinguishable") != "not_triggered":
+            failures.append("Stage 7.4 stop condition must remain not_triggered")
+        boundary = str(stage7_4_gate.get("interpretation_boundary", ""))
+        if "not live metabolic reserve" not in boundary:
+            failures.append("Stage 7.4 gate report must scope reserve-like endpoint interpretation")
+
+    stage7_4_case_report_path = root / "case_studies" / "stage7_endpoint_reserve_routing" / "stage7_4_endpoint_reserve_routing_gate_report.json"
+    if stage7_4_case_report_path.exists():
+        try:
+            stage7_4_case_report = json.loads(stage7_4_case_report_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.4 case report is not valid JSON: {exc}")
+            stage7_4_case_report = {}
+        if stage7_4_case_report.get("status") != "pass":
+            failures.append("Stage 7.4 endpoint/reserve/routing case report does not pass")
+        routing = stage7_4_case_report.get("routing_diagnostics", {}) if isinstance(stage7_4_case_report.get("routing_diagnostics", {}), dict) else {}
+        if routing.get("best_model") != "compartment_route_5nn":
+            failures.append("Stage 7.4 routed-output comparison does not retain compartment_route_5nn")
+        coupling = stage7_4_case_report.get("bounded_coupling_diagnostics", {}) if isinstance(stage7_4_case_report.get("bounded_coupling_diagnostics", {}), dict) else {}
+        if coupling.get("primary_passes") is not True:
+            failures.append("Stage 7.4 bounded-coupling primary contrast does not pass")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():

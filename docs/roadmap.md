@@ -27,9 +27,9 @@ the v0.3 Stage 3 evidence bank is closed for the current gate, the Stage 4 API
 contract is frozen, Stage 5 is completed as a contract-bound scientific
 workbench with a narrow simulation UX repair, and Stage 6 has produced a
 publicly citable `v0.1.0` GitHub and Zenodo software release while PyPI remains
-a future distribution decision. Stage 7.3 is now complete as an independent public live-cell signaling
-demonstration phase. Perturbation endpoint, reserve, routed-output, held-out
-validation, and manuscript drafting have not yet started.
+a future distribution decision. Stage 7.4 is now complete as a perturbation endpoint, reserve-like, and
+routed-output demonstration phase. External or held-out biological validation
+and methods-manuscript drafting have not yet started.
 
 ## Execution memory
 
@@ -56,12 +56,13 @@ passes.
 4. Stage 6 has produced a professionally citable RhoDyn `v0.1.0` GitHub
    release archive and Zenodo DOI; PyPI remains a future distribution decision
    and should not be implied.
-5. Stage 7.2 is complete as a benchmark-harness phase, and Stage 7.3
+5. Stage 7.2 is complete as a benchmark-harness phase, Stage 7.3
    is complete as an independent public live-cell signaling demonstration
-   phase. Stage 7 remains a methods-manuscript readiness program
-   aligned to standards exemplified by strong computational methods papers, with
-   Nature Methods as the primary reference point rather than a guaranteed
-   formula. Stage 7.4 has not started.
+   phase, and Stage 7.4 is complete as a perturbation endpoint, reserve-like,
+   and routed-output demonstration phase. Stage 7 remains a methods-manuscript
+   readiness program aligned to standards exemplified by strong computational
+   methods papers, with Nature Methods as the primary reference point rather
+   than a guaranteed formula. Stage 7.5 has not started.
 6. Stage 8 inherits from Stage 7. Product strategy should not lead or reshape
    the evidence path.
 
@@ -86,7 +87,7 @@ as roadmap work.
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
 | Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract, exposes the existing deterministic simulation surface, and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
-| Stage 7. Independent methods-program roadmap | Stage 7.3 public signaling demonstrations complete, Stage 7.4 not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
+| Stage 7. Independent methods-program roadmap | Stage 7.4 endpoint, reserve-like, and routed-output demonstrations complete, Stage 7.5 not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
 
 ## Non-drift principles
@@ -188,6 +189,24 @@ stable Stage 3 surfaces, provided backend results match the Python library
 outputs exactly. Additional NF-kB, ERK perturbation, reserve-like, or
 multi-reporter public datasets should be treated as Stage 7 evidence-expansion
 routes rather than prerequisites for starting the backend.
+
+### Stage 7.4 evidence-expansion status
+
+Stage 7.4 adds a dedicated non-single-reporter demonstration layer. The
+Cell Painting/MitoTox public endpoint case distinguishes a routed compartment
+architecture from endpoint prevalence and one-dimensional morphology summaries,
+and it derives a cell-health endpoint preservation coordinate from MitoTox
+burden labels. The ERK/Akt public paired-reporter case preserves the declared
++/-0.20 residence-fraction margin and promotes only the UK ERK-minus-Akt
+contrast as a context-limited bounded-coupling case while keeping histamine and
+S1P outside the promoted claim.
+
+The Stage 7.4 outputs are recorded under
+`case_studies/stage7_endpoint_reserve_routing/`, with documentation in
+`docs/stage7_endpoint_reserve_routing_demonstrations.md` and the gate report in
+`docs/stage7_4_gate_report.json`. The reserve-like label is deliberately scoped
+to endpoint-level cell-health preservation and does not claim live metabolic
+reserve.
 
 ## Stage 4. Backend
 
@@ -451,13 +470,13 @@ Strong pivots.
   evidence shape supports a software-methods or software-credit route rather
   than the primary high-impact methods claim.
 
-Status. Stage 7.3 public signaling demonstrations complete, Stage 7.4 not started. The
+Status. Stage 7.4 endpoint, reserve-like, and routed-output demonstrations complete, Stage 7.5 not started. The
 v0.3 evidence bank and v0.1.0 release support Stage 7, and the method objects
 now have formal definitions, executable synthetic examples, baseline benchmarks,
-sensitivity outputs, performance measurements, failure-behavior checks, and two
-independent public live-cell signaling demonstrations. Methods-manuscript
-readiness still requires perturbation endpoint, reserve, and routed-output
-demonstrations, held-out validation, software maturity, and usability evidence.
+sensitivity outputs, performance measurements, failure-behavior checks, two
+independent public live-cell signaling demonstrations, and a public non-single-reporter
+demonstration layer. Methods-manuscript readiness still requires held-out validation,
+software maturity, and usability evidence.
 
 ## Stage 8. Product and commercial alignment
 

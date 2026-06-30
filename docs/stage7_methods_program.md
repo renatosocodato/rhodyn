@@ -111,7 +111,7 @@ Stage 7.3 has now been executed as an independent public live-cell signaling dem
 - `notebooks/04_stage7_drg_calcium_public_signaling.ipynb` and `notebooks/05_stage7_erk_gpcr_public_signaling.ipynb` provide lightweight retained-output walkthroughs.
 - `docs/stage7_3_gate_report.json` records the Stage 7.3 completion gate.
 
-Stage 7.3 does not add manuscript claims, product features, or new stable public APIs. Stage 7.4 remains the next phase and requires explicit authorization.
+Stage 7.3 did not add manuscript claims, product features, or new stable public APIs. Stage 7.4 is now complete, and Stage 7.5 external or held-out validation remains the next phase requiring explicit authorization.
 
 ## Stage 7 architecture
 
@@ -463,3 +463,15 @@ Strong pivots.
 ## Stage 8 boundary
 
 Stage 8 should inherit Stage 7's strongest supported method statement. It should not change the evidence path. Commercial or hosted features become appropriate only after Stage 7 shows that users beyond the original manuscript can obtain reliable dynamic operating-state interpretations from their own live-cell perturbation data.
+
+## Stage 7.4 endpoint, reserve-like, and routed-output outputs
+
+Stage 7.4 completed a public non-single-reporter evidence layer. The
+Cell Painting/MitoTox case provides perturbation endpoint rows, reduced
+architecture alternatives, routed compartment model ranking, and a scoped
+cell-health endpoint preservation coordinate with bootstrap uncertainty. The
+ERK/Akt case provides paired-reporter bounded-coupling decisions under a
+declared +/-0.20 residence-fraction margin, with UK promoted as the primary
+context-limited passing contrast and histamine/S1P retained as non-promoted
+contexts. These outputs demonstrate endpoint, reserve-like, and routed-output
+use without treating static endpoint labels as live reserve measurements.

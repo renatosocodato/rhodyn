@@ -167,7 +167,7 @@ Stop condition.
 
 ## 7.3. Independent public live-cell signaling demonstrations
 
-Stage 7.3 execution status. Complete as an independent public live-cell signaling demonstration phase. The selected public-data adapters, tidy trajectory tables, residence-amplitude summaries, window sensitivity, grouped uncertainty, case reports, notebooks, tests, and gate report are recorded. Stage 7.4 is not started.
+Stage 7.3 execution status. Complete as an independent public live-cell signaling demonstration phase. The selected public-data adapters, tidy trajectory tables, residence-amplitude summaries, window sensitivity, grouped uncertainty, case reports, notebooks, tests, and gate report are recorded. This phase enabled the now-completed Stage 7.4 endpoint, reserve-like, and routed-output demonstration layer.
 
 Objectives.
 
@@ -407,3 +407,6 @@ Stop condition.
 ## Stage 8 handoff boundary
 
 Stage 8 begins only after Stage 7 has produced a supported method statement. Commercial planning may use the Stage 7 evidence and software maturity surfaces, but it must not change the biological demonstrations, method claims, or manuscript evidence path.
+
+
+Stage 7.4 execution status. Complete. The endpoint, reserve-like, and routed-output demonstration layer is recorded in `docs/stage7_4_gate_report.json` and `case_studies/stage7_endpoint_reserve_routing/`. Stage 7.5 external or held-out biological validation has not started and requires explicit authorization.

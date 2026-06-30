@@ -132,3 +132,7 @@ method artifacts under `docs/stage7_*`, `case_studies/stage7_synthetic_truth/`, 
 They do not change the core API by themselves. Future Stage 7 implementation may add adapters, benchmarks,
 reproducibility fixtures, or usability evidence only after the relevant subphase
 gate is authorized.
+
+## Stage 7.4 endpoint, reserve-like, and routed-output demonstrations
+
+The Stage 7.4 evidence layer exercises RhoDyn beyond single-reporter trajectories. It reads retained public-derived Cell Painting/MitoTox endpoint tables and ERK/Akt paired-reporter summaries, then writes routed-output rankings, endpoint-scoped reserve-like rows, bounded-coupling decisions, and a gate report. The reserve-like label is restricted to cell-health endpoint preservation and is not treated as live metabolic reserve.

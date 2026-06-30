@@ -1,0 +1,72 @@
+{
+  "bounded_coupling_diagnostics": {
+    "failed_contexts": [
+      "His",
+      "S1P"
+    ],
+    "primary_contrast": "erk_minus_akt_residence_UK",
+    "primary_margin": 0.2,
+    "primary_minimum_passing_margin": 0.1,
+    "primary_passes": true,
+    "replicate_sensitivity_reason": "The selected public DMSO-control slice has one experiment label per ligand context, so within-ligand leave-one-replicate sensitivity would not test replicate robustness.",
+    "replicate_sensitivity_status": "not_available"
+  },
+  "completion_state": "complete_endpoint_reserve_routing_demonstrations",
+  "interpretation_boundary": "Stage 7.4 demonstrates non-single-reporter RhoDyn workflows on public-derived outputs. Cell-health endpoint preservation is reserve-like only at the endpoint-label level, not live metabolic reserve, and bounded coupling is context-limited to declared margins.",
+  "reserve_like_diagnostics": {
+    "best_reserve_like_prediction_model": "cells_block_5nn",
+    "compound_count": 658,
+    "endpoint_set": [
+      "apoptosis up",
+      "cytotoxicity BLA",
+      "cytotoxicity SRB",
+      "mitochondrial disruption up",
+      "proliferation decrease"
+    ],
+    "mean_observed_reserve_like_ci_high": 0.8702127659574468,
+    "mean_observed_reserve_like_ci_low": 0.835258358662614,
+    "mean_observed_reserve_like_coordinate": 0.8531914893617021,
+    "mean_prevalence_minus_routed_absolute_error": 0.00799100611124622,
+    "mean_prevalence_minus_routed_error_ci_high": 0.016956407930835884,
+    "mean_prevalence_minus_routed_error_ci_low": -0.0007738132063677621
+  },
+  "routing_diagnostics": {
+    "best_model": "compartment_route_5nn",
+    "delta_bic_endpoint_prevalence": 248.55993,
+    "delta_bic_morphology_magnitude": 331.51745,
+    "reduced_alternative_count": 5,
+    "routed_rank": 1
+  },
+  "selected_cases": [
+    "cell_painting_mitotox_seal2023",
+    "erk_akt_wan2021_bounded_coupling"
+  ],
+  "source_publications": {
+    "cell_painting_mitotox_seal2023": {
+      "doi": "10.5281/zenodo.10011861",
+      "license": "CC-BY-4.0",
+      "record": "https://zenodo.org/records/10011861"
+    },
+    "erk_akt_wan2021_bounded_coupling": {
+      "doi": "10.5281/zenodo.5836623",
+      "license": "CC-BY-4.0",
+      "record": "https://zenodo.org/records/5836623"
+    }
+  },
+  "stage": "7.4",
+  "status": "pass",
+  "validation_checkpoints": {
+    "declared_margins_present_for_bounded_coupling": "pass",
+    "examples_do_not_imply_manuscript_generation": "pass",
+    "model_comparisons_include_reduced_alternatives": "pass",
+    "reserve_like_labels_scoped_to_measurement": "pass",
+    "routed_output_comparison_distinguishes_alternatives": "pass",
+    "schema_validation_coupling_rows": "pass",
+    "schema_validation_endpoint_rows": "pass",
+    "schema_validation_reserve_like_rows": "pass",
+    "selected_endpoint_reserve_or_paired_reporter_datasets": "pass",
+    "stage7_3_complete_prerequisite": "pass",
+    "stop_condition_non_trajectory_model_indistinguishable": "not_triggered",
+    "uncertainty_present_for_reserve_like_coordinate": "pass"
+  }
+}

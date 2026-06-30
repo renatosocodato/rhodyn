@@ -1,5 +1,5 @@
 {
-  "file_count": 268,
+  "file_count": 284,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -402,6 +402,61 @@
       "size_bytes": 453
     },
     {
+      "path": "case_studies/stage7_endpoint_reserve_routing/cell_painting_endpoint_reserve_routing_report.md",
+      "sha256": "a76eca3809ce3f6a079f1897d90daa0a598cc4f904dbf869b13843217c051d74",
+      "size_bytes": 1636
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_endpoint_rows.csv",
+      "sha256": "28b631795eac887c1ea4a250041d1ccbd3830924bb0da5b872114c978edcfd0a",
+      "size_bytes": 181001
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_model_summary.csv",
+      "sha256": "c6a719b2303d37c66e70836c57cbc4163578b467ee42099b1c53caeb10f2d6ed",
+      "size_bytes": 613
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_uncertainty.csv",
+      "sha256": "08e49e04d2e680444e010508016e84b781684383c45457c8ba65a8741e59865c",
+      "size_bytes": 383
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/cell_painting_routed_model_comparison.csv",
+      "sha256": "ae7d9935d08a2c18623d71c8f4374cd1a005768039533b926ff1692b821e6d9b",
+      "size_bytes": 1284
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/cell_painting_tidy_endpoint_model_rows.csv",
+      "sha256": "b376227611a8d757024faf5a7f42e2fe236fcc3a287a847bd04d739569259f94",
+      "size_bytes": 3717506
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/erk_akt_bounded_coupling_decisions.csv",
+      "sha256": "2e348a07c12e9e9e7b91f88dd607ebabaa500a50fd81f5f797e13ed131f58920",
+      "size_bytes": 1400
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/erk_akt_bounded_coupling_stage7_4_report.md",
+      "sha256": "16bfcff3b8437f88a022daaaae0da90b154dde9fc545b847e77ab30a6d864ece",
+      "size_bytes": 847
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/stage7_4_case_report.md",
+      "sha256": "39f6b8ee3ac1ff126ea6a1d34b67f6493d08a49578b2c08844ae588a93d774d0",
+      "size_bytes": 985
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/stage7_4_endpoint_reserve_routing_gate_report.json",
+      "sha256": "78f26cc84b7b2ebe84f676d463f8cbdb0125edd3bdbf1a560aea576a84593e71",
+      "size_bytes": 3064
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/stage7_4_provenance.json",
+      "sha256": "d7a9475a71afa0df473a3866763a042078f740186fd8e45b17e4f0380bd4ea72",
+      "size_bytes": 3968
+    },
+    {
       "path": "case_studies/stage7_public_signaling/drg_calcium_case_report.md",
       "sha256": "791815658f3621fed6faf7a5cd6bb00f626abc4b45a839c1882a813a6249215f",
       "size_bytes": 1648
@@ -548,17 +603,17 @@
     },
     {
       "path": "docs/architecture.md",
-      "sha256": "5a23a1606f92ab004d3b86c623fb77d649ab34fc63412b3feabadcbef923f85c",
-      "size_bytes": 6450
+      "sha256": "c93e4469da0a9dadd6ce8aedaa23f1b35c3737c9f172af2fef73c89153add00a",
+      "size_bytes": 6953
     },
     {
       "path": "docs/broken_link_scan_report.json",
-      "sha256": "8852a5351495405b6001f8e00db4d06fc5782a3e674700b830fce59d17768dba",
-      "size_bytes": 18032
+      "sha256": "7b1d905ecb07e8b4a44bad38af0fb33e0d6b5747212af5cc572bdf613188f3a8",
+      "size_bytes": 18206
     },
     {
       "path": "docs/broken_link_scan_report.md",
-      "sha256": "ed6b2832086c5e9b2a9470f9e612620bbe556c58a4bb8374f24cecd9a0785e73",
+      "sha256": "4ccd1af0302f1e6c0fe70f9b3c98e38c95cfbfbc322be8cdc7fb79833246c645",
       "size_bytes": 153
     },
     {
@@ -583,7 +638,7 @@
     },
     {
       "path": "docs/dependency_review_report.json",
-      "sha256": "cdf577fdbadb6b75aa1434c3db5c785fdfe81a80f30d2b0703ebe5467737e8c3",
+      "sha256": "b5a2851456169ca22d01107ae8a4c5e40a6db3ed2cdb4abb7f5d19f493d20a7b",
       "size_bytes": 4068
     },
     {
@@ -623,8 +678,8 @@
     },
     {
       "path": "docs/index.md",
-      "sha256": "31ae5c27eb6f3eccbbd84084a9f0080a08e8b6f760b013c2ae50492e0d8b1075",
-      "size_bytes": 1351
+      "sha256": "2bba2dedeea8b8d24c0ad11e1f05207a5dcec70e5b943f0272310386dd466283",
+      "size_bytes": 1360
     },
     {
       "path": "docs/input_schema_guide.md",
@@ -658,12 +713,12 @@
     },
     {
       "path": "docs/public_release_integrity_report.json",
-      "sha256": "690313191120290e5df337b1871453cfdcdaccebd1778ac6f1536d59bb42d450",
+      "sha256": "115dbce294e85b04bc7565a4993c1c96b0f6abe0500471d4c1611240806dee68",
       "size_bytes": 3610
     },
     {
       "path": "docs/public_release_integrity_report.md",
-      "sha256": "66ff52c65186fc64369c0310a28d5f2d418daa448b4b6ae26e30892090362bd8",
+      "sha256": "9f4dd03768dadb312739f958b213732a144ac6a6a252df36b8dd7578209e209e",
       "size_bytes": 1297
     },
     {
@@ -693,13 +748,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "4fb19a0424780e21348d5c2da3b5cdd2b1daad1cfb14e0150664263c66abe8fa",
-      "size_bytes": 25897
+      "sha256": "51d372715983db2de1d76c3e7e7da316336f8a497ae8dac050ca027d1440d9e4",
+      "size_bytes": 27004
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "81fec388a8f3ac8c56f32a23432ecc4d2ab39cf189b72da3717fc4f08d579d33",
-      "size_bytes": 18702
+      "sha256": "6aa5cca38538b785e0f964ad6bf4780492dc88baa6a1756f774a3220704d8455",
+      "size_bytes": 19586
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -748,8 +803,8 @@
     },
     {
       "path": "docs/stage7_0_artifact_map.md",
-      "sha256": "1eb1071c88f260e68e5c81f9b5f4b2ee2bbc001806fe6d7deb412d3c4e15a472",
-      "size_bytes": 5678
+      "sha256": "2c14bab2b420e4de0e7983f5c6cd86523dfb94361af8d59d622a869b3e01a24d",
+      "size_bytes": 6169
     },
     {
       "path": "docs/stage7_0_baseline_method_inventory.md",
@@ -787,6 +842,11 @@
       "size_bytes": 1712
     },
     {
+      "path": "docs/stage7_4_gate_report.json",
+      "sha256": "78f26cc84b7b2ebe84f676d463f8cbdb0125edd3bdbf1a560aea576a84593e71",
+      "size_bytes": 3064
+    },
+    {
       "path": "docs/stage7_api_stability_notes.md",
       "sha256": "c0a2a2175496e36a3ca9a00139432c319663876a33d6464ae885417092fa08aa",
       "size_bytes": 1855
@@ -802,6 +862,11 @@
       "size_bytes": 1895
     },
     {
+      "path": "docs/stage7_endpoint_reserve_routing_demonstrations.md",
+      "sha256": "d0ad2af49dee7a96be6af9fcf8ec9e86804bae04c299d8314bb43050262badf1",
+      "size_bytes": 3889
+    },
+    {
       "path": "docs/stage7_limitations_matrix.md",
       "sha256": "fe833dc68d7179b2f410f9d5d05c029a8c431df3539bfae56368846b46485dc0",
       "size_bytes": 3353
@@ -813,8 +878,8 @@
     },
     {
       "path": "docs/stage7_methods_program.md",
-      "sha256": "c7e61cfa90965a59b3b77df70d9fd951ec00dbb2fc29b666ebb87d2a10342ed0",
-      "size_bytes": 36991
+      "sha256": "3cc93d4f07ebab031f769827df2cc1da74ca3528d330d12f45abf4a4a315dd69",
+      "size_bytes": 37784
     },
     {
       "path": "docs/stage7_performance_uncertainty_report.md",
@@ -833,8 +898,8 @@
     },
     {
       "path": "docs/stage7_serialized_execution_plan.md",
-      "sha256": "0bf1c1b0368f3ab57b9a9d1f53e20a266b87b1c28b267170959513eede332c4e",
-      "size_bytes": 17245
+      "sha256": "afaa1494d4af056fb8a56e8d60fd83fb4bb5fad811aa16af562b5b3cbee0b1b6",
+      "size_bytes": 17642
     },
     {
       "path": "docs/stage7_synthetic_truth_cases.md",
@@ -918,8 +983,8 @@
     },
     {
       "path": "mkdocs.yml",
-      "sha256": "98231a4800ed9316ad7067ba5c8c5f7a2d32e4cd08939e05705062afc47f9a87",
-      "size_bytes": 1721
+      "sha256": "f0e759f2816e5af074916f10e185c6e84118d6bc9fe1d440b77874856fa6204f",
+      "size_bytes": 1830
     },
     {
       "path": "notebooks/01_synthetic_residence_primer.ipynb",
@@ -945,6 +1010,11 @@
       "path": "notebooks/05_stage7_erk_gpcr_public_signaling.ipynb",
       "sha256": "a7addeb7ab3cc9d08d52345a6e424914dcfa0269723b401ad78d9264c7aecb16",
       "size_bytes": 1558
+    },
+    {
+      "path": "notebooks/06_stage7_endpoint_reserve_routing.ipynb",
+      "sha256": "4249b131a2db1ccbf418a4450e2b6b0dda75d93763c9727a9969f87cf174c18d",
+      "size_bytes": 1818
     },
     {
       "path": "package-lock.json",
@@ -1033,13 +1103,13 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "75d4b3e05effee6cae37177ab148a70bfc260ea1860fb160d1c4adaa4a4e0635",
-      "size_bytes": 26270
+      "sha256": "0ff06d458c6d0a8a83b7e9cb981f5fd9b93d72d526af708e7dc99e4c87485b84",
+      "size_bytes": 31627
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "89d05364aa9a3ba0408a3407a71b3e1982d4e88434171ddc99cd640e16583557",
-      "size_bytes": 21467
+      "sha256": "609b96957b239654992fa5452d753e17eee9a7d17a375a35e280e622e9bd7a71",
+      "size_bytes": 25302
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -1100,6 +1170,11 @@
       "path": "scripts/run_stage7_3_public_signaling.py",
       "sha256": "682cf4c0addcf369e921458e45cb2f85fe1c9358bb5777f1ecacb1179ea635b4",
       "size_bytes": 32209
+    },
+    {
+      "path": "scripts/run_stage7_4_endpoint_reserve_routing.py",
+      "sha256": "f59a96d7f6553554807a8af4ab476d3172490d2fe11e673b7e2e593559f65d5b",
+      "size_bytes": 34377
     },
     {
       "path": "scripts/write_release_checksums.py",
@@ -1337,12 +1412,17 @@
       "size_bytes": 3005
     },
     {
+      "path": "tests/test_stage7_4_endpoint_reserve_routing.py",
+      "sha256": "8dce78879e126c335676ae0b21b7b6aed864635ea05c7402fcfb4e7219f49017",
+      "size_bytes": 4923
+    },
+    {
       "path": "tests/test_uncertainty.py",
       "sha256": "6afbf1f6cc9d5fc4c008317b976079c7d6773210229bbeaec3fb939e9a5fe186",
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-30T09:04:02.493720Z",
+  "generated_utc": "2026-06-30T09:29:07.130536Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

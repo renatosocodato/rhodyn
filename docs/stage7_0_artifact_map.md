@@ -72,3 +72,16 @@ This artifact map names the expected Stage 7 outputs before they are created. It
 ## Completion decision
 
 This map distinguishes created planning outputs from future analysis and implementation outputs. It is sufficient to close the Stage 7.0 artifact-map requirement.
+
+
+## Stage 7.4 created artifacts
+
+- `scripts/run_stage7_4_endpoint_reserve_routing.py`
+- `tests/test_stage7_4_endpoint_reserve_routing.py`
+- `docs/stage7_endpoint_reserve_routing_demonstrations.md`
+- `docs/stage7_4_gate_report.json`
+- `notebooks/06_stage7_endpoint_reserve_routing.ipynb`
+- `case_studies/stage7_endpoint_reserve_routing/`
+
+These artifacts demonstrate bounded coupling, endpoint-scoped reserve-like
+summary behavior, and routed-output model comparison in public-derived data.
