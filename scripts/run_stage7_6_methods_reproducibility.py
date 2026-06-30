@@ -30,7 +30,7 @@ import tarfile
 import tempfile
 import time
 from dataclasses import dataclass
-from datetime import UTC, datetime
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -135,7 +135,7 @@ class StepResult:
 
 
 def _now() -> str:
-    return datetime.now(UTC).isoformat().replace("+00:00", "Z")
+    return datetime.now(timezone.utc).isoformat().replace("+00:00", "Z")
 
 
 def _tail(text: str, limit: int = 1200) -> str:
