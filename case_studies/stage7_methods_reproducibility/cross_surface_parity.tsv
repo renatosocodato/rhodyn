@@ -1,0 +1,5 @@
+operation	python_value	cli_value	backend_value	frontend_status	passes
+score_residence	[0.75, 0.75, 0.25]	[0.75, 0.75, 0.25]	[0.75, 0.75, 0.25]	fixture_contract_checked	1
+decide_coupling	[true, false]	[true, false]	[true, false]	fixture_contract_checked	1
+summarize_reserve	[0.77142857, 0.84285714, 0.12857143]	[0.77142857, 0.84285714, 0.12857143]	[0.77142857, 0.84285714, 0.12857143]	fixture_contract_checked	1
+compare_models	"[""residence_gated"", ""amplitude_only"", ""reserve_free""]"	"[""residence_gated"", ""amplitude_only"", ""reserve_free""]"	"[""residence_gated"", ""amplitude_only"", ""reserve_free""]"	fixture_contract_checked	1

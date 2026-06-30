@@ -27,9 +27,11 @@ the v0.3 Stage 3 evidence bank is closed for the current gate, the Stage 4 API
 contract is frozen, Stage 5 is completed as a contract-bound scientific
 workbench with a narrow simulation UX repair, and Stage 6 has produced a
 publicly citable `v0.1.0` GitHub and Zenodo software release while PyPI remains
-a future distribution decision. Stage 7.4 is now complete as a perturbation endpoint, reserve-like, and
-routed-output demonstration phase. External or held-out biological validation
-and methods-manuscript drafting have not yet started.
+a future distribution decision. Stage 7.6 is now complete as a methods-paper
+software reproducibility phase. It hardens the Stage 7.1 to Stage 7.5 evidence
+set through release-archive clean-room reproduction, cross-surface parity,
+documentation, CI wiring, and API stability policy. Usability rehearsal and
+methods-manuscript drafting have not yet started.
 
 ## Execution memory
 
@@ -58,11 +60,13 @@ passes.
    and should not be implied.
 5. Stage 7.2 is complete as a benchmark-harness phase, Stage 7.3
    is complete as an independent public live-cell signaling demonstration
-   phase, and Stage 7.4 is complete as a perturbation endpoint, reserve-like,
-   and routed-output demonstration phase. Stage 7 remains a methods-manuscript
-   readiness program aligned to standards exemplified by strong computational
-   methods papers, with Nature Methods as the primary reference point rather
-   than a guaranteed formula. Stage 7.5 is complete as a held-out public validation, with Stage 7.6 not started.
+   phase, Stage 7.4 is complete as a perturbation endpoint, reserve-like,
+   and routed-output demonstration phase, Stage 7.5 is complete as a held-out
+   public validation, and Stage 7.6 closes the methods-evidence
+   reproducibility gate. Stage 7 remains a methods-manuscript readiness
+   program aligned to standards exemplified by strong computational methods
+   papers, with Nature Methods as the primary reference point rather than a
+   guaranteed formula.
 6. Stage 8 inherits from Stage 7. Product strategy should not lead or reshape
    the evidence path.
 
@@ -87,7 +91,7 @@ as roadmap work.
 | Stage 4. Backend | Frozen for Stage 5. | Reopen only for documented API-contract defects. The OpenAPI schema, frontend contract, fixtures, and closeout document are the Stage 5 dependency. |
 | Stage 5. Frontend | Completed. | The closed workbench consumes the frozen Stage 4 contract, exposes the existing deterministic simulation surface, and preserves parameter inspection plus CLI reproducibility. Reopen only for a documented frontend defect. |
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
-| Stage 7. Independent methods-program roadmap | Stage 7.5 external or held-out biological validation complete, Stage 7.6 not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
+| Stage 7. Independent methods-program roadmap | Stage 7.6 software maturity for methods-paper reproducibility complete, Stage 7.7 not started. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
 
 ## Non-drift principles
@@ -449,8 +453,24 @@ than as a universal ERK/Akt GPCR coupling claim.
 
 The Stage 7.5 outputs are recorded under
 `case_studies/stage7_heldout_validation/`, `docs/stage7_heldout_validation_report.md`,
-and `docs/stage7_5_gate_report.json`. Stage 7.6 software maturity for
-methods-paper reproducibility has not started.
+and `docs/stage7_5_gate_report.json`.
+
+### Stage 7.6 methods reproducibility status
+
+Stage 7.6 closes the software-maturity gate for the methods evidence set. The
+source-distribution clean-room run regenerates the Stage 7.1 to Stage 7.5
+outputs, executes retained tutorial notebooks, builds documentation, checks
+release-archive safety, and verifies agreement across Python, CLI, backend, and
+frontend-contract surfaces for the shared method operations.
+
+The Stage 7.6 outputs are recorded under
+`case_studies/stage7_methods_reproducibility/`,
+`docs/stage7_methods_reproducibility_card.md`,
+`docs/stage7_6_gate_report.json`, `docs/stage7_6_clean_room_report.json`,
+`docs/stage7_6_api_stability_policy.md`, and
+`scripts/run_stage7_6_methods_reproducibility.py`. This phase adds no new
+biological system and does not change the Stage 7.3 to Stage 7.5 biological
+interpretations.
 
 7.5 External or held-out biological validation. Run RhoDyn on a collaborator or
 held-out dataset under predeclared criteria. Gate. Success, failure, or
@@ -488,13 +508,14 @@ Strong pivots.
   evidence shape supports a software-methods or software-credit route rather
   than the primary high-impact methods claim.
 
-Status. Stage 7.5 external or held-out biological validation complete, Stage 7.6 not started. The
+Status. Stage 7.6 software maturity for methods-paper reproducibility complete, Stage 7.7 not started. The
 v0.3 evidence bank and v0.1.0 release support Stage 7, and the method objects
 now have formal definitions, executable synthetic examples, baseline benchmarks,
 sensitivity outputs, performance measurements, failure-behavior checks, two
 independent public live-cell signaling demonstrations, and a public non-single-reporter
-demonstration layer. Methods-manuscript readiness still requires held-out validation,
-software maturity, and usability evidence.
+demonstration layer. The held-out validation and methods-evidence
+reproducibility gates are now closed. Methods-manuscript readiness still
+requires usability evidence and the final claim-to-evidence package.
 
 ## Stage 8. Product and commercial alignment
 

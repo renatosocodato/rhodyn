@@ -15,10 +15,10 @@ The RhoA/microglia manuscript and Zenodo data package remain optional reference
 use cases. They are not required for normal RhoDyn installation or examples.
 
 The Stage 7 methods-program roadmap records the independent biological
-demonstration and methods-manuscript readiness path. Stage 7.5 is complete as a
-held-out public biological validation. The current evidence layer combines Cell
-Painting/MitoTox perturbation endpoint model comparison, a scoped cell-health
-endpoint preservation coordinate, ERK/Akt paired-reporter bounded coupling, and
-held-out Wan 2021 non-DMSO inhibitor contexts that produce four bounded-coupling
-pass outcomes and three margin-boundary inconclusive outcomes under fixed
-criteria. It does not start methods-manuscript packaging or product reframing.
+demonstration and methods-manuscript readiness path. Stage 7.6 is complete as a
+methods-paper reproducibility hardening phase. The current evidence layer
+combines Cell Painting/MitoTox perturbation endpoint model comparison, a scoped
+cell-health endpoint preservation coordinate, ERK/Akt paired-reporter bounded
+coupling, held-out Wan 2021 non-DMSO inhibitor contexts, and a clean-room
+source-distribution rebuild of the retained methods evidence set. It does not
+start usability rehearsal, methods-manuscript packaging, or product reframing.

@@ -6,11 +6,12 @@ biological interpretation.
 The staged scientific and product roadmap is anchored in `docs/roadmap.md`.
 The current architecture keeps the Stage 3 evidence bank frozen, preserves
 the Stage 4 service contract, and treats the Stage 5 workbench plus Stage 6
-public release as completed foundations. Stage 7.3 is now complete as an independent public live-cell signaling
-demonstration layer, and the broader Stage 7 program remains the perturbation,
-reserve, routed-output, software-maturity, and future methods-manuscript
-readiness path. Stage 8
-commercial product work remains downstream of Stage 7 evidence.
+public release as completed foundations. Stage 7.6 is now complete as a
+methods-evidence reproducibility layer. The broader Stage 7 program has formal
+method definitions, benchmarks, public signaling demonstrations, endpoint and
+routed-output demonstrations, held-out validation, and clean-room evidence
+rebuilds in place. Stage 8 commercial product work remains downstream of Stage
+7 evidence.
 
 ## Core layers
 
@@ -127,11 +128,12 @@ behavior.
 
 The Stage 7 planning and method-formalization surfaces live in
 `docs/stage7_methods_program.md`, `docs/stage7_serialized_execution_plan.md`,
-the Stage 7.0 planning artifacts under `docs/stage7_0_*`, and the Stage 7.1
-method artifacts under `docs/stage7_*`, `case_studies/stage7_synthetic_truth/`, the Stage 7.2 benchmark outputs under `case_studies/stage7_benchmarks/`, and the Stage 7.3 public signaling outputs under `case_studies/stage7_public_signaling/`.
-They do not change the core API by themselves. Future Stage 7 implementation may add adapters, benchmarks,
-reproducibility fixtures, or usability evidence only after the relevant subphase
-gate is authorized.
+the Stage 7.0 planning artifacts under `docs/stage7_0_*`, the Stage 7.1
+method artifacts under `docs/stage7_*`, the Stage 7.2 benchmark outputs under
+`case_studies/stage7_benchmarks/`, the Stage 7.3 public signaling outputs under
+`case_studies/stage7_public_signaling/`, and the Stage 7.6 reproducibility
+outputs under `case_studies/stage7_methods_reproducibility/`.
+They do not change the core API by themselves. Future Stage 7 implementation may add usability evidence or manuscript-readiness packaging only after the relevant subphase gate is authorized.
 
 ## Stage 7.4 endpoint, reserve-like, and routed-output demonstrations
 
@@ -141,3 +143,8 @@ The Stage 7.4 evidence layer exercises RhoDyn beyond single-reporter trajectorie
 ## Stage 7.5 held-out biological validation
 
 The Stage 7.5 evidence layer tests RhoDyn on a held-out public biological slice rather than another internally selected positive example. It uses non-DMSO inhibitor contexts from the Wan 2021 ERK/Akt GPCR archive, keeps the Stage 7.4 DMSO-derived residence thresholds and +/-0.20 ERK-minus-Akt margin fixed, and reports pass, fail, or inconclusive outcomes without retuning. The retained result is mixed, with four bounded-coupling pass contexts and three margin-boundary inconclusive contexts. This validates scoped decision behavior, not a universal GPCR coupling law.
+
+
+## Stage 7.6 methods reproducibility
+
+The Stage 7.6 evidence layer tests whether the retained methods-program outputs can be rebuilt from a release-candidate source archive. It regenerates Stage 7.1 to Stage 7.5 outputs, executes retained tutorials, builds documentation, checks the archive surface for local paths and private payloads, and confirms Python, CLI, backend, and frontend-contract parity for shared operations. This validates reproducibility of the methods evidence surface, not a new biological result.

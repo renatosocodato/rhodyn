@@ -51,8 +51,9 @@ This artifact map names the expected Stage 7 outputs before they are created. It
 | 7.3 | Gate report | `docs/stage7_3_gate_report.json` | Created public demonstration artifact. |
 | 7.4 | Perturbation, reserve, and routed-output demonstrations | `case_studies/stage7_endpoint_reserve_routing/` | Planned future artifact. |
 | 7.5 | Held-out validation report | `docs/stage7_heldout_validation_report.md` | Created artifact. |
-| 7.6 | Methods-paper reproducibility card | `docs/stage7_reproducibility_card.md` | Planned future artifact. |
-| 7.6 | Clean-room reproduction report | `docs/stage7_clean_room_report.md` | Planned future artifact. |
+| 7.6 | Methods-paper reproducibility card | `docs/stage7_methods_reproducibility_card.md` | Created methods reproducibility artifact. |
+| 7.6 | Clean-room reproduction report | `docs/stage7_6_clean_room_report.json` | Created methods reproducibility artifact. |
+| 7.6 | API stability policy | `docs/stage7_6_api_stability_policy.md` | Created methods reproducibility artifact. |
 | 7.7 | Usability rehearsal report | `docs/stage7_usability_rehearsal.md` | Planned future artifact. |
 | 7.8 | Figure-to-artifact crosswalk | `docs/stage7_figure_artifact_crosswalk.md` | Planned future artifact. |
 | 7.8 | Claim-to-evidence crosswalk | `docs/stage7_claim_evidence_crosswalk.md` | Planned future artifact. |
@@ -95,3 +96,15 @@ summary behavior, and routed-output model comparison in public-derived data.
 - `docs/stage7_heldout_validation_report.md`
 - `docs/stage7_5_gate_report.json`
 - `case_studies/stage7_heldout_validation/`
+
+
+## Stage 7.6 created artifacts
+
+- `scripts/run_stage7_6_methods_reproducibility.py`
+- `docs/stage7_6_api_stability_policy.md`
+- `docs/stage7_methods_reproducibility_card.md`
+- `docs/stage7_6_gate_report.json`
+- `docs/stage7_6_clean_room_report.json`
+- `case_studies/stage7_methods_reproducibility/`
+
+These artifacts demonstrate that the Stage 7.1 to Stage 7.5 methods evidence set can be rebuilt from a release-candidate archive, that retained tutorials execute, and that shared Python, CLI, backend, and frontend-contract outputs remain aligned.

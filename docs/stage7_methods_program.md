@@ -111,7 +111,7 @@ Stage 7.3 has now been executed as an independent public live-cell signaling dem
 - `notebooks/04_stage7_drg_calcium_public_signaling.ipynb` and `notebooks/05_stage7_erk_gpcr_public_signaling.ipynb` provide lightweight retained-output walkthroughs.
 - `docs/stage7_3_gate_report.json` records the Stage 7.3 completion gate.
 
-Stage 7.3 did not add manuscript claims, product features, or new stable public APIs. Stage 7.4 is complete, Stage 7.5 held-out validation is complete, and Stage 7.6 software maturity for methods-paper reproducibility remains the next phase requiring explicit authorization.
+Stage 7.3 did not add manuscript claims, product features, or new stable public APIs. Stage 7.4 endpoint, reserve-like, and routed-output demonstrations are complete, Stage 7.5 held-out validation is complete, and Stage 7.6 methods-paper software reproducibility hardening is complete. Stage 7.7 usability and adoption rehearsal remains the next phase requiring explicit authorization.
 
 ## Stage 7 architecture
 
@@ -482,3 +482,9 @@ use without treating static endpoint labels as live reserve measurements.
 Stage 7.5 completed a held-out public validation route using non-DMSO inhibitor contexts from the Wan 2021 ERK/Akt GPCR archive. The analysis plan fixed the Stage 7.4 DMSO-derived ERK and Akt residence thresholds, the +/-0.20 ERK-minus-Akt margin, the alpha threshold, and the replicate-aware cell selection rule before outputs were written. The retained result is mixed. Four contexts pass the bounded-coupling rule, and three contexts remain margin-boundary inconclusive.
 
 Outputs are recorded in `case_studies/stage7_heldout_validation/`, `docs/stage7_heldout_validation_report.md`, `docs/stage7_5_gate_report.json`, `scripts/run_stage7_5_heldout_validation.py`, `tests/test_stage7_5_heldout_validation.py`, and `notebooks/07_stage7_heldout_validation.ipynb`. This phase validates scoped pass and inconclusive behavior under fixed criteria. It does not promote a universal ERK/Akt GPCR coupling rule.
+
+## Stage 7.6 methods reproducibility outputs
+
+Stage 7.6 completed software maturity hardening for the methods-program evidence set. The full runner builds a source-distribution archive, extracts it into a temporary clean-room workspace, installs the release-candidate package, regenerates the Stage 7.1 to Stage 7.5 evidence outputs, executes retained tutorials, builds documentation, checks the release archive for local paths or private payloads, and verifies cross-surface parity for the shared residence, bounded-coupling, reserve, and model-comparison operations.
+
+Outputs are recorded in `case_studies/stage7_methods_reproducibility/`, `docs/stage7_methods_reproducibility_card.md`, `docs/stage7_6_gate_report.json`, `docs/stage7_6_clean_room_report.json`, `docs/stage7_6_api_stability_policy.md`, and `scripts/run_stage7_6_methods_reproducibility.py`. This phase supports reproducibility of the methods evidence surface. It does not add a new biological system, does not change the held-out validation outcome, and does not imply that future user datasets will necessarily support residence-amplitude divergence, bounded coupling, reserve-like buffering, or routed-output structure.

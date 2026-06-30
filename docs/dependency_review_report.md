@@ -1,7 +1,7 @@
 # Dependency-review report
 
 Overall status. pass
-Python optional dependencies reviewed. 17
+Python optional dependencies reviewed. 18
 Node lockfile packages reviewed. 4
 
 ## Checks

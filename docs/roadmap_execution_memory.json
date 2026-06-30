@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 7.5 external or held-out biological validation complete",
+    "active_stage": "Stage 7.6 software maturity for methods-paper reproducibility complete",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -15,12 +15,13 @@
     "after_stage7_2_benchmark_harness": "Stage 7.2 completed the benchmark harness against simpler summaries and alternatives, including synthetic truth benchmarks, public fixture summaries, sensitivity outputs, performance measurements, failure behavior, tests, reports, and gate report. This record is the immediate precondition that enabled the now-completed Stage 7.3 public signaling demonstrations.",
     "after_stage7_3_public_signaling": "Stage 7.3 completed independent public live-cell signaling demonstrations for DRG calcium and ERK GPCR KTR trajectories. This record is the immediate precondition that enabled the now-completed Stage 7.4 endpoint, reserve-like, and routed-output demonstrations.",
     "after_stage7_4_endpoint_reserve_routing": "Stage 7.4 completed public perturbation endpoint, reserve-like endpoint, and routed-output demonstrations using Cell Painting/MitoTox and ERK/Akt paired-reporter retained public-derived tables. It includes declared-margin bounded coupling, reduced-architecture model comparison, endpoint-scoped reserve-like summaries, uncertainty outputs, reports, notebooks, tests, and gate report. Stage 7.5 external or held-out biological validation has not started.",
-    "after_stage7_5_heldout_validation": "Stage 7.5 completed a held-out public biological validation using non-DMSO inhibitor contexts from the Wan 2021 ERK/Akt GPCR archive. Fixed Stage 7.4 DMSO-derived residence thresholds and the declared +/-0.20 ERK-minus-Akt margin produced four bounded-coupling pass contexts and three margin-boundary inconclusive contexts, with no hidden tuning and no universal coupling claim. Stage 7.6 software maturity for methods-paper reproducibility has not started.",
+    "after_stage7_5_heldout_validation": "Stage 7.5 completed a held-out public biological validation using non-DMSO inhibitor contexts from the Wan 2021 ERK/Akt GPCR archive. Fixed Stage 7.4 DMSO-derived residence thresholds and the declared +/-0.20 ERK-minus-Akt margin produced four bounded-coupling pass contexts and three margin-boundary inconclusive contexts, with no hidden tuning and no universal coupling claim. This record is the immediate precondition that enabled the now-completed Stage 7.6 methods reproducibility hardening.",
+    "after_stage7_6_methods_reproducibility": "Stage 7.6 completed software maturity hardening for the methods-program evidence set. A source-distribution clean-room run regenerates the Stage 7.1 to Stage 7.5 evidence outputs, executes retained tutorials, builds documentation, verifies Python/CLI/backend/frontend-contract parity, records API stability and deprecation policy, and preserves the boundary that this phase adds no new biological demonstration. Stage 7.7 usability and adoption rehearsal has not started.",
     "after_stage7_planning": "Stage 7 is roadmap-defined as an independent biological demonstration and methods-manuscript readiness program aligned to standards exemplified by strong computational methods papers. Implementation has not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
-    "stage7_active_gate": "Stage 7.6 may begin only after explicit authorization. No methods-paper clean-room maturation, usability rehearsal, manuscript readiness package, or product reframing has started."
+    "stage7_active_gate": "Stage 7.7 may begin only after explicit authorization. Methods-paper usability rehearsal, manuscript readiness packaging, and product reframing have not started."
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -132,7 +133,7 @@
       ]
     },
     {
-      "current_gate": "Stage 7.5 external or held-out biological validation complete. Stage 7.6 software maturity for methods-paper reproducibility is the next admissible phase but has not started.",
+      "current_gate": "Stage 7.6 software maturity for methods-paper reproducibility complete. Stage 7.7 usability and adoption rehearsal is the next admissible phase but has not started.",
       "gate": [
         "Formal method definition and mathematical model are complete.",
         "Benchmarks cover amplitude-only, endpoint-only, threshold-only, generic time-series summaries, and reduced architecture alternatives.",
@@ -196,7 +197,15 @@
         "notebooks/07_stage7_heldout_validation.ipynb",
         "case_studies/stage7_heldout_validation/"
       ],
-      "status": "stage7_5_complete_7_6_not_started",
+      "stage7_6_artifacts": [
+        "docs/stage7_6_api_stability_policy.md",
+        "docs/stage7_methods_reproducibility_card.md",
+        "docs/stage7_6_gate_report.json",
+        "docs/stage7_6_clean_room_report.json",
+        "scripts/run_stage7_6_methods_reproducibility.py",
+        "case_studies/stage7_methods_reproducibility/"
+      ],
+      "status": "stage7_6_complete_7_7_not_started",
       "subphases": [
         {
           "evidence": "docs/stage7_0_gate_report.json",
@@ -247,18 +256,19 @@
           "status": "complete_external_heldout_validation"
         },
         {
+          "evidence": "docs/stage7_6_gate_report.json",
           "gate": "A fresh environment reproduces planned benchmark tables, reports, and tutorials.",
           "goal": "Harden APIs, docs, examples, CI, notebooks, Docker, benchmarks, and clean-room reproduction for the methods evidence set.",
           "id": "7.6",
           "name": "Software maturity for methods-paper reproducibility",
-          "status": "not_started_next_authorization_required"
+          "status": "complete_methods_reproducibility_hardening"
         },
         {
           "gate": "Biologist-facing interpretation and quantitative CLI/Python reproduction both pass without unvalidated analysis routes.",
           "goal": "Test whether biological and quantitative users can run and interpret RhoDyn results through tutorials and the workbench.",
           "id": "7.7",
           "name": "Usability and adoption rehearsal",
-          "status": "not_started"
+          "status": "not_started_next_authorization_required"
         },
         {
           "gate": "Every planned manuscript component maps to a reproducible output and documented limitation.",
@@ -281,5 +291,5 @@
       "status": "conceptual_only"
     }
   ],
-  "updated": "2026-06-29"
+  "updated": "2026-06-30"
 }

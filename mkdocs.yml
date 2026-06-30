@@ -25,6 +25,7 @@ nav:
   - Stage 7 synthetic truth cases: stage7_synthetic_truth_cases.md
   - Stage 7 limitations matrix: stage7_limitations_matrix.md
   - Stage 7 API stability notes: stage7_api_stability_notes.md
+  - Stage 7.6 API stability policy: stage7_6_api_stability_policy.md
   - Stage 7 benchmark harness guide: stage7_benchmark_harness_guide.md
   - Stage 7 baseline comparison report: stage7_baseline_comparison_report.md
   - Stage 7 performance and uncertainty report: stage7_performance_uncertainty_report.md
@@ -32,4 +33,5 @@ nav:
   - Stage 7 public signaling demonstrations: stage7_public_signaling_demonstrations.md
   - Stage 7 endpoint, reserve, and routing demonstrations: stage7_endpoint_reserve_routing_demonstrations.md
   - Stage 7 held-out validation: stage7_heldout_validation_report.md
+  - Stage 7 methods reproducibility card: stage7_methods_reproducibility_card.md
   - Release checklist: release_checklist.md

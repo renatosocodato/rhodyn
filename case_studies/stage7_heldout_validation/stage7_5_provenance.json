@@ -15,11 +15,11 @@
     "case_studies/stage7_heldout_validation/heldout_paired_reporter_tidy_trajectories.csv": "84a1a8d46a3a825e37ce7e3ee8cf3fdc03e5ebc05959cffa1b378ec8859ce6e4",
     "case_studies/stage7_heldout_validation/heldout_residence_summary.csv": "6db7cfb1d4929c4c2756bbd8f01a65de1755ecd305bf542b6d491693b2fcf307",
     "case_studies/stage7_heldout_validation/heldout_validation_outcomes.tsv": "afe21d1f2e89c8d92e7cb0b5a6cddb752fb7ec2a34a95363d9e9e10af4478b54",
-    "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_gate_report.json": "90b5ec72cee1635e9434b55ed661b854639c6d2dc3137509e7b91f27a3b37947",
+    "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_gate_report.json": "b1a6ef7ca2f97a94c20336c9a3a71fbeb8be0334345d0fc0f9c9e3737eef8aaa",
     "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_report.md": "dc2dab6dfec4c1012fceb607f294e68993cc4a9dafb7bc8ec35fc60653c94380",
-    "docs/stage7_5_gate_report.json": "90b5ec72cee1635e9434b55ed661b854639c6d2dc3137509e7b91f27a3b37947",
+    "docs/stage7_5_gate_report.json": "b1a6ef7ca2f97a94c20336c9a3a71fbeb8be0334345d0fc0f9c9e3737eef8aaa",
     "docs/stage7_heldout_validation_report.md": "dc2dab6dfec4c1012fceb607f294e68993cc4a9dafb7bc8ec35fc60653c94380",
-    "notebooks/07_stage7_heldout_validation.ipynb": "1574598cf98937e81f6caf26ee0ef24e0b327103caf4f19a0702dc1f67b6458c"
+    "notebooks/07_stage7_heldout_validation.ipynb": "9f78b8d0ae1523db44e8ea067260006a18dee74074b1b0305b47155e50d5866f"
   },
   "diagnostics": {
     "context_count": 7,

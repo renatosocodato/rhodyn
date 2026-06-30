@@ -290,6 +290,8 @@ Stop condition.
 
 ## 7.6. Software maturity for methods-paper reproducibility
 
+Stage 7.6 execution status. Complete. The API stability policy, source-distribution clean-room runner, generated reproducibility card, gate reports, cross-surface parity table, workflow wiring, and methods-output comparison table are recorded. Stage 7.7 usability and adoption rehearsal is not started and requires explicit authorization.
+
 Objectives.
 
 - Harden RhoDyn so every methods-paper result can be rerun and inspected.
@@ -409,7 +411,10 @@ Stop condition.
 Stage 8 begins only after Stage 7 has produced a supported method statement. Commercial planning may use the Stage 7 evidence and software maturity surfaces, but it must not change the biological demonstrations, method claims, or manuscript evidence path.
 
 
-Stage 7.4 execution status. Complete. The endpoint, reserve-like, and routed-output demonstration layer is recorded in `docs/stage7_4_gate_report.json` and `case_studies/stage7_endpoint_reserve_routing/`. Stage 7.5 external or held-out biological validation is now complete and Stage 7.6 requires explicit authorization.
+Stage 7.4 execution status. Complete. The endpoint, reserve-like, and routed-output demonstration layer is recorded in `docs/stage7_4_gate_report.json` and `case_studies/stage7_endpoint_reserve_routing/`. Stage 7.5 external or held-out biological validation is complete and Stage 7.6 methods reproducibility is complete.
 
 
-Stage 7.5 execution status. Complete. The held-out public validation layer is recorded in `docs/stage7_5_gate_report.json`, `docs/stage7_heldout_validation_report.md`, and `case_studies/stage7_heldout_validation/`. Stage 7.6 software maturity for methods-paper reproducibility has not started and requires explicit authorization.
+Stage 7.5 execution status. Complete. The held-out public validation layer is recorded in `docs/stage7_5_gate_report.json`, `docs/stage7_heldout_validation_report.md`, and `case_studies/stage7_heldout_validation/`. Stage 7.6 software maturity for methods-paper reproducibility is complete.
+
+
+Stage 7.6 execution status. Complete. The methods-program reproducibility layer is recorded in `docs/stage7_6_gate_report.json`, `docs/stage7_methods_reproducibility_card.md`, `docs/stage7_6_api_stability_policy.md`, and `case_studies/stage7_methods_reproducibility/`. Stage 7.7 usability and adoption rehearsal has not started and requires explicit authorization.

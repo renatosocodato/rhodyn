@@ -1,0 +1,8 @@
+phase	mode	command	purpose
+7.1 synthetic truth cases	full_release_archive	python scripts/build_stage7_1_synthetic_truth_cases.py	regenerate retained methods-paper evidence output
+7.2 benchmark harness	full_release_archive	python scripts/run_stage7_2_benchmark_harness.py	regenerate retained methods-paper evidence output
+7.3 public signaling demonstrations	full_release_archive	python scripts/run_stage7_3_public_signaling.py	regenerate retained methods-paper evidence output
+7.4 endpoint reserve routing	full_release_archive	python scripts/run_stage7_4_endpoint_reserve_routing.py	regenerate retained methods-paper evidence output
+7.5 held-out validation	full_release_archive	python scripts/run_stage7_5_heldout_validation.py	regenerate retained methods-paper evidence output
+docs	full_release_archive	mkdocs build --strict	render methods-program documentation
+surface parity	full_release_archive	python scripts/audit_stage4_service_contract.py && python scripts/audit_stage5_premium_workbench.py	check backend/frontend surfaces against retained examples and frozen fixtures

@@ -10,7 +10,7 @@
     "static_review_completed": true
   },
   "failures": [],
-  "generated_utc": "2026-06-30T10:27:03.653149Z",
+  "generated_utc": "2026-06-30T11:12:55.106541Z",
   "interpretation_boundary": "This is an offline static dependency review. A live advisory scan should still be run immediately before public release if credentials and network policy allow it.",
   "node_dependencies": [
     {
@@ -131,6 +131,13 @@
     {
       "ecosystem": "python",
       "group": "dev",
+      "name": "pandas",
+      "requirement": "pandas>=2.0",
+      "specifier": ">=2.0"
+    },
+    {
+      "ecosystem": "python",
+      "group": "dev",
       "name": "twine",
       "requirement": "twine>=5.0",
       "specifier": ">=5.0"
@@ -164,7 +171,7 @@
       "specifier": ">=1.11"
     }
   ],
-  "python_dependency_count": 17,
+  "python_dependency_count": 18,
   "report_format": "rhodyn.dependency_review.v1",
   "status": "pass",
   "warnings": []

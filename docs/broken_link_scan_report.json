@@ -1,9 +1,9 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-30T10:28:35.076549Z",
+  "generated_utc": "2026-06-30T11:14:36.849717Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 96,
+  "link_count": 98,
   "records": [
     {
       "detail": "remote URL syntax checked only",
@@ -531,6 +531,12 @@
       "detail": "local target exists",
       "source": "mkdocs.yml",
       "status": "pass",
+      "target": "stage7_6_api_stability_policy.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
       "target": "stage7_benchmark_harness_guide.md"
     },
     {
@@ -568,6 +574,12 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "stage7_heldout_validation_report.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage7_methods_reproducibility_card.md"
     },
     {
       "detail": "local target exists",

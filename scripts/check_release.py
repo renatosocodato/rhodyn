@@ -172,6 +172,16 @@ REQUIRED_FILES = [
     "case_studies/stage7_heldout_validation/stage7_5_provenance.json",
     "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_report.md",
     "case_studies/stage7_heldout_validation/controlled_access_note.md",
+    "docs/stage7_6_api_stability_policy.md",
+    "docs/stage7_methods_reproducibility_card.md",
+    "docs/stage7_6_gate_report.json",
+    "docs/stage7_6_clean_room_report.json",
+    "scripts/run_stage7_6_methods_reproducibility.py",
+    "case_studies/stage7_methods_reproducibility/methods_reproducibility_commands.tsv",
+    "case_studies/stage7_methods_reproducibility/methods_output_comparison.tsv",
+    "case_studies/stage7_methods_reproducibility/cross_surface_parity.tsv",
+    "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
+    "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
     "frontend/stage5/styles.css",
@@ -275,8 +285,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 7.5 external or held-out biological validation complete":
-            failures.append("roadmap execution memory does not mark Stage 7.5 external or held-out biological validation as complete")
+        if current.get("active_stage") != "Stage 7.6 software maturity for methods-paper reproducibility complete":
+            failures.append("roadmap execution memory does not mark Stage 7.6 software maturity for methods-paper reproducibility as complete")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -286,8 +296,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 5 completed")
         if stages.get(6, {}).get("status") != "public_citable_v0.1.0":
             failures.append("roadmap execution memory does not mark Stage 6 as public_citable_v0.1.0")
-        if stages.get(7, {}).get("status") != "stage7_5_complete_7_6_not_started":
-            failures.append("roadmap execution memory does not mark Stage 7.5 complete and Stage 7.6 not started")
+        if stages.get(7, {}).get("status") != "stage7_6_complete_7_7_not_started":
+            failures.append("roadmap execution memory does not mark Stage 7.6 complete and Stage 7.7 not started")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
 
@@ -306,8 +316,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.4 must be complete_endpoint_reserve_routing_demonstrations in roadmap execution memory")
         if subphase_status.get("7.5") != "complete_external_heldout_validation":
             failures.append("Stage 7.5 must be complete_external_heldout_validation in roadmap execution memory")
-        if subphase_status.get("7.6") != "not_started_next_authorization_required":
-            failures.append("Stage 7.6 must remain not started and require authorization")
+        if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
+            failures.append("Stage 7.6 must be complete_methods_reproducibility_hardening in roadmap execution memory")
+        if subphase_status.get("7.7") != "not_started_next_authorization_required":
+            failures.append("Stage 7.7 must remain not started and require authorization")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
@@ -551,6 +563,52 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.5 held-out validation case report does not pass")
         if stage7_5_case_report.get("evidence_set_decision") != "scoped_heldout_boundary_validation":
             failures.append("Stage 7.5 case report does not keep the scoped evidence-set decision")
+
+    stage7_6_gate_path = root / "docs" / "stage7_6_gate_report.json"
+    stage7_6_case_report_path = root / "case_studies" / "stage7_methods_reproducibility" / "stage7_6_methods_reproducibility_gate_report.json"
+    if stage7_6_gate_path.exists():
+        try:
+            stage7_6_gate = json.loads(stage7_6_gate_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.6 gate report is not valid JSON: {exc}")
+            stage7_6_gate = {}
+        if stage7_6_gate.get("status") != "pass":
+            failures.append("Stage 7.6 gate report does not pass")
+        if stage7_6_gate.get("completion_state") != "complete_methods_reproducibility_hardening":
+            failures.append("Stage 7.6 gate report does not mark methods reproducibility hardening complete")
+        checkpoints = stage7_6_gate.get("validation_checkpoints", {}) if isinstance(stage7_6_gate.get("validation_checkpoints", {}), dict) else {}
+        for checkpoint in [
+            "fresh_environment_reproduces_benchmark_tables",
+            "tutorial_outputs_execute",
+            "public_release_scan_finds_no_private_paths_or_secrets",
+            "frontend_backend_cli_python_outputs_agree",
+            "ci_covers_selected_examples_docs_notebooks_benchmarks_package_docker_frontend",
+            "clean_room_reproduction_from_release_archive",
+        ]:
+            if checkpoints.get(checkpoint) != "pass":
+                failures.append(f"Stage 7.6 gate checkpoint does not pass: {checkpoint}")
+        if checkpoints.get("stop_condition_clean_room_failure") != "not_triggered":
+            failures.append("Stage 7.6 stop condition must remain not_triggered")
+        summary = stage7_6_gate.get("comparison_summary", {}) if isinstance(stage7_6_gate.get("comparison_summary", {}), dict) else {}
+        if summary.get("matched_outputs") != summary.get("checked_outputs") or not summary.get("checked_outputs"):
+            failures.append("Stage 7.6 must match all selected regenerated outputs")
+        parity = stage7_6_gate.get("parity_summary", {}) if isinstance(stage7_6_gate.get("parity_summary", {}), dict) else {}
+        if parity.get("matching_operations") != parity.get("checked_operations") or not parity.get("checked_operations"):
+            failures.append("Stage 7.6 must preserve Python/CLI/backend/frontend-contract parity")
+        boundary = str(stage7_6_gate.get("interpretation_boundary", ""))
+        if "does not add biological evidence" not in boundary:
+            failures.append("Stage 7.6 gate report must preserve the no-new-biological-evidence boundary")
+
+    if stage7_6_case_report_path.exists():
+        try:
+            stage7_6_case_report = json.loads(stage7_6_case_report_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.6 case report is not valid JSON: {exc}")
+            stage7_6_case_report = {}
+        if stage7_6_case_report.get("status") != "pass":
+            failures.append("Stage 7.6 methods reproducibility case report does not pass")
+        if stage7_6_case_report.get("mode") != "full_release_archive":
+            failures.append("Stage 7.6 methods reproducibility report must come from full_release_archive mode")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():
