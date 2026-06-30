@@ -27,6 +27,7 @@ nav:
   - Stage 7 API stability notes: stage7_api_stability_notes.md
   - Stage 7.6 API stability policy: stage7_6_api_stability_policy.md
   - Stage 7.6 recursive hardening: stage7_6_recursive_hardening.md
+  - Stage 7.7/7.8 recursive hardening: stage7_7_8_recursive_hardening.md
   - Stage 7.7 usability rehearsal: stage7_usability_rehearsal.md
   - Stage 7.7 user-path findings: stage7_user_path_findings.md
   - Stage 7.8 methods evidence index: stage7_methods_evidence_index.md

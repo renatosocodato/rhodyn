@@ -138,3 +138,14 @@ These artifacts demonstrate that a biologist-facing public MLCI tutorial path ca
 - `case_studies/stage7_methods_readiness/`
 
 These artifacts map planned methods-manuscript figure components and claims to existing reproducible outputs, validation reports, and limitation artifacts. They support readiness to draft from the current evidence package without adding a new biological system, analysis route, benchmark result, or manuscript claim.
+
+
+## Stage 7.7/7.8 recursive hardening artifacts
+
+- `scripts/audit_stage7_7_8_recursive_hardening.py`
+- `tests/test_stage7_7_8_recursive_hardening.py`
+- `docs/stage7_7_8_recursive_hardening.md`
+- `docs/stage7_7_8_recursive_hardening_report.json`
+- `case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json`
+
+These artifacts verify that the Stage 7.7 export bundles and Stage 7.8 methods-readiness crosswalks remain covered by the release checksum table and Stage 7.6 archive manifest. They preserve the boundary that Phase 9 manuscript-production work is future work and has not been scaffolded.

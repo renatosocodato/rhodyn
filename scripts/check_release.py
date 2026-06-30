@@ -178,9 +178,13 @@ REQUIRED_FILES = [
     "docs/stage7_6_gate_report.json",
     "docs/stage7_6_clean_room_report.json",
     "docs/stage7_6_recursive_hardening_report.json",
+    "docs/stage7_7_8_recursive_hardening.md",
+    "docs/stage7_7_8_recursive_hardening_report.json",
     "scripts/run_stage7_6_methods_reproducibility.py",
     "scripts/audit_stage7_6_recursive_hardening.py",
+    "scripts/audit_stage7_7_8_recursive_hardening.py",
     "tests/test_stage7_6_methods_reproducibility.py",
+    "tests/test_stage7_7_8_recursive_hardening.py",
     "case_studies/stage7_methods_reproducibility/methods_reproducibility_commands.tsv",
     "case_studies/stage7_methods_reproducibility/methods_output_comparison.tsv",
     "case_studies/stage7_methods_reproducibility/cross_surface_parity.tsv",
@@ -215,6 +219,7 @@ REQUIRED_FILES = [
     "case_studies/stage7_methods_readiness/methods_readiness_checklist.tsv",
     "case_studies/stage7_methods_readiness/limitations_traceability.tsv",
     "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json",
+    "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
     "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_report.md",
     "docs/stage5_public_mlci_workflow.md",
     "frontend/stage5/index.html",
@@ -232,7 +237,17 @@ LEAK_PATTERNS = [
     re.compile(r"xox[baprs]-[A-Za-z0-9-]+"),
 ]
 RAW_EXTENSIONS = {".lif", ".czi", ".nd2", ".oir", ".oib", ".lsm", ".tif", ".tiff", ".prism", ".xml"}
-GENERATED_DIRS = {"dist", "build", "htmlcov", ".pytest_cache", "node_modules", "playwright-report", "test-results", "blob-report"}
+GENERATED_DIRS = {
+    "__pycache__",
+    "dist",
+    "build",
+    "htmlcov",
+    ".pytest_cache",
+    "node_modules",
+    "playwright-report",
+    "test-results",
+    "blob-report",
+}
 
 
 def _text_files(root: Path) -> list[Path]:
@@ -798,6 +813,44 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 methods readiness case report does not pass")
         if stage7_8_case_report.get("completion_state") != "complete_methods_manuscript_readiness_package":
             failures.append("Stage 7.8 methods readiness case report does not mark readiness complete")
+
+    stage7_7_8_recursive_path = root / "docs" / "stage7_7_8_recursive_hardening_report.json"
+    stage7_7_8_recursive_case_path = root / "case_studies" / "stage7_methods_readiness" / "stage7_7_8_recursive_hardening_report.json"
+    if stage7_7_8_recursive_path.exists():
+        try:
+            stage7_7_8_recursive = json.loads(stage7_7_8_recursive_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 7.7/7.8 recursive hardening report is not valid JSON: {exc}")
+            stage7_7_8_recursive = {}
+        if stage7_7_8_recursive.get("status") != "pass":
+            failures.append("Stage 7.7/7.8 recursive hardening report does not pass")
+        if stage7_7_8_recursive.get("completion_state") != "stage7_7_8_recursively_hardened":
+            failures.append("Stage 7.7/7.8 recursive hardening report does not mark recursive hardening complete")
+        checks = stage7_7_8_recursive.get("checks", {}) if isinstance(stage7_7_8_recursive.get("checks", {}), dict) else {}
+        for check_name in [
+            "stage7_7_gate_pair_identical",
+            "stage7_8_gate_pair_identical",
+            "stage7_7_export_bundles_verified",
+            "stage7_8_crosswalks_match_runner_constants",
+            "stage7_8_evidence_paths_and_validation_status_pass",
+            "release_checksums_cover_stage7_7_8",
+            "release_archive_manifest_covers_nonbinary_stage7_7_8",
+            "phase9_boundary_preserved",
+        ]:
+            if checks.get(check_name) != "pass":
+                failures.append(f"Stage 7.7/7.8 recursive hardening check does not pass: {check_name}")
+        boundary = str(stage7_7_8_recursive.get("interpretation_boundary", ""))
+        if "does not add biological evidence" not in boundary or "Phase 9" not in boundary:
+            failures.append("Stage 7.7/7.8 recursive hardening report must preserve the no-new-evidence and Phase 9 boundary")
+    if stage7_7_8_recursive_path.exists() and stage7_7_8_recursive_case_path.exists():
+        try:
+            doc_recursive = json.loads(stage7_7_8_recursive_path.read_text(encoding="utf-8"))
+            case_recursive = json.loads(stage7_7_8_recursive_case_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            doc_recursive = {}
+            case_recursive = {}
+        if doc_recursive != case_recursive:
+            failures.append("Stage 7.7/7.8 recursive hardening doc and case reports must be identical")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():

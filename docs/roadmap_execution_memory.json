@@ -17,13 +17,14 @@
     "after_stage7_4_endpoint_reserve_routing": "Stage 7.4 completed public perturbation endpoint, reserve-like endpoint, and routed-output demonstrations using Cell Painting/MitoTox and ERK/Akt paired-reporter retained public-derived tables. It includes declared-margin bounded coupling, reduced-architecture model comparison, endpoint-scoped reserve-like summaries, uncertainty outputs, reports, notebooks, tests, and gate report. Stage 7.5 external or held-out biological validation has not started.",
     "after_stage7_5_heldout_validation": "Stage 7.5 completed a held-out public biological validation using non-DMSO inhibitor contexts from the Wan 2021 ERK/Akt GPCR archive. Fixed Stage 7.4 DMSO-derived residence thresholds and the declared +/-0.20 ERK-minus-Akt margin produced four bounded-coupling pass contexts and three margin-boundary inconclusive contexts, with no hidden tuning and no universal coupling claim. This record is the immediate precondition that enabled the now-completed Stage 7.6 methods reproducibility hardening.",
     "after_stage7_6_methods_reproducibility": "Stage 7.6 completed software maturity hardening for the methods-program evidence set. A source-distribution clean-room run regenerates the Stage 7.1 to Stage 7.5 evidence outputs, executes retained tutorials, builds documentation, verifies Python/CLI/backend/frontend-contract parity, records API stability and deprecation policy, and preserves the boundary that this phase adds no new biological demonstration. Stage 7.7 usability and adoption rehearsal has not started.",
+    "after_stage7_7_8_recursive_hardening": "Stage 7.7 and Stage 7.8 are now recursively hardened against the Stage 7.6 release surface. The hardening verifies usability export bundles, methods-readiness crosswalk constants, validation report status, release checksum coverage, archive-manifest coverage, and the boundary that Phase 9 manuscript-production work remains future and unscaffolded.",
     "after_stage7_7_usability_rehearsal": "Stage 7.7 completed a structured usability rehearsal using the public MLCI intensity workflow for a biologist-facing residence-versus-amplitude decision and the bounded-coupling fixture for a quantitative CLI/Python/backend reproduction task. Export bundles now carry declared parameters, input schema, grouping summary, software version, rows, result JSON, result rows, Markdown report, and checksums. This phase adds no new biological system or analysis route. Stage 7.8 methods manuscript readiness packaging has not started.",
     "after_stage7_8_methods_readiness": "Stage 7.8 completed the methods-manuscript readiness package by mapping planned figure components and method claims to existing Stage 7 evidence, validation reports, and limitation artifacts. The package records figure-to-artifact, claim-to-evidence, limitation-traceability, and submission-readiness outputs without adding a biological system, new analysis route, benchmark result, or manuscript claim. Stage 8 product/commercial alignment remains conceptual and must inherit the Stage 7 evidence boundaries.",
     "after_stage7_planning": "Stage 7 is roadmap-defined as an independent biological demonstration and methods-manuscript readiness program aligned to standards exemplified by strong computational methods papers. Implementation has not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
-    "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete. Stage 8 remains conceptual product/commercial alignment and must not reshape the Stage 7 evidence path."
+    "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual product/commercial alignment and must not reshape the Stage 7 evidence path. Phase 9 manuscript-production work remains future and unscaffolded."
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -135,7 +136,7 @@
       ]
     },
     {
-      "current_gate": "Stage 7.8 methods manuscript readiness package complete. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path.",
+      "current_gate": "Stage 7.8 methods manuscript readiness package complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Phase 9 remains future and unscaffolded.",
       "gate": [
         "Formal method definition and mathematical model are complete.",
         "Benchmarks cover amplitude-only, endpoint-only, threshold-only, generic time-series summaries, and reduced architecture alternatives.",
@@ -206,6 +207,13 @@
         "docs/stage7_6_clean_room_report.json",
         "scripts/run_stage7_6_methods_reproducibility.py",
         "case_studies/stage7_methods_reproducibility/"
+      ],
+      "stage7_7_8_recursive_hardening_artifacts": [
+        "docs/stage7_7_8_recursive_hardening.md",
+        "docs/stage7_7_8_recursive_hardening_report.json",
+        "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
+        "scripts/audit_stage7_7_8_recursive_hardening.py",
+        "tests/test_stage7_7_8_recursive_hardening.py"
       ],
       "stage7_7_artifacts": [
         "docs/stage7_usability_rehearsal.md",

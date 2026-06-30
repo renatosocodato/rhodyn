@@ -10,7 +10,7 @@
   },
   "completion_state": "stage7_6_recursive_hardened",
   "counts": {
-    "archive_manifest_rows": 406,
+    "archive_manifest_rows": 390,
     "command_rows": 7,
     "comparison_rows": 30,
     "parity_rows": 4

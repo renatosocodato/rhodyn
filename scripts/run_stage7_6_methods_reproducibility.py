@@ -121,7 +121,17 @@ TEXT_SUFFIXES = {
     ".Dockerfile",
 }
 RAW_EXTENSIONS = {".lif", ".czi", ".nd2", ".oir", ".oib", ".lsm", ".tif", ".tiff", ".prism", ".xml"}
-GENERATED_DIRS = {"dist", "build", "htmlcov", ".pytest_cache", "node_modules", "playwright-report", "test-results", "blob-report"}
+GENERATED_DIRS = {
+    "__pycache__",
+    "dist",
+    "build",
+    "htmlcov",
+    ".pytest_cache",
+    "node_modules",
+    "playwright-report",
+    "test-results",
+    "blob-report",
+}
 
 
 @dataclass
@@ -333,10 +343,13 @@ def _archive_manifest_summary(rows: list[dict[str, object]]) -> dict[str, object
         "scripts/run_stage7_5_heldout_validation.py",
         "scripts/run_stage7_6_methods_reproducibility.py",
         "scripts/audit_stage7_6_recursive_hardening.py",
+        "scripts/audit_stage7_7_8_recursive_hardening.py",
         "scripts/run_stage7_7_usability_rehearsal.py",
         "docs/stage7_methods_program.md",
         "docs/stage7_6_api_stability_policy.md",
         "docs/stage7_6_recursive_hardening.md",
+        "docs/stage7_7_8_recursive_hardening.md",
+        "docs/stage7_7_8_recursive_hardening_report.json",
         "docs/stage7_usability_rehearsal.md",
         "docs/stage7_user_path_findings.md",
         "docs/stage7_7_gate_report.json",
@@ -349,7 +362,9 @@ def _archive_manifest_summary(rows: list[dict[str, object]]) -> dict[str, object
         "docs/stage7_methods_submission_readiness.md",
         "docs/stage7_8_gate_report.json",
         "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json",
+        "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
         "tests/test_stage7_8_methods_readiness.py",
+        "tests/test_stage7_7_8_recursive_hardening.py",
         "notebooks/01_synthetic_residence_primer.ipynb",
         "notebooks/07_stage7_heldout_validation.ipynb",
         "examples/synthetic_trajectory.csv",

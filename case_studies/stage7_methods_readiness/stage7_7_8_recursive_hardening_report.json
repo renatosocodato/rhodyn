@@ -1,0 +1,29 @@
+{
+  "checks": {
+    "phase9_boundary_preserved": "pass",
+    "release_archive_manifest_covers_nonbinary_stage7_7_8": "pass",
+    "release_checksums_cover_stage7_7_8": "pass",
+    "stage7_7_export_bundles_verified": "pass",
+    "stage7_7_gate_pair_identical": "pass",
+    "stage7_8_crosswalks_match_runner_constants": "pass",
+    "stage7_8_evidence_paths_and_validation_status_pass": "pass",
+    "stage7_8_gate_pair_identical": "pass"
+  },
+  "completion_state": "stage7_7_8_recursively_hardened",
+  "counts": {
+    "archive_manifest_rows": 390,
+    "forbidden_phase9_files": 0,
+    "release_checksum_rows": 362,
+    "required_stage7_7_8_files": 27,
+    "stage7_7_bundle_members": 18,
+    "stage7_7_bundles": 2,
+    "stage7_8_checklist_rows": 6,
+    "stage7_8_claim_rows": 5,
+    "stage7_8_figure_rows": 6
+  },
+  "failures": [],
+  "interpretation_boundary": "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. It does not add biological evidence, change method decisions, or scaffold a Phase 9 manuscript-production stage.",
+  "report_format": "rhodyn.stage7_7_8_recursive_hardening.v1",
+  "status": "pass",
+  "warnings": []
+}

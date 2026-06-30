@@ -77,8 +77,10 @@ TEXTLIKE_SUFFIXES = {
     ".py",
     ".toml",
     ".txt",
+    ".tsv",
     ".yaml",
     ".yml",
+    ".zip",
 }
 
 

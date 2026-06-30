@@ -500,3 +500,9 @@ Outputs are recorded in `case_studies/stage7_usability_rehearsal/`, `docs/stage7
 Stage 7.8 completed the methods-manuscript readiness package. The package maps planned figure components and method claims to existing evidence, validation reports, limitation artifacts, release checksums, and known inconclusive outcomes. It is a drafting-support surface, not a manuscript draft and not a new analysis.
 
 Outputs are recorded in `case_studies/stage7_methods_readiness/`, `docs/stage7_8_gate_report.json`, `docs/stage7_methods_evidence_index.md`, `docs/stage7_figure_artifact_crosswalk.md`, `docs/stage7_claim_evidence_crosswalk.md`, `docs/stage7_methods_submission_readiness.md`, and `scripts/run_stage7_8_methods_readiness.py`. This phase supports readiness to draft a methods manuscript from existing reproducible outputs. It does not add a biological system, new analysis route, new benchmark result, or manuscript claim.
+
+## Stage 7.7/7.8 recursive hardening outputs
+
+The recursive hardening pass checks that Stage 7.7 usability exports and Stage 7.8 methods-readiness crosswalks remain internally consistent with the Stage 7.6 release archive. It verifies bundle contents and checksums, parameter provenance, crosswalk rows against the generator constants, validation report status, release-checksum coverage, clean-room archive coverage, and the boundary that Phase 9 manuscript-production work has not been scaffolded.
+
+Outputs are recorded in `docs/stage7_7_8_recursive_hardening.md`, `docs/stage7_7_8_recursive_hardening_report.json`, `case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json`, `scripts/audit_stage7_7_8_recursive_hardening.py`, and `tests/test_stage7_7_8_recursive_hardening.py`. This pass hardens the release and drafting-support evidence surface. It does not add a biological system, new method, new benchmark result, product feature, or manuscript claim.

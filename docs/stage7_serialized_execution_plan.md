@@ -29,6 +29,8 @@ For every Stage 7 subphase, repository bookkeeping and roadmap updates are part 
 | 7.7 | Add usability protocol, task results, export examples, and any tutorial or workbench fixes. | Record whether the user path is ready for a methods manuscript or needs another usability iteration. |
 | 7.8 | Add claim-to-evidence, figure-to-artifact, limitations, reproducibility, and submission-readiness crosswalks. | Record whether manuscript drafting can begin, which venue frame fits the evidence, and what remains out of scope. |
 
+Recursive hardening after 7.8 is allowed only as a release-consistency check over completed Stage 7 outputs. It may verify archive coverage, checksums, bundle provenance, validation status, and roadmap boundaries, but it must not start Phase 9 manuscript production or add a new scientific claim.
+
 ## 7.0. Planning freeze and evidence source register
 
 Stage 7.0 execution status. Complete as a planning-only phase. The created planning artifacts are `docs/stage7_0_source_register.md`, `docs/stage7_0_baseline_method_inventory.md`, `docs/stage7_0_dataset_selection_rubric.md`, `docs/stage7_0_artifact_map.md`, and `docs/stage7_0_gate_report.json`. Stage 7.1 is not started.

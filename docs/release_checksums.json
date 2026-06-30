@@ -1,5 +1,5 @@
 {
-  "file_count": 336,
+  "file_count": 362,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -337,6 +337,11 @@
       "size_bytes": 1775
     },
     {
+      "path": "case_studies/public_data_candidates.tsv",
+      "sha256": "16d0339173ffdd4963c4e50540e9f01317ad8ac1002d6857b91046251a5005ab",
+      "size_bytes": 6474
+    },
+    {
       "path": "case_studies/stage3_case_study_bank_gate_report.json",
       "sha256": "64972a7b565d6891682adbc73ddf59346f165fa4f5335c2afaaed7514633243a",
       "size_bytes": 5362
@@ -402,9 +407,19 @@
       "size_bytes": 453
     },
     {
+      "path": "case_studies/stage7_endpoint_reserve_routing/candidate_ranking.tsv",
+      "sha256": "894b4f3c562e0962cbe5990432d36e486dd5f67bef6a2242a18156bab67e7fea",
+      "size_bytes": 1427
+    },
+    {
       "path": "case_studies/stage7_endpoint_reserve_routing/cell_painting_endpoint_reserve_routing_report.md",
       "sha256": "a76eca3809ce3f6a079f1897d90daa0a598cc4f904dbf869b13843217c051d74",
       "size_bytes": 1636
+    },
+    {
+      "path": "case_studies/stage7_endpoint_reserve_routing/cell_painting_reduced_alternative_decisions.tsv",
+      "sha256": "bf319de661b9cdcf8c8312d4a54140a56bdae6ac174988213a3e3db1129e1e08",
+      "size_bytes": 870
     },
     {
       "path": "case_studies/stage7_endpoint_reserve_routing/cell_painting_reserve_like_endpoint_rows.csv",
@@ -447,6 +462,11 @@
       "size_bytes": 985
     },
     {
+      "path": "case_studies/stage7_endpoint_reserve_routing/stage7_4_case_summary.tsv",
+      "sha256": "0ed946da29c92d4134aad64f36d53cd6480d668afacb3fcd99d2d63a03d2526d",
+      "size_bytes": 797
+    },
+    {
       "path": "case_studies/stage7_endpoint_reserve_routing/stage7_4_endpoint_reserve_routing_gate_report.json",
       "sha256": "78f26cc84b7b2ebe84f676d463f8cbdb0125edd3bdbf1a560aea576a84593e71",
       "size_bytes": 3064
@@ -455,6 +475,11 @@
       "path": "case_studies/stage7_endpoint_reserve_routing/stage7_4_provenance.json",
       "sha256": "d7a9475a71afa0df473a3866763a042078f740186fd8e45b17e4f0380bd4ea72",
       "size_bytes": 3968
+    },
+    {
+      "path": "case_studies/stage7_heldout_validation/candidate_ranking.tsv",
+      "sha256": "bfba4327303c29c439d0d1fc0fe33efd96fbf5ec282f3e1b62cea4339956cd1c",
+      "size_bytes": 674
     },
     {
       "path": "case_studies/stage7_heldout_validation/controlled_access_note.md",
@@ -492,6 +517,11 @@
       "size_bytes": 70254
     },
     {
+      "path": "case_studies/stage7_heldout_validation/heldout_validation_outcomes.tsv",
+      "sha256": "afe21d1f2e89c8d92e7cb0b5a6cddb752fb7ec2a34a95363d9e9e10af4478b54",
+      "size_bytes": 565
+    },
+    {
       "path": "case_studies/stage7_heldout_validation/stage7_5_heldout_validation_gate_report.json",
       "sha256": "b1a6ef7ca2f97a94c20336c9a3a71fbeb8be0334345d0fc0f9c9e3737eef8aaa",
       "size_bytes": 3472
@@ -507,6 +537,31 @@
       "size_bytes": 4720
     },
     {
+      "path": "case_studies/stage7_methods_readiness/claim_evidence_crosswalk.tsv",
+      "sha256": "cbd4db50f13de9623fd5f75e87985f4a1bbcc55b97d95e798e86b3b254879813",
+      "size_bytes": 2215
+    },
+    {
+      "path": "case_studies/stage7_methods_readiness/figure_artifact_crosswalk.tsv",
+      "sha256": "0ff604f5c4e08b07922750076d54f2be1835b069cdcc6d2dc6f08b8a30c5cba9",
+      "size_bytes": 3027
+    },
+    {
+      "path": "case_studies/stage7_methods_readiness/limitations_traceability.tsv",
+      "sha256": "5d6f792bebb8364ee5b83059d7bde74f82a4d9cd674a83ff62ad9063cf4caee6",
+      "size_bytes": 1245
+    },
+    {
+      "path": "case_studies/stage7_methods_readiness/methods_readiness_checklist.tsv",
+      "sha256": "448630a2f966dcb8016ee01be14c3f5e65a50919c11a60a069c8e476a162be46",
+      "size_bytes": 726
+    },
+    {
+      "path": "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
+      "sha256": "9aaa7888341dc3091933a37e3826d73c7b6ff48d72c16239520ccf04b52a77ab",
+      "size_bytes": 1193
+    },
+    {
       "path": "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json",
       "sha256": "ae843c31e89a2b40faf0522c12afbc8aff7224a8478486e5e57f934d5ea449d7",
       "size_bytes": 1206
@@ -517,19 +572,44 @@
       "size_bytes": 3416
     },
     {
+      "path": "case_studies/stage7_methods_reproducibility/cross_surface_parity.tsv",
+      "sha256": "05629ff35cf1955209e8f3394d2205bcd5cbd84ac77e156b6d681b4e8d2ef7d6",
+      "size_bytes": 639
+    },
+    {
+      "path": "case_studies/stage7_methods_reproducibility/methods_output_comparison.tsv",
+      "sha256": "4ea2bbf7a1ec72c9e1b99c34dd0874dd14b22340145a2c556b43463d3b7944a6",
+      "size_bytes": 6413
+    },
+    {
+      "path": "case_studies/stage7_methods_reproducibility/methods_reproducibility_commands.tsv",
+      "sha256": "d3ba791a202ca745eba0f49264af1cd669be432301254031ba3d6fcd858b52bd",
+      "size_bytes": 1076
+    },
+    {
+      "path": "case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv",
+      "sha256": "f003b82b329ddf3f0bbff2bf9c6f0ca599a21ce48ea326bb0ccb2c01925e2161",
+      "size_bytes": 51146
+    },
+    {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
-      "sha256": "3b870f9a92c90aa3ecf104f2561deb32c3dcfb8192705e12ed3b9a37ca97de94",
-      "size_bytes": 30643
+      "sha256": "01b5e8fed0e268acbd1206a1586ff62dcf625d34da81654ac0136e2b49a05786",
+      "size_bytes": 30668
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
-      "sha256": "477d18fc06cd9f20580d654e4d91b5c4f0cdc0b973354382f61555ba8230362c",
+      "sha256": "de03330aec977864818e2602ec9ed4ed0d19e659f8491f385852ed76bff9e419",
       "size_bytes": 4285
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_recursive_hardening_report.json",
-      "sha256": "87e4671766e96579579e977e945cdd4acec8daf9b04b782b413711182d1aa42e",
+      "sha256": "0d55a650a28c83b361fccc6995e186ea1eb466b7e17f5923f02dee56529046b5",
       "size_bytes": 758
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/candidate_ranking.tsv",
+      "sha256": "cca2191a30ad3729f2df19ca74a4a486a40477938ebf9d711e37844294104267",
+      "size_bytes": 1310
     },
     {
       "path": "case_studies/stage7_public_signaling/drg_calcium_case_report.md",
@@ -590,6 +670,11 @@
       "path": "case_studies/stage7_public_signaling/erk_gpcr_window_sensitivity.csv",
       "sha256": "dc9a005d9c9ef1d69b350271768150d3af803aa876e5e39a9710c232aa02138c",
       "size_bytes": 564
+    },
+    {
+      "path": "case_studies/stage7_public_signaling/public_signaling_case_summary.tsv",
+      "sha256": "ec6f808ae8f6fba3dbfa271fd47408ad4d2799f367e8a4767aefcc2d4aa40e28",
+      "size_bytes": 1076
     },
     {
       "path": "case_studies/stage7_public_signaling/stage7_3_public_signaling_gate_report.json",
@@ -657,9 +742,24 @@
       "size_bytes": 1056
     },
     {
+      "path": "case_studies/stage7_usability_rehearsal/biologist_residence_bundle.zip",
+      "sha256": "ce7fd517c841d5f0cdf53727e52f7d55d11467ab2992f99955b7c010ce30b6ca",
+      "size_bytes": 8196
+    },
+    {
       "path": "case_studies/stage7_usability_rehearsal/biologist_residence_task_result.json",
       "sha256": "7c695987b9157db016b03dd7df41033d86eb8617af739e0aeb859e4110be1c88",
       "size_bytes": 1727
+    },
+    {
+      "path": "case_studies/stage7_usability_rehearsal/export_examples_manifest.tsv",
+      "sha256": "ea78df2f5de12f12af86051ce26ae9ffc8a37c77d6e8d0bfe4f37c6da1853a2f",
+      "size_bytes": 520
+    },
+    {
+      "path": "case_studies/stage7_usability_rehearsal/quantitative_bounded_coupling_bundle.zip",
+      "sha256": "d9378f29069b44b691ea087a5fde468838b23083f7947d30fbeb386edfa4aa14",
+      "size_bytes": 5191
     },
     {
       "path": "case_studies/stage7_usability_rehearsal/quantitative_reproduction_result.json",
@@ -675,6 +775,16 @@
       "path": "case_studies/stage7_usability_rehearsal/stage7_7_usability_rehearsal_report.md",
       "sha256": "95e237568c23460bb89626da6ae739798a8881333930aba7ee56c0b839d6296a",
       "size_bytes": 1962
+    },
+    {
+      "path": "case_studies/stage7_usability_rehearsal/usability_task_protocol.tsv",
+      "sha256": "aa15135c785be1029ffc4392965d0e4f5b43dace68ef31e0c1334c4978d53017",
+      "size_bytes": 931
+    },
+    {
+      "path": "case_studies/stage7_usability_rehearsal/user_path_findings.tsv",
+      "sha256": "9ff8579413854211099339f887e435ac7f73f5472d3f6252c84dfcb979eb0e16",
+      "size_bytes": 1285
     },
     {
       "path": "case_studies/stage7_usability_rehearsal/workbench_flow_check.json",
@@ -848,13 +958,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "9e92314db7ffda30f212c2aa746d4b1933c9dac01d8286c0e9752eddcb8dce6c",
-      "size_bytes": 30050
+      "sha256": "c2fca4272c09037a020ad953b70da5279ece9b5034431f95eca14300d3ad3c28",
+      "size_bytes": 30615
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "c89680c66080516d101b49d563324d7d0f5b8398e4174254851e811d0bc64f4f",
-      "size_bytes": 23375
+      "sha256": "fd4239e6a88772395faff568e3350e4c16aa0000f788914f74af381c81c0248e",
+      "size_bytes": 24377
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -903,8 +1013,8 @@
     },
     {
       "path": "docs/stage7_0_artifact_map.md",
-      "sha256": "c12e1aaf81cf0c1ea4461e46b2049953e0c4e6b8032e8342f26e983266681f44",
-      "size_bytes": 9005
+      "sha256": "e67cc6a0b3aeb017cca3f9630f8d8e61a4a63b79cb3dc05ecfa218455f56898f",
+      "size_bytes": 9625
     },
     {
       "path": "docs/stage7_0_baseline_method_inventory.md",
@@ -958,13 +1068,13 @@
     },
     {
       "path": "docs/stage7_6_clean_room_report.json",
-      "sha256": "3b870f9a92c90aa3ecf104f2561deb32c3dcfb8192705e12ed3b9a37ca97de94",
-      "size_bytes": 30643
+      "sha256": "01b5e8fed0e268acbd1206a1586ff62dcf625d34da81654ac0136e2b49a05786",
+      "size_bytes": 30668
     },
     {
       "path": "docs/stage7_6_gate_report.json",
-      "sha256": "3b870f9a92c90aa3ecf104f2561deb32c3dcfb8192705e12ed3b9a37ca97de94",
-      "size_bytes": 30643
+      "sha256": "01b5e8fed0e268acbd1206a1586ff62dcf625d34da81654ac0136e2b49a05786",
+      "size_bytes": 30668
     },
     {
       "path": "docs/stage7_6_recursive_hardening.md",
@@ -973,8 +1083,18 @@
     },
     {
       "path": "docs/stage7_6_recursive_hardening_report.json",
-      "sha256": "87e4671766e96579579e977e945cdd4acec8daf9b04b782b413711182d1aa42e",
+      "sha256": "0d55a650a28c83b361fccc6995e186ea1eb466b7e17f5923f02dee56529046b5",
       "size_bytes": 758
+    },
+    {
+      "path": "docs/stage7_7_8_recursive_hardening.md",
+      "sha256": "7a06279c1b137e5b30aacf8f29c3ff2b51dcd538b2077f1173cc03824d83cb67",
+      "size_bytes": 1150
+    },
+    {
+      "path": "docs/stage7_7_8_recursive_hardening_report.json",
+      "sha256": "9aaa7888341dc3091933a37e3826d73c7b6ff48d72c16239520ccf04b52a77ab",
+      "size_bytes": 1193
     },
     {
       "path": "docs/stage7_7_gate_report.json",
@@ -1038,12 +1158,12 @@
     },
     {
       "path": "docs/stage7_methods_program.md",
-      "sha256": "3a8b0fdeba4bed144eafe5431019152ddbfe47117b2bc47da24fa308fb02febd",
-      "size_bytes": 42124
+      "sha256": "fed655b1de1ba73b7c44a359228b3e73fa0b65c234c6fe925c49e9f49df4b561",
+      "size_bytes": 43108
     },
     {
       "path": "docs/stage7_methods_reproducibility_card.md",
-      "sha256": "477d18fc06cd9f20580d654e4d91b5c4f0cdc0b973354382f61555ba8230362c",
+      "sha256": "de03330aec977864818e2602ec9ed4ed0d19e659f8491f385852ed76bff9e419",
       "size_bytes": 4285
     },
     {
@@ -1068,8 +1188,8 @@
     },
     {
       "path": "docs/stage7_serialized_execution_plan.md",
-      "sha256": "912a00c687dbaf293f831659dff62586c30686f42876786ed43f7872d13a6f81",
-      "size_bytes": 19641
+      "sha256": "3245fb88b9091008434f060ff95fdfd76599aa663e68a0c756e3e32d29a4d993",
+      "size_bytes": 19939
     },
     {
       "path": "docs/stage7_synthetic_truth_cases.md",
@@ -1163,8 +1283,8 @@
     },
     {
       "path": "mkdocs.yml",
-      "sha256": "f504d5c91fa40d565c476c0260a5f778ce2c6b62150b22d9194862cfea8addb8",
-      "size_bytes": 2542
+      "sha256": "c515654f07814be8a44dde104b0793d838ff1e74d57b9c630281419652c0884f",
+      "size_bytes": 2615
     },
     {
       "path": "notebooks/01_synthetic_residence_primer.ipynb",
@@ -1272,6 +1392,11 @@
       "size_bytes": 12740
     },
     {
+      "path": "scripts/audit_stage7_7_8_recursive_hardening.py",
+      "sha256": "54c8c3d1bede45b316232bbb595e94d427e7aa0a17053e10b9a69bf95c1536bf",
+      "size_bytes": 20919
+    },
+    {
       "path": "scripts/build_stage7_1_synthetic_truth_cases.py",
       "sha256": "f245cd2d66fa5244fc1406fa004131c15e9186627d45cc468886f257581a1032",
       "size_bytes": 13829
@@ -1293,8 +1418,8 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "51f613da2dd9e1eade053f39d3c7559c7e25602b1bafd64fee0921876092e5ab",
-      "size_bytes": 52452
+      "sha256": "5bec9865ca920a4394f8b67528a4842c2d3f72e9ac8e6489033c65693b6b0305",
+      "size_bytes": 55296
     },
     {
       "path": "scripts/check_roadmap_memory.py",
@@ -1373,8 +1498,8 @@
     },
     {
       "path": "scripts/run_stage7_6_methods_reproducibility.py",
-      "sha256": "f8d2130f5b442c9893e0b551217c4843dd2be428a1df010b9210d5c56054ff0a",
-      "size_bytes": 40276
+      "sha256": "263eb51d6c24e5510853ab6b217fb1b10f649fe3468d0fba7f849cb264eb0558",
+      "size_bytes": 40646
     },
     {
       "path": "scripts/run_stage7_7_usability_rehearsal.py",
@@ -1388,8 +1513,8 @@
     },
     {
       "path": "scripts/write_release_checksums.py",
-      "sha256": "dab3cff805b9569bdf400e3ca2f3dda5ec064b8953b3f35ab8d015de10fa782a",
-      "size_bytes": 4144
+      "sha256": "3539f8e2df9df4270697a7f83c9e1f58c5da1e671e896a5eb1af082a28321df0",
+      "size_bytes": 4168
     },
     {
       "path": "scripts/zenodo_dry_run.py",
@@ -1498,8 +1623,8 @@
     },
     {
       "path": "src/rhodyn.egg-info/SOURCES.txt",
-      "sha256": "bf50e11d0fa1196fdd62cb6eae8599931622761c20860daf8d82f3e381f783d5",
-      "size_bytes": 18930
+      "sha256": "0de164eade0333f88f3bfc439bd9f34e48ee72aba62a81f014baf5434f50e5f2",
+      "size_bytes": 19191
     },
     {
       "path": "src/rhodyn.egg-info/dependency_links.txt",
@@ -1663,8 +1788,13 @@
     },
     {
       "path": "tests/test_stage7_6_methods_reproducibility.py",
-      "sha256": "5f6f435dd148754170e61d7f75b08e0a3f4807714384f8be26b7bfa9639fe212",
-      "size_bytes": 14671
+      "sha256": "999f6ac95f62c9672e9eff9387ee07075e7fb51c8f8638b948c6a0eac2f43e91",
+      "size_bytes": 15027
+    },
+    {
+      "path": "tests/test_stage7_7_8_recursive_hardening.py",
+      "sha256": "24fb1855d1dc6f64595b4195a978314dcae8e0ed7b33b8519ce9188244640ae6",
+      "size_bytes": 3941
     },
     {
       "path": "tests/test_stage7_7_usability_rehearsal.py",
@@ -1682,7 +1812,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-06-30T16:44:37.238408Z",
+  "generated_utc": "2026-06-30T18:11:13.205435Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }
