@@ -235,6 +235,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_2_methods_paper_corpus.py",
     "scripts/run_stage9_3_narrative_spine.py",
     "scripts/run_stage9_4_claim_freeze.py",
+    "scripts/run_stage9_5_paragraph_claim_ledger.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
@@ -242,6 +243,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_2_methods_paper_corpus.py",
     "tests/test_stage9_3_narrative_spine.py",
     "tests/test_stage9_4_claim_freeze.py",
+    "tests/test_stage9_5_paragraph_claim_ledger.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -256,6 +258,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.2.json",
     "manuscript/nature_methods/gate_verdicts/9.3.json",
     "manuscript/nature_methods/gate_verdicts/9.4.json",
+    "manuscript/nature_methods/gate_verdicts/9.5.json",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -291,6 +294,8 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/ledgers/claim_hierarchy.md",
     "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
     "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
+    "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+    "manuscript/nature_methods/ledgers/claim_strength_rules.md",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
@@ -399,8 +404,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.4 claim freeze registered; manuscript production not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.4 claim-freeze boundary as active")
+        if current.get("active_stage") != "Stage 9.5 paragraph claim ledger registered; manuscript production not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.5 paragraph-ledger boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -414,8 +419,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_4_claim_freeze_registered":
-            failures.append("roadmap execution memory does not mark Stage 9.4 claim freeze without manuscript production")
+        if stages.get(9, {}).get("status") != "stage9_5_paragraph_claim_ledger_registered":
+            failures.append("roadmap execution memory does not mark Stage 9.5 paragraph ledger without manuscript production")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -440,8 +445,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.4 claim freeze registered; manuscript production not started":
-                failures.append("Stage 9 current gate must record claim-freeze state")
+            if stage9.get("current_gate") != "Stage 9.5 paragraph claim ledger registered; manuscript production not started":
+                failures.append("Stage 9 current gate must record paragraph-ledger state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -458,6 +463,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.3 must be marked complete_narrative_spine_registered")
             if substage_status.get("9.4") != "complete_claim_freeze_registered":
                 failures.append("Stage 9.4 must be marked complete_claim_freeze_registered")
+            if substage_status.get("9.5") != "complete_paragraph_claim_ledger_registered":
+                failures.append("Stage 9.5 must be marked complete_paragraph_claim_ledger_registered")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

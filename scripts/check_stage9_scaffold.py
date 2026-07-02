@@ -41,6 +41,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_2_methods_paper_corpus.py",
     "scripts/run_stage9_3_narrative_spine.py",
     "scripts/run_stage9_4_claim_freeze.py",
+    "scripts/run_stage9_5_paragraph_claim_ledger.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
@@ -204,10 +205,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.4 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.5 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -215,6 +216,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_2_started = "9.2.json" in gate_files
     stage9_3_started = "9.3.json" in gate_files
     stage9_4_started = "9.4.json" in gate_files
+    stage9_5_started = "9.5.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -234,7 +236,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
     expected_memory_status = (
-        "stage9_4_claim_freeze_registered"
+        "stage9_5_paragraph_claim_ledger_registered"
+        if stage9_5_started
+        else "stage9_4_claim_freeze_registered"
         if stage9_4_started
         else "stage9_3_narrative_spine_registered"
         if stage9_3_started
@@ -369,6 +373,30 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain claim-freeze output before 9.4: {rel}")
+
+    if stage9_5_started:
+        stage9_5_gate = _read_json(workspace / "gate_verdicts" / "9.5.json", failures)
+        if stage9_5_gate.get("pass") is not True or stage9_5_gate.get("substage") != "9.5":
+            failures.append("Stage 9.5 gate verdict must pass when present")
+        for rel in [
+            "ledgers/paragraph_claim_ledger.csv",
+            "ledgers/claim_strength_rules.md",
+        ]:
+            if not (workspace / rel).exists():
+                failures.append(f"Stage 9.5 paragraph-ledger output missing: {rel}")
+        if stage9_5_gate.get("paragraph_count", 0) < 10:
+            failures.append("Stage 9.5 must register paragraph-level claim rows")
+        if stage9_5_gate.get("claim_count") != 5:
+            failures.append("Stage 9.5 must preserve the five frozen claims")
+        if memory.get("paragraph_claim_ledger_started") is not True:
+            failures.append("Stage 9 execution memory must record paragraph_claim_ledger_started=true after 9.5")
+    else:
+        for rel in [
+            "ledgers/paragraph_claim_ledger.csv",
+            "ledgers/claim_strength_rules.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain paragraph-ledger output before 9.5: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

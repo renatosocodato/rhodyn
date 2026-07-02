@@ -72,7 +72,6 @@ class Stage94ClaimFreezeTests(unittest.TestCase):
             "sections/methods.md",
             "refs/references.bib",
             "figures/main_figure_spine.md",
-            "ledgers/paragraph_claim_ledger.csv",
             "ledgers/figure_to_claim_to_artifact.csv",
             "submission_package/pi_review_packet.md",
         ]:

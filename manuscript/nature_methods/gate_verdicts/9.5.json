@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.4 claim freeze exists and passes",
+      "name": "stage_9_4_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "15 paragraph rows are unique and formatted for downstream joins",
+      "name": "ledger_validates",
+      "passed": true
+    },
+    {
+      "detail": "Every paragraph row resolves to a frozen Stage 9.4 claim ID",
+      "name": "every_para_id_resolves_to_clm_id",
+      "passed": true
+    },
+    {
+      "detail": "All five frozen claims have at least one planned paragraph unit",
+      "name": "every_frozen_claim_has_paragraph_coverage",
+      "passed": true
+    },
+    {
+      "detail": "Each paragraph copies the frozen claim strength cap exactly",
+      "name": "paragraph_strength_does_not_exceed_claim_strength",
+      "passed": true
+    },
+    {
+      "detail": "Figure, statistic, and reference IDs remain pending for later authorized substages",
+      "name": "downstream_surfaces_remain_pending",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, figure spine, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "claim_count": 5,
+  "outputs": [
+    "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+    "manuscript/nature_methods/ledgers/claim_strength_rules.md",
+    "manuscript/nature_methods/gate_verdicts/9.5.json"
+  ],
+  "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
+  "paragraph_count": 15,
+  "pass": true,
+  "scope_boundary": "Paragraph-to-claim planning only. No manuscript sections, citation resolution, figure spine, figure rendering, PanelForge execution, or submission-package assembly.",
+  "substage": "9.5",
+  "timestamp": "2026-07-02T11:05:24.753643Z"
+}
