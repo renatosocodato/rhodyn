@@ -114,6 +114,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/run_stage9_5_paragraph_claim_ledger.py",
     "scripts/run_stage9_6_figure_spine.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
+    "scripts/run_stage9_7_supplementary_display_plan.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
     "docs/stage7_6_api_stability_policy.md",
@@ -142,6 +143,7 @@ REQUIRED_ARCHIVE_FILES = {
     "tests/test_stage9_4_claim_freeze.py",
     "tests/test_stage9_5_paragraph_claim_ledger.py",
     "tests/test_stage9_6_figure_spine.py",
+    "tests/test_stage9_7_supplementary_display_plan.py",
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "manuscript/nature_methods/README.md",
@@ -162,6 +164,7 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/gate_verdicts/9.5.json",
     "manuscript/nature_methods/gate_verdicts/9.6.json",
     "manuscript/nature_methods/gate_verdicts/9.6b.json",
+    "manuscript/nature_methods/gate_verdicts/9.7.json",
     "manuscript/nature_methods/stage9_narrative_spine.md",
     "manuscript/nature_methods/audits/venue_fit_rationale.md",
     "manuscript/nature_methods/ledgers/claim_hierarchy.md",
@@ -172,6 +175,8 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/figures/main_figure_spine.md",
     "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
     "manuscript/nature_methods/figures/display_item_plan.md",
+    "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
+    "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
     "manuscript/nature_methods/audits/panelforge_render_report.md",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.pdf",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.png",
@@ -561,8 +566,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9.6b PanelForge rendering registered; manuscript production not started":
-        failures.append("roadmap memory does not mark the Stage 9.6b PanelForge rendering boundary as active")
+    if current.get("active_stage") != "Stage 9.7 supplementary display planning registered; manuscript production not started":
+        failures.append("roadmap memory does not mark the Stage 9.7 supplementary display-planning boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -572,13 +577,15 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_6b_panelforge_rendering_registered":
-        failures.append("Stage 9 is not marked stage9_6b_panelforge_rendering_registered")
+    if stage9.get("status") != "stage9_7_supplementary_display_plan_registered":
+        failures.append("Stage 9 is not marked stage9_7_supplementary_display_plan_registered")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
     if "9.6b" not in stage9_substage_ids:
         failures.append("Stage 9 does not serialize the 9.6b PanelForge rendering substage")
+    if "9.7" not in stage9_substage_ids:
+        failures.append("Stage 9 does not serialize the 9.7 supplementary display-plan substage")
     stage9_substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if stage9_substage_status.get("9.0") != "complete_evidence_locked":
         failures.append("Stage 9.0 is not marked complete_evidence_locked")
@@ -596,6 +603,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9.6 is not marked complete_figure_spine_registered")
     if stage9_substage_status.get("9.6b") != "complete_panelforge_rendering_registered":
         failures.append("Stage 9.6b is not marked complete_panelforge_rendering_registered")
+    if stage9_substage_status.get("9.7") != "complete_supplementary_display_plan_registered":
+        failures.append("Stage 9.7 is not marked complete_supplementary_display_plan_registered")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",

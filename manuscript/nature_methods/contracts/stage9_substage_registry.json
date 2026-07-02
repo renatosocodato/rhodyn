@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.6b",
-  "next_substage": "9.7",
+  "last_completed_substage": "9.7",
+  "next_substage": "9.8",
   "patch_ledger": [
     {
       "id": "P1",
@@ -237,7 +237,7 @@
         "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
         "manuscript/nature_methods/figures/figures.manifest.yaml"
       ],
-      "status": "not_started",
+      "status": "complete_supplementary_display_plan_registered",
       "title": "Supplementary display item plan"
     },
     {

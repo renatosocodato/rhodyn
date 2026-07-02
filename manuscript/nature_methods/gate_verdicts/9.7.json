@@ -1,0 +1,54 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.6b PanelForge rendering exists and passes",
+      "name": "stage_9_6b_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Nine supplementary support items are uniquely identified, role-scoped, and linked to main figures plus locked artifacts",
+      "name": "supplementary_ledger_validates",
+      "passed": true
+    },
+    {
+      "detail": "Every supplementary row records a planned callout location and role",
+      "name": "each_item_has_callout_and_role",
+      "passed": true
+    },
+    {
+      "detail": "Every essential item points to an existing planned Results, Methods, or Discussion paragraph row",
+      "name": "essential_items_have_main_text_callouts",
+      "passed": true
+    },
+    {
+      "detail": "Supplementary planning does not demote the six locked main display items",
+      "name": "central_evidence_remains_in_main_figures",
+      "passed": true
+    },
+    {
+      "detail": "PanelForge manifest records supplementary planning metadata without rendering supplementary panels",
+      "name": "manifest_contains_nonrendered_supplementary_plan",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, or runtime environment detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "essential_item_count": 8,
+  "next_substage": "9.8",
+  "outputs": [
+    "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
+    "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
+    "manuscript/nature_methods/figures/figures.manifest.yaml",
+    "manuscript/nature_methods/gate_verdicts/9.7.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Supplementary display planning only. No SI prose, legends, rendered supplementary figures, citations, manuscript sections, or submission-package assembly.",
+  "substage": "9.7",
+  "supplementary_item_count": 9,
+  "supplementary_plan_version": "supplementary-plan@2026-07-02@523b7c69eefa95dc12986bb36f0e8b9b19e7752e",
+  "supportive_item_count": 1,
+  "timestamp": "2026-07-02T12:27:22.270410Z"
+}

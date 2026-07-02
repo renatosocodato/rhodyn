@@ -22,7 +22,10 @@
     "manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.svg",
     "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.pdf",
     "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.png",
-    "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.svg"
+    "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.svg",
+    "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
+    "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
+    "manuscript/nature_methods/gate_verdicts/9.7.json"
   ],
   "citation_resolution_started": false,
   "claim_freeze_started": true,
@@ -256,10 +259,73 @@
       "status": "pass",
       "substage": "9.6b",
       "validation_outcome": "PanelForge manifest validated and six main figure mockups rendered"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.6b PanelForge rendering exists and passes",
+          "name": "stage_9_6b_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "Nine supplementary support items are uniquely identified, role-scoped, and linked to main figures plus locked artifacts",
+          "name": "supplementary_ledger_validates",
+          "passed": true
+        },
+        {
+          "detail": "Every supplementary row records a planned callout location and role",
+          "name": "each_item_has_callout_and_role",
+          "passed": true
+        },
+        {
+          "detail": "Every essential item points to an existing planned Results, Methods, or Discussion paragraph row",
+          "name": "essential_items_have_main_text_callouts",
+          "passed": true
+        },
+        {
+          "detail": "Supplementary planning does not demote the six locked main display items",
+          "name": "central_evidence_remains_in_main_figures",
+          "passed": true
+        },
+        {
+          "detail": "PanelForge manifest records supplementary planning metadata without rendering supplementary panels",
+          "name": "manifest_contains_nonrendered_supplementary_plan",
+          "passed": true
+        },
+        {
+          "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, or runtime environment detected",
+          "name": "no_downstream_stage9_surfaces_started",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.6b.json",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+        "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
+        "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
+        "manuscript/nature_methods/figures/figures.manifest.yaml",
+        "manuscript/nature_methods/gate_verdicts/9.7.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.7.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.8 section contract blueprint has not started",
+        "Citation resolution has not started",
+        "Manuscript drafting has not started",
+        "Submission-package assembly has not started"
+      ],
+      "status": "pass",
+      "substage": "9.7",
+      "supplementary_plan_version": "supplementary-plan@2026-07-02@523b7c69eefa95dc12986bb36f0e8b9b19e7752e",
+      "validation_outcome": "Supplementary display items registered with callouts, roles, and non-rendered manifest metadata"
     }
   ],
-  "current_gate": "Stage 9.6b rendered six deterministic main figure mockups without starting manuscript prose",
-  "current_substage": "9.6b",
+  "current_gate": "Stage 9.7 registered supplementary display items without starting manuscript prose",
+  "current_substage": "9.7",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
@@ -270,16 +336,16 @@
   "figure_spine_version": "figure-spine@2026-07-02@51275ccd63146d72934216cf132768738f132e89",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.6b are complete through deterministic main-figure mockup rendering.",
-    "Stage 9.7 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No manuscript draft sections, reference bibliography, supplementary display plan, or submission package contents are created in this rendering pass.",
-    "Stage 9.6b main figures resolve to frozen CLM IDs, locked ART IDs, and rendered PanelForge paths before drafting."
+    "Stage 9.0 through Stage 9.7 are complete through supplementary display planning.",
+    "Stage 9.8 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No manuscript draft sections, reference bibliography, or submission package contents are created in this supplementary planning pass.",
+    "Essential supplementary material has planned main-text callouts and does not replace the six main display items."
   ],
-  "generated_utc": "2026-07-02T11:28:38.370369Z",
+  "generated_utc": "2026-07-02T12:27:22.270410Z",
   "manuscript_drafting_started": false,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.7",
+  "next_substage": "9.8",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -341,7 +407,7 @@
   "report_format": "rhodyn.stage9_execution_memory.v1",
   "representative_methods_corpus_started": true,
   "representative_methods_corpus_version": "methods-corpus@2026-07-02@5ce55cc235ad1819dcc7a4382343f0293230a282",
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, and PanelForge rendering only. Do not start supplementary display planning, citation resolution, drafting, review response, or submission packaging without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, and supplementary display planning only. Do not start section contracts, citation resolution, drafting, review response, or submission packaging without explicit substage authorization.",
   "stage": 9,
   "stage9_0_checks": [
     {
@@ -572,10 +638,49 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.6b PanelForge rendering registered; manuscript production not started",
-  "status": "stage9_6b_panelforge_rendering_registered",
+  "stage9_7_checks": [
+    {
+      "detail": "Stage 9.6b PanelForge rendering exists and passes",
+      "name": "stage_9_6b_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Nine supplementary support items are uniquely identified, role-scoped, and linked to main figures plus locked artifacts",
+      "name": "supplementary_ledger_validates",
+      "passed": true
+    },
+    {
+      "detail": "Every supplementary row records a planned callout location and role",
+      "name": "each_item_has_callout_and_role",
+      "passed": true
+    },
+    {
+      "detail": "Every essential item points to an existing planned Results, Methods, or Discussion paragraph row",
+      "name": "essential_items_have_main_text_callouts",
+      "passed": true
+    },
+    {
+      "detail": "Supplementary planning does not demote the six locked main display items",
+      "name": "central_evidence_remains_in_main_figures",
+      "passed": true
+    },
+    {
+      "detail": "PanelForge manifest records supplementary planning metadata without rendering supplementary panels",
+      "name": "manifest_contains_nonrendered_supplementary_plan",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, or runtime environment detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "stage9_active_gate": "Stage 9.7 supplementary display planning registered; manuscript production not started",
+  "status": "stage9_7_supplementary_display_plan_registered",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
+  "supplementary_display_planning_started": true,
+  "supplementary_plan_version": "supplementary-plan@2026-07-02@523b7c69eefa95dc12986bb36f0e8b9b19e7752e",
   "venue_guidance_started": true,
   "venue_guidance_version": "nature-methods-guidance@2026-07-02@9d71e48774c613047315a4957e3087f442ac8643"
 }

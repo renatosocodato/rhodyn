@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 9.6b PanelForge rendering registered; manuscript production not started",
+    "active_stage": "Stage 9.7 supplementary display planning registered; manuscript production not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -28,6 +28,7 @@
     "after_stage9_4_claim_freeze": "Stage 9.4 froze five central RhoDyn methods-paper claims with evidence artifact links, strength caps, and explicit non-claims. Stage 9.5 paragraph claim ledger, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_5_paragraph_claim_ledger": "Stage 9.5 planned Nature Methods manuscript paragraphs as claim-bearing units tied to frozen CLM identifiers and copied strength caps. Stage 9.6 figure-first manuscript spine, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_6_figure_spine": "Stage 9.6 registered six main display items for the Nature Methods Article spine, each tied to frozen CLM identifiers and locked ART evidence. Stage 9.6b PanelForge rendering, supplementary display planning, citation resolution, manuscript drafting, and submission-package assembly remain not started.",
+    "after_stage9_7_supplementary_plan": "Stage 9.7 registered supplementary figures and tables as planned support items with callout locations and roles. It did not draft Supplementary Information, resolve citations, or begin manuscript sections.",
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
@@ -35,7 +36,7 @@
     "next_stage": "Stage 9.7 supplementary display planning",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
-    "stage9_active_gate": "Stage 9.6b PanelForge rendering registered; manuscript production not started"
+    "stage9_active_gate": "Stage 9.7 supplementary display planning registered; manuscript production not started"
   },
   "memory_notes": {
     "after_stage9_6b_panelforge_rendering": "Stage 9.6b generated a renderable PanelForge manifest and six deterministic main-figure mockups from the frozen figure-to-claim-to-artifact spine. Citation resolution, manuscript drafting, supplementary display planning, and submission-package assembly remain not started.",
@@ -398,9 +399,13 @@
         "manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.svg",
         "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.pdf",
         "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.png",
-        "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.svg"
+        "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.svg",
+        "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
+        "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
+        "manuscript/nature_methods/gate_verdicts/9.7.json",
+        "scripts/run_stage9_7_supplementary_display_plan.py"
       ],
-      "current_gate": "Stage 9.6b rendered six deterministic main figure mockups without starting manuscript prose",
+      "current_gate": "Stage 9.7 registered supplementary display items without starting manuscript prose",
       "gate": [
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
         "Stage 9.2 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
@@ -410,12 +415,13 @@
         "Stage 9.3 narrative spine is registered before claim freeze or manuscript drafting.",
         "Stage 9.4 claim hierarchy is frozen with evidence links and strength caps before drafting.",
         "Stage 9.5 paragraph rows resolve to frozen CLM IDs and retain claim strength caps before drafting.",
-        "Stage 9.6 main figures resolve to frozen CLM IDs and locked ART IDs before rendering."
+        "Stage 9.6 main figures resolve to frozen CLM IDs and locked ART IDs before rendering.",
+        "Stage 9.7 supplementary material has planned callouts and roles without demoting central evidence from the main figures."
       ],
       "name": "Nature Methods manuscript assembly scaffold",
-      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, and deterministic PanelForge rendering only. Do not start supplementary display planning, citation resolution, drafting, review response, or submission packaging without explicit substage authorization.",
+      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, and supplementary display planning only. Do not start section contracts, citation resolution, drafting, review response, or submission packaging without explicit substage authorization.",
       "stage": 9,
-      "status": "stage9_6b_panelforge_rendering_registered",
+      "status": "stage9_7_supplementary_display_plan_registered",
       "subphases": [
         {
           "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
@@ -497,12 +503,13 @@
           "status": "complete_panelforge_rendering_registered"
         },
         {
-          "evidence": "not_started",
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.7.json",
           "gate": "supplementary ledger validates; each item has callout and role; essential items have main-text callouts",
           "goal": "Plan supplementary material as cited support rather than a data dump.",
           "id": "9.7",
           "name": "Supplementary display item plan",
-          "status": "not_started"
+          "status": "complete_supplementary_display_plan_registered",
+          "supplementary_plan_version": "supplementary-plan@2026-07-02@523b7c69eefa95dc12986bb36f0e8b9b19e7752e"
         },
         {
           "evidence": "not_started",

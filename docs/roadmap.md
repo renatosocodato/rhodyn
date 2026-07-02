@@ -36,9 +36,10 @@ to reproducible evidence, validation, and limitations. The Stage 7.7 and 7.8
 surfaces are now recursively checked against the Stage 7.6 archive and release
 checksums. Stage 8 remains conceptual. Stage 9 scaffold has been serialized
 under the v2.1 contract, and Stage 9.0 evidence lock has been completed from
-the Stage 7.8 methods-readiness package. PanelForge figure-engine integration
-is complete as Stage 9.6b, but manuscript production, citation
-resolution, supplementary display planning, and drafting remain not started.
+the Stage 7.8 methods-readiness package. PanelForge figure-engine integration is complete as Stage 9.6b, and
+Stage 9.7 has registered supplementary display planning. Manuscript
+production, citation resolution, section contracts, and drafting remain not
+started.
 
 ## Execution memory
 
@@ -111,13 +112,13 @@ as roadmap work.
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
 | Stage 7. Independent methods-program roadmap | Stage 7.8 methods manuscript readiness package complete and recursively hardened against release surfaces. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
-| Stage 9. Nature Methods manuscript assembly | Stage 9.6b PanelForge rendering registered, manuscript production not started. | The current boundary is evidence intake, official venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, and deterministic PanelForge rendering only. Do not start supplementary display planning, citation resolution, drafting, review response, or submission packaging without explicit substage authorization. |
+| Stage 9. Nature Methods manuscript assembly | Stage 9.7 supplementary display planning registered, manuscript production not started. | The current boundary is evidence intake, official venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, and supplementary display planning only. Do not start section contracts, citation resolution, drafting, review response, or submission packaging without explicit substage authorization. |
 
 Stage 9.1 venue guidance source register has been completed. The current
 source-bound constraints are the Nature Methods Article budget, Reporting
 Summary expectation, software/code availability expectations, data availability
 expectations, figure-legend constraints, and statistics-reporting expectations.
-Stage 9.2 representative methods-paper corpus has been completed. Stage 9.3 narrative spine has been completed. Stage 9.4 claim freeze has been completed. Stage 9.5 paragraph-level claim ledger has been completed. Stage 9.6 figure-first manuscript spine has been completed. Stage 9.6b PanelForge rendering has been completed. Stage 9.7 supplementary display planning remains the next unstarted manuscript step. manuscript production, citation resolution, supplementary display planning, and drafting remain not started.
+Stage 9.2 representative methods-paper corpus has been completed. Stage 9.3 narrative spine has been completed. Stage 9.4 claim freeze has been completed. Stage 9.5 paragraph-level claim ledger has been completed. Stage 9.6 figure-first manuscript spine has been completed. Stage 9.6b PanelForge rendering has been completed. Stage 9.7 supplementary display planning has been completed. Stage 9.8 section contract blueprint remains the next unstarted manuscript step. Manuscript production, citation resolution, and drafting remain not started.
 
 ## Non-drift principles
 

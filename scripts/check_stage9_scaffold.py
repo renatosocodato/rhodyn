@@ -44,6 +44,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_5_paragraph_claim_ledger.py",
     "scripts/run_stage9_6_figure_spine.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
+    "scripts/run_stage9_7_supplementary_display_plan.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -212,10 +213,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.6 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.7 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -226,6 +227,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_5_started = "9.5.json" in gate_files
     stage9_6_started = "9.6.json" in gate_files
     stage9_6b_started = "9.6b.json" in gate_files
+    stage9_7_started = "9.7.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -252,7 +254,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_6b_panelforge_rendering_registered"
+        "stage9_7_supplementary_display_plan_registered"
+        if stage9_7_started
+        else "stage9_6b_panelforge_rendering_registered"
         if stage9_6b_started
         else "stage9_6_figure_spine_registered"
         if stage9_6_started
@@ -481,6 +485,40 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         manifest = workspace / "figures" / "figures.manifest.yaml"
         if manifest.exists() and "scaffold_placeholder_not_renderable" not in manifest.read_text(encoding="utf-8"):
             failures.append("Stage 9 figure manifest must remain a non-renderable scaffold placeholder before 9.6b")
+
+    if stage9_7_started:
+        stage9_7_gate = _read_json(workspace / "gate_verdicts" / "9.7.json", failures)
+        if stage9_7_gate.get("pass") is not True or stage9_7_gate.get("substage") != "9.7":
+            failures.append("Stage 9.7 gate verdict must pass when present")
+        for rel in [
+            "supplementary/supplementary_item_plan.md",
+            "ledgers/supplementary_callout_ledger.csv",
+        ]:
+            if not (workspace / rel).exists():
+                failures.append(f"Stage 9.7 supplementary-plan output missing: {rel}")
+        if stage9_7_gate.get("supplementary_item_count") != 9:
+            failures.append("Stage 9.7 must register nine supplementary support items")
+        if stage9_7_gate.get("essential_item_count", 0) < 6:
+            failures.append("Stage 9.7 must keep the essential supplementary support set populated")
+        try:
+            manifest_payload = json.loads((workspace / "figures" / "figures.manifest.yaml").read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Stage 9.7 figure manifest is not valid JSON/YAML subset: {exc}")
+            manifest_payload = {}
+        supplementary_items = manifest_payload.get("supplementary_items", []) if isinstance(manifest_payload, dict) else []
+        if len(supplementary_items) != 9:
+            failures.append("Stage 9.7 figure manifest must contain nine supplementary planning rows")
+        if any(item.get("render_status") != "not_rendered_stage9.7_plan_only" for item in supplementary_items if isinstance(item, dict)):
+            failures.append("Stage 9.7 supplementary rows must remain non-rendered planning metadata")
+        if memory.get("supplementary_display_planning_started") is not True:
+            failures.append("Stage 9 execution memory must record supplementary_display_planning_started=true after 9.7")
+    else:
+        for rel in [
+            "supplementary/supplementary_item_plan.md",
+            "ledgers/supplementary_callout_ledger.csv",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain supplementary-plan output before 9.7: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
