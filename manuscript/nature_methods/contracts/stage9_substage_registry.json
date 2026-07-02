@@ -13,7 +13,7 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.1",
+  "last_completed_substage": "9.2",
   "patch_ledger": [
     {
       "id": "P1",
@@ -135,7 +135,7 @@
         "manuscript/nature_methods/refs/representative_methods_papers.md",
         "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md"
       ],
-      "status": "not_started",
+      "status": "completed",
       "title": "Representative methods-paper corpus"
     },
     {

@@ -111,13 +111,13 @@ as roadmap work.
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
 | Stage 7. Independent methods-program roadmap | Stage 7.8 methods manuscript readiness package complete and recursively hardened against release surfaces. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
-| Stage 9. Nature Methods manuscript assembly | Stage 9.1 venue guidance registered, manuscript production not started. | The current boundary is evidence intake plus official venue-guidance registration only, with PanelForge reserved as a future Stage 9.6b rendering dependency. Do not start the representative methods-paper corpus, citation resolution, figure rendering, drafting, review response, or submission packaging without explicit substage authorization. |
+| Stage 9. Nature Methods manuscript assembly | Stage 9.2 methods-paper corpus registered, manuscript production not started. | The current boundary is evidence intake, official venue-guidance registration, and representative methods-paper corpus analysis only, with PanelForge reserved as a future Stage 9.6b rendering dependency. Do not start narrative-spine selection, citation resolution, figure rendering, drafting, review response, or submission packaging without explicit substage authorization. |
 
 Stage 9.1 venue guidance source register has been completed. The current
 source-bound constraints are the Nature Methods Article budget, Reporting
 Summary expectation, software/code availability expectations, data availability
 expectations, figure-legend constraints, and statistics-reporting expectations.
-Stage 9.2 remains the next unstarted manuscript step.
+Stage 9.2 representative methods-paper corpus has been completed. Stage 9.3 remains the next unstarted manuscript step.
 
 ## Non-drift principles
 

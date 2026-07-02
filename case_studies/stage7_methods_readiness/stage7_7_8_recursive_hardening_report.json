@@ -11,9 +11,9 @@
   },
   "completion_state": "stage7_7_8_recursively_hardened",
   "counts": {
-    "archive_manifest_rows": 425,
+    "archive_manifest_rows": 457,
     "authorized_phase9_scaffold_files": 8,
-    "release_checksum_rows": 424,
+    "release_checksum_rows": 437,
     "required_stage7_7_8_files": 27,
     "stage7_7_bundle_members": 18,
     "stage7_7_bundles": 2,

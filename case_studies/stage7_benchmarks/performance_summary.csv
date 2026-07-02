@@ -1,7 +1,7 @@
 component,method,n_traces,n_rows,runtime_ms,peak_memory_kb,result_units
-performance,RhoDyn_score_records,10,250,0.708,8.855469,10
-performance,amplitude_peak_baseline,10,250,0.021667,2.976562,10
-performance,RhoDyn_score_records,100,2500,7.494333,69.824219,100
-performance,amplitude_peak_baseline,100,2500,0.243458,34.078125,100
-performance,RhoDyn_score_records,1000,25000,76.116917,708.769531,1000
-performance,amplitude_peak_baseline,1000,25000,3.097417,363.84375,1000
+performance,RhoDyn_score_records,10,250,0.857,8.855469,10
+performance,amplitude_peak_baseline,10,250,0.026209,2.976562,10
+performance,RhoDyn_score_records,100,2500,7.770958,65.511719,100
+performance,amplitude_peak_baseline,100,2500,0.247125,34.078125,100
+performance,RhoDyn_score_records,1000,25000,98.408709,698.332031,1000
+performance,amplitude_peak_baseline,1000,25000,3.046167,363.84375,1000

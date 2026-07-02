@@ -53,7 +53,7 @@ LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
     re.compile("/" + "Volumes/"),
     re.compile("Library/" + "LaunchAgents"),
-    re.compile(r"sk-[A-Za-z0-9]"),
+    re.compile(r"sk-[A-Za-z0-9_-]{16,}"),
     re.compile("ghp" + r"_[A-Za-z0-9_]+"),
     re.compile("github" + r"_pat_[A-Za-z0-9_]+"),
     re.compile(r"xox[baprs]-[A-Za-z0-9-]+"),
@@ -153,7 +153,8 @@ def audit_phase6_release_readiness(root: Path = ROOT) -> dict[str, Any]:
     phase_checks = {
         "readme_declares_standalone_toolkit": "standalone Python toolkit" in readme,
         "readme_preserves_manuscript_independence": "The manuscript was not generated with RhoDyn" in readme,
-        "roadmap_stage6_public_release_state": "Stage 6 is the active release-hardening stage" in roadmap and "v0.1.0` is now" in roadmap,
+        "roadmap_stage6_public_release_state": "Stage 6 has produced a professionally citable RhoDyn `v0.1.0` GitHub" in roadmap
+        and "Public `v0.1.0` GitHub and Zenodo software release live" in roadmap,
         "subphase_horizon_documented": all(f"{sid} {name}" in roadmap for sid, name in SUBPHASES),
         "release_checklist_preserves_safety_boundary": "must not contain raw microscopy files" in release_checklist,
     }

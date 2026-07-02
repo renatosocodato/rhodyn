@@ -1,0 +1,952 @@
+{
+  "accessed_utc": "2026-07-02T10:19:25.464399Z",
+  "crossref_journal": "Nature Methods",
+  "crossref_title": "Squidpy: a scalable framework for spatial omics analysis",
+  "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41592-021-01358-2",
+  "doi": "10.1038/s41592-021-01358-2",
+  "expected_journal": "Nature Methods",
+  "expected_title": "Squidpy: a scalable framework for spatial omics analysis",
+  "http_status": 200,
+  "message": {
+    "DOI": "10.1038/s41592-021-01358-2",
+    "ISSN": [
+      "1548-7091",
+      "1548-7105"
+    ],
+    "URL": "https://doi.org/10.1038/s41592-021-01358-2",
+    "abstract": "<jats:title>Abstract</jats:title><jats:p>Spatial omics data are advancing the study of tissue organization and cellular communication at an unprecedented scale. Flexible tools are required to store, integrate and visualize the large diversity of spatial omics data. Here, we present Squidpy, a Python framework that brings together tools from omics and image analysis to enable scalable description of spatial molecular data, such as transcriptome or multivariate proteins. Squidpy provides efficient infrastructure and numerous analysis methods that allow to efficiently store, manipulate and interactively visualize spatial omics data. Squidpy is extensible and can be interfaced with a variety of already existing libraries for the scalable analysis of spatial omics data.</jats:p>",
+    "alternative-id": [
+      "1358"
+    ],
+    "assertion": [
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Received",
+        "name": "received",
+        "order": 1,
+        "value": "19 February 2021"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Accepted",
+        "name": "accepted",
+        "order": 2,
+        "value": "21 November 2021"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "First Online",
+        "name": "first_online",
+        "order": 3,
+        "value": "31 January 2022"
+      },
+      {
+        "group": {
+          "label": "Competing interests",
+          "name": "EthicsHeading"
+        },
+        "name": "Ethics",
+        "order": 1,
+        "value": "\"F.J.T. consults for Immunai Inc., Singularity Bio B.V., CytoReason Ltd, and Omniscope Ltd, and has ownership interest in Dermagnostix GmbH and Cellarity."
+      }
+    ],
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-8004-4462",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Palla",
+        "given": "Giovanni",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-7858-0936",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Spitzer",
+        "given": "Hannah",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Klein",
+        "given": "Michal",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-1293-7656",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Fischer",
+        "given": "David",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Schaar",
+        "given": "Anna Christina",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-9193-1243",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Kuemmerle",
+        "given": "Louis Benedikt",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Rybakov",
+        "given": "Sergei",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Ibarra",
+        "given": "Ignacio L.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Holmberg",
+        "given": "Olle",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-1710-8945",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Virshup",
+        "given": "Isaac",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-6858-7985",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Lotfollahi",
+        "given": "Mohammad",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-6101-2783",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Richter",
+        "given": "Sabrina",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-2419-1943",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Theis",
+        "given": "Fabian J.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      }
+    ],
+    "container-title": [
+      "Nature Methods"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": [
+        "link.springer.com"
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2022,
+          1,
+          31
+        ]
+      ],
+      "date-time": "2022-01-31T17:04:38Z",
+      "timestamp": 1643648678000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2024,
+          9,
+          17
+        ]
+      ],
+      "date-time": "2024-09-17T17:37:35Z",
+      "timestamp": 1726594655000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          7,
+          2
+        ]
+      ],
+      "date-time": "2026-07-02T03:13:55Z",
+      "timestamp": 1782962035930,
+      "version": "3.54.5"
+    },
+    "is-referenced-by-count": 1060,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "1548-7091"
+      },
+      {
+        "type": "electronic",
+        "value": "1548-7105"
+      }
+    ],
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          1,
+          31
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "2",
+      "published-print": {
+        "date-parts": [
+          [
+            2022,
+            2
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "https://creativecommons.org/licenses/by/4.0",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2022,
+              1,
+              31
+            ]
+          ],
+          "date-time": "2022-01-31T00:00:00Z",
+          "timestamp": 1643587200000
+        }
+      },
+      {
+        "URL": "https://creativecommons.org/licenses/by/4.0",
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2022,
+              1,
+              31
+            ]
+          ],
+          "date-time": "2022-01-31T00:00:00Z",
+          "timestamp": 1643587200000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "https://www.nature.com/articles/s41592-021-01358-2.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/s41592-021-01358-2",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/s41592-021-01358-2.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "297",
+    "original-title": [],
+    "page": "171-178",
+    "prefix": "10.1038",
+    "published": {
+      "date-parts": [
+        [
+          2022,
+          1,
+          31
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2022,
+          1,
+          31
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2022,
+          2
+        ]
+      ]
+    },
+    "publisher": "Springer Science and Business Media LLC",
+    "reference": [
+      {
+        "DOI": "10.7554/eLife.27041",
+        "author": "A Regev",
+        "doi-asserted-by": "publisher",
+        "first-page": "e27041",
+        "journal-title": "eLife",
+        "key": "1358_CR1",
+        "unstructured": "Regev, A. et al. The human cell atlas. eLife 6, e27041 (2017).",
+        "volume": "6",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1038/s41592-020-01038-7",
+        "author": "L Larsson",
+        "doi-asserted-by": "publisher",
+        "first-page": "15",
+        "journal-title": "Nat. Methods",
+        "key": "1358_CR2",
+        "unstructured": "Larsson, L., Fris\u00e9n, J. & Lundeberg, J. Spatially resolved transcriptomics adds a new dimension to genomics. Nat. Methods 18, 15\u201318 (2021).",
+        "volume": "18",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1038/s41592-020-01037-8",
+        "author": "X Zhuang",
+        "doi-asserted-by": "publisher",
+        "first-page": "18",
+        "journal-title": "Nat. Methods",
+        "key": "1358_CR3",
+        "unstructured": "Zhuang, X. Spatially resolved single-cell genomics and transcriptomics by imaging. Nat. Methods 18, 18\u201322 (2021).",
+        "volume": "18",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1016/j.cell.2016.04.019",
+        "author": "MH Spitzer",
+        "doi-asserted-by": "publisher",
+        "first-page": "780",
+        "journal-title": "Cell",
+        "key": "1358_CR4",
+        "unstructured": "Spitzer, M. H. & Nolan, G. P. Mass cytometry: Single cells, many features. Cell 165, 780\u2013791 (2016).",
+        "volume": "165",
+        "year": "2016"
+      },
+      {
+        "key": "1358_CR5",
+        "unstructured": "Axelrod, S. et al. Starfish: open source image-based transcriptomics and proteomics tools. http://github.com/spacetx/starfish (2018)."
+      },
+      {
+        "DOI": "10.1101/2021.02.13.431099",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR6",
+        "unstructured": "Prabhakaran, S., Nawy, T. & Pe\u2019er\u2019, D. Sparcle: assigning transcripts to cells in multiplexed images. Preprint at BioRxiv https://doi.org/10.1101/2021.02.13.431099 (2021)."
+      },
+      {
+        "DOI": "10.1038/s41467-021-23807-4",
+        "author": "J Park",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "1358_CR7",
+        "unstructured": "Park, J. et al. Cell segmentation-free inference of cell types from in situ transcriptomics data. Nat. Commun. 12, 3545 (2021).",
+        "volume": "12",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1038/s41587-021-01044-w",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR8",
+        "unstructured": "Petukhov, V. et al. Cell segmentation in imaging-based spatial transcriptomics. Nat. Biotechnol. https://doi.org/10.1038/s41587-021-01044-w (2021)."
+      },
+      {
+        "DOI": "10.1038/nbt.4096",
+        "author": "A Butler",
+        "doi-asserted-by": "publisher",
+        "first-page": "411",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1358_CR9",
+        "unstructured": "Butler, A., Hoffman, P., Smibert, P., Papalexi, E. & Satija, R. Integrating single-cell transcriptomic data across different conditions, technologies, and species. Nat. Biotechnol. 36, 411\u2013420 (2018).",
+        "volume": "36",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1101/2021.01.27.428431",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR10",
+        "unstructured": "Righelli, D. et al. SpatialExperiment: infrastructure for spatially resolved transcriptomics data in R using Bioconductor. Preprint at BioRxiv https://doi.org/10.1101/2021.01.27.428431 (2021)."
+      },
+      {
+        "DOI": "10.1101/2020.05.31.125658",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR11",
+        "unstructured": "Pham, D. et al. stLearn: integrating spatial location, tissue morphology and gene expression to find cell types, cell\u2013cell interactions and spatial trajectories within undissociated tissues. Preprint at BioRxiv https://doi.org/10.1101/2020.05.31.125658 (2020)."
+      },
+      {
+        "DOI": "10.1186/s12864-020-06832-3",
+        "author": "J Bergenstr\u00e5hle",
+        "doi-asserted-by": "publisher",
+        "journal-title": "BMC Genomics",
+        "key": "1358_CR12",
+        "unstructured": "Bergenstr\u00e5hle, J., Larsson, L. & Lundeberg, J. Seamless integration of image and molecular analysis for spatial transcriptomics workflows. BMC Genomics 21, 482 (2020).",
+        "volume": "21",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1186/s13059-021-02286-2",
+        "author": "R Dries",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome Biol.",
+        "key": "1358_CR13",
+        "unstructured": "Dries, R. et al. Giotto: a toolbox for integrative analysis and visualization of spatial expression data. Genome Biol. 22, 78 (2021).",
+        "volume": "22",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1038/s41587-021-00935-2",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR14",
+        "unstructured": "Zhao, E. et al. Spatial transcriptomics at subspot resolution with BayesSpace. Nat. Biotechnol. https://doi.org/10.1038/s41587-021-00935-2 (2021)."
+      },
+      {
+        "DOI": "10.1007/978-3-030-00934-2_30",
+        "doi-asserted-by": "crossref",
+        "key": "1358_CR15",
+        "unstructured": "Schmidt, U., Weigert, M., Broaddus, C. & Myers, G. in Medical Image Computing and Computer Assisted Intervention \u2013 MICCAI 2018 265\u2013273 (Springer International Publishing, 2018)."
+      },
+      {
+        "DOI": "10.1038/s41592-020-01018-x",
+        "author": "C Stringer",
+        "doi-asserted-by": "publisher",
+        "first-page": "100",
+        "journal-title": "Nat. Methods",
+        "key": "1358_CR16",
+        "unstructured": "Stringer, C., Wang, T., Michaelos, M. & Pachitariu, M. Cellpose: a generalist algorithm for cellular segmentation. Nat. Methods 18, 100\u2013106 (2021).",
+        "volume": "18",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1093/bioinformatics/btaa541",
+        "author": "L Solorzano",
+        "doi-asserted-by": "publisher",
+        "first-page": "4363",
+        "journal-title": "Bioinformatics",
+        "key": "1358_CR17",
+        "unstructured": "Solorzano, L., Partel, G. & W\u00e4hlby, C. TissUUmaps: interactive visualization of large-scale spatial gene expression and tissue morphology data. Bioinformatics 36, 4363\u20134365 (2020).",
+        "volume": "36",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/s41592-019-0686-2",
+        "author": "P Virtanen",
+        "doi-asserted-by": "publisher",
+        "first-page": "261",
+        "journal-title": "Nat. Methods",
+        "key": "1358_CR18",
+        "unstructured": "Virtanen, P. et al. SciPy 1.0: fundamental algorithms for scientific computing in Python. Nat. Methods 17, 261\u2013272 (2020).",
+        "volume": "17",
+        "year": "2020"
+      },
+      {
+        "key": "1358_CR19",
+        "unstructured": "Dask Development Team. Dask: library for dynamic task scheduling. https://docs.dask.org/en/stable (2016)."
+      },
+      {
+        "DOI": "10.1186/s13059-017-1382-0",
+        "author": "FA Wolf",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome Biol.",
+        "key": "1358_CR20",
+        "unstructured": "Wolf, F. A., Angerer, P. & Theis, F. J. SCANPY: large-scale single-cell gene expression data analysis. Genome Biol. 19, 15 (2018).",
+        "volume": "19",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.7717/peerj.453",
+        "author": "S van der Walt",
+        "doi-asserted-by": "publisher",
+        "first-page": "e453",
+        "journal-title": "PeerJ",
+        "key": "1358_CR21",
+        "unstructured": "van der Walt, S. et al. scikit-image: image processing in Python. PeerJ 2, e453 (2014).",
+        "volume": "2",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.5281/zenodo.4470554",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR22",
+        "unstructured": "Sofroniew, N. et al. napari/napari: 0.4.4rc0. https://doi.org/10.5281/zenodo.4470554 (2021)."
+      },
+      {
+        "DOI": "10.1126/science.aaf2403",
+        "author": "PL St\u00e5hl",
+        "doi-asserted-by": "publisher",
+        "first-page": "78",
+        "journal-title": "Science",
+        "key": "1358_CR23",
+        "unstructured": "St\u00e5hl, P. L. et al. Visualization and analysis of gene expression in tissue sections by spatial transcriptomics. Science 353, 78\u201382 (2016).",
+        "volume": "353",
+        "year": "2016"
+      },
+      {
+        "key": "1358_CR24",
+        "unstructured": "10X Genomics. Visium spatial gene expression reagent kits user guide. https://support.10xgenomics.com/spatial-gene-expression/library-prep/doc/user-guide-visium-spatial-gene-expression-reagent-kits-user-guide (2021)."
+      },
+      {
+        "DOI": "10.1016/j.cell.2020.10.026",
+        "author": "Y Liu",
+        "doi-asserted-by": "publisher",
+        "first-page": "1665",
+        "journal-title": "Cell",
+        "key": "1358_CR25",
+        "unstructured": "Liu, Y. et al. High-spatial-resolution multi-omics sequencing via deterministic barcoding in tissue. Cell 183, 1665\u20131681 (2020).",
+        "volume": "183",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/s41586-019-1049-y",
+        "author": "C-HL Eng",
+        "doi-asserted-by": "publisher",
+        "first-page": "235",
+        "journal-title": "Nature",
+        "key": "1358_CR26",
+        "unstructured": "Eng, C.-H. L. et al. Transcriptome-scale super-resolved imaging in tissues by RNA seqFISH. Nature 568, 235\u2013239 (2019).",
+        "volume": "568",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1126/science.aaa6090",
+        "author": "KH Chen",
+        "doi-asserted-by": "publisher",
+        "first-page": "aaa6090",
+        "journal-title": "Science",
+        "key": "1358_CR27",
+        "unstructured": "Chen, K. H., Boettiger, A. N., Moffitt, J. R., Wang, S. & Zhuang, X. RNA imaging. Spatially resolved, highly multiplexed RNA profiling in single cells. Science 348, aaa6090 (2015).",
+        "volume": "348",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1038/nmeth.2869",
+        "author": "C Giesen",
+        "doi-asserted-by": "publisher",
+        "first-page": "417",
+        "journal-title": "Nat. Methods",
+        "key": "1358_CR28",
+        "unstructured": "Giesen, C. et al. Highly multiplexed imaging of tumor tissues with subcellular resolution by mass cytometry. Nat. Methods 11, 417\u2013422 (2014).",
+        "volume": "11",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1126/sciadv.aax5851",
+        "author": "L Keren",
+        "doi-asserted-by": "publisher",
+        "first-page": "eaax5851",
+        "journal-title": "Sci. Adv.",
+        "key": "1358_CR29",
+        "unstructured": "Keren, L. et al. MIBI-TOF: a multiplexed imaging platform relates cellular phenotypes and tissue structure. Sci. Adv. 5, eaax5851 (2019).",
+        "volume": "5",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1002/cpch.14",
+        "author": "J-R Lin",
+        "doi-asserted-by": "publisher",
+        "first-page": "251",
+        "journal-title": "Curr. Protoc. Chem. Biol.",
+        "key": "1358_CR30",
+        "unstructured": "Lin, J.-R., Fallahi-Sichani, M., Chen, J.-Y. & Sorger, P. K. Cyclic immunofluorescence (CycIF), a highly multiplexed method for single-cell imaging. Curr. Protoc. Chem. Biol. 8, 251\u2013264 (2016).",
+        "volume": "8",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1126/science.aar7042",
+        "author": "G Gut",
+        "doi-asserted-by": "publisher",
+        "first-page": "eaar7042",
+        "journal-title": "Science",
+        "key": "1358_CR31",
+        "unstructured": "Gut, G., Herrmann, M. D. & Pelkmans, L. Multiplexed protein maps link subcellular organization to cellular states. Science 361, eaar7042 (2018).",
+        "volume": "361",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1146/annurev-biodatasci-011420-031537",
+        "author": "T Alexandrov",
+        "doi-asserted-by": "publisher",
+        "first-page": "61",
+        "journal-title": "Annu. Rev. Biomed. Data Sci.",
+        "key": "1358_CR32",
+        "unstructured": "Alexandrov, T. Spatial metabolomics and imaging mass spectrometry in the age of artificial intelligence. Annu. Rev. Biomed. Data Sci. 3, 61\u201387 (2020).",
+        "volume": "3",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/s41587-021-01006-2",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR33",
+        "unstructured": "Lohoff, T. et al. Integration of spatial and single-cell transcriptomic data elucidates mouse organogenesis. Nat. Biotechnol. https://doi.org/10.1038/s41587-021-01006-2 (2021)."
+      },
+      {
+        "DOI": "10.1126/science.aau5324",
+        "author": "JR Moffitt",
+        "doi-asserted-by": "publisher",
+        "first-page": "eaau5324",
+        "journal-title": "Science",
+        "key": "1358_CR34",
+        "unstructured": "Moffitt, J. R. et al. Molecular, spatial, and functional single-cell profiling of the hypothalamic preoptic region. Science 362, eaau5324 (2018).",
+        "volume": "362",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41587-020-0739-1",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR35",
+        "unstructured": "Stickels, R. R. et al. Highly sensitive spatial transcriptomics at near-cellular resolution with Slide-seqV2. Nat. Biotechnol. https://doi.org/10.1038/s41587-020-0739-1 (2020)."
+      },
+      {
+        "DOI": "10.1038/s41586-019-1876-x",
+        "author": "HW Jackson",
+        "doi-asserted-by": "publisher",
+        "first-page": "615",
+        "journal-title": "Nature",
+        "key": "1358_CR36",
+        "unstructured": "Jackson, H. W. et al. The single-cell pathology landscape of breast cancer. Nature 578, 615\u2013620 (2020).",
+        "volume": "578",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.5334/jors.148",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR37",
+        "unstructured": "Hoyer, S. & Hamman, J. J. xarray: N-D labeled arrays and datasets in Python. J. Open Res. Softw. https://doi.org/10.5334/jors.148 (2017)."
+      },
+      {
+        "DOI": "10.1371/journal.pbio.2005970",
+        "author": "C McQuin",
+        "doi-asserted-by": "publisher",
+        "first-page": "e2005970",
+        "journal-title": "PLoS Biol.",
+        "key": "1358_CR38",
+        "unstructured": "McQuin, C. et al. CellProfiler 3.0: next-generation image processing for biology. PLoS Biol. 16, e2005970 (2018).",
+        "volume": "16",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41592-021-01264-7",
+        "author": "T Biancalani",
+        "doi-asserted-by": "publisher",
+        "first-page": "1352",
+        "journal-title": "Nat. Methods",
+        "key": "1358_CR39",
+        "unstructured": "Biancalani, T. et al. Deep learning and alignment of spatially resolved single-cell transcriptomes with Tangram. Nat. Methods 18, 1352\u20131362 (2021).",
+        "volume": "18",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1101/2020.11.15.378125",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR40",
+        "unstructured": "Kleshchevnikov, V. et al. Comprehensive mapping of tissue cell architecture via integrated single cell and spatial transcriptomics. Preprint at bioRxiv https://doi.org/10.1101/2020.11.15.378125 (2020)."
+      },
+      {
+        "DOI": "10.1038/s41587-020-0651-8",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR41",
+        "unstructured": "Hartmann, F. J. et al. Single-cell metabolic profiling of human cytotoxic T cells. Nat. Biotechnol. https://doi.org/10.1038/s41587-020-0651-8 (2020)."
+      },
+      {
+        "DOI": "10.1093/bioinformatics/btab164",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR42",
+        "unstructured": "Anderson, A. & Lundeberg, J. sepal: identifying transcript profiles with spatial patterns by diffusion-based modeling. Bioinformatics https://doi.org/10.1093/bioinformatics/btab164 (2021)."
+      },
+      {
+        "DOI": "10.1038/s41596-020-0292-x",
+        "author": "M Efremova",
+        "doi-asserted-by": "publisher",
+        "first-page": "1484",
+        "journal-title": "Nat. Protoc.",
+        "key": "1358_CR43",
+        "unstructured": "Efremova, M., Vento-Tormo, M., Teichmann, S. A. & Vento-Tormo, R. CellPhoneDB: inferring cell\u2013cell communication from combined expression of multi-subunit ligand\u2013receptor complexes. Nat. Protoc. 15, 1484\u20131506 (2020).",
+        "volume": "15",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.15252/msb.20209923",
+        "author": "D T\u00fcrei",
+        "doi-asserted-by": "publisher",
+        "first-page": "e9923",
+        "journal-title": "Mol. Syst. Biol.",
+        "key": "1358_CR44",
+        "unstructured": "T\u00fcrei, D. et al. Integrated intra\u2010 and intercellular signaling knowledge for multicellular omics analysis. Mol. Syst. Biol. 17, e9923 (2021).",
+        "volume": "17",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1101/2021.05.21.445160",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR45",
+        "unstructured": "Dimitrov, D. et al. Comparison of resources and methods to infer cell-cell communication from single-cell RNA data. Preprint at bioRxiv https://doi.org/10.1101/2021.05.21.445160 (2021)."
+      },
+      {
+        "DOI": "10.1126/science.abb4588",
+        "author": "K Amunts",
+        "doi-asserted-by": "publisher",
+        "first-page": "988",
+        "journal-title": "Science",
+        "key": "1358_CR46",
+        "unstructured": "Amunts, K., Mohlberg, H., Bludau, S. & Zilles, K. Julich-Brain: a 3D probabilistic atlas of the human brain\u2019s cytoarchitecture. Science 369, 988\u2013992 (2020).",
+        "volume": "369",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1146/annurev-neuro-100520-082639",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR47",
+        "unstructured": "Ortiz, C., Carl\u00e9n, M. & Meletis, K. Spatial transcriptomics: molecular maps of the mammalian brain. Annu. Rev. Neurosci. https://doi.org/10.1146/annurev-neuro-100520-082639 (2021)."
+      },
+      {
+        "key": "1358_CR48",
+        "unstructured": "Kandel, E., Koester, J. D., Mack, S. H. & Siegelbaum, S. Principles of Neural Science 6th edn (McGraw-Hill Education, 2021)."
+      },
+      {
+        "author": "F Pedregosa",
+        "first-page": "2825",
+        "journal-title": "J. Mach. Learn. Res.",
+        "key": "1358_CR49",
+        "unstructured": "Pedregosa, F., Varoquaux, G. & Gramfort, A. Scikit-learn: machine learning in Python. J. Mach. Learn. Res. 12, 2825\u20132830 (2011).",
+        "volume": "12",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.25080/TCWV9851",
+        "doi-asserted-by": "crossref",
+        "key": "1358_CR50",
+        "unstructured": "Hagberg, A., Swart, P. & S Chult, D. Exploring network structure, dynamics, and function using networkx. https://www.osti.gov/biblio/960616 (2008)."
+      },
+      {
+        "DOI": "10.1038/s41586-020-2649-2",
+        "author": "CR Harris",
+        "doi-asserted-by": "publisher",
+        "first-page": "357",
+        "journal-title": "Nature",
+        "key": "1358_CR51",
+        "unstructured": "Harris, C. R. et al. Array programming with NumPy. Nature 585, 357\u2013362 (2020).",
+        "volume": "585",
+        "year": "2020"
+      },
+      {
+        "key": "1358_CR52",
+        "unstructured": "Kipf, T. N. & Welling, M. Semi-supervised classification with graph convolutional networks. Preprint at arXiv https://arxiv.org/abs/1609.02907 (2016)."
+      },
+      {
+        "DOI": "10.5281/zenodo.3773450",
+        "doi-asserted-by": "publisher",
+        "key": "1358_CR53",
+        "unstructured": "Miles, A. et al. zarr-developers/zarr-python: v2.4.0. (2020). https://doi.org/10.5281/zenodo.3773450"
+      },
+      {
+        "DOI": "10.1038/nmeth.4391",
+        "author": "D Schapiro",
+        "doi-asserted-by": "publisher",
+        "first-page": "873",
+        "journal-title": "Nat. Methods",
+        "key": "1358_CR54",
+        "unstructured": "Schapiro, D. et al. histoCAT: analysis of cell phenotypes and interactions in multiplex image cytometry data. Nat. Methods 14, 873\u2013876 (2017).",
+        "volume": "14",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1145/2833157.2833162",
+        "doi-asserted-by": "crossref",
+        "key": "1358_CR55",
+        "unstructured": "Lam, S. K., Pitrou, A. & Seibert, S. Numba: a LLVM-based Python JIT compiler. In Proc. 2nd Workshop on the LLVM Compiler Infrastructure in HPC 1\u20136 (Association for Computing Machinery, 2015)."
+      },
+      {
+        "DOI": "10.1053/j.gastro.2020.11.010",
+        "author": "L Tosti",
+        "doi-asserted-by": "publisher",
+        "first-page": "1330",
+        "journal-title": "Gastroenterology",
+        "key": "1358_CR56",
+        "unstructured": "Tosti, L. et al. Single-nucleus and in situ RNA-sequencing reveal cell topographies in the human pancreas. Gastroenterology 160, 1330\u20131344 (2021).",
+        "volume": "160",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1111/j.1538-4632.1992.tb00261.x",
+        "author": "A Getis",
+        "doi-asserted-by": "publisher",
+        "first-page": "189",
+        "journal-title": "Geogr. Anal.",
+        "key": "1358_CR57",
+        "unstructured": "Getis, A. & Ord, J. K. The analysis of spatial association by use of distance statistics. Geogr. Anal. 24, 189\u2013206 (2010).",
+        "volume": "24",
+        "year": "2010"
+      },
+      {
+        "author": "SJ Rey",
+        "first-page": "5",
+        "journal-title": "Rev. Reg. Stud.",
+        "key": "1358_CR58",
+        "unstructured": "Rey, S. J. & Anselin, L. PySAL: a python library of spatial analytical methods. Rev. Reg. Stud. 37, 5\u201327 (2007).",
+        "volume": "37",
+        "year": "2007"
+      },
+      {
+        "key": "1358_CR59",
+        "unstructured": "Borgatti, S. P., Everett, M. G. & Johnson, J. C. Analyzing Social Networks (SAGE Publications, 2013)."
+      },
+      {
+        "DOI": "10.1109/ISBI48211.2021.9433928",
+        "doi-asserted-by": "crossref",
+        "key": "1358_CR60",
+        "unstructured": "Mandal, S. & Uhlmann, V. Splinedist: automated cell segmentation with spline curves. In 2021 IEEE 18th International Symposium on Biomedical Imaging (ISBI) 1082\u20131086 (IEEE, 2021)."
+      },
+      {
+        "author": "RM Haralick",
+        "first-page": "610",
+        "journal-title": "Stud. Media Commun. SMC",
+        "key": "1358_CR61",
+        "unstructured": "Haralick, R. M., Shanmugam, K. & Dinstein, I. Textural features for image classification. Stud. Media Commun. SMC 3, 610\u2013621 (1973).",
+        "volume": "3",
+        "year": "1973"
+      },
+      {
+        "key": "1358_CR62",
+        "unstructured": "Abadi, M. et al. TensorFlow: A system for large-scale machine learning. In 12th USENIX symposium on operating system design and implementation (OSDI 16), 265\u2013283 (2016)."
+      }
+    ],
+    "reference-count": 62,
+    "references-count": 62,
+    "relation": {},
+    "resource": {
+      "primary": {
+        "URL": "https://www.nature.com/articles/s41592-021-01358-2"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Nat Methods"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Squidpy: a scalable framework for spatial omics analysis"
+    ],
+    "type": "journal-article",
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "volume": "19"
+  },
+  "paper_id": "MP-002",
+  "status": "fetched"
+}

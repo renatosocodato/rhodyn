@@ -1,0 +1,1610 @@
+{
+  "accessed_utc": "2026-07-02T10:19:25.464399Z",
+  "crossref_journal": "Nature Methods",
+  "crossref_title": "CellRank for directed single-cell fate mapping",
+  "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41592-021-01346-6",
+  "doi": "10.1038/s41592-021-01346-6",
+  "expected_journal": "Nature Methods",
+  "expected_title": "CellRank for directed single-cell fate mapping",
+  "http_status": 200,
+  "message": {
+    "DOI": "10.1038/s41592-021-01346-6",
+    "ISSN": [
+      "1548-7091",
+      "1548-7105"
+    ],
+    "URL": "https://doi.org/10.1038/s41592-021-01346-6",
+    "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>\n                    Computational trajectory inference enables the reconstruction of cell state dynamics from single-cell RNA sequencing experiments. However, trajectory inference requires that the direction of a biological process is known, largely limiting its application to differentiating systems in normal development. Here, we present CellRank (\n                    <jats:ext-link xmlns:xlink=\"http://www.w3.org/1999/xlink\" xlink:href=\"https://cellrank.org\" ext-link-type=\"uri\">https://cellrank.org</jats:ext-link>\n                    ) for single-cell fate mapping in diverse scenarios, including regeneration, reprogramming and disease, for which direction is unknown. Our approach combines the robustness of trajectory inference with directional information from RNA velocity, taking into account the gradual and stochastic nature of cellular fate decisions, as well as uncertainty in velocity vectors. On pancreas development data, CellRank automatically detects initial, intermediate and terminal populations, predicts fate potentials and visualizes continuous gene expression trends along individual lineages. Applied to lineage-traced cellular reprogramming data, predicted fate probabilities correctly recover reprogramming outcomes. CellRank also predicts a new dedifferentiation trajectory during postinjury lung regeneration, including previously unknown intermediate cell states, which we confirm experimentally.\n                  </jats:p>",
+    "alternative-id": [
+      "1346"
+    ],
+    "assertion": [
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Received",
+        "name": "received",
+        "order": 1,
+        "value": "19 October 2020"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Accepted",
+        "name": "accepted",
+        "order": 2,
+        "value": "7 November 2021"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "First Online",
+        "name": "first_online",
+        "order": 3,
+        "value": "13 January 2022"
+      },
+      {
+        "group": {
+          "label": "Competing interests",
+          "name": "EthicsHeading"
+        },
+        "name": "Ethics",
+        "order": 1,
+        "value": "F.J.T. consults for Immunai Inc., Singularity Bio B.V., CytoReason Ltd and Omniscope Ltd, and has ownership interest in Dermagnostix GmbH and Cellarity. D.P. is on the scientific advisory board of Insitro, Inc. and reports ownership interests in the company. The remaining authors declare no competing interests."
+      }
+    ],
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-4846-1266",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Lange",
+        "given": "Marius",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-2486-1473",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Bergen",
+        "given": "Volker",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Klein",
+        "given": "Michal",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Setty",
+        "given": "Manu",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-1617-6778",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Reuter",
+        "given": "Bernhard",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-2307-1122",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Bakhti",
+        "given": "Mostafa",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-4597-8825",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Lickert",
+        "given": "Heiko",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-8819-7965",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Ansari",
+        "given": "Meshal",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Schniering",
+        "given": "Janine",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-9498-7034",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Schiller",
+        "given": "Herbert B.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-9259-8817",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Pe\u2019er",
+        "given": "Dana",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-2419-1943",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Theis",
+        "given": "Fabian J.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      }
+    ],
+    "container-title": [
+      "Nature Methods"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": [
+        "link.springer.com"
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2022,
+          1,
+          13
+        ]
+      ],
+      "date-time": "2022-01-13T12:03:30Z",
+      "timestamp": 1642075410000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2026,
+          2,
+          27
+        ]
+      ],
+      "date-time": "2026-02-27T19:01:57Z",
+      "timestamp": 1772218917000
+    },
+    "funder": [
+      {
+        "DOI": "10.13039/501100002347",
+        "award": [
+          "01IS18036B"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "01IS18036B"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/501100002347",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "Bundesministerium f\u00fcr Bildung und Forschung"
+      },
+      {
+        "DOI": "10.13039/501100002347",
+        "award": [
+          "01IS18053A"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "01IS18053A"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/501100002347",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "Bundesministerium f\u00fcr Bildung und Forschung"
+      },
+      {
+        "DOI": "10.13039/501100009318",
+        "award": [
+          "ZT-I-0007"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "ZT-I-0007"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/501100009318",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "Helmholtz Association"
+      },
+      {
+        "DOI": "10.13039/100008662",
+        "award": [
+          "Add-on Fellowships for Interdisciplinary Life Science"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "Add-on Fellowships for Interdisciplinary Life Science"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100008662",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "Joachim Herz Stiftung"
+      },
+      {
+        "DOI": "10.13039/501100001659",
+        "award": [
+          "GSC 1006"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "GSC 1006"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/501100001659",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "Deutsche Forschungsgemeinschaft"
+      }
+    ],
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          7,
+          1
+        ]
+      ],
+      "date-time": "2026-07-01T07:25:59Z",
+      "timestamp": 1782890759184,
+      "version": "3.54.5"
+    },
+    "is-referenced-by-count": 730,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "1548-7091"
+      },
+      {
+        "type": "electronic",
+        "value": "1548-7105"
+      }
+    ],
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          1,
+          13
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "2",
+      "published-print": {
+        "date-parts": [
+          [
+            2022,
+            2
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "https://creativecommons.org/licenses/by/4.0",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2022,
+              1,
+              13
+            ]
+          ],
+          "date-time": "2022-01-13T00:00:00Z",
+          "timestamp": 1642032000000
+        }
+      },
+      {
+        "URL": "https://creativecommons.org/licenses/by/4.0",
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2022,
+              1,
+              13
+            ]
+          ],
+          "date-time": "2022-01-13T00:00:00Z",
+          "timestamp": 1642032000000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "https://www.nature.com/articles/s41592-021-01346-6.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/s41592-021-01346-6",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/s41592-021-01346-6.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "297",
+    "original-title": [],
+    "page": "159-170",
+    "prefix": "10.1038",
+    "published": {
+      "date-parts": [
+        [
+          2022,
+          1,
+          13
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2022,
+          1,
+          13
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2022,
+          2
+        ]
+      ]
+    },
+    "publisher": "Springer Science and Business Media LLC",
+    "reference": [
+      {
+        "DOI": "10.1016/j.cell.2014.04.005",
+        "author": "SC Bendall",
+        "doi-asserted-by": "publisher",
+        "first-page": "714",
+        "journal-title": "Cell",
+        "key": "1346_CR1",
+        "unstructured": "Bendall, S. C. et al. Single-cell trajectory detection uncovers progression and regulatory coordination in human B cell development. Cell 157, 714\u2013725 (2014).",
+        "volume": "157",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1038/s41580-019-0186-3",
+        "author": "CS Baron",
+        "doi-asserted-by": "publisher",
+        "first-page": "753",
+        "journal-title": "Nat. Rev. Mol. Cell Biol.",
+        "key": "1346_CR2",
+        "unstructured": "Baron, C. S. & van Oudenaarden, A. Unravelling cellular relationships during development and regeneration using genetic lineage tracing. Nat. Rev. Mol. Cell Biol. 20, 753\u2013765 (2019).",
+        "volume": "20",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1038/s41576-020-0223-2",
+        "author": "DE Wagner",
+        "doi-asserted-by": "publisher",
+        "first-page": "410",
+        "journal-title": "Nat. Rev. Genet.",
+        "key": "1346_CR3",
+        "unstructured": "Wagner, D. E. & Klein, A. M. Lineage tracing meets single-cell omics: opportunities and challenges. Nat. Rev. Genet. 21, 410\u2013427 (2020).",
+        "volume": "21",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/s41586-019-1369-y",
+        "author": "F Erhard",
+        "doi-asserted-by": "publisher",
+        "first-page": "419",
+        "journal-title": "Nature",
+        "key": "1346_CR4",
+        "unstructured": "Erhard, F. et al. scSLAM-seq reveals core features of transcription dynamics in single cells. Nature 571, 419\u2013423 (2019).",
+        "volume": "571",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1126/science.aax3072",
+        "author": "N Battich",
+        "doi-asserted-by": "publisher",
+        "first-page": "1151",
+        "journal-title": "Science",
+        "key": "1346_CR5",
+        "unstructured": "Battich, N. et al. Sequencing metabolically labeled transcripts in single cells reveals mRNA turnover strategies. Science 367, 1151\u20131156 (2020).",
+        "volume": "367",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/s41592-020-0935-4",
+        "author": "Q Qiu",
+        "doi-asserted-by": "publisher",
+        "first-page": "991",
+        "journal-title": "Nat. Methods",
+        "key": "1346_CR6",
+        "unstructured": "Qiu, Q. et al. Massively parallel and time-resolved RNA sequencing in single cells with scNT-seq. Nat. Methods 17, 991\u20131001 (2020).",
+        "volume": "17",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/nmeth.3971",
+        "author": "L Haghverdi",
+        "doi-asserted-by": "publisher",
+        "first-page": "845",
+        "journal-title": "Nat. Methods",
+        "key": "1346_CR7",
+        "unstructured": "Haghverdi, L., B\u00fcttner, M., Wolf, F. A., Buettner, F. & Theis, F. J. Diffusion pseudotime robustly reconstructs lineage branching. Nat. Methods 13, 845\u2013848 (2016).",
+        "volume": "13",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1186/s13059-019-1663-x",
+        "author": "FA Wolf",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome Biol.",
+        "key": "1346_CR8",
+        "unstructured": "Wolf, F. A. et al. PAGA: graph abstraction reconciles clustering with trajectory inference through a topology preserving map of single cells. Genome Biol. 20, 59 (2019).",
+        "volume": "20",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1038/nbt.3569",
+        "author": "M Setty",
+        "doi-asserted-by": "publisher",
+        "first-page": "637",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1346_CR9",
+        "unstructured": "Setty, M. et al. Wishbone identifies bifurcating developmental trajectories from single-cell data. Nat. Biotechnol. 34, 637\u2013645 (2016).",
+        "volume": "34",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1038/nmeth.4402",
+        "author": "X Qiu",
+        "doi-asserted-by": "publisher",
+        "first-page": "979",
+        "journal-title": "Nat. Methods",
+        "key": "1346_CR10",
+        "unstructured": "Qiu, X. et al. Reversed graph embedding resolves complex single-cell trajectories. Nat. Methods 14, 979\u2013982 (2017).",
+        "volume": "14",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1038/s41587-019-0071-9",
+        "author": "W Saelens",
+        "doi-asserted-by": "publisher",
+        "first-page": "547",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1346_CR11",
+        "unstructured": "Saelens, W., Cannoodt, R., Todorov, H. & Saeys, Y. A comparison of single-cell trajectory inference methods. Nat. Biotechnol. 37, 547\u2013554 (2019).",
+        "volume": "37",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1038/nbt.2859",
+        "author": "C Trapnell",
+        "doi-asserted-by": "publisher",
+        "first-page": "381",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1346_CR12",
+        "unstructured": "Trapnell, C. et al. The dynamics and regulators of cell fate decisions are revealed by pseudotemporal ordering of single cells. Nat. Biotechnol. 32, 381\u2013386 (2014).",
+        "volume": "32",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1073/pnas.1714723115",
+        "author": "C Weinreb",
+        "doi-asserted-by": "publisher",
+        "first-page": "E2467",
+        "journal-title": "Proc. Natl Acad. Sci. USA",
+        "key": "1346_CR13",
+        "unstructured": "Weinreb, C., Wolock, S., Tusi, B. K., Socolovsky, M. & Klein, A. M. Fundamental limits on dynamic inference from single-cell snapshots. Proc. Natl Acad. Sci. USA 115, E2467\u2013E2476 (2018).",
+        "volume": "115",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41586-018-0414-6",
+        "author": "G La Manno",
+        "doi-asserted-by": "publisher",
+        "first-page": "494",
+        "journal-title": "Nature",
+        "key": "1346_CR14",
+        "unstructured": "La Manno, G. et al. RNA velocity of single cells. Nature 560, 494\u2013498 (2018).",
+        "volume": "560",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41587-020-0591-3",
+        "author": "V Bergen",
+        "doi-asserted-by": "publisher",
+        "first-page": "1408",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1346_CR15",
+        "unstructured": "Bergen, V., Lange, M., Peidli, S., Wolf, F. A. & Theis, F. J. Generalizing RNA velocity to transient cell states through dynamical modeling. Nat. Biotechnol. 38, 1408\u20131414 (2020).",
+        "volume": "38",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1186/s13059-020-1945-3",
+        "author": "G Gorin",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome Biol.",
+        "key": "1346_CR16",
+        "unstructured": "Gorin, G., Svensson, V. & Pachter, L. Protein velocity and acceleration from single-cell multiomics experiments. Genome Biol. 21, 39 (2020).",
+        "volume": "21",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1016/j.cell.2019.02.026",
+        "author": "G Schiebinger",
+        "doi-asserted-by": "publisher",
+        "first-page": "1517",
+        "journal-title": "Cell",
+        "key": "1346_CR17",
+        "unstructured": "Schiebinger, G. et al. Optimal-transport analysis of single-cell gene expression identifies developmental trajectories in reprogramming. Cell 176, 1517 (2019).",
+        "volume": "176",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1038/s41587-019-0088-0",
+        "author": "DS Fischer",
+        "doi-asserted-by": "publisher",
+        "first-page": "461",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1346_CR18",
+        "unstructured": "Fischer, D. S. et al. Inferring population dynamics from single-cell RNA-sequencing time series data. Nat. Biotechnol. 37, 461\u2013468 (2019).",
+        "volume": "37",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1063/1.5064530",
+        "author": "B Reuter",
+        "doi-asserted-by": "publisher",
+        "first-page": "174103",
+        "journal-title": "J. Chem. Phys.",
+        "key": "1346_CR19",
+        "unstructured": "Reuter, B., Fackeldey, K. & Weber, M. Generalized Markov modeling of nonreversible molecular kinetics. J. Chem. Phys. 150, 174103 (2019).",
+        "volume": "150",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1021/acs.jctc.8b00079",
+        "author": "B Reuter",
+        "doi-asserted-by": "publisher",
+        "first-page": "3579",
+        "journal-title": "J. Chem. Theory Comput.",
+        "key": "1346_CR20",
+        "unstructured": "Reuter, B., Weber, M., Fackeldey, K., R\u00f6blitz, S. & Garcia, M. E. Generalized Markov state modeling method for nonequilibrium biomolecular dynamics: exemplified on amyloid \u03b2 conformational dynamics driven by an oscillating electric field. J. Chem. Theory Comput. 14, 3579\u20133594 (2018).",
+        "volume": "14",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41587-019-0068-4",
+        "author": "M Setty",
+        "doi-asserted-by": "publisher",
+        "first-page": "451",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1346_CR21",
+        "unstructured": "Setty, M. et al. Characterization of cell fate probabilities in single-cell data with Palantir. Nat. Biotechnol. 37, 451\u2013460 (2019).",
+        "volume": "37",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1016/j.cell.2018.03.074",
+        "author": "JD Buenrostro",
+        "doi-asserted-by": "publisher",
+        "first-page": "1535",
+        "journal-title": "Cell",
+        "key": "1346_CR22",
+        "unstructured": "Buenrostro, J. D. et al. Integrated single-cell analysis maps the continuous regulatory landscape of human hematopoietic differentiation. Cell 173, 1535\u20131548.e16 (2018).",
+        "volume": "173",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1016/j.cell.2013.07.020",
+        "author": "AB Stergachis",
+        "doi-asserted-by": "publisher",
+        "first-page": "888",
+        "journal-title": "Cell",
+        "key": "1346_CR23",
+        "unstructured": "Stergachis, A. B. et al. Developmental fate and cellular maturity encoded in human regulatory DNA landscapes. Cell 154, 888\u2013903 (2013).",
+        "volume": "154",
+        "year": "2013"
+      },
+      {
+        "DOI": "10.1242/dev.173849",
+        "author": "A Bastidas-Ponce",
+        "doi-asserted-by": "publisher",
+        "first-page": "dev. 173849",
+        "journal-title": "Development",
+        "key": "1346_CR24",
+        "unstructured": "Bastidas-Ponce, A. et al. Comprehensive single cell mRNA profiling reveals a detailed roadmap for pancreatic endocrinogenesis. Development 146, dev. 173849 (2019).",
+        "volume": "146",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1038/nbt.4314",
+        "author": "E Becht",
+        "doi-asserted-by": "publisher",
+        "first-page": "38",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1346_CR25",
+        "unstructured": "Becht, E. et al. Dimensionality reduction for visualizing single-cell data using UMAP. Nat. Biotechnol. 37, 38\u201344 (2019).",
+        "volume": "37",
+        "year": "2019"
+      },
+      {
+        "author": "Lvander Maaten",
+        "first-page": "2579",
+        "journal-title": "J. Mach. Learn. Res.",
+        "key": "1346_CR26",
+        "unstructured": "Maaten, Lvander & Hinton, G. Visualizing data using t-SNE. J. Mach. Learn. Res. 9, 2579\u20132605 (2008).",
+        "volume": "9",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1038/nbt.2594",
+        "author": "E-AD Amir",
+        "doi-asserted-by": "publisher",
+        "first-page": "545",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1346_CR27",
+        "unstructured": "Amir, E.-A. D. et al. viSNE enables visualization of high dimensional single-cell data and reveals phenotypic heterogeneity of leukemia. Nat. Biotechnol. 31, 545\u2013552 (2013).",
+        "volume": "31",
+        "year": "2013"
+      },
+      {
+        "DOI": "10.21105/joss.00861",
+        "doi-asserted-by": "crossref",
+        "key": "1346_CR28",
+        "unstructured": "McInnes, L., Healy, J. & Melville, J. UMAP: uniform manifold approximation and projection for dimension reduction. Preprint at arXiv https://arxiv.org/abs/1802.03426 (2018)."
+      },
+      {
+        "DOI": "10.1016/j.celrep.2020.107576",
+        "author": "CN Heiser",
+        "doi-asserted-by": "publisher",
+        "first-page": "107576",
+        "journal-title": "Cell Rep.",
+        "key": "1346_CR29",
+        "unstructured": "Heiser, C. N. & Lau, K. S. A quantitative framework for evaluating single-cell data structure preservation by dimensionality reduction techniques. Cell Rep. 31, 107576 (2020).",
+        "volume": "31",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/s41587-020-00809-z",
+        "author": "D Kobak",
+        "doi-asserted-by": "publisher",
+        "first-page": "156",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1346_CR30",
+        "unstructured": "Kobak, D. & Linderman, G. C. Initialization is critical for preserving global data structure in both t-SNE and UMAP. Nat. Biotechnol. 39, 156\u2013157 (2021).",
+        "volume": "39",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1101/689851",
+        "doi-asserted-by": "crossref",
+        "key": "1346_CR31",
+        "unstructured": "Cooley, S. M., Hamilton, T., Deeds, E. J. & Ray, J. C. J. A novel metric reveals previously unrecognized distortion in dimensionality reduction of scRNA-Seq data. Preprint at bioRxiv https://www.biorxiv.org/content/10.1101/689851v1 (2019)."
+      },
+      {
+        "DOI": "10.15252/msb.20188746",
+        "author": "MD Luecken",
+        "doi-asserted-by": "publisher",
+        "first-page": "e8746",
+        "journal-title": "Mol. Syst. Biol.",
+        "key": "1346_CR32",
+        "unstructured": "Luecken, M. D. & Theis, F. J. Current best practices in single-cell RNA-seq analysis: a tutorial. Mol. Syst. Biol. 15, e8746 (2019).",
+        "volume": "15",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1242/dev.140756",
+        "author": "A Bastidas-Ponce",
+        "doi-asserted-by": "publisher",
+        "first-page": "2873",
+        "journal-title": "Development",
+        "key": "1346_CR33",
+        "unstructured": "Bastidas-Ponce, A., Scheibner, K., Lickert, H. & Bakhti, M. Cellular and molecular mechanisms coordinating pancreas development. Development 144, 2873\u20132888 (2017).",
+        "volume": "144",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1016/j.molmet.2017.03.007",
+        "author": "A Bastidas-Ponce",
+        "doi-asserted-by": "publisher",
+        "first-page": "524",
+        "journal-title": "Mol. Metab.",
+        "key": "1346_CR34",
+        "unstructured": "Bastidas-Ponce, A. et al. Foxa2 and Pdx1 cooperatively regulate postnatal maturation of pancreatic \u03b2-cells. Mol. Metab. 6, 524\u2013534 (2017).",
+        "volume": "6",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1101/gad.235499.113",
+        "author": "J Zhang",
+        "doi-asserted-by": "publisher",
+        "first-page": "829",
+        "journal-title": "Genes Dev.",
+        "key": "1346_CR35",
+        "unstructured": "Zhang, J., McKenna, L. B., Bogue, C. W. & Kaestner, K. H. The diabetes gene Hhex maintains \u03b4-cell differentiation and islet function. Genes Dev. 28, 829\u2013834 (2014).",
+        "volume": "28",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1016/j.stemcr.2018.11.008",
+        "author": "NAJ Krentz",
+        "doi-asserted-by": "publisher",
+        "first-page": "1551",
+        "journal-title": "Stem Cell Rep.",
+        "key": "1346_CR36",
+        "unstructured": "Krentz, N. A. J. et al. Single-cell transcriptome profiling of mouse and hESC-derived pancreatic progenitors. Stem Cell Rep. 11, 1551\u20131564 (2018).",
+        "volume": "11",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1016/j.devcel.2007.02.010",
+        "author": "KA Johansson",
+        "doi-asserted-by": "publisher",
+        "first-page": "457",
+        "journal-title": "Dev. Cell",
+        "key": "1346_CR37",
+        "unstructured": "Johansson, K. A. et al. Temporal control of neurogenin3 activity in pancreas progenitors reveals competence windows for the generation of different endocrine cell types. Dev. Cell 12, 457\u2013465 (2007).",
+        "volume": "12",
+        "year": "2007"
+      },
+      {
+        "DOI": "10.1016/j.molmet.2020.101060",
+        "author": "C Berthault",
+        "doi-asserted-by": "publisher",
+        "first-page": "101060",
+        "journal-title": "Mol. Metab.",
+        "key": "1346_CR38",
+        "unstructured": "Berthault, C., Staels, W. & Scharfmann, R. Purification of pancreatic endocrine subsets reveals increased iron metabolism in beta cells. Mol. Metab. 42, 101060 (2020).",
+        "volume": "42",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1046/j.1432-0436.1999.6440237.x",
+        "author": "DS Cram",
+        "doi-asserted-by": "publisher",
+        "first-page": "237",
+        "journal-title": "Differentiation",
+        "key": "1346_CR39",
+        "unstructured": "Cram, D. S., McIntosh, A., Oxbrow, L., Johnston, A. M. & DeAizpurua, H. J. Differential mRNA display analysis of two related but functionally distinct rat insulinoma (RIN) cell lines: identification of CD24 and its expression in the developing pancreas. Differentiation 64, 237\u2013246 (1999).",
+        "volume": "64",
+        "year": "1999"
+      },
+      {
+        "DOI": "10.1016/j.celrep.2019.06.034",
+        "author": "K Lee",
+        "doi-asserted-by": "publisher",
+        "first-page": "382",
+        "journal-title": "Cell Rep.",
+        "key": "1346_CR40",
+        "unstructured": "Lee, K. et al. FOXA2 is required for enhancer priming during pancreatic differentiation. Cell Rep. 28, 382\u2013393.e7 (2019).",
+        "volume": "28",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1038/385257a0",
+        "author": "U Ahlgren",
+        "doi-asserted-by": "publisher",
+        "first-page": "257",
+        "journal-title": "Nature",
+        "key": "1346_CR41",
+        "unstructured": "Ahlgren, U., Pfaff, S. L., Jessell, T. M., Edlund, T. & Edlund, H. Independent requirement for ISL1 in formation of pancreatic mesenchyme and islet cells. Nature 385, 257\u2013260 (1997).",
+        "volume": "385",
+        "year": "1997"
+      },
+      {
+        "DOI": "10.1172/JCI200420083",
+        "author": "T Hiesberger",
+        "doi-asserted-by": "publisher",
+        "first-page": "814",
+        "journal-title": "J. Clin. Invest.",
+        "key": "1346_CR42",
+        "unstructured": "Hiesberger, T. et al. Mutation of hepatocyte nuclear factor-1beta inhibits Pkhd1 gene expression and produces renal cysts in mice. J. Clin. Invest. 113, 814\u2013825 (2004).",
+        "volume": "113",
+        "year": "2004"
+      },
+      {
+        "DOI": "10.1073/pnas.0405776102",
+        "author": "C Haumaitre",
+        "doi-asserted-by": "publisher",
+        "first-page": "1490",
+        "journal-title": "Proc. Natl Acad. Sci. USA",
+        "key": "1346_CR43",
+        "unstructured": "Haumaitre, C. et al. Lack of TCF2/vHNF1 in mice leads to pancreas agenesis. Proc. Natl Acad. Sci. USA 102, 1490\u20131495 (2005).",
+        "volume": "102",
+        "year": "2005"
+      },
+      {
+        "DOI": "10.1089/scd.2014.0219",
+        "author": "S Kawase",
+        "doi-asserted-by": "publisher",
+        "first-page": "2250",
+        "journal-title": "Stem Cells Dev.",
+        "key": "1346_CR44",
+        "unstructured": "Kawase, S. et al. Regulatory factor X transcription factors control Musashi1 transcription in mouse neural stem/progenitor cells. Stem Cells Dev. 23, 2250\u20132261 (2014).",
+        "volume": "23",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1093/nar/24.5.803",
+        "author": "P Emery",
+        "doi-asserted-by": "publisher",
+        "first-page": "803",
+        "journal-title": "Nucleic Acids Res.",
+        "key": "1346_CR45",
+        "unstructured": "Emery, P., Durand, B., Mach, B. & Reith, W. RFX proteins, a novel family of DNA binding proteins conserved in the eukaryotic kingdom. Nucleic Acids Res. 24, 803\u2013807 (1996).",
+        "volume": "24",
+        "year": "1996"
+      },
+      {
+        "DOI": "10.2337/db09-0986",
+        "author": "A Ait-Lounis",
+        "doi-asserted-by": "publisher",
+        "first-page": "1674",
+        "journal-title": "Diabetes",
+        "key": "1346_CR46",
+        "unstructured": "Ait-Lounis, A. et al. The transcription factor Rfx3 regulates beta-cell differentiation, function, and glucokinase expression. Diabetes 59, 1674\u20131685 (2010).",
+        "volume": "59",
+        "year": "2010"
+      },
+      {
+        "DOI": "10.1038/nature08748",
+        "author": "SB Smith",
+        "doi-asserted-by": "publisher",
+        "first-page": "775",
+        "journal-title": "Nature",
+        "key": "1346_CR47",
+        "unstructured": "Smith, S. B. et al. Rfx6 directs islet formation and insulin production in mice and humans. Nature 463, 775\u2013780 (2010).",
+        "volume": "463",
+        "year": "2010"
+      },
+      {
+        "DOI": "10.1016/j.cell.2014.07.021",
+        "author": "SA Morris",
+        "doi-asserted-by": "publisher",
+        "first-page": "889",
+        "journal-title": "Cell",
+        "key": "1346_CR48",
+        "unstructured": "Morris, S. A. et al. Dissecting engineered cell types and enhancing cell fate conversion via CellNet. Cell 158, 889\u2013902 (2014).",
+        "volume": "158",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1038/s41586-018-0744-4",
+        "author": "BA Biddy",
+        "doi-asserted-by": "publisher",
+        "first-page": "219",
+        "journal-title": "Nature",
+        "key": "1346_CR49",
+        "unstructured": "Biddy, B. A. et al. Single-cell mapping of lineage and identity in direct reprogramming. Nature 564, 219\u2013224 (2018).",
+        "volume": "564",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/ncb3493",
+        "author": "L Velten",
+        "doi-asserted-by": "publisher",
+        "first-page": "271",
+        "journal-title": "Nat. Cell Biol.",
+        "key": "1346_CR50",
+        "unstructured": "Velten, L. et al. Human haematopoietic stem cell lineage commitment is a continuous process. Nat. Cell Biol. 19, 271\u2013281 (2017).",
+        "volume": "19",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1038/nmeth.4662",
+        "author": "JS Herman",
+        "doi-asserted-by": "publisher",
+        "first-page": "379",
+        "journal-title": "Nat. Methods",
+        "key": "1346_CR51",
+        "unstructured": "Herman, J. S., Sagar & Gr\u00fcn, D. FateID infers cell fate bias in multipotent progenitors from single-cell RNA-seq data. Nat. Methods 15, 379\u2013386 (2018).",
+        "volume": "15",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41467-020-17358-3",
+        "author": "M Strunz",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "1346_CR52",
+        "unstructured": "Strunz, M. et al. Alveolar regeneration through a Krt8 transitional stem cell state that persists in human lung fibrosis. Nat. Commun. 11, 3559 (2020).",
+        "volume": "11",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1016/j.cell.2015.05.002",
+        "author": "EZ Macosko",
+        "doi-asserted-by": "publisher",
+        "first-page": "1202",
+        "journal-title": "Cell",
+        "key": "1346_CR53",
+        "unstructured": "Macosko, E. Z. et al. Highly parallel genome-wide expression profiling of individual cells using nanoliter droplets. Cell 161, 1202\u20131214 (2015).",
+        "volume": "161",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1038/nature12777",
+        "author": "PR Tata",
+        "doi-asserted-by": "publisher",
+        "first-page": "218",
+        "journal-title": "Nature",
+        "key": "1346_CR54",
+        "unstructured": "Tata, P. R. et al. Dedifferentiation of committed epithelial cells into stem cells in vivo. Nature 503, 218\u2013223 (2013).",
+        "volume": "503",
+        "year": "2013"
+      },
+      {
+        "DOI": "10.1016/j.tcb.2014.09.003",
+        "author": "PW Tetteh",
+        "doi-asserted-by": "publisher",
+        "first-page": "100",
+        "journal-title": "Trends Cell Biol.",
+        "key": "1346_CR55",
+        "unstructured": "Tetteh, P. W., Farin, H. F. & Clevers, H. Plasticity within stem cell hierarchies in mammalian epithelia. Trends Cell Biol. 25, 100\u2013108 (2015).",
+        "volume": "25",
+        "year": "2015"
+      },
+      {
+        "key": "1346_CR56",
+        "unstructured": "Weinberger, S. E., Cockrill, B. A. & Mandel, J. Principles of Pulmonary Medicine. (Saunders/Elsevier, 2008)."
+      },
+      {
+        "DOI": "10.1016/j.stem.2014.07.012",
+        "author": "BLM Hogan",
+        "doi-asserted-by": "publisher",
+        "first-page": "123",
+        "journal-title": "Cell Stem Cell",
+        "key": "1346_CR57",
+        "unstructured": "Hogan, B. L. M. et al. Repair and regeneration of the respiratory system: complexity, plasticity, and mechanisms of lung stem cell function. Cell Stem Cell 15, 123\u2013138 (2014).",
+        "volume": "15",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1242/dmm.006031",
+        "author": "JR Rock",
+        "doi-asserted-by": "publisher",
+        "first-page": "545",
+        "journal-title": "Dis. Model. Mech.",
+        "key": "1346_CR58",
+        "unstructured": "Rock, J. R., Randell, S. H. & Hogan, B. L. M. Airway basal stem cells: a perspective on their roles in epithelial homeostasis and remodeling. Dis. Model. Mech. 3, 545\u2013556 (2010).",
+        "volume": "3",
+        "year": "2010"
+      },
+      {
+        "DOI": "10.1101/696724",
+        "doi-asserted-by": "publisher",
+        "key": "1346_CR59",
+        "unstructured": "Qiu, X. et al. Mapping transcriptomic vector fields of single cells. Preprint at bioRxiv https://doi.org/10.1101/696724 (2021)."
+      },
+      {
+        "DOI": "10.1016/j.celrep.2021.109046",
+        "author": "JC Kimmel",
+        "doi-asserted-by": "publisher",
+        "first-page": "109046",
+        "journal-title": "Cell Rep.",
+        "key": "1346_CR60",
+        "unstructured": "Kimmel, J. C., Yi, N., Roy, M., Hendrickson, D. G. & Kelley, D. R. Differentiation reveals latent features of aging and an energy barrier in murine myogenesis. Cell Rep. 35, 109046 (2021).",
+        "volume": "35",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1126/science.aaw3381",
+        "author": "C Weinreb",
+        "doi-asserted-by": "publisher",
+        "first-page": "eaaw3381",
+        "journal-title": "Science",
+        "key": "1346_CR61",
+        "unstructured": "Weinreb, C., Rodriguez-Fraticelli, A., Camargo, F. D. & Klein, A. M. Lineage tracing on transcriptional landscapes links state to fate during differentiation. Science 367, eaaw3381 (2020).",
+        "volume": "367",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1016/j.stem.2020.11.015",
+        "author": "AM Ranzoni",
+        "doi-asserted-by": "publisher",
+        "first-page": "472",
+        "journal-title": "Cell Stem Cell",
+        "key": "1346_CR62",
+        "unstructured": "Ranzoni, A. M. et al. Integrative single-cell RNA-seq and ATAC-seq analysis of human developmental hematopoiesis. Cell Stem Cell 28, 472\u2013487.e7 (2021).",
+        "volume": "28",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1038/s41467-020-14766-3",
+        "author": "K Van den Berge",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "1346_CR63",
+        "unstructured": "Van den Berge, K. et al. Trajectory-based differential expression analysis for single-cell sequencing data. Nat. Commun. 11, 1201 (2020).",
+        "volume": "11",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/s41586-019-1127-1",
+        "author": "S Nowotschin",
+        "doi-asserted-by": "publisher",
+        "first-page": "361",
+        "journal-title": "Nature",
+        "key": "1346_CR64",
+        "unstructured": "Nowotschin, S. et al. The emergent landscape of the mouse gut endoderm at single-cell resolution. Nature 569, 361\u2013367 (2019).",
+        "volume": "569",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1038/s41467-021-25133-1",
+        "author": "A Forrow",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "1346_CR65",
+        "unstructured": "Forrow, A. & Schiebinger, G. LineageOT is a unified framework for lineage tracing and trajectory inference. Nat. Commun. 12, 4940 (2021).",
+        "volume": "12",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1038/s41467-021-24152-2",
+        "author": "R Cannoodt",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "1346_CR66",
+        "unstructured": "Cannoodt, R., Saelens, W., Deconinck, L. & Saeys, Y. Spearheading future omics analyses using dyngen, a multi-modal simulator of single cells. Nat. Commun. 12, 3942 (2021).",
+        "volume": "12",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1016/j.cell.2018.05.061",
+        "author": "D van Dijk",
+        "doi-asserted-by": "publisher",
+        "first-page": "716",
+        "journal-title": "Cell",
+        "key": "1346_CR67",
+        "unstructured": "van Dijk, D. et al. Recovering gene interactions from single-cell data using data diffusion. Cell 174, 716\u2013729.e27 (2018).",
+        "volume": "174",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1088/1742-5468/2008/10/P10008",
+        "author": "VD Blondel",
+        "doi-asserted-by": "publisher",
+        "first-page": "P10008",
+        "journal-title": "J. Stat. Mech.",
+        "key": "1346_CR68",
+        "unstructured": "Blondel, V. D., Guillaume, J.-L., Lambiotte, R. & Lefebvre, E. Fast unfolding of communities in large networks. J. Stat. Mech. 2008, P10008 (2008).",
+        "volume": "2008",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1038/nature10263",
+        "author": "S Sekiya",
+        "doi-asserted-by": "publisher",
+        "first-page": "390",
+        "journal-title": "Nature",
+        "key": "1346_CR69",
+        "unstructured": "Sekiya, S. & Suzuki, A. Direct conversion of mouse fibroblasts to hepatocyte-like cells by defined factors. Nature 475, 390\u2013393 (2011).",
+        "volume": "475",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.1038/ng0197-106",
+        "author": "DA Stoffers",
+        "doi-asserted-by": "publisher",
+        "first-page": "106",
+        "journal-title": "Nat. Genet.",
+        "key": "1346_CR70",
+        "unstructured": "Stoffers, D. A., Zinkin, N. T., Stanojevic, V., Clarke, W. L. & Habener, J. F. Pancreatic agenesis attributable to a single nucleotide deletion in the human IPF1 gene coding sequence. Nat. Genet. 15, 106\u2013110 (1997).",
+        "volume": "15",
+        "year": "1997"
+      },
+      {
+        "DOI": "10.1038/371606a0",
+        "author": "J Jonsson",
+        "doi-asserted-by": "publisher",
+        "first-page": "606",
+        "journal-title": "Nature",
+        "key": "1346_CR71",
+        "unstructured": "Jonsson, J., Carlsson, L., Edlund, T. & Edlund, H. Insulin-promoter-factor 1 is required for pancreas development in mice. Nature 371, 606\u2013609 (1994).",
+        "volume": "371",
+        "year": "1994"
+      },
+      {
+        "DOI": "10.1126/science.1247651",
+        "author": "DA Jaitin",
+        "doi-asserted-by": "publisher",
+        "first-page": "776",
+        "journal-title": "Science",
+        "key": "1346_CR72",
+        "unstructured": "Jaitin, D. A. et al. Massively parallel single-cell RNA-seq for marker-free decomposition of tissues into cell types. Science 343, 776\u2013779 (2014).",
+        "volume": "343",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1038/s41467-019-11028-9",
+        "author": "G-J Hendriks",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "1346_CR73",
+        "unstructured": "Hendriks, G.-J. et al. NASC-seq monitors RNA synthesis in single cells. Nat. Commun. 10, 3138 (2019).",
+        "volume": "10",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1007/s11634-013-0134-6",
+        "author": "S R\u00f6blitz",
+        "doi-asserted-by": "publisher",
+        "first-page": "147",
+        "journal-title": "Adv. Data Anal. Classif.",
+        "key": "1346_CR74",
+        "unstructured": "R\u00f6blitz, S. & Weber, M. Fuzzy spectral clustering by PCCA+: application to Markov state models and data classification. Adv. Data Anal. Classif. 7, 147\u2013179 (2013).",
+        "volume": "7",
+        "year": "2013"
+      },
+      {
+        "key": "1346_CR75",
+        "unstructured": "Spivak, D. I. Metric realization of fuzzy simplicial sets. Self published notes https://math.mit.edu/~dspivak/files/metric_realization.pdf (2012)."
+      },
+      {
+        "DOI": "10.1186/s13059-017-1382-0",
+        "author": "FA Wolf",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome Biol.",
+        "key": "1346_CR76",
+        "unstructured": "Wolf, F. A., Angerer, P. & Theis, F. J. SCANPY: large-scale single-cell gene expression data analysis. Genome Biol. 19, 15 (2018).",
+        "volume": "19",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1073/pnas.0500334102",
+        "author": "RR Coifman",
+        "doi-asserted-by": "publisher",
+        "first-page": "7426",
+        "journal-title": "Proc. Natl Acad. Sci. USA",
+        "key": "1346_CR77",
+        "unstructured": "Coifman, R. R. et al. Geometric diffusions as a tool for harmonic analysis and structure definition of data: diffusion maps. Proc. Natl Acad. Sci. USA 102, 7426\u20137431 (2005).",
+        "volume": "102",
+        "year": "2005"
+      },
+      {
+        "DOI": "10.1371/journal.pcbi.1008585",
+        "author": "C Soneson",
+        "doi-asserted-by": "publisher",
+        "first-page": "e1008585",
+        "journal-title": "PLoS Comput. Biol.",
+        "key": "1346_CR78",
+        "unstructured": "Soneson, C., Srivastava, A., Patro, R. & Stadler, M. B. Preprocessing choices affect RNA velocity results for droplet scRNA-seq data. PLoS Comput. Biol. 17, e1008585 (2021).",
+        "volume": "17",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1016/j.neuron.2015.05.004",
+        "author": "B Raj",
+        "doi-asserted-by": "publisher",
+        "first-page": "14",
+        "journal-title": "Neuron",
+        "key": "1346_CR79",
+        "unstructured": "Raj, B. & Blencowe, B. J. Alternative splicing in the mammalian nervous system: recent insights into mechanisms and functional roles. Neuron 87, 14\u201327 (2015).",
+        "volume": "87",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1111/imr.12047",
+        "author": "NM Martinez",
+        "doi-asserted-by": "publisher",
+        "first-page": "216",
+        "journal-title": "Immunol. Rev.",
+        "key": "1346_CR80",
+        "unstructured": "Martinez, N. M. & Lynch, K. W. Control of alternative splicing in immune responses: many regulators, many predictions, much still to learn. Immunol. Rev. 253, 216\u2013236 (2013).",
+        "volume": "253",
+        "year": "2013"
+      },
+      {
+        "DOI": "10.1038/ng.259",
+        "author": "Q Pan",
+        "doi-asserted-by": "publisher",
+        "first-page": "1413",
+        "journal-title": "Nat. Genet.",
+        "key": "1346_CR81",
+        "unstructured": "Pan, Q., Shai, O., Lee, L. J., Frey, B. J. & Blencowe, B. J. Deep surveying of alternative splicing complexity in the human transcriptome by high-throughput sequencing. Nat. Genet. 40, 1413\u20131415 (2008).",
+        "volume": "40",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1038/nature07509",
+        "author": "ET Wang",
+        "doi-asserted-by": "publisher",
+        "first-page": "470",
+        "journal-title": "Nature",
+        "key": "1346_CR82",
+        "unstructured": "Wang, E. T. et al. Alternative isoform regulation in human tissue transcriptomes. Nature 456, 470\u2013476 (2008).",
+        "volume": "456",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1007/978-3-658-29712-1",
+        "doi-asserted-by": "crossref",
+        "key": "1346_CR83",
+        "unstructured": "Reuter, B. Generalisierte Markov-Modellierung: Modellierung Irreversibler \u03b2-Amyloid-Peptid-Dynamik unter Mikrowelleneinfluss (Springer, 2020)."
+      },
+      {
+        "key": "1346_CR84",
+        "unstructured": "Mucha, H.-J. Big Data Clustering: Data Preprocessing, Variable Selection and Dimension Reduction (WIAS, 2017)."
+      },
+      {
+        "DOI": "10.56021/9781421407944",
+        "doi-asserted-by": "crossref",
+        "key": "1346_CR85",
+        "unstructured": "Golub, G. H. & Van Loan, C. F. Matrix Computations (JHU Press, 2013)."
+      },
+      {
+        "DOI": "10.1017/CBO9781139020411",
+        "doi-asserted-by": "crossref",
+        "key": "1346_CR86",
+        "unstructured": "Horn, R. A. & Johnson, C. R. Matrix Analysis (Cambridge Univ. Press, 2012)."
+      },
+      {
+        "DOI": "10.1063/1.2404953",
+        "author": "S Kube",
+        "doi-asserted-by": "publisher",
+        "first-page": "024103",
+        "journal-title": "J. Chem. Phys.",
+        "key": "1346_CR87",
+        "unstructured": "Kube, S. & Weber, M. A coarse graining method for the identification of transition rates between molecular conformations. J. Chem. Phys. 126, 024103 (2007).",
+        "volume": "126",
+        "year": "2007"
+      },
+      {
+        "key": "1346_CR88",
+        "unstructured": "Weber, M. Meshless Methods in Conformation Dynamics. PhD Thesis, Freie Univ., Berlin (2006)."
+      },
+      {
+        "DOI": "10.1038/s41592-019-0686-2",
+        "author": "P Virtanen",
+        "doi-asserted-by": "publisher",
+        "first-page": "261",
+        "journal-title": "Nat. Methods",
+        "key": "1346_CR89",
+        "unstructured": "Virtanen, P. et al. SciPy 1.0: fundamental algorithms for scientific computing in Python. Nat. Methods 17, 261\u2013272 (2020).",
+        "volume": "17",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1021/acs.jctc.8b00079",
+        "author": "B Reuter",
+        "doi-asserted-by": "publisher",
+        "first-page": "3579",
+        "journal-title": "J. Chem. Theory Comput.",
+        "key": "1346_CR90",
+        "unstructured": "Reuter, B., Weber, M., Fackeldey, K., R\u00f6blitz, S. & Garcia, M. E. Generalized Markov state modeling method for nonequilibrium biomolecular dynamics: exemplified on amyloid \u03b2 conformational dynamics driven by an oscillating electric field. J. Chem. Theory Comput. 14, 3579\u20133594 (2018).",
+        "volume": "14",
+        "year": "2018"
+      },
+      {
+        "key": "1346_CR91",
+        "unstructured": "Reuter, B. pyGPCCA: pyGPCCA - python GPCCA: Generalized Perron Cluster Cluster Analysis package to coarse-grain reversible and non-reversible Markov State Models. (Github) https://github.com/msmdev/pyGPCCA"
+      },
+      {
+        "DOI": "10.1145/1089014.1089019",
+        "author": "V Hernandez",
+        "doi-asserted-by": "publisher",
+        "first-page": "351",
+        "journal-title": "ACM Trans. Math. Softw.",
+        "key": "1346_CR92",
+        "unstructured": "Hernandez, V., Roman, J. E. & Vidal, V. SLEPc: a scalable and flexible toolkit for the solution of eigenvalue problems. ACM Trans. Math. Softw. 31, 351\u2013362 (2005).",
+        "volume": "31",
+        "year": "2005"
+      },
+      {
+        "DOI": "10.1016/j.advwatres.2011.04.013",
+        "author": "LD Dalcin",
+        "doi-asserted-by": "publisher",
+        "first-page": "1124",
+        "journal-title": "Adv. Water Resour.",
+        "key": "1346_CR93",
+        "unstructured": "Dalcin, L. D., Paz, R. R., Kler, P. A. & Cosimo, A. Parallel distributed computing using Python. Adv. Water Resour. 34, 1124\u20131139 (2011).",
+        "volume": "34",
+        "year": "2011"
+      },
+      {
+        "key": "1346_CR94",
+        "unstructured": "Tolver, A. An introduction to Markov chains. (Univ. of Copenhagen, 2016)."
+      },
+      {
+        "DOI": "10.1137/0907058",
+        "author": "Y Saad",
+        "doi-asserted-by": "publisher",
+        "first-page": "856",
+        "journal-title": "SIAM J. Sci. Stat. Comput.",
+        "key": "1346_CR95",
+        "unstructured": "Saad, Y. & Schultz, M. H. GMRES: a generalized minimal residual algorithm for solving nonsymmetric linear systems. SIAM J. Sci. Stat. Comput. 7, 856\u2013869 (1986).",
+        "volume": "7",
+        "year": "1986"
+      },
+      {
+        "key": "1346_CR96",
+        "unstructured": "Frostig, R., Johnson, M. & Leary, C. Compiling machine learning programs via high-level tracing. In Proc. SYSML\u201918, February 2018, Stanford, CA USA https://cs.stanford.edu/~rfrostig/pubs/jax-mlsys2018.pdf (2018)."
+      },
+      {
+        "author": "T Hastie",
+        "first-page": "297",
+        "journal-title": "SSO Schweiz. Monatsschr. Zahnheilkd.",
+        "key": "1346_CR97",
+        "unstructured": "Hastie, T. & Tibshirani, R. Generalized additive models. SSO Schweiz. Monatsschr. Zahnheilkd. 1, 297\u2013310 (1986).",
+        "volume": "1",
+        "year": "1986"
+      },
+      {
+        "DOI": "10.1080/00031305.1971.10477280",
+        "doi-asserted-by": "crossref",
+        "key": "1346_CR98",
+        "unstructured": "DeSalvo, J. S. Standard error of forecast in multiple regression: proof of a useful result. (Rand Corporation, 1970)."
+      },
+      {
+        "key": "1346_CR99",
+        "unstructured": "Mgcv: Mixed GAM computation vehicle with automatic smoothness estimation. (R Foundation for Statistical Computing, 2019) https://CRAN.R-project.org/package=mgcv"
+      },
+      {
+        "DOI": "10.1201/9781315370279",
+        "doi-asserted-by": "crossref",
+        "key": "1346_CR100",
+        "unstructured": "Wood, S. N. Generalized Additive Models: An Introduction with R. (CRC Press/Taylor & Francis Group, 2017)."
+      },
+      {
+        "DOI": "10.5281/zenodo.1476122",
+        "doi-asserted-by": "publisher",
+        "key": "1346_CR101",
+        "unstructured": "Serv\u00e9n, D., Brummitt, C. pyGAM: Generalized additive models in Python. Preprint at Zenodo https://doi.org/10.5281/zenodo.1476122 (2018)."
+      },
+      {
+        "DOI": "10.1038/s41598-019-41695-z",
+        "author": "VA Traag",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Sci. Rep.",
+        "key": "1346_CR102",
+        "unstructured": "Traag, V. A., Waltman, L. & van Eck, N. J. From Louvain to Leiden: guaranteeing well-connected communities. Sci. Rep. 9, 5233 (2019).",
+        "volume": "9",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1093/bioinformatics/btz625",
+        "author": "K Pola\u0144ski",
+        "doi-asserted-by": "publisher",
+        "first-page": "964",
+        "journal-title": "Bioinformatics",
+        "key": "1346_CR103",
+        "unstructured": "Pola\u0144ski, K. et al. BBKNN: fast batch alignment of single cell transcriptomes. Bioinformatics 36, 964\u2013965 (2020).",
+        "volume": "36",
+        "year": "2020"
+      },
+      {
+        "author": "F Pedregosa",
+        "first-page": "2825",
+        "journal-title": "J. Mach. Learn. Res.",
+        "key": "1346_CR104",
+        "unstructured": "Pedregosa, F. et al. Scikit-learn: machine learning in Python. J. Mach. Learn. Res. 12, 2825\u20132830 (2011).",
+        "volume": "12",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.1016/j.patrec.2005.10.010",
+        "author": "T Fawcett",
+        "doi-asserted-by": "publisher",
+        "first-page": "861",
+        "journal-title": "Pattern Recognit. Lett.",
+        "key": "1346_CR105",
+        "unstructured": "Fawcett, T. An introduction to ROC analysis. Pattern Recognit. Lett. 27, 861\u2013874 (2006).",
+        "volume": "27",
+        "year": "2006"
+      },
+      {
+        "DOI": "10.1007/s00441-012-1490-9",
+        "author": "M Musa",
+        "doi-asserted-by": "publisher",
+        "first-page": "455",
+        "journal-title": "Cell Tissue Res.",
+        "key": "1346_CR106",
+        "unstructured": "Musa, M. et al. Differential localisation of BPIFA1 (SPLUNC1) and BPIFB1 (LPLUNC1) in the nasal and oral cavities of mice. Cell Tissue Res. 350, 455\u2013464 (2012).",
+        "volume": "350",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1126/science.aad0501",
+        "author": "I Tirosh",
+        "doi-asserted-by": "publisher",
+        "first-page": "189",
+        "journal-title": "Science",
+        "key": "1346_CR107",
+        "unstructured": "Tirosh, I. et al. Dissecting the multicellular ecosystem of metastatic melanoma by single-cell RNA-seq. Science 352, 189\u2013196 (2016).",
+        "volume": "352",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1038/s41467-018-06176-3",
+        "author": "LE Byrnes",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "1346_CR108",
+        "unstructured": "Byrnes, L. E. et al. Lineage dynamics of murine pancreatic development at single-cell resolution. Nat. Commun. 9, 3922 (2018).",
+        "volume": "9",
+        "year": "2018"
+      }
+    ],
+    "reference-count": 108,
+    "references-count": 108,
+    "relation": {
+      "has-preprint": [
+        {
+          "asserted-by": "object",
+          "id": "10.21203/rs.3.rs-94819/v1",
+          "id-type": "doi"
+        },
+        {
+          "asserted-by": "object",
+          "id": "10.1101/2020.10.19.345983",
+          "id-type": "doi"
+        }
+      ]
+    },
+    "resource": {
+      "primary": {
+        "URL": "https://www.nature.com/articles/s41592-021-01346-6"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Nat Methods"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "CellRank for directed single-cell fate mapping"
+    ],
+    "type": "journal-article",
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "volume": "19"
+  },
+  "paper_id": "MP-003",
+  "status": "fetched"
+}

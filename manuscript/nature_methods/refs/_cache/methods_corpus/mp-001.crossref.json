@@ -1,0 +1,811 @@
+{
+  "accessed_utc": "2026-07-02T10:19:25.464399Z",
+  "crossref_journal": "Nature Methods",
+  "crossref_title": "Cellpose: a generalist algorithm for cellular segmentation",
+  "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41592-020-01018-x",
+  "doi": "10.1038/s41592-020-01018-x",
+  "expected_journal": "Nature Methods",
+  "expected_title": "Cellpose: a generalist algorithm for cellular segmentation",
+  "http_status": 200,
+  "message": {
+    "DOI": "10.1038/s41592-020-01018-x",
+    "ISSN": [
+      "1548-7091",
+      "1548-7105"
+    ],
+    "URL": "https://doi.org/10.1038/s41592-020-01018-x",
+    "alternative-id": [
+      "1018"
+    ],
+    "assertion": [
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Received",
+        "name": "received",
+        "order": 1,
+        "value": "3 April 2020"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Accepted",
+        "name": "accepted",
+        "order": 2,
+        "value": "11 November 2020"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "First Online",
+        "name": "first_online",
+        "order": 3,
+        "value": "14 December 2020"
+      },
+      {
+        "group": {
+          "label": "Competing interests",
+          "name": "EthicsHeading"
+        },
+        "name": "Ethics",
+        "order": 1,
+        "value": "The authors declare no competing interests."
+      }
+    ],
+    "author": [
+      {
+        "affiliation": [],
+        "family": "Stringer",
+        "given": "Carsen",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "affiliation": [],
+        "family": "Wang",
+        "given": "Tim",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Michaelos",
+        "given": "Michalis",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-7106-814X",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Pachitariu",
+        "given": "Marius",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      }
+    ],
+    "container-title": [
+      "Nature Methods"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": [
+        "link.springer.com"
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2020,
+          12,
+          14
+        ]
+      ],
+      "date-time": "2020-12-14T12:08:50Z",
+      "timestamp": 1607947730000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2024,
+          8,
+          18
+        ]
+      ],
+      "date-time": "2024-08-18T23:01:06Z",
+      "timestamp": 1724022066000
+    },
+    "funder": [
+      {
+        "DOI": "10.13039/100000011",
+        "award": [
+          "Janelia"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "Janelia"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100000011",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "Howard Hughes Medical Institute"
+      }
+    ],
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          7,
+          2
+        ]
+      ],
+      "date-time": "2026-07-02T09:18:07Z",
+      "timestamp": 1782983887340,
+      "version": "3.54.5"
+    },
+    "is-referenced-by-count": 4249,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "1548-7091"
+      },
+      {
+        "type": "electronic",
+        "value": "1548-7105"
+      }
+    ],
+    "issue": "1",
+    "issued": {
+      "date-parts": [
+        [
+          2020,
+          12,
+          14
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "1",
+      "published-print": {
+        "date-parts": [
+          [
+            2021,
+            1
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "http://www.springer.com/tdm",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2020,
+              12,
+              14
+            ]
+          ],
+          "date-time": "2020-12-14T00:00:00Z",
+          "timestamp": 1607904000000
+        }
+      },
+      {
+        "URL": "http://www.springer.com/tdm",
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2020,
+              12,
+              14
+            ]
+          ],
+          "date-time": "2020-12-14T00:00:00Z",
+          "timestamp": 1607904000000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "http://www.nature.com/articles/s41592-020-01018-x.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://www.nature.com/articles/s41592-020-01018-x",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://www.nature.com/articles/s41592-020-01018-x.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "297",
+    "original-title": [],
+    "page": "100-106",
+    "prefix": "10.1038",
+    "published": {
+      "date-parts": [
+        [
+          2020,
+          12,
+          14
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2020,
+          12,
+          14
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2021,
+          1
+        ]
+      ]
+    },
+    "publisher": "Springer Science and Business Media LLC",
+    "reference": [
+      {
+        "DOI": "10.1016/j.cell.2015.11.007",
+        "author": "M Boutros",
+        "doi-asserted-by": "publisher",
+        "first-page": "1314",
+        "journal-title": "Cell",
+        "key": "1018_CR1",
+        "unstructured": "Boutros, M., Heigwer, F. & Laufer, C. Microscopy-based high-content screening. Cell 163, 1314\u20131325 (2015).",
+        "volume": "163",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1109/ISBI.2011.5872394",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR2",
+        "unstructured": "Sommer, C., Straehle, C., Koethe, U. & Hamprecht, F. A. Ilastik: interactive learning and segmentation toolkit. IEEE International Symposium on Biomedical Imaging, 230\u2013233 (2011)."
+      },
+      {
+        "DOI": "10.1007/978-3-319-24574-4_28",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR3",
+        "unstructured": "Ronneberger, O., Fischer, P. & Brox, T. U-Net: convolutional networks for biomedical image segmentation. Preprint at arXiv 1505.04597 (2015)."
+      },
+      {
+        "author": "N Apthorpe",
+        "first-page": "3270",
+        "journal-title": "Advances in Neural Information Processing Systems",
+        "key": "1018_CR4",
+        "unstructured": "Apthorpe, N. et al. Automatic neuron detection in calcium imaging data using convolutional networks. Advances in Neural Information Processing Systems 29, 3270\u20133278 (2016).",
+        "volume": "29",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1109/ICIP.2018.8451187",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR5",
+        "unstructured": "Guerrero-Pena, F. A. et al. Multiclass weighted loss for instance segmentation of cluttered cells. In Proc. 2018 25th IEEE International Conference on Image Processing (ICIP) 2451\u20132455 (IEEE, 2018)."
+      },
+      {
+        "DOI": "10.1080/21681163.2016.1149104",
+        "author": "W Xie",
+        "doi-asserted-by": "publisher",
+        "first-page": "283",
+        "journal-title": "Comput. Methods Biomech. Biomed. Eng. Imaging Vis.",
+        "key": "1018_CR6",
+        "unstructured": "Xie, W., Noble, J. A. & Zisserman, A. Microscopy cell counting and detection with fully convolutional regression networks. Comput. Methods Biomech. Biomed. Eng. Imaging Vis. 6, 283\u2013292 (2018).",
+        "volume": "6",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1186/s12859-018-2375-z",
+        "author": "Y Al-Kofahi",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "journal-title": "BMC Bioinformatics",
+        "key": "1018_CR7",
+        "unstructured": "Al-Kofahi, Y., Zaltsman, A., Graves, R., Marshall, W. & Rusu, M. A deep learning-based algorithm for 2-D cell segmentation in microscopy images. BMC Bioinformatics 19, 1\u201311 (2018).",
+        "volume": "19",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41592-019-0582-9",
+        "author": "S Berg",
+        "doi-asserted-by": "publisher",
+        "first-page": "1226",
+        "journal-title": "Nat. Methods",
+        "key": "1018_CR8",
+        "unstructured": "Berg, S. et al. ilastik: interactive machine learning for (bio)image analysis. Nat. Methods 16, 1226\u20131232 (2019).",
+        "volume": "16",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1038/nmeth.2019",
+        "author": "J Schindelin",
+        "doi-asserted-by": "publisher",
+        "first-page": "676",
+        "journal-title": "Nat. Methods",
+        "key": "1018_CR9",
+        "unstructured": "Schindelin, J. et al. Fiji: an open-source platform for biological-image analysis. Nat. Methods 9, 676\u2013682 (2012).",
+        "volume": "9",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1371/journal.pbio.2005970",
+        "author": "C McQuin",
+        "doi-asserted-by": "publisher",
+        "first-page": "e2005970",
+        "journal-title": "PLoS Biology",
+        "key": "1018_CR10",
+        "unstructured": "McQuin, C. et al. Cellprofiler 3.0: next-generation image processing for biology. PLoS Biology 16, e2005970 (2018).",
+        "volume": "16",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1186/gb-2006-7-10-r100",
+        "author": "AE Carpenter",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome Biol.",
+        "key": "1018_CR11",
+        "unstructured": "Carpenter, A. E. et al. Cellprofiler: image analysis software for identifying and quantifying cell phenotypes. Genome Biol. 7, R100 (2006).",
+        "volume": "7",
+        "year": "2006"
+      },
+      {
+        "DOI": "10.1101/491035",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR12",
+        "unstructured": "Chen, J. et al. The Allen cell structure segmenter: a new open source toolkit for segmenting 3D intracellular structures in fluorescence microscopy images. Preprint at https://www.biorxiv.org/content/10.1101/491035v1 (2018)."
+      },
+      {
+        "DOI": "10.1007/978-3-030-11024-6_33",
+        "doi-asserted-by": "publisher",
+        "key": "1018_CR13",
+        "unstructured": "Funke, J., Mais, L., Champion, A., Dye, N. & Kainmueller, D. A benchmark for epithelial cell tracking. Proceedings of the European Conference on Computer Vision https://doi.org/10.1007/978-3-030-11024-6_33 (2018)."
+      },
+      {
+        "key": "1018_CR14",
+        "unstructured": "Yi, J. et al. Object-guided instance segmentation for biological images. Preprint at https://arxiv.org/abs/1911.09199 (2019)."
+      },
+      {
+        "DOI": "10.1038/s41592-019-0612-7",
+        "author": "JC Caicedo",
+        "doi-asserted-by": "publisher",
+        "first-page": "1247",
+        "journal-title": "Nat. Methods",
+        "key": "1018_CR15",
+        "unstructured": "Caicedo, J. C. et al. Nucleus segmentation across imaging experiments: the 2018 data science bowl. Nat. Methods 16, 1247\u20131253 (2019).",
+        "volume": "16",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1109/ICCV.2017.322",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR16",
+        "unstructured": "He, K., Gkioxari, G., Doll\u00e1r, P. & Girshick, R. Mask R-CNN. Preprint at https://arxiv.org/abs/1703.06870 (2018)."
+      },
+      {
+        "key": "1018_CR17",
+        "unstructured": "Abdulla, W. Mask r-cnn for object detection and instance segmentation on keras and tensorflow (GitHub, 2017); https://github.com/matterport/Mask_RCNN"
+      },
+      {
+        "DOI": "10.1007/978-3-030-00934-2_30",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR18",
+        "unstructured": "Schmidt, U., Weigert, M., Broaddus, C. & Myers, G. Cell detection with star-convex polygons. International Conference on Medical Image Computing and Computer-Assisted Intervention 265\u2013273 (2018)."
+      },
+      {
+        "DOI": "10.1101/580605",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR19",
+        "unstructured": "Hollandi, R. et al. A deep learning framework for nucleus segmentation using image style transfer. Preprint at https://www.biorxiv.org/content/10.1101/580605v1 (2019)."
+      },
+      {
+        "key": "1018_CR20",
+        "unstructured": "Van Rossum, G. & Drake, F. L. Python 3 Reference Manual (CreateSpace, 2009)."
+      },
+      {
+        "DOI": "10.1038/s41586-020-2649-2",
+        "author": "CR Harris",
+        "doi-asserted-by": "publisher",
+        "first-page": "357",
+        "journal-title": "Nature",
+        "key": "1018_CR21",
+        "unstructured": "Harris, C. R. et al. Array programming with numpy. Nature 585, 357\u2013362 (2020).",
+        "volume": "585",
+        "year": "2020"
+      },
+      {
+        "key": "1018_CR22",
+        "unstructured": "Jones, E. et al. SciPy: open source scientific tools for Python (SciPy, 2001); http://www.scipy.org/"
+      },
+      {
+        "DOI": "10.1145/2833157.2833162",
+        "doi-asserted-by": "publisher",
+        "key": "1018_CR23",
+        "unstructured": "Lam, S. K., Pitrou, A. & Seibert, S. Numba: a llvm-based python jit compiler. In Proc. Second Workshop on the LLVM Compiler Infrastructure in HPC 7 (2015); https://doi.org/10.1145/2833157.2833162"
+      },
+      {
+        "key": "1018_CR24",
+        "unstructured": "Bradski, G. The OpenCV Library. Dr. Dobb\u2019s J. Softw. Tools 25, 120\u2013125 (2000)."
+      },
+      {
+        "key": "1018_CR25",
+        "unstructured": "Chen, T. et al. Mxnet: A flexible and efficient machine learning library for heterogeneous distributed systems. Preprint at https://arxiv.org/abs/1512.01274 (2015)."
+      },
+      {
+        "key": "1018_CR26",
+        "unstructured": "Summerfield, M. Rapid GUI Programming with Python and Qt: The Definitive Guide to PyQt Programming (Pearson Education, 2007)."
+      },
+      {
+        "key": "1018_CR27",
+        "unstructured": "Campagnola, L. Scientific graphics and GUI library for Python; http://pyqtgraph.org/"
+      },
+      {
+        "key": "1018_CR28",
+        "unstructured": "Beucher, S. & Meyer, F. in Mathematical Morphology in Image Processing (ed. Dougherty, E. R.) 433\u2013481 (Marcel Dekker, 1993)."
+      },
+      {
+        "DOI": "10.1111/j.1365-2818.2008.02016.x",
+        "author": "G Li",
+        "doi-asserted-by": "publisher",
+        "first-page": "47",
+        "journal-title": "J. Microsc.",
+        "key": "1018_CR29",
+        "unstructured": "Li, G. et al. Segmentation of touching cell nuclei using gradient flow tracking. J. Microsc. 231, 47\u201358 (2008).",
+        "volume": "231",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1109/CVPR.2016.90",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR30",
+        "unstructured": "He, K., Zhang, X., Ren, S. & Sun, J. Deep residual learning for image recognition. Proceedings of the IEEE conference on computer vision and pattern recognition 770\u2013778 (2016)."
+      },
+      {
+        "DOI": "10.1109/CVPR.2016.265",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR31",
+        "unstructured": "Gatys, L. A., Ecker, A. S. & Bethge, M. Image style transfer using convolutional neural networks. Proceedings of the IEEE conference on computer vision and pattern recognition 2414\u20132423 (2016)."
+      },
+      {
+        "DOI": "10.1109/CVPR.2019.00453",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR32",
+        "unstructured": "Karras, T., Laine, S. & Aila, T. A style-based generator architecture for generative adversarial networks. Proceedings of the IEEE conference on computer vision and pattern recognition 4401\u20134410 (2019)."
+      },
+      {
+        "key": "1018_CR33",
+        "unstructured": "OMERO. Image data resource (IDR, 2020); https://idr.openmicroscopy.org/cell/"
+      },
+      {
+        "DOI": "10.1038/nmeth.4326",
+        "author": "E Williams",
+        "doi-asserted-by": "publisher",
+        "first-page": "775",
+        "journal-title": "Nat. Methods",
+        "key": "1018_CR34",
+        "unstructured": "Williams, E. et al. Image data resource: a bioimage data integration and publication platform. Nat. Methods 14, 775\u2013781 (2017).",
+        "volume": "14",
+        "year": "2017"
+      },
+      {
+        "author": "Lvd Maaten",
+        "first-page": "2579",
+        "journal-title": "J. Machine Learning Res.",
+        "key": "1018_CR35",
+        "unstructured": "Maaten, Lvd & Hinton, G. Visualizing data using t-SNE. J. Machine Learning Res. 9, 2579\u20132605 (2008).",
+        "volume": "9",
+        "year": "2008"
+      },
+      {
+        "author": "F Pedregosa",
+        "first-page": "2825",
+        "journal-title": "J. Machine Learning Res.",
+        "key": "1018_CR36",
+        "unstructured": "Pedregosa, F. et al. Scikit-learn: Machine learning in python. J. Machine Learning Res. 12, 2825\u20132830 (2011).",
+        "volume": "12",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.7295/W9CCDB6843",
+        "doi-asserted-by": "publisher",
+        "key": "1018_CR37",
+        "unstructured": "Yu, W., Lee, H. K., Hariharan, S., Bu, W. Y. & Ahmed, S. Ccdb:6843, Mus musculus, neuroblastoma. Cell Image Library https://doi.org/10.7295/W9CCDB6843"
+      },
+      {
+        "DOI": "10.1016/j.tibs.2014.10.005",
+        "author": "X-c Bai",
+        "doi-asserted-by": "publisher",
+        "first-page": "49",
+        "journal-title": "Trends Biochem. Sci.",
+        "key": "1018_CR38",
+        "unstructured": "Bai, X.-c, McMullan, G. & Scheres, S. H. How cryo-em is revolutionizing structural biology. Trends Biochem. Sci. 40, 49\u201357 (2015).",
+        "volume": "40",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1109/WACV45572.2020.9093435",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR39",
+        "unstructured": "Weigert, M., Schmidt, U., Haase, R., Sugawara, K. & Myers, G. Star-convex polyhedra for 3D object detection and segmentation in microscopy. Preprint at https://arxiv.org/abs/1908.03636 (2019)."
+      },
+      {
+        "DOI": "10.1038/nmeth.4473",
+        "author": "V Ulman",
+        "doi-asserted-by": "publisher",
+        "first-page": "1141",
+        "journal-title": "Nat. Methods",
+        "key": "1018_CR40",
+        "unstructured": "Ulman, V. et al. An objective comparison of cell-tracking algorithms. Nat. Methods 14, 1141\u20131152 (2017).",
+        "volume": "14",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1126/science.aaf2403",
+        "author": "PL St\u00e5hl",
+        "doi-asserted-by": "publisher",
+        "first-page": "78",
+        "journal-title": "Science",
+        "key": "1018_CR41",
+        "unstructured": "St\u00e5hl, P. L. et al. Visualization and analysis of gene expression in tissue sections by spatial transcriptomics. Science 353, 78\u201382 (2016).",
+        "volume": "353",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1109/TPAMI.2010.161",
+        "author": "P Arbelaez",
+        "doi-asserted-by": "publisher",
+        "first-page": "898",
+        "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell.",
+        "key": "1018_CR42",
+        "unstructured": "Arbelaez, P., Maire, M., Fowlkes, C. & Malik, J. Contour detection and hierarchical image segmentation. IEEE Trans. Pattern Anal. Mach. Intell. 33, 898\u2013916 (2010).",
+        "volume": "33",
+        "year": "2010"
+      },
+      {
+        "DOI": "10.1109/TMI.2017.2677499",
+        "author": "N Kumar",
+        "doi-asserted-by": "publisher",
+        "first-page": "1550",
+        "journal-title": "IEEE Trans. Med. Imag.",
+        "key": "1018_CR43",
+        "unstructured": "Kumar, N. et al. A dataset and a technique for generalized nuclear segmentation for computational pathology. IEEE Trans. Med. Imag. 36, 1550\u20131560 (2017).",
+        "volume": "36",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1109/MCSE.2007.55",
+        "author": "JD Hunter",
+        "doi-asserted-by": "publisher",
+        "first-page": "90",
+        "journal-title": "Comput. Sci. Eng.",
+        "key": "1018_CR44",
+        "unstructured": "Hunter, J. D. Matplotlib: a 2D graphics environment. Comput. Sci. Eng. 9, 90\u201395 (2007).",
+        "volume": "9",
+        "year": "2007"
+      },
+      {
+        "key": "1018_CR45",
+        "unstructured": "Kluyver, T. et al. Jupyter notebooks-a publishing format for reproducible computational workflows. ELPUB 87\u201390 (2016)."
+      },
+      {
+        "DOI": "10.1038/nmeth.2083",
+        "author": "V Ljosa",
+        "doi-asserted-by": "publisher",
+        "first-page": "637",
+        "journal-title": "Nat. Methods",
+        "key": "1018_CR46",
+        "unstructured": "Ljosa, V., Sokolnicki, K. L. & Carpenter, A. E. Annotated high-throughput microscopy image sets for validation. Nat. Methods 9, 637\u2013637 (2012).",
+        "volume": "9",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1007/11569541_54",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR47",
+        "unstructured": "Jones, T. R., Carpenter, A. & Golland, P. Voronoi-based segmentation of cells on image manifolds. International Workshop on Computer Vision for Biomedical Image Applications 535\u2013543 (2005)."
+      },
+      {
+        "DOI": "10.1371/journal.pone.0027315",
+        "author": "DH Rapoport",
+        "doi-asserted-by": "publisher",
+        "first-page": "e27315",
+        "journal-title": "PLoS ONE",
+        "key": "1018_CR48",
+        "unstructured": "Rapoport, D. H., Becker, T., Mamlouk, A. M., Schicktanz, S. & Kruse, C. A novel validation algorithm allows for automated cell tracking and the extraction of biologically meaningful parameters. PLoS ONE 6, e27315 (2011).",
+        "volume": "6",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.1016/j.media.2018.12.003",
+        "author": "SEA Raza",
+        "doi-asserted-by": "publisher",
+        "first-page": "160",
+        "journal-title": "Med. Image Anal.",
+        "key": "1018_CR49",
+        "unstructured": "Raza, S. E. A. et al. Micro-Net: a unified model for segmentation of various objects in microscopy images. Med. Image Anal. 52, 160\u2013173 (2019).",
+        "volume": "52",
+        "year": "2019"
+      },
+      {
+        "key": "1018_CR50",
+        "unstructured": "Lopuhin, K. kaggle-dsbowl-2018-dataset-fixes (GitHub, 2018); https://github.com/lopuhin/kaggle-dsbowl-2018-dataset-fixes"
+      },
+      {
+        "DOI": "10.1109/TMI.2019.2947628",
+        "author": "N Kumar",
+        "doi-asserted-by": "publisher",
+        "first-page": "1380",
+        "journal-title": "IEEE Trans. Med. Imag.",
+        "key": "1018_CR51",
+        "unstructured": "Kumar, N. et al. A multi-organ nucleus segmentation challenge. IEEE Trans. Med. Imag. 39, 1380\u20131391 (2019).",
+        "volume": "39",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1109/ISBI.2009.5193098",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR52",
+        "unstructured": "Coelho, L. P., Shariff, A. & Murphy, R. F. Nuclear segmentation in microscope cell images: a hand-segmented dataset and comparison of algorithms. IEEE International Symposium on Biomedical Imaging: From Nano to Macro 518\u2013521 (2009)."
+      },
+      {
+        "DOI": "10.1126/science.1260088",
+        "author": "F Chen",
+        "doi-asserted-by": "publisher",
+        "first-page": "543",
+        "journal-title": "Science",
+        "key": "1018_CR53",
+        "unstructured": "Chen, F., Tillberg, P. W. & Boyden, E. S. Expansion microscopy. Science 347, 543\u2013548 (2015).",
+        "volume": "347",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1038/nmeth.3899",
+        "author": "F Chen",
+        "doi-asserted-by": "publisher",
+        "first-page": "679",
+        "journal-title": "Nat. Methods",
+        "key": "1018_CR54",
+        "unstructured": "Chen, F. et al. Nanoscale imaging of RNA with expansion microscopy. Nat. Methods 13, 679\u2013684 (2016).",
+        "volume": "13",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1109/TPAMI.2019.2929257",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR55",
+        "unstructured": "Cao, Z., Hidalgo, G., Simon, T., Wei, S.-E. & Sheikh, Y. OpenPose: realtime multi-person 2D pose estimation using part affinity fields. Preprint at arXiv 1812.08008 (2019)."
+      },
+      {
+        "DOI": "10.1109/CVPR.2019.00904",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR56",
+        "unstructured": "Neven, D., Brabandere, B. D., Proesmans, M. & Gool, L. V. Instance segmentation by jointly optimizing spatial embeddings and clustering bandwidth. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition 8837\u20138845 (2019)."
+      },
+      {
+        "DOI": "10.1109/TPAMI.2006.253",
+        "author": "L Gorelick",
+        "doi-asserted-by": "publisher",
+        "first-page": "1991",
+        "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell.",
+        "key": "1018_CR57",
+        "unstructured": "Gorelick, L., Galun, M., Sharon, E., Basri, R. & Brandt, A. Shape representation and classification using the poisson equation. IEEE Trans. Pattern Anal. Mach. Intell. 28, 1991\u20132005 (2006).",
+        "volume": "28",
+        "year": "2006"
+      },
+      {
+        "DOI": "10.1007/978-3-319-46493-0_38",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR58",
+        "unstructured": "He, K., Zhang, X., Ren, S. & Sun, J. Identity mappings in deep residual networks. Preprint at arXiv 1603.05027 (2016)."
+      },
+      {
+        "DOI": "10.1109/VCIP.2017.8305148",
+        "doi-asserted-by": "crossref",
+        "key": "1018_CR59",
+        "unstructured": "Chaurasia, A. & Culurciello, E. LinkNet: exploiting encoder representations for efficient semantic segmentation. In Proc. 2017 IEEE Visual Communications and Image Processing (VCIP) 1\u20134 (IEEE, 2017)."
+      },
+      {
+        "key": "1018_CR60",
+        "unstructured": "Schmidt, U. & Weigert, M. StarDist\u2014object detection with star-convex shapes (GitHub, 2019); http://github.com/mpicbg-csbd/stardist"
+      },
+      {
+        "author": "Y Mingqiang",
+        "first-page": "43",
+        "journal-title": "Pattern Recog.",
+        "key": "1018_CR61",
+        "unstructured": "Mingqiang, Y., Kidiyo, K. & Joseph, R. A survey of shape feature extraction techniques. Pattern Recog. 15, 43\u201390 (2008).",
+        "volume": "15",
+        "year": "2008"
+      }
+    ],
+    "reference-count": 61,
+    "references-count": 61,
+    "relation": {
+      "has-preprint": [
+        {
+          "asserted-by": "object",
+          "id": "10.1101/2020.02.02.931238",
+          "id-type": "doi"
+        }
+      ],
+      "has-review": [
+        {
+          "asserted-by": "object",
+          "id": "10.3410/f.739206616.793584985",
+          "id-type": "doi"
+        }
+      ]
+    },
+    "resource": {
+      "primary": {
+        "URL": "https://www.nature.com/articles/s41592-020-01018-x"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Nat Methods"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Cellpose: a generalist algorithm for cellular segmentation"
+    ],
+    "type": "journal-article",
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "volume": "18"
+  },
+  "paper_id": "MP-001",
+  "status": "fetched"
+}

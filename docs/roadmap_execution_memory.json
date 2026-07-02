@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 9.1 venue guidance registered; manuscript production not started",
+    "active_stage": "Stage 9.2 methods-paper corpus registered; manuscript production not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -23,12 +23,13 @@
     "after_stage7_planning": "Stage 7 is roadmap-defined as an independent biological demonstration and methods-manuscript readiness program aligned to standards exemplified by strong computational methods papers. Implementation has not started.",
     "after_stage9_0_evidence_lock": "Stage 9.0 locked the completed Stage 7.8 methods-readiness evidence package into stage9_evidence_manifest.csv, stage9_evidence_lock.md, and stage7_output_contract.md. Stage 9.1 venue guidance, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_1_guidance_register": "Stage 9.1 cached official Nature Methods, Nature Portfolio, and Springer Nature guidance, registered Article-format constraints, and kept citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly not started.",
+    "after_stage9_2_methods_corpus": "Stage 9.2 registered an eight-DOI representative computational methods-paper corpus and extracted cross-paper archetype features. Stage 9.3 narrative-spine selection, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual product/commercial alignment and must not reshape the Stage 7 evidence path. Stage 9 is serialized only as a manuscript-assembly scaffold; no evidence intake, figure rendering, or drafting has started.",
-    "stage9_active_gate": "Stage 9.1 venue guidance registered; manuscript production not started"
+    "stage9_active_gate": "Stage 9.2 methods-paper corpus registered; manuscript production not started"
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -343,19 +344,25 @@
         "manuscript/nature_methods/refs/_cache/",
         "manuscript/nature_methods/audits/venue_policy_constraints.md",
         "manuscript/nature_methods/gate_verdicts/9.1.json",
-        "scripts/run_stage9_1_venue_guidance_register.py"
+        "scripts/run_stage9_1_venue_guidance_register.py",
+        "manuscript/nature_methods/refs/representative_methods_papers.md",
+        "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md",
+        "manuscript/nature_methods/refs/_cache/methods_corpus/",
+        "manuscript/nature_methods/gate_verdicts/9.2.json",
+        "scripts/run_stage9_2_methods_paper_corpus.py"
       ],
-      "current_gate": "Stage 9.1 venue guidance registered; manuscript production not started",
+      "current_gate": "Stage 9.2 methods-paper corpus registered; manuscript production not started",
       "gate": [
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
         "Stage 9.2 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
         "No manuscript draft sections, reference bibliography, rendered figures, or submission package contents are created in this evidence-lock or venue-guidance pass.",
-        "Stage 9.1 venue guidance is registered from official cached sources."
+        "Stage 9.1 venue guidance is registered from official cached sources.",
+        "Stage 9.2 representative methods-paper corpus is registered from DOI-verified metadata."
       ],
       "name": "Nature Methods manuscript assembly scaffold",
-      "scope_rule": "Stage 9 has completed evidence intake and venue-guidance registration only. Do not start representative corpus, citation resolution, drafting, figure rendering, review response, or submission packaging without explicit substage authorization.",
+      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, and representative methods-paper corpus analysis only. Do not start narrative-spine selection, citation resolution, drafting, figure rendering, review response, or submission packaging without explicit substage authorization.",
       "stage": 9,
-      "status": "stage9_1_guidance_registered",
+      "status": "stage9_2_methods_corpus_registered",
       "subphases": [
         {
           "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
@@ -384,12 +391,13 @@
           "status": "complete_guidance_registered"
         },
         {
-          "evidence": "not_started",
+          "corpus_version": "methods-corpus@2026-07-02@5ce55cc235ad1819dcc7a4382343f0293230a282",
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.2.json",
           "gate": "corpus has the planned DOI count; each entry records novelty, benchmarks, biology, software, limitations, and availability; archetype synthesis exists",
           "goal": "Create a structural corpus of successful computational methods papers.",
           "id": "9.2",
           "name": "Representative methods-paper corpus",
-          "status": "not_started"
+          "status": "complete_methods_corpus_registered"
         },
         {
           "evidence": "not_started",

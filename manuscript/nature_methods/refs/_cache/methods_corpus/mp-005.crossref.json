@@ -1,0 +1,807 @@
+{
+  "accessed_utc": "2026-07-02T10:19:25.464399Z",
+  "crossref_journal": "Nature Biotechnology",
+  "crossref_title": "A Python library for probabilistic analysis of single-cell omics data",
+  "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41587-021-01206-w",
+  "doi": "10.1038/s41587-021-01206-w",
+  "expected_journal": "Nature Biotechnology",
+  "expected_title": "A Python library for probabilistic analysis of single-cell omics data",
+  "http_status": 200,
+  "message": {
+    "DOI": "10.1038/s41587-021-01206-w",
+    "ISSN": [
+      "1087-0156",
+      "1546-1696"
+    ],
+    "URL": "https://doi.org/10.1038/s41587-021-01206-w",
+    "alternative-id": [
+      "1206"
+    ],
+    "assertion": [
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "First Online",
+        "name": "first_online",
+        "order": 1,
+        "value": "7 February 2022"
+      },
+      {
+        "group": {
+          "label": "Competing interests",
+          "name": "EthicsHeading"
+        },
+        "name": "Ethics",
+        "order": 1,
+        "value": "V.S. is a full-time employee of Serqet Therapeutics and has ownership interest in Serqet Therapeutics. F.J.T. reports consulting fees from Roche Diagnostics GmbH and Cellarity Inc., and ownership interest in Cellarity, Inc. N.Y. is an advisor to and/or has equity in Cellarity, Celsius Therapeutics and Rheos Medicines. The remaining authors declare no competing interests."
+      }
+    ],
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0001-9537-0845",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Gayoso",
+        "given": "Adam",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-0495-738X",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Lopez",
+        "given": "Romain",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Xing",
+        "given": "Galen",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Boyeau",
+        "given": "Pierre",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-2008-5297",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Valiollah Pour Amiri",
+        "given": "Valeh",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-2115-9101",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Hong",
+        "given": "Justin",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Wu",
+        "given": "Katherine",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Jayasuriya",
+        "given": "Michael",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Mehlman",
+        "given": "Edouard",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Langevin",
+        "given": "Maxime",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Liu",
+        "given": "Yining",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Samaran",
+        "given": "Jules",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Misrachi",
+        "given": "Gabriel",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Nazaret",
+        "given": "Achille",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Clivio",
+        "given": "Oscar",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-9610-7627",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Xu",
+        "given": "Chenling",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Ashuach",
+        "given": "Tal",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Gabitto",
+        "given": "Mariano",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-6858-7985",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Lotfollahi",
+        "given": "Mohammad",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Svensson",
+        "given": "Valentine",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "da Veiga Beltrame",
+        "given": "Eduardo",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Kleshchevnikov",
+        "given": "Vitalii",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Talavera-L\u00f3pez",
+        "given": "Carlos",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-9164-6231",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Pachter",
+        "given": "Lior",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-2419-1943",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Theis",
+        "given": "Fabian J.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-3909-8389",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Streets",
+        "given": "Aaron",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-8935-817X",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Jordan",
+        "given": "Michael I.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-1472-5235",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Regier",
+        "given": "Jeffrey",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-9004-1225",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Yosef",
+        "given": "Nir",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      }
+    ],
+    "container-title": [
+      "Nature Biotechnology"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": [
+        "link.springer.com"
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2022,
+          2,
+          7
+        ]
+      ],
+      "date-time": "2022-02-07T12:03:14Z",
+      "timestamp": 1644235394000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2024,
+          12,
+          11
+        ]
+      ],
+      "date-time": "2024-12-11T17:33:47Z",
+      "timestamp": 1733938427000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          6,
+          30
+        ]
+      ],
+      "date-time": "2026-06-30T01:59:33Z",
+      "timestamp": 1782784773238,
+      "version": "3.54.5"
+    },
+    "is-referenced-by-count": 779,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "1087-0156"
+      },
+      {
+        "type": "electronic",
+        "value": "1546-1696"
+      }
+    ],
+    "issue": "2",
+    "issued": {
+      "date-parts": [
+        [
+          2022,
+          2
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "2",
+      "published-print": {
+        "date-parts": [
+          [
+            2022,
+            2
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "https://www.springernature.com/gp/researchers/text-and-data-mining",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2022,
+              2,
+              1
+            ]
+          ],
+          "date-time": "2022-02-01T00:00:00Z",
+          "timestamp": 1643673600000
+        }
+      },
+      {
+        "URL": "https://www.springernature.com/gp/researchers/text-and-data-mining",
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2022,
+              2,
+              1
+            ]
+          ],
+          "date-time": "2022-02-01T00:00:00Z",
+          "timestamp": 1643673600000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "https://www.nature.com/articles/s41587-021-01206-w.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/s41587-021-01206-w",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/s41587-021-01206-w.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "297",
+    "original-title": [],
+    "page": "163-166",
+    "prefix": "10.1038",
+    "published": {
+      "date-parts": [
+        [
+          2022,
+          2
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2022,
+          2,
+          7
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2022,
+          2
+        ]
+      ]
+    },
+    "publisher": "Springer Science and Business Media LLC",
+    "reference": [
+      {
+        "DOI": "10.1093/database/baaa073",
+        "author": "V Svensson",
+        "doi-asserted-by": "publisher",
+        "first-page": "baaa073",
+        "journal-title": "Database",
+        "key": "1206_CR1",
+        "unstructured": "Svensson, V., da Veiga Beltrame, E. & Pachter, L. Database 2020, baaa073 (2020).",
+        "volume": "2020",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/s12276-020-0420-2",
+        "author": "J Lee",
+        "doi-asserted-by": "publisher",
+        "first-page": "1428",
+        "journal-title": "Exp. Mol. Med.",
+        "key": "1206_CR2",
+        "unstructured": "Lee, J., Hyeon, D. Y. & Hwang, D. Exp. Mol. Med. 52, 1428\u20131442 (2020).",
+        "volume": "52",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/nbt.3711",
+        "author": "A Wagner",
+        "doi-asserted-by": "publisher",
+        "first-page": "1145",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1206_CR3",
+        "unstructured": "Wagner, A., Regev, A. & Yosef, N. Nat. Biotechnol. 34, 1145\u20131160 (2016).",
+        "volume": "34",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1371/journal.pcbi.1006245",
+        "doi-asserted-by": "crossref",
+        "key": "1206_CR4",
+        "unstructured": "Zappia, L., Phipson, B. & Oshlack, A. PLOS Comput. Biol. 14 (2018)."
+      },
+      {
+        "DOI": "10.15252/msb.20199198",
+        "author": "R Lopez",
+        "doi-asserted-by": "publisher",
+        "first-page": "e9198",
+        "journal-title": "Mol. Syst. Biol.",
+        "key": "1206_CR5",
+        "unstructured": "Lopez, R., Gayoso, A. & Yosef, N. Mol. Syst. Biol. 16, e9198 (2020).",
+        "volume": "16",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1186/gb-2004-5-10-r80",
+        "author": "RC Gentleman",
+        "doi-asserted-by": "publisher",
+        "first-page": "R80",
+        "journal-title": "Genome Biol.",
+        "key": "1206_CR6",
+        "unstructured": "Gentleman, R. C. et al. Genome Biol. 5, R80 (2004).",
+        "volume": "5",
+        "year": "2004"
+      },
+      {
+        "DOI": "10.1038/nbt.3192",
+        "author": "R Satija",
+        "doi-asserted-by": "publisher",
+        "first-page": "495",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1206_CR7",
+        "unstructured": "Satija, R., Farrell, J. A., Gennert, D., Schier, A. F. & Regev, A. Nat. Biotechnol. 33, 495\u2013502 (2015).",
+        "volume": "33",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1186/s13059-017-1382-0",
+        "author": "FA Wolf",
+        "doi-asserted-by": "publisher",
+        "first-page": "15",
+        "journal-title": "Genome Biol.",
+        "key": "1206_CR8",
+        "unstructured": "Wolf, F. A., Angerer, P. & Theis, F. J. Genome Biol. 19, 15 (2018).",
+        "volume": "19",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.5281/zenodo.3828935",
+        "doi-asserted-by": "publisher",
+        "key": "1206_CR9",
+        "unstructured": "Falcon, W. & The PyTorch Lightning team. PyTorch Lightning (Version 1.4). (2019); https://doi.org/10.5281/zenodo.3828935"
+      },
+      {
+        "key": "1206_CR10",
+        "unstructured": "Chollet, F. et al. Keras. https://keras.io (2015)."
+      },
+      {
+        "DOI": "10.1038/s41592-018-0229-2",
+        "author": "R Lopez",
+        "doi-asserted-by": "publisher",
+        "first-page": "1053",
+        "journal-title": "Nat. Methods",
+        "key": "1206_CR11",
+        "unstructured": "Lopez, R., Regier, J., Cole, M. B., Jordan, M. I. & Yosef, N. Nat. Methods 15, 1053\u20131058 (2018).",
+        "volume": "15",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41587-021-01001-7",
+        "author": "M Lotfollahi",
+        "doi-asserted-by": "publisher",
+        "first-page": "121",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "1206_CR12",
+        "unstructured": "Lotfollahi, M. et al. Nat. Biotechnol. 40, 121\u2013130 (2022).",
+        "volume": "40",
+        "year": "2022"
+      },
+      {
+        "DOI": "10.1038/s41592-019-0529-1",
+        "author": "AW Zhang",
+        "doi-asserted-by": "publisher",
+        "first-page": "1007",
+        "journal-title": "Nat. Methods",
+        "key": "1206_CR13",
+        "unstructured": "Zhang, A. W. et al. Nat. Methods 16, 1007\u20131015 (2019).",
+        "volume": "16",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.15252/msb.20209620",
+        "author": "C Xu",
+        "doi-asserted-by": "publisher",
+        "first-page": "e9620",
+        "journal-title": "Mol. Syst. Biol.",
+        "key": "1206_CR14",
+        "unstructured": "Xu, C. et al. Mol. Syst. Biol. 17, e9620 (2021).",
+        "volume": "17",
+        "year": "2021"
+      },
+      {
+        "DOI": "10.1038/s42003-020-01247-y",
+        "author": "A Andersson",
+        "doi-asserted-by": "publisher",
+        "first-page": "565",
+        "journal-title": "Commun. Biol.",
+        "key": "1206_CR15",
+        "unstructured": "Andersson, A. et al. Commun. Biol. 3, 565 (2020).",
+        "volume": "3",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1101/2021.05.10.443517",
+        "doi-asserted-by": "publisher",
+        "key": "1206_CR16",
+        "unstructured": "Lopez, R. et al. Preprint at bioRxiv https://doi.org/10.1101/2021.05.10.443517 (2021)."
+      },
+      {
+        "DOI": "10.1016/j.cels.2020.05.010",
+        "author": "NJ Bernstein",
+        "doi-asserted-by": "publisher",
+        "first-page": "95",
+        "journal-title": "Cell Syst.",
+        "key": "1206_CR17",
+        "unstructured": "Bernstein, N. J. et al. Cell Syst. 11, 95\u2013101.e5 (2020).",
+        "volume": "11",
+        "year": "2020"
+      },
+      {
+        "DOI": "10.1038/s41592-020-01050-x",
+        "author": "A Gayoso",
+        "doi-asserted-by": "publisher",
+        "first-page": "272",
+        "journal-title": "Nat. Methods",
+        "key": "1206_CR18",
+        "unstructured": "Gayoso, A. et al. Nat. Methods 18, 272\u2013282 (2021).",
+        "volume": "18",
+        "year": "2021"
+      },
+      {
+        "key": "1206_CR19",
+        "unstructured": "Angerer, P., Wolf, A., Virshup, I. & Rybakov, S. AnnData. GitHub https://github.com/theislab/anndata (2019)."
+      },
+      {
+        "author": "A Paszke",
+        "first-page": "8026",
+        "journal-title": "Adv. Neural Inf. Process. Syst.",
+        "key": "1206_CR20",
+        "unstructured": "Paszke, A. et al. Adv. Neural Inf. Process. Syst. 32, 8026\u20138037 (2019).",
+        "volume": "32",
+        "year": "2019"
+      },
+      {
+        "author": "E Bingham",
+        "first-page": "1",
+        "journal-title": "J. Mach. Learn. Res.",
+        "key": "1206_CR21",
+        "unstructured": "Bingham, E. et al. J. Mach. Learn. Res. 20, 1\u20136 (2019).",
+        "volume": "20",
+        "year": "2019"
+      }
+    ],
+    "reference-count": 21,
+    "references-count": 21,
+    "relation": {
+      "has-preprint": [
+        {
+          "asserted-by": "object",
+          "id": "10.1101/2021.04.28.441833",
+          "id-type": "doi"
+        }
+      ]
+    },
+    "resource": {
+      "primary": {
+        "URL": "https://www.nature.com/articles/s41587-021-01206-w"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Nat Biotechnol"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "A Python library for probabilistic analysis of single-cell omics data"
+    ],
+    "type": "journal-article",
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "volume": "40"
+  },
+  "paper_id": "MP-005",
+  "status": "fetched"
+}

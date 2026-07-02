@@ -232,10 +232,12 @@ REQUIRED_FILES = [
     "scripts/check_stage9_scaffold.py",
     "scripts/run_stage9_0_evidence_intake_lock.py",
     "scripts/run_stage9_1_venue_guidance_register.py",
+    "scripts/run_stage9_2_methods_paper_corpus.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
+    "tests/test_stage9_2_methods_paper_corpus.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -247,6 +249,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
     "manuscript/nature_methods/gate_verdicts/9.0.json",
     "manuscript/nature_methods/gate_verdicts/9.1.json",
+    "manuscript/nature_methods/gate_verdicts/9.2.json",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -266,13 +269,23 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.txt",
     "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.meta.json",
     "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.txt",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-001.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-002.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-003.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-004.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-005.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-006.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-007.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-008.crossref.json",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
+    "manuscript/nature_methods/refs/representative_methods_papers.md",
+    "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
     re.compile("/" + "Volumes/"),
     re.compile("Library/" + "LaunchAgents"),
-    re.compile(r"sk-[A-Za-z0-9]"),
+    re.compile(r"sk-[A-Za-z0-9_-]{16,}"),
     re.compile("ghp" + r"_[A-Za-z0-9_]+"),
     re.compile("github" + r"_pat_[A-Za-z0-9_]+"),
     re.compile(r"xox[baprs]-[A-Za-z0-9-]+"),
@@ -375,8 +388,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.1 venue guidance registered; manuscript production not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.1 venue-guidance boundary as active")
+        if current.get("active_stage") != "Stage 9.2 methods-paper corpus registered; manuscript production not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.2 methods-paper corpus boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -390,8 +403,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_1_guidance_registered":
-            failures.append("roadmap execution memory does not mark Stage 9.1 venue guidance without manuscript production")
+        if stages.get(9, {}).get("status") != "stage9_2_methods_corpus_registered":
+            failures.append("roadmap execution memory does not mark Stage 9.2 methods-paper corpus without manuscript production")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -416,8 +429,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.1 venue guidance registered; manuscript production not started":
-                failures.append("Stage 9 current gate must record venue-guidance state")
+            if stage9.get("current_gate") != "Stage 9.2 methods-paper corpus registered; manuscript production not started":
+                failures.append("Stage 9 current gate must record methods-paper corpus state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -428,6 +441,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.0 must be marked complete_evidence_locked")
             if substage_status.get("9.1") != "complete_guidance_registered":
                 failures.append("Stage 9.1 must be marked complete_guidance_registered")
+            if substage_status.get("9.2") != "complete_methods_corpus_registered":
+                failures.append("Stage 9.2 must be marked complete_methods_corpus_registered")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

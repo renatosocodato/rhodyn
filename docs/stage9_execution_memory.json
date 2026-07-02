@@ -74,18 +74,42 @@
       "status": "pass",
       "substage": "9.1",
       "validation_outcome": "Official Nature Methods and Springer Nature guidance registered for Stage 9 manuscript assembly"
+    },
+    {
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.1.json",
+        "Crossref DOI metadata for the eight retained corpus papers"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/refs/representative_methods_papers.md",
+        "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md",
+        "manuscript/nature_methods/refs/_cache/methods_corpus/",
+        "manuscript/nature_methods/gate_verdicts/9.2.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.2.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.3 archetype/content-type/narrative-spine decision has not started",
+        "Stage 9.4 claim freeze has not started",
+        "Stage 9.6 figure-to-claim contract has not started",
+        "Stage 9.6b PanelForge rendering remains blocked until Stage 9.6 passes",
+        "Manuscript drafting and reference library construction remain not started"
+      ],
+      "status": "pass",
+      "substage": "9.2",
+      "validation_outcome": "Representative computational methods-paper corpus registered for Stage 9 manuscript architecture"
     }
   ],
-  "current_substage": "9.1",
+  "current_substage": "9.2",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
   "figure_engine_install_started": false,
   "figure_manifest_status": "scaffold_placeholder_not_renderable",
   "figure_rendering_started": false,
-  "generated_utc": "2026-07-02T10:09:14.214615Z",
+  "generated_utc": "2026-07-02T10:19:25.464399Z",
   "manuscript_drafting_started": false,
-  "next_substage": "9.2",
+  "next_substage": "9.3",
   "next_substage_authorized": false,
   "project_binding": {
     "archive_doi": "10.5281/zenodo.21036616",
@@ -143,6 +167,8 @@
     }
   },
   "report_format": "rhodyn.stage9_execution_memory.v1",
+  "representative_methods_corpus_started": true,
+  "representative_methods_corpus_version": "methods-corpus@2026-07-02@5ce55cc235ad1819dcc7a4382343f0293230a282",
   "stage": 9,
   "stage9_0_checks": [
     {
@@ -213,7 +239,34 @@
       "passed": true
     }
   ],
-  "status": "stage9_1_guidance_registered",
+  "stage9_2_checks": [
+    {
+      "detail": "Stage 9.1 venue guidance exists and passes",
+      "name": "stage_9_1_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "8 unique DOI records verified against planned count 8",
+      "name": "corpus_has_planned_doi_count",
+      "passed": true
+    },
+    {
+      "detail": "Every corpus entry records novelty, benchmarks, biology, software, limitations, and availability",
+      "name": "each_entry_records_required_axes",
+      "passed": true
+    },
+    {
+      "detail": "Archetype synthesis generated from cross-paper method, benchmark, biology, software, limitation, and availability patterns",
+      "name": "archetype_synthesis_exists",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "status": "stage9_2_methods_corpus_registered",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "venue_guidance_started": true,

@@ -1,0 +1,1415 @@
+{
+  "accessed_utc": "2026-07-02T10:19:25.464399Z",
+  "crossref_journal": "Nature Biotechnology",
+  "crossref_title": "Visualizing structure and transitions in high-dimensional biological data",
+  "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41587-019-0336-3",
+  "doi": "10.1038/s41587-019-0336-3",
+  "expected_journal": "Nature Biotechnology",
+  "expected_title": "Visualizing structure and transitions in high-dimensional biological data",
+  "http_status": 200,
+  "message": {
+    "DOI": "10.1038/s41587-019-0336-3",
+    "ISSN": [
+      "1087-0156",
+      "1546-1696"
+    ],
+    "URL": "https://doi.org/10.1038/s41587-019-0336-3",
+    "alternative-id": [
+      "336"
+    ],
+    "assertion": [
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Received",
+        "name": "received",
+        "order": 1,
+        "value": "2 October 2018"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Accepted",
+        "name": "accepted",
+        "order": 2,
+        "value": "29 October 2019"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "First Online",
+        "name": "first_online",
+        "order": 3,
+        "value": "3 December 2019"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Change Date",
+        "name": "change_date",
+        "order": 4,
+        "value": "2 January 2020"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Change Type",
+        "name": "change_type",
+        "order": 5,
+        "value": "Correction"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Change Details",
+        "name": "change_details",
+        "order": 6,
+        "value": "An amendment to this paper has been published and can be accessed via a link at the top of the paper."
+      },
+      {
+        "group": {
+          "label": "Competing interests",
+          "name": "EthicsHeading"
+        },
+        "name": "Ethics",
+        "order": 1,
+        "value": "Smita Krishnaswamy serves on the scientific advisory board of AI Therapeutics."
+      }
+    ],
+    "author": [
+      {
+        "affiliation": [],
+        "family": "Moon",
+        "given": "Kevin R.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-3911-9925",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "van Dijk",
+        "given": "David",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Wang",
+        "given": "Zheng",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-4544-2764",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Gigante",
+        "given": "Scott",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-7744-1363",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Burkhardt",
+        "given": "Daniel B.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Chen",
+        "given": "William S.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Yim",
+        "given": "Kristina",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Elzen",
+        "given": "Antonia van den",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-0290-4292",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Hirn",
+        "given": "Matthew J.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "affiliation": [],
+        "family": "Coifman",
+        "given": "Ronald R.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-6494-6247",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Ivanova",
+        "given": "Natalia B.",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-6740-059X",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Wolf",
+        "given": "Guy",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0001-5823-1985",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Krishnaswamy",
+        "given": "Smita",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      }
+    ],
+    "container-title": [
+      "Nature Biotechnology"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": [
+        "link.springer.com"
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2019,
+          12,
+          3
+        ]
+      ],
+      "date-time": "2019-12-03T12:03:39Z",
+      "timestamp": 1575374619000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2024,
+          7,
+          27
+        ]
+      ],
+      "date-time": "2024-07-27T22:50:59Z",
+      "timestamp": 1722120659000
+    },
+    "funder": [
+      {
+        "DOI": "10.13039/100010848",
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100010848",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "Gruber Foundation"
+      },
+      {
+        "DOI": "10.13039/100009633",
+        "award": [
+          "F31HD097958"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "F31HD097958"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100009633",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "U.S. Department of Health & Human Services | NIH | Eunice Kennedy Shriver National Institute of Child Health and Human Development"
+      },
+      {
+        "DOI": "10.13039/100000879",
+        "award": [
+          "FG-2016-6607"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "FG-2016-6607"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100000879",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "Alfred P. Sloan Foundation"
+      },
+      {
+        "DOI": "10.13039/100000185",
+        "award": [
+          "D16AP00117"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "D16AP00117"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100000185",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "United States Department of Defense | Defense Advanced Research Projects Agency"
+      },
+      {
+        "DOI": "10.13039/100000002",
+        "award": [
+          "1R01HG008383"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "1R01HG008383"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100000002",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "U.S. Department of Health & Human Services | National Institutes of Health"
+      },
+      {
+        "DOI": "10.13039/100000002",
+        "award": [
+          "R01GM107092"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "R01GM107092"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100000002",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "U.S. Department of Health & Human Services | National Institutes of Health"
+      },
+      {
+        "DOI": "10.13039/100000002",
+        "award": [
+          "R01GM130847"
+        ],
+        "award-info": [
+          {
+            "award-number": [
+              "R01GM130847"
+            ]
+          }
+        ],
+        "doi-asserted-by": "publisher",
+        "id": [
+          {
+            "asserted-by": "publisher",
+            "id": "10.13039/100000002",
+            "id-type": "DOI"
+          }
+        ],
+        "name": "U.S. Department of Health & Human Services | National Institutes of Health"
+      },
+      {
+        "name": "l\u2019institut de valorisation des donnees"
+      }
+    ],
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          7,
+          2
+        ]
+      ],
+      "date-time": "2026-07-02T09:10:29Z",
+      "timestamp": 1782983429254,
+      "version": "3.54.5"
+    },
+    "is-referenced-by-count": 1067,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "1087-0156"
+      },
+      {
+        "type": "electronic",
+        "value": "1546-1696"
+      }
+    ],
+    "issue": "12",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          12
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "12",
+      "published-print": {
+        "date-parts": [
+          [
+            2019,
+            12
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "https://www.springer.com/tdm",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2019,
+              12,
+              1
+            ]
+          ],
+          "date-time": "2019-12-01T00:00:00Z",
+          "timestamp": 1575158400000
+        }
+      },
+      {
+        "URL": "https://www.springer.com/tdm",
+        "content-version": "vor",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2019,
+              12,
+              1
+            ]
+          ],
+          "date-time": "2019-12-01T00:00:00Z",
+          "timestamp": 1575158400000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "https://www.nature.com/articles/s41587-019-0336-3.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/s41587-019-0336-3",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "https://www.nature.com/articles/s41587-019-0336-3.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "297",
+    "original-title": [],
+    "page": "1482-1492",
+    "prefix": "10.1038",
+    "published": {
+      "date-parts": [
+        [
+          2019,
+          12
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2019,
+          12,
+          3
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2019,
+          12
+        ]
+      ]
+    },
+    "publisher": "Springer Science and Business Media LLC",
+    "reference": [
+      {
+        "author": "L van der Maaten",
+        "first-page": "2579",
+        "journal-title": "J. Mach. Learn. Res.",
+        "key": "336_CR1",
+        "unstructured": "van der Maaten, L. & Hinton, G. Visualizing data using t-SNE. J. Mach. Learn. Res. 9, 2579\u20132605 (2008).",
+        "volume": "9",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1038/nbt.2594",
+        "author": "ED Amir",
+        "doi-asserted-by": "publisher",
+        "first-page": "545",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "336_CR2",
+        "unstructured": "Amir, E. D. et al. viSNE enables visualization of high dimensional single-cell data and reveals phenotypic heterogeneity of leukemia. Nat. Biotechnol. 31, 545\u2013552 (2013).",
+        "volume": "31",
+        "year": "2013"
+      },
+      {
+        "DOI": "10.1038/s41592-018-0308-4",
+        "author": "GC Linderman",
+        "doi-asserted-by": "publisher",
+        "first-page": "243",
+        "journal-title": "Nat. Methods",
+        "key": "336_CR3",
+        "unstructured": "Linderman, G. C., Rachh, M., Hoskins, J. G., Steinerberger, S. & Kluger, Y. Fast interpolation-based t-SNE for improved visualization of single-cell RNA-seq data. Nat. Methods 16, 243\u2013245 (2019).",
+        "volume": "16",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1126/science.290.5500.2319",
+        "author": "JB Tenenbaum",
+        "doi-asserted-by": "publisher",
+        "first-page": "2319",
+        "journal-title": "Science",
+        "key": "336_CR4",
+        "unstructured": "Tenenbaum, J. B., De Silva, V. & Langford, J. C. A global geometric framework for nonlinear dimensionality reduction. Science 290, 2319\u20132323 (2000).",
+        "volume": "290",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.1038/nbt.4314",
+        "author": "E Becht",
+        "doi-asserted-by": "publisher",
+        "first-page": "38",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "336_CR5",
+        "unstructured": "Becht, E. et al. Dimensionality reduction for visualizing single-cell data using UMAP. Nat. Biotechnol. 37, 38\u201344 (2019).",
+        "volume": "37",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1126/science.290.5500.2323",
+        "author": "ST Roweis",
+        "doi-asserted-by": "publisher",
+        "first-page": "2323",
+        "journal-title": "Science",
+        "key": "336_CR6",
+        "unstructured": "Roweis, S. T. & Saul, L. K. Nonlinear dimensionality reduction by locally linear embedding. Science 290, 2323\u20132326 (2000).",
+        "volume": "290",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.1201/9781420036121",
+        "doi-asserted-by": "crossref",
+        "key": "336_CR7",
+        "unstructured": "Cox, T. F. & Cox, M. A. A. Multidimensional Scaling 2nd edn (Chapman & Hall/CRC, 2001)."
+      },
+      {
+        "key": "336_CR8",
+        "unstructured": "De Silva, V. & Tenenbaum J. B. Sparse Multidimensional Scaling Using Landmark Points (Stanford University, 2004)."
+      },
+      {
+        "DOI": "10.1038/s41467-017-01689-9",
+        "author": "V Unen",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "336_CR9",
+        "unstructured": "Unen, V. et al. Visual analysis of mass cytometry data by hierarchical stochastic neighbour embedding reveals rare cell types. Nat. Commun. 8, 1740 (2017).",
+        "volume": "8",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1198/jasa.2009.0111",
+        "author": "L Chen",
+        "doi-asserted-by": "publisher",
+        "first-page": "209",
+        "journal-title": "J. Am. Stat. Assoc.",
+        "key": "336_CR10",
+        "unstructured": "Chen, L. & Buja, A. Local multidimensional scaling for nonlinear dimension reduction, graph drawing, and proximity analysis. J. Am. Stat. Assoc. 104, 209\u2013219 (2009).",
+        "volume": "104",
+        "year": "2009"
+      },
+      {
+        "key": "336_CR11",
+        "unstructured": "Moon, T. K. & Stirling, W. C. Mathematical Methods and Algorithms for Signal Processing (Prentice Hall, 2000)."
+      },
+      {
+        "DOI": "10.1038/nmeth.4402",
+        "author": "X Qiu",
+        "doi-asserted-by": "publisher",
+        "first-page": "979",
+        "journal-title": "Nat. Methods",
+        "key": "336_CR12",
+        "unstructured": "Qiu, X. et al. Reversed graph embedding resolves complex single-cell trajectories. Nat. Methods 14, 979\u2013982 (2017).",
+        "volume": "14",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1016/j.acha.2006.04.006",
+        "author": "RR Coifman",
+        "doi-asserted-by": "publisher",
+        "first-page": "5",
+        "journal-title": "Appl. Comput. Harmon. Anal.",
+        "key": "336_CR13",
+        "unstructured": "Coifman, R. R. & Lafon, S. Diffusion maps. Appl. Comput. Harmon. Anal. 21, 5\u201330 (2006).",
+        "volume": "21",
+        "year": "2006"
+      },
+      {
+        "DOI": "10.1038/nmeth.3971",
+        "author": "L Haghverdi",
+        "doi-asserted-by": "publisher",
+        "first-page": "845",
+        "journal-title": "Nat. Methods",
+        "key": "336_CR14",
+        "unstructured": "Haghverdi, L., Buettner, M., Wolf, F. A., Buettner, F. & Theis, F. J. Diffusion pseudotime robustly reconstructs lineage branching. Nat. Methods 13, 845\u2013848 (2016).",
+        "volume": "13",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1073/pnas.1609643113",
+        "author": "EM Darrow",
+        "doi-asserted-by": "publisher",
+        "first-page": "E4504",
+        "journal-title": "Proc. Natl Acad. Sci. USA",
+        "key": "336_CR15",
+        "unstructured": "Darrow, E. M. et al. Deletion of DXZ4 on the human inactive X chromosome alters higher-order genome architecture. Proc. Natl Acad. Sci. USA 113, E4504\u2013E4512 (2016).",
+        "volume": "113",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1016/j.acha.2018.04.001",
+        "author": "X Cheng",
+        "doi-asserted-by": "publisher",
+        "first-page": "674",
+        "journal-title": "Appl. Comput. Harmon. Anal.",
+        "key": "336_CR16",
+        "unstructured": "Cheng, X., Rachh, M. & Steinerberger, S. On the diffusion geometry of graph Laplacians and applications. Appl. Comput. Harmon. Anal. 46, 674\u2013688 (2019).",
+        "volume": "46",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1016/j.cell.2015.11.013",
+        "author": "F Paul",
+        "doi-asserted-by": "publisher",
+        "first-page": "1663",
+        "journal-title": "Cell",
+        "key": "336_CR17",
+        "unstructured": "Paul, F. et al. Transcriptional heterogeneity and lineage commitment in myeloid progenitors. Cell 163, 1663\u20131677 (2015).",
+        "volume": "163",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1016/j.stem.2015.01.015",
+        "author": "ER Zunder",
+        "doi-asserted-by": "publisher",
+        "first-page": "323",
+        "journal-title": "Cell Stem Cell",
+        "key": "336_CR18",
+        "unstructured": "Zunder, E. R., Lujan, E., Goltsev, Y., Wernig, M. & Nolan, G. P. A continuous molecular roadmap to iPSC reprogramming through progression analysis of single-cell mass cytometry. Cell Stem Cell 16, 323\u2013337 (2015).",
+        "volume": "16",
+        "year": "2015"
+      },
+      {
+        "key": "336_CR19",
+        "unstructured": "Lui, K., Ding, G. W., Huang, R. & McCann, R. Dimensionality reduction has quantifiable imperfections: two geometric bounds. In Proc. 32nd International Conference on Neural Information Processing Systems (Eds. Bengio, S. et al.) 8453\u20138463 (Curran Associates, 2018)."
+      },
+      {
+        "DOI": "10.1016/j.eswa.2011.08.080",
+        "author": "FS Tsai",
+        "doi-asserted-by": "publisher",
+        "first-page": "1747",
+        "journal-title": "Expert Syst. Appl.",
+        "key": "336_CR20",
+        "unstructured": "Tsai, F. S. A visualization metric for dimensionality reduction. Expert Syst. Appl. 39, 1747\u20131752 (2012).",
+        "volume": "39",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1109/TVCG.2011.229",
+        "author": "E Bertini",
+        "doi-asserted-by": "publisher",
+        "first-page": "2203",
+        "journal-title": "IEEE Trans. Vis. Comput. Graph.",
+        "key": "336_CR21",
+        "unstructured": "Bertini, E., Tatu, A. & Keim, D. Quality metrics in high-dimensional data visualization: an overview and systematization. IEEE Trans. Vis. Comput. Graph. 17, 2203\u20132212 (2011).",
+        "volume": "17",
+        "year": "2011"
+      },
+      {
+        "author": "Lvd Maaten",
+        "first-page": "66",
+        "journal-title": "J. Mach. Learn. Res.",
+        "key": "336_CR22",
+        "unstructured": "Maaten, Lvd, Postma, E. & Herik, Jvd Dimensionality reduction: a comparative review. J. Mach. Learn. Res. 10, 66\u201371 (2009).",
+        "volume": "10",
+        "year": "2009"
+      },
+      {
+        "key": "336_CR23",
+        "unstructured": "Vankadara, L. C. & von Luxburg, U. Measures of distortion for machine learning. In Proc. 32nd International Conference on Neural Information Processing Systems (Eds. Bengio, S. et al.) 4886\u20134895 (Curran Associates, 2018)."
+      },
+      {
+        "DOI": "10.1038/s41587-019-0071-9",
+        "author": "W Saelens",
+        "doi-asserted-by": "publisher",
+        "first-page": "547",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "336_CR24",
+        "unstructured": "Saelens, W., Cannoodt, R., Todorov, H. & Saeys, Y. A comparison of single-cell trajectory inference methods. Nat. Biotechnol. 37, 547\u2013554 (2019).",
+        "volume": "37",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1186/s13059-017-1305-0",
+        "author": "L Zappia",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome Biol.",
+        "key": "336_CR25",
+        "unstructured": "Zappia, L., Phipson, B. & Oshlack, A. Splatter: simulation of single-cell RNA sequencing data. Genome Biol. 18, 174 (2017).",
+        "volume": "18",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1080/01621459.1971.10482356",
+        "author": "WM Rand",
+        "doi-asserted-by": "publisher",
+        "first-page": "846",
+        "journal-title": "J. Am. Stat. Assoc.",
+        "key": "336_CR26",
+        "unstructured": "Rand, W. M. Objective criteria for the evaluation of clustering methods. J. Am. Stat. Assoc. 66, 846\u2013850 (1971).",
+        "volume": "66",
+        "year": "1971"
+      },
+      {
+        "DOI": "10.1016/j.cell.2016.07.054",
+        "author": "K Shekhar",
+        "doi-asserted-by": "publisher",
+        "first-page": "1308",
+        "journal-title": "Cell",
+        "key": "336_CR27",
+        "unstructured": "Shekhar, K. et al. Comprehensive classification of retinal bipolar neurons by single-cell transcriptomics. Cell 166, 1308\u20131323 (2016).",
+        "volume": "166",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1126/science.aaa1934",
+        "author": "A Zeisel",
+        "doi-asserted-by": "publisher",
+        "first-page": "1138",
+        "journal-title": "Science",
+        "key": "336_CR28",
+        "unstructured": "Zeisel, A. et al. Cell types in the mouse cortex and hippocampus revealed by single-cell RNA-seq. Science 347, 1138\u20131142 (2015).",
+        "volume": "347",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1016/j.cell.2014.04.005",
+        "author": "SC Bendall",
+        "doi-asserted-by": "publisher",
+        "first-page": "714",
+        "journal-title": "Cell",
+        "key": "336_CR29",
+        "unstructured": "Bendall, S. C. et al. Single-cell trajectory detection uncovers progression and regulatory coordination in human B cell development. Cell 157, 714\u2013725 (2014).",
+        "volume": "157",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1038/nbt.3569",
+        "author": "M Setty",
+        "doi-asserted-by": "publisher",
+        "first-page": "637",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "336_CR30",
+        "unstructured": "Setty, M. et al. Wishbone identifies bifurcating developmental trajectories from single-cell data. Nat. Biotechnol. 34, 637\u2013645 (2016).",
+        "volume": "34",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1002/sam.10071",
+        "author": "I Liiv",
+        "doi-asserted-by": "crossref",
+        "first-page": "70",
+        "journal-title": "Stat. Anal. Data Min.",
+        "key": "336_CR31",
+        "unstructured": "Liiv, I. Seriation and matrix reordering methods: an historical overview. Stat. Anal. Data Min. 3, 70\u201391 (2010).",
+        "volume": "3",
+        "year": "2010"
+      },
+      {
+        "DOI": "10.18637/jss.v025.i03",
+        "author": "M Hahsler",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "journal-title": "J. Stat. Soft.",
+        "key": "336_CR32",
+        "unstructured": "Hahsler, M., Hornik, K. & Buchta, C. Getting things in order: an introduction to the R package seriation. J. Stat. Soft. 25, 1\u201334 (2008).",
+        "volume": "25",
+        "year": "2008"
+      },
+      {
+        "DOI": "10.1186/s13059-019-1663-x",
+        "author": "FA Wolf",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome Biol.",
+        "key": "336_CR33",
+        "unstructured": "Wolf, F. A. et al. PAGA: graph abstraction reconciles clustering with trajectory inference through a topology preserving map of single cells. Genome Biol. 20, 59 (2019).",
+        "volume": "20",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1126/science.1250689",
+        "author": "S Krishnaswamy",
+        "doi-asserted-by": "publisher",
+        "first-page": "1250689",
+        "journal-title": "Science",
+        "key": "336_CR34",
+        "unstructured": "Krishnaswamy, S. et al. Conditional density-based analysis of T cell signaling in single-cell data. Science 346, 1250689 (2014).",
+        "volume": "346",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1016/j.cell.2012.11.039",
+        "author": "JM Polo",
+        "doi-asserted-by": "publisher",
+        "first-page": "1617",
+        "journal-title": "Cell",
+        "key": "336_CR35",
+        "unstructured": "Polo, J. M. et al. A molecular roadmap of reprogramming somatic cells into iPS cells. Cell 151, 1617\u20131632 (2012).",
+        "volume": "151",
+        "year": "2012"
+      },
+      {
+        "DOI": "10.1073/pnas.72.4.1441",
+        "author": "GR Martin",
+        "doi-asserted-by": "publisher",
+        "first-page": "1441",
+        "journal-title": "Proc. Natl Acad. Sci. USA",
+        "key": "336_CR36",
+        "unstructured": "Martin, G. R. & Evans, M. J. Differentiation of clonal lines of teratocarcinoma cells: formation of embryoid bodies in vitro. Proc. Natl Acad. Sci. USA 72, 1441\u20131445 (1975).",
+        "volume": "72",
+        "year": "1975"
+      },
+      {
+        "DOI": "10.1038/nprot.2007.147",
+        "author": "M Bibel",
+        "doi-asserted-by": "publisher",
+        "first-page": "1034",
+        "journal-title": "Nat. Protocols",
+        "key": "336_CR37",
+        "unstructured": "Bibel, M., Richter, J., Lacroix, E. & Barde, Y.-A. Generation of a defined and uniform population of CNS progenitors and neurons from mouse embryonic stem cells. Nat. Protocols 2, 1034\u20131043 (2007).",
+        "volume": "2",
+        "year": "2007"
+      },
+      {
+        "DOI": "10.1634/stemcells.2005-0482",
+        "author": "S-M Kang",
+        "doi-asserted-by": "publisher",
+        "first-page": "419",
+        "journal-title": "Stem Cells",
+        "key": "336_CR38",
+        "unstructured": "Kang, S.-M. et al. Efficient induction of oligodendrocytes from human embryonic stem cells. Stem Cells 25, 419\u2013424 (2007).",
+        "volume": "25",
+        "year": "2007"
+      },
+      {
+        "DOI": "10.1385/1-59745-036-7:401",
+        "doi-asserted-by": "crossref",
+        "key": "336_CR39",
+        "unstructured": "Zhao, X., Liu, J. & Ahmad, I. Differentiation of embryonic stem cells to retinal cells in vitro. In Embryonic Stem Cell Protocols: Differentiation Models Vol. 2 (Ed. Turksen, K.) 401\u2013416 (Humana Press, 2006)."
+      },
+      {
+        "DOI": "10.1002/glia.20257",
+        "author": "SS Liour",
+        "doi-asserted-by": "publisher",
+        "first-page": "43",
+        "journal-title": "Glia",
+        "key": "336_CR40",
+        "unstructured": "Liour, S. S. et al. Further characterization of embryonic stem cell-derived radial glial cells. Glia 53, 43\u201356 (2006).",
+        "volume": "53",
+        "year": "2006"
+      },
+      {
+        "DOI": "10.1126/science.272.5262.722",
+        "author": "T Nakano",
+        "doi-asserted-by": "publisher",
+        "first-page": "722",
+        "journal-title": "Science",
+        "key": "336_CR41",
+        "unstructured": "Nakano, T., Kodama, H. & Honjo, T. In vitro development of primitive and definitive erythrocytes from different precursors. Science 272, 722 (1996).",
+        "volume": "272",
+        "year": "1996"
+      },
+      {
+        "DOI": "10.1242/dev.125.9.1747",
+        "author": "S-I Nishikawa",
+        "doi-asserted-by": "publisher",
+        "first-page": "1747",
+        "journal-title": "Development",
+        "key": "336_CR42",
+        "unstructured": "Nishikawa, S.-I., Nishikawa, S., Hirashima, M., Matsuyoshi, N. & Kodama, H. Progressive lineage analysis by cell sorting and culture identifies FLK1+ VE-cadherin+ cells at a diverging point of endothelial and hemopoietic lineages. Development 125, 1747\u20131757 (1998).",
+        "volume": "125",
+        "year": "1998"
+      },
+      {
+        "DOI": "10.1242/dev.111.2.259",
+        "author": "MV Wiles",
+        "doi-asserted-by": "publisher",
+        "first-page": "259",
+        "journal-title": "Development",
+        "key": "336_CR43",
+        "unstructured": "Wiles, M. V. & Keller, G. Multiple hematopoietic lineages develop from embryonic stem (ES) cells in culture. Development 111, 259\u2013267 (1991).",
+        "volume": "111",
+        "year": "1991"
+      },
+      {
+        "DOI": "10.1002/j.1460-2075.1994.tb06861.x",
+        "author": "AJ Potocnik",
+        "doi-asserted-by": "publisher",
+        "first-page": "5274",
+        "journal-title": "EMBO J.",
+        "key": "336_CR44",
+        "unstructured": "Potocnik, A. J., Nielsen, P. J. & Eichmann, K. In vitro generation of lymphoid precursors from embryonic stem cells. EMBO J. 13, 5274 (1994).",
+        "volume": "13",
+        "year": "1994"
+      },
+      {
+        "DOI": "10.1073/pnas.160254997",
+        "author": "M Tsai",
+        "doi-asserted-by": "publisher",
+        "first-page": "9186",
+        "journal-title": "Proc. Natl Acad. Sci. USA",
+        "key": "336_CR45",
+        "unstructured": "Tsai, M. et al. In vivo immunological function of mast cells derived from embryonic stem cells: an approach for the rapid analysis of even embryonic lethal mutations in adult mice in vivo. Proc. Natl Acad. Sci. USA 97, 9186\u20139190 (2000).",
+        "volume": "97",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.1016/S0960-9822(00)00824-1",
+        "author": "P Fairchild",
+        "doi-asserted-by": "publisher",
+        "first-page": "1515",
+        "journal-title": "Curr. Biol.",
+        "key": "336_CR46",
+        "unstructured": "Fairchild, P. et al. Directed differentiation of dendritic cells from mouse embryonic stem cells. Curr. Biol. 10, 1515\u20131518 (2000).",
+        "volume": "10",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.1038/35040568",
+        "author": "J Yamashita",
+        "doi-asserted-by": "publisher",
+        "first-page": "92",
+        "journal-title": "Nature",
+        "key": "336_CR47",
+        "unstructured": "Yamashita, J. et al. Flk1-positive cells derived from embryonic stem cells serve as vascular progenitors. Nature 408, 92\u201396 (2000).",
+        "volume": "408",
+        "year": "2000"
+      },
+      {
+        "DOI": "10.1016/0925-4773(93)90015-P",
+        "author": "VA Maltsev",
+        "doi-asserted-by": "publisher",
+        "first-page": "41",
+        "journal-title": "Mech. Dev.",
+        "key": "336_CR48",
+        "unstructured": "Maltsev, V. A., Rohwedel, J., Hescheler, J. & Wobus, A. M. Embryonic stem cells differentiate in vitro into cardiomyocytes representing sinusnodal, atrial and ventricular cell types. Mech. Dev. 44, 41\u201350 (1993).",
+        "volume": "44",
+        "year": "1993"
+      },
+      {
+        "DOI": "10.1006/dbio.1994.1182",
+        "author": "J Rohwedel",
+        "doi-asserted-by": "publisher",
+        "first-page": "87",
+        "journal-title": "Dev. Biol.",
+        "key": "336_CR49",
+        "unstructured": "Rohwedel, J. et al. Muscle cell differentiation of embryonic stem cells reflects myogenesis in vivo: developmentally regulated expression of myogenic determination genes and functional expression of ionic currents. Dev. Biol. 164, 87\u2013101 (1994).",
+        "volume": "164",
+        "year": "1994"
+      },
+      {
+        "DOI": "10.1515/BC.2004.123",
+        "author": "G Kania",
+        "doi-asserted-by": "publisher",
+        "first-page": "943",
+        "journal-title": "Biol. Chem.",
+        "key": "336_CR50",
+        "unstructured": "Kania, G., Blyszczuk, P., Jochheim, A., Ott, M. & Wobus, A. M. Generation of glycogen- and albumin-producing hepatocyte-like cells from embryonic stem cells. Biol. Chem. 385, 943\u2013953 (2004).",
+        "volume": "385",
+        "year": "2004"
+      },
+      {
+        "DOI": "10.1038/nprot.2006.71",
+        "author": "IS Schroeder",
+        "doi-asserted-by": "publisher",
+        "first-page": "495",
+        "journal-title": "Nat. Protocols",
+        "key": "336_CR51",
+        "unstructured": "Schroeder, I. S., Rolletschek, A., Blyszczuk, P., Kania, G. & Wobus, A. M. Differentiation of mouse embryonic stem cells to insulin-producing cells. Nat. Protocols 1, 495\u2013507 (2006).",
+        "volume": "1",
+        "year": "2006"
+      },
+      {
+        "DOI": "10.1038/nature02247",
+        "author": "N Geijsen",
+        "doi-asserted-by": "publisher",
+        "first-page": "148",
+        "journal-title": "Nature",
+        "key": "336_CR52",
+        "unstructured": "Geijsen, N. et al. Derivation of embryonic germ cells and male gametes from embryonic stem cells. Nature 427, 148\u2013154 (2004).",
+        "volume": "427",
+        "year": "2004"
+      },
+      {
+        "DOI": "10.1055/s-2005-872450",
+        "author": "J Kehler",
+        "doi-asserted-by": "publisher",
+        "first-page": "222",
+        "journal-title": "Semin. Reprod. Med.",
+        "key": "336_CR53",
+        "unstructured": "Kehler, J., H\u00fcbner, K., Garrett, S. & Sch\u00f6ler, H. R. Generating oocytes and sperm from embryonic stem cells. Semin. Reprod. Med. 23, 222\u2013233 (2005).",
+        "volume": "23",
+        "year": "2005"
+      },
+      {
+        "DOI": "10.1146/annurev.cellbio.042308.113245",
+        "author": "P Betancur",
+        "doi-asserted-by": "publisher",
+        "first-page": "581",
+        "journal-title": "Annu. Rev. Cell Dev. Biol.",
+        "key": "336_CR54",
+        "unstructured": "Betancur, P., Bronner-Fraser, M. & Sauka-Spengler, T. Assembling neural crest regulatory circuits into a gene regulatory network. Annu. Rev. Cell Dev. Biol. 26, 581\u2013603 (2010).",
+        "volume": "26",
+        "year": "2010"
+      },
+      {
+        "DOI": "10.1016/j.semcdb.2005.06.006",
+        "author": "M Barembaum",
+        "doi-asserted-by": "publisher",
+        "first-page": "642",
+        "journal-title": "Semin. Cell Dev. Biol.",
+        "key": "336_CR55",
+        "unstructured": "Barembaum, M. & Bronner-Fraser, M. Early steps in neural crest specification. Semin. Cell Dev. Biol. 16, 642\u2013646 (2005).",
+        "volume": "16",
+        "year": "2005"
+      },
+      {
+        "key": "336_CR56",
+        "unstructured": "Treleaven, K. & Frazzoli, E. An explicit formulation of the earth movers distance with continuous road map distances. Preprint at arXiv https://arxiv.org/abs/1309.7098 (2013)."
+      },
+      {
+        "DOI": "10.1126/science.1181369",
+        "author": "E Lieberman-Aiden",
+        "doi-asserted-by": "publisher",
+        "first-page": "289",
+        "journal-title": "Science",
+        "key": "336_CR57",
+        "unstructured": "Lieberman-Aiden, E. et al. Comprehensive mapping of long-range interactions reveals folding principles of the human genome. Science 326, 289\u2013293 (2009).",
+        "volume": "326",
+        "year": "2009"
+      },
+      {
+        "key": "336_CR58",
+        "unstructured": "Nadler, B., Lafon, S., Coifman, R. R. & Kevrekidis, I. Diffusion maps, spectral clustering and eigenfunctions of Fokker-Planck operators. In Proc 18th International Conference on Neural Information Processing Systems (Eds. Weiss, Y. et al.) 955\u2013962 (MIT Press, 2005)."
+      },
+      {
+        "DOI": "10.1016/j.acha.2005.07.004",
+        "author": "B Nadler",
+        "doi-asserted-by": "publisher",
+        "first-page": "113",
+        "journal-title": "Appl. Comput Harmon. Anal.",
+        "key": "336_CR59",
+        "unstructured": "Nadler, B., Lafon, S., Coifman, R. R. & Kevrekidis, I. G. Diffusion maps, spectral clustering and reaction coordinates of dynamical systems. Appl. Comput Harmon. Anal. 21, 113\u2013127 (2006).",
+        "volume": "21",
+        "year": "2006"
+      },
+      {
+        "author": "S Butterworth",
+        "first-page": "536",
+        "journal-title": "Wireless Engineer",
+        "key": "336_CR60",
+        "unstructured": "Butterworth, S. On the theory of filter amplifiers. Wireless Engineer 7, 536\u2013541 (1930).",
+        "volume": "7",
+        "year": "1930"
+      },
+      {
+        "key": "336_CR61",
+        "unstructured": "Neumann, J. Mathematische Grundlagen der Quantenmechanik. (Springer, 1932)."
+      },
+      {
+        "DOI": "10.1103/PhysRevE.83.036109",
+        "author": "K Anand",
+        "doi-asserted-by": "publisher",
+        "first-page": "036109",
+        "journal-title": "Phys. Rev. E",
+        "key": "336_CR62",
+        "unstructured": "Anand, K., Bianconi, G. & Severini, S. Shannon and von Neumann entropy of random networks with heterogeneous expected degree. Phys. Rev. E 83, 036109 (2011).",
+        "volume": "83",
+        "year": "2011"
+      },
+      {
+        "author": "M Salicr\u00fa",
+        "first-page": "251",
+        "journal-title": "Q\u00fcestii\u00f3",
+        "key": "336_CR63",
+        "unstructured": "Salicr\u00fa, M. & Pons, A. A. Sobre ciertas propiedades de la M-divergencia en an\u00e1lisis de datos. Q\u00fcestii\u00f3 9, 251\u2013256 (1985).",
+        "volume": "9",
+        "year": "1985"
+      },
+      {
+        "author": "M Salicr\u00fa",
+        "first-page": "291",
+        "journal-title": "Soochow J. Math.",
+        "key": "336_CR64",
+        "unstructured": "Salicr\u00fa, M., Sanchez, A., Conde, J. & Sanchez, P. Entropy measures associated with K and M divergences. Soochow J. Math. 21, 291\u2013298 (1995).",
+        "volume": "21",
+        "year": "1995"
+      },
+      {
+        "DOI": "10.1016/j.acha.2012.02.004",
+        "author": "G Wolf",
+        "doi-asserted-by": "publisher",
+        "first-page": "388",
+        "journal-title": "Appl. Comput. Harm. Anal.",
+        "key": "336_CR65",
+        "unstructured": "Wolf, G., Rotbart, A., David, G. & Averbuch, A. Coarse-grained localized diffusion. Appl. Comput. Harm. Anal. 33, 388\u2013400 (2012).",
+        "volume": "33",
+        "year": "2012"
+      },
+      {
+        "key": "336_CR66",
+        "unstructured": "Platt, J. Fastmap, metricmap, and landmark mds are all Nystrom algorithms. In Proc. 10th International Workshop on Artificial Intelligence and Statistics (Eds. Cowell, R. & Ghahramani, Z.) (AI/Stats, 2005)."
+      },
+      {
+        "key": "336_CR67",
+        "unstructured": "Yang, T., Liu, J., McMillan, L. & Wang, W. A fast approximation to multidimensional scaling. In Proc. IEEE Workshop on Computation Intensive Methods for Computer Vision (IEEE, 2006)."
+      },
+      {
+        "DOI": "10.1109/SampTA45681.2019.9030994",
+        "doi-asserted-by": "crossref",
+        "key": "336_CR68",
+        "unstructured": "Gigante, S. et al. Compressed diffusion. In The 13th International Conference on Sampling Theory and Applications (Bordeaux, France), sampta2019:267712 (2019)."
+      },
+      {
+        "DOI": "10.1007/0-8176-4481-4_9",
+        "doi-asserted-by": "crossref",
+        "key": "336_CR69",
+        "unstructured": "Costa, J. A. & Hero, A. O. III Determining intrinsic dimension and entropy of high-dimensional shape spaces. In Statistics and Analysis of Shapes (Eds Hamid, K. & Yezzi Jr, A) 231\u2013252 (Birkh\u00e4user, 2006)."
+      },
+      {
+        "DOI": "10.1109/TSP.2009.2031722",
+        "author": "KM Carter",
+        "doi-asserted-by": "publisher",
+        "first-page": "650",
+        "journal-title": "IEEE Trans. Signal Process.",
+        "key": "336_CR70",
+        "unstructured": "Carter, K. M., Raich, R. & Hero, A. O. III On local intrinsic dimension estimation and its applications. IEEE Trans. Signal Process. 58, 650\u2013663 (2010).",
+        "volume": "58",
+        "year": "2010"
+      },
+      {
+        "key": "336_CR71",
+        "unstructured": "Levina, E. & Bickel, P. J. Maximum likelihood estimation of intrinsic dimension. In Proc. 18th International Conference on Neural Information Processing Systems (ed. Weiss, Y.) 777\u2013784 (Curran Associates, 2005)."
+      },
+      {
+        "DOI": "10.1016/j.acha.2011.09.002",
+        "author": "G David",
+        "doi-asserted-by": "publisher",
+        "first-page": "1",
+        "journal-title": "Appl. Comput. Harmon. Anal.",
+        "key": "336_CR72",
+        "unstructured": "David, G. & Averbuch, A. Hierarchical data organization, clustering and denoising via localized diffusion folders. Appl. Comput. Harmon. Anal. 33, 1\u201323 (2012).",
+        "volume": "33",
+        "year": "2012"
+      },
+      {
+        "key": "336_CR73",
+        "unstructured": "Rubner, Y., Tomasi, C. & Guibas, L. J. A metric for distributions with applications to image databases. In Proc. IEEE Sixth International Conference on Computer Vision 59\u201366 (IEEE, 1998)."
+      },
+      {
+        "DOI": "10.1126/science.1198704",
+        "author": "SC Bendall",
+        "doi-asserted-by": "publisher",
+        "first-page": "687",
+        "journal-title": "Science",
+        "key": "336_CR74",
+        "unstructured": "Bendall, S. C. et al. Single-cell mass cytometry of differential immune and drug responses across a human hematopoietic continuum. Science 332, 687\u2013696 (2011).",
+        "volume": "332",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.1038/ncomms14049",
+        "author": "GX Zheng",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "336_CR75",
+        "unstructured": "Zheng, G. X. et al. Massively parallel digital transcriptional profiling of single cells. Nat. Commun. 8, 14049 (2017).",
+        "volume": "8",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1038/nmeth.2930",
+        "author": "D Gr\u00fcn",
+        "doi-asserted-by": "publisher",
+        "first-page": "637",
+        "journal-title": "Nat. Methods",
+        "key": "336_CR76",
+        "unstructured": "Gr\u00fcn, D., Kester, L. & Van Oudenaarden, A. Validation of noise models for single-cell transcriptomics. Nat. Methods 11, 637\u2013640 (2014).",
+        "volume": "11",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1126/science.295.5552.7a",
+        "author": "M Balasubramanian",
+        "doi-asserted-by": "publisher",
+        "first-page": "7",
+        "journal-title": "Science",
+        "key": "336_CR77",
+        "unstructured": "Balasubramanian, M. & Schwartz, E. L. The isomap algorithm and topological stability. Science 295, 7\u20137 (2002).",
+        "volume": "295",
+        "year": "2002"
+      },
+      {
+        "DOI": "10.1016/j.cell.2018.05.061",
+        "author": "D van Dijk",
+        "doi-asserted-by": "publisher",
+        "first-page": "716",
+        "journal-title": "Cell",
+        "key": "336_CR78",
+        "unstructured": "van Dijk, D. et al. Recovering gene interactions from single-cell data using data diffusion. Cell 174, 716\u2013729 (2018).",
+        "volume": "174",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1093/bioinformatics/btx435",
+        "author": "B Vieth",
+        "doi-asserted-by": "publisher",
+        "first-page": "3486",
+        "journal-title": "Bioinformatics",
+        "key": "336_CR79",
+        "unstructured": "Vieth, B., Ziegenhain, C., Parekh, S., Enard, W. & Hellmann, I. powsimR: power analysis for bulk and single cell rna-seq experiments. Bioinformatics 33, 3486\u20133488 (2017).",
+        "volume": "33",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1038/nmeth.2645",
+        "author": "P Brennecke",
+        "doi-asserted-by": "publisher",
+        "first-page": "1093",
+        "journal-title": "Nat. Methods",
+        "key": "336_CR80",
+        "unstructured": "Brennecke, P. et al. Accounting for technical noise in single-cell RNA-seq experiments. Nat. Methods 10, 1093 (2013).",
+        "volume": "10",
+        "year": "2013"
+      },
+      {
+        "DOI": "10.1038/s12276-018-0071-8",
+        "author": "B Hwang",
+        "doi-asserted-by": "publisher",
+        "first-page": "96",
+        "journal-title": "Exp. Mol. Med.",
+        "key": "336_CR81",
+        "unstructured": "Hwang, B., Lee, J. H. & Bang, D. Single-cell RNA sequencing technologies and bioinformatics pipelines. Exp. Mol. Med. 50, 96 (2018).",
+        "volume": "50",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/ncomms9687",
+        "author": "JK Kim",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "336_CR82",
+        "unstructured": "Kim, J. K., Kolodziejczyk, A. A., Ilicic, T., Teichmann, S. A. & Marioni, J. C. Characterizing noise structure in single-cell RNA-seq distinguishes genuine from technical stochastic allelic expression. Nat. Commun. 6, 8687 (2015).",
+        "volume": "6",
+        "year": "2015"
+      }
+    ],
+    "reference-count": 82,
+    "references-count": 82,
+    "relation": {
+      "has-preprint": [
+        {
+          "asserted-by": "object",
+          "id": "10.1101/120378",
+          "id-type": "doi"
+        }
+      ]
+    },
+    "resource": {
+      "primary": {
+        "URL": "https://www.nature.com/articles/s41587-019-0336-3"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Nat Biotechnol"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "Visualizing structure and transitions in high-dimensional biological data"
+    ],
+    "type": "journal-article",
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "updated-by": [
+      {
+        "DOI": "10.1038/s41587-019-0395-5",
+        "label": "Correction",
+        "source": "publisher",
+        "type": "correction",
+        "updated": {
+          "date-parts": [
+            [
+              2020,
+              1,
+              2
+            ]
+          ],
+          "date-time": "2020-01-02T00:00:00Z",
+          "timestamp": 1577923200000
+        }
+      }
+    ],
+    "volume": "37"
+  },
+  "paper_id": "MP-007",
+  "status": "fetched"
+}

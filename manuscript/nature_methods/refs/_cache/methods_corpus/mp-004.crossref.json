@@ -1,0 +1,841 @@
+{
+  "accessed_utc": "2026-07-02T10:19:25.464399Z",
+  "crossref_journal": "Nature Biotechnology",
+  "crossref_title": "A comparison of single-cell trajectory inference methods",
+  "crossref_url": "https://api.crossref.org/works/10.1038%2Fs41587-019-0071-9",
+  "doi": "10.1038/s41587-019-0071-9",
+  "expected_journal": "Nature Biotechnology",
+  "expected_title": "A comparison of single-cell trajectory inference methods",
+  "http_status": 200,
+  "message": {
+    "DOI": "10.1038/s41587-019-0071-9",
+    "ISSN": [
+      "1087-0156",
+      "1546-1696"
+    ],
+    "URL": "https://doi.org/10.1038/s41587-019-0071-9",
+    "alternative-id": [
+      "71"
+    ],
+    "assertion": [
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Received",
+        "name": "received",
+        "order": 1,
+        "value": "5 April 2018"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "Accepted",
+        "name": "accepted",
+        "order": 2,
+        "value": "13 February 2019"
+      },
+      {
+        "group": {
+          "label": "Article History",
+          "name": "ArticleHistory"
+        },
+        "label": "First Online",
+        "name": "first_online",
+        "order": 3,
+        "value": "1 April 2019"
+      },
+      {
+        "group": {
+          "label": "Competing interests",
+          "name": "EthicsHeading"
+        },
+        "name": "Ethics",
+        "order": 1,
+        "value": "The authors declare no competing interests."
+      }
+    ],
+    "author": [
+      {
+        "ORCID": "https://orcid.org/0000-0002-7114-6248",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Saelens",
+        "given": "Wouter",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "first"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0003-3641-729X",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Cannoodt",
+        "given": "Robrecht",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-1594-8609",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Todorov",
+        "given": "Helena",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      },
+      {
+        "ORCID": "https://orcid.org/0000-0002-0415-1506",
+        "affiliation": [],
+        "authenticated-orcid": false,
+        "family": "Saeys",
+        "given": "Yvan",
+        "role": [
+          {
+            "role": "author",
+            "vocabulary": "crossref"
+          }
+        ],
+        "sequence": "additional"
+      }
+    ],
+    "container-title": [
+      "Nature Biotechnology"
+    ],
+    "content-domain": {
+      "crossmark-restriction": false,
+      "domain": [
+        "link.springer.com"
+      ]
+    },
+    "created": {
+      "date-parts": [
+        [
+          2019,
+          4,
+          1
+        ]
+      ],
+      "date-time": "2019-04-01T12:06:04Z",
+      "timestamp": 1554120364000
+    },
+    "deposited": {
+      "date-parts": [
+        [
+          2023,
+          5,
+          20
+        ]
+      ],
+      "date-time": "2023-05-20T18:11:33Z",
+      "timestamp": 1684606293000
+    },
+    "indexed": {
+      "date-parts": [
+        [
+          2026,
+          6,
+          30
+        ]
+      ],
+      "date-time": "2026-06-30T14:35:40Z",
+      "timestamp": 1782830140768,
+      "version": "3.54.5"
+    },
+    "is-referenced-by-count": 1564,
+    "issn-type": [
+      {
+        "type": "print",
+        "value": "1087-0156"
+      },
+      {
+        "type": "electronic",
+        "value": "1546-1696"
+      }
+    ],
+    "issue": "5",
+    "issued": {
+      "date-parts": [
+        [
+          2019,
+          4,
+          1
+        ]
+      ]
+    },
+    "journal-issue": {
+      "issue": "5",
+      "published-print": {
+        "date-parts": [
+          [
+            2019,
+            5
+          ]
+        ]
+      }
+    },
+    "language": "en",
+    "license": [
+      {
+        "URL": "http://www.springer.com/tdm",
+        "content-version": "tdm",
+        "delay-in-days": 0,
+        "start": {
+          "date-parts": [
+            [
+              2019,
+              4,
+              1
+            ]
+          ],
+          "date-time": "2019-04-01T00:00:00Z",
+          "timestamp": 1554076800000
+        }
+      }
+    ],
+    "link": [
+      {
+        "URL": "http://www.nature.com/articles/s41587-019-0071-9.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://www.nature.com/articles/s41587-019-0071-9",
+        "content-type": "text/html",
+        "content-version": "vor",
+        "intended-application": "text-mining"
+      },
+      {
+        "URL": "http://www.nature.com/articles/s41587-019-0071-9.pdf",
+        "content-type": "application/pdf",
+        "content-version": "vor",
+        "intended-application": "similarity-checking"
+      }
+    ],
+    "member": "297",
+    "original-title": [],
+    "page": "547-554",
+    "prefix": "10.1038",
+    "published": {
+      "date-parts": [
+        [
+          2019,
+          4,
+          1
+        ]
+      ]
+    },
+    "published-online": {
+      "date-parts": [
+        [
+          2019,
+          4,
+          1
+        ]
+      ]
+    },
+    "published-print": {
+      "date-parts": [
+        [
+          2019,
+          5
+        ]
+      ]
+    },
+    "publisher": "Springer Science and Business Media LLC",
+    "reference": [
+      {
+        "DOI": "10.1038/nature21350",
+        "author": "A Tanay",
+        "doi-asserted-by": "publisher",
+        "first-page": "21350",
+        "journal-title": "Nature",
+        "key": "71_CR1",
+        "unstructured": "Tanay, A. & Regev, A. Scaling single-cell genomics from phenomenology to mechanism. Nature 541, 21350 (2017).",
+        "volume": "541",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1016/j.stem.2014.10.015",
+        "author": "M Etzrodt",
+        "doi-asserted-by": "publisher",
+        "first-page": "546",
+        "journal-title": "Cell Stem Cell",
+        "key": "71_CR2",
+        "unstructured": "Etzrodt, M., Endele, M. & Schroeder, T. Quantitative single-cell approaches to stem cell research. Cell Stem Cell 15, 546\u2013558 (2014).",
+        "volume": "15",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1101/gr.190595.115",
+        "author": "C Trapnell",
+        "doi-asserted-by": "publisher",
+        "first-page": "1491",
+        "journal-title": "Genome Res.",
+        "key": "71_CR3",
+        "unstructured": "Trapnell, C. Defining cell types and states with single-cell genomics. Genome Res. 25, 1491\u20131498 (2015).",
+        "volume": "25",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1002/eji.201646347",
+        "author": "R Cannoodt",
+        "doi-asserted-by": "publisher",
+        "first-page": "2496",
+        "journal-title": "Eur. J. Immunol.",
+        "key": "71_CR4",
+        "unstructured": "Cannoodt, R., Saelens, W. & Saeys, Y. Computational methods for trajectory inference from single-cell transcriptomics. Eur. J. Immunol. 46, 2496\u20132506 (2016).",
+        "volume": "46",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1016/j.coisb.2017.12.008",
+        "author": "KR Moon",
+        "doi-asserted-by": "publisher",
+        "first-page": "36",
+        "journal-title": "Curr. Opin. Syst. Biol.",
+        "key": "71_CR5",
+        "unstructured": "Moon, K. R. et al. Manifold learning-based methods for analyzing single-cell RNA-sequencing data.Curr. Opin. Syst. Biol. 7, 36\u201346 (2018).",
+        "volume": "7",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41467-017-00039-z",
+        "author": "Z Liu",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "71_CR6",
+        "unstructured": "Liu, Z. et al. Reconstructing cell cycle pseudo time-series via single-cell transcriptome data. Nat. Commun. 8, 22 (2017).",
+        "volume": "8",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1186/s13059-019-1663-x",
+        "author": "FA Wolf",
+        "doi-asserted-by": "publisher",
+        "first-page": "59",
+        "journal-title": "Genome Biol.",
+        "key": "71_CR7",
+        "unstructured": "Wolf, F. A. et al. PAGA: graph abstraction reconciles clustering with trajectory inference through a topology preserving map of single cells. Genome Biol. 20, 59 (2019).",
+        "volume": "20",
+        "year": "2019"
+      },
+      {
+        "DOI": "10.1038/ni.3200",
+        "author": "A Schlitzer",
+        "doi-asserted-by": "publisher",
+        "first-page": "718",
+        "journal-title": "Nat. Immunol.",
+        "key": "71_CR8",
+        "unstructured": "Schlitzer, A. et al. Identification of cDC1- and cDC2-committed DC progenitors reveals early lineage priming at the common DC progenitor stage in the bone marrow. Nat. Immunol. 16, 718\u2013728 (2015).",
+        "volume": "16",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1038/ncb3493",
+        "author": "L Velten",
+        "doi-asserted-by": "publisher",
+        "first-page": "271",
+        "journal-title": "Nat. Cell Biol.",
+        "key": "71_CR9",
+        "unstructured": "Velten, L. et al. Human haematopoietic stem cell lineage commitment is a continuous process. Nat. Cell Biol. 19, 271\u2013281 (2017).",
+        "volume": "19",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1126/science.aag3009",
+        "author": "P See",
+        "doi-asserted-by": "publisher",
+        "first-page": "eaag3009",
+        "journal-title": "Science",
+        "key": "71_CR10",
+        "unstructured": "See, P. et al. Mapping the human DC lineage through the integration of high-dimensional techniques. Science 356, eaag3009 (2017).",
+        "volume": "356",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1038/nmeth.4463",
+        "author": "S Aibar",
+        "doi-asserted-by": "publisher",
+        "first-page": "1083",
+        "journal-title": "Nat. Methods",
+        "key": "71_CR11",
+        "unstructured": "Aibar, S. et al. SCENIC: Single-cell regulatory network inference and clustering. Nat. Methods 14, 1083\u20131086 (2017).",
+        "volume": "14",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.7554/eLife.27041",
+        "author": "A Regev",
+        "doi-asserted-by": "publisher",
+        "first-page": "e27041",
+        "journal-title": "eLife",
+        "key": "71_CR12",
+        "unstructured": "Regev, A. et al. Science forum: the human cell atlas. eLife 6, e27041 (2017).",
+        "volume": "6",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1016/j.cell.2018.02.001",
+        "author": "X Han",
+        "doi-asserted-by": "publisher",
+        "first-page": "1091",
+        "journal-title": "Cell",
+        "key": "71_CR13",
+        "unstructured": "Han, X. et al. Mapping the mouse cell atlas by microwell-seq. Cell 172, 1091\u20131107.e17 (2018).",
+        "volume": "172",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41586-018-0590-4",
+        "author": "N Schaum",
+        "doi-asserted-by": "publisher",
+        "first-page": "367",
+        "journal-title": "Nature",
+        "key": "71_CR14",
+        "unstructured": "Schaum, N. et al. Single-cell transcriptomics of 20 mouse organs creates a Tabula Muris. Nature 562, 367\u2013372 (2018).",
+        "volume": "562",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1016/j.coisb.2017.07.004",
+        "author": "P Angerer",
+        "doi-asserted-by": "publisher",
+        "first-page": "85",
+        "journal-title": "Curr. Opin. Syst. Biol.",
+        "key": "71_CR15",
+        "unstructured": "Angerer, P. et al. Single cells make big data: new challenges and opportunities in transcriptomics. Curr. Opin. Syst. Biol. 4, 85\u201391 (2017).",
+        "volume": "4",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1093/database/bau069",
+        "doi-asserted-by": "crossref",
+        "key": "71_CR16",
+        "unstructured": "Henry, V. J., Bandrowski, A. E., Pepin, A.-S., Gonzalez, B. J. & Desfeux, A. OMICtools: an informative directory for multi-omic data analysis. Database (Oxford) 2014, bau069 (2014)."
+      },
+      {
+        "DOI": "10.5281/zenodo.1294021",
+        "doi-asserted-by": "publisher",
+        "key": "71_CR17",
+        "unstructured": "Davis, S. et al. List of software packages for single-cell data analysis. \n                    https://github.com/seandavi/awesome-single-cell\n                    \n                   (2018); \n                    https://doi.org/10.5281/zenodo.1294021"
+      },
+      {
+        "DOI": "10.1371/journal.pcbi.1006245",
+        "doi-asserted-by": "crossref",
+        "key": "71_CR18",
+        "unstructured": "Zappia, L., Phipson, B. & Oshlack, A. Exploring the single-cell RNA-seq analysis landscape with the scRNA-tools database. PLoS Comput. Biol. 14, e1006245 (2018)"
+      },
+      {
+        "DOI": "10.1016/j.cell.2014.04.005",
+        "author": "SC Bendall",
+        "doi-asserted-by": "publisher",
+        "first-page": "714",
+        "journal-title": "Cell",
+        "key": "71_CR19",
+        "unstructured": "Bendall, S. C. et al. Single-cell trajectory detection uncovers progression and regulatory coordination in human B cell development. Cell 157, 714\u2013725 (2014).",
+        "volume": "157",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1016/j.stem.2015.07.013",
+        "author": "J Shin",
+        "doi-asserted-by": "publisher",
+        "first-page": "360",
+        "journal-title": "Cell Stem Cell",
+        "key": "71_CR20",
+        "unstructured": "Shin, J. et al. Single-cell RNA-seq with waterfall reveals molecular cascades underlying adult neurogenesis. Cell Stem Cell 17, 360\u2013372 (2015).",
+        "volume": "17",
+        "year": "2015"
+      },
+      {
+        "DOI": "10.1101/026872",
+        "doi-asserted-by": "publisher",
+        "key": "71_CR21",
+        "unstructured": "Campbell, K. & Yau, C. Bayesian Gaussian Process Latent Variable Models for pseudotime inference in single-cell RNA-seq data. Preprint at bioRxiv \n                    https://doi.org/10.1101/026872\n                    \n                   (2015)."
+      },
+      {
+        "DOI": "10.1038/nmeth.3971",
+        "author": "L Haghverdi",
+        "doi-asserted-by": "publisher",
+        "first-page": "845",
+        "journal-title": "Nat. Methods",
+        "key": "71_CR22",
+        "unstructured": "Haghverdi, L., B\u00fcttner, M., Wolf, F. A., Buettner, F. & Theis, F. J. Diffusion pseudotime robustly reconstructs lineage branching. Nat. Methods 13, 845\u2013848 (2016).",
+        "volume": "13",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1038/nbt.3569",
+        "author": "M Setty",
+        "doi-asserted-by": "publisher",
+        "first-page": "637",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "71_CR23",
+        "unstructured": "Setty, M. et al. Wishbone identifies bifurcating developmental trajectories from single-cell data. Nat. Biotechnol. 34, 637\u2013645 (2016).",
+        "volume": "34",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1038/nbt.2859",
+        "author": "C Trapnell",
+        "doi-asserted-by": "publisher",
+        "first-page": "2859",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "71_CR24",
+        "unstructured": "Trapnell, C. et al. The dynamics and regulators of cell fate decisions are revealed by pseudotemporal ordering of single cells. Nat. Biotechnol. 32, 2859 (2014).",
+        "volume": "32",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.1186/s12859-016-1109-3",
+        "author": "H Matsumoto",
+        "doi-asserted-by": "publisher",
+        "journal-title": "BMC Bioinformatics",
+        "key": "71_CR25",
+        "unstructured": "Matsumoto, H. & Kiryu, H. SCOUP: a probabilistic model based on the Ornstein\u2013Uhlenbeck process to analyze single-cell expression data during differentiation. BMC Bioinformatics 17, 232 (2016).",
+        "volume": "17",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1038/nmeth.4402",
+        "author": "X Qiu",
+        "doi-asserted-by": "publisher",
+        "first-page": "979",
+        "journal-title": "Nat. Methods",
+        "key": "71_CR26",
+        "unstructured": "Qiu, X. et al. Reversed graph embedding resolves complex single-cell trajectories. Nat. Methods 14, 979\u2013982 (2017).",
+        "volume": "14",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1186/s12864-018-4772-0",
+        "author": "K Street",
+        "doi-asserted-by": "publisher",
+        "journal-title": "BMC Genomics",
+        "key": "71_CR27",
+        "unstructured": "Street, K. et al. Slingshot: cell lineage and pseudotime inference for single-cell transcriptomics. BMC Genomics 19, 477 (2018).",
+        "volume": "19",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1093/nar/gkw430",
+        "author": "Z Ji",
+        "doi-asserted-by": "publisher",
+        "first-page": "e117",
+        "journal-title": "Nucleic Acids Res.",
+        "key": "71_CR28",
+        "unstructured": "Ji, Z. & Ji, H. TSCAN: pseudo-time reconstruction and evaluation in single-cell RNA-seq analysis. Nucleic Acids Res. 44, e117\u2013e117 (2016).",
+        "volume": "44",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1186/s13059-016-0975-3",
+        "author": "JD Welch",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome. Biol.",
+        "key": "71_CR29",
+        "unstructured": "Welch, J. D., Hartemink, A. J. & Prins, J. F. SLICER: inferring branched, nonlinear cellular trajectories from single cell RNA-seq data. Genome. Biol. 17, 106 (2016).",
+        "volume": "17",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1186/s12859-016-1175-6",
+        "author": "DA duVerle",
+        "doi-asserted-by": "publisher",
+        "journal-title": "BMC Bioinformatics",
+        "key": "71_CR30",
+        "unstructured": "duVerle, D. A., Yotsukura, S., Nomura, S., Aburatani, H. & Tsuda, K. CellTree: an R/bioconductor package to infer the hierarchical structure of cell populations from single-cell RNA-seq data. BMC Bioinformatics 17, 363 (2016).",
+        "volume": "17",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1101/079509",
+        "doi-asserted-by": "publisher",
+        "key": "71_CR31",
+        "unstructured": "Cannoodt, R. et al. SCORPIUS improves trajectory inference and identifies novel modules in dendritic cell development. Preprint at bioRxiv \n                    https://doi.org/10.1101/079509\n                    \n                   (2016)."
+      },
+      {
+        "DOI": "10.1126/sciimmunol.aal2192",
+        "author": "T L\u00f6nnberg",
+        "doi-asserted-by": "publisher",
+        "first-page": "eaal2192",
+        "journal-title": "Sci. Immunol.",
+        "key": "71_CR32",
+        "unstructured": "L\u00f6nnberg, T. et al. Single-cell RNA-seq and computational analysis using temporal mixture modeling resolves TH1/TFH fate bifurcation in malaria. Sci. Immunol. 2, eaal2192 (2017).",
+        "volume": "2",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.12688/wellcomeopenres.11087.1",
+        "author": "KR Campbell",
+        "doi-asserted-by": "publisher",
+        "first-page": "19",
+        "journal-title": "Wellcome Open Res.",
+        "key": "71_CR33",
+        "unstructured": "Campbell, K. R. & Yau, C. Probabilistic modeling of bifurcations in single-cell gene expression data using a Bayesian mixture of factor analyzers. Wellcome Open Res. 2, 19 (2017).",
+        "volume": "2",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1101/433102",
+        "doi-asserted-by": "publisher",
+        "key": "71_CR34",
+        "unstructured": "Tian, L. et al. scRNA-seq mixology: Towards better benchmarking of single cell RNA-seq protocols and analysis methods. Preprint at bioRxiv \n                    https://doi.org/10.1101/433102\n                    \n                   (2018)."
+      },
+      {
+        "DOI": "10.1093/bioinformatics/btr373",
+        "author": "T Schaffter",
+        "doi-asserted-by": "publisher",
+        "first-page": "2263",
+        "journal-title": "Bioinformatics",
+        "key": "71_CR35",
+        "unstructured": "Schaffter, T., Marbach, D. & Floreano, D. GeneNetWeaver: in silico benchmark generation and performance profiling of network inference methods. Bioinformatics 27, 2263\u20132270 (2011).",
+        "volume": "27",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.1186/s13059-017-1305-0",
+        "author": "L Zappia",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome. Biol.",
+        "key": "71_CR36",
+        "unstructured": "Zappia, L., Phipson, B. & Oshlack, A. Splatter: simulation of single-cell RNA sequencing data. Genome. Biol. 18, 174 (2017).",
+        "volume": "18",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1038/nprot.2017.149",
+        "author": "V Svensson",
+        "doi-asserted-by": "publisher",
+        "first-page": "599",
+        "journal-title": "Nat. Protoc.",
+        "key": "71_CR37",
+        "unstructured": "Svensson, V., Vento-Tormo, R. & Teichmann, S. A. Exponential scaling of single-cell RNA-seq in the past decade. Nat. Protoc. 13, 599\u2013604 (2018).",
+        "volume": "13",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1126/science.aau0730",
+        "author": "Junyue Cao",
+        "doi-asserted-by": "publisher",
+        "first-page": "1380",
+        "issue": "6409",
+        "journal-title": "Science",
+        "key": "71_CR38",
+        "unstructured": "Cao, J. et al. Joint profiling of chromatin accessibility and gene expression in thousands of single cells. Science 361, 1380\u20131385 (2018).",
+        "volume": "361",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1007/s11222-013-9448-7",
+        "author": "N Pya",
+        "doi-asserted-by": "publisher",
+        "first-page": "543",
+        "journal-title": "Stat. Comput.",
+        "key": "71_CR39",
+        "unstructured": "Pya, N. & Wood, S. N. Shape constrained additive models. Stat. Comput. 25, 543\u2013559 (2015).",
+        "volume": "25",
+        "year": "2015"
+      },
+      {
+        "key": "71_CR40",
+        "unstructured": "Taschuk, M. & Wilson, G. Ten simple rules for making research software more robust. PLoS Comput. Biol. 13, e1005412 (2017)."
+      },
+      {
+        "DOI": "10.1101/452532",
+        "doi-asserted-by": "publisher",
+        "key": "71_CR41",
+        "unstructured": "Mangul, S. et al. A comprehensive analysis of the usability and archival stability of omics computational tools and resources. Preprint at bioRxiv \n                    https://doi.org/10.1101/452532\n                    \n                   (2018)."
+      },
+      {
+        "DOI": "10.1371/journal.pbio.1001745",
+        "author": "G Wilson",
+        "doi-asserted-by": "publisher",
+        "first-page": "e1001745",
+        "journal-title": "PLoS Biol.",
+        "key": "71_CR42",
+        "unstructured": "Wilson, G. et al. Best practices for scientific computing. PLoS Biol. 12, e1001745 (2014).",
+        "volume": "12",
+        "year": "2014"
+      },
+      {
+        "DOI": "10.12688/f1000research.9206.1",
+        "author": "H Artaza",
+        "doi-asserted-by": "publisher",
+        "first-page": "2000",
+        "journal-title": "F1000Res.",
+        "key": "71_CR43",
+        "unstructured": "Artaza, H. et al. Top 10 metrics for life science software good practices. F1000Res. 5, 2000 (2016).",
+        "volume": "5",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1038/s41467-018-03424-4",
+        "author": "W Saelens",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Nat. Commun.",
+        "key": "71_CR44",
+        "unstructured": "Saelens, W., Cannoodt, R. & Saeys, Y. A comprehensive evaluation of module detection methods for gene expression data. Nat. Commun. 9, 1090 (2018).",
+        "volume": "9",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/s41586-018-0414-6",
+        "author": "GL Manno",
+        "doi-asserted-by": "publisher",
+        "first-page": "494",
+        "journal-title": "Nature",
+        "key": "71_CR45",
+        "unstructured": "Manno, G. L. et al. RNA velocity of single cells. Nature 560, 494\u2013498 (2018).",
+        "volume": "560",
+        "year": "2018"
+      },
+      {
+        "DOI": "10.1038/msb.2011.70",
+        "author": "R Norel",
+        "doi-asserted-by": "publisher",
+        "first-page": "537",
+        "journal-title": "Mol. Syst. Biol.",
+        "key": "71_CR46",
+        "unstructured": "Norel, R., Rice, J. J. & Stolovitzky, G. The self-assessment trap: Can we all be better than average? Mol. Syst. Biol. 7, 537 (2011).",
+        "volume": "7",
+        "year": "2011"
+      },
+      {
+        "DOI": "10.5281/zenodo.1297423",
+        "doi-asserted-by": "publisher",
+        "key": "71_CR47",
+        "unstructured": "Gitter, A. Single-cell RNA-seq pseudotime estimation algorithms. \n                    https://github.com/agitter/single-cell-pseudotime\n                    \n                   (2018); \n                    https://doi.org/10.5281/zenodo.1297423"
+      },
+      {
+        "DOI": "10.1186/gb-2013-14-10-r118",
+        "author": "T Kouno",
+        "doi-asserted-by": "publisher",
+        "journal-title": "Genome. Biol.",
+        "key": "71_CR48",
+        "unstructured": "Kouno, T. et al. Temporal dynamics and transcriptional control using single-cell gene expression analysis. Genome. Biol. 14, R118 (2013).",
+        "volume": "14",
+        "year": "2013"
+      },
+      {
+        "DOI": "10.1016/j.cmet.2017.04.014",
+        "author": "Chun Zeng",
+        "doi-asserted-by": "publisher",
+        "first-page": "1160-1175.e11",
+        "issue": "5",
+        "journal-title": "Cell Metabolism",
+        "key": "71_CR49",
+        "unstructured": "Zeng, C. et al. Pseudotemporal ordering of single cells reveals metabolic control of postnatal \u03b2 cell proliferation. Cell. Metab. 25, 1160\u20131175.e11 (2017).",
+        "volume": "25",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.1101/256941",
+        "doi-asserted-by": "crossref",
+        "key": "71_CR50",
+        "unstructured": "Papadopoulos, N., Parra, R. G. & Soeding, J. PROSSTT: probabilistic simulation of single-cell RNA-seq data for complex differentiation processes. Bioinformatics, btz078 (2019)."
+      },
+      {
+        "author": "AT Lun",
+        "first-page": "2122",
+        "journal-title": "F1000Res.",
+        "key": "71_CR51",
+        "unstructured": "Lun, A. T., McCarthy, D. J. & Marioni, J. C. A step-by-step workflow for low-level analysis of single-cell RNA-seq data with Bioconductor. F1000Res. 5, 2122 (2016).",
+        "volume": "5",
+        "year": "2016"
+      },
+      {
+        "DOI": "10.1109/DSAA.2015.7344816",
+        "doi-asserted-by": "publisher",
+        "key": "71_CR52",
+        "unstructured": "Jurman, G., Visintainer, R., Filosi, M., Riccadonna, S. & Furlanello, C. in Proc. 2015 IEEE International Conference on Data Science and Advanced Analytics (DSAA) 1\u201310 (IEEE, 2015); \n                    https://doi.org/10.1109/DSAA.2015.7344816"
+      },
+      {
+        "DOI": "10.18637/jss.v077.i01",
+        "doi-asserted-by": "crossref",
+        "key": "71_CR53",
+        "unstructured": "Wright, M. N. & Ziegler, A. Ranger: a fast implementation of random forests for high dimensional data in C++ and R. J. Stat. Softw. 77, 1-17 (2017)."
+      },
+      {
+        "DOI": "10.1038/nbt.3780",
+        "author": "BK Beaulieu-Jones",
+        "doi-asserted-by": "publisher",
+        "first-page": "3780",
+        "journal-title": "Nat. Biotechnol.",
+        "key": "71_CR54",
+        "unstructured": "Beaulieu-Jones, B. K. & Greene, C. S. Reproducibility of computational workflows is automated using continuous analysis. Nat. Biotechnol. 35, 3780 (2017).",
+        "volume": "35",
+        "year": "2017"
+      },
+      {
+        "DOI": "10.5281/zenodo.1443566",
+        "doi-asserted-by": "publisher",
+        "key": "71_CR55",
+        "unstructured": "Cannoodt, R., Saelens, W., Todorov, H. & Saeys, Y. Single-cell -omics datasets containing a trajectory (Version 2.0.0). Zenodo \n                    https://doi.org/10.5281/zenodo.1443566\n                    \n                   (2018)."
+      }
+    ],
+    "reference-count": 55,
+    "references-count": 55,
+    "relation": {
+      "has-preprint": [
+        {
+          "asserted-by": "object",
+          "id": "10.1101/276907",
+          "id-type": "doi"
+        }
+      ],
+      "has-review": [
+        {
+          "asserted-by": "object",
+          "id": "10.3410/f.735426885.793559368",
+          "id-type": "doi"
+        },
+        {
+          "asserted-by": "object",
+          "id": "10.3410/f.735426885.793558521",
+          "id-type": "doi"
+        }
+      ]
+    },
+    "resource": {
+      "primary": {
+        "URL": "https://www.nature.com/articles/s41587-019-0071-9"
+      }
+    },
+    "score": 1,
+    "short-container-title": [
+      "Nat Biotechnol"
+    ],
+    "short-title": [],
+    "source": "Crossref",
+    "subject": [],
+    "subtitle": [],
+    "title": [
+      "A comparison of single-cell trajectory inference methods"
+    ],
+    "type": "journal-article",
+    "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+    "volume": "37"
+  },
+  "paper_id": "MP-004",
+  "status": "fetched"
+}

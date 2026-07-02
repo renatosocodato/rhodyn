@@ -1,0 +1,49 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.1 venue guidance exists and passes",
+      "name": "stage_9_1_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "8 unique DOI records verified against planned count 8",
+      "name": "corpus_has_planned_doi_count",
+      "passed": true
+    },
+    {
+      "detail": "Every corpus entry records novelty, benchmarks, biology, software, limitations, and availability",
+      "name": "each_entry_records_required_axes",
+      "passed": true
+    },
+    {
+      "detail": "Archetype synthesis generated from cross-paper method, benchmark, biology, software, limitation, and availability patterns",
+      "name": "archetype_synthesis_exists",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "corpus_version": "methods-corpus@2026-07-02@5ce55cc235ad1819dcc7a4382343f0293230a282",
+  "outputs": [
+    "manuscript/nature_methods/refs/representative_methods_papers.md",
+    "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md",
+    "manuscript/nature_methods/gate_verdicts/9.2.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-001.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-002.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-003.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-004.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-005.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-006.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-007.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-008.crossref.json"
+  ],
+  "pass": true,
+  "planned_doi_count": 8,
+  "scope_boundary": "Methods-paper corpus analysis only. No reference bibliography, citation resolution, drafting, figure rendering, PanelForge execution, or submission-package assembly.",
+  "substage": "9.2",
+  "timestamp": "2026-07-02T10:19:25.464399Z",
+  "verified_doi_count": 8
+}

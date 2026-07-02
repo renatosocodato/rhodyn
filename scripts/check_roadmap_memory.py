@@ -39,10 +39,12 @@ STAGE9_MEMORY_PATH = ROOT / "docs" / "stage9_execution_memory.json"
 STAGE9_CHECKER_PATH = ROOT / "scripts" / "check_stage9_scaffold.py"
 STAGE9_0_RUNNER_PATH = ROOT / "scripts" / "run_stage9_0_evidence_intake_lock.py"
 STAGE9_1_RUNNER_PATH = ROOT / "scripts" / "run_stage9_1_venue_guidance_register.py"
+STAGE9_2_RUNNER_PATH = ROOT / "scripts" / "run_stage9_2_methods_paper_corpus.py"
 STAGE9_PANELFORGE_PREFLIGHT_PATH = ROOT / "scripts" / "run_stage9_6b_panelforge_rendering.py"
 STAGE9_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.-1.json"
 STAGE9_0_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.0.json"
 STAGE9_1_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.1.json"
+STAGE9_2_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.2.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -81,10 +83,12 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_checker_path = root / STAGE9_CHECKER_PATH.relative_to(ROOT)
     stage9_0_runner_path = root / STAGE9_0_RUNNER_PATH.relative_to(ROOT)
     stage9_1_runner_path = root / STAGE9_1_RUNNER_PATH.relative_to(ROOT)
+    stage9_2_runner_path = root / STAGE9_2_RUNNER_PATH.relative_to(ROOT)
     stage9_panelforge_preflight_path = root / STAGE9_PANELFORGE_PREFLIGHT_PATH.relative_to(ROOT)
     stage9_gate_path = root / STAGE9_GATE_PATH.relative_to(ROOT)
     stage9_0_gate_path = root / STAGE9_0_GATE_PATH.relative_to(ROOT)
     stage9_1_gate_path = root / STAGE9_1_GATE_PATH.relative_to(ROOT)
+    stage9_2_gate_path = root / STAGE9_2_GATE_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -105,8 +109,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 9.1 venue guidance registered; manuscript production not started":
-        failures.append("active stage must record the Stage 9.1 venue-guidance boundary")
+    if current.get("active_stage") != "Stage 9.2 methods-paper corpus registered; manuscript production not started":
+        failures.append("active stage must record the Stage 9.2 methods-paper corpus boundary")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -116,7 +120,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         6: "public_citable_v0.1.0",
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
-        9: "stage9_1_guidance_registered",
+        9: "stage9_2_methods_corpus_registered",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -166,8 +170,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.0 must be complete_evidence_locked")
     if stage9_status.get("9.1") != "complete_guidance_registered":
         failures.append("Stage 9.1 must be complete_guidance_registered")
+    if stage9_status.get("9.2") != "complete_methods_corpus_registered":
+        failures.append("Stage 9.2 must be complete_methods_corpus_registered")
     for entry in stage9_substages:
-        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1"} and entry.get("status") != "not_started":
+        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2"} and entry.get("status") != "not_started":
             failures.append(f"Stage {entry.get('id')} must remain not_started")
 
     roadmap_flat = " ".join(roadmap.split())
@@ -200,6 +206,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 9 scaffold has been serialized",
         "Stage 9.0 evidence lock has been completed",
         "Stage 9.1 venue guidance source register has been completed",
+        "Stage 9.2 representative methods-paper corpus has been completed",
         "manuscript production, citation resolution, figure rendering, and drafting remain not started",
         "Stage 9. Nature Methods manuscript assembly",
         "PanelForge",
@@ -263,11 +270,12 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
 
     stage9_docs = [
-        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.6b", "PanelForge", "evidence lock", "manuscript drafting"]),
-        (stage9_memory_path, "Stage 9 execution memory", ["stage9_1_guidance_registered", "9.-1", "9.0", "9.1", "figure_engine_clone_started"]),
+        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.6b", "PanelForge", "evidence lock", "manuscript drafting"]),
+        (stage9_memory_path, "Stage 9 execution memory", ["stage9_2_methods_corpus_registered", "9.-1", "9.0", "9.1", "9.2", "figure_engine_clone_started"]),
         (stage9_checker_path, "Stage 9 scaffold checker", ["FORBIDDEN_DRAFTS", "FORBIDDEN_RENDER_SUFFIXES", "check_stage9_scaffold", "scaffold_only_boundary_preserved"]),
         (stage9_0_runner_path, "Stage 9.0 evidence intake runner", ["stage9_evidence_manifest.csv", "stage9_evidence_lock.md", "No drafting", "PanelForge execution"]),
         (stage9_1_runner_path, "Stage 9.1 venue guidance runner", ["nature_methods_guidance_register.md", "venue_policy_constraints.md", "No representative corpus", "No manuscript sections"]),
+        (stage9_2_runner_path, "Stage 9.2 methods-paper corpus runner", ["representative_methods_papers.md", "methods_paper_archetype_analysis.md", "No reference bibliography", "No manuscript sections"]),
         (stage9_panelforge_preflight_path, "Stage 9.6b PanelForge preflight harness", ["preflight", "blocked_preconditions", "stage_9_6_gate_passed", "runtime_env_not_created_yet"]),
     ]
     for path, label, phrases in stage9_docs:
@@ -302,6 +310,16 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.1 venue-guidance gate must pass")
         if stage9_1_gate.get("substage") != "9.1":
             failures.append("Stage 9.1 venue-guidance gate must remain bound to substage 9.1")
+    if not stage9_2_gate_path.exists():
+        failures.append("missing manuscript/nature_methods/gate_verdicts/9.2.json")
+    else:
+        stage9_2_gate = json.loads(stage9_2_gate_path.read_text(encoding="utf-8"))
+        if stage9_2_gate.get("pass") is not True:
+            failures.append("Stage 9.2 methods-paper corpus gate must pass")
+        if stage9_2_gate.get("substage") != "9.2":
+            failures.append("Stage 9.2 methods-paper corpus gate must remain bound to substage 9.2")
+        if stage9_2_gate.get("verified_doi_count") != 8:
+            failures.append("Stage 9.2 methods-paper corpus gate must verify eight DOI records")
 
     stage7_doc_specs = [
         (stage7_source_register_path, "source register", ["Official and community guidance sources", "Representative methods papers", "Candidate dataset classes", "RhoA/microglia reference case"]),
@@ -721,7 +739,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
         warnings.append("Stage 7.8 methods manuscript readiness package is complete; Stage 8 remains conceptual")
-    warnings.append("Stage 9.1 venue guidance is registered; manuscript production, citation resolution, figure rendering, and drafting have not started")
+    warnings.append("Stage 9.2 methods-paper corpus is registered; manuscript production, citation resolution, figure rendering, and drafting have not started")
 
     return {
         "status": "pass" if not failures else "fail",

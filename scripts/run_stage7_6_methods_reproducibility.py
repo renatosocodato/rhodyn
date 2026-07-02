@@ -108,6 +108,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/scaffold_stage9_manuscript_assembly.py",
     "scripts/run_stage9_0_evidence_intake_lock.py",
     "scripts/run_stage9_1_venue_guidance_register.py",
+    "scripts/run_stage9_2_methods_paper_corpus.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
@@ -132,6 +133,7 @@ REQUIRED_ARCHIVE_FILES = {
     "tests/test_stage7_7_8_recursive_hardening.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_1_venue_guidance.py",
+    "tests/test_stage9_2_methods_paper_corpus.py",
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "manuscript/nature_methods/README.md",
@@ -145,6 +147,7 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
     "manuscript/nature_methods/gate_verdicts/9.0.json",
     "manuscript/nature_methods/gate_verdicts/9.1.json",
+    "manuscript/nature_methods/gate_verdicts/9.2.json",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -163,7 +166,17 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.txt",
     "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.meta.json",
     "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.txt",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-001.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-002.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-003.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-004.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-005.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-006.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-007.crossref.json",
+    "manuscript/nature_methods/refs/_cache/methods_corpus/mp-008.crossref.json",
     "manuscript/nature_methods/audits/venue_policy_constraints.md",
+    "manuscript/nature_methods/refs/representative_methods_papers.md",
+    "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
     "notebooks/01_synthetic_residence_primer.ipynb",
     "notebooks/07_stage7_heldout_validation.ipynb",
@@ -175,7 +188,7 @@ LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
     re.compile("/" + "Volumes/"),
     re.compile("Library/" + "LaunchAgents"),
-    re.compile(r"sk-[A-Za-z0-9]"),
+    re.compile(r"sk-[A-Za-z0-9_-]{16,}"),
     re.compile("ghp" + r"_[A-Za-z0-9_]+"),
     re.compile("github" + r"_pat_[A-Za-z0-9_]+"),
     re.compile(r"xox[baprs]-[A-Za-z0-9-]+"),
@@ -209,6 +222,13 @@ GENERATED_DIRS = {
     "playwright-report",
     "test-results",
     "blob-report",
+}
+SELF_GENERATED_STAGE7_6_REPORTS = {
+    "docs/stage7_6_clean_room_report.json",
+    "docs/stage7_6_gate_report.json",
+    "docs/stage7_methods_reproducibility_card.md",
+    "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
+    "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
 }
 
 
@@ -365,6 +385,8 @@ def _archive_surface_scan(root: Path) -> StepResult:
         if ".git" in path.parts or any(part in GENERATED_DIRS for part in path.parts):
             continue
         rel = path.relative_to(root)
+        if rel.as_posix() in SELF_GENERATED_STAGE7_6_REPORTS:
+            continue
         if path.is_file() and path.suffix.lower() in RAW_EXTENSIONS:
             failures.append(f"raw/private-data-like file present: {rel.as_posix()}")
         if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
@@ -496,8 +518,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9.1 venue guidance registered; manuscript production not started":
-        failures.append("roadmap memory does not mark the Stage 9.1 venue-guidance boundary as active")
+    if current.get("active_stage") != "Stage 9.2 methods-paper corpus registered; manuscript production not started":
+        failures.append("roadmap memory does not mark the Stage 9.2 methods-paper corpus boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -507,8 +529,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_1_guidance_registered":
-        failures.append("Stage 9 is not marked stage9_1_guidance_registered")
+    if stage9.get("status") != "stage9_2_methods_corpus_registered":
+        failures.append("Stage 9 is not marked stage9_2_methods_corpus_registered")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -519,6 +541,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9.0 is not marked complete_evidence_locked")
     if stage9_substage_status.get("9.1") != "complete_guidance_registered":
         failures.append("Stage 9.1 is not marked complete_guidance_registered")
+    if stage9_substage_status.get("9.2") != "complete_methods_corpus_registered":
+        failures.append("Stage 9.2 is not marked complete_methods_corpus_registered")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",
