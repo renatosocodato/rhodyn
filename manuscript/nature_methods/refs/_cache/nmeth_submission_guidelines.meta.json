@@ -1,0 +1,19 @@
+{
+  "accessed_utc": "2026-07-02T10:09:14.214615Z",
+  "byte_count": 5332,
+  "cache_file": "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.txt",
+  "http_status": 200,
+  "metadata_file": "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.meta.json",
+  "required_phrases_found": [
+    "What you need to know before initial submission",
+    "make sure Nature Methods is the most suitable journal",
+    "Read and understand our policies",
+    "Preparing your material for initial submission"
+  ],
+  "required_phrases_missing": [],
+  "sha256": "434fd5341c5de194f62fafce678446a05c805264447e8f39024d578f61ec8690",
+  "source_id": "NMETH-SUBMISSION",
+  "status": "fetched",
+  "title": "Nature Methods submission guidelines",
+  "url": "https://www.nature.com/nmeth/submission-guidelines"
+}

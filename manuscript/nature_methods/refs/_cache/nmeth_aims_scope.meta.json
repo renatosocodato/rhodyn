@@ -1,0 +1,19 @@
+{
+  "accessed_utc": "2026-07-02T10:09:14.214615Z",
+  "byte_count": 5734,
+  "cache_file": "manuscript/nature_methods/refs/_cache/nmeth_aims_scope.txt",
+  "http_status": 200,
+  "metadata_file": "manuscript/nature_methods/refs/_cache/nmeth_aims_scope.meta.json",
+  "required_phrases_found": [
+    "novel methods and significant improvements",
+    "strong validation",
+    "performance in comparison to available approaches",
+    "Computational, statistical and machine learning methods"
+  ],
+  "required_phrases_missing": [],
+  "sha256": "06746ff2ecfb1a5edb4358899ca088f98ab6515a8ea92716f6320f63fe72385d",
+  "source_id": "NMETH-AIMS",
+  "status": "fetched",
+  "title": "Nature Methods aims and scope",
+  "url": "https://www.nature.com/nmeth/aims"
+}

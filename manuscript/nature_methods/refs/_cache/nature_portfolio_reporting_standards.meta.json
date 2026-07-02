@@ -1,0 +1,18 @@
+{
+  "accessed_utc": "2026-07-02T10:09:14.214615Z",
+  "byte_count": 35878,
+  "cache_file": "manuscript/nature_methods/refs/_cache/nature_portfolio_reporting_standards.txt",
+  "http_status": 200,
+  "metadata_file": "manuscript/nature_methods/refs/_cache/nature_portfolio_reporting_standards.meta.json",
+  "required_phrases_found": [
+    "materials, data, code, and associated protocols",
+    "reporting summary documents",
+    "Data availability statements"
+  ],
+  "required_phrases_missing": [],
+  "sha256": "5422b5048652dcdd89d1c4ba3f0603fca2f448f6ba71a833ff8c5aaa0ee67a58",
+  "source_id": "NPORT-REPORTING",
+  "status": "fetched",
+  "title": "Nature Portfolio reporting standards",
+  "url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards"
+}

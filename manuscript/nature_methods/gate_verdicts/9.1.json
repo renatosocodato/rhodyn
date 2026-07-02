@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.0 evidence lock exists and passes",
+      "name": "stage_9_0_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "7 of 7 official pages fetched with required phrases",
+      "name": "official_sources_fetched",
+      "passed": true
+    },
+    {
+      "detail": "Article fit, abstract, main text, display item, structure, and reference constraints are sourced from Nature Methods content guidance",
+      "name": "content_type_budget_is_sourced",
+      "passed": true
+    },
+    {
+      "detail": "7 cached source records include URL, access date, text cache, metadata, and hash",
+      "name": "cached_sources_have_url_and_access_date",
+      "passed": true
+    },
+    {
+      "detail": "18 venue constraints registered with source excerpts",
+      "name": "verified_venue_constraints_are_explicit",
+      "passed": true
+    },
+    {
+      "detail": "All source access dates match run date 2026-07-02",
+      "name": "freshness_assertion_passes",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "constraint_count": 18,
+  "guidance_version": "nature-methods-guidance@2026-07-02@9d71e48774c613047315a4957e3087f442ac8643",
+  "outputs": [
+    "manuscript/nature_methods/refs/nature_methods_guidance_register.md",
+    "manuscript/nature_methods/audits/venue_policy_constraints.md",
+    "manuscript/nature_methods/gate_verdicts/9.1.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_aims_scope.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_content_types.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_editorial_policies.txt",
+    "manuscript/nature_methods/refs/_cache/nature_portfolio_reporting_standards.txt",
+    "manuscript/nature_methods/refs/_cache/nature_initial_submission.txt",
+    "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_aims_scope.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_content_types.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_editorial_policies.meta.json",
+    "manuscript/nature_methods/refs/_cache/nature_portfolio_reporting_standards.meta.json",
+    "manuscript/nature_methods/refs/_cache/nature_initial_submission.meta.json",
+    "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.meta.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Venue-guidance registration only. No representative corpus, citation resolution, drafting, figure rendering, PanelForge execution, or submission-package assembly.",
+  "source_count": 7,
+  "substage": "9.1",
+  "timestamp": "2026-07-02T10:09:14.214615Z"
+}

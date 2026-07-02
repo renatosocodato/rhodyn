@@ -81,15 +81,37 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/figures/rendered/.gitkeep",
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
     "manuscript/nature_methods/gate_verdicts/9.0.json",
+    "manuscript/nature_methods/gate_verdicts/9.1.json",
     "manuscript/nature_methods/ledgers/.gitkeep",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
+    "manuscript/nature_methods/refs/.gitkeep",
+    "manuscript/nature_methods/refs/_cache/.gitkeep",
+    "manuscript/nature_methods/refs/_cache/nature_initial_submission.meta.json",
+    "manuscript/nature_methods/refs/_cache/nature_initial_submission.txt",
+    "manuscript/nature_methods/refs/_cache/nature_portfolio_reporting_standards.meta.json",
+    "manuscript/nature_methods/refs/_cache/nature_portfolio_reporting_standards.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_aims_scope.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_aims_scope.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_content_types.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_content_types.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_editorial_policies.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_editorial_policies.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.txt",
+    "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.meta.json",
+    "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.txt",
+    "manuscript/nature_methods/refs/nature_methods_guidance_register.md",
+    "manuscript/nature_methods/audits/.gitkeep",
+    "manuscript/nature_methods/audits/venue_policy_constraints.md",
     "scripts/check_stage9_scaffold.py",
     "scripts/run_stage9_0_evidence_intake_lock.py",
+    "scripts/run_stage9_1_venue_guidance_register.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/scaffold_stage9_manuscript_assembly.py",
     "tests/test_stage9_0_evidence_lock.py",
+    "tests/test_stage9_1_venue_guidance.py",
     "tests/test_stage9_scaffold.py",
     "tools/panelforge-figures/.gitkeep",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
@@ -360,8 +382,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     memory = _read_json(ROOT / "docs" / "roadmap_execution_memory.json", failures)
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     stage9 = stages.get(9, {})
-    if stage9.get("status") != "stage9_0_evidence_locked":
-        failures.append("roadmap execution memory must record Stage 9 as stage9_0_evidence_locked")
+    if stage9.get("status") != "stage9_1_guidance_registered":
+        failures.append("roadmap execution memory must record Stage 9 as stage9_1_guidance_registered")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 execution memory must record 33 serialized substages")
     substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -370,8 +392,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     if stages.get(8, {}).get("status") != "conceptual_only":
         failures.append("Stage 8 must remain conceptual after Stage 7.7/7.8 hardening")
     current = memory.get("current_position", {}) if isinstance(memory.get("current_position", {}), dict) else {}
-    if current.get("active_stage") != "Stage 9.0 evidence locked; manuscript production not started":
-        failures.append("roadmap active stage must record the Stage 9.0 evidence-lock boundary")
+    if current.get("active_stage") != "Stage 9.1 venue guidance registered; manuscript production not started":
+        failures.append("roadmap active stage must record the Stage 9.1 venue-guidance boundary")
     return {
         "authorized_phase9_scaffold_files": len(stage9_files) - len(unauthorized),
         "unauthorized_phase9_files": len(unauthorized),

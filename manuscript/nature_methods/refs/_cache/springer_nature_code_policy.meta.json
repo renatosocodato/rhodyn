@@ -1,0 +1,19 @@
+{
+  "accessed_utc": "2026-07-02T10:09:14.214615Z",
+  "byte_count": 6236,
+  "cache_file": "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.txt",
+  "http_status": 200,
+  "metadata_file": "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.meta.json",
+  "required_phrases_found": [
+    "Code Availability Statement",
+    "permanent identifier",
+    "GitHub link only is not sufficient",
+    "peer reviewers"
+  ],
+  "required_phrases_missing": [],
+  "sha256": "0b428dd025a86bc5ffdb7e5d27c95747ce94d1ef8465e90bc33530be00cd3f6f",
+  "source_id": "SN-CODE",
+  "status": "fetched",
+  "title": "Springer Nature research-code policy",
+  "url": "https://www.springernature.com/gp/open-science/code-policy"
+}

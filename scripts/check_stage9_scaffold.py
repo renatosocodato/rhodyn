@@ -37,6 +37,7 @@ REQUIRED_FILES = [
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "scripts/run_stage9_0_evidence_intake_lock.py",
+    "scripts/run_stage9_1_venue_guidance_register.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
@@ -200,13 +201,14 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.0 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.1 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
+    stage9_1_started = "9.1.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -225,7 +227,13 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     for flag in ["figure_engine_clone_started", "figure_engine_install_started", "figure_rendering_started"]:
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
-    expected_memory_status = "stage9_0_evidence_locked" if stage9_0_started else "scaffold_serialized_not_started"
+    expected_memory_status = (
+        "stage9_1_guidance_registered"
+        if stage9_1_started
+        else "stage9_0_evidence_locked"
+        if stage9_0_started
+        else "scaffold_serialized_not_started"
+    )
     if memory.get("status") != expected_memory_status:
         failures.append(f"Stage 9 execution memory must record {expected_memory_status}")
     if memory.get("next_substage_authorized") is not False:
@@ -250,6 +258,31 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 scaffold-only state must not contain evidence-lock output before 9.0: {rel}")
+
+    if stage9_1_started:
+        stage9_1_gate = _read_json(workspace / "gate_verdicts" / "9.1.json", failures)
+        if stage9_1_gate.get("pass") is not True or stage9_1_gate.get("substage") != "9.1":
+            failures.append("Stage 9.1 gate verdict must pass when present")
+        for rel in [
+            "refs/nature_methods_guidance_register.md",
+            "audits/venue_policy_constraints.md",
+        ]:
+            if not (workspace / rel).exists():
+                failures.append(f"Stage 9.1 venue-guidance output missing: {rel}")
+        cache_dir = workspace / "refs" / "_cache"
+        cache_texts = sorted(path.name for path in cache_dir.glob("*.txt")) if cache_dir.exists() else []
+        cache_meta = sorted(path.name for path in cache_dir.glob("*.meta.json")) if cache_dir.exists() else []
+        if len(cache_texts) != 7 or len(cache_meta) != 7:
+            failures.append("Stage 9.1 must cache seven official source text files and seven metadata files")
+        if memory.get("venue_guidance_started") is not True:
+            failures.append("Stage 9 execution memory must record venue_guidance_started=true after 9.1")
+    else:
+        for rel in [
+            "refs/nature_methods_guidance_register.md",
+            "audits/venue_policy_constraints.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain venue-guidance output before 9.1: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

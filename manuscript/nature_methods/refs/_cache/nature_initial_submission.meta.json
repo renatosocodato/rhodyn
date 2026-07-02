@@ -1,0 +1,20 @@
+{
+  "accessed_utc": "2026-07-02T10:09:14.214615Z",
+  "byte_count": 19142,
+  "cache_file": "manuscript/nature_methods/refs/_cache/nature_initial_submission.txt",
+  "http_status": 200,
+  "metadata_file": "manuscript/nature_methods/refs/_cache/nature_initial_submission.meta.json",
+  "required_phrases_found": [
+    "Methods",
+    "Data availability",
+    "Code availability",
+    "Figure legends",
+    "EXACT n values"
+  ],
+  "required_phrases_missing": [],
+  "sha256": "efdbeb227641b4b3b45b72f0303e9354d71750ed71655a07a60baf7cc8567707",
+  "source_id": "NATURE-INITIAL",
+  "status": "fetched",
+  "title": "Nature initial-submission format guidance",
+  "url": "https://www.nature.com/nature/for-authors/initial-submission"
+}

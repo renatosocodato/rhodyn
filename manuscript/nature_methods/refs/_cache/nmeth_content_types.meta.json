@@ -1,0 +1,21 @@
+{
+  "accessed_utc": "2026-07-02T10:09:14.214615Z",
+  "byte_count": 15257,
+  "cache_file": "manuscript/nature_methods/refs/_cache/nmeth_content_types.txt",
+  "http_status": 200,
+  "metadata_file": "manuscript/nature_methods/refs/_cache/nmeth_content_types.meta.json",
+  "required_phrases_found": [
+    "Article",
+    "Abstract \u2013 up to 150 words",
+    "Main text \u2013 3,000 words",
+    "up to 5,000 words",
+    "Display items \u2013 up to 6 figures",
+    "Discussion does not contain subheadings"
+  ],
+  "required_phrases_missing": [],
+  "sha256": "8357c6f52548c655b5e75b0f642a5bff55db9d8132d11bce0c41f6781bda3401",
+  "source_id": "NMETH-CONTENT",
+  "status": "fetched",
+  "title": "Nature Methods content types",
+  "url": "https://www.nature.com/nmeth/content"
+}

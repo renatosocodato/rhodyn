@@ -107,6 +107,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/check_stage9_scaffold.py",
     "scripts/scaffold_stage9_manuscript_assembly.py",
     "scripts/run_stage9_0_evidence_intake_lock.py",
+    "scripts/run_stage9_1_venue_guidance_register.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
@@ -130,6 +131,7 @@ REQUIRED_ARCHIVE_FILES = {
     "tests/test_stage7_8_methods_readiness.py",
     "tests/test_stage7_7_8_recursive_hardening.py",
     "tests/test_stage9_scaffold.py",
+    "tests/test_stage9_1_venue_guidance.py",
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "manuscript/nature_methods/README.md",
@@ -142,9 +144,26 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/figures/figures.manifest.yaml",
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
     "manuscript/nature_methods/gate_verdicts/9.0.json",
+    "manuscript/nature_methods/gate_verdicts/9.1.json",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
+    "manuscript/nature_methods/refs/nature_methods_guidance_register.md",
+    "manuscript/nature_methods/refs/_cache/nature_initial_submission.meta.json",
+    "manuscript/nature_methods/refs/_cache/nature_initial_submission.txt",
+    "manuscript/nature_methods/refs/_cache/nature_portfolio_reporting_standards.meta.json",
+    "manuscript/nature_methods/refs/_cache/nature_portfolio_reporting_standards.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_aims_scope.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_aims_scope.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_content_types.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_content_types.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_editorial_policies.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_editorial_policies.txt",
+    "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.meta.json",
+    "manuscript/nature_methods/refs/_cache/nmeth_submission_guidelines.txt",
+    "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.meta.json",
+    "manuscript/nature_methods/refs/_cache/springer_nature_code_policy.txt",
+    "manuscript/nature_methods/audits/venue_policy_constraints.md",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
     "notebooks/01_synthetic_residence_primer.ipynb",
     "notebooks/07_stage7_heldout_validation.ipynb",
@@ -477,8 +496,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9.0 evidence locked; manuscript production not started":
-        failures.append("roadmap memory does not mark the Stage 9.0 evidence-lock boundary as active")
+    if current.get("active_stage") != "Stage 9.1 venue guidance registered; manuscript production not started":
+        failures.append("roadmap memory does not mark the Stage 9.1 venue-guidance boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -488,8 +507,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_0_evidence_locked":
-        failures.append("Stage 9 is not marked stage9_0_evidence_locked")
+    if stage9.get("status") != "stage9_1_guidance_registered":
+        failures.append("Stage 9 is not marked stage9_1_guidance_registered")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -498,6 +517,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage9_substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if stage9_substage_status.get("9.0") != "complete_evidence_locked":
         failures.append("Stage 9.0 is not marked complete_evidence_locked")
+    if stage9_substage_status.get("9.1") != "complete_guidance_registered":
+        failures.append("Stage 9.1 is not marked complete_guidance_registered")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",

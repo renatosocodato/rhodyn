@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 9.0 evidence locked; manuscript production not started",
+    "active_stage": "Stage 9.1 venue guidance registered; manuscript production not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -22,12 +22,13 @@
     "after_stage7_8_methods_readiness": "Stage 7.8 completed the methods-manuscript readiness package by mapping planned figure components and method claims to existing Stage 7 evidence, validation reports, and limitation artifacts. The package records figure-to-artifact, claim-to-evidence, limitation-traceability, and submission-readiness outputs without adding a biological system, new analysis route, benchmark result, or manuscript claim. Stage 8 product/commercial alignment remains conceptual and must inherit the Stage 7 evidence boundaries.",
     "after_stage7_planning": "Stage 7 is roadmap-defined as an independent biological demonstration and methods-manuscript readiness program aligned to standards exemplified by strong computational methods papers. Implementation has not started.",
     "after_stage9_0_evidence_lock": "Stage 9.0 locked the completed Stage 7.8 methods-readiness evidence package into stage9_evidence_manifest.csv, stage9_evidence_lock.md, and stage7_output_contract.md. Stage 9.1 venue guidance, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
-    "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer and Stage 9.0 has locked the Stage 7.8 evidence package. Stage 9.1 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
+    "after_stage9_1_guidance_register": "Stage 9.1 cached official Nature Methods, Nature Portfolio, and Springer Nature guidance, registered Article-format constraints, and kept citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly not started.",
+    "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual product/commercial alignment and must not reshape the Stage 7 evidence path. Stage 9 is serialized only as a manuscript-assembly scaffold; no evidence intake, figure rendering, or drafting has started.",
-    "stage9_active_gate": "Stage 9.0 evidence locked; manuscript production not started"
+    "stage9_active_gate": "Stage 9.1 venue guidance registered; manuscript production not started"
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -337,18 +338,24 @@
         "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
         "manuscript/nature_methods/ledgers/stage7_output_contract.md",
         "manuscript/nature_methods/gate_verdicts/9.0.json",
-        "scripts/run_stage9_0_evidence_intake_lock.py"
+        "scripts/run_stage9_0_evidence_intake_lock.py",
+        "manuscript/nature_methods/refs/nature_methods_guidance_register.md",
+        "manuscript/nature_methods/refs/_cache/",
+        "manuscript/nature_methods/audits/venue_policy_constraints.md",
+        "manuscript/nature_methods/gate_verdicts/9.1.json",
+        "scripts/run_stage9_1_venue_guidance_register.py"
       ],
-      "current_gate": "Stage 9.0 evidence locked; manuscript production not started",
+      "current_gate": "Stage 9.1 venue guidance registered; manuscript production not started",
       "gate": [
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-        "Stage 9.1 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
-        "No manuscript draft sections, reference bibliography, rendered figures, or submission package contents are created in this evidence-lock pass."
+        "Stage 9.2 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
+        "No manuscript draft sections, reference bibliography, rendered figures, or submission package contents are created in this evidence-lock or venue-guidance pass.",
+        "Stage 9.1 venue guidance is registered from official cached sources."
       ],
       "name": "Nature Methods manuscript assembly scaffold",
-      "scope_rule": "Stage 9 has completed evidence intake only. Do not start venue guidance, citation resolution, drafting, figure rendering, review response, or submission packaging without explicit substage authorization.",
+      "scope_rule": "Stage 9 has completed evidence intake and venue-guidance registration only. Do not start representative corpus, citation resolution, drafting, figure rendering, review response, or submission packaging without explicit substage authorization.",
       "stage": 9,
-      "status": "stage9_0_evidence_locked",
+      "status": "stage9_1_guidance_registered",
       "subphases": [
         {
           "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
@@ -368,12 +375,13 @@
           "status": "complete_evidence_locked"
         },
         {
-          "evidence": "not_started",
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.1.json",
           "gate": "content-type budget is sourced; cached sources have URL and access date; verified venue constraints are explicit; freshness assertion passes",
           "goal": "Bind manuscript process to official and cached Nature Methods guidance.",
+          "guidance_version": "nature-methods-guidance@2026-07-02@9d71e48774c613047315a4957e3087f442ac8643",
           "id": "9.1",
           "name": "Venue guidance source register",
-          "status": "not_started"
+          "status": "complete_guidance_registered"
         },
         {
           "evidence": "not_started",

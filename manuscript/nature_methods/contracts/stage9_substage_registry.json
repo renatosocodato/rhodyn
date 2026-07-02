@@ -13,7 +13,7 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.0",
+  "last_completed_substage": "9.1",
   "patch_ledger": [
     {
       "id": "P1",
@@ -120,7 +120,7 @@
         "manuscript/nature_methods/refs/_cache/",
         "manuscript/nature_methods/audits/venue_policy_constraints.md"
       ],
-      "status": "not_started",
+      "status": "completed",
       "title": "Venue guidance source register"
     },
     {

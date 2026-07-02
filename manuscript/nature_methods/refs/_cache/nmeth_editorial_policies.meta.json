@@ -1,0 +1,18 @@
+{
+  "accessed_utc": "2026-07-02T10:09:14.214615Z",
+  "byte_count": 6990,
+  "cache_file": "manuscript/nature_methods/refs/_cache/nmeth_editorial_policies.txt",
+  "http_status": 200,
+  "metadata_file": "manuscript/nature_methods/refs/_cache/nmeth_editorial_policies.meta.json",
+  "required_phrases_found": [
+    "Reporting Summary",
+    "Software submission checklist",
+    "new code that is central to the paper"
+  ],
+  "required_phrases_missing": [],
+  "sha256": "7c22463ce069db3daa82b73dc721af995750b20c6e9b9baa255e600ebde8ac78",
+  "source_id": "NMETH-EDITORIAL",
+  "status": "fetched",
+  "title": "Nature Methods editorial policies",
+  "url": "https://www.nature.com/nmeth/editorial-policies"
+}

@@ -47,18 +47,45 @@
       "status": "pass",
       "substage": "9.0",
       "validation_outcome": "Stage 7 evidence package locked for Stage 9 manuscript assembly"
+    },
+    {
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.0.json",
+        "https://www.nature.com/nmeth/content",
+        "https://www.nature.com/nmeth/aims",
+        "https://www.nature.com/nmeth/editorial-policies",
+        "https://www.springernature.com/gp/open-science/code-policy"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/refs/nature_methods_guidance_register.md",
+        "manuscript/nature_methods/refs/_cache/",
+        "manuscript/nature_methods/audits/venue_policy_constraints.md",
+        "manuscript/nature_methods/gate_verdicts/9.1.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.1.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.2 representative methods-paper corpus has not started",
+        "Stage 9.3 narrative-spine decision has not started",
+        "Stage 9.6 figure-to-claim contract has not started",
+        "Stage 9.6b PanelForge rendering remains blocked until Stage 9.6 passes",
+        "Manuscript drafting and reference library construction remain not started"
+      ],
+      "status": "pass",
+      "substage": "9.1",
+      "validation_outcome": "Official Nature Methods and Springer Nature guidance registered for Stage 9 manuscript assembly"
     }
   ],
-  "current_substage": "9.0",
+  "current_substage": "9.1",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
   "figure_engine_install_started": false,
   "figure_manifest_status": "scaffold_placeholder_not_renderable",
   "figure_rendering_started": false,
-  "generated_utc": "2026-07-02T09:19:34.612573Z",
+  "generated_utc": "2026-07-02T10:09:14.214615Z",
   "manuscript_drafting_started": false,
-  "next_substage": "9.1",
+  "next_substage": "9.2",
   "next_substage_authorized": false,
   "project_binding": {
     "archive_doi": "10.5281/zenodo.21036616",
@@ -149,7 +176,46 @@
       "passed": true
     }
   ],
-  "status": "stage9_0_evidence_locked",
+  "stage9_1_checks": [
+    {
+      "detail": "Stage 9.0 evidence lock exists and passes",
+      "name": "stage_9_0_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "7 of 7 official pages fetched with required phrases",
+      "name": "official_sources_fetched",
+      "passed": true
+    },
+    {
+      "detail": "Article fit, abstract, main text, display item, structure, and reference constraints are sourced from Nature Methods content guidance",
+      "name": "content_type_budget_is_sourced",
+      "passed": true
+    },
+    {
+      "detail": "7 cached source records include URL, access date, text cache, metadata, and hash",
+      "name": "cached_sources_have_url_and_access_date",
+      "passed": true
+    },
+    {
+      "detail": "18 venue constraints registered with source excerpts",
+      "name": "verified_venue_constraints_are_explicit",
+      "passed": true
+    },
+    {
+      "detail": "All source access dates match run date 2026-07-02",
+      "name": "freshness_assertion_passes",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "status": "stage9_1_guidance_registered",
   "submission_package_started": false,
-  "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json"
+  "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
+  "venue_guidance_started": true,
+  "venue_guidance_version": "nature-methods-guidance@2026-07-02@9d71e48774c613047315a4957e3087f442ac8643"
 }
