@@ -111,13 +111,13 @@ as roadmap work.
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
 | Stage 7. Independent methods-program roadmap | Stage 7.8 methods manuscript readiness package complete and recursively hardened against release surfaces. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
-| Stage 9. Nature Methods manuscript assembly | Stage 9.5 paragraph claim ledger registered, manuscript production not started. | The current boundary is evidence intake, official venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, and paragraph-level claim planning only, with PanelForge reserved as a future Stage 9.6b rendering dependency. Do not start figure-spine construction, citation resolution, figure rendering, drafting, review response, or submission packaging without explicit substage authorization. |
+| Stage 9. Nature Methods manuscript assembly | Stage 9.6 figure-first manuscript spine registered, manuscript production not started. | The current boundary is evidence intake, official venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, and main figure-spine planning only, with PanelForge reserved for the next Stage 9.6b rendering step. Do not start PanelForge rendering, supplementary display planning, citation resolution, drafting, review response, or submission packaging without explicit substage authorization. |
 
 Stage 9.1 venue guidance source register has been completed. The current
 source-bound constraints are the Nature Methods Article budget, Reporting
 Summary expectation, software/code availability expectations, data availability
 expectations, figure-legend constraints, and statistics-reporting expectations.
-Stage 9.2 representative methods-paper corpus has been completed. Stage 9.3 narrative spine has been completed. Stage 9.4 claim freeze has been completed. Stage 9.5 paragraph-level claim ledger has been completed. Stage 9.6 remains the next unstarted manuscript step.
+Stage 9.2 representative methods-paper corpus has been completed. Stage 9.3 narrative spine has been completed. Stage 9.4 claim freeze has been completed. Stage 9.5 paragraph-level claim ledger has been completed. Stage 9.6 figure-first manuscript spine has been completed. Stage 9.6b remains the next unstarted manuscript step.
 
 ## Non-drift principles
 

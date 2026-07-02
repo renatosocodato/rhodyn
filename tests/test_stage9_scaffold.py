@@ -50,7 +50,7 @@ class Stage9ScaffoldTests(unittest.TestCase):
         self.assertEqual(payload["status"], "fail")
         self.assertTrue(any("scaffold-only" in failure for failure in payload["failures"]))
 
-    def test_stage9_checker_rejects_post_9_5_gate_verdicts(self) -> None:
+    def test_stage9_checker_rejects_post_9_6_gate_verdicts(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
             shutil.copytree(ROOT / "manuscript", temp_root / "manuscript")
@@ -58,11 +58,11 @@ class Stage9ScaffoldTests(unittest.TestCase):
             (temp_root / "docs").mkdir()
             for rel in ["stage9_execution_memory.json", "stage9_manuscript_assembly_plan.md"]:
                 shutil.copy2(ROOT / "docs" / rel, temp_root / "docs" / rel)
-            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.6.json"
-            future_gate.write_text('{"substage": "9.6", "pass": true, "checks": []}\n', encoding="utf-8")
+            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.6b.json"
+            future_gate.write_text('{"substage": "9.6b", "pass": true, "checks": []}\n', encoding="utf-8")
             payload = CHECKER.check_stage9_scaffold(temp_root)
         self.assertEqual(payload["status"], "fail")
-        self.assertTrue(any("post-9.5 gate verdicts" in failure for failure in payload["failures"]))
+        self.assertTrue(any("post-9.6 gate verdicts" in failure for failure in payload["failures"]))
 
 
 if __name__ == "__main__":

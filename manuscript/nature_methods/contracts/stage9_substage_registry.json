@@ -13,7 +13,7 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.5",
+  "last_completed_substage": "9.6",
   "patch_ledger": [
     {
       "id": "P1",
@@ -199,7 +199,7 @@
         "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
         "manuscript/nature_methods/figures/display_item_plan.md"
       ],
-      "status": "not_started",
+      "status": "completed",
       "title": "Figure-first manuscript spine"
     },
     {

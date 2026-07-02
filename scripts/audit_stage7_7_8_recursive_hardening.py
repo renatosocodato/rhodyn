@@ -86,10 +86,14 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/gate_verdicts/9.3.json",
     "manuscript/nature_methods/gate_verdicts/9.4.json",
     "manuscript/nature_methods/gate_verdicts/9.5.json",
+    "manuscript/nature_methods/gate_verdicts/9.6.json",
     "manuscript/nature_methods/ledgers/.gitkeep",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
+    "manuscript/nature_methods/figures/main_figure_spine.md",
+    "manuscript/nature_methods/figures/display_item_plan.md",
+    "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
     "manuscript/nature_methods/refs/.gitkeep",
     "manuscript/nature_methods/refs/_cache/.gitkeep",
     "manuscript/nature_methods/refs/_cache/nature_initial_submission.meta.json",
@@ -126,6 +130,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "scripts/run_stage9_3_narrative_spine.py",
     "scripts/run_stage9_4_claim_freeze.py",
     "scripts/run_stage9_5_paragraph_claim_ledger.py",
+    "scripts/run_stage9_6_figure_spine.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/scaffold_stage9_manuscript_assembly.py",
     "tests/test_stage9_0_evidence_lock.py",
@@ -134,6 +139,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "tests/test_stage9_3_narrative_spine.py",
     "tests/test_stage9_4_claim_freeze.py",
     "tests/test_stage9_5_paragraph_claim_ledger.py",
+    "tests/test_stage9_6_figure_spine.py",
     "tests/test_stage9_scaffold.py",
     "tools/panelforge-figures/.gitkeep",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
@@ -404,18 +410,21 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     memory = _read_json(ROOT / "docs" / "roadmap_execution_memory.json", failures)
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     stage9 = stages.get(9, {})
-    if stage9.get("status") != "stage9_5_paragraph_claim_ledger_registered":
-        failures.append("roadmap execution memory must record Stage 9 as stage9_5_paragraph_claim_ledger_registered")
+    if stage9.get("status") != "stage9_6_figure_spine_registered":
+        failures.append("roadmap execution memory must record Stage 9 as stage9_6_figure_spine_registered")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 execution memory must record 33 serialized substages")
     substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
     if "9.6b" not in substage_ids:
         failures.append("Stage 9 execution memory must include the 9.6b PanelForge rendering substage")
+    substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
+    if substage_status.get("9.6") != "complete_figure_spine_registered":
+        failures.append("Stage 9.6 must be marked complete_figure_spine_registered")
     if stages.get(8, {}).get("status") != "conceptual_only":
         failures.append("Stage 8 must remain conceptual after Stage 7.7/7.8 hardening")
     current = memory.get("current_position", {}) if isinstance(memory.get("current_position", {}), dict) else {}
-    if current.get("active_stage") != "Stage 9.5 paragraph claim ledger registered; manuscript production not started":
-        failures.append("roadmap active stage must record the Stage 9.5 paragraph-ledger boundary")
+    if current.get("active_stage") != "Stage 9.6 figure-first manuscript spine registered; manuscript production not started":
+        failures.append("roadmap active stage must record the Stage 9.6 figure-spine boundary")
     return {
         "authorized_phase9_scaffold_files": len(stage9_files) - len(unauthorized),
         "unauthorized_phase9_files": len(unauthorized),
@@ -503,7 +512,7 @@ def audit_stage7_7_8_recursive_hardening(root: Path = ROOT) -> dict[str, object]
         "warnings": warnings,
         "interpretation_boundary": (
             "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. "
-            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold plus Stage 9.0 evidence lock, with no citation resolution, figure rendering, or manuscript drafting started."
+            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, Stage 9.0 evidence lock, venue and corpus registration, narrative spine, claim freeze, paragraph planning, and Stage 9.6 main figure-spine plan, with no citation resolution, figure rendering, or manuscript drafting started."
         ),
     }
     return report

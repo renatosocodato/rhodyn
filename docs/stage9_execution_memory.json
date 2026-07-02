@@ -169,20 +169,46 @@
       "status": "pass",
       "substage": "9.5",
       "validation_outcome": "Paragraph-level claim ledger registered with CLM joins and frozen strength caps"
+    },
+    {
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.5.json",
+        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+        "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/figures/main_figure_spine.md",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "manuscript/nature_methods/figures/display_item_plan.md",
+        "manuscript/nature_methods/gate_verdicts/9.6.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.6.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.6b PanelForge rendering has not started",
+        "Stage 9.7 supplementary display planning has not started",
+        "Citation resolution, manuscript drafting, and reference library construction remain not started"
+      ],
+      "status": "pass",
+      "substage": "9.6",
+      "validation_outcome": "Main figure spine registered with CLM and ART joins before rendering or drafting"
     }
   ],
-  "current_substage": "9.5",
+  "current_substage": "9.6",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
   "figure_engine_install_started": false,
   "figure_manifest_status": "scaffold_placeholder_not_renderable",
   "figure_rendering_started": false,
-  "generated_utc": "2026-07-02T11:05:24.753643Z",
+  "figure_spine_started": true,
+  "figure_spine_version": "figure-spine@2026-07-02@51275ccd63146d72934216cf132768738f132e89",
+  "generated_utc": "2026-07-02T11:28:38.370369Z",
   "manuscript_drafting_started": false,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.6",
+  "next_substage": "9.6b",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -437,7 +463,44 @@
       "passed": true
     }
   ],
-  "status": "stage9_5_paragraph_claim_ledger_registered",
+  "stage9_6_checks": [
+    {
+      "detail": "Stage 9.5 paragraph claim ledger exists and passes",
+      "name": "stage_9_5_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Six main FIG rows are unique, ordered, and pinned to pending PanelForge v3.14.1 rendering",
+      "name": "figure_ledger_validates",
+      "passed": true
+    },
+    {
+      "detail": "All figure rows resolve to frozen CLM IDs and locked ART IDs",
+      "name": "every_figure_resolves_to_claims_and_artifacts",
+      "passed": true
+    },
+    {
+      "detail": "Six main display items fit the sourced Nature Methods Article budget",
+      "name": "figure_count_respects_sourced_budget",
+      "passed": true
+    },
+    {
+      "detail": "All frozen claims and paragraph-ledger claims appear in the main figure spine",
+      "name": "central_evidence_is_not_buried_in_supplement",
+      "passed": true
+    },
+    {
+      "detail": "Figure recipes and render paths are planned but no rendered files are created",
+      "name": "rendering_is_deferred_to_stage_9_6b",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "status": "stage9_6_figure_spine_registered",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "venue_guidance_started": true,

@@ -112,6 +112,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/run_stage9_3_narrative_spine.py",
     "scripts/run_stage9_4_claim_freeze.py",
     "scripts/run_stage9_5_paragraph_claim_ledger.py",
+    "scripts/run_stage9_6_figure_spine.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
@@ -140,6 +141,7 @@ REQUIRED_ARCHIVE_FILES = {
     "tests/test_stage9_3_narrative_spine.py",
     "tests/test_stage9_4_claim_freeze.py",
     "tests/test_stage9_5_paragraph_claim_ledger.py",
+    "tests/test_stage9_6_figure_spine.py",
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "manuscript/nature_methods/README.md",
@@ -157,6 +159,7 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/gate_verdicts/9.3.json",
     "manuscript/nature_methods/gate_verdicts/9.4.json",
     "manuscript/nature_methods/gate_verdicts/9.5.json",
+    "manuscript/nature_methods/gate_verdicts/9.6.json",
     "manuscript/nature_methods/stage9_narrative_spine.md",
     "manuscript/nature_methods/audits/venue_fit_rationale.md",
     "manuscript/nature_methods/ledgers/claim_hierarchy.md",
@@ -164,6 +167,9 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
     "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
     "manuscript/nature_methods/ledgers/claim_strength_rules.md",
+    "manuscript/nature_methods/figures/main_figure_spine.md",
+    "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+    "manuscript/nature_methods/figures/display_item_plan.md",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -534,8 +540,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9.5 paragraph claim ledger registered; manuscript production not started":
-        failures.append("roadmap memory does not mark the Stage 9.5 paragraph-ledger boundary as active")
+    if current.get("active_stage") != "Stage 9.6 figure-first manuscript spine registered; manuscript production not started":
+        failures.append("roadmap memory does not mark the Stage 9.6 figure-spine boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -545,8 +551,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_5_paragraph_claim_ledger_registered":
-        failures.append("Stage 9 is not marked stage9_5_paragraph_claim_ledger_registered")
+    if stage9.get("status") != "stage9_6_figure_spine_registered":
+        failures.append("Stage 9 is not marked stage9_6_figure_spine_registered")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -565,6 +571,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9.4 is not marked complete_claim_freeze_registered")
     if stage9_substage_status.get("9.5") != "complete_paragraph_claim_ledger_registered":
         failures.append("Stage 9.5 is not marked complete_paragraph_claim_ledger_registered")
+    if stage9_substage_status.get("9.6") != "complete_figure_spine_registered":
+        failures.append("Stage 9.6 is not marked complete_figure_spine_registered")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",

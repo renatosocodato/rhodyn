@@ -250,23 +250,23 @@
   "dist_files": [
     {
       "name": "rhodyn-0.1.0-py3-none-any.whl",
-      "sha256": "0e528de58c98cd31d192b201c73268faf529d0a956fdf7dbaa446a5b2b930272",
+      "sha256": "d8f17f460fe6b4325795b3d8899d35df13c8a75c355349437a587a671ee76fcc",
       "size_bytes": 55852
     },
     {
       "name": "rhodyn-0.1.0.tar.gz",
-      "sha256": "4487003b54afdc9894126dc17f6da75aee8b3e1c917b5ad43e00a38a5040d9bb",
-      "size_bytes": 3459167
+      "sha256": "6ea2135a94140997a406d480ab7cd1a887c80f474a90bcb777e278c912c1178e",
+      "size_bytes": 3469858
     }
   ],
   "distribution_member_summary": {
     "sdist_file": "rhodyn-0.1.0.tar.gz",
-    "sdist_member_count": 473,
+    "sdist_member_count": 479,
     "sdist_missing_deterministic_outputs": [],
     "sdist_missing_required_files": [],
     "sdist_status": "pass"
   },
-  "generated_utc": "2026-07-02T11:10:52.012181Z",
+  "generated_utc": "2026-07-02T11:29:56.243631Z",
   "interpretation_boundary": "Stage 7.6 validates methods-paper software reproducibility and cross-surface parity. It does not add biological evidence or promote new mechanistic claims.",
   "mode": "full_release_archive",
   "parity_rows": [
@@ -312,13 +312,13 @@
   "release_archive_manifest_summary": {
     "binary_or_packaged_file_count": 53,
     "deterministic_output_file_count": 30,
-    "file_count": 473,
+    "file_count": 479,
     "manifest_status": "pass",
     "missing_deterministic_outputs": [],
     "missing_required_files": [],
     "raw_private_like_file_count": 0,
     "raw_private_like_files": [],
-    "text_file_count": 420
+    "text_file_count": 426
   },
   "report_format": "rhodyn.stage7_6_methods_reproducibility.v1",
   "status": "pass",
@@ -327,7 +327,7 @@
     {
       "command": "remove src/rhodyn.egg-info and build before source distribution",
       "name": "remove stale build metadata",
-      "seconds": 1.591700129210949e-05,
+      "seconds": 1.6333997336914763e-05,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "{\n  \"removed\": []\n}"
@@ -335,7 +335,7 @@
     {
       "command": "python -m venv $STAGE7_6_CLEAN_ROOM/builder_venv",
       "name": "create build virtual environment",
-      "seconds": 1.2020425830014574,
+      "seconds": 1.1531372499994177,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": ""
@@ -343,7 +343,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/builder_venv/bin/python -m pip install --upgrade pip",
       "name": "upgrade build pip",
-      "seconds": 0.7889639580007497,
+      "seconds": 0.786351916998683,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "Requirement already satisfied: pip in $STAGE7_6_CLEAN_ROOM/builder_venv/lib/python3.14/site-packages (26.0)\nCollecting pip\n  Using cached pip-26.1.2-py3-none-any.whl.metadata (4.6 kB)\nUsing cached pip-26.1.2-py3-none-any.whl (1.8 MB)\nInstalling collected packages: pip\n  Attempting uninstall: pip\n    Found existing installation: pip 26.0\n    Uninstalling pip-26.0:\n      Successfully uninstalled pip-26.0\nSuccessfully installed pip-26.1.2"
@@ -351,7 +351,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/builder_venv/bin/python -m pip install build",
       "name": "install build tooling",
-      "seconds": 0.31885083400084113,
+      "seconds": 0.3054739580002206,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "Collecting build\n  Using cached build-1.5.0-py3-none-any.whl.metadata (5.7 kB)\nCollecting packaging>=24.0 (from build)\n  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)\nCollecting pyproject_hooks (from build)\n  Using cached pyproject_hooks-1.2.0-py3-none-any.whl.metadata (1.3 kB)\nUsing cached build-1.5.0-py3-none-any.whl (26 kB)\nUsing cached packaging-26.2-py3-none-any.whl (100 kB)\nUsing cached pyproject_hooks-1.2.0-py3-none-any.whl (10 kB)\nInstalling collected packages: pyproject_hooks, packaging, build\n\nSuccessfully installed build-1.5.0 packaging-26.2 pyproject_hooks-1.2.0"
@@ -359,10 +359,10 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/builder_venv/bin/python -m build --sdist --wheel --outdir $STAGE7_6_CLEAN_ROOM/dist",
       "name": "build release-candidate archive",
-      "seconds": 2.3550532909994217,
+      "seconds": 2.384081790998607,
       "status": "pass",
       "stderr_tail": "* Creating isolated environment: venv+pip...\n* Installing packages in isolated environment:\n  - setuptools>=68\n  - wheel\n* Getting build dependencies for sdist...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'\n* Building sdist...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'\n* Creating isolated environment: venv+pip...\n* Installing packages in isolated environment:\n  - setuptools>=68\n  - wheel\n* Getting build dependencies for wheel...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'\n* Building wheel...\nwarning: no previously-included files matching 'phase6_release_readiness_report.json' found under directory 'docs'",
-      "stdout_tail": "14.egg-info\nrunning install_scripts\ncreating build/bdist.macosx-26.0-arm64/wheel/rhodyn-0.1.0.dist-info/WHEEL\ncreating '$STAGE7_6_CLEAN_ROOM/dist/.tmp-shr_wskl/rhodyn-0.1.0-py3-none-any.whl' and adding 'build/bdist.macosx-26.0-arm64/wheel' to it\nadding 'rhodyn/__init__.py'\nadding 'rhodyn/backend.py'\nadding 'rhodyn/backend_core.py'\nadding 'rhodyn/cli.py'\nadding 'rhodyn/compare.py'\nadding 'rhodyn/coupling.py'\nadding 'rhodyn/ctc.py'\nadding 'rhodyn/extras.py'\nadding 'rhodyn/models.py'\nadding 'rhodyn/paper.py'\nadding 'rhodyn/plots.py'\nadding 'rhodyn/report.py'\nadding 'rhodyn/reserve.py'\nadding 'rhodyn/residence.py'\nadding 'rhodyn/results.py'\nadding 'rhodyn/schema.py'\nadding 'rhodyn/sensitivity.py'\nadding 'rhodyn/sim.py'\nadding 'rhodyn/uncertainty.py'\nadding 'rhodyn-0.1.0.dist-info/licenses/LICENSE'\nadding 'rhodyn-0.1.0.dist-info/licenses/NOTICE'\nadding 'rhodyn-0.1.0.dist-info/METADATA'\nadding 'rhodyn-0.1.0.dist-info/WHEEL'\nadding 'rhodyn-0.1.0.dist-info/entry_points.txt'\nadding 'rhodyn-0.1.0.dist-info/top_level.txt'\nadding 'rhodyn-0.1.0.dist-info/RECORD'\nremoving build/bdist.macosx-26.0-arm64/wheel\nSuccessfully built rhodyn-0.1.0.tar.gz and rhodyn-0.1.0-py3-none-any.whl"
+      "stdout_tail": "14.egg-info\nrunning install_scripts\ncreating build/bdist.macosx-26.0-arm64/wheel/rhodyn-0.1.0.dist-info/WHEEL\ncreating '$STAGE7_6_CLEAN_ROOM/dist/.tmp-n3sde2s3/rhodyn-0.1.0-py3-none-any.whl' and adding 'build/bdist.macosx-26.0-arm64/wheel' to it\nadding 'rhodyn/__init__.py'\nadding 'rhodyn/backend.py'\nadding 'rhodyn/backend_core.py'\nadding 'rhodyn/cli.py'\nadding 'rhodyn/compare.py'\nadding 'rhodyn/coupling.py'\nadding 'rhodyn/ctc.py'\nadding 'rhodyn/extras.py'\nadding 'rhodyn/models.py'\nadding 'rhodyn/paper.py'\nadding 'rhodyn/plots.py'\nadding 'rhodyn/report.py'\nadding 'rhodyn/reserve.py'\nadding 'rhodyn/residence.py'\nadding 'rhodyn/results.py'\nadding 'rhodyn/schema.py'\nadding 'rhodyn/sensitivity.py'\nadding 'rhodyn/sim.py'\nadding 'rhodyn/uncertainty.py'\nadding 'rhodyn-0.1.0.dist-info/licenses/LICENSE'\nadding 'rhodyn-0.1.0.dist-info/licenses/NOTICE'\nadding 'rhodyn-0.1.0.dist-info/METADATA'\nadding 'rhodyn-0.1.0.dist-info/WHEEL'\nadding 'rhodyn-0.1.0.dist-info/entry_points.txt'\nadding 'rhodyn-0.1.0.dist-info/top_level.txt'\nadding 'rhodyn-0.1.0.dist-info/RECORD'\nremoving build/bdist.macosx-26.0-arm64/wheel\nSuccessfully built rhodyn-0.1.0.tar.gz and rhodyn-0.1.0-py3-none-any.whl"
     },
     {
       "command": "extract dist/rhodyn-*.tar.gz",
@@ -375,7 +375,7 @@
     {
       "command": "python -m venv $STAGE7_6_CLEAN_ROOM/archive_venv",
       "name": "create archive virtual environment",
-      "seconds": 1.1274892080000427,
+      "seconds": 1.1258674580021761,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": ""
@@ -383,7 +383,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python -m pip install --upgrade pip",
       "name": "upgrade archive pip",
-      "seconds": 0.7739669589991536,
+      "seconds": 0.7672645420025219,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "Requirement already satisfied: pip in $STAGE7_6_CLEAN_ROOM/archive_venv/lib/python3.14/site-packages (26.0)\nCollecting pip\n  Using cached pip-26.1.2-py3-none-any.whl.metadata (4.6 kB)\nUsing cached pip-26.1.2-py3-none-any.whl (1.8 MB)\nInstalling collected packages: pip\n  Attempting uninstall: pip\n    Found existing installation: pip 26.0\n    Uninstalling pip-26.0:\n      Successfully uninstalled pip-26.0\nSuccessfully installed pip-26.1.2"
@@ -391,7 +391,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python -m pip install -e .[dev]",
       "name": "install extracted archive with dev tools",
-      "seconds": 6.472155583000131,
+      "seconds": 6.491983542000526,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "\nInstalling collected packages: watchdog, urllib3, six, rhodyn, rfc3986, pyyaml, pyproject_hooks, Pygments, platformdirs, pathspec, packaging, numpy, nh3, more-itertools, mergedeep, mdurl, markupsafe, markdown, jaraco.context, idna, docutils, click, charset_normalizer, certifi, requests, readme-renderer, pyyaml-env-tag, python-dateutil, mkdocs-get-deps, markdown-it-py, jinja2, jaraco.functools, jaraco.classes, id, build, rich, requests-toolbelt, pandas, keyring, ghp-import, twine, mkdocs\n\nSuccessfully installed Pygments-2.20.0 build-1.5.0 certifi-2026.6.17 charset_normalizer-3.4.7 click-8.4.2 docutils-0.23 ghp-import-2.1.0 id-1.6.1 idna-3.18 jaraco.classes-3.4.0 jaraco.context-6.1.2 jaraco.functools-4.5.0 jinja2-3.1.6 keyring-25.7.0 markdown-3.10.2 markdown-it-py-4.2.0 markupsafe-3.0.3 mdurl-0.1.2 mergedeep-1.3.4 mkdocs-1.6.1 mkdocs-get-deps-0.2.2 more-itertools-11.1.0 nh3-0.3.6 numpy-2.5.0 packaging-26.2 pandas-3.0.3 pathspec-1.1.1 platformdirs-4.10.0 pyproject_hooks-1.2.0 python-dateutil-2.9.0.post0 pyyaml-6.0.3 pyyaml-env-tag-1.1 readme-renderer-45.0 requests-2.34.2 requests-toolbelt-1.0.0 rfc3986-2.0.0 rhodyn-0.1.0 rich-15.0.0 six-1.17.0 twine-6.2.0 urllib3-2.7.0 watchdog-6.0.0"
@@ -399,7 +399,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python scripts/build_stage7_1_synthetic_truth_cases.py",
       "name": "7.1 synthetic truth cases",
-      "seconds": 0.08886425000127929,
+      "seconds": 0.09157041700018453,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "{\n  \"status\": \"pass\",\n  \"output_dir\": \"case_studies/stage7_synthetic_truth\"\n}"
@@ -407,7 +407,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python scripts/run_stage7_2_benchmark_harness.py",
       "name": "7.2 benchmark harness",
-      "seconds": 0.20742183400034264,
+      "seconds": 0.2102197080021142,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "{\n  \"status\": \"pass\",\n  \"output_dir\": \"case_studies/stage7_benchmarks\"\n}"
@@ -415,7 +415,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python scripts/run_stage7_3_public_signaling.py",
       "name": "7.3 public signaling demonstrations",
-      "seconds": 29.42218787499951,
+      "seconds": 21.034782833001373,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "{\n  \"status\": \"pass\",\n  \"output_dir\": \"case_studies/stage7_public_signaling\",\n  \"selected_datasets\": [\n    \"drg_calcium_vonbuchholtz2025\",\n    \"erk_gpcr_wan2021\"\n  ]\n}"
@@ -423,7 +423,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python scripts/run_stage7_4_endpoint_reserve_routing.py",
       "name": "7.4 endpoint reserve routing",
-      "seconds": 0.7355585420009447,
+      "seconds": 0.7365945419987838,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "{\n  \"gate_report\": \"case_studies/stage7_endpoint_reserve_routing/stage7_4_endpoint_reserve_routing_gate_report.json\",\n  \"output_dir\": \"case_studies/stage7_endpoint_reserve_routing\",\n  \"primary_bounded_coupling_pass\": true,\n  \"reserve_like_compounds\": 658,\n  \"routing_best_model\": \"compartment_route_5nn\",\n  \"selected_cases\": [\n    \"cell_painting_mitotox_seal2023\",\n    \"erk_akt_wan2021_bounded_coupling\"\n  ],\n  \"status\": \"pass\"\n}"
@@ -431,7 +431,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python scripts/run_stage7_5_heldout_validation.py",
       "name": "7.5 held-out validation",
-      "seconds": 15.9965127079995,
+      "seconds": 17.30020416700063,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "{\n  \"status\": \"pass\",\n  \"output_dir\": \"case_studies/stage7_heldout_validation\",\n  \"trajectory_rows\": 21120,\n  \"summary_rows\": 440,\n  \"decision_rows\": 7,\n  \"pass_context_count\": 4,\n  \"fail_context_count\": 0,\n  \"inconclusive_context_count\": 3,\n  \"gate_report\": \"case_studies/stage7_heldout_validation/stage7_5_heldout_validation_gate_report.json\"\n}"
@@ -439,7 +439,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python -c <execute Stage 7 notebook code cells>",
       "name": "execute methods notebooks",
-      "seconds": 6.309734624999692,
+      "seconds": 5.849876750002295,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "DRG calcium amplitude_only= 16 residence_only= 16\nERK GPCR amplitude_only= 11 residence_only= 11\n{\n  \"status\": \"pass\",\n  \"count\": 7,\n  \"notebooks\": [\n    \"$STAGE7_6_CLEAN_ROOM/extract/rhodyn-0.1.0/notebooks/01_synthetic_residence_primer.ipynb\",\n    \"$STAGE7_6_CLEAN_ROOM/extract/rhodyn-0.1.0/notebooks/02_public_signaling_benchmarks.ipynb\",\n    \"$STAGE7_6_CLEAN_ROOM/extract/rhodyn-0.1.0/notebooks/03_public_endpoint_and_coupling_benchmarks.ipynb\",\n    \"$STAGE7_6_CLEAN_ROOM/extract/rhodyn-0.1.0/notebooks/04_stage7_drg_calcium_public_signaling.ipynb\",\n    \"$STAGE7_6_CLEAN_ROOM/extract/rhodyn-0.1.0/notebooks/05_stage7_erk_gpcr_public_signaling.ipynb\",\n    \"$STAGE7_6_CLEAN_ROOM/extract/rhodyn-0.1.0/notebooks/06_stage7_endpoint_reserve_routing.ipynb\",\n    \"$STAGE7_6_CLEAN_ROOM/extract/rhodyn-0.1.0/notebooks/07_stage7_heldout_validation.ipynb\"\n  ]\n}"
@@ -447,15 +447,15 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/mkdocs build --strict --site-dir $STAGE7_6_CLEAN_ROOM/site",
       "name": "build documentation site",
-      "seconds": 0.8114287499993225,
+      "seconds": 0.7756504169992695,
       "status": "pass",
-      "stderr_tail": "INFO    -  Cleaning site directory\nINFO    -  Building documentation to directory: $STAGE7_6_CLEAN_ROOM/site\nINFO    -  The following pages exist in the docs directory, but are not included in the \"nav\" configuration:\n  - broken_link_scan_report.md\n  - cell_painting_endpoint_benchmark.md\n  - clean_room_reproducibility_report.md\n  - dependency_review_report.md\n  - drg_calcium_public_benchmark.md\n  - erk_akt_bounded_coupling_benchmark.md\n  - erk_gpcr_public_benchmark.md\n  - mlci_public_tutorial.md\n  - paper_case_study_adapter.md\n  - public_case_study_candidates.md\n  - public_release_integrity_report.md\n  - pypi_dry_run_report.md\n  - release_notes_v0.1.0.md\n  - roadmap.md\n  - screenshot_regression_report.md\n  - stage3_case_study_bank.md\n  - stage3d_hardening_routes.md\n  - stage4_backend.md\n  - stage4_closeout.md\n  - stage5_closeout.md\n  - stage5_frontend.md\n  - stage5_public_mlci_workflow.md\n  - zenodo_dry_run_report.md\nINFO    -  Documentation built in 0.21 seconds",
+      "stderr_tail": "INFO    -  Cleaning site directory\nINFO    -  Building documentation to directory: $STAGE7_6_CLEAN_ROOM/site\nINFO    -  The following pages exist in the docs directory, but are not included in the \"nav\" configuration:\n  - broken_link_scan_report.md\n  - cell_painting_endpoint_benchmark.md\n  - clean_room_reproducibility_report.md\n  - dependency_review_report.md\n  - drg_calcium_public_benchmark.md\n  - erk_akt_bounded_coupling_benchmark.md\n  - erk_gpcr_public_benchmark.md\n  - mlci_public_tutorial.md\n  - paper_case_study_adapter.md\n  - public_case_study_candidates.md\n  - public_release_integrity_report.md\n  - pypi_dry_run_report.md\n  - release_notes_v0.1.0.md\n  - roadmap.md\n  - screenshot_regression_report.md\n  - stage3_case_study_bank.md\n  - stage3d_hardening_routes.md\n  - stage4_backend.md\n  - stage4_closeout.md\n  - stage5_closeout.md\n  - stage5_frontend.md\n  - stage5_public_mlci_workflow.md\n  - zenodo_dry_run_report.md\nINFO    -  Documentation built in 0.19 seconds",
       "stdout_tail": ""
     },
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python scripts/audit_stage4_service_contract.py",
       "name": "backend service contract audit",
-      "seconds": 0.1044537500001752,
+      "seconds": 0.09775941699990653,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "les/synthetic_reserve.csv\"\n    },\n    {\n      \"checks\": {\n        \"bundle_hash_valid\": true,\n        \"bundle_matches_job\": true,\n        \"direct_matches_job\": true,\n        \"job_id_matches\": true,\n        \"manifest_file_hashes_valid\": true,\n        \"stored_bundle_hash_valid\": true,\n        \"stored_matches_job\": true\n      },\n      \"job_id\": \"6c319616f9177e865073\",\n      \"operation\": \"compare_models\",\n      \"parameters\": {\n        \"parameter_count\": 1\n      },\n      \"row_count\": 9,\n      \"status\": \"pass\",\n      \"table_path\": \"examples/synthetic_endpoints.csv\"\n    },\n    {\n      \"checks\": {\n        \"bundle_hash_valid\": true,\n        \"bundle_matches_job\": true,\n        \"direct_matches_job\": true,\n        \"job_id_matches\": true,\n        \"manifest_file_hashes_valid\": true,\n        \"stored_bundle_hash_valid\": true,\n        \"stored_matches_job\": true\n      },\n      \"job_id\": \"6ab661bf325965f4e712\",\n      \"operation\": \"export_markdown\",\n      \"parameters\": {\n        \"title\": \"RhoDyn report\"\n      },\n      \"row_count\": 2,\n      \"status\": \"pass\",\n      \"table_path\": \"examples/synthetic_coupling.csv\"\n    }\n  ],\n  \"report_format\": \"rhodyn.stage4_service_contract_audit.v1\",\n  \"status\": \"pass\"\n}"
@@ -463,7 +463,7 @@
     {
       "command": "$STAGE7_6_CLEAN_ROOM/archive_venv/bin/python scripts/audit_stage5_premium_workbench.py",
       "name": "frontend frozen fixture audit",
-      "seconds": 0.0235804999992979,
+      "seconds": 0.021904875000473112,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "wright\": true,\n    \"playwright_dev_dependency_pinned\": true,\n    \"playwright_has_darwin_and_linux_baselines\": true,\n    \"playwright_has_desktop_and_mobile_projects\": true,\n    \"playwright_has_expected_snapshot_count\": true,\n    \"playwright_has_simulation_darwin_baselines\": true,\n    \"playwright_uses_platform_specific_snapshots\": true,\n    \"playwright_uses_static_repo_server\": true,\n    \"required_file::package-lock.json\": true,\n    \"required_file::package.json\": true,\n    \"required_file::playwright.config.mjs\": true,\n    \"required_file::tests/playwright/stage5.visual.spec.mjs\": true,\n    \"spec_contains_visual_and_adversarial_guards\": true,\n    \"spec_covers_all_core_comparison_operations\": true,\n    \"spec_mocks_frozen_stage4_contract_transport\": true,\n    \"stage5_browser_script_present\": true,\n    \"stage5_no_new_backend_route\": true,\n    \"stage5_snapshot_update_script_present\": true\n  },\n  \"failures\": [],\n  \"interpretation_boundary\": \"Stage 5 browser regression hardens the workbench presentation only. It does not change backend analysis outputs or introduce new biological examples.\",\n  \"report_format\": \"rhodyn.stage5_premium_workbench_audit.v1\",\n  \"status\": \"pass\",\n  \"warnings\": []\n}"
@@ -471,7 +471,7 @@
     {
       "command": "python -c <check Stage 7.6 roadmap state without recursive Stage 7.6 gate dependency>",
       "name": "roadmap memory check",
-      "seconds": 0.00024191700140363537,
+      "seconds": 0.00019791699742199853,
       "status": "pass",
       "stderr_tail": "",
       "stdout_tail": "{\n  \"status\": \"pass\"\n}"
@@ -479,10 +479,10 @@
     {
       "command": "python -c <scan release archive text files for local paths, secrets, and raw/private-data extensions>",
       "name": "release safety check",
-      "seconds": 0.11017408299994713,
+      "seconds": 0.10173416700126836,
       "status": "pass",
       "stderr_tail": "",
-      "stdout_tail": "{\n  \"scanned_text_files\": 415,\n  \"status\": \"pass\"\n}"
+      "stdout_tail": "{\n  \"scanned_text_files\": 421,\n  \"status\": \"pass\"\n}"
     }
   ],
   "temporary_workspace": "temporary release-archive clean-room workspace outside repository",

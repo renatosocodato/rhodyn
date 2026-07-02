@@ -71,8 +71,6 @@ class Stage94ClaimFreezeTests(unittest.TestCase):
             "sections/discussion.md",
             "sections/methods.md",
             "refs/references.bib",
-            "figures/main_figure_spine.md",
-            "ledgers/figure_to_claim_to_artifact.csv",
             "submission_package/pi_review_packet.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists())
