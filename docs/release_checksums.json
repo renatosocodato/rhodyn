@@ -1,5 +1,5 @@
 {
-  "file_count": 442,
+  "file_count": 454,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -558,7 +558,7 @@
     },
     {
       "path": "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
-      "sha256": "4a2616df68c0cb3a56d92e165c8a338c8ff34450e51595067845a1a3e211f5ff",
+      "sha256": "2a739bb00f040d33162e6e8514c894489b832d323f518062e2d1837c15ab733f",
       "size_bytes": 1444
     },
     {
@@ -588,17 +588,17 @@
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv",
-      "sha256": "9673519b3084645b764912149fb01021fc25db78314ef914277aeaa64e82b312",
-      "size_bytes": 61470
+      "sha256": "4a2fb63636bfe4843e00afa2ff0f727af6abb3e9fbe6549cb81a7de81d0bbebd",
+      "size_bytes": 62246
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
-      "sha256": "1c649cfee1cd2ab98656e9ad412640e1e852e31dc183931a04b15c1d34064d93",
-      "size_bytes": 31094
+      "sha256": "d6fd1818242c04015ba5c737dff7a1e2a383b80bd0a920a4c730beeb515331ea",
+      "size_bytes": 31095
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
-      "sha256": "914cb409244bdc5d798e4b659b83bbb7f704b60893da95c28ac6ca023213362a",
+      "sha256": "39fddf62b9e4fa733a79f48f9b96328f8d084285673f29e978815726125a9482",
       "size_bytes": 4541
     },
     {
@@ -958,13 +958,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "b3a9b886e0a297916d97120e95944953b051f11217745362a0968713a331019b",
-      "size_bytes": 32452
+      "sha256": "1ce26d0a5ae65f037686a15c017b2544c47e0dae35bc1d0748e9d69bde291e7f",
+      "size_bytes": 32518
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "146b0c48c541519db1b5bb084d2b22c473d1b75bd3c7c8f09274412dc91969af",
-      "size_bytes": 43927
+      "sha256": "87eb4f92bcf65e2a29ea47766ca12a4766013f9c4667bb0392b2e2a90cf8a5dc",
+      "size_bytes": 44853
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -1068,13 +1068,13 @@
     },
     {
       "path": "docs/stage7_6_clean_room_report.json",
-      "sha256": "1c649cfee1cd2ab98656e9ad412640e1e852e31dc183931a04b15c1d34064d93",
-      "size_bytes": 31094
+      "sha256": "d6fd1818242c04015ba5c737dff7a1e2a383b80bd0a920a4c730beeb515331ea",
+      "size_bytes": 31095
     },
     {
       "path": "docs/stage7_6_gate_report.json",
-      "sha256": "1c649cfee1cd2ab98656e9ad412640e1e852e31dc183931a04b15c1d34064d93",
-      "size_bytes": 31094
+      "sha256": "d6fd1818242c04015ba5c737dff7a1e2a383b80bd0a920a4c730beeb515331ea",
+      "size_bytes": 31095
     },
     {
       "path": "docs/stage7_6_recursive_hardening.md",
@@ -1093,7 +1093,7 @@
     },
     {
       "path": "docs/stage7_7_8_recursive_hardening_report.json",
-      "sha256": "4a2616df68c0cb3a56d92e165c8a338c8ff34450e51595067845a1a3e211f5ff",
+      "sha256": "2a739bb00f040d33162e6e8514c894489b832d323f518062e2d1837c15ab733f",
       "size_bytes": 1444
     },
     {
@@ -1163,7 +1163,7 @@
     },
     {
       "path": "docs/stage7_methods_reproducibility_card.md",
-      "sha256": "914cb409244bdc5d798e4b659b83bbb7f704b60893da95c28ac6ca023213362a",
+      "sha256": "39fddf62b9e4fa733a79f48f9b96328f8d084285673f29e978815726125a9482",
       "size_bytes": 4541
     },
     {
@@ -1208,13 +1208,13 @@
     },
     {
       "path": "docs/stage9_execution_memory.json",
-      "sha256": "2c9b9cdf9971d307cf69cfb2905ef331fa8b70b042eb21822a72473919cbf9ba",
-      "size_bytes": 13583
+      "sha256": "45d77d9759756712617062830ae839b462e1b171166295c714000550711181c8",
+      "size_bytes": 15943
     },
     {
       "path": "docs/stage9_manuscript_assembly_plan.md",
-      "sha256": "08adefe54f090a988a30c5c72db8912fb10521374252b22813beee26dada52c7",
-      "size_bytes": 9528
+      "sha256": "89670015c3ca7d3b4ba18056269e41472be38f225c6ec2f2672f99f60018b858",
+      "size_bytes": 9796
     },
     {
       "path": "docs/zenodo_dry_run_report.json",
@@ -1428,8 +1428,8 @@
     },
     {
       "path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
-      "sha256": "242a743be9248579bd918c31581b159b43e762d30f4d7b97ad2b4de033dc6fa8",
-      "size_bytes": 22024
+      "sha256": "b03f63dd24a2edbfad49e519f4eaed5c3331517ad1924dd811ed3639eec7443a",
+      "size_bytes": 22022
     },
     {
       "path": "manuscript/nature_methods/figures/.gitkeep",
@@ -1477,9 +1477,29 @@
       "size_bytes": 1706
     },
     {
+      "path": "manuscript/nature_methods/gate_verdicts/9.4.json",
+      "sha256": "b4a703c6c57c828d5dffb00289e616c645bf6a1b6c5f08829736db1ce5c6dd82",
+      "size_bytes": 1740
+    },
+    {
       "path": "manuscript/nature_methods/ledgers/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size_bytes": 0
+    },
+    {
+      "path": "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+      "sha256": "413288b4f9d15b3c97badabd3ff48cef9dda3551828b6e849a61aee7703995fc",
+      "size_bytes": 1486
+    },
+    {
+      "path": "manuscript/nature_methods/ledgers/claim_hierarchy.md",
+      "sha256": "6e097cae986568a03f48660aacd91c485c7ed14ed926a0032f451d2b1cbe93ae",
+      "size_bytes": 2846
+    },
+    {
+      "path": "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
+      "sha256": "4c1e49ec13181c0d00cfb41ed4d2da0c2e192a0951941603549dec381a10972c",
+      "size_bytes": 1600
     },
     {
       "path": "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -1763,8 +1783,8 @@
     },
     {
       "path": "scripts/audit_stage7_7_8_recursive_hardening.py",
-      "sha256": "ab98d58e548351600de023b84d06296b2ba58aa463e162c162bf7983064514d0",
-      "size_bytes": 26437
+      "sha256": "bbd5e0551d4e6fd44505ffda3359c40b9ceb1113762adb7fb6dadeeffc2012a6",
+      "size_bytes": 26765
     },
     {
       "path": "scripts/build_stage7_1_synthetic_truth_cases.py",
@@ -1788,18 +1808,18 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "f4c94b7b72476e93ce23d7330664e0e41f14a21141d48765b86211cca6ebb7b5",
-      "size_bytes": 62040
+      "sha256": "70fa87a2989b89654a3113cbe5bcf015b9a63ea131c8952c2688229c651f0d61",
+      "size_bytes": 62536
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "e74b6562e1fb0695d9e4ab577ee99bf56b7529698dc6df8d1365a6e822bd4f65",
-      "size_bytes": 48456
+      "sha256": "2ca2e6c2d878b45420ce068702ef4d538d5b9453698da15e1458f4a5d7c0aabc",
+      "size_bytes": 49792
     },
     {
       "path": "scripts/check_stage9_scaffold.py",
-      "sha256": "e63cfc98659239b2ebf7ca7e5fbd13c25ca68fe59ae6634b7030a237a95e2289",
-      "size_bytes": 19170
+      "sha256": "67d755764cd647ab522cbe0c00024f4094cc31bd0359cfb42820841c978e273d",
+      "size_bytes": 20701
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -1873,8 +1893,8 @@
     },
     {
       "path": "scripts/run_stage7_6_methods_reproducibility.py",
-      "sha256": "9f496b58ab75f59ad4c001f5968f642f12332f73f4faf085e7138b27e7bb35bf",
-      "size_bytes": 49402
+      "sha256": "fd6512c65773083c136cbdb30981de27c847d9c57b3e3e9f3d4183df99bf6e7a",
+      "size_bytes": 49894
     },
     {
       "path": "scripts/run_stage7_7_usability_rehearsal.py",
@@ -1905,6 +1925,11 @@
       "path": "scripts/run_stage9_3_narrative_spine.py",
       "sha256": "487d8655448c72389fadacf1bf6f4a52d5b9278f93f2b788b6a1ebdd8be0a28c",
       "size_bytes": 26133
+    },
+    {
+      "path": "scripts/run_stage9_4_claim_freeze.py",
+      "sha256": "a18c93fa28a74b85588e2f14e9a46a1048ccde30672417660d52aec51d1b52cd",
+      "size_bytes": 25994
     },
     {
       "path": "scripts/run_stage9_6b_panelforge_rendering.py",
@@ -2020,6 +2045,36 @@
       "path": "src/rhodyn/uncertainty.py",
       "sha256": "7e4f14cc1536d801506219955c5094c22090a55eb57102d596ce94f0a5228ba6",
       "size_bytes": 7083
+    },
+    {
+      "path": "src/rhodyn.egg-info/PKG-INFO",
+      "sha256": "64bf91ba9b82b0c2aabb66d4ce539921b37532deaa85e5b6b17733d3cdcf8cb3",
+      "size_bytes": 18950
+    },
+    {
+      "path": "src/rhodyn.egg-info/SOURCES.txt",
+      "sha256": "992aaed67ab7e927554af9902ec181b798da7645588b4a4cd83fa54a974f961b",
+      "size_bytes": 24041
+    },
+    {
+      "path": "src/rhodyn.egg-info/dependency_links.txt",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+      "size_bytes": 1
+    },
+    {
+      "path": "src/rhodyn.egg-info/entry_points.txt",
+      "sha256": "48bcd0143835d6274b450cb062e3b7d25d32070ce9420b7cb8b72b832860ffef",
+      "size_bytes": 43
+    },
+    {
+      "path": "src/rhodyn.egg-info/requires.txt",
+      "sha256": "266e124a999dd191ff6f3924c4b7cd3f0443a4463b410e4671a2f99a3a7f2008",
+      "size_bytes": 306
+    },
+    {
+      "path": "src/rhodyn.egg-info/top_level.txt",
+      "sha256": "4284619994248a8c96e8a7106bdd9ee0ee9f8cf8c68d01d3cfbacd48f867fd29",
+      "size_bytes": 7
     },
     {
       "path": "tests/playwright/stage5.visual.spec.mjs",
@@ -2202,8 +2257,13 @@
       "size_bytes": 2721
     },
     {
+      "path": "tests/test_stage9_4_claim_freeze.py",
+      "sha256": "a3cd61bbf4d08dfd8e9165656f512cfda49a5fe40ed22b68da14d2c01539f36c",
+      "size_bytes": 3518
+    },
+    {
       "path": "tests/test_stage9_scaffold.py",
-      "sha256": "c978e330f781abdd503115d0734b024cff23e61e7f99dfac98aa62b762bf778f",
+      "sha256": "3f5f37270846f0d70e29a2af1664ce1b3f92f4b62e3a07be4a4abae67d73f27d",
       "size_bytes": 3155
     },
     {
@@ -2212,7 +2272,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-07-02T10:47:42.062722Z",
+  "generated_utc": "2026-07-02T10:57:57.494343Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

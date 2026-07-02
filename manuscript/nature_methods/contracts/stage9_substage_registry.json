@@ -13,7 +13,7 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.3",
+  "last_completed_substage": "9.4",
   "patch_ledger": [
     {
       "id": "P1",
@@ -167,7 +167,7 @@
         "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
         "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md"
       ],
-      "status": "not_started",
+      "status": "completed",
       "title": "Manuscript claim freeze"
     },
     {

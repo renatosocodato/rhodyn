@@ -1,5 +1,7 @@
 {
   "citation_resolution_started": false,
+  "claim_freeze_started": true,
+  "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
   "completed_substages": [
     {
       "evidence_dependencies": [],
@@ -121,20 +123,44 @@
       "status": "pass",
       "substage": "9.3",
       "validation_outcome": "Nature Methods Article content type and RhoDyn narrative spine registered before drafting"
+    },
+    {
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.3.json",
+        "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
+        "case_studies/stage7_methods_readiness/claim_evidence_crosswalk.tsv"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/ledgers/claim_hierarchy.md",
+        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+        "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
+        "manuscript/nature_methods/gate_verdicts/9.4.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.4.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.5 paragraph-level claim ledger has not started",
+        "Stage 9.6 figure-to-claim contract has not started",
+        "Stage 9.6b PanelForge rendering remains blocked until Stage 9.6 passes",
+        "Manuscript drafting and reference library construction remain not started"
+      ],
+      "status": "pass",
+      "substage": "9.4",
+      "validation_outcome": "Claim hierarchy, evidence links, strength caps, and non-claims registered before drafting"
     }
   ],
-  "current_substage": "9.3",
+  "current_substage": "9.4",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
   "figure_engine_install_started": false,
   "figure_manifest_status": "scaffold_placeholder_not_renderable",
   "figure_rendering_started": false,
-  "generated_utc": "2026-07-02T10:43:28.325609Z",
+  "generated_utc": "2026-07-02T10:52:29.731729Z",
   "manuscript_drafting_started": false,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.4",
+  "next_substage": "9.5",
   "next_substage_authorized": false,
   "project_binding": {
     "archive_doi": "10.5281/zenodo.21036616",
@@ -318,7 +344,39 @@
       "passed": true
     }
   ],
-  "status": "stage9_3_narrative_spine_registered",
+  "stage9_4_checks": [
+    {
+      "detail": "Stage 9.3 narrative spine exists and passes",
+      "name": "stage_9_3_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Five stable CLM IDs are unique and formatted for downstream joins",
+      "name": "claim_hierarchy_validates",
+      "passed": true
+    },
+    {
+      "detail": "All frozen central claims resolve to locked Stage 9 ART IDs",
+      "name": "every_central_claim_has_evidence",
+      "passed": true
+    },
+    {
+      "detail": "Every frozen claim has a strength cap and an explicit limitation",
+      "name": "every_claim_has_strength_cap",
+      "passed": true
+    },
+    {
+      "detail": "6 non-claims and scope boundaries registered",
+      "name": "non_claims_ledger_is_non_empty",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, figure spine, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "status": "stage9_4_claim_freeze_registered",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "venue_guidance_started": true,

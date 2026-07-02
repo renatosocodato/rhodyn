@@ -1,0 +1,47 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.3 narrative spine exists and passes",
+      "name": "stage_9_3_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Five stable CLM IDs are unique and formatted for downstream joins",
+      "name": "claim_hierarchy_validates",
+      "passed": true
+    },
+    {
+      "detail": "All frozen central claims resolve to locked Stage 9 ART IDs",
+      "name": "every_central_claim_has_evidence",
+      "passed": true
+    },
+    {
+      "detail": "Every frozen claim has a strength cap and an explicit limitation",
+      "name": "every_claim_has_strength_cap",
+      "passed": true
+    },
+    {
+      "detail": "6 non-claims and scope boundaries registered",
+      "name": "non_claims_ledger_is_non_empty",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, figure spine, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "claim_count": 5,
+  "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
+  "non_claim_count": 6,
+  "outputs": [
+    "manuscript/nature_methods/ledgers/claim_hierarchy.md",
+    "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+    "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
+    "manuscript/nature_methods/gate_verdicts/9.4.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Claim hierarchy and non-claims registration only. No paragraph ledger, citation resolution, drafting, figure rendering, PanelForge execution, or submission-package assembly.",
+  "substage": "9.4",
+  "timestamp": "2026-07-02T10:52:29.731729Z"
+}

@@ -41,12 +41,14 @@ STAGE9_0_RUNNER_PATH = ROOT / "scripts" / "run_stage9_0_evidence_intake_lock.py"
 STAGE9_1_RUNNER_PATH = ROOT / "scripts" / "run_stage9_1_venue_guidance_register.py"
 STAGE9_2_RUNNER_PATH = ROOT / "scripts" / "run_stage9_2_methods_paper_corpus.py"
 STAGE9_3_RUNNER_PATH = ROOT / "scripts" / "run_stage9_3_narrative_spine.py"
+STAGE9_4_RUNNER_PATH = ROOT / "scripts" / "run_stage9_4_claim_freeze.py"
 STAGE9_PANELFORGE_PREFLIGHT_PATH = ROOT / "scripts" / "run_stage9_6b_panelforge_rendering.py"
 STAGE9_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.-1.json"
 STAGE9_0_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.0.json"
 STAGE9_1_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.1.json"
 STAGE9_2_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.2.json"
 STAGE9_3_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.3.json"
+STAGE9_4_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.4.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -87,12 +89,14 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_1_runner_path = root / STAGE9_1_RUNNER_PATH.relative_to(ROOT)
     stage9_2_runner_path = root / STAGE9_2_RUNNER_PATH.relative_to(ROOT)
     stage9_3_runner_path = root / STAGE9_3_RUNNER_PATH.relative_to(ROOT)
+    stage9_4_runner_path = root / STAGE9_4_RUNNER_PATH.relative_to(ROOT)
     stage9_panelforge_preflight_path = root / STAGE9_PANELFORGE_PREFLIGHT_PATH.relative_to(ROOT)
     stage9_gate_path = root / STAGE9_GATE_PATH.relative_to(ROOT)
     stage9_0_gate_path = root / STAGE9_0_GATE_PATH.relative_to(ROOT)
     stage9_1_gate_path = root / STAGE9_1_GATE_PATH.relative_to(ROOT)
     stage9_2_gate_path = root / STAGE9_2_GATE_PATH.relative_to(ROOT)
     stage9_3_gate_path = root / STAGE9_3_GATE_PATH.relative_to(ROOT)
+    stage9_4_gate_path = root / STAGE9_4_GATE_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -113,8 +117,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 9.3 narrative spine registered; manuscript production not started":
-        failures.append("active stage must record the Stage 9.3 narrative-spine boundary")
+    if current.get("active_stage") != "Stage 9.4 claim freeze registered; manuscript production not started":
+        failures.append("active stage must record the Stage 9.4 claim-freeze boundary")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -124,7 +128,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         6: "public_citable_v0.1.0",
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
-        9: "stage9_3_narrative_spine_registered",
+        9: "stage9_4_claim_freeze_registered",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -178,8 +182,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.2 must be complete_methods_corpus_registered")
     if stage9_status.get("9.3") != "complete_narrative_spine_registered":
         failures.append("Stage 9.3 must be complete_narrative_spine_registered")
+    if stage9_status.get("9.4") != "complete_claim_freeze_registered":
+        failures.append("Stage 9.4 must be complete_claim_freeze_registered")
     for entry in stage9_substages:
-        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3"} and entry.get("status") != "not_started":
+        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4"} and entry.get("status") != "not_started":
             failures.append(f"Stage {entry.get('id')} must remain not_started")
 
     roadmap_flat = " ".join(roadmap.split())
@@ -214,6 +220,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 9.1 venue guidance source register has been completed",
         "Stage 9.2 representative methods-paper corpus has been completed",
         "Stage 9.3 narrative spine has been completed",
+        "Stage 9.4 claim freeze has been completed",
         "manuscript production, citation resolution, figure rendering, and drafting remain not started",
         "Stage 9. Nature Methods manuscript assembly",
         "PanelForge",
@@ -277,13 +284,14 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
 
     stage9_docs = [
-        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.6b", "PanelForge", "evidence lock", "manuscript drafting"]),
-        (stage9_memory_path, "Stage 9 execution memory", ["stage9_3_narrative_spine_registered", "9.-1", "9.0", "9.1", "9.2", "9.3", "figure_engine_clone_started"]),
+        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.6b", "PanelForge", "evidence lock", "manuscript drafting"]),
+        (stage9_memory_path, "Stage 9 execution memory", ["stage9_4_claim_freeze_registered", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "figure_engine_clone_started"]),
         (stage9_checker_path, "Stage 9 scaffold checker", ["FORBIDDEN_DRAFTS", "FORBIDDEN_RENDER_SUFFIXES", "check_stage9_scaffold", "scaffold_only_boundary_preserved"]),
         (stage9_0_runner_path, "Stage 9.0 evidence intake runner", ["stage9_evidence_manifest.csv", "stage9_evidence_lock.md", "No drafting", "PanelForge execution"]),
         (stage9_1_runner_path, "Stage 9.1 venue guidance runner", ["nature_methods_guidance_register.md", "venue_policy_constraints.md", "No representative corpus", "No manuscript sections"]),
         (stage9_2_runner_path, "Stage 9.2 methods-paper corpus runner", ["representative_methods_papers.md", "methods_paper_archetype_analysis.md", "No reference bibliography", "No manuscript sections"]),
         (stage9_3_runner_path, "Stage 9.3 narrative-spine runner", ["stage9_narrative_spine.md", "venue_fit_rationale.md", "No claim freeze", "No manuscript sections"]),
+        (stage9_4_runner_path, "Stage 9.4 claim-freeze runner", ["claim_hierarchy.md", "claim_hierarchy.csv", "non_claims_and_scope_boundaries.md", "No paragraph ledger", "No manuscript sections"]),
         (stage9_panelforge_preflight_path, "Stage 9.6b PanelForge preflight harness", ["preflight", "blocked_preconditions", "stage_9_6_gate_passed", "runtime_env_not_created_yet"]),
     ]
     for path, label, phrases in stage9_docs:
@@ -338,6 +346,16 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.3 narrative-spine gate must remain bound to substage 9.3")
         if stage9_3_gate.get("content_type") != "Article":
             failures.append("Stage 9.3 narrative-spine gate must preserve Article content type")
+    if not stage9_4_gate_path.exists():
+        failures.append("missing manuscript/nature_methods/gate_verdicts/9.4.json")
+    else:
+        stage9_4_gate = json.loads(stage9_4_gate_path.read_text(encoding="utf-8"))
+        if stage9_4_gate.get("pass") is not True:
+            failures.append("Stage 9.4 claim-freeze gate must pass")
+        if stage9_4_gate.get("substage") != "9.4":
+            failures.append("Stage 9.4 claim-freeze gate must remain bound to substage 9.4")
+        if stage9_4_gate.get("claim_count") != 5:
+            failures.append("Stage 9.4 claim-freeze gate must preserve five central claims")
 
     stage7_doc_specs = [
         (stage7_source_register_path, "source register", ["Official and community guidance sources", "Representative methods papers", "Candidate dataset classes", "RhoA/microglia reference case"]),
@@ -757,7 +775,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
         warnings.append("Stage 7.8 methods manuscript readiness package is complete; Stage 8 remains conceptual")
-    warnings.append("Stage 9.3 narrative spine is registered; manuscript production, citation resolution, figure rendering, and drafting have not started")
+    warnings.append("Stage 9.4 claim freeze is registered; manuscript production, citation resolution, figure rendering, and drafting have not started")
 
     return {
         "status": "pass" if not failures else "fail",

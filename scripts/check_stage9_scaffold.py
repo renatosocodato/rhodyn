@@ -40,6 +40,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_1_venue_guidance_register.py",
     "scripts/run_stage9_2_methods_paper_corpus.py",
     "scripts/run_stage9_3_narrative_spine.py",
+    "scripts/run_stage9_4_claim_freeze.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
@@ -203,16 +204,17 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.3 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.4 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
     stage9_1_started = "9.1.json" in gate_files
     stage9_2_started = "9.2.json" in gate_files
     stage9_3_started = "9.3.json" in gate_files
+    stage9_4_started = "9.4.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -232,7 +234,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
     expected_memory_status = (
-        "stage9_3_narrative_spine_registered"
+        "stage9_4_claim_freeze_registered"
+        if stage9_4_started
+        else "stage9_3_narrative_spine_registered"
         if stage9_3_started
         else "stage9_2_methods_corpus_registered"
         if stage9_2_started
@@ -339,6 +343,32 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain narrative-spine output before 9.3: {rel}")
+
+    if stage9_4_started:
+        stage9_4_gate = _read_json(workspace / "gate_verdicts" / "9.4.json", failures)
+        if stage9_4_gate.get("pass") is not True or stage9_4_gate.get("substage") != "9.4":
+            failures.append("Stage 9.4 gate verdict must pass when present")
+        for rel in [
+            "ledgers/claim_hierarchy.md",
+            "ledgers/claim_hierarchy.csv",
+            "ledgers/non_claims_and_scope_boundaries.md",
+        ]:
+            if not (workspace / rel).exists():
+                failures.append(f"Stage 9.4 claim-freeze output missing: {rel}")
+        if stage9_4_gate.get("claim_count") != 5:
+            failures.append("Stage 9.4 must freeze five central method claims")
+        if stage9_4_gate.get("non_claim_count", 0) < 5:
+            failures.append("Stage 9.4 must include a non-empty non-claims ledger")
+        if memory.get("claim_freeze_started") is not True:
+            failures.append("Stage 9 execution memory must record claim_freeze_started=true after 9.4")
+    else:
+        for rel in [
+            "ledgers/claim_hierarchy.md",
+            "ledgers/claim_hierarchy.csv",
+            "ledgers/non_claims_and_scope_boundaries.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain claim-freeze output before 9.4: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
