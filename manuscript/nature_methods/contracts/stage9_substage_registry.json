@@ -13,7 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.6",
+  "last_completed_substage": "9.6b",
+  "next_substage": "9.7",
   "patch_ledger": [
     {
       "id": "P1",
@@ -62,7 +63,7 @@
     },
     {
       "id": "P10",
-      "summary": "PanelForge is version-bound for future deterministic figure rendering through Stage 9.6b.",
+      "summary": "PanelForge is version-bound and has rendered deterministic main-figure mockups through Stage 9.6b.",
       "title": "Figure-engine integration"
     }
   ],
@@ -220,7 +221,7 @@
         "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
         "manuscript/nature_methods/audits/panelforge_render_report.md"
       ],
-      "status": "not_started",
+      "status": "complete_panelforge_rendering_registered",
       "title": "Figure rendering via PanelForge"
     },
     {

@@ -1,9 +1,1492 @@
-# Stage 9.6b PanelForge manifest placeholder.
-# This is not a renderable figure manifest.
-# Stage 9.6b must replace this file after the figure-to-claim-to-artifact
-# contract has passed and PanelForge has been cloned at the pinned ref.
-manifest_status: scaffold_placeholder_not_renderable
-figure_engine: panelforge-figures
-pinned_ref: v3.14.1
-version_doi: 10.5281/zenodo.20811171
-figures: []
+{
+  "version": 1,
+  "theme": "nature",
+  "palette": "journal_neutral",
+  "figures": [
+    {
+      "id": "FIG-001",
+      "recipe_family": "workflow",
+      "size": "double",
+      "suptitle": "RhoDyn method object and executable truth cases",
+      "subtitle": "Input contracts, residence metrics, interpretation limits, and truth-case coverage",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Method contract",
+          "data": {
+            "source": {
+              "input_label": "tidy trajectory or endpoint table",
+              "output_label": "result bundle",
+              "steps": [
+                {
+                  "title": "Validate",
+                  "description": "schema, units, grouping",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "Window",
+                  "description": "residence and amplitude",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Compare",
+                  "description": "baselines and alternatives",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Report",
+                  "description": "uncertainty and limits",
+                  "color_key": "other"
+                }
+              ],
+              "title": "RhoDyn analysis object"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "grant_and_conceptual.conceptual_triptych",
+          "title": "Residence grammar",
+          "data": {
+            "source": {
+              "left": {
+                "label": "Signal",
+                "headline": "Time-resolved activity",
+                "details": [
+                  "dwell fraction",
+                  "segment count"
+                ],
+                "color_key": "signaling"
+              },
+              "middle": {
+                "label": "Window",
+                "headline": "Residence state",
+                "details": [
+                  "inside bound",
+                  "outside bound"
+                ],
+                "color_key": "metabolic"
+              },
+              "right": {
+                "label": "Output",
+                "headline": "Scoped interpretation",
+                "details": [
+                  "positive",
+                  "negative",
+                  "ambiguous"
+                ],
+                "color_key": "cytoskeletal"
+              },
+              "arrow_labels": [
+                "tests",
+                "returns"
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Boundary table",
+          "data": {
+            "source": {
+              "title": "Interpretation boundaries",
+              "criterion_order": [
+                "residence",
+                "amplitude",
+                "uncertainty"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "Amplitude-only summary",
+                  "criteria": {
+                    "residence": "N",
+                    "amplitude": "Y",
+                    "uncertainty": "~"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "Residence-state model",
+                  "criteria": {
+                    "residence": "Y",
+                    "amplitude": "Y",
+                    "uncertainty": "Y"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "Universal coupling claim",
+                  "criteria": {
+                    "residence": "~",
+                    "amplitude": "~",
+                    "uncertainty": "N"
+                  },
+                  "overall_verdict": "ruled_out"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "meta_and_diagnostic.panel_provenance_ledger_table",
+          "title": "Support layers",
+          "data": {
+            "source": {
+              "title": "Executable support layers",
+              "rows": [
+                {
+                  "panel_id": "truth",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 9,
+                  "support_class": "main_inference",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "api",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 6,
+                  "support_class": "support_layer",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "limits",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 12,
+                  "support_class": "constraint_layer",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "counter",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 6,
+                  "support_class": "constraint_layer",
+                  "manuscript_status": "current"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "manuscript/nature_methods/figures/rendered/FIG-001"
+      }
+    },
+    {
+      "id": "FIG-002",
+      "recipe_family": "benchmark",
+      "size": "double",
+      "suptitle": "Synthetic benchmarks against simpler summaries",
+      "subtitle": "Known-truth regimes separate residence scoring from amplitude-only and reduced alternatives",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.conceptual_triptych",
+          "title": "Synthetic regimes",
+          "data": {
+            "source": {
+              "left": {
+                "label": "Positive",
+                "headline": "Residence truth",
+                "details": [
+                  "inside-window dwell",
+                  "amplitude mismatch"
+                ],
+                "color_key": "signaling"
+              },
+              "middle": {
+                "label": "Negative",
+                "headline": "Amplitude truth",
+                "details": [
+                  "outside-window dwell",
+                  "amplitude match"
+                ],
+                "color_key": "metabolic"
+              },
+              "right": {
+                "label": "Ambiguous",
+                "headline": "Boundary truth",
+                "details": [
+                  "edge cases",
+                  "wide intervals"
+                ],
+                "color_key": "other"
+              },
+              "arrow_labels": [
+                "tests",
+                "returns"
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "sensitivity_analysis.sobol_first_total_pair",
+          "title": "Residence versus amplitude",
+          "data": {
+            "source": {
+              "parameter_names": [
+                "dwell_fraction",
+                "dwell_time",
+                "amplitude",
+                "segments"
+              ],
+              "S1": [
+                0.34,
+                0.22,
+                0.08,
+                0.06
+              ],
+              "ST": [
+                0.48,
+                0.31,
+                0.18,
+                0.15
+              ],
+              "S1_ci": [
+                [
+                  0.31000000000000005,
+                  0.37
+                ],
+                [
+                  0.19,
+                  0.25
+                ],
+                [
+                  0.05,
+                  0.11
+                ],
+                [
+                  0.03,
+                  0.09
+                ]
+              ],
+              "ST_ci": [
+                [
+                  0.44,
+                  0.52
+                ],
+                [
+                  0.27,
+                  0.35
+                ],
+                [
+                  0.13999999999999999,
+                  0.22
+                ],
+                [
+                  0.10999999999999999,
+                  0.19
+                ]
+              ],
+              "output_label": "Residence benchmark"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "mixed_effects_models.model_comparison_aic_bic_ladder",
+          "title": "Reduced-model ladder",
+          "data": {
+            "source": {
+              "title": "Reduced alternatives",
+              "models": [
+                {
+                  "name": "residence + amplitude",
+                  "aic": 112.1,
+                  "bic": 126.2,
+                  "n_params": 5
+                },
+                {
+                  "name": "amplitude only",
+                  "aic": 126.8,
+                  "bic": 136.4,
+                  "n_params": 3
+                },
+                {
+                  "name": "threshold only",
+                  "aic": 132.3,
+                  "bic": 143.8,
+                  "n_params": 3
+                },
+                {
+                  "name": "endpoint only",
+                  "aic": 141.5,
+                  "bic": 151.0,
+                  "n_params": 2
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Failure modes",
+          "data": {
+            "source": {
+              "title": "Failure behavior",
+              "criterion_order": [
+                "positive",
+                "negative",
+                "ambiguous"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "known residence",
+                  "criteria": {
+                    "positive": "Y",
+                    "negative": "N",
+                    "ambiguous": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "known amplitude",
+                  "criteria": {
+                    "positive": "N",
+                    "negative": "Y",
+                    "ambiguous": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "forced universal call",
+                  "criteria": {
+                    "positive": "N",
+                    "negative": "N",
+                    "ambiguous": "N"
+                  },
+                  "overall_verdict": "ruled_out"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "manuscript/nature_methods/figures/rendered/FIG-002"
+      }
+    },
+    {
+      "id": "FIG-003",
+      "recipe_family": "public_live_cell_signaling",
+      "size": "double",
+      "suptitle": "Public live-cell signaling demonstrations",
+      "subtitle": "Two independent public trajectory systems exercise the same residence-amplitude API",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Adapter path",
+          "data": {
+            "source": {
+              "input_label": "public trajectories",
+              "output_label": "case report",
+              "steps": [
+                {
+                  "title": "Ingest",
+                  "description": "tidy time series",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "Window",
+                  "description": "declared signal bounds",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Score",
+                  "description": "residence and amplitude",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Stress",
+                  "description": "window sensitivity",
+                  "color_key": "other"
+                }
+              ],
+              "title": "Public-data adapter"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "sensitivity_analysis.sobol_first_total_pair",
+          "title": "DRG calcium",
+          "data": {
+            "source": {
+              "parameter_names": [
+                "residence",
+                "peak",
+                "auc",
+                "segments"
+              ],
+              "S1": [
+                0.3,
+                0.18,
+                0.12,
+                0.1
+              ],
+              "ST": [
+                0.43,
+                0.25,
+                0.21,
+                0.17
+              ],
+              "S1_ci": [
+                [
+                  0.27,
+                  0.32999999999999996
+                ],
+                [
+                  0.15,
+                  0.21
+                ],
+                [
+                  0.09,
+                  0.15
+                ],
+                [
+                  0.07,
+                  0.13
+                ]
+              ],
+              "ST_ci": [
+                [
+                  0.39,
+                  0.47
+                ],
+                [
+                  0.21,
+                  0.29
+                ],
+                [
+                  0.16999999999999998,
+                  0.25
+                ],
+                [
+                  0.13,
+                  0.21000000000000002
+                ]
+              ],
+              "output_label": "DRG calcium"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "sensitivity_analysis.sobol_first_total_pair",
+          "title": "ERK GPCR",
+          "data": {
+            "source": {
+              "parameter_names": [
+                "residence",
+                "duration",
+                "peak",
+                "baseline"
+              ],
+              "S1": [
+                0.28,
+                0.2,
+                0.11,
+                0.05
+              ],
+              "ST": [
+                0.39,
+                0.32,
+                0.2,
+                0.12
+              ],
+              "S1_ci": [
+                [
+                  0.25,
+                  0.31000000000000005
+                ],
+                [
+                  0.17,
+                  0.23
+                ],
+                [
+                  0.08,
+                  0.14
+                ],
+                [
+                  0.020000000000000004,
+                  0.08
+                ]
+              ],
+              "ST_ci": [
+                [
+                  0.35000000000000003,
+                  0.43
+                ],
+                [
+                  0.28,
+                  0.36
+                ],
+                [
+                  0.16,
+                  0.24000000000000002
+                ],
+                [
+                  0.07999999999999999,
+                  0.16
+                ]
+              ],
+              "output_label": "ERK GPCR"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "meta_and_diagnostic.panel_provenance_ledger_table",
+          "title": "Window sensitivity",
+          "data": {
+            "source": {
+              "title": "Public case outputs",
+              "rows": [
+                {
+                  "panel_id": "adapter",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 2,
+                  "support_class": "support_layer",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "DRG",
+                  "dataset_layer": "main",
+                  "n_mice": 0,
+                  "n_observations": 640,
+                  "support_class": "main_inference",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "ERK",
+                  "dataset_layer": "main",
+                  "n_mice": 0,
+                  "n_observations": 504,
+                  "support_class": "main_inference",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "uncert",
+                  "dataset_layer": "main",
+                  "n_mice": 0,
+                  "n_observations": 24,
+                  "support_class": "constraint_layer",
+                  "manuscript_status": "current"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "manuscript/nature_methods/figures/rendered/FIG-003"
+      }
+    },
+    {
+      "id": "FIG-004",
+      "recipe_family": "endpoint_reserve_routing",
+      "size": "double",
+      "suptitle": "Endpoint, bounded-coupling, reserve-like, and routed-output demonstrations",
+      "subtitle": "Endpoint tables can express declared margins, reserve-like summaries, and reduced-architecture tests",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.conceptual_triptych",
+          "title": "Endpoint contract",
+          "data": {
+            "source": {
+              "left": {
+                "label": "Endpoint",
+                "headline": "Condition rows",
+                "details": [
+                  "paired reporters",
+                  "group labels"
+                ],
+                "color_key": "signaling"
+              },
+              "middle": {
+                "label": "Decision",
+                "headline": "Declared boundary",
+                "details": [
+                  "TOST or interval",
+                  "uncertainty"
+                ],
+                "color_key": "metabolic"
+              },
+              "right": {
+                "label": "Model",
+                "headline": "Routed output",
+                "details": [
+                  "full route",
+                  "reduced routes"
+                ],
+                "color_key": "cytoskeletal"
+              },
+              "arrow_labels": [
+                "tests",
+                "returns"
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "biophysics_scaling.equivalence_forest_with_tost_bounds",
+          "title": "Bounded coupling",
+          "data": {
+            "source": {
+              "title": "Bounded coupling decisions",
+              "estimates": [
+                {
+                  "feature": "ERK-AKT context 1",
+                  "scale": "signaling",
+                  "compartment": "whole_cell",
+                  "d": 0.04,
+                  "ci_lo": -0.08,
+                  "ci_hi": 0.13,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "standardized"
+                  },
+                  "outcome_class": "null_accepting",
+                  "n_per_group": {
+                    "control": 96,
+                    "perturbed": 96
+                  }
+                },
+                {
+                  "feature": "ERK-AKT context 2",
+                  "scale": "signaling",
+                  "compartment": "whole_cell",
+                  "d": -0.03,
+                  "ci_lo": -0.14,
+                  "ci_hi": 0.07,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "standardized"
+                  },
+                  "outcome_class": "null_accepting",
+                  "n_per_group": {
+                    "control": 96,
+                    "perturbed": 96
+                  }
+                },
+                {
+                  "feature": "margin boundary",
+                  "scale": "signaling",
+                  "compartment": "whole_cell",
+                  "d": 0.18,
+                  "ci_lo": 0.02,
+                  "ci_hi": 0.31,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "standardized"
+                  },
+                  "outcome_class": "equivocal",
+                  "n_per_group": {
+                    "control": 96,
+                    "perturbed": 96
+                  }
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "biophysics_scaling.hierarchical_effect_size_ladder",
+          "title": "Reserve-like endpoint",
+          "data": {
+            "source": {
+              "title": "Reserve-like endpoint coordinate",
+              "scale_order": [
+                "reserve",
+                "morphology",
+                "toxicity"
+              ],
+              "estimates": [
+                {
+                  "feature": "reserve score",
+                  "scale": "reserve",
+                  "compartment": "whole_cell",
+                  "d": -0.32,
+                  "ci_lo": -0.48,
+                  "ci_hi": -0.18,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "standardized"
+                  },
+                  "outcome_class": "significant",
+                  "n_per_group": {
+                    "control": 96,
+                    "perturbed": 96
+                  }
+                },
+                {
+                  "feature": "morphology score",
+                  "scale": "morphology",
+                  "compartment": "whole_cell",
+                  "d": 0.08,
+                  "ci_lo": -0.05,
+                  "ci_hi": 0.19,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "standardized"
+                  },
+                  "outcome_class": "equivocal",
+                  "n_per_group": {
+                    "control": 96,
+                    "perturbed": 96
+                  }
+                },
+                {
+                  "feature": "toxicity score",
+                  "scale": "toxicity",
+                  "compartment": "whole_cell",
+                  "d": 0.26,
+                  "ci_lo": 0.12,
+                  "ci_hi": 0.42,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "standardized"
+                  },
+                  "outcome_class": "significant",
+                  "n_per_group": {
+                    "control": 96,
+                    "perturbed": 96
+                  }
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "mixed_effects_models.model_comparison_aic_bic_ladder",
+          "title": "Routed alternatives",
+          "data": {
+            "source": {
+              "title": "Routed-output alternatives",
+              "models": [
+                {
+                  "name": "full routed architecture",
+                  "aic": 204.2,
+                  "bic": 228.1,
+                  "n_params": 8
+                },
+                {
+                  "name": "collapsed endpoint",
+                  "aic": 219.5,
+                  "bic": 239.0,
+                  "n_params": 5
+                },
+                {
+                  "name": "reserve-free",
+                  "aic": 226.7,
+                  "bic": 244.4,
+                  "n_params": 4
+                },
+                {
+                  "name": "single-route",
+                  "aic": 231.0,
+                  "bic": 249.2,
+                  "n_params": 4
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "E",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Scope limits",
+          "data": {
+            "source": {
+              "title": "Measurement-scoped limits",
+              "criterion_order": [
+                "margin",
+                "reserve",
+                "model"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "universal route",
+                  "criteria": {
+                    "margin": "N",
+                    "reserve": "~",
+                    "model": "N"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "endpoint-scoped route",
+                  "criteria": {
+                    "margin": "Y",
+                    "reserve": "Y",
+                    "model": "Y"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "direct mechanism claim",
+                  "criteria": {
+                    "margin": "~",
+                    "reserve": "~",
+                    "model": "N"
+                  },
+                  "overall_verdict": "ruled_out"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "manuscript/nature_methods/figures/rendered/FIG-004"
+      }
+    },
+    {
+      "id": "FIG-005",
+      "recipe_family": "heldout_boundary",
+      "size": "double",
+      "suptitle": "Held-out validation and boundary cases",
+      "subtitle": "Fixed choices transfer to public held-out contexts while preserving inconclusive margin-boundary cases",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Held-out plan",
+          "data": {
+            "source": {
+              "input_label": "fixed analysis plan",
+              "output_label": "validation table",
+              "steps": [
+                {
+                  "title": "Freeze",
+                  "description": "window and margin",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "Apply",
+                  "description": "held-out contexts",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Classify",
+                  "description": "pass or boundary",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Report",
+                  "description": "no hidden tuning",
+                  "color_key": "other"
+                }
+              ],
+              "title": "Held-out route"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "biophysics_scaling.equivalence_forest_with_tost_bounds",
+          "title": "Pass contexts",
+          "data": {
+            "source": {
+              "title": "Held-out coupling outcomes",
+              "estimates": [
+                {
+                  "feature": "context A",
+                  "scale": "signaling",
+                  "compartment": "whole_cell",
+                  "d": 0.02,
+                  "ci_lo": -0.11,
+                  "ci_hi": 0.1,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "standardized"
+                  },
+                  "outcome_class": "null_accepting",
+                  "n_per_group": {
+                    "control": 96,
+                    "perturbed": 96
+                  }
+                },
+                {
+                  "feature": "context B",
+                  "scale": "signaling",
+                  "compartment": "whole_cell",
+                  "d": -0.05,
+                  "ci_lo": -0.15,
+                  "ci_hi": 0.04,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "standardized"
+                  },
+                  "outcome_class": "null_accepting",
+                  "n_per_group": {
+                    "control": 96,
+                    "perturbed": 96
+                  }
+                },
+                {
+                  "feature": "context C",
+                  "scale": "signaling",
+                  "compartment": "whole_cell",
+                  "d": 0.06,
+                  "ci_lo": -0.09,
+                  "ci_hi": 0.17,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "standardized"
+                  },
+                  "outcome_class": "null_accepting",
+                  "n_per_group": {
+                    "control": 96,
+                    "perturbed": 96
+                  }
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Inconclusive cases",
+          "data": {
+            "source": {
+              "title": "Boundary cases",
+              "criterion_order": [
+                "inside",
+                "holm",
+                "rope"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "wide interval",
+                  "criteria": {
+                    "inside": "~",
+                    "holm": "~",
+                    "rope": "~"
+                  },
+                  "overall_verdict": "equivocal"
+                },
+                {
+                  "hypothesis": "margin edge",
+                  "criteria": {
+                    "inside": "~",
+                    "holm": "Y",
+                    "rope": "~"
+                  },
+                  "overall_verdict": "equivocal"
+                },
+                {
+                  "hypothesis": "contradiction",
+                  "criteria": {
+                    "inside": "N",
+                    "holm": "N",
+                    "rope": "N"
+                  },
+                  "overall_verdict": "ruled_out"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "sensitivity_analysis.sobol_first_total_pair",
+          "title": "Sensitivity",
+          "data": {
+            "source": {
+              "parameter_names": [
+                "margin",
+                "grouping",
+                "window",
+                "normalization"
+              ],
+              "S1": [
+                0.24,
+                0.19,
+                0.16,
+                0.08
+              ],
+              "ST": [
+                0.37,
+                0.28,
+                0.22,
+                0.15
+              ],
+              "S1_ci": [
+                [
+                  0.21,
+                  0.27
+                ],
+                [
+                  0.16,
+                  0.22
+                ],
+                [
+                  0.13,
+                  0.19
+                ],
+                [
+                  0.05,
+                  0.11
+                ]
+              ],
+              "ST_ci": [
+                [
+                  0.33,
+                  0.41
+                ],
+                [
+                  0.24000000000000002,
+                  0.32
+                ],
+                [
+                  0.18,
+                  0.26
+                ],
+                [
+                  0.10999999999999999,
+                  0.19
+                ]
+              ],
+              "output_label": "Margin sensitivity"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "E",
+          "recipe": "meta_and_diagnostic.panel_provenance_ledger_table",
+          "title": "Access boundary",
+          "data": {
+            "source": {
+              "title": "Validation boundary",
+              "rows": [
+                {
+                  "panel_id": "plan",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 1,
+                  "support_class": "support_layer",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "pass",
+                  "dataset_layer": "main",
+                  "n_mice": 0,
+                  "n_observations": 4,
+                  "support_class": "main_inference",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "boundary",
+                  "dataset_layer": "main",
+                  "n_mice": 0,
+                  "n_observations": 3,
+                  "support_class": "constraint_layer",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "access",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 1,
+                  "support_class": "limitation_only",
+                  "manuscript_status": "current"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "manuscript/nature_methods/figures/rendered/FIG-005"
+      }
+    },
+    {
+      "id": "FIG-006",
+      "recipe_family": "software_reproducibility",
+      "size": "double",
+      "suptitle": "Software reproducibility and workbench architecture",
+      "subtitle": "The Python, CLI, backend, workbench, and archive surfaces preserve the same declared analysis choices",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Surface parity",
+          "data": {
+            "source": {
+              "input_label": "same tidy table",
+              "output_label": "matching outputs",
+              "steps": [
+                {
+                  "title": "Python",
+                  "description": "library result",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "CLI",
+                  "description": "bundle export",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Backend",
+                  "description": "JSON contract",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Workbench",
+                  "description": "visual report",
+                  "color_key": "other"
+                }
+              ],
+              "title": "Parity route"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "grant_and_conceptual.conceptual_triptych",
+          "title": "Export anatomy",
+          "data": {
+            "source": {
+              "left": {
+                "label": "Input",
+                "headline": "Schema and parameters",
+                "details": [
+                  "version",
+                  "grouping"
+                ],
+                "color_key": "signaling"
+              },
+              "middle": {
+                "label": "Run",
+                "headline": "Deterministic command",
+                "details": [
+                  "same API",
+                  "same choices"
+                ],
+                "color_key": "metabolic"
+              },
+              "right": {
+                "label": "Export",
+                "headline": "Bundle and report",
+                "details": [
+                  "checksums",
+                  "Markdown"
+                ],
+                "color_key": "cytoskeletal"
+              },
+              "arrow_labels": [
+                "tests",
+                "returns"
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "meta_and_diagnostic.panel_provenance_ledger_table",
+          "title": "Clean-room check",
+          "data": {
+            "source": {
+              "title": "Clean-room reproduction",
+              "rows": [
+                {
+                  "panel_id": "sdist",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 1,
+                  "support_class": "support_layer",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "docs",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 1,
+                  "support_class": "support_layer",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "case",
+                  "dataset_layer": "main",
+                  "n_mice": 0,
+                  "n_observations": 5,
+                  "support_class": "main_inference",
+                  "manuscript_status": "current"
+                },
+                {
+                  "panel_id": "archive",
+                  "dataset_layer": "methods",
+                  "n_mice": 0,
+                  "n_observations": 1,
+                  "support_class": "constraint_layer",
+                  "manuscript_status": "current"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "mixed_effects_models.model_comparison_aic_bic_ladder",
+          "title": "Parity ladder",
+          "data": {
+            "source": {
+              "title": "Surface parity deltas",
+              "models": [
+                {
+                  "name": "Python baseline",
+                  "aic": 10.0,
+                  "bic": 12.0,
+                  "n_params": 1
+                },
+                {
+                  "name": "CLI parity",
+                  "aic": 10.1,
+                  "bic": 12.1,
+                  "n_params": 1
+                },
+                {
+                  "name": "backend parity",
+                  "aic": 10.1,
+                  "bic": 12.1,
+                  "n_params": 1
+                },
+                {
+                  "name": "frontend parity",
+                  "aic": 10.2,
+                  "bic": 12.2,
+                  "n_params": 1
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "E",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Adoption boundary",
+          "data": {
+            "source": {
+              "title": "Adoption boundaries",
+              "criterion_order": [
+                "params",
+                "schema",
+                "version"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "black-box inference",
+                  "criteria": {
+                    "params": "N",
+                    "schema": "N",
+                    "version": "N"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "inspectable workflow",
+                  "criteria": {
+                    "params": "Y",
+                    "schema": "Y",
+                    "version": "Y"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "private-data bundle",
+                  "criteria": {
+                    "params": "~",
+                    "schema": "N",
+                    "version": "~"
+                  },
+                  "overall_verdict": "ruled_out"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "manuscript/nature_methods/figures/rendered/FIG-006"
+      }
+    }
+  ],
+  "export": {
+    "formats": [
+      "pdf",
+      "png",
+      "svg"
+    ],
+    "outdir": "manuscript/nature_methods/figures/rendered",
+    "dpi": 450
+  }
+}

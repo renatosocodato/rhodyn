@@ -1,6 +1,6 @@
 # Stage 9 Nature Methods manuscript assembly plan
 
-Stage 9 converts the completed Stage 7 methods-program evidence package into a Nature Methods-oriented manuscript package. This repository state serializes the entire Stage 9 v2.1 plan, completes the contract/schema scaffold, completes the Stage 9.0 evidence lock, registers official Nature Methods venue guidance in Stage 9.1, registers the representative methods-paper corpus in Stage 9.2, registers the Nature Methods Article narrative spine in Stage 9.3, freezes the claim hierarchy in Stage 9.4, registers the paragraph-level claim ledger in Stage 9.5, and registers the figure-first main display spine in Stage 9.6. It does not begin PanelForge rendering, supplementary display planning, citation resolution, manuscript drafting, editorial polishing, or package assembly.
+Stage 9 converts the completed Stage 7 methods-program evidence package into a Nature Methods-oriented manuscript package. This repository state serializes the entire Stage 9 v2.1 plan, completes the contract/schema scaffold, completes the Stage 9.0 evidence lock, registers official Nature Methods venue guidance in Stage 9.1, registers the representative methods-paper corpus in Stage 9.2, registers the Nature Methods Article narrative spine in Stage 9.3, freezes the claim hierarchy in Stage 9.4, registers the paragraph-level claim ledger in Stage 9.5, registers the figure-first main display spine in Stage 9.6, and renders deterministic PanelForge main-figure mockups in Stage 9.6b. It does not begin supplementary display planning, citation resolution, manuscript drafting, editorial polishing, or package assembly.
 
 ## Project binding
 
@@ -13,7 +13,7 @@ Stage 9 converts the completed Stage 7 methods-program evidence package into a N
 
 ## Current non-execution boundary
 
-Stage 9.-1 created the workspace, ID namespace, ledger schemas, gate convention, atomic-write protocol, substage registry, figure-engine binding, and execution memory. Stage 9.0 then locked the completed Stage 7.8 evidence package into `ledgers/stage9_evidence_manifest.csv`, `ledgers/stage9_evidence_lock.md`, `ledgers/stage7_output_contract.md`, and `gate_verdicts/9.0.json`. Stage 9.1 registers official Nature Methods, Nature Portfolio, and Springer Nature guidance in `refs/nature_methods_guidance_register.md`, `refs/_cache/`, `audits/venue_policy_constraints.md`, and `gate_verdicts/9.1.json`. Stage 9.2 registers the representative computational methods-paper corpus in `refs/representative_methods_papers.md`, `refs/_cache/methods_corpus/`, `audits/methods_paper_archetype_analysis.md`, and `gate_verdicts/9.2.json`. Stage 9.3 registers the Nature Methods Article narrative spine in `stage9_narrative_spine.md`, `audits/venue_fit_rationale.md`, and `gate_verdicts/9.3.json`. Stage 9.4 freezes the claim hierarchy and non-claims in `ledgers/claim_hierarchy.md`, `ledgers/claim_hierarchy.csv`, `ledgers/non_claims_and_scope_boundaries.md`, and `gate_verdicts/9.4.json`. Stage 9.5 registers paragraph-to-claim planning in `ledgers/paragraph_claim_ledger.csv`, `ledgers/claim_strength_rules.md`, and `gate_verdicts/9.5.json`. Stage 9.6 registers the main display spine in `figures/main_figure_spine.md`, `ledgers/figure_to_claim_to_artifact.csv`, `figures/display_item_plan.md`, and `gate_verdicts/9.6.json`. The current state intentionally does not create `sections/results.md`, `sections/introduction.md`, `sections/discussion.md`, `sections/methods.md`, `refs/references.bib`, or submission-package files. It also does not clone PanelForge, create `.venv-panelforge`, validate a real figure manifest, or render panels.
+Stage 9.-1 created the workspace, ID namespace, ledger schemas, gate convention, atomic-write protocol, substage registry, figure-engine binding, and execution memory. Stage 9.0 then locked the completed Stage 7.8 evidence package into `ledgers/stage9_evidence_manifest.csv`, `ledgers/stage9_evidence_lock.md`, `ledgers/stage7_output_contract.md`, and `gate_verdicts/9.0.json`. Stage 9.1 registers official Nature Methods, Nature Portfolio, and Springer Nature guidance in `refs/nature_methods_guidance_register.md`, `refs/_cache/`, `audits/venue_policy_constraints.md`, and `gate_verdicts/9.1.json`. Stage 9.2 registers the representative computational methods-paper corpus in `refs/representative_methods_papers.md`, `refs/_cache/methods_corpus/`, `audits/methods_paper_archetype_analysis.md`, and `gate_verdicts/9.2.json`. Stage 9.3 registers the Nature Methods Article narrative spine in `stage9_narrative_spine.md`, `audits/venue_fit_rationale.md`, and `gate_verdicts/9.3.json`. Stage 9.4 freezes the claim hierarchy and non-claims in `ledgers/claim_hierarchy.md`, `ledgers/claim_hierarchy.csv`, `ledgers/non_claims_and_scope_boundaries.md`, and `gate_verdicts/9.4.json`. Stage 9.5 registers paragraph-to-claim planning in `ledgers/paragraph_claim_ledger.csv`, `ledgers/claim_strength_rules.md`, and `gate_verdicts/9.5.json`. Stage 9.6 registers the main display spine in `figures/main_figure_spine.md`, `ledgers/figure_to_claim_to_artifact.csv`, `figures/display_item_plan.md`, and `gate_verdicts/9.6.json`. Stage 9.6b renders the main display mockups from `figures/figures.manifest.yaml`, records the pinned PanelForge commit in `figures/.panelforge_commit`, writes `audits/panelforge_render_report.md`, and records `gate_verdicts/9.6b.json`. The current state intentionally does not create `sections/results.md`, `sections/introduction.md`, `sections/discussion.md`, `sections/methods.md`, `refs/references.bib`, or submission-package files. It also does not clone PanelForge into this repository or create `.venv-panelforge`.
 
 ## Patch ledger serialized from v2.1
 
@@ -28,7 +28,7 @@ Stage 9.-1 created the workspace, ID namespace, ledger schemas, gate convention,
 | P7 | Reader-surface hygiene | Publication-surface hygiene blocks internal scaffold leakage before package assembly. |
 | P8 | Nature Methods venue corrections | Content type, Reporting Summary, code review, subheading, reference, and discovery-fit rules are pinned downstream. |
 | P9 | Scope-fork resolution | Project-specific method nouns and venue choices live in the project binding block. |
-| P10 | Figure-engine integration | PanelForge is version-bound for future deterministic figure rendering through Stage 9.6b. |
+| P10 | Figure-engine integration | PanelForge is version-bound and has rendered deterministic main-figure mockups through Stage 9.6b. |
 
 ## Figure-engine binding
 
@@ -36,10 +36,10 @@ Stage 9.-1 created the workspace, ID namespace, ledger schemas, gate convention,
 - Repository. https://github.com/renatosocodato/panelforge-figures.
 - Pinned ref. v3.14.1.
 - Version DOI. 10.5281/zenodo.20811171.
-- Future clone path. `tools/panelforge-figures`.
-- Future isolated environment. `.venv-panelforge`.
-- Future manifest. `manuscript/nature_methods/figures/figures.manifest.yaml`.
-- Scaffold status. `not_cloned_not_installed_not_rendered`.
+- Local clone path. Not used. `tools/panelforge-figures` remains a placeholder only.
+- Isolated environment. Transient Python 3.12 environment outside the repository.
+- Manifest. `manuscript/nature_methods/figures/figures.manifest.yaml`.
+- Render status. `rendered_by_transient_pinned_install_no_repo_clone`.
 
 ## Serialized substages
 
@@ -53,7 +53,7 @@ Stage 9.-1 created the workspace, ID namespace, ledger schemas, gate convention,
 | 9.4 | Manuscript claim freeze | complete_claim_freeze_registered | Freeze claim hierarchy with stable CLM IDs and strength caps. |
 | 9.5 | Paragraph-level claim ledger | complete_paragraph_claim_ledger_registered | Plan manuscript paragraphs as auditable claim-bearing units. |
 | 9.6 | Figure-first manuscript spine | complete_figure_spine_registered | Build the manuscript around evidence-bearing display items before prose. |
-| 9.6b | Figure rendering via PanelForge | not_started | Prepare deterministic publication-grade figure rendering from the frozen figure-to-claim-to-artifact contract. |
+| 9.6b | Figure rendering via PanelForge | complete_panelforge_rendering_registered | Prepare deterministic publication-grade figure rendering from the frozen figure-to-claim-to-artifact contract. |
 | 9.7 | Supplementary display item plan | not_started | Plan supplementary material as cited support rather than a data dump. |
 | 9.8 | Section contract blueprint | not_started | Define every manuscript section and venue structural rule before writing. |
 | 9.9 | Title, subtitle, and abstract strategy | not_started | Create high-level framing without overselling. |

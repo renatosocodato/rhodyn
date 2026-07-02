@@ -1,0 +1,1158 @@
+# Stage 9.6b PanelForge render report
+
+Generated UTC. 2026-07-02T12:10:05.377672Z
+
+## Scientific rendering scope
+
+PanelForge v3.14.1 renders recipe contracts supplied through the manifest. These files are deterministic publication mockups tied to the frozen figure spine; evidence statistics remain in the Stage 7 evidence artifacts and figure ledger until later manuscript-numbering substages.
+
+The rendered panels support manuscript figure planning, visual grammar, and deterministic production tests. They do not replace the frozen Stage 7 evidence tables and do not create new biological results.
+
+## Engine
+
+- Engine. panelforge-figures 3.14.1
+- Pinned ref. v3.14.1
+- Commit. d8ab4c5d25be6243aa7209ad1ee6af144820c920
+- DOI. 10.5281/zenodo.20811171
+- Install. Transient Python 3.12 virtual environment outside the repository
+
+## Rendered figure outputs
+
+### FIG-001
+
+- Recipe set. `panelforge:alternative_hypothesis_exclusion_table+conceptual_triptych+methods_pipeline_flow+panel_provenance_ledger_table`
+- Rejected alternative. Do not use a text-only workflow schematic because the method object needs explicit input, output, and limitation panels.
+- Ledger render path. `manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.svg`
+- Files.
+  - `manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.pdf`
+  - `manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.png`
+  - `manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.svg`
+
+### FIG-002
+
+- Recipe set. `panelforge:alternative_hypothesis_exclusion_table+conceptual_triptych+model_comparison_aic_bic_ladder+sobol_first_total_pair`
+- Rejected alternative. Do not collapse the benchmark to a single score because ambiguity and failure behavior must remain visible.
+- Ledger render path. `manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.svg`
+- Files.
+  - `manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.pdf`
+  - `manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.png`
+  - `manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.svg`
+
+### FIG-003
+
+- Recipe set. `panelforge:methods_pipeline_flow+panel_provenance_ledger_table+sobol_first_total_pair`
+- Rejected alternative. Do not present only the RhoA reference use case because the methods claim requires independent public live-cell systems.
+- Ledger render path. `manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.svg`
+- Files.
+  - `manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.pdf`
+  - `manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.png`
+  - `manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.svg`
+
+### FIG-004
+
+- Recipe set. `panelforge:alternative_hypothesis_exclusion_table+conceptual_triptych+equivalence_forest_with_tost_bounds+hierarchical_effect_size_ladder+model_comparison_aic_bic_ladder`
+- Rejected alternative. Do not split bounded coupling, reserve-like behavior, and routed-output comparison into isolated main figures because their shared endpoint contract is the method point.
+- Ledger render path. `manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.svg`
+- Files.
+  - `manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.pdf`
+  - `manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.png`
+  - `manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.svg`
+
+### FIG-005
+
+- Recipe set. `panelforge:alternative_hypothesis_exclusion_table+equivalence_forest_with_tost_bounds+methods_pipeline_flow+panel_provenance_ledger_table+sobol_first_total_pair`
+- Rejected alternative. Do not bury held-out inconclusive cases in supplement because they define the method boundary for bounded-coupling decisions.
+- Ledger render path. `manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.svg`
+- Files.
+  - `manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.pdf`
+  - `manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.png`
+  - `manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.svg`
+
+### FIG-006
+
+- Recipe set. `panelforge:alternative_hypothesis_exclusion_table+conceptual_triptych+methods_pipeline_flow+model_comparison_aic_bic_ladder+panel_provenance_ledger_table`
+- Rejected alternative. Do not treat software maturity as availability text only because the methods claim requires visible reproducibility and adoption evidence.
+- Ledger render path. `manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.svg`
+- Files.
+  - `manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.pdf`
+  - `manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.png`
+  - `manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.svg`
+
+## Gate decision
+
+Stage 9.6b passes as a deterministic figure-rendering substage. Manuscript prose, citation resolution, supplementary display planning, and submission packaging remain unstarted.
+
+## Command log
+
+```text
+figures, version 3.14.1
+$ /opt/homebrew/bin/python3.12 -m venv $TMPDIR/panelforge-temp
+$ $TMPDIR/panelforge-temp -m pip install --upgrade pip
+Requirement already satisfied: pip in $TMPDIR/panelforge-temp (26.0)
+Collecting pip
+  Using cached pip-26.1.2-py3-none-any.whl.metadata (4.6 kB)
+Using cached pip-26.1.2-py3-none-any.whl (1.8 MB)
+Installing collected packages: pip
+  Attempting uninstall: pip
+    Found existing installation: pip 26.0
+    Uninstalling pip-26.0:
+      Successfully uninstalled pip-26.0
+Successfully installed pip-26.1.2
+$ $TMPDIR/panelforge-temp install git+https://github.com/renatosocodato/panelforge-figures.git@v3.14.1
+Collecting git+https://github.com/renatosocodato/panelforge-figures.git@v3.14.1
+  Cloning https://github.com/renatosocodato/panelforge-figures.git (to revision v3.14.1) to $TMPDIR/panelforge-temp  Resolved https://github.com/renatosocodato/panelforge-figures.git to commit fbf5323a1eef3f0457faeea060329050a3757586
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting numpy<3,>=1.24 (from panelforge-figures==3.14.1)
+  Using cached numpy-2.5.0-cp312-cp312-macosx_14_0_arm64.whl.metadata (6.6 kB)
+Collecting pandas<3,>=2.0 (from panelforge-figures==3.14.1)
+  Using cached pandas-2.3.3-cp312-cp312-macosx_11_0_arm64.whl.metadata (91 kB)
+Collecting scipy<2,>=1.11 (from panelforge-figures==3.14.1)
+  Using cached scipy-1.18.0-cp312-cp312-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting matplotlib<4,>=3.7 (from panelforge-figures==3.14.1)
+  Using cached matplotlib-3.11.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (80 kB)
+Collecting pydantic<3,>=2.5 (from panelforge-figures==3.14.1)
+  Using cached pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+Collecting pyyaml<7,>=6.0 (from panelforge-figures==3.14.1)
+  Using cached pyyaml-6.0.3-cp312-cp312-macosx_11_0_arm64.whl.metadata (2.4 kB)
+Collecting pyarrow<20,>=14 (from panelforge-figures==3.14.1)
+  Using cached pyarrow-19.0.1-cp312-cp312-macosx_12_0_arm64.whl.metadata (3.3 kB)
+Collecting click<9,>=8.1 (from panelforge-figures==3.14.1)
+  Using cached click-8.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting ruamel.yaml<1,>=0.18 (from panelforge-figures==3.14.1)
+  Using cached ruamel_yaml-0.19.1-py3-none-any.whl.metadata (16 kB)
+Collecting hmmlearn<1,>=0.3 (from panelforge-figures==3.14.1)
+  Using cached hmmlearn-0.3.3-cp312-cp312-macosx_10_9_universal2.whl.metadata (3.0 kB)
+Collecting scikit-learn!=0.22.0,>=0.16 (from hmmlearn<1,>=0.3->panelforge-figures==3.14.1)
+  Using cached scikit_learn-1.9.0-cp312-cp312-macosx_12_0_arm64.whl.metadata (11 kB)
+Collecting contourpy>=1.0.1 (from matplotlib<4,>=3.7->panelforge-figures==3.14.1)
+  Using cached contourpy-1.3.3-cp312-cp312-macosx_11_0_arm64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib<4,>=3.7->panelforge-figures==3.14.1)
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib<4,>=3.7->panelforge-figures==3.14.1)
+  Using cached fonttools-4.63.0-cp312-cp312-macosx_10_13_universal2.whl.metadata (118 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib<4,>=3.7->panelforge-figures==3.14.1)
+  Using cached kiwisolver-1.5.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (5.1 kB)
+Collecting packaging>=20.0 (from matplotlib<4,>=3.7->panelforge-figures==3.14.1)
+  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting pillow>=9 (from matplotlib<4,>=3.7->panelforge-figures==3.14.1)
+  Using cached pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl.metadata (9.1 kB)
+Collecting pyparsing>=3 (from matplotlib<4,>=3.7->panelforge-figures==3.14.1)
+  Using cached pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting python-dateutil>=2.7 (from matplotlib<4,>=3.7->panelforge-figures==3.14.1)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting pytz>=2020.1 (from pandas<3,>=2.0->panelforge-figures==3.14.1)
+  Using cached pytz-2026.2-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas<3,>=2.0->panelforge-figures==3.14.1)
+  Using cached tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting annotated-types>=0.6.0 (from pydantic<3,>=2.5->panelforge-figures==3.14.1)
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.46.4 (from pydantic<3,>=2.5->panelforge-figures==3.14.1)
+  Using cached pydantic_core-2.46.4-cp312-cp312-macosx_11_0_arm64.whl.metadata (6.6 kB)
+Collecting typing-extensions>=4.14.1 (from pydantic<3,>=2.5->panelforge-figures==3.14.1)
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic<3,>=2.5->panelforge-figures==3.14.1)
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib<4,>=3.7->panelforge-figures==3.14.1)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting joblib>=1.4.0 (from scikit-learn!=0.22.0,>=0.16->hmmlearn<1,>=0.3->panelforge-figures==3.14.1)
+  Using cached joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+Collecting narwhals>=2.0.1 (from scikit-learn!=0.22.0,>=0.16->hmmlearn<1,>=0.3->panelforge-figures==3.14.1)
+  Using cached narwhals-2.23.0-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn!=0.22.0,>=0.16->hmmlearn<1,>=0.3->panelforge-figures==3.14.1)
+  Using cached threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Using cached click-8.4.2-py3-none-any.whl (119 kB)
+Using cached hmmlearn-0.3.3-cp312-cp312-macosx_10_9_universal2.whl (196 kB)
+Using cached matplotlib-3.11.0-cp312-cp312-macosx_11_0_arm64.whl (9.3 MB)
+Using cached numpy-2.5.0-cp312-cp312-macosx_14_0_arm64.whl (5.3 MB)
+Using cached pandas-2.3.3-cp312-cp312-macosx_11_0_arm64.whl (10.7 MB)
+Using cached pyarrow-19.0.1-cp312-cp312-macosx_12_0_arm64.whl (30.7 MB)
+Using cached pydantic-2.13.4-py3-none-any.whl (472 kB)
+Using cached pydantic_core-2.46.4-cp312-cp312-macosx_11_0_arm64.whl (2.0 MB)
+Using cached pyyaml-6.0.3-cp312-cp312-macosx_11_0_arm64.whl (173 kB)
+Using cached ruamel_yaml-0.19.1-py3-none-any.whl (118 kB)
+Using cached scipy-1.18.0-cp312-cp312-macosx_14_0_arm64.whl (20.4 MB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached contourpy-1.3.3-cp312-cp312-macosx_11_0_arm64.whl (273 kB)
+Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Using cached fonttools-4.63.0-cp312-cp312-macosx_10_13_universal2.whl (2.9 MB)
+Using cached kiwisolver-1.5.0-cp312-cp312-macosx_11_0_arm64.whl (64 kB)
+Using cached packaging-26.2-py3-none-any.whl (100 kB)
+Using cached pillow-12.3.0-cp312-cp312-macosx_11_0_arm64.whl (4.8 MB)
+Using cached pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached pytz-2026.2-py2.py3-none-any.whl (510 kB)
+Using cached scikit_learn-1.9.0-cp312-cp312-macosx_12_0_arm64.whl (8.3 MB)
+Using cached joblib-1.5.3-py3-none-any.whl (309 kB)
+Using cached narwhals-2.23.0-py3-none-any.whl (458 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached tzdata-2026.2-py2.py3-none-any.whl (349 kB)
+Building wheels for collected packages: panelforge-figures
+  Building wheel for panelforge-figures (pyproject.toml): started
+  Building wheel for panelforge-figures (pyproject.toml): finished with status 'done'
+  Created wheel for panelforge-figures: filename=panelforge_figures-3.14.1-py3-none-any.whl size=1554672 sha256=fd3abaebad42a1dcdb7267775ab5f8386e3a68901eb75d6c9381d0c20b2c882d
+  Stored in directory: $TMPDIR/panelforge-temp built panelforge-figures
+Installing collected packages: pytz, tzdata, typing-extensions, threadpoolctl, six, ruamel.yaml, pyyaml, pyparsing, pyarrow, pillow, packaging, numpy, narwhals, kiwisolver, joblib, fonttools, cycler, click, annotated-types, typing-inspection, scipy, python-dateutil, pydantic-core, contourpy, scikit-learn, pydantic, pandas, matplotlib, hmmlearn, panelforge-figures
+
+Successfully installed annotated-types-0.7.0 click-8.4.2 contourpy-1.3.3 cycler-0.12.1 fonttools-4.63.0 hmmlearn-0.3.3 joblib-1.5.3 kiwisolver-1.5.0 matplotlib-3.11.0 narwhals-2.23.0 numpy-2.5.0 packaging-26.2 pandas-2.3.3 panelforge-figures-3.14.1 pillow-12.3.0 pyarrow-19.0.1 pydantic-2.13.4 pydantic-core-2.46.4 pyparsing-3.3.2 python-dateutil-2.9.0.post0 pytz-2026.2 pyyaml-6.0.3 ruamel.yaml-0.19.1 scikit-learn-1.9.0 scipy-1.18.0 six-1.17.0 threadpoolctl-3.6.0 typing-extensions-4.16.0 typing-inspection-0.4.2 tzdata-2026.2
+Running command git clone --filter=blob:none --quiet https://github.com/renatosocodato/panelforge-figures.git $TMPDIR/panelforge-temp  Running command git checkout -q fbf5323a1eef3f0457faeea060329050a3757586
+$ $TMPDIR/panelforge-temp validate $RHO_DYN_ROOT/manuscript/nature_methods/figures/figures.manifest.yaml
+✓ manifest is valid
+$ $TMPDIR/panelforge-temp render $RHO_DYN_ROOT/manuscript/nature_methods/figures/figures.manifest.yaml
+rendered 18 output files
+  manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.pdf
+  manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.png
+  manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.svg
+  manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.pdf
+  manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.png
+  manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.svg
+  manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.pdf
+  manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.png
+  manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.svg
+  manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.pdf
+  manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.png
+  manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.svg
+  manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.pdf
+  manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.png
+  manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.svg
+  manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.pdf
+  manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.png
+  manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.svg
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 44 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'I', 'O', 'R', 'S', 'T', 'U', 'W', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'f', 'four', 'g', 'h', 'hyphen', 'i', 'j', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'r', 's', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 19, 20, 21, 22, 23, 25, 28, 36, 44, 50, 53, 54, 55, 56, 58, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 92, 135]
+INFO fontTools.subset: Closed glyph list over 'glyf': 44 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'I', 'O', 'R', 'S', 'T', 'U', 'W', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'f', 'four', 'g', 'h', 'hyphen', 'i', 'j', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'r', 's', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 19, 20, 21, 22, 23, 25, 28, 36, 44, 50, 53, 54, 55, 56, 58, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 92, 135]
+INFO fontTools.subset: Retaining 44 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 31]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 47 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'E', 'I', 'N', 'R', 'V', 'W', 'Y', 'a', 'asciitilde', 'b', 'c', 'colon', 'comma', 'd', 'e', 'equal', 'f', 'four', 'g', 'h', 'i', 'j', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'periodcentered', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 20, 21, 22, 23, 29, 32, 36, 37, 38, 39, 40, 44, 49, 53, 57, 58, 60, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 97, 195]
+INFO fontTools.subset: Closed glyph list over 'glyf': 47 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'E', 'I', 'N', 'R', 'V', 'W', 'Y', 'a', 'asciitilde', 'b', 'c', 'colon', 'comma', 'd', 'e', 'equal', 'f', 'four', 'g', 'h', 'i', 'j', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'periodcentered', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 20, 21, 22, 23, 29, 32, 36, 37, 38, 39, 40, 44, 49, 53, 57, 58, 60, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 97, 195]
+INFO fontTools.subset: Retaining 47 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 27 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'd', 'e', 'equal', 'f', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 71, 72, 73, 76, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 97, 195]
+INFO fontTools.subset: Closed glyph list over 'glyf': 27 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'd', 'e', 'equal', 'f', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 71, 72, 73, 76, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 97, 195]
+INFO fontTools.subset: Retaining 27 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 58 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'Deltagreek', 'I', 'K', 'N', 'P', 'R', 'S', 'T', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'underscore', 'v', 'w', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 37, 38, 44, 46, 49, 51, 53, 54, 55, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 135, 1091]
+INFO fontTools.subset: Closed glyph list over 'glyf': 58 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'Deltagreek', 'I', 'K', 'N', 'P', 'R', 'S', 'T', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'plus', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'underscore', 'v', 'w', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 14, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 37, 38, 44, 46, 49, 51, 53, 54, 55, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 135, 1091]
+INFO fontTools.subset: Retaining 58 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 7, 31]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 5 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192]
+INFO fontTools.subset: Closed glyph list over 'glyf': 5 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192]
+INFO fontTools.subset: Retaining 5 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted to empty; dropped
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [62]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 46 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'F', 'G', 'I', 'N', 'R', 'S', 'Y', 'a', 'asciitilde', 'b', 'c', 'comma', 'd', 'e', 'emdash', 'equal', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'period', 'periodcentered', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 17, 19, 20, 21, 22, 32, 36, 37, 38, 39, 41, 42, 44, 49, 53, 54, 60, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 97, 179, 195, 1091]
+INFO fontTools.subset: Closed glyph list over 'glyf': 46 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'F', 'G', 'I', 'N', 'R', 'S', 'Y', 'a', 'asciitilde', 'b', 'c', 'comma', 'd', 'e', 'emdash', 'equal', 'g', 'h', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'period', 'periodcentered', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 17, 19, 20, 21, 22, 32, 36, 37, 38, 39, 41, 42, 44, 49, 53, 54, 60, 68, 69, 70, 71, 72, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 97, 179, 195, 1091]
+INFO fontTools.subset: Retaining 46 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1, 7, 31]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 22 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'e', 'equal', 'i', 'l', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 72, 76, 79, 82, 83, 84, 85, 86, 87, 88, 89, 97, 195]
+INFO fontTools.subset: Closed glyph list over 'glyf': 22 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'e', 'equal', 'i', 'l', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 72, 76, 79, 82, 83, 84, 85, 86, 87, 88, 89, 97, 195]
+INFO fontTools.subset: Retaining 22 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 50 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'I', 'P', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'j', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 44, 51, 54, 55, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92]
+INFO fontTools.subset: Closed glyph list over 'glyf': 50 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'I', 'P', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'j', 'k', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 44, 51, 54, 55, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92]
+INFO fontTools.subset: Retaining 50 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 44 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'E', 'G', 'I', 'K', 'P', 'R', 'S', 'W', 'a', 'b', 'c', 'colon', 'd', 'e', 'emdash', 'equal', 'f', 'four', 'g', 'hyphen', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'periodcentered', 'r', 's', 'space', 't', 'two', 'u', 'v', 'w', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 16, 20, 21, 23, 29, 32, 36, 37, 38, 39, 40, 42, 44, 46, 51, 53, 54, 58, 68, 69, 70, 71, 72, 73, 74, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 92, 179, 195]
+INFO fontTools.subset: Closed glyph list over 'glyf': 44 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'E', 'G', 'I', 'K', 'P', 'R', 'S', 'W', 'a', 'b', 'c', 'colon', 'd', 'e', 'emdash', 'equal', 'f', 'four', 'g', 'hyphen', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'periodcentered', 'r', 's', 'space', 't', 'two', 'u', 'v', 'w', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 16, 20, 21, 23, 29, 32, 36, 37, 38, 39, 40, 42, 44, 46, 51, 53, 54, 58, 68, 69, 70, 71, 72, 73, 74, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 92, 179, 195]
+INFO fontTools.subset: Retaining 44 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1, 31]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 22 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'a', 'c', 'd', 'e', 'f', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'r', 's', 'space', 't', 'u', 'v', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 68, 70, 71, 72, 73, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 195]
+INFO fontTools.subset: Closed glyph list over 'glyf': 22 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'a', 'c', 'd', 'e', 'f', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'r', 's', 'space', 't', 'u', 'v', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 68, 70, 71, 72, 73, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 92, 195]
+INFO fontTools.subset: Retaining 22 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 63 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'I', 'K', 'M', 'O', 'R', 'S', 'T', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'minus', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'q', 'quotesingle', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'underscore', 'v', 'w', 'x', 'y', 'z', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 10, 11, 12, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 37, 38, 39, 40, 44, 46, 48, 50, 53, 54, 55, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 135, 239, 1091]
+INFO fontTools.subset: Closed glyph list over 'glyf': 63 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'I', 'K', 'M', 'O', 'R', 'S', 'T', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'minus', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'q', 'quotesingle', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'underscore', 'v', 'w', 'x', 'y', 'z', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 10, 11, 12, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 37, 38, 39, 40, 44, 46, 48, 50, 53, 54, 55, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 135, 239, 1091]
+INFO fontTools.subset: Retaining 63 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 7, 31, 38]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 5 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192]
+INFO fontTools.subset: Closed glyph list over 'glyf': 5 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192]
+INFO fontTools.subset: Retaining 5 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted to empty; dropped
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [62]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 56 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'I', 'M', 'N', 'O', 'R', 'S', 'T', 'Y', 'a', 'asciitilde', 'b', 'bracketleft', 'bracketright', 'c', 'comma', 'd', 'e', 'equal', 'f', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'periodcentered', 'q', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 32, 36, 37, 38, 39, 40, 44, 48, 49, 50, 53, 54, 55, 60, 62, 64, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 97, 195, 1091]
+INFO fontTools.subset: Closed glyph list over 'glyf': 56 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'I', 'M', 'N', 'O', 'R', 'S', 'T', 'Y', 'a', 'asciitilde', 'b', 'bracketleft', 'bracketright', 'c', 'comma', 'd', 'e', 'equal', 'f', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'periodcentered', 'q', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 32, 36, 37, 38, 39, 40, 44, 48, 49, 50, 53, 54, 55, 60, 62, 64, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 97, 195, 1091]
+INFO fontTools.subset: Retaining 56 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1, 7]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 5 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192]
+INFO fontTools.subset: Closed glyph list over 'glyf': 5 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192]
+INFO fontTools.subset: Retaining 5 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted to empty; dropped
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [62]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 22 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'e', 'equal', 'i', 'l', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 72, 76, 79, 82, 83, 84, 85, 86, 87, 88, 89, 97, 195]
+INFO fontTools.subset: Closed glyph list over 'glyf': 22 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'e', 'equal', 'i', 'l', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 72, 76, 79, 82, 83, 84, 85, 86, 87, 88, 89, 97, 195]
+INFO fontTools.subset: Retaining 22 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 55 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'F', 'O', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'l', 'm', 'minus', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'quotesingle', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'underscore', 'v', 'w', 'x', 'y', 'z', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 10, 11, 12, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 37, 38, 41, 50, 54, 55, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93, 239]
+INFO fontTools.subset: Closed glyph list over 'glyf': 55 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'F', 'O', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'l', 'm', 'minus', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'quotesingle', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'underscore', 'v', 'w', 'x', 'y', 'z', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 10, 11, 12, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 37, 38, 41, 50, 54, 55, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93, 239]
+INFO fontTools.subset: Retaining 55 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 38]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 5 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192]
+INFO fontTools.subset: Closed glyph list over 'glyf': 5 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192]
+INFO fontTools.subset: Retaining 5 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted to empty; dropped
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [62]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 58 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'M', 'N', 'O', 'R', 'S', 'T', 'V', 'Y', 'a', 'asciitilde', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'emdash', 'equal', 'f', 'four', 'g', 'hyphen', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'periodcentered', 'q', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'y', 'z', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 29, 32, 36, 37, 38, 39, 40, 41, 42, 43, 48, 49, 50, 53, 54, 55, 57, 60, 62, 64, 68, 69, 70, 71, 72, 73, 74, 76, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 93, 97, 179, 195]
+INFO fontTools.subset: Closed glyph list over 'glyf': 58 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'M', 'N', 'O', 'R', 'S', 'T', 'V', 'Y', 'a', 'asciitilde', 'b', 'bracketleft', 'bracketright', 'c', 'colon', 'comma', 'd', 'e', 'emdash', 'equal', 'f', 'four', 'g', 'hyphen', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'periodcentered', 'q', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'y', 'z', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 23, 29, 32, 36, 37, 38, 39, 40, 41, 42, 43, 48, 49, 50, 53, 54, 55, 57, 60, 62, 64, 68, 69, 70, 71, 72, 73, 74, 76, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 93, 97, 179, 195]
+INFO fontTools.subset: Retaining 58 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1, 31]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 27 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'd', 'e', 'equal', 'f', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 71, 72, 73, 76, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 97, 195]
+INFO fontTools.subset: Closed glyph list over 'glyf': 27 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'd', 'e', 'equal', 'f', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 71, 72, 73, 76, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 97, 195]
+INFO fontTools.subset: Retaining 27 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 55 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'period', 'r', 's', 'seven', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 17, 19, 20, 21, 22, 23, 24, 26, 32, 36, 37, 38, 39, 40, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 135, 1091]
+INFO fontTools.subset: Closed glyph list over 'glyf': 55 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'I', 'J', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'equal', 'f', 'five', 'four', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'period', 'r', 's', 'seven', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 17, 19, 20, 21, 22, 23, 24, 26, 32, 36, 37, 38, 39, 40, 44, 45, 47, 48, 49, 50, 51, 53, 54, 55, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 135, 1091]
+INFO fontTools.subset: Retaining 55 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 7, 31]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 6 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'fl', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192, 193]
+INFO fontTools.subset: Closed glyph list over 'glyf': 6 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'fi', 'fl', 'nonmarkingreturn', 'space']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 192, 193]
+INFO fontTools.subset: Retaining 6 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted to empty; dropped
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [62]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 51 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'I', 'L', 'N', 'P', 'S', 'W', 'Y', 'a', 'asciitilde', 'b', 'c', 'colon', 'comma', 'd', 'e', 'equal', 'f', 'four', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'period', 'periodcentered', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 17, 19, 20, 21, 22, 23, 29, 32, 36, 37, 38, 39, 40, 44, 47, 49, 51, 54, 58, 60, 68, 69, 70, 71, 72, 73, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 97, 195, 1091]
+INFO fontTools.subset: Closed glyph list over 'glyf': 51 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'I', 'L', 'N', 'P', 'S', 'W', 'Y', 'a', 'asciitilde', 'b', 'c', 'colon', 'comma', 'd', 'e', 'equal', 'f', 'four', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'period', 'periodcentered', 'r', 's', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 17, 19, 20, 21, 22, 23, 29, 32, 36, 37, 38, 39, 40, 44, 47, 49, 51, 54, 58, 60, 68, 69, 70, 71, 72, 73, 75, 76, 78, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 97, 195, 1091]
+INFO fontTools.subset: Retaining 51 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1, 7]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO fontTools.subset: maxp pruned
+INFO fontTools.subset: cmap pruned
+WARNING fontTools.ttLib.tables._p_o_s_t: 1 extra bytes in post.stringData array
+INFO fontTools.subset: kern pruned
+INFO fontTools.subset: post pruned
+INFO fontTools.subset: Zapf dropped
+INFO fontTools.subset: feat dropped
+INFO fontTools.subset: meta dropped
+INFO fontTools.subset: morx dropped
+WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; regarding as unix timestamp
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: Added gid0 to subset
+INFO fontTools.subset: Added first four glyphs to subset
+INFO fontTools.subset: Closing glyph list over 'glyf': 27 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'd', 'e', 'equal', 'f', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 71, 72, 73, 76, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 97, 195]
+INFO fontTools.subset: Closed glyph list over 'glyf': 27 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'N', 'Y', 'a', 'asciitilde', 'c', 'd', 'e', 'equal', 'f', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'u', 'v', 'y']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 32, 49, 60, 68, 70, 71, 72, 73, 76, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 97, 195]
+INFO fontTools.subset: Retaining 27 glyphs
+INFO fontTools.subset: head subsetting not needed
+INFO fontTools.subset: hhea subsetting not needed
+INFO fontTools.subset: maxp subsetting not needed
+INFO fontTools.subset: OS/2 subsetting not needed
+INFO fontTools.subset: hmtx subsetted
+INFO fontTools.subset: hdmx subsetted
+INFO fontTools.subset: cmap subsetted
+INFO fontTools.subset: fpgm subsetting not needed
+INFO fontTools.subset: prep subsetting not needed
+INFO fontTools.subset: cvt  subsetting not needed
+INFO fontTools.subset: loca subsetting not needed
+INFO fontTools.subset: kern subsetted
+INFO fontTools.subset: post subsetted
+INFO fontTools.subset: prop subsetted
+INFO fontTools.subset: name subsetting not needed
+INFO fontTools.subset: glyf subsetted
+INFO fontTools.subset: head pruned
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1]
+INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
+INFO fontTools.subset: glyf pruned
+INFO fontTools.subset: name pruned
+INFO panelforge_figures.manifest.resolver: render_manifest: produced 18 files; registry={'actin_microtubule_morphometry': 49, 'biophysics_scaling': 51, 'calcium_signaling': 15, 'clinical_cohort': 15, 'cryoem_and_structure': 15, 'diffusion_and_tracking': 15, 'dose_response_pharmacology': 15, 'fret_biosensors': 18, 'gillespie_stochastic': 15, 'grant_and_conceptual': 16, 'intravital_imaging': 61, 'meta_and_diagnostic': 27, 'mixed_effects_models': 20, 'network_and_pathway': 15, 'omics_differential': 22, 'redox_imaging': 15, 'rhogtpase_dynamics': 18, 'sensitivity_analysis': 15, 'single_cell_embeddings': 15, 'spatial_statistics': 16}
+```

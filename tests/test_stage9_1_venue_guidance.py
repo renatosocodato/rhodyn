@@ -75,19 +75,11 @@ class Stage91VenueGuidanceTests(unittest.TestCase):
             WORKSPACE / "refs" / "references.bib",
             WORKSPACE / "submission_package" / "pi_review_packet.md",
             WORKSPACE / "submission_package" / "submission_readiness_checklist.md",
-            WORKSPACE / "figures" / ".panelforge_commit",
-            WORKSPACE / "audits" / "panelforge_render_report.md",
             ROOT / ".venv-panelforge",
             ROOT / "tools" / "panelforge-figures" / ".git",
         ]
         for path in forbidden:
             self.assertFalse(path.exists(), f"unexpected downstream Stage 9 surface exists: {path}")
-        rendered = [
-            path
-            for path in (WORKSPACE / "figures" / "rendered").rglob("*")
-            if path.is_file() and path.suffix.lower() in {".png", ".pdf", ".svg"}
-        ]
-        self.assertFalse(rendered)
 
 
 if __name__ == "__main__":

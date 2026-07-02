@@ -76,19 +76,11 @@ class Stage90EvidenceLockTests(unittest.TestCase):
             WORKSPACE / "sections" / "methods.md",
             WORKSPACE / "refs" / "references.bib",
             WORKSPACE / "submission_package" / "pi_review_packet.md",
-            WORKSPACE / "figures" / ".panelforge_commit",
-            WORKSPACE / "audits" / "panelforge_render_report.md",
             ROOT / ".venv-panelforge",
             ROOT / "tools" / "panelforge-figures" / ".git",
         ]
         for path in forbidden:
             self.assertFalse(path.exists(), path)
-        rendered = [
-            path
-            for path in (WORKSPACE / "figures" / "rendered").rglob("*")
-            if path.is_file() and path.suffix.lower() in {".png", ".pdf", ".svg"}
-        ]
-        self.assertEqual(rendered, [])
 
 
 if __name__ == "__main__":

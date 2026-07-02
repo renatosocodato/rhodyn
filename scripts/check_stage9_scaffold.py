@@ -109,10 +109,13 @@ FORBIDDEN_DRAFTS = [
     "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
-    "figures/.panelforge_commit",
-    "audits/panelforge_render_report.md",
 ]
 FORBIDDEN_RENDER_SUFFIXES = {".png", ".pdf", ".svg"}
+STAGE96B_RENDER_OUTPUTS = {
+    f"figures/rendered/FIG-00{idx}/FIG-00{idx}.{suffix}"
+    for idx in range(1, 7)
+    for suffix in ("pdf", "png", "svg")
+}
 
 
 def _read_json(path: Path, failures: list[str]) -> Any:
@@ -171,8 +174,11 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         failures.append("PanelForge pinned ref must remain v3.14.1")
     if figure_engine.get("version_doi") != "10.5281/zenodo.20811171":
         failures.append("PanelForge version DOI must be 10.5281/zenodo.20811171")
-    if figure_engine.get("execution_status") != "not_cloned_not_installed_not_rendered":
-        failures.append("PanelForge execution status must remain not cloned/install/rendered in scaffold")
+    if figure_engine.get("execution_status") not in {
+        "not_cloned_not_installed_not_rendered",
+        "rendered_by_transient_pinned_install_no_repo_clone",
+    }:
+        failures.append("PanelForge execution status must record either the scaffold state or the transient Stage 9.6b render state")
 
     registry = _read_json(workspace / "contracts" / "stage9_substage_registry.json", failures)
     substages = registry.get("substages", []) if isinstance(registry, dict) else []
@@ -206,7 +212,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
         failures.append(f"Stage 9 must not contain post-9.6 gate verdicts before authorization: {unexpected_gate_files}")
@@ -219,6 +225,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_4_started = "9.4.json" in gate_files
     stage9_5_started = "9.5.json" in gate_files
     stage9_6_started = "9.6.json" in gate_files
+    stage9_6b_started = "9.6b.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -234,11 +241,20 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             continue
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
-    for flag in ["figure_engine_clone_started", "figure_engine_install_started", "figure_rendering_started"]:
-        if memory.get(flag) is not False:
-            failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
+    if memory.get("figure_engine_clone_started") is not False:
+        failures.append("Stage 9 memory must not record a committed PanelForge clone")
+    if stage9_6b_started:
+        for flag in ["figure_engine_install_started", "figure_rendering_started"]:
+            if memory.get(flag) is not True:
+                failures.append(f"Stage 9 execution memory must record {flag}=true after 9.6b")
+    else:
+        for flag in ["figure_engine_install_started", "figure_rendering_started"]:
+            if memory.get(flag) is not False:
+                failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_6_figure_spine_registered"
+        "stage9_6b_panelforge_rendering_registered"
+        if stage9_6b_started
+        else "stage9_6_figure_spine_registered"
         if stage9_6_started
         else "stage9_5_paragraph_claim_ledger_registered"
         if stage9_5_started
@@ -428,6 +444,44 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain figure-spine output before 9.6: {rel}")
 
+    if stage9_6b_started:
+        stage9_6b_gate = _read_json(workspace / "gate_verdicts" / "9.6b.json", failures)
+        if stage9_6b_gate.get("pass") is not True or stage9_6b_gate.get("substage") != "9.6b":
+            failures.append("Stage 9.6b gate verdict must pass when present")
+        for rel in [
+            "figures/.panelforge_commit",
+            "audits/panelforge_render_report.md",
+        ]:
+            if not (workspace / rel).exists():
+                failures.append(f"Stage 9.6b render output missing: {rel}")
+        rendered_outputs = {
+            path.relative_to(workspace).as_posix()
+            for path in (workspace / "figures" / "rendered").rglob("*")
+            if path.is_file() and path.suffix.lower() in FORBIDDEN_RENDER_SUFFIXES
+        }
+        if rendered_outputs != STAGE96B_RENDER_OUTPUTS:
+            failures.append(f"Stage 9.6b must contain exactly the expected rendered files: {sorted(rendered_outputs)}")
+        manifest = workspace / "figures" / "figures.manifest.yaml"
+        if manifest.exists() and "scaffold_placeholder_not_renderable" in manifest.read_text(encoding="utf-8"):
+            failures.append("Stage 9.6b figure manifest must be renderable, not the scaffold placeholder")
+    else:
+        for rel in [
+            "figures/.panelforge_commit",
+            "audits/panelforge_render_report.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain PanelForge render output before 9.6b: {rel}")
+        rendered_outputs = [
+            path.relative_to(workspace).as_posix()
+            for path in (workspace / "figures" / "rendered").rglob("*")
+            if path.is_file() and path.suffix.lower() in FORBIDDEN_RENDER_SUFFIXES
+        ]
+        if rendered_outputs:
+            failures.append(f"Stage 9 state must not render panels before 9.6b: {rendered_outputs}")
+        manifest = workspace / "figures" / "figures.manifest.yaml"
+        if manifest.exists() and "scaffold_placeholder_not_renderable" not in manifest.read_text(encoding="utf-8"):
+            failures.append("Stage 9 figure manifest must remain a non-renderable scaffold placeholder before 9.6b")
+
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
             failures.append(f"Stage 9 scaffold-only pass must not create manuscript/evidence artifact: {rel}")
@@ -435,19 +489,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9 scaffold-only pass must not create .venv-panelforge")
     if (root / "tools" / "panelforge-figures" / ".git").exists():
         failures.append("Stage 9 scaffold-only pass must not clone panelforge-figures")
-    rendered_outputs = [
-        path.relative_to(workspace).as_posix()
-        for path in (workspace / "figures" / "rendered").rglob("*")
-        if path.is_file() and path.suffix.lower() in FORBIDDEN_RENDER_SUFFIXES
-    ]
-    if rendered_outputs:
-        failures.append(f"Stage 9 scaffold-only pass must not render panels: {rendered_outputs}")
-    manifest = workspace / "figures" / "figures.manifest.yaml"
-    if manifest.exists() and "scaffold_placeholder_not_renderable" not in manifest.read_text(encoding="utf-8"):
-        failures.append("Stage 9 figure manifest must remain a non-renderable scaffold placeholder")
     placeholder = root / "tools" / "panelforge-figures" / "STAGE9_PLACEHOLDER.md"
-    if placeholder.exists() and "Not cloned, not installed, and not rendered" not in placeholder.read_text(encoding="utf-8"):
-        failures.append("PanelForge placeholder must state that the engine is not cloned or rendered")
+    if placeholder.exists() and "Not cloned into this repository" not in placeholder.read_text(encoding="utf-8"):
+        failures.append("PanelForge placeholder must state that the engine is not cloned into this repository")
 
     reader_surface_pattern = re.compile(r"(sections|submission_package)/(results|introduction|discussion|methods|abstract|main|supplement)", re.I)
     for path in workspace.rglob("*"):

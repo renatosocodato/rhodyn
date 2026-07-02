@@ -41,7 +41,7 @@ class Stage778RecursiveHardeningTests(unittest.TestCase):
         self.assertEqual(docs_report["counts"]["stage7_8_figure_rows"], 6)
         self.assertEqual(docs_report["counts"]["stage7_8_claim_rows"], 5)
         self.assertIn("does not add biological evidence", docs_report["interpretation_boundary"])
-        self.assertIn("Stage 9.6 main figure-spine plan", docs_report["interpretation_boundary"])
+        self.assertIn("Stage 9.6b deterministic main-figure mockup rendering", docs_report["interpretation_boundary"])
         self.assertEqual(docs_report["counts"]["unauthorized_phase9_files"], 0)
         self.assertEqual(docs_report["counts"]["unauthorized_stage9_draft_files"], 0)
         self.assertEqual(docs_report["counts"]["stage9_checker_status"], "pass")

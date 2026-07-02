@@ -14,6 +14,8 @@ recursive-include .github/workflows *.yml
 recursive-include docs *.md
 recursive-include docs *.json *.csv
 recursive-include manuscript/nature_methods *.md *.json *.yaml *.csv *.txt
+include manuscript/nature_methods/figures/.panelforge_commit
+recursive-include manuscript/nature_methods/figures/rendered *.pdf *.png *.svg
 recursive-include case_studies *.csv *.json *.tsv *.txt *.md
 recursive-include deploy *.example *.Dockerfile *.yml
 recursive-include examples *.csv *.py *.txt

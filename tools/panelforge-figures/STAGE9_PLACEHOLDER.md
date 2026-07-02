@@ -1,10 +1,12 @@
 # PanelForge placeholder
 
-This directory is reserved for the Stage 9.6b local clone of
-`panelforge-figures` at pinned ref `v3.14.1`.
+This directory is reserved for a future committed local clone of
+`panelforge-figures` at pinned ref `v3.14.1`, if the manuscript production
+workflow later requires one.
 
-Current status. Not cloned, not installed, and not rendered.
+Current status. Not cloned into this repository. Stage 9.6b rendered through a
+transient Python 3.12 environment using the pinned `v3.14.1` Git tag.
 
-Do not place manuscript figures here. Stage 9.6b must replace this placeholder
-with the actual engine clone only after the figure-to-claim-to-artifact
-contract has passed.
+Do not place manuscript figures here. Rendered figure files belong under
+`manuscript/nature_methods/figures/rendered/`, and engine/version details belong
+in `manuscript/nature_methods/figures/.panelforge_commit`.

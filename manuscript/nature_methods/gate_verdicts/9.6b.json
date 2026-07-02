@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "name": "stage_9_6_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "panelforge-figures@v3.14.1",
+      "name": "figure_engine_version_equals_pinned_ref",
+      "passed": true
+    },
+    {
+      "detail": "manuscript/nature_methods/figures/figures.manifest.yaml",
+      "name": "figures_validate_passed",
+      "passed": true
+    },
+    {
+      "name": "every_fig_id_has_existing_render_path",
+      "passed": true
+    },
+    {
+      "name": "every_rendered_entry_records_recipe_and_rejected_alternative",
+      "passed": true
+    },
+    {
+      "detail": [],
+      "name": "manifest_keys_contain_no_claim_or_artifact_tokens",
+      "passed": true
+    },
+    {
+      "name": "gallery_drift_explicitly_accepted",
+      "passed": true
+    },
+    {
+      "name": "no_manuscript_drafting_or_submission_started",
+      "passed": true
+    }
+  ],
+  "engine": {
+    "commit": "d8ab4c5d25be6243aa7209ad1ee6af144820c920",
+    "name": "panelforge-figures",
+    "pinned_ref": "v3.14.1",
+    "version": "3.14.1",
+    "version_doi": "10.5281/zenodo.20811171"
+  },
+  "generated_utc": "2026-07-02T12:10:05.379100Z",
+  "next_substage": "9.7",
+  "pass": true,
+  "remaining_boundaries": [
+    "No manuscript prose was created.",
+    "No citation resolution was created.",
+    "No submission package was created.",
+    "Rendered figures are deterministic mockups tied to the frozen figure contract."
+  ],
+  "rendered_figures": [
+    "FIG-001",
+    "FIG-002",
+    "FIG-003",
+    "FIG-004",
+    "FIG-005",
+    "FIG-006"
+  ],
+  "rendered_file_count": 18,
+  "status": "pass",
+  "substage": "9.6b"
+}

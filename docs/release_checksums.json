@@ -1,5 +1,5 @@
 {
-  "file_count": 465,
+  "file_count": 462,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -38,8 +38,8 @@
     },
     {
       "path": "MANIFEST.in",
-      "sha256": "cb817287dcfb4e3944e6996860b7fec54d1d065ea0f15ee496dcaea90338a432",
-      "size_bytes": 1018
+      "sha256": "81ffc9e7dd0f95ca6063e5d11df7043e01f6e65dc78b61bb16d1412ac72621b0",
+      "size_bytes": 1158
     },
     {
       "path": "NOTICE",
@@ -368,7 +368,7 @@
     },
     {
       "path": "case_studies/stage7_benchmarks/performance_summary.csv",
-      "sha256": "cab7ff37ed244fc972b994118178bbf51ecdc64ac0986fa0c6fa8012a5a2a543",
+      "sha256": "92fa6bccc7e86ed3458be0fc4477a4558d7ba280646e012bdbf29959c1c89e77",
       "size_bytes": 468
     },
     {
@@ -558,8 +558,8 @@
     },
     {
       "path": "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
-      "sha256": "775675a9540340c3818b24be638e5d3fe37183d9bdd21cc286595c69a79cae5c",
-      "size_bytes": 1560
+      "sha256": "cd3d745fb48f214bd78043ee92ede6fe687c3d637fa10700111a97a7fe44f7b8",
+      "size_bytes": 1655
     },
     {
       "path": "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json",
@@ -588,17 +588,17 @@
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv",
-      "sha256": "d5e0dbc189208ba8ddf035fa6a18aea4263875cff641f9cedd22b308c7c88fdb",
-      "size_bytes": 63683
+      "sha256": "4b2eed74572ea42257de530f2ebbadaa342cd543262037f1b5bec26bd29e30d1",
+      "size_bytes": 66952
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
-      "sha256": "9f7f19c3b2cccd4d6598edb20b58bc400c3517e1ca590db52fbd40bf40b628d3",
-      "size_bytes": 31096
+      "sha256": "cb8a2af51fac2c7b17d597ddc9b9d453c16e1e3b641f003dbe6e67258582931d",
+      "size_bytes": 31097
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
-      "sha256": "78a588a78cfe5bc5c097def3a5c67693fc924084e6198c7ab8ca8a8313966cc4",
+      "sha256": "86ea38b27775aba2584d60efb6e55065125b39c1293d3b15e9c2b307c7f46da8",
       "size_bytes": 4541
     },
     {
@@ -958,13 +958,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "9868e8762126b9cf50a54c420a5a9a4604ca9de6f9f2bbf8a6f7592f9cf6088b",
-      "size_bytes": 32720
+      "sha256": "f2f5b14ce5f3cfd81cd56c7b4da2176dd0907fdbccf1e810d639c9d94ee160ae",
+      "size_bytes": 32875
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "410017252bc88a22047991dcddfb1249d407f9f4cc5d4569221644de96c16b5a",
-      "size_bytes": 46799
+      "sha256": "0c53e22cc1b81d1ff355588530775569c9401d88526c081346ebbe979d4f5625",
+      "size_bytes": 49043
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -1068,13 +1068,13 @@
     },
     {
       "path": "docs/stage7_6_clean_room_report.json",
-      "sha256": "9f7f19c3b2cccd4d6598edb20b58bc400c3517e1ca590db52fbd40bf40b628d3",
-      "size_bytes": 31096
+      "sha256": "cb8a2af51fac2c7b17d597ddc9b9d453c16e1e3b641f003dbe6e67258582931d",
+      "size_bytes": 31097
     },
     {
       "path": "docs/stage7_6_gate_report.json",
-      "sha256": "9f7f19c3b2cccd4d6598edb20b58bc400c3517e1ca590db52fbd40bf40b628d3",
-      "size_bytes": 31096
+      "sha256": "cb8a2af51fac2c7b17d597ddc9b9d453c16e1e3b641f003dbe6e67258582931d",
+      "size_bytes": 31097
     },
     {
       "path": "docs/stage7_6_recursive_hardening.md",
@@ -1088,13 +1088,13 @@
     },
     {
       "path": "docs/stage7_7_8_recursive_hardening.md",
-      "sha256": "ded0c9055a3231843b3059f0b48ec31cdf7358357f40021a602a150f409e327d",
-      "size_bytes": 1392
+      "sha256": "c7f9e50c7cfa00d04d49e80d7a751d2d7e3b5713b114189ad1fcfdaf86e48e34",
+      "size_bytes": 1487
     },
     {
       "path": "docs/stage7_7_8_recursive_hardening_report.json",
-      "sha256": "775675a9540340c3818b24be638e5d3fe37183d9bdd21cc286595c69a79cae5c",
-      "size_bytes": 1560
+      "sha256": "cd3d745fb48f214bd78043ee92ede6fe687c3d637fa10700111a97a7fe44f7b8",
+      "size_bytes": 1655
     },
     {
       "path": "docs/stage7_7_gate_report.json",
@@ -1158,12 +1158,12 @@
     },
     {
       "path": "docs/stage7_methods_program.md",
-      "sha256": "e8a83aa74524afeea941c1a3e095f418f59ff956842952cd9489ab8bd8ee0a75",
-      "size_bytes": 43750
+      "sha256": "ce192fe3eb67f7665dda19e01d80792eab16dbbf9a196b198777d86fbbf59f12",
+      "size_bytes": 43730
     },
     {
       "path": "docs/stage7_methods_reproducibility_card.md",
-      "sha256": "78a588a78cfe5bc5c097def3a5c67693fc924084e6198c7ab8ca8a8313966cc4",
+      "sha256": "86ea38b27775aba2584d60efb6e55065125b39c1293d3b15e9c2b307c7f46da8",
       "size_bytes": 4541
     },
     {
@@ -1208,13 +1208,13 @@
     },
     {
       "path": "docs/stage9_execution_memory.json",
-      "sha256": "2e8cf681000dee0f1260bf99ce33a39cba05026e5f9c1f2296801cb331191bc9",
-      "size_bytes": 21051
+      "sha256": "92286ce51d08151ba4c294ef1d03d17989ac2c623e198d74a1c6834b3a1882ff",
+      "size_bytes": 26124
     },
     {
       "path": "docs/stage9_manuscript_assembly_plan.md",
-      "sha256": "9e5dce85e3a6a5fc3c34faf29ba4e53528462c3c760725d39f13e148a1a348e6",
-      "size_bytes": 10308
+      "sha256": "d0a8845ec3b8ef15a77468d0570796dc0b685394eb8cc3908f8097abe568ead2",
+      "size_bytes": 10671
     },
     {
       "path": "docs/zenodo_dry_run_report.json",
@@ -1315,6 +1315,11 @@
       "path": "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md",
       "sha256": "d24376026ebab1082c64ee5ed3639c8be4079732edc9c5508586418c9f6ae0ea",
       "size_bytes": 2703
+    },
+    {
+      "path": "manuscript/nature_methods/audits/panelforge_render_report.md",
+      "sha256": "28bea6b5ef93a6b96959d85aeba049ffd1961a2f8c187466d395c28ddfdf2a1e",
+      "size_bytes": 75879
     },
     {
       "path": "manuscript/nature_methods/audits/venue_fit_rationale.md",
@@ -1423,18 +1428,23 @@
     },
     {
       "path": "manuscript/nature_methods/contracts/stage9_project_binding.json",
-      "sha256": "8058096eb22521f98d9afdfa353a9b68fde9bc543db30950e31d7b6833b3ce57",
-      "size_bytes": 1984
+      "sha256": "ff013cfd42a644a1744735c8dfb9c2b5b13e20cee326a340bd1a3de37f425732",
+      "size_bytes": 2031
     },
     {
       "path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
-      "sha256": "138defdfe5233ad5c9d88b451f4ae4475033a4c0b69cbd0b9a1cb8947e192e2f",
-      "size_bytes": 22018
+      "sha256": "a7f97207df18bfafa75b885b16188e5d92affd614640b81404b33234f1d3e003",
+      "size_bytes": 22083
     },
     {
       "path": "manuscript/nature_methods/figures/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size_bytes": 0
+    },
+    {
+      "path": "manuscript/nature_methods/figures/.panelforge_commit",
+      "sha256": "7554bf8208862682f6f43eb87d13cef127b0ea0231428c4e058645ad7af3b234",
+      "size_bytes": 74182
     },
     {
       "path": "manuscript/nature_methods/figures/display_item_plan.md",
@@ -1443,8 +1453,8 @@
     },
     {
       "path": "manuscript/nature_methods/figures/figures.manifest.yaml",
-      "sha256": "f51e2effe93d77968ccbfafe2095fef7a142ac352a53d280d8ef88be96c5fb06",
-      "size_bytes": 392
+      "sha256": "075a15d8783264c8091a0d16fb2d04a6f03746888aa906c7b1baae77afd515c5",
+      "size_bytes": 43902
     },
     {
       "path": "manuscript/nature_methods/figures/main_figure_spine.md",
@@ -1502,6 +1512,11 @@
       "size_bytes": 2029
     },
     {
+      "path": "manuscript/nature_methods/gate_verdicts/9.6b.json",
+      "sha256": "32fcc0d0c3b1ed2ee7b92d8bb61570951571271163c743292725a200e97d9ee4",
+      "size_bytes": 1618
+    },
+    {
       "path": "manuscript/nature_methods/ledgers/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size_bytes": 0
@@ -1523,8 +1538,8 @@
     },
     {
       "path": "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
-      "sha256": "bac3a1ad60bafcd60ca03f389558d225f9d0a02dbf306ab128358ff9217b1bde",
-      "size_bytes": 3633
+      "sha256": "310cc2b75ee3f190208ac633d9ddfc6bd8f6aab33b3c8bb9828465db1b634191",
+      "size_bytes": 4235
     },
     {
       "path": "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
@@ -1818,8 +1833,8 @@
     },
     {
       "path": "scripts/audit_stage7_7_8_recursive_hardening.py",
-      "sha256": "6dc5ab5b6982f3998063258d686b03a9e2d1517f9476398b4c4b563a751e4299",
-      "size_bytes": 27821
+      "sha256": "1dd3ad612378ea9882874c7d6317df0df6b481b948ad8ac72609a27742fd7027",
+      "size_bytes": 28351
     },
     {
       "path": "scripts/build_stage7_1_synthetic_truth_cases.py",
@@ -1843,18 +1858,18 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "274074a65ba4b99abae90279e12c75e72c276388c408c920f92ae05994c890a7",
-      "size_bytes": 63574
+      "sha256": "340182bc9019504b3031440bd257b495eccec6646294f587c52b43ec4c2ea006",
+      "size_bytes": 65254
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "46fe389748fc3b89422e464966cc68efa10b5b4cc2dba9ac43ba9a21a544f3e5",
-      "size_bytes": 52632
+      "sha256": "f68ecef66c378d915dd19baa2a079984b7a6122204b0b40d40643585b3ee9a81",
+      "size_bytes": 53661
     },
     {
       "path": "scripts/check_stage9_scaffold.py",
-      "sha256": "5898cfd68a916306ba9ba34c1f4dc8059293ba44ff6ef78098ec8a16713eca7b",
-      "size_bytes": 23730
+      "sha256": "a4462bf11a5e9524f9764eb2f34ed78850450bec4b4126045fa557c66314bbdf",
+      "size_bytes": 26049
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -1928,8 +1943,8 @@
     },
     {
       "path": "scripts/run_stage7_6_methods_reproducibility.py",
-      "sha256": "782ece8b23e42213268f6539a829c62dbd2dab9e73d178a5a0d2c0e035d6f105",
-      "size_bytes": 50895
+      "sha256": "ae0f8522779286cbc7416e3d7bc68af78fd8a517e123eb5bd877c7846f869e34",
+      "size_bytes": 52541
     },
     {
       "path": "scripts/run_stage7_7_usability_rehearsal.py",
@@ -1978,8 +1993,8 @@
     },
     {
       "path": "scripts/run_stage9_6b_panelforge_rendering.py",
-      "sha256": "e637aaa39707df4e4087230073ed6cca363ef40d1f6b8d4c3731f0a97d91c468",
-      "size_bytes": 4224
+      "sha256": "613af35865505192d9d9c160f4788972808271a1d589a7641d12a5d4b379d7a6",
+      "size_bytes": 47359
     },
     {
       "path": "scripts/scaffold_stage9_manuscript_assembly.py",
@@ -2090,36 +2105,6 @@
       "path": "src/rhodyn/uncertainty.py",
       "sha256": "7e4f14cc1536d801506219955c5094c22090a55eb57102d596ce94f0a5228ba6",
       "size_bytes": 7083
-    },
-    {
-      "path": "src/rhodyn.egg-info/PKG-INFO",
-      "sha256": "64bf91ba9b82b0c2aabb66d4ce539921b37532deaa85e5b6b17733d3cdcf8cb3",
-      "size_bytes": 18950
-    },
-    {
-      "path": "src/rhodyn.egg-info/SOURCES.txt",
-      "sha256": "340d62db0dc737a4e7f7df5d438527ab32b887dd844ac105b2c9352d689f3bf7",
-      "size_bytes": 24600
-    },
-    {
-      "path": "src/rhodyn.egg-info/dependency_links.txt",
-      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-      "size_bytes": 1
-    },
-    {
-      "path": "src/rhodyn.egg-info/entry_points.txt",
-      "sha256": "48bcd0143835d6274b450cb062e3b7d25d32070ce9420b7cb8b72b832860ffef",
-      "size_bytes": 43
-    },
-    {
-      "path": "src/rhodyn.egg-info/requires.txt",
-      "sha256": "266e124a999dd191ff6f3924c4b7cd3f0443a4463b410e4671a2f99a3a7f2008",
-      "size_bytes": 306
-    },
-    {
-      "path": "src/rhodyn.egg-info/top_level.txt",
-      "sha256": "4284619994248a8c96e8a7106bdd9ee0ee9f8cf8c68d01d3cfbacd48f867fd29",
-      "size_bytes": 7
     },
     {
       "path": "tests/playwright/stage5.visual.spec.mjs",
@@ -2268,8 +2253,8 @@
     },
     {
       "path": "tests/test_stage7_7_8_recursive_hardening.py",
-      "sha256": "170b4ae0eee9bb8ecb68ce8091e36383caba4410f11a87d7d80cb2fcc6811b29",
-      "size_bytes": 4213
+      "sha256": "17013581acfa495c961bd0868f590e7f01e05cad80d235c540776f051f21c810",
+      "size_bytes": 4234
     },
     {
       "path": "tests/test_stage7_7_usability_rehearsal.py",
@@ -2283,13 +2268,13 @@
     },
     {
       "path": "tests/test_stage9_0_evidence_lock.py",
-      "sha256": "de5653899201bb6dea2f364e12ca2b499cc396780c2174c4422db835e98f6fa0",
-      "size_bytes": 3959
+      "sha256": "d22816683ef1b31e3ab8ae0689691da4613c4e122710b1b26b56c36ce84967da",
+      "size_bytes": 3594
     },
     {
       "path": "tests/test_stage9_1_venue_guidance.py",
-      "sha256": "93e52606d610480d0a015d8497cb4c9e1fb258214085194de2c08b33a00eac76",
-      "size_bytes": 4089
+      "sha256": "d9525656bb90833ca0f58a770acdec1153b8ddac05d2c082dcdd07ddb220fc9f",
+      "size_bytes": 3728
     },
     {
       "path": "tests/test_stage9_2_methods_paper_corpus.py",
@@ -2313,13 +2298,13 @@
     },
     {
       "path": "tests/test_stage9_6_figure_spine.py",
-      "sha256": "1944f204c3626f1313b18ee467e464396ce0794068bc687a1a4683d58a229bc6",
-      "size_bytes": 4792
+      "sha256": "1a13ec061e36398ea6fb3429b0799150a79902c16d19776d689ee550153a19bb",
+      "size_bytes": 4979
     },
     {
       "path": "tests/test_stage9_scaffold.py",
-      "sha256": "5e06bb0e56816093f679bb969112d389a6123c8f85723ff3892f2375acf98e19",
-      "size_bytes": 3157
+      "sha256": "cf5b221afb04328a503284fc45dbdbdef6b611a3d98bed5dd6475abd108f87b3",
+      "size_bytes": 3156
     },
     {
       "path": "tests/test_uncertainty.py",
@@ -2327,7 +2312,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-07-02T11:29:56.483811Z",
+  "generated_utc": "2026-07-02T12:12:01.660438Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

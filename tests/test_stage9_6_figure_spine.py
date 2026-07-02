@@ -48,11 +48,12 @@ class Stage96FigureSpineTests(unittest.TestCase):
         for row in figure_rows:
             self.assertEqual(row["placement"], "main")
             self.assertEqual(row["engine_version"], "panelforge-figures@v3.14.1")
-            self.assertEqual(row["engine_commit"], "pending_stage9.6b")
-            self.assertEqual(row["drift_ok"], "pending")
+            self.assertEqual(row["engine_commit"], "d8ab4c5d25be6243aa7209ad1ee6af144820c920")
+            self.assertEqual(row["drift_ok"], "accepted_stage9.6b")
             self.assertEqual(row["stat_ids"], "pending_stage9.22")
-            self.assertTrue(row["render_path"].endswith("_pending_stage9.6b.svg"))
-            self.assertTrue(row["recipe"].startswith("panelforge_pending:"))
+            self.assertTrue(row["render_path"].endswith(f"{row['fig_id']}/{row['fig_id']}.svg"))
+            self.assertTrue((ROOT / row["render_path"]).exists())
+            self.assertTrue(row["recipe"].startswith("panelforge:"))
             self.assertTrue(row["panel_structure"])
             self.assertTrue(row["rejected_alternative"])
             row_claims = set(row["claim_id"].split(";"))
@@ -83,7 +84,7 @@ class Stage96FigureSpineTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, plan_flat)
 
-    def test_stage9_6_does_not_start_rendering_or_manuscript_surfaces(self) -> None:
+    def test_stage9_6b_rendering_does_not_start_manuscript_surfaces(self) -> None:
         for rel in [
             "sections/results.md",
             "sections/introduction.md",
@@ -91,8 +92,6 @@ class Stage96FigureSpineTests(unittest.TestCase):
             "sections/methods.md",
             "refs/references.bib",
             "submission_package/pi_review_packet.md",
-            "figures/.panelforge_commit",
-            "audits/panelforge_render_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists())
         rendered = [
@@ -100,7 +99,9 @@ class Stage96FigureSpineTests(unittest.TestCase):
             for path in (WORKSPACE / "figures" / "rendered").rglob("*")
             if path.is_file() and path.suffix.lower() in {".png", ".pdf", ".svg"}
         ]
-        self.assertEqual(rendered, [])
+        self.assertEqual(len(rendered), 18)
+        self.assertTrue((WORKSPACE / "figures" / ".panelforge_commit").exists())
+        self.assertTrue((WORKSPACE / "audits" / "panelforge_render_report.md").exists())
 
 
 if __name__ == "__main__":

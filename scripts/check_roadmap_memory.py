@@ -53,6 +53,7 @@ STAGE9_3_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / 
 STAGE9_4_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.4.json"
 STAGE9_5_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.5.json"
 STAGE9_6_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.6.json"
+STAGE9_6B_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.6b.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -105,6 +106,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_4_gate_path = root / STAGE9_4_GATE_PATH.relative_to(ROOT)
     stage9_5_gate_path = root / STAGE9_5_GATE_PATH.relative_to(ROOT)
     stage9_6_gate_path = root / STAGE9_6_GATE_PATH.relative_to(ROOT)
+    stage9_6b_gate_path = root / STAGE9_6B_GATE_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -125,8 +127,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 9.6 figure-first manuscript spine registered; manuscript production not started":
-        failures.append("active stage must record the Stage 9.6 figure-spine boundary")
+    if current.get("active_stage") != "Stage 9.6b PanelForge rendering registered; manuscript production not started":
+        failures.append("active stage must record the Stage 9.6b figure-rendering boundary")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -136,7 +138,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         6: "public_citable_v0.1.0",
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
-        9: "stage9_6_figure_spine_registered",
+        9: "stage9_6b_panelforge_rendering_registered",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -196,8 +198,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.5 must be complete_paragraph_claim_ledger_registered")
     if stage9_status.get("9.6") != "complete_figure_spine_registered":
         failures.append("Stage 9.6 must be complete_figure_spine_registered")
+    if stage9_status.get("9.6b") != "complete_panelforge_rendering_registered":
+        failures.append("Stage 9.6b must be complete_panelforge_rendering_registered")
     for entry in stage9_substages:
-        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6"} and entry.get("status") != "not_started":
+        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b"} and entry.get("status") != "not_started":
             failures.append(f"Stage {entry.get('id')} must remain not_started")
 
     roadmap_flat = " ".join(roadmap.split())
@@ -235,8 +239,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 9.4 claim freeze has been completed",
         "Stage 9.5 paragraph-level claim ledger has been completed",
         "Stage 9.6 figure-first manuscript spine has been completed",
-        "Stage 9.6b remains the next unstarted manuscript step",
-        "manuscript production, citation resolution, figure rendering, and drafting remain not started",
+        "Stage 9.6b PanelForge rendering has been completed",
+        "manuscript production, citation resolution, supplementary display planning, and drafting remain not started",
         "Stage 9. Nature Methods manuscript assembly",
         "PanelForge",
     ]
@@ -300,7 +304,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
 
     stage9_docs = [
         (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "PanelForge", "evidence lock", "manuscript drafting"]),
-        (stage9_memory_path, "Stage 9 execution memory", ["stage9_6_figure_spine_registered", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "figure_engine_clone_started"]),
+        (stage9_memory_path, "Stage 9 execution memory", ["stage9_6b_panelforge_rendering_registered", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "figure_engine_clone_started"]),
         (stage9_checker_path, "Stage 9 scaffold checker", ["FORBIDDEN_DRAFTS", "FORBIDDEN_RENDER_SUFFIXES", "check_stage9_scaffold", "scaffold_only_boundary_preserved"]),
         (stage9_0_runner_path, "Stage 9.0 evidence intake runner", ["stage9_evidence_manifest.csv", "stage9_evidence_lock.md", "No drafting", "PanelForge execution"]),
         (stage9_1_runner_path, "Stage 9.1 venue guidance runner", ["nature_methods_guidance_register.md", "venue_policy_constraints.md", "No representative corpus", "No manuscript sections"]),
@@ -309,7 +313,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         (stage9_4_runner_path, "Stage 9.4 claim-freeze runner", ["claim_hierarchy.md", "claim_hierarchy.csv", "non_claims_and_scope_boundaries.md", "No paragraph ledger", "No manuscript sections"]),
         (stage9_5_runner_path, "Stage 9.5 paragraph-ledger runner", ["paragraph_claim_ledger.csv", "claim_strength_rules.md", "No manuscript sections", "No manuscript prose"]),
         (stage9_6_runner_path, "Stage 9.6 figure-spine runner", ["main_figure_spine.md", "figure_to_claim_to_artifact.csv", "display_item_plan.md", "No rendered figures"]),
-        (stage9_panelforge_preflight_path, "Stage 9.6b PanelForge preflight harness", ["preflight", "blocked_preconditions", "stage_9_6_gate_passed", "runtime_env_not_created_yet"]),
+        (stage9_panelforge_preflight_path, "Stage 9.6b PanelForge render harness", ["preflight", "blocked_preconditions", "stage_9_6_gate_passed", "runtime_env_not_committed"]),
     ]
     for path, label, phrases in stage9_docs:
         if not path.exists():
@@ -393,6 +397,16 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.6 figure-spine gate must remain bound to substage 9.6")
         if stage9_6_gate.get("main_display_count") != 6:
             failures.append("Stage 9.6 figure-spine gate must register six main display items")
+    if not stage9_6b_gate_path.exists():
+        failures.append("missing manuscript/nature_methods/gate_verdicts/9.6b.json")
+    else:
+        stage9_6b_gate = json.loads(stage9_6b_gate_path.read_text(encoding="utf-8"))
+        if stage9_6b_gate.get("pass") is not True:
+            failures.append("Stage 9.6b PanelForge render gate must pass")
+        if stage9_6b_gate.get("substage") != "9.6b":
+            failures.append("Stage 9.6b PanelForge render gate must remain bound to substage 9.6b")
+        if stage9_6b_gate.get("rendered_file_count") != 18:
+            failures.append("Stage 9.6b PanelForge render gate must record 18 rendered files")
 
     stage7_doc_specs = [
         (stage7_source_register_path, "source register", ["Official and community guidance sources", "Representative methods papers", "Candidate dataset classes", "RhoA/microglia reference case"]),
@@ -812,7 +826,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
         warnings.append("Stage 7.8 methods manuscript readiness package is complete; Stage 8 remains conceptual")
-    warnings.append("Stage 9.6 figure-first manuscript spine is registered; manuscript production, citation resolution, figure rendering, and drafting have not started")
+    warnings.append("Stage 9.6b PanelForge rendering is registered; manuscript production, citation resolution, supplementary display planning, and drafting have not started")
 
     return {
         "status": "pass" if not failures else "fail",

@@ -254,6 +254,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/contracts/stage9_substage_registry.json",
     "manuscript/nature_methods/contracts/ledger_schema_map.json",
     "manuscript/nature_methods/figures/figures.manifest.yaml",
+    "manuscript/nature_methods/figures/.panelforge_commit",
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
     "manuscript/nature_methods/gate_verdicts/9.0.json",
     "manuscript/nature_methods/gate_verdicts/9.1.json",
@@ -262,6 +263,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.4.json",
     "manuscript/nature_methods/gate_verdicts/9.5.json",
     "manuscript/nature_methods/gate_verdicts/9.6.json",
+    "manuscript/nature_methods/gate_verdicts/9.6b.json",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -302,6 +304,25 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/figures/main_figure_spine.md",
     "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
     "manuscript/nature_methods/figures/display_item_plan.md",
+    "manuscript/nature_methods/audits/panelforge_render_report.md",
+    "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.pdf",
+    "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.png",
+    "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.svg",
+    "manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.pdf",
+    "manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.png",
+    "manuscript/nature_methods/figures/rendered/FIG-002/FIG-002.svg",
+    "manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.pdf",
+    "manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.png",
+    "manuscript/nature_methods/figures/rendered/FIG-003/FIG-003.svg",
+    "manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.pdf",
+    "manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.png",
+    "manuscript/nature_methods/figures/rendered/FIG-004/FIG-004.svg",
+    "manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.pdf",
+    "manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.png",
+    "manuscript/nature_methods/figures/rendered/FIG-005/FIG-005.svg",
+    "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.pdf",
+    "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.png",
+    "manuscript/nature_methods/figures/rendered/FIG-006/FIG-006.svg",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
@@ -410,8 +431,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.6 figure-first manuscript spine registered; manuscript production not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.6 figure-spine boundary as active")
+        if current.get("active_stage") != "Stage 9.6b PanelForge rendering registered; manuscript production not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.6b PanelForge rendering boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -425,8 +446,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_6_figure_spine_registered":
-            failures.append("roadmap execution memory does not mark Stage 9.6 figure spine without manuscript production")
+        if stages.get(9, {}).get("status") != "stage9_6b_panelforge_rendering_registered":
+            failures.append("roadmap execution memory does not mark Stage 9.6b PanelForge rendering without manuscript production")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -451,8 +472,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.6 figure-first manuscript spine registered; manuscript production not started":
-                failures.append("Stage 9 current gate must record figure-spine state")
+            if stage9.get("current_gate") != "Stage 9.6b rendered six deterministic main figure mockups without starting manuscript prose":
+                failures.append("Stage 9 current gate must record the Stage 9.6b rendered-figure state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -473,6 +494,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.5 must be marked complete_paragraph_claim_ledger_registered")
             if substage_status.get("9.6") != "complete_figure_spine_registered":
                 failures.append("Stage 9.6 must be marked complete_figure_spine_registered")
+            if substage_status.get("9.6b") != "complete_panelforge_rendering_registered":
+                failures.append("Stage 9.6b must be marked complete_panelforge_rendering_registered")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
