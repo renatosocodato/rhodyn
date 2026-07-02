@@ -1,0 +1,42 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.2 methods-paper corpus exists and passes",
+      "name": "stage_9_2_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Nature Methods Article budget is sourced from cached guidance and project binding",
+      "name": "content_type_matches_sourced_budget",
+      "passed": true
+    },
+    {
+      "detail": "Narrative spine defines method object, content type, discovery boundary, and Stage 9.4 stop point",
+      "name": "narrative_spine_exists",
+      "passed": true
+    },
+    {
+      "detail": "Decision is anchored to Stage 7.8 evidence readiness and Stage 9.2 methods-paper archetype analysis",
+      "name": "discovery_versus_demonstration_decision_is_evidence_bound",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "content_type": "Article",
+  "method_object": "residence-state inference for live-cell perturbation biology",
+  "narrative_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
+  "outputs": [
+    "manuscript/nature_methods/stage9_narrative_spine.md",
+    "manuscript/nature_methods/audits/venue_fit_rationale.md",
+    "manuscript/nature_methods/gate_verdicts/9.3.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Narrative-spine registration only. No claim freeze, citation resolution, drafting, figure rendering, PanelForge execution, or submission-package assembly.",
+  "substage": "9.3",
+  "timestamp": "2026-07-02T10:43:28.325609Z",
+  "venue": "Nature Methods"
+}

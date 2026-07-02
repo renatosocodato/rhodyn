@@ -39,6 +39,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_0_evidence_intake_lock.py",
     "scripts/run_stage9_1_venue_guidance_register.py",
     "scripts/run_stage9_2_methods_paper_corpus.py",
+    "scripts/run_stage9_3_narrative_spine.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
@@ -202,15 +203,16 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.2 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.3 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
     stage9_1_started = "9.1.json" in gate_files
     stage9_2_started = "9.2.json" in gate_files
+    stage9_3_started = "9.3.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -230,7 +232,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
     expected_memory_status = (
-        "stage9_2_methods_corpus_registered"
+        "stage9_3_narrative_spine_registered"
+        if stage9_3_started
+        else "stage9_2_methods_corpus_registered"
         if stage9_2_started
         else "stage9_1_guidance_registered"
         if stage9_1_started
@@ -313,6 +317,28 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
                 failures.append(f"Stage 9 state must not contain methods-paper corpus output before 9.2: {rel}")
         if (workspace / "refs" / "_cache" / "methods_corpus").exists():
             failures.append("Stage 9 state must not contain methods-paper cache before 9.2")
+
+    if stage9_3_started:
+        stage9_3_gate = _read_json(workspace / "gate_verdicts" / "9.3.json", failures)
+        if stage9_3_gate.get("pass") is not True or stage9_3_gate.get("substage") != "9.3":
+            failures.append("Stage 9.3 gate verdict must pass when present")
+        for rel in [
+            "stage9_narrative_spine.md",
+            "audits/venue_fit_rationale.md",
+        ]:
+            if not (workspace / rel).exists():
+                failures.append(f"Stage 9.3 narrative-spine output missing: {rel}")
+        if stage9_3_gate.get("content_type") != "Article":
+            failures.append("Stage 9.3 must retain Nature Methods Article as the content type")
+        if memory.get("narrative_spine_started") is not True:
+            failures.append("Stage 9 execution memory must record narrative_spine_started=true after 9.3")
+    else:
+        for rel in [
+            "stage9_narrative_spine.md",
+            "audits/venue_fit_rationale.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain narrative-spine output before 9.3: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

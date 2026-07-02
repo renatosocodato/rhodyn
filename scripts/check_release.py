@@ -233,11 +233,13 @@ REQUIRED_FILES = [
     "scripts/run_stage9_0_evidence_intake_lock.py",
     "scripts/run_stage9_1_venue_guidance_register.py",
     "scripts/run_stage9_2_methods_paper_corpus.py",
+    "scripts/run_stage9_3_narrative_spine.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
     "tests/test_stage9_2_methods_paper_corpus.py",
+    "tests/test_stage9_3_narrative_spine.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -250,6 +252,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.0.json",
     "manuscript/nature_methods/gate_verdicts/9.1.json",
     "manuscript/nature_methods/gate_verdicts/9.2.json",
+    "manuscript/nature_methods/gate_verdicts/9.3.json",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -280,6 +283,8 @@ REQUIRED_FILES = [
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
     "manuscript/nature_methods/refs/representative_methods_papers.md",
     "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md",
+    "manuscript/nature_methods/stage9_narrative_spine.md",
+    "manuscript/nature_methods/audits/venue_fit_rationale.md",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
@@ -388,8 +393,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.2 methods-paper corpus registered; manuscript production not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.2 methods-paper corpus boundary as active")
+        if current.get("active_stage") != "Stage 9.3 narrative spine registered; manuscript production not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.3 narrative-spine boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -403,8 +408,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_2_methods_corpus_registered":
-            failures.append("roadmap execution memory does not mark Stage 9.2 methods-paper corpus without manuscript production")
+        if stages.get(9, {}).get("status") != "stage9_3_narrative_spine_registered":
+            failures.append("roadmap execution memory does not mark Stage 9.3 narrative spine without manuscript production")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -429,8 +434,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.2 methods-paper corpus registered; manuscript production not started":
-                failures.append("Stage 9 current gate must record methods-paper corpus state")
+            if stage9.get("current_gate") != "Stage 9.3 narrative spine registered; manuscript production not started":
+                failures.append("Stage 9 current gate must record narrative-spine state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -443,6 +448,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.1 must be marked complete_guidance_registered")
             if substage_status.get("9.2") != "complete_methods_corpus_registered":
                 failures.append("Stage 9.2 must be marked complete_methods_corpus_registered")
+            if substage_status.get("9.3") != "complete_narrative_spine_registered":
+                failures.append("Stage 9.3 must be marked complete_narrative_spine_registered")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

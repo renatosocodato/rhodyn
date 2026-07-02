@@ -98,18 +98,43 @@
       "status": "pass",
       "substage": "9.2",
       "validation_outcome": "Representative computational methods-paper corpus registered for Stage 9 manuscript architecture"
+    },
+    {
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.1.json",
+        "manuscript/nature_methods/gate_verdicts/9.2.json",
+        "docs/stage7_8_gate_report.json"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/stage9_narrative_spine.md",
+        "manuscript/nature_methods/audits/venue_fit_rationale.md",
+        "manuscript/nature_methods/gate_verdicts/9.3.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.3.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.4 claim freeze has not started",
+        "Stage 9.6 figure-to-claim contract has not started",
+        "Stage 9.6b PanelForge rendering remains blocked until Stage 9.6 passes",
+        "Manuscript drafting and reference library construction remain not started"
+      ],
+      "status": "pass",
+      "substage": "9.3",
+      "validation_outcome": "Nature Methods Article content type and RhoDyn narrative spine registered before drafting"
     }
   ],
-  "current_substage": "9.2",
+  "current_substage": "9.3",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
   "figure_engine_install_started": false,
   "figure_manifest_status": "scaffold_placeholder_not_renderable",
   "figure_rendering_started": false,
-  "generated_utc": "2026-07-02T10:19:25.464399Z",
+  "generated_utc": "2026-07-02T10:43:28.325609Z",
   "manuscript_drafting_started": false,
-  "next_substage": "9.3",
+  "narrative_spine_started": true,
+  "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
+  "next_substage": "9.4",
   "next_substage_authorized": false,
   "project_binding": {
     "archive_doi": "10.5281/zenodo.21036616",
@@ -266,7 +291,34 @@
       "passed": true
     }
   ],
-  "status": "stage9_2_methods_corpus_registered",
+  "stage9_3_checks": [
+    {
+      "detail": "Stage 9.2 methods-paper corpus exists and passes",
+      "name": "stage_9_2_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Nature Methods Article budget is sourced from cached guidance and project binding",
+      "name": "content_type_matches_sourced_budget",
+      "passed": true
+    },
+    {
+      "detail": "Narrative spine defines method object, content type, discovery boundary, and Stage 9.4 stop point",
+      "name": "narrative_spine_exists",
+      "passed": true
+    },
+    {
+      "detail": "Decision is anchored to Stage 7.8 evidence readiness and Stage 9.2 methods-paper archetype analysis",
+      "name": "discovery_versus_demonstration_decision_is_evidence_bound",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference bibliography, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "status": "stage9_3_narrative_spine_registered",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "venue_guidance_started": true,
