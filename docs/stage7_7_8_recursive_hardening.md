@@ -22,4 +22,4 @@ This check verifies that the usability rehearsal and methods-readiness package r
 
 ## Interpretation boundary
 
-This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, with no evidence intake or manuscript drafting started.
+This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold plus Stage 9.0 evidence lock, with no citation resolution, figure rendering, or manuscript drafting started.

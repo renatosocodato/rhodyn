@@ -106,6 +106,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/audit_stage7_7_8_recursive_hardening.py",
     "scripts/check_stage9_scaffold.py",
     "scripts/scaffold_stage9_manuscript_assembly.py",
+    "scripts/run_stage9_0_evidence_intake_lock.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
@@ -140,6 +141,10 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/contracts/ledger_schema_map.json",
     "manuscript/nature_methods/figures/figures.manifest.yaml",
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
+    "manuscript/nature_methods/gate_verdicts/9.0.json",
+    "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
+    "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
+    "manuscript/nature_methods/ledgers/stage7_output_contract.md",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
     "notebooks/01_synthetic_residence_primer.ipynb",
     "notebooks/07_stage7_heldout_validation.ipynb",
@@ -472,8 +477,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9 scaffold serialized; manuscript production not started":
-        failures.append("roadmap memory does not mark the Stage 9 scaffold-only boundary as active")
+    if current.get("active_stage") != "Stage 9.0 evidence locked; manuscript production not started":
+        failures.append("roadmap memory does not mark the Stage 9.0 evidence-lock boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -483,13 +488,16 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_scaffold_serialized_not_started":
-        failures.append("Stage 9 is not marked scaffold_serialized_not_started")
+    if stage9.get("status") != "stage9_0_evidence_locked":
+        failures.append("Stage 9 is not marked stage9_0_evidence_locked")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
     if "9.6b" not in stage9_substage_ids:
         failures.append("Stage 9 does not serialize the 9.6b PanelForge rendering substage")
+    stage9_substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
+    if stage9_substage_status.get("9.0") != "complete_evidence_locked":
+        failures.append("Stage 9.0 is not marked complete_evidence_locked")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",

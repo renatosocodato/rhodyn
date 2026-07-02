@@ -230,8 +230,10 @@ REQUIRED_FILES = [
     "docs/stage9_execution_memory.json",
     "scripts/scaffold_stage9_manuscript_assembly.py",
     "scripts/check_stage9_scaffold.py",
+    "scripts/run_stage9_0_evidence_intake_lock.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "tests/test_stage9_scaffold.py",
+    "tests/test_stage9_0_evidence_lock.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -241,6 +243,10 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/contracts/ledger_schema_map.json",
     "manuscript/nature_methods/figures/figures.manifest.yaml",
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
+    "manuscript/nature_methods/gate_verdicts/9.0.json",
+    "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
+    "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
+    "manuscript/nature_methods/ledgers/stage7_output_contract.md",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
 ]
 LEAK_PATTERNS = [
@@ -350,8 +356,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9 scaffold serialized; manuscript production not started":
-            failures.append("roadmap execution memory does not mark the Stage 9 scaffold-only boundary as active")
+        if current.get("active_stage") != "Stage 9.0 evidence locked; manuscript production not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.0 evidence-lock boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -365,8 +371,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_scaffold_serialized_not_started":
-            failures.append("roadmap execution memory does not mark Stage 9 scaffold serialization without manuscript production")
+        if stages.get(9, {}).get("status") != "stage9_0_evidence_locked":
+            failures.append("roadmap execution memory does not mark Stage 9.0 evidence lock without manuscript production")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -391,13 +397,16 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9 scaffold serialized; manuscript production not started":
-                failures.append("Stage 9 current gate must record scaffold-only state")
+            if stage9.get("current_gate") != "Stage 9.0 evidence locked; manuscript production not started":
+                failures.append("Stage 9 current gate must record evidence-lock state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
             if "9.6b" not in substage_ids:
                 failures.append("Stage 9 must serialize the 9.6b PanelForge rendering substage")
+            substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
+            if substage_status.get("9.0") != "complete_evidence_locked":
+                failures.append("Stage 9.0 must be marked complete_evidence_locked")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

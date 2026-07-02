@@ -1,6 +1,6 @@
 # Stage 9 Nature Methods manuscript assembly plan
 
-Stage 9 converts the completed Stage 7 methods-program evidence package into a Nature Methods-oriented manuscript package. This repository state serializes the entire Stage 9 v2.1 plan and executes only the contract/schema scaffold. It does not begin evidence intake, literature lookup, manuscript drafting, editorial polishing, PanelForge rendering, or package assembly.
+Stage 9 converts the completed Stage 7 methods-program evidence package into a Nature Methods-oriented manuscript package. This repository state serializes the entire Stage 9 v2.1 plan, completes the contract/schema scaffold, and completes the Stage 9.0 evidence lock. It does not begin literature lookup, manuscript drafting, editorial polishing, PanelForge rendering, or package assembly.
 
 ## Project binding
 
@@ -11,9 +11,9 @@ Stage 9 converts the completed Stage 7 methods-program evidence package into a N
 - Software archive DOI. 10.5281/zenodo.21036616.
 - Venue target. Nature Methods Article, pending live venue-guidance verification in Stage 9.1.
 
-## Non-execution boundary
+## Current non-execution boundary
 
-This pass is scaffold-only. It creates the workspace, ID namespace, ledger schemas, gate convention, atomic-write protocol, substage registry, figure-engine binding, and execution memory. It intentionally does not create `sections/results.md`, `sections/introduction.md`, `sections/discussion.md`, `sections/methods.md`, `refs/references.bib`, submission-package files, or evidence-lock ledgers from Stage 9.0. It also does not clone PanelForge, create `.venv-panelforge`, validate a real figure manifest, or render panels.
+Stage 9.-1 created the workspace, ID namespace, ledger schemas, gate convention, atomic-write protocol, substage registry, figure-engine binding, and execution memory. Stage 9.0 then locked the completed Stage 7.8 evidence package into `ledgers/stage9_evidence_manifest.csv`, `ledgers/stage9_evidence_lock.md`, `ledgers/stage7_output_contract.md`, and `gate_verdicts/9.0.json`. The current state intentionally does not create `sections/results.md`, `sections/introduction.md`, `sections/discussion.md`, `sections/methods.md`, `refs/references.bib`, or submission-package files. It also does not clone PanelForge, create `.venv-panelforge`, validate a real figure manifest, or render panels.
 
 ## Patch ledger serialized from v2.1
 
@@ -46,7 +46,7 @@ This pass is scaffold-only. It creates the workspace, ID namespace, ledger schem
 | Substage | Title | Status | Objective |
 |---|---|---|---|
 | 9.-1 | Contract and schema layer | complete_scaffold_only | Make downstream gates machine-checkable and ledgers joinable before evidence intake. |
-| 9.0 | Stage 7 evidence intake and lock | not_started | Confirm that manuscript assembly can begin from frozen, typed Stage 7 evidence. |
+| 9.0 | Stage 7 evidence intake and lock | complete_evidence_locked | Confirm that manuscript assembly can begin from frozen, typed Stage 7 evidence. |
 | 9.1 | Venue guidance source register | not_started | Bind manuscript process to official and cached Nature Methods guidance. |
 | 9.2 | Representative methods-paper corpus | not_started | Create a structural corpus of successful computational methods papers. |
 | 9.3 | Archetype, content type, and narrative spine | not_started | Pin paper type, content type, and venue-fit decision before drafting. |

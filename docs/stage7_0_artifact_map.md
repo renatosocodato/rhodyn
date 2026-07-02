@@ -148,4 +148,4 @@ These artifacts map planned methods-manuscript figure components and claims to e
 - `docs/stage7_7_8_recursive_hardening_report.json`
 - `case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json`
 
-These artifacts verify that the Stage 7.7 export bundles and Stage 7.8 methods-readiness crosswalks remain covered by the release checksum table and Stage 7.6 archive manifest. They preserve the boundary that Stage 9 is scaffolded only as a manuscript-assembly contract, with no evidence intake, PanelForge rendering, or manuscript drafting started.
+These artifacts verify that the Stage 7.7 export bundles and Stage 7.8 methods-readiness crosswalks remain covered by the release checksum table and Stage 7.6 archive manifest. They preserve the boundary that Stage 9 is scaffolded as a manuscript-assembly contract and has completed only the Stage 9.0 evidence lock, with no PanelForge rendering or manuscript drafting started.

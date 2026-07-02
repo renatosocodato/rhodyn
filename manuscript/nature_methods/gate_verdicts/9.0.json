@@ -1,0 +1,45 @@
+{
+  "checks": [
+    {
+      "detail": "53 of 53 locked artifacts resolve",
+      "name": "entry_artifacts_resolve",
+      "passed": true
+    },
+    {
+      "detail": "Stage 7 gate reports and readiness reports retain pass status",
+      "name": "artifacts_validate_or_are_scoped_out",
+      "passed": true
+    },
+    {
+      "detail": "6 figure components and 5 headline claims map to locked artifacts",
+      "name": "headline_stage7_results_map_to_art_ids",
+      "passed": true
+    },
+    {
+      "detail": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
+      "name": "evidence_version_is_immutable",
+      "passed": true
+    },
+    {
+      "detail": "11 output-contract rows prepared",
+      "name": "stage7_output_contract_present",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference library, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
+  "outputs": [
+    "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
+    "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
+    "manuscript/nature_methods/ledgers/stage7_output_contract.md",
+    "manuscript/nature_methods/gate_verdicts/9.0.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Evidence intake only. No drafting, citation resolution, figure rendering, PanelForge execution, or submission-package assembly.",
+  "substage": "9.0",
+  "timestamp": "2026-07-02T09:19:34.612573Z"
+}

@@ -80,9 +80,16 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/figures/figures.manifest.yaml",
     "manuscript/nature_methods/figures/rendered/.gitkeep",
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
+    "manuscript/nature_methods/gate_verdicts/9.0.json",
+    "manuscript/nature_methods/ledgers/.gitkeep",
+    "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
+    "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
+    "manuscript/nature_methods/ledgers/stage7_output_contract.md",
     "scripts/check_stage9_scaffold.py",
+    "scripts/run_stage9_0_evidence_intake_lock.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/scaffold_stage9_manuscript_assembly.py",
+    "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_scaffold.py",
     "tools/panelforge-figures/.gitkeep",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
@@ -353,8 +360,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     memory = _read_json(ROOT / "docs" / "roadmap_execution_memory.json", failures)
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     stage9 = stages.get(9, {})
-    if stage9.get("status") != "stage9_scaffold_serialized_not_started":
-        failures.append("roadmap execution memory must record Stage 9 as scaffold_serialized_not_started")
+    if stage9.get("status") != "stage9_0_evidence_locked":
+        failures.append("roadmap execution memory must record Stage 9 as stage9_0_evidence_locked")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 execution memory must record 33 serialized substages")
     substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -363,8 +370,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     if stages.get(8, {}).get("status") != "conceptual_only":
         failures.append("Stage 8 must remain conceptual after Stage 7.7/7.8 hardening")
     current = memory.get("current_position", {}) if isinstance(memory.get("current_position", {}), dict) else {}
-    if current.get("active_stage") != "Stage 9 scaffold serialized; manuscript production not started":
-        failures.append("roadmap active stage must record the Stage 9 scaffold-only boundary")
+    if current.get("active_stage") != "Stage 9.0 evidence locked; manuscript production not started":
+        failures.append("roadmap active stage must record the Stage 9.0 evidence-lock boundary")
     return {
         "authorized_phase9_scaffold_files": len(stage9_files) - len(unauthorized),
         "unauthorized_phase9_files": len(unauthorized),
@@ -452,7 +459,7 @@ def audit_stage7_7_8_recursive_hardening(root: Path = ROOT) -> dict[str, object]
         "warnings": warnings,
         "interpretation_boundary": (
             "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. "
-            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, with no evidence intake or manuscript drafting started."
+            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold plus Stage 9.0 evidence lock, with no citation resolution, figure rendering, or manuscript drafting started."
         ),
     }
     return report

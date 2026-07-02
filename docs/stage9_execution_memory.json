@@ -22,18 +22,43 @@
       "status": "pass",
       "substage": "9.-1",
       "validation_outcome": "contract and schema scaffold serialized"
+    },
+    {
+      "evidence_dependencies": [
+        "case_studies/stage7_methods_readiness/figure_artifact_crosswalk.tsv",
+        "case_studies/stage7_methods_readiness/claim_evidence_crosswalk.tsv",
+        "docs/stage7_8_gate_report.json",
+        "case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
+        "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
+        "manuscript/nature_methods/ledgers/stage7_output_contract.md",
+        "manuscript/nature_methods/gate_verdicts/9.0.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.0.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.1 venue guidance has not started",
+        "Stage 9.2 representative corpus has not started",
+        "Stage 9.6 figure-to-claim contract has not started",
+        "Stage 9.6b PanelForge rendering remains blocked until Stage 9.6 passes"
+      ],
+      "status": "pass",
+      "substage": "9.0",
+      "validation_outcome": "Stage 7 evidence package locked for Stage 9 manuscript assembly"
     }
   ],
-  "current_substage": "9.-1",
-  "evidence_intake_started": false,
-  "evidence_version": "not_set_until_stage9_0",
+  "current_substage": "9.0",
+  "evidence_intake_started": true,
+  "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
   "figure_engine_install_started": false,
   "figure_manifest_status": "scaffold_placeholder_not_renderable",
   "figure_rendering_started": false,
-  "generated_utc": "2026-07-02T08:50:03.830236Z",
+  "generated_utc": "2026-07-02T09:19:34.612573Z",
   "manuscript_drafting_started": false,
-  "next_substage": "9.0",
+  "next_substage": "9.1",
   "next_substage_authorized": false,
   "project_binding": {
     "archive_doi": "10.5281/zenodo.21036616",
@@ -92,7 +117,39 @@
   },
   "report_format": "rhodyn.stage9_execution_memory.v1",
   "stage": 9,
-  "status": "scaffold_serialized_not_started",
+  "stage9_0_checks": [
+    {
+      "detail": "53 of 53 locked artifacts resolve",
+      "name": "entry_artifacts_resolve",
+      "passed": true
+    },
+    {
+      "detail": "Stage 7 gate reports and readiness reports retain pass status",
+      "name": "artifacts_validate_or_are_scoped_out",
+      "passed": true
+    },
+    {
+      "detail": "6 figure components and 5 headline claims map to locked artifacts",
+      "name": "headline_stage7_results_map_to_art_ids",
+      "passed": true
+    },
+    {
+      "detail": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
+      "name": "evidence_version_is_immutable",
+      "passed": true
+    },
+    {
+      "detail": "11 output-contract rows prepared",
+      "name": "stage7_output_contract_present",
+      "passed": true
+    },
+    {
+      "detail": "No manuscript sections, reference library, submission package, PanelForge clone, runtime environment, or rendered figures detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "status": "stage9_0_evidence_locked",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json"
 }

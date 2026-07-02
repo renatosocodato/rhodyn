@@ -13,6 +13,7 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
+  "last_completed_substage": "9.0",
   "patch_ledger": [
     {
       "id": "P1",
@@ -102,7 +103,7 @@
         "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
         "manuscript/nature_methods/ledgers/stage7_output_contract.md"
       ],
-      "status": "not_started",
+      "status": "completed",
       "title": "Stage 7 evidence intake and lock"
     },
     {
