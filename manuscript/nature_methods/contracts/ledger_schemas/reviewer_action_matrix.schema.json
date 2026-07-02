@@ -1,0 +1,41 @@
+{
+  "$id": "rhodyn.stage9.reviewer_action_matrix.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": {
+      "type": "string"
+    },
+    "concern": {
+      "type": "string"
+    },
+    "fig_id": {
+      "type": "string"
+    },
+    "resolution": {
+      "type": "string"
+    },
+    "resolution_status": {
+      "enum": [
+        "resolved",
+        "narrowed",
+        "routed_upstream",
+        "open"
+      ],
+      "type": "string"
+    },
+    "reviewer_perspective": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "reviewer_perspective",
+    "concern",
+    "claim_id",
+    "fig_id",
+    "resolution_status",
+    "resolution"
+  ],
+  "title": "Stage 9 reviewer_action_matrix row",
+  "type": "object"
+}

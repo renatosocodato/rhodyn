@@ -93,6 +93,60 @@ NOTEBOOKS = [
     "notebooks/07_stage7_heldout_validation.ipynb",
 ]
 
+REQUIRED_ARCHIVE_FILES = {
+    "pyproject.toml",
+    "src/rhodyn/__init__.py",
+    "scripts/build_stage7_1_synthetic_truth_cases.py",
+    "scripts/run_stage7_2_benchmark_harness.py",
+    "scripts/run_stage7_3_public_signaling.py",
+    "scripts/run_stage7_4_endpoint_reserve_routing.py",
+    "scripts/run_stage7_5_heldout_validation.py",
+    "scripts/run_stage7_6_methods_reproducibility.py",
+    "scripts/audit_stage7_6_recursive_hardening.py",
+    "scripts/audit_stage7_7_8_recursive_hardening.py",
+    "scripts/check_stage9_scaffold.py",
+    "scripts/scaffold_stage9_manuscript_assembly.py",
+    "scripts/run_stage9_6b_panelforge_rendering.py",
+    "scripts/run_stage7_7_usability_rehearsal.py",
+    "docs/stage7_methods_program.md",
+    "docs/stage7_6_api_stability_policy.md",
+    "docs/stage7_6_recursive_hardening.md",
+    "docs/stage7_7_8_recursive_hardening.md",
+    "docs/stage7_7_8_recursive_hardening_report.json",
+    "docs/stage7_usability_rehearsal.md",
+    "docs/stage7_user_path_findings.md",
+    "docs/stage7_7_gate_report.json",
+    "case_studies/stage7_usability_rehearsal/stage7_7_usability_gate_report.json",
+    "tests/test_stage7_7_usability_rehearsal.py",
+    "scripts/run_stage7_8_methods_readiness.py",
+    "docs/stage7_methods_evidence_index.md",
+    "docs/stage7_figure_artifact_crosswalk.md",
+    "docs/stage7_claim_evidence_crosswalk.md",
+    "docs/stage7_methods_submission_readiness.md",
+    "docs/stage7_8_gate_report.json",
+    "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json",
+    "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
+    "tests/test_stage7_8_methods_readiness.py",
+    "tests/test_stage7_7_8_recursive_hardening.py",
+    "tests/test_stage9_scaffold.py",
+    "docs/stage9_manuscript_assembly_plan.md",
+    "docs/stage9_execution_memory.json",
+    "manuscript/nature_methods/README.md",
+    "manuscript/nature_methods/contracts/id_namespace.md",
+    "manuscript/nature_methods/contracts/machine_gate_spec.md",
+    "manuscript/nature_methods/contracts/atomic_write_protocol.md",
+    "manuscript/nature_methods/contracts/stage9_project_binding.json",
+    "manuscript/nature_methods/contracts/stage9_substage_registry.json",
+    "manuscript/nature_methods/contracts/ledger_schema_map.json",
+    "manuscript/nature_methods/figures/figures.manifest.yaml",
+    "manuscript/nature_methods/gate_verdicts/9.-1.json",
+    "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
+    "notebooks/01_synthetic_residence_primer.ipynb",
+    "notebooks/07_stage7_heldout_validation.ipynb",
+    "examples/synthetic_trajectory.csv",
+    "examples/synthetic_coupling.csv",
+}
+
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
     re.compile("/" + "Volumes/"),
@@ -333,44 +387,8 @@ def _archive_manifest_rows(root: Path) -> list[dict[str, object]]:
 
 def _archive_manifest_summary(rows: list[dict[str, object]]) -> dict[str, object]:
     paths = {str(row["path"]) for row in rows}
-    required = {
-        "pyproject.toml",
-        "src/rhodyn/__init__.py",
-        "scripts/build_stage7_1_synthetic_truth_cases.py",
-        "scripts/run_stage7_2_benchmark_harness.py",
-        "scripts/run_stage7_3_public_signaling.py",
-        "scripts/run_stage7_4_endpoint_reserve_routing.py",
-        "scripts/run_stage7_5_heldout_validation.py",
-        "scripts/run_stage7_6_methods_reproducibility.py",
-        "scripts/audit_stage7_6_recursive_hardening.py",
-        "scripts/audit_stage7_7_8_recursive_hardening.py",
-        "scripts/run_stage7_7_usability_rehearsal.py",
-        "docs/stage7_methods_program.md",
-        "docs/stage7_6_api_stability_policy.md",
-        "docs/stage7_6_recursive_hardening.md",
-        "docs/stage7_7_8_recursive_hardening.md",
-        "docs/stage7_7_8_recursive_hardening_report.json",
-        "docs/stage7_usability_rehearsal.md",
-        "docs/stage7_user_path_findings.md",
-        "docs/stage7_7_gate_report.json",
-        "case_studies/stage7_usability_rehearsal/stage7_7_usability_gate_report.json",
-        "tests/test_stage7_7_usability_rehearsal.py",
-        "scripts/run_stage7_8_methods_readiness.py",
-        "docs/stage7_methods_evidence_index.md",
-        "docs/stage7_figure_artifact_crosswalk.md",
-        "docs/stage7_claim_evidence_crosswalk.md",
-        "docs/stage7_methods_submission_readiness.md",
-        "docs/stage7_8_gate_report.json",
-        "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json",
-        "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
-        "tests/test_stage7_8_methods_readiness.py",
-        "tests/test_stage7_7_8_recursive_hardening.py",
-        "notebooks/01_synthetic_residence_primer.ipynb",
-        "notebooks/07_stage7_heldout_validation.ipynb",
-        "examples/synthetic_trajectory.csv",
-        "examples/synthetic_coupling.csv",
-    }
-    missing_required = sorted(required - paths)
+    missing_required = sorted(REQUIRED_ARCHIVE_FILES - paths)
+    missing_deterministic = sorted(set(DETERMINISTIC_OUTPUTS) - paths)
     raw_private_like = sorted(str(row["path"]) for row in rows if row["content_class"] == "raw_private_like")
     text_count = sum(row["content_class"] == "text" for row in rows)
     binary_count = sum(row["content_class"] == "binary_or_packaged" for row in rows)
@@ -380,8 +398,10 @@ def _archive_manifest_summary(rows: list[dict[str, object]]) -> dict[str, object
         "binary_or_packaged_file_count": binary_count,
         "raw_private_like_file_count": len(raw_private_like),
         "missing_required_files": missing_required,
+        "deterministic_output_file_count": len(set(DETERMINISTIC_OUTPUTS) & paths),
+        "missing_deterministic_outputs": missing_deterministic,
         "raw_private_like_files": raw_private_like,
-        "manifest_status": "pass" if not missing_required and not raw_private_like else "fail",
+        "manifest_status": "pass" if not missing_required and not missing_deterministic and not raw_private_like else "fail",
     }
 
 
@@ -392,10 +412,50 @@ def _attach_archive_manifest(payload: dict[str, object], rows: list[dict[str, ob
     checkpoints = payload.get("validation_checkpoints", {})
     if isinstance(checkpoints, dict):
         checkpoints["release_archive_manifest_is_complete"] = "pass" if summary.get("manifest_status") == "pass" else "fail"
+        checkpoints["release_archive_deterministic_outputs_present"] = (
+            "pass" if not summary.get("missing_deterministic_outputs") else "fail"
+        )
     if summary.get("manifest_status") != "pass":
         payload["status"] = "fail"
         payload["completion_state"] = "failed_methods_reproducibility_hardening"
+        if isinstance(checkpoints, dict):
+            checkpoints["stop_condition_clean_room_failure"] = "triggered"
     return payload
+
+
+def _strip_archive_prefix(member_name: str) -> str:
+    parts = member_name.split("/", 1)
+    return parts[1] if len(parts) == 2 else member_name
+
+
+def _distribution_member_summary(dist_dir: Path) -> dict[str, object]:
+    sdists = sorted(dist_dir.glob("rhodyn-*.tar.gz"))
+    summary: dict[str, object] = {
+        "sdist_file": "",
+        "sdist_member_count": 0,
+        "sdist_missing_required_files": sorted(REQUIRED_ARCHIVE_FILES),
+        "sdist_missing_deterministic_outputs": sorted(DETERMINISTIC_OUTPUTS),
+        "sdist_status": "fail",
+    }
+    if not sdists:
+        return summary
+    sdist = sdists[0]
+    with tarfile.open(sdist, "r:gz") as handle:
+        names = {_strip_archive_prefix(member.name) for member in handle.getmembers() if member.isfile()}
+    summary.update(
+        {
+            "sdist_file": sdist.name,
+            "sdist_member_count": len(names),
+            "sdist_missing_required_files": sorted(REQUIRED_ARCHIVE_FILES - names),
+            "sdist_missing_deterministic_outputs": sorted(set(DETERMINISTIC_OUTPUTS) - names),
+        }
+    )
+    summary["sdist_status"] = (
+        "pass"
+        if not summary["sdist_missing_required_files"] and not summary["sdist_missing_deterministic_outputs"]
+        else "fail"
+    )
+    return summary
 
 
 def _roadmap_state_scan(root: Path) -> StepResult:
@@ -412,8 +472,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 7.8 methods manuscript readiness package complete":
-        failures.append("roadmap memory does not mark Stage 7.8 complete")
+    if current.get("active_stage") != "Stage 9 scaffold serialized; manuscript production not started":
+        failures.append("roadmap memory does not mark the Stage 9 scaffold-only boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -422,6 +482,14 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 7.7 subphase is not complete")
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
+    stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
+    if stage9.get("status") != "stage9_scaffold_serialized_not_started":
+        failures.append("Stage 9 is not marked scaffold_serialized_not_started")
+    if stage9.get("substage_count") != 33:
+        failures.append("Stage 9 does not serialize all 33 substages")
+    stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
+    if "9.6b" not in stage9_substage_ids:
+        failures.append("Stage 9 does not serialize the 9.6b PanelForge rendering substage")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",
@@ -728,6 +796,17 @@ def run_full(root: Path = ROOT) -> dict[str, object]:
         {"name": path.name, "size_bytes": path.stat().st_size, "sha256": _sha256(path)}
         for path in sorted(dist_dir.glob("rhodyn-*"))
     ]
+    payload["distribution_member_summary"] = _distribution_member_summary(dist_dir)
+    checkpoints = payload.get("validation_checkpoints", {})
+    if isinstance(checkpoints, dict):
+        checkpoints["source_distribution_members_complete"] = (
+            "pass" if payload["distribution_member_summary"].get("sdist_status") == "pass" else "fail"
+        )
+    if payload["distribution_member_summary"].get("sdist_status") != "pass":
+        payload["status"] = "fail"
+        payload["completion_state"] = "failed_methods_reproducibility_hardening"
+        if isinstance(checkpoints, dict):
+            checkpoints["stop_condition_clean_room_failure"] = "triggered"
     payload["temporary_workspace"] = "temporary release-archive clean-room workspace outside repository"
     return payload
 
@@ -831,6 +910,20 @@ def _report_markdown(payload: dict[str, object], comparison_rows: list[dict[str,
                 f"Text files inspected. {archive_summary.get('text_file_count', 'not_recorded')}",
                 "",
                 f"Raw/private-like files. {archive_summary.get('raw_private_like_file_count', 'not_recorded')}",
+                "",
+                f"Selected deterministic outputs present. {archive_summary.get('deterministic_output_file_count', 'not_recorded')}",
+            ]
+        )
+    distribution_summary = payload.get("distribution_member_summary", {})
+    if isinstance(distribution_summary, dict) and distribution_summary:
+        lines.extend(
+            [
+                "",
+                "## Source distribution contents",
+                "",
+                f"Source-distribution status. {distribution_summary.get('sdist_status', 'not_recorded')}",
+                "",
+                f"Source-distribution members inspected. {distribution_summary.get('sdist_member_count', 'not_recorded')}",
             ]
         )
     lines.extend(

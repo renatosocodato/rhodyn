@@ -1,0 +1,70 @@
+{
+  "$id": "rhodyn.stage9.figure_to_claim_to_artifact.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "art_ids": {
+      "type": "string"
+    },
+    "claim_id": {
+      "type": "string"
+    },
+    "drift_ok": {
+      "enum": [
+        "true",
+        "false",
+        "not_applicable",
+        "pending"
+      ],
+      "type": "string"
+    },
+    "engine_commit": {
+      "type": "string"
+    },
+    "engine_version": {
+      "type": "string"
+    },
+    "fig_id": {
+      "pattern": "^(FIG|SFIG)-[0-9]{3}$",
+      "type": "string"
+    },
+    "panel_structure": {
+      "type": "string"
+    },
+    "placement": {
+      "enum": [
+        "main",
+        "supp"
+      ],
+      "type": "string"
+    },
+    "recipe": {
+      "type": "string"
+    },
+    "rejected_alternative": {
+      "type": "string"
+    },
+    "render_path": {
+      "type": "string"
+    },
+    "stat_ids": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "fig_id",
+    "claim_id",
+    "art_ids",
+    "stat_ids",
+    "panel_structure",
+    "placement",
+    "recipe",
+    "render_path",
+    "engine_version",
+    "engine_commit",
+    "drift_ok",
+    "rejected_alternative"
+  ],
+  "title": "Stage 9 figure_to_claim_to_artifact row",
+  "type": "object"
+}

@@ -1,0 +1,35 @@
+{
+  "$id": "rhodyn.stage9.live_numbers_diff.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "expected_value": {
+      "type": "string"
+    },
+    "manuscript_value": {
+      "type": "string"
+    },
+    "rounding_tolerance": {
+      "type": "string"
+    },
+    "source_command": {
+      "type": "string"
+    },
+    "stat_id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "stat_id",
+    "source_command",
+    "expected_value",
+    "manuscript_value",
+    "rounding_tolerance",
+    "status"
+  ],
+  "title": "Stage 9 live_numbers_diff row",
+  "type": "object"
+}

@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 7.8 methods manuscript readiness package complete",
+    "active_stage": "Stage 9 scaffold serialized; manuscript production not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -17,14 +17,16 @@
     "after_stage7_4_endpoint_reserve_routing": "Stage 7.4 completed public perturbation endpoint, reserve-like endpoint, and routed-output demonstrations using Cell Painting/MitoTox and ERK/Akt paired-reporter retained public-derived tables. It includes declared-margin bounded coupling, reduced-architecture model comparison, endpoint-scoped reserve-like summaries, uncertainty outputs, reports, notebooks, tests, and gate report. Stage 7.5 external or held-out biological validation has not started.",
     "after_stage7_5_heldout_validation": "Stage 7.5 completed a held-out public biological validation using non-DMSO inhibitor contexts from the Wan 2021 ERK/Akt GPCR archive. Fixed Stage 7.4 DMSO-derived residence thresholds and the declared +/-0.20 ERK-minus-Akt margin produced four bounded-coupling pass contexts and three margin-boundary inconclusive contexts, with no hidden tuning and no universal coupling claim. This record is the immediate precondition that enabled the now-completed Stage 7.6 methods reproducibility hardening.",
     "after_stage7_6_methods_reproducibility": "Stage 7.6 completed software maturity hardening for the methods-program evidence set. A source-distribution clean-room run regenerates the Stage 7.1 to Stage 7.5 evidence outputs, executes retained tutorials, builds documentation, verifies Python/CLI/backend/frontend-contract parity, records API stability and deprecation policy, and preserves the boundary that this phase adds no new biological demonstration. Stage 7.7 usability and adoption rehearsal has not started.",
-    "after_stage7_7_8_recursive_hardening": "Stage 7.7 and Stage 7.8 are now recursively hardened against the Stage 7.6 release surface. The hardening verifies usability export bundles, methods-readiness crosswalk constants, validation report status, release checksum coverage, archive-manifest coverage, and the boundary that Phase 9 manuscript-production work remains future and unscaffolded.",
+    "after_stage7_7_8_recursive_hardening": "Stage 7.7 and Stage 7.8 are recursively hardened against the Stage 7.6 release surface. The hardening verifies usability export bundles, methods-readiness crosswalk constants, validation report status, release checksum coverage, archive-manifest coverage, and the boundary that Stage 9 is limited to scaffold-only manuscript-assembly contracts.",
     "after_stage7_7_usability_rehearsal": "Stage 7.7 completed a structured usability rehearsal using the public MLCI intensity workflow for a biologist-facing residence-versus-amplitude decision and the bounded-coupling fixture for a quantitative CLI/Python/backend reproduction task. Export bundles now carry declared parameters, input schema, grouping summary, software version, rows, result JSON, result rows, Markdown report, and checksums. This phase adds no new biological system or analysis route. Stage 7.8 methods manuscript readiness packaging has not started.",
     "after_stage7_8_methods_readiness": "Stage 7.8 completed the methods-manuscript readiness package by mapping planned figure components and method claims to existing Stage 7 evidence, validation reports, and limitation artifacts. The package records figure-to-artifact, claim-to-evidence, limitation-traceability, and submission-readiness outputs without adding a biological system, new analysis route, benchmark result, or manuscript claim. Stage 8 product/commercial alignment remains conceptual and must inherit the Stage 7 evidence boundaries.",
     "after_stage7_planning": "Stage 7 is roadmap-defined as an independent biological demonstration and methods-manuscript readiness program aligned to standards exemplified by strong computational methods papers. Implementation has not started.",
+    "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer only. Stage 9.0 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, evidence intake, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
-    "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual product/commercial alignment and must not reshape the Stage 7 evidence path. Phase 9 manuscript-production work remains future and unscaffolded."
+    "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual product/commercial alignment and must not reshape the Stage 7 evidence path. Stage 9 is serialized only as a manuscript-assembly scaffold; no evidence intake, figure rendering, or drafting has started.",
+    "stage9_active_gate": "Stage 9 scaffold serialized; manuscript production not started"
   },
   "non_drift_rules": [
     "RhoDyn is a general method for dynamic operating-state analysis in live-cell perturbation biology.",
@@ -136,7 +138,7 @@
       ]
     },
     {
-      "current_gate": "Stage 7.8 methods manuscript readiness package complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Phase 9 remains future and unscaffolded.",
+      "current_gate": "Stage 7.8 methods manuscript readiness package complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9 is scaffolded only as a manuscript-assembly contract, with PanelForge reserved for future Stage 9.6b rendering and no manuscript production started.",
       "gate": [
         "Formal method definition and mathematical model are complete.",
         "Benchmarks cover amplitude-only, endpoint-only, threshold-only, generic time-series summaries, and reduced architecture alternatives.",
@@ -317,7 +319,298 @@
       "scope_rule": "Product strategy inherits the Stage 7 methods evidence and must not lead the scientific evidence path.",
       "stage": 8,
       "status": "conceptual_only"
+    },
+    {
+      "artifacts": [
+        "docs/stage9_manuscript_assembly_plan.md",
+        "docs/stage9_execution_memory.json",
+        "manuscript/nature_methods/README.md",
+        "manuscript/nature_methods/contracts/",
+        "manuscript/nature_methods/figures/figures.manifest.yaml",
+        "manuscript/nature_methods/gate_verdicts/9.-1.json",
+        "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
+        "scripts/scaffold_stage9_manuscript_assembly.py",
+        "scripts/check_stage9_scaffold.py",
+        "tests/test_stage9_scaffold.py"
+      ],
+      "current_gate": "Stage 9 scaffold serialized; manuscript production not started",
+      "gate": [
+        "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
+        "Stage 9.0 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
+        "No manuscript draft sections, reference bibliography, evidence-lock ledgers, rendered figures, or submission package contents are created in this scaffold pass."
+      ],
+      "name": "Nature Methods manuscript assembly scaffold",
+      "scope_rule": "Stage 9 is currently limited to the 9.-1 contract/schema scaffold. Do not start evidence intake, citation resolution, drafting, figure rendering, review response, or submission packaging without explicit substage authorization.",
+      "stage": 9,
+      "status": "stage9_scaffold_serialized_not_started",
+      "subphases": [
+        {
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
+          "gate": "schema files are valid JSON objects with required field declarations; namespace prefixes are defined; workspace directories exist; execution-memory loader is documented; every declared Stage 9 ledger maps to exactly one schema",
+          "goal": "Make downstream gates machine-checkable and ledgers joinable before evidence intake.",
+          "id": "9.-1",
+          "name": "Contract and schema layer",
+          "status": "complete_scaffold_only"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "entry artifacts resolve; artifacts validate or are scoped out; headline Stage 7 results map to ART IDs; evidence_version is immutable",
+          "goal": "Confirm that manuscript assembly can begin from frozen, typed Stage 7 evidence.",
+          "id": "9.0",
+          "name": "Stage 7 evidence intake and lock",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "content-type budget is sourced; cached sources have URL and access date; verified venue constraints are explicit; freshness assertion passes",
+          "goal": "Bind manuscript process to official and cached Nature Methods guidance.",
+          "id": "9.1",
+          "name": "Venue guidance source register",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "corpus has the planned DOI count; each entry records novelty, benchmarks, biology, software, limitations, and availability; archetype synthesis exists",
+          "goal": "Create a structural corpus of successful computational methods papers.",
+          "id": "9.2",
+          "name": "Representative methods-paper corpus",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "content_type matches a sourced budget; narrative spine exists; discovery-versus-demonstration decision is evidence-bound",
+          "goal": "Pin paper type, content type, and venue-fit decision before drafting.",
+          "id": "9.3",
+          "name": "Archetype, content type, and narrative spine",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "claim hierarchy validates; every central claim has evidence; every claim has a strength cap; non-claims ledger is non-empty",
+          "goal": "Freeze claim hierarchy with stable CLM IDs and strength caps.",
+          "id": "9.4",
+          "name": "Manuscript claim freeze",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "ledger validates; every PARA ID resolves to a CLM ID; paragraph strength does not exceed claim strength",
+          "goal": "Plan manuscript paragraphs as auditable claim-bearing units.",
+          "id": "9.5",
+          "name": "Paragraph-level claim ledger",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "figure ledger validates; every figure resolves to claims and artifacts; figure count respects sourced budget; central evidence is not buried in supplement",
+          "goal": "Build the manuscript around evidence-bearing display items before prose.",
+          "id": "9.6",
+          "name": "Figure-first manuscript spine",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "figure engine version equals pinned ref; figures validate passes for manifest; every fig_id has an existing render_path; every rendered entry records a recipe and rejected alternative; S1 manifest keys contain no claim IDs, artifact IDs, or pipeline-state tokens; gallery drift is passing or explicitly accepted",
+          "goal": "Prepare deterministic publication-grade figure rendering from the frozen figure-to-claim-to-artifact contract.",
+          "id": "9.6b",
+          "name": "Figure rendering via PanelForge",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "supplementary ledger validates; each item has callout and role; essential items have main-text callouts",
+          "goal": "Plan supplementary material as cited support rather than a data dump.",
+          "id": "9.7",
+          "name": "Supplementary display item plan",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "every section has a contract; Results and Methods require topical subheadings; Discussion prohibits subheadings; Abstract contract follows sourced budget",
+          "goal": "Define every manuscript section and venue structural rule before writing.",
+          "id": "9.8",
+          "name": "Section contract blueprint",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "abstract word count respects sourced budget; abstract citation style follows content type; abstract claims map to claim IDs",
+          "goal": "Create high-level framing without overselling.",
+          "id": "9.9",
+          "name": "Title, subtitle, and abstract strategy",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "each subsection maps to figure and artifact IDs; allowed conclusion respects strength cap; no subsection is narrative-only",
+          "goal": "Break Results into evidence-locked drafting units.",
+          "id": "9.10",
+          "name": "Results subsection architecture",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "every Results paragraph has a PARA ID; figure callouts resolve; strength caps hold",
+          "goal": "Draft Results in figure-locked order.",
+          "id": "9.11",
+          "name": "Results drafting pass",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "all Introduction citations resolve; external claims map to reference IDs; review-source share is under threshold",
+          "goal": "Draft citation-bound Introduction through resolved references.",
+          "id": "9.12",
+          "name": "Introduction literature binding",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "Stage 7 limitations represented; no limitation converted into strength without evidence; map has no subheadings",
+          "goal": "Plan limitation-aware Discussion before drafting.",
+          "id": "9.13",
+          "name": "Discussion interpretation map",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "Discussion contains no subheadings; limitations remain visible; future directions are labeled",
+          "goal": "Draft balanced Discussion with no subheadings.",
+          "id": "9.14",
+          "name": "Discussion drafting pass",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "methods-to-code ledger validates; methods statements map to repo path and commit; dataset references include version and date",
+          "goal": "Build Methods structure from repository implementation and Stage 7 artifacts.",
+          "id": "9.15",
+          "name": "Methods architecture",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "every Methods claim has a methods statement ID; software version matches evidence manifest; undefined standard-methods phrasing absent",
+          "goal": "Draft reviewer-reconstructable Methods.",
+          "id": "9.16",
+          "name": "Methods drafting pass",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "DOI and repo URL resolve; commit pinned; no upon-request language; Reporting Summary registered as required; PanelForge version DOI and render command are recorded when figures have been rendered",
+          "goal": "Create precise availability statements and required Reporting Summary placeholder.",
+          "id": "9.17",
+          "name": "Software, data, and code availability assembly",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "items are callable from main text; no new claim ID absent from claim freeze",
+          "goal": "Move technical depth into structured Supplementary Methods.",
+          "id": "9.18",
+          "name": "Supplementary Methods drafting",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "each table has callout and role; figure-source mapping covers figures; figure-source mapping records PanelForge recipe and render path after 9.6b; statistics table references statistic IDs",
+          "goal": "Build supplementary tables as reviewable evidence objects.",
+          "id": "9.19",
+          "name": "Supplementary tables and source-data binding",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "references resolve with DOI or PMID; retraction checks are clear or justified; reference count respects cap; references map to claims",
+          "goal": "Resolve and audit complete reference library.",
+          "id": "9.20",
+          "name": "Reference library and citation audit",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "orphan claim set empty; orphan figure set empty; orphan statistic set empty; dangling reference set empty; version and strength coherence hold",
+          "goal": "Check manuscript consistency by relational joins over keyed ledgers.",
+          "id": "9.21",
+          "name": "Cross-document consistency audit",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "every statistic recomputes within tolerance; quantitative statements have statistic IDs; equivalence claims state bounds",
+          "goal": "Recompute reported numbers from frozen artifacts and diff manuscript text.",
+          "id": "9.22",
+          "name": "Statistical and quantitative language audit",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "each figure and table has legend; legend statistics resolve; legends do not assert absent claims; legend seed text does not inherit PanelForge S3 provenance",
+          "goal": "Make display items self-contained and precise.",
+          "id": "9.23",
+          "name": "Figure legend and caption audit",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "paragraph ID set unchanged; strength caps hold; limitations remain present",
+          "goal": "Improve scientific clarity without changing meaning.",
+          "id": "9.24",
+          "name": "Editorial polish pass I",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "meaning preserved; style metrics pass thresholds; no claim broadened",
+          "goal": "Tune venue style and readability without broadening claims.",
+          "id": "9.25",
+          "name": "Editorial polish pass II",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "no internal ID tokens on reader-facing surfaces; no stage or substage references on reader-facing surfaces; legends and captions are free of lineage language; PanelForge manifest S3 provenance is not cross-referenced from S1 reader-facing keys",
+          "goal": "Strip internal IDs and build-language from reader-facing surfaces before assembly.",
+          "id": "9.25b",
+          "name": "Reader-surface hygiene gate",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "all eight perspectives present; blocking concerns have resolution status; unsupported central claims are routed",
+          "goal": "Stress-test the manuscript with eight reviewer perspectives.",
+          "id": "9.26",
+          "name": "Internal peer review simulation",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "required package elements exist; reader-surface hygiene passed; Reporting Summary present; code-for-review present; consistency audit passes over package",
+          "goal": "Assemble complete manuscript and submission package after hygiene gate.",
+          "id": "9.27",
+          "name": "Submission package assembly",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "packet covers thesis, claims, figures, risks, limitations, objections, decisions, venue fit, and open items; human-judgment items are explicit",
+          "goal": "Prepare final human decision packet.",
+          "id": "9.28",
+          "name": "Final human PI review packet",
+          "status": "not_started"
+        },
+        {
+          "evidence": "not_started",
+          "gate": "every Stage 9 gate passes; quarantine has no unresolved blocker; package, evidence, and release versions are bound",
+          "goal": "Close Stage 9 with package, evidence, release, and limitation versions bound.",
+          "id": "9.29",
+          "name": "Roadmap closure and version binding",
+          "status": "not_started"
+        }
+      ],
+      "substage_count": 33
     }
   ],
-  "updated": "2026-06-30"
+  "updated": "2026-07-02"
 }

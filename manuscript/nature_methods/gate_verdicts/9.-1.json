@@ -1,0 +1,44 @@
+{
+  "checks": [
+    {
+      "detail": "13 schemas written under contracts/ledger_schemas",
+      "name": "schema_files_serialized",
+      "passed": true,
+      "predicate": "every declared ledger schema is written as JSON"
+    },
+    {
+      "detail": "10 namespaces documented",
+      "name": "namespace_prefixes_defined",
+      "passed": true,
+      "predicate": "all Stage 9 ID namespace prefixes are documented"
+    },
+    {
+      "detail": "17 directories initialized",
+      "name": "workspace_directories_initialized",
+      "passed": true,
+      "predicate": "required manuscript workspace directories exist"
+    },
+    {
+      "detail": "Stage 9.6b is serialized as a future rendering substage",
+      "name": "figure_engine_binding_serialized",
+      "passed": true,
+      "predicate": "PanelForge binding is recorded but clone/install/render are not executed"
+    },
+    {
+      "detail": "Stage 9.0 is not authorized by this pass",
+      "name": "execution_memory_initialized",
+      "passed": true,
+      "predicate": "docs/stage9_execution_memory.json exists and records scaffold-only boundary"
+    },
+    {
+      "detail": "33 substages serialized",
+      "name": "substage_registry_serialized",
+      "passed": true,
+      "predicate": "all Stage 9 substages are recorded with objectives, outputs, and gate predicates"
+    }
+  ],
+  "evidence_version": "not_set_until_stage9_0",
+  "pass": true,
+  "substage": "9.-1",
+  "timestamp": "2026-07-02T08:50:03.832805Z"
+}

@@ -10,6 +10,10 @@ Stage 7.6 now has two independent checks. The full reproducibility runner rebuil
 - Python, CLI, backend, and frontend-contract parity remain aligned for residence scoring, bounded-coupling decisions, reserve-like summaries, and reduced-architecture comparison.
 - The command table still covers Stage 7.1 through Stage 7.5 in order.
 - The release-candidate archive manifest includes the required scripts, docs, notebooks, and examples and contains no raw/private-like payloads.
+- The release-candidate archive manifest includes every deterministic Stage 7.1 to Stage 7.5 output selected for clean-room comparison.
+- The source distribution itself contains the required Stage 7.6 methods-program files before the extracted clean-room run begins.
+- The release checksum table covers the Stage 7.6 report, script, and test surfaces with current hashes.
+- The committed Stage 7.6 reports are scanned for local paths, mounted-volume paths, LaunchAgent paths, and credential-like strings.
 - The interpretation boundary remains explicit. Stage 7.6 supports software reproducibility only and does not add biological evidence.
 
 ## Outputs

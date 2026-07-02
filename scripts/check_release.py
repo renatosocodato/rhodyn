@@ -226,6 +226,22 @@ REQUIRED_FILES = [
     "frontend/stage5/styles.css",
     "frontend/stage5/app.js",
     "examples/mlci_public_intensity_trajectory.csv",
+    "docs/stage9_manuscript_assembly_plan.md",
+    "docs/stage9_execution_memory.json",
+    "scripts/scaffold_stage9_manuscript_assembly.py",
+    "scripts/check_stage9_scaffold.py",
+    "scripts/run_stage9_6b_panelforge_rendering.py",
+    "tests/test_stage9_scaffold.py",
+    "manuscript/nature_methods/README.md",
+    "manuscript/nature_methods/contracts/id_namespace.md",
+    "manuscript/nature_methods/contracts/machine_gate_spec.md",
+    "manuscript/nature_methods/contracts/atomic_write_protocol.md",
+    "manuscript/nature_methods/contracts/stage9_project_binding.json",
+    "manuscript/nature_methods/contracts/stage9_substage_registry.json",
+    "manuscript/nature_methods/contracts/ledger_schema_map.json",
+    "manuscript/nature_methods/figures/figures.manifest.yaml",
+    "manuscript/nature_methods/gate_verdicts/9.-1.json",
+    "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
 ]
 LEAK_PATTERNS = [
     re.compile("/" + "Users/"),
@@ -334,8 +350,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 7.8 methods manuscript readiness package complete":
-            failures.append("roadmap execution memory does not mark Stage 7.8 methods manuscript readiness package as complete")
+        if current.get("active_stage") != "Stage 9 scaffold serialized; manuscript production not started":
+            failures.append("roadmap execution memory does not mark the Stage 9 scaffold-only boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -349,6 +365,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
+        if stages.get(9, {}).get("status") != "stage9_scaffold_serialized_not_started":
+            failures.append("roadmap execution memory does not mark Stage 9 scaffold serialization without manuscript production")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -371,6 +389,15 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.7 must be complete_usability_adoption_rehearsal in roadmap execution memory")
         if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
+        stage9 = stages.get(9, {})
+        if isinstance(stage9, dict):
+            if stage9.get("current_gate") != "Stage 9 scaffold serialized; manuscript production not started":
+                failures.append("Stage 9 current gate must record scaffold-only state")
+            if stage9.get("substage_count") != 33:
+                failures.append("Stage 9 must serialize 33 substages")
+            substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
+            if "9.6b" not in substage_ids:
+                failures.append("Stage 9 must serialize the 9.6b PanelForge rendering substage")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
@@ -637,6 +664,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "ci_covers_selected_examples_docs_notebooks_benchmarks_package_docker_frontend",
             "clean_room_reproduction_from_release_archive",
             "release_archive_manifest_is_complete",
+            "release_archive_deterministic_outputs_present",
+            "source_distribution_members_complete",
         ]:
             if checkpoints.get(checkpoint) != "pass":
                 failures.append(f"Stage 7.6 gate checkpoint does not pass: {checkpoint}")
@@ -656,6 +685,11 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.6 gate report must include a passing release archive manifest summary")
         elif archive_manifest.get("raw_private_like_file_count") != 0:
             failures.append("Stage 7.6 release archive manifest must not include raw/private-like files")
+        elif archive_manifest.get("missing_deterministic_outputs"):
+            failures.append("Stage 7.6 release archive manifest must include all selected deterministic outputs")
+        distribution_summary = stage7_6_gate.get("distribution_member_summary", {})
+        if not isinstance(distribution_summary, dict) or distribution_summary.get("sdist_status") != "pass":
+            failures.append("Stage 7.6 source distribution member summary must pass")
 
     if stage7_6_case_report_path.exists():
         try:
@@ -685,6 +719,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "archive_manifest_complete",
             "workflow_checks_pass",
             "scope_boundary_preserved",
+            "deterministic_outputs_in_archive_manifest",
+            "source_distribution_members_complete",
+            "release_checksums_cover_stage7_6",
+            "report_surfaces_sanitized",
         ]:
             if checks.get(check_name) != "pass":
                 failures.append(f"Stage 7.6 recursive hardening check does not pass: {check_name}")
@@ -851,6 +889,18 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             case_recursive = {}
         if doc_recursive != case_recursive:
             failures.append("Stage 7.7/7.8 recursive hardening doc and case reports must be identical")
+
+    stage9_check = subprocess.run(
+        [sys.executable, "scripts/check_stage9_scaffold.py"],
+        cwd=root,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    if stage9_check.returncode != 0:
+        detail = (stage9_check.stdout or stage9_check.stderr).strip()
+        failures.append(f"Stage 9 scaffold check does not pass: {detail[:1200]}")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():

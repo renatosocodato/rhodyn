@@ -95,43 +95,7 @@ class Stage76MethodsReproducibilityTests(TestCase):
     def test_archive_manifest_records_required_files_and_rejects_raw_like_payloads(self):
         with tempfile.TemporaryDirectory() as temp_dir:
             root = Path(temp_dir)
-            for rel in [
-                "pyproject.toml",
-                "src/rhodyn/__init__.py",
-                "scripts/build_stage7_1_synthetic_truth_cases.py",
-                "scripts/run_stage7_2_benchmark_harness.py",
-                "scripts/run_stage7_3_public_signaling.py",
-                "scripts/run_stage7_4_endpoint_reserve_routing.py",
-                "scripts/run_stage7_5_heldout_validation.py",
-                "scripts/run_stage7_6_methods_reproducibility.py",
-                "scripts/audit_stage7_6_recursive_hardening.py",
-                "scripts/audit_stage7_7_8_recursive_hardening.py",
-                "scripts/run_stage7_7_usability_rehearsal.py",
-                "docs/stage7_methods_program.md",
-                "docs/stage7_6_api_stability_policy.md",
-                "docs/stage7_6_recursive_hardening.md",
-                "docs/stage7_7_8_recursive_hardening.md",
-                "docs/stage7_7_8_recursive_hardening_report.json",
-                "docs/stage7_usability_rehearsal.md",
-                "docs/stage7_user_path_findings.md",
-                "docs/stage7_7_gate_report.json",
-                "case_studies/stage7_usability_rehearsal/stage7_7_usability_gate_report.json",
-                "tests/test_stage7_7_usability_rehearsal.py",
-                "scripts/run_stage7_8_methods_readiness.py",
-                "docs/stage7_methods_evidence_index.md",
-                "docs/stage7_figure_artifact_crosswalk.md",
-                "docs/stage7_claim_evidence_crosswalk.md",
-                "docs/stage7_methods_submission_readiness.md",
-                "docs/stage7_8_gate_report.json",
-                "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json",
-                "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
-                "tests/test_stage7_8_methods_readiness.py",
-                "tests/test_stage7_7_8_recursive_hardening.py",
-                "notebooks/01_synthetic_residence_primer.ipynb",
-                "notebooks/07_stage7_heldout_validation.ipynb",
-                "examples/synthetic_trajectory.csv",
-                "examples/synthetic_coupling.csv",
-            ]:
+            for rel in sorted(RUNNER.REQUIRED_ARCHIVE_FILES | set(RUNNER.DETERMINISTIC_OUTPUTS)):
                 path = root / rel
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text("release file\n", encoding="utf-8")
@@ -185,6 +149,8 @@ class Stage76MethodsReproducibilityTests(TestCase):
                     "ci_covers_selected_examples_docs_notebooks_benchmarks_package_docker_frontend",
                     "clean_room_reproduction_from_release_archive",
                     "release_archive_manifest_is_complete",
+                    "release_archive_deterministic_outputs_present",
+                    "source_distribution_members_complete",
                 ]:
                     self.assertEqual(checkpoints[key], "pass", key)
                 self.assertEqual(checkpoints["stop_condition_clean_room_failure"], "not_triggered")
@@ -193,6 +159,12 @@ class Stage76MethodsReproducibilityTests(TestCase):
                 self.assertEqual(archive_manifest["manifest_status"], "pass")
                 self.assertEqual(archive_manifest["raw_private_like_file_count"], 0)
                 self.assertEqual(archive_manifest["missing_required_files"], [])
+                self.assertEqual(archive_manifest["missing_deterministic_outputs"], [])
+                self.assertEqual(archive_manifest["deterministic_output_file_count"], len(RUNNER.DETERMINISTIC_OUTPUTS))
+                distribution_summary = gate["distribution_member_summary"]
+                self.assertEqual(distribution_summary["sdist_status"], "pass")
+                self.assertEqual(distribution_summary["sdist_missing_required_files"], [])
+                self.assertEqual(distribution_summary["sdist_missing_deterministic_outputs"], [])
 
     def test_output_comparison_and_parity_tables_match_gate_summary(self):
         comparison_rows = _tsv_rows(STAGE7_6 / "methods_output_comparison.tsv")
@@ -232,6 +204,10 @@ class Stage76MethodsReproducibilityTests(TestCase):
             "archive_manifest_complete",
             "workflow_checks_pass",
             "scope_boundary_preserved",
+            "deterministic_outputs_in_archive_manifest",
+            "source_distribution_members_complete",
+            "release_checksums_cover_stage7_6",
+            "report_surfaces_sanitized",
         ]:
             self.assertEqual(report["checks"][key], "pass", key)
 

@@ -1,0 +1,49 @@
+{
+  "$id": "rhodyn.stage9.citation_claim_ledger.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "access_date": {
+      "type": "string"
+    },
+    "claim_id": {
+      "type": "string"
+    },
+    "doi_or_pmid": {
+      "type": "string"
+    },
+    "ref_id": {
+      "pattern": "^REF-[0-9]{4}$",
+      "type": "string"
+    },
+    "resolved": {
+      "enum": [
+        "true",
+        "false",
+        "not_applicable",
+        "pending"
+      ],
+      "type": "string"
+    },
+    "source_type": {
+      "enum": [
+        "primary",
+        "methods",
+        "review",
+        "venue",
+        "dataset"
+      ],
+      "type": "string"
+    }
+  },
+  "required": [
+    "ref_id",
+    "claim_id",
+    "doi_or_pmid",
+    "resolved",
+    "access_date",
+    "source_type"
+  ],
+  "title": "Stage 9 citation_claim_ledger row",
+  "type": "object"
+}

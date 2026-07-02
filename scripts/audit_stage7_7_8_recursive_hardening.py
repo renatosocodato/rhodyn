@@ -13,6 +13,7 @@ import hashlib
 import importlib.util
 import json
 import re
+import subprocess
 import sys
 import zipfile
 from pathlib import Path
@@ -26,6 +27,7 @@ DOC_REPORT = ROOT / "docs" / "stage7_7_8_recursive_hardening_report.json"
 CASE_REPORT = STAGE7_8_DIR / "stage7_7_8_recursive_hardening_report.json"
 DOC_SUMMARY = ROOT / "docs" / "stage7_7_8_recursive_hardening.md"
 STAGE7_8_RUNNER = ROOT / "scripts" / "run_stage7_8_methods_readiness.py"
+STAGE9_CHECKER = ROOT / "scripts" / "check_stage9_scaffold.py"
 
 FORBIDDEN_BUNDLE_SUFFIXES = {".tif", ".tiff", ".lif", ".czi", ".nd2", ".prism", ".xml", ".zip"}
 EXPECTED_BUNDLE_MEMBERS = {
@@ -69,6 +71,29 @@ REQUIRED_STAGE7_7_8_FILES = {
     "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_report.md",
 }
 REQUIRED_NONBINARY_ARCHIVE_FILES = {rel for rel in REQUIRED_STAGE7_7_8_FILES if not rel.endswith(".zip")}
+ALLOWED_STAGE9_PREFIXES = {
+    "docs/stage9_execution_memory.json",
+    "docs/stage9_manuscript_assembly_plan.md",
+    "manuscript/nature_methods/README.md",
+    "manuscript/nature_methods/contracts/",
+    "manuscript/nature_methods/figures/.gitkeep",
+    "manuscript/nature_methods/figures/figures.manifest.yaml",
+    "manuscript/nature_methods/figures/rendered/.gitkeep",
+    "manuscript/nature_methods/gate_verdicts/9.-1.json",
+    "scripts/check_stage9_scaffold.py",
+    "scripts/run_stage9_6b_panelforge_rendering.py",
+    "scripts/scaffold_stage9_manuscript_assembly.py",
+    "tests/test_stage9_scaffold.py",
+    "tools/panelforge-figures/.gitkeep",
+    "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
+}
+FORBIDDEN_STAGE9_DRAFT_FILES = {
+    "manuscript/nature_methods/sections/results.md",
+    "manuscript/nature_methods/sections/introduction.md",
+    "manuscript/nature_methods/sections/discussion.md",
+    "manuscript/nature_methods/sections/methods.md",
+    "manuscript/nature_methods/refs/references.bib",
+}
 
 
 def _load_stage7_8_runner() -> Any:
@@ -296,25 +321,56 @@ def _validate_release_coverage(failures: list[str]) -> dict[str, int]:
 
 
 def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
-    forbidden = []
+    stage9_files = []
+    unauthorized = []
     for path in ROOT.rglob("*"):
         if ".git" in path.parts or not path.is_file():
             continue
         rel = path.relative_to(ROOT).as_posix()
         if re.search(r"(^|/)(stage9|phase9)[^/]*", rel, flags=re.IGNORECASE):
-            forbidden.append(rel)
-    if forbidden:
-        failures.append(f"Phase 9 implementation files are present before authorization: {forbidden}")
+            stage9_files.append(rel)
+            if not any(rel == prefix or rel.startswith(prefix) for prefix in ALLOWED_STAGE9_PREFIXES):
+                unauthorized.append(rel)
+    if unauthorized:
+        failures.append(f"unauthorized Phase 9 implementation files are present: {unauthorized}")
+    draft_files = sorted(rel for rel in FORBIDDEN_STAGE9_DRAFT_FILES if (ROOT / rel).exists())
+    if draft_files:
+        failures.append(f"Stage 9 manuscript drafting or evidence files were created before authorization: {draft_files}")
+    if not STAGE9_CHECKER.exists():
+        failures.append("Stage 9 scaffold checker is missing")
+        checker_status = "missing"
+    else:
+        result = subprocess.run(
+            [sys.executable, str(STAGE9_CHECKER)],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        checker_status = "pass" if result.returncode == 0 else "fail"
+        if result.returncode != 0:
+            failures.append(f"Stage 9 scaffold checker failed: {result.stdout.strip()} {result.stderr.strip()}".strip())
     memory = _read_json(ROOT / "docs" / "roadmap_execution_memory.json", failures)
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
-    if 9 in stages:
-        failures.append("roadmap execution memory must not create a Stage 9 entry yet")
+    stage9 = stages.get(9, {})
+    if stage9.get("status") != "stage9_scaffold_serialized_not_started":
+        failures.append("roadmap execution memory must record Stage 9 as scaffold_serialized_not_started")
+    if stage9.get("substage_count") != 33:
+        failures.append("Stage 9 execution memory must record 33 serialized substages")
+    substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
+    if "9.6b" not in substage_ids:
+        failures.append("Stage 9 execution memory must include the 9.6b PanelForge rendering substage")
     if stages.get(8, {}).get("status") != "conceptual_only":
         failures.append("Stage 8 must remain conceptual after Stage 7.7/7.8 hardening")
     current = memory.get("current_position", {}) if isinstance(memory.get("current_position", {}), dict) else {}
-    if "Stage 7.8" not in str(current.get("active_stage", "")):
-        failures.append("roadmap active stage must remain Stage 7.8 readiness after recursive hardening")
-    return {"forbidden_phase9_files": len(forbidden)}
+    if current.get("active_stage") != "Stage 9 scaffold serialized; manuscript production not started":
+        failures.append("roadmap active stage must record the Stage 9 scaffold-only boundary")
+    return {
+        "authorized_phase9_scaffold_files": len(stage9_files) - len(unauthorized),
+        "unauthorized_phase9_files": len(unauthorized),
+        "unauthorized_stage9_draft_files": len(draft_files),
+        "stage9_checker_status": checker_status,
+    }
 
 
 def _write_summary(report: dict[str, object]) -> None:
@@ -396,7 +452,7 @@ def audit_stage7_7_8_recursive_hardening(root: Path = ROOT) -> dict[str, object]
         "warnings": warnings,
         "interpretation_boundary": (
             "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. "
-            "It does not add biological evidence, change method decisions, or scaffold a Phase 9 manuscript-production stage."
+            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, with no evidence intake or manuscript drafting started."
         ),
     }
     return report

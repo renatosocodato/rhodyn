@@ -1,0 +1,55 @@
+{
+  "archive_doi": "10.5281/zenodo.21036616",
+  "code_central": true,
+  "concept_doi": "10.5281/zenodo.21036615",
+  "content_type": "Article",
+  "core_constructs": [
+    "residence windows",
+    "dwell metrics",
+    "amplitude / endpoint comparators",
+    "bounded coupling",
+    "reserve-like summaries",
+    "routed-output model comparison"
+  ],
+  "figure_engine_binding": {
+    "cli": "figures",
+    "clone_path": "tools/panelforge-figures",
+    "concept_doi": "10.5281/zenodo.20811170",
+    "data_class": "research",
+    "execution_status": "not_cloned_not_installed_not_rendered",
+    "install": "pip install -e \".[dev]\"",
+    "install_alt": "pip install \"git+https://github.com/renatosocodato/panelforge-figures@v3.14.1\"",
+    "license": "MIT",
+    "manifest": "manuscript/nature_methods/figures/figures.manifest.yaml",
+    "name": "panelforge-figures",
+    "pinned_ref": "v3.14.1",
+    "python": ">=3.11,<3.13",
+    "render_cmd": "figures render figures.manifest.yaml",
+    "repo_url": "https://github.com/renatosocodato/panelforge-figures",
+    "runtime_env": ".venv-panelforge",
+    "telemetry": "off",
+    "validate_cmd": "figures validate figures.manifest.yaml",
+    "version_doi": "10.5281/zenodo.20811171"
+  },
+  "method_name": "RhoDyn",
+  "method_object": "residence-aware interpretation of biological trajectories",
+  "primary_model_system": "public live-cell signaling and perturbation benchmark systems",
+  "repo_url": "https://github.com/renatosocodato/rhodyn",
+  "reporting_summary_required": true,
+  "scaffold_version": "2.1",
+  "skills_in_use": {
+    "editorial_elevation": true,
+    "publication_surface_hygiene": true,
+    "ref_manager": true
+  },
+  "software_name": "RhoDyn",
+  "software_version": "v0.1.0",
+  "stage9_scaffold_scope": "contract_schema_serialization_only",
+  "venue": "Nature Methods",
+  "venue_binding": {
+    "code_central": true,
+    "content_type": "Article",
+    "reporting_summary_required": true,
+    "venue": "Nature Methods"
+  }
+}

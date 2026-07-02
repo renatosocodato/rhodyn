@@ -13,6 +13,7 @@ include playwright.config.mjs
 recursive-include .github/workflows *.yml
 recursive-include docs *.md
 recursive-include docs *.json *.csv
+recursive-include manuscript/nature_methods *.md *.json *.yaml
 recursive-include case_studies *.csv *.json *.tsv *.txt *.md
 recursive-include deploy *.example *.Dockerfile *.yml
 recursive-include examples *.csv *.py *.txt
@@ -23,5 +24,6 @@ recursive-include tests/playwright *.mjs
 recursive-include tests/playwright *.png
 recursive-include api *.json *.csv
 recursive-include frontend *.html *.css *.js
+include tools/panelforge-figures/STAGE9_PLACEHOLDER.md
 exclude docs/phase6_release_readiness_report.json
 recursive-exclude docs phase6_release_readiness_report.json

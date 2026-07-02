@@ -1,0 +1,9 @@
+# Stage 9.6b PanelForge manifest placeholder.
+# This is not a renderable figure manifest.
+# Stage 9.6b must replace this file after the figure-to-claim-to-artifact
+# contract has passed and PanelForge has been cloned at the pinned ref.
+manifest_status: scaffold_placeholder_not_renderable
+figure_engine: panelforge-figures
+pinned_ref: v3.14.1
+version_doi: 10.5281/zenodo.20811171
+figures: []

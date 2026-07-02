@@ -2,18 +2,25 @@
   "checks": {
     "archive_manifest_complete": "pass",
     "cross_surface_parity_matches": "pass",
+    "deterministic_outputs_in_archive_manifest": "pass",
     "deterministic_outputs_match": "pass",
     "full_archive_mode": "pass",
     "gate_reports_identical": "pass",
+    "release_checksums_cover_stage7_6": "pass",
+    "report_surfaces_sanitized": "pass",
     "scope_boundary_preserved": "pass",
+    "source_distribution_members_complete": "pass",
     "workflow_checks_pass": "pass"
   },
   "completion_state": "stage7_6_recursive_hardened",
   "counts": {
-    "archive_manifest_rows": 390,
+    "archive_manifest_rows": 419,
     "command_rows": 7,
     "comparison_rows": 30,
-    "parity_rows": 4
+    "parity_rows": 4,
+    "release_checksum_rows": 405,
+    "report_surfaces_scanned": 11,
+    "required_stage7_6_checksum_files": 12
   },
   "failures": [],
   "interpretation_boundary": "This audit hardens Stage 7.6 software reproducibility evidence. It does not add biological evidence or change any method decision rule.",

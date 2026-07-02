@@ -1,0 +1,48 @@
+{
+  "$id": "rhodyn.stage9.statistic_ledger.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "art_id": {
+      "type": "string"
+    },
+    "ci": {
+      "type": "string"
+    },
+    "fig_id": {
+      "type": "string"
+    },
+    "manuscript_locations": {
+      "type": "string"
+    },
+    "n": {
+      "type": "string"
+    },
+    "source_command": {
+      "type": "string"
+    },
+    "stat_id": {
+      "pattern": "^STAT-[0-9]{4}$",
+      "type": "string"
+    },
+    "test": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "stat_id",
+    "art_id",
+    "fig_id",
+    "value",
+    "ci",
+    "n",
+    "test",
+    "source_command",
+    "manuscript_locations"
+  ],
+  "title": "Stage 9 statistic_ledger row",
+  "type": "object"
+}

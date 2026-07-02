@@ -1,0 +1,40 @@
+{
+  "$id": "rhodyn.stage9.claim_hierarchy.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": {
+      "pattern": "^CLM-[0-9]{4}$",
+      "type": "string"
+    },
+    "class": {
+      "type": "string"
+    },
+    "confidence": {
+      "type": "string"
+    },
+    "evidence_art_ids": {
+      "type": "string"
+    },
+    "fig_ids": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string"
+    },
+    "strength_cap": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "claim_id",
+    "class",
+    "confidence",
+    "evidence_art_ids",
+    "fig_ids",
+    "location",
+    "strength_cap"
+  ],
+  "title": "Stage 9 claim_hierarchy row",
+  "type": "object"
+}

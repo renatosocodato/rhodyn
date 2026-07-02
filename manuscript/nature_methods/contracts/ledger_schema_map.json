@@ -1,0 +1,15 @@
+{
+  "citation_claim_ledger": "ledger_schemas/citation_claim_ledger.schema.json",
+  "claim_hierarchy": "ledger_schemas/claim_hierarchy.schema.json",
+  "figure_to_claim_to_artifact": "ledger_schemas/figure_to_claim_to_artifact.schema.json",
+  "limitations_ledger": "ledger_schemas/limitations_ledger.schema.json",
+  "live_numbers_diff": "ledger_schemas/live_numbers_diff.schema.json",
+  "methods_to_code": "ledger_schemas/methods_to_code.schema.json",
+  "paragraph_claim_ledger": "ledger_schemas/paragraph_claim_ledger.schema.json",
+  "reproducibility_command_index": "ledger_schemas/reproducibility_command_index.schema.json",
+  "reviewer_action_matrix": "ledger_schemas/reviewer_action_matrix.schema.json",
+  "stage7_output_contract": "ledger_schemas/stage7_output_contract.schema.json",
+  "stage9_evidence_manifest": "ledger_schemas/stage9_evidence_manifest.schema.json",
+  "statistic_ledger": "ledger_schemas/statistic_ledger.schema.json",
+  "supplementary_callout_ledger": "ledger_schemas/supplementary_callout_ledger.schema.json"
+}

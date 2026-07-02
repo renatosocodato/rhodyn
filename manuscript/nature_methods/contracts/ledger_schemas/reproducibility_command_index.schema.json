@@ -1,0 +1,31 @@
+{
+  "$id": "rhodyn.stage9.reproducibility_command_index.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "art_id": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "command_id": {
+      "type": "string"
+    },
+    "expected_output": {
+      "type": "string"
+    },
+    "software_version": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "command_id",
+    "art_id",
+    "command",
+    "expected_output",
+    "software_version"
+  ],
+  "title": "Stage 9 reproducibility_command_index row",
+  "type": "object"
+}

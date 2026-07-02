@@ -1,0 +1,37 @@
+{
+  "$id": "rhodyn.stage9.stage7_output_contract.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "component": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "required_for_stage9": {
+      "enum": [
+        "true",
+        "false",
+        "not_applicable",
+        "pending"
+      ],
+      "type": "string"
+    },
+    "schema": {
+      "type": "string"
+    },
+    "scope_status": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "component",
+    "path",
+    "schema",
+    "required_for_stage9",
+    "scope_status"
+  ],
+  "title": "Stage 9 stage7_output_contract row",
+  "type": "object"
+}

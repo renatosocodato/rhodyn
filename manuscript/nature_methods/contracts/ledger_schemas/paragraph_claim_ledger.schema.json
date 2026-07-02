@@ -1,0 +1,48 @@
+{
+  "$id": "rhodyn.stage9.paragraph_claim_ledger.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "caveat": {
+      "type": "string"
+    },
+    "claim_id": {
+      "type": "string"
+    },
+    "fig_ids": {
+      "type": "string"
+    },
+    "para_id": {
+      "pattern": "^PARA-[A-Za-z0-9_-]+-[0-9]{3}$",
+      "type": "string"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "ref_ids": {
+      "type": "string"
+    },
+    "section": {
+      "type": "string"
+    },
+    "stat_ids": {
+      "type": "string"
+    },
+    "strength_cap": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "para_id",
+    "section",
+    "purpose",
+    "claim_id",
+    "fig_ids",
+    "stat_ids",
+    "ref_ids",
+    "caveat",
+    "strength_cap"
+  ],
+  "title": "Stage 9 paragraph_claim_ledger row",
+  "type": "object"
+}

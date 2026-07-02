@@ -1,0 +1,589 @@
+{
+  "final_deliverables": [
+    "Complete Nature Methods-aligned manuscript draft.",
+    "Complete Methods and Supplementary Information drafts.",
+    "Complete figure and table package plan with legends.",
+    "Data, code, and software availability statements.",
+    "Mandatory Reporting Summary registered for package assembly.",
+    "Resolved literature and citation ledger.",
+    "Claim-to-evidence, figure-to-artifact, methods-to-code, and statistic ledgers.",
+    "PanelForge manifest, rendered panels, pinned engine commit, and render report after Stage 9.6b executes.",
+    "Reproducibility command index.",
+    "Contract and schema layer with all gate verdict JSON files.",
+    "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
+    "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
+  ],
+  "patch_ledger": [
+    {
+      "id": "P1",
+      "summary": "Every substage emits a falsifiable gate verdict JSON.",
+      "title": "Machine-checkable gates"
+    },
+    {
+      "id": "P2",
+      "summary": "Claims, paragraphs, figures, artifacts, references, and statistics use immutable IDs.",
+      "title": "Stable IDs and pinned ledger schemas"
+    },
+    {
+      "id": "P3",
+      "summary": "Substages stage, gate, promote, or quarantine without partially writing canonical outputs.",
+      "title": "Atomic idempotent writes"
+    },
+    {
+      "id": "P4",
+      "summary": "References are resolved through the future reference-management route before manuscript use.",
+      "title": "Citation anti-fabrication routing"
+    },
+    {
+      "id": "P5",
+      "summary": "Reported statistics are recomputed from frozen artifacts before promotion.",
+      "title": "Numbers-are-live provenance"
+    },
+    {
+      "id": "P6",
+      "summary": "Stage 9.0 checks Stage 7 headline-result coverage before claim freeze.",
+      "title": "Entry-gate ordering-loop fix"
+    },
+    {
+      "id": "P7",
+      "summary": "Publication-surface hygiene blocks internal scaffold leakage before package assembly.",
+      "title": "Reader-surface hygiene"
+    },
+    {
+      "id": "P8",
+      "summary": "Content type, Reporting Summary, code review, subheading, reference, and discovery-fit rules are pinned downstream.",
+      "title": "Nature Methods venue corrections"
+    },
+    {
+      "id": "P9",
+      "summary": "Project-specific method nouns and venue choices live in the project binding block.",
+      "title": "Scope-fork resolution"
+    },
+    {
+      "id": "P10",
+      "summary": "PanelForge is version-bound for future deterministic figure rendering through Stage 9.6b.",
+      "title": "Figure-engine integration"
+    }
+  ],
+  "scaffold_version": "2.1",
+  "substage_count": 33,
+  "substages": [
+    {
+      "gate_predicates": [
+        "schema files are valid JSON objects with required field declarations",
+        "namespace prefixes are defined",
+        "workspace directories exist",
+        "execution-memory loader is documented",
+        "every declared Stage 9 ledger maps to exactly one schema"
+      ],
+      "id": "9.-1",
+      "objective": "Make downstream gates machine-checkable and ledgers joinable before evidence intake.",
+      "outputs": [
+        "manuscript/nature_methods/contracts/id_namespace.md",
+        "manuscript/nature_methods/contracts/ledger_schemas/*.json",
+        "manuscript/nature_methods/contracts/machine_gate_spec.md",
+        "manuscript/nature_methods/contracts/atomic_write_protocol.md",
+        "docs/stage9_execution_memory.json"
+      ],
+      "status": "complete_scaffold_only",
+      "title": "Contract and schema layer"
+    },
+    {
+      "gate_predicates": [
+        "entry artifacts resolve",
+        "artifacts validate or are scoped out",
+        "headline Stage 7 results map to ART IDs",
+        "evidence_version is immutable"
+      ],
+      "id": "9.0",
+      "objective": "Confirm that manuscript assembly can begin from frozen, typed Stage 7 evidence.",
+      "outputs": [
+        "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
+        "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
+        "manuscript/nature_methods/ledgers/stage7_output_contract.md"
+      ],
+      "status": "not_started",
+      "title": "Stage 7 evidence intake and lock"
+    },
+    {
+      "gate_predicates": [
+        "content-type budget is sourced",
+        "cached sources have URL and access date",
+        "verified venue constraints are explicit",
+        "freshness assertion passes"
+      ],
+      "id": "9.1",
+      "objective": "Bind manuscript process to official and cached Nature Methods guidance.",
+      "outputs": [
+        "manuscript/nature_methods/refs/nature_methods_guidance_register.md",
+        "manuscript/nature_methods/refs/_cache/",
+        "manuscript/nature_methods/audits/venue_policy_constraints.md"
+      ],
+      "status": "not_started",
+      "title": "Venue guidance source register"
+    },
+    {
+      "gate_predicates": [
+        "corpus has the planned DOI count",
+        "each entry records novelty, benchmarks, biology, software, limitations, and availability",
+        "archetype synthesis exists"
+      ],
+      "id": "9.2",
+      "objective": "Create a structural corpus of successful computational methods papers.",
+      "outputs": [
+        "manuscript/nature_methods/refs/representative_methods_papers.md",
+        "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md"
+      ],
+      "status": "not_started",
+      "title": "Representative methods-paper corpus"
+    },
+    {
+      "gate_predicates": [
+        "content_type matches a sourced budget",
+        "narrative spine exists",
+        "discovery-versus-demonstration decision is evidence-bound"
+      ],
+      "id": "9.3",
+      "objective": "Pin paper type, content type, and venue-fit decision before drafting.",
+      "outputs": [
+        "manuscript/nature_methods/stage9_narrative_spine.md",
+        "manuscript/nature_methods/audits/venue_fit_rationale.md"
+      ],
+      "status": "not_started",
+      "title": "Archetype, content type, and narrative spine"
+    },
+    {
+      "gate_predicates": [
+        "claim hierarchy validates",
+        "every central claim has evidence",
+        "every claim has a strength cap",
+        "non-claims ledger is non-empty"
+      ],
+      "id": "9.4",
+      "objective": "Freeze claim hierarchy with stable CLM IDs and strength caps.",
+      "outputs": [
+        "manuscript/nature_methods/ledgers/claim_hierarchy.md",
+        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+        "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md"
+      ],
+      "status": "not_started",
+      "title": "Manuscript claim freeze"
+    },
+    {
+      "gate_predicates": [
+        "ledger validates",
+        "every PARA ID resolves to a CLM ID",
+        "paragraph strength does not exceed claim strength"
+      ],
+      "id": "9.5",
+      "objective": "Plan manuscript paragraphs as auditable claim-bearing units.",
+      "outputs": [
+        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+        "manuscript/nature_methods/ledgers/claim_strength_rules.md"
+      ],
+      "status": "not_started",
+      "title": "Paragraph-level claim ledger"
+    },
+    {
+      "gate_predicates": [
+        "figure ledger validates",
+        "every figure resolves to claims and artifacts",
+        "figure count respects sourced budget",
+        "central evidence is not buried in supplement"
+      ],
+      "id": "9.6",
+      "objective": "Build the manuscript around evidence-bearing display items before prose.",
+      "outputs": [
+        "manuscript/nature_methods/figures/main_figure_spine.md",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "manuscript/nature_methods/figures/display_item_plan.md"
+      ],
+      "status": "not_started",
+      "title": "Figure-first manuscript spine"
+    },
+    {
+      "gate_predicates": [
+        "figure engine version equals pinned ref",
+        "figures validate passes for manifest",
+        "every fig_id has an existing render_path",
+        "every rendered entry records a recipe and rejected alternative",
+        "S1 manifest keys contain no claim IDs, artifact IDs, or pipeline-state tokens",
+        "gallery drift is passing or explicitly accepted"
+      ],
+      "id": "9.6b",
+      "objective": "Prepare deterministic publication-grade figure rendering from the frozen figure-to-claim-to-artifact contract.",
+      "outputs": [
+        "manuscript/nature_methods/figures/figures.manifest.yaml",
+        "manuscript/nature_methods/figures/rendered/<fig_id>/*.png|pdf|svg",
+        "manuscript/nature_methods/figures/.panelforge_commit",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "manuscript/nature_methods/audits/panelforge_render_report.md"
+      ],
+      "status": "not_started",
+      "title": "Figure rendering via PanelForge"
+    },
+    {
+      "gate_predicates": [
+        "supplementary ledger validates",
+        "each item has callout and role",
+        "essential items have main-text callouts"
+      ],
+      "id": "9.7",
+      "objective": "Plan supplementary material as cited support rather than a data dump.",
+      "outputs": [
+        "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
+        "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
+        "manuscript/nature_methods/figures/figures.manifest.yaml"
+      ],
+      "status": "not_started",
+      "title": "Supplementary display item plan"
+    },
+    {
+      "gate_predicates": [
+        "every section has a contract",
+        "Results and Methods require topical subheadings",
+        "Discussion prohibits subheadings",
+        "Abstract contract follows sourced budget"
+      ],
+      "id": "9.8",
+      "objective": "Define every manuscript section and venue structural rule before writing.",
+      "outputs": [
+        "manuscript/nature_methods/sections/section_contracts.md"
+      ],
+      "status": "not_started",
+      "title": "Section contract blueprint"
+    },
+    {
+      "gate_predicates": [
+        "abstract word count respects sourced budget",
+        "abstract citation style follows content type",
+        "abstract claims map to claim IDs"
+      ],
+      "id": "9.9",
+      "objective": "Create high-level framing without overselling.",
+      "outputs": [
+        "manuscript/nature_methods/sections/title_options.md",
+        "manuscript/nature_methods/sections/abstract_strategy.md",
+        "manuscript/nature_methods/sections/abstract.md"
+      ],
+      "status": "not_started",
+      "title": "Title, subtitle, and abstract strategy"
+    },
+    {
+      "gate_predicates": [
+        "each subsection maps to figure and artifact IDs",
+        "allowed conclusion respects strength cap",
+        "no subsection is narrative-only"
+      ],
+      "id": "9.10",
+      "objective": "Break Results into evidence-locked drafting units.",
+      "outputs": [
+        "manuscript/nature_methods/sections/results_blueprint.md"
+      ],
+      "status": "not_started",
+      "title": "Results subsection architecture"
+    },
+    {
+      "gate_predicates": [
+        "every Results paragraph has a PARA ID",
+        "figure callouts resolve",
+        "strength caps hold"
+      ],
+      "id": "9.11",
+      "objective": "Draft Results in figure-locked order.",
+      "outputs": [
+        "manuscript/nature_methods/sections/results.md"
+      ],
+      "status": "not_started",
+      "title": "Results drafting pass"
+    },
+    {
+      "gate_predicates": [
+        "all Introduction citations resolve",
+        "external claims map to reference IDs",
+        "review-source share is under threshold"
+      ],
+      "id": "9.12",
+      "objective": "Draft citation-bound Introduction through resolved references.",
+      "outputs": [
+        "manuscript/nature_methods/sections/introduction.md",
+        "manuscript/nature_methods/refs/introduction_citation_ledger.csv"
+      ],
+      "status": "not_started",
+      "title": "Introduction literature binding"
+    },
+    {
+      "gate_predicates": [
+        "Stage 7 limitations represented",
+        "no limitation converted into strength without evidence",
+        "map has no subheadings"
+      ],
+      "id": "9.13",
+      "objective": "Plan limitation-aware Discussion before drafting.",
+      "outputs": [
+        "manuscript/nature_methods/sections/discussion_blueprint.md"
+      ],
+      "status": "not_started",
+      "title": "Discussion interpretation map"
+    },
+    {
+      "gate_predicates": [
+        "Discussion contains no subheadings",
+        "limitations remain visible",
+        "future directions are labeled"
+      ],
+      "id": "9.14",
+      "objective": "Draft balanced Discussion with no subheadings.",
+      "outputs": [
+        "manuscript/nature_methods/sections/discussion.md"
+      ],
+      "status": "not_started",
+      "title": "Discussion drafting pass"
+    },
+    {
+      "gate_predicates": [
+        "methods-to-code ledger validates",
+        "methods statements map to repo path and commit",
+        "dataset references include version and date"
+      ],
+      "id": "9.15",
+      "objective": "Build Methods structure from repository implementation and Stage 7 artifacts.",
+      "outputs": [
+        "manuscript/nature_methods/sections/methods_blueprint.md",
+        "manuscript/nature_methods/ledgers/methods_to_code_ledger.csv"
+      ],
+      "status": "not_started",
+      "title": "Methods architecture"
+    },
+    {
+      "gate_predicates": [
+        "every Methods claim has a methods statement ID",
+        "software version matches evidence manifest",
+        "undefined standard-methods phrasing absent"
+      ],
+      "id": "9.16",
+      "objective": "Draft reviewer-reconstructable Methods.",
+      "outputs": [
+        "manuscript/nature_methods/sections/methods.md"
+      ],
+      "status": "not_started",
+      "title": "Methods drafting pass"
+    },
+    {
+      "gate_predicates": [
+        "DOI and repo URL resolve",
+        "commit pinned",
+        "no upon-request language",
+        "Reporting Summary registered as required",
+        "PanelForge version DOI and render command are recorded when figures have been rendered"
+      ],
+      "id": "9.17",
+      "objective": "Create precise availability statements and required Reporting Summary placeholder.",
+      "outputs": [
+        "manuscript/nature_methods/sections/data_availability.md",
+        "manuscript/nature_methods/sections/code_availability.md",
+        "manuscript/nature_methods/ledgers/reproducibility_command_index.md",
+        "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md"
+      ],
+      "status": "not_started",
+      "title": "Software, data, and code availability assembly"
+    },
+    {
+      "gate_predicates": [
+        "items are callable from main text",
+        "no new claim ID absent from claim freeze"
+      ],
+      "id": "9.18",
+      "objective": "Move technical depth into structured Supplementary Methods.",
+      "outputs": [
+        "manuscript/nature_methods/supplementary/supplementary_methods.md"
+      ],
+      "status": "not_started",
+      "title": "Supplementary Methods drafting"
+    },
+    {
+      "gate_predicates": [
+        "each table has callout and role",
+        "figure-source mapping covers figures",
+        "figure-source mapping records PanelForge recipe and render path after 9.6b",
+        "statistics table references statistic IDs"
+      ],
+      "id": "9.19",
+      "objective": "Build supplementary tables as reviewable evidence objects.",
+      "outputs": [
+        "manuscript/nature_methods/supplementary/supplementary_tables_plan.md",
+        "manuscript/nature_methods/supplementary/"
+      ],
+      "status": "not_started",
+      "title": "Supplementary tables and source-data binding"
+    },
+    {
+      "gate_predicates": [
+        "references resolve with DOI or PMID",
+        "retraction checks are clear or justified",
+        "reference count respects cap",
+        "references map to claims"
+      ],
+      "id": "9.20",
+      "objective": "Resolve and audit complete reference library.",
+      "outputs": [
+        "manuscript/nature_methods/refs/references.bib",
+        "manuscript/nature_methods/refs/citation_claim_ledger.csv",
+        "manuscript/nature_methods/audits/reference_audit.md"
+      ],
+      "status": "not_started",
+      "title": "Reference library and citation audit"
+    },
+    {
+      "gate_predicates": [
+        "orphan claim set empty",
+        "orphan figure set empty",
+        "orphan statistic set empty",
+        "dangling reference set empty",
+        "version and strength coherence hold"
+      ],
+      "id": "9.21",
+      "objective": "Check manuscript consistency by relational joins over keyed ledgers.",
+      "outputs": [
+        "manuscript/nature_methods/audits/cross_document_consistency_audit.md"
+      ],
+      "status": "not_started",
+      "title": "Cross-document consistency audit"
+    },
+    {
+      "gate_predicates": [
+        "every statistic recomputes within tolerance",
+        "quantitative statements have statistic IDs",
+        "equivalence claims state bounds"
+      ],
+      "id": "9.22",
+      "objective": "Recompute reported numbers from frozen artifacts and diff manuscript text.",
+      "outputs": [
+        "manuscript/nature_methods/audits/statistical_language_audit.md",
+        "manuscript/nature_methods/audits/live_numbers_diff.csv",
+        "manuscript/nature_methods/ledgers/statistic_ledger.csv"
+      ],
+      "status": "not_started",
+      "title": "Statistical and quantitative language audit"
+    },
+    {
+      "gate_predicates": [
+        "each figure and table has legend",
+        "legend statistics resolve",
+        "legends do not assert absent claims",
+        "legend seed text does not inherit PanelForge S3 provenance"
+      ],
+      "id": "9.23",
+      "objective": "Make display items self-contained and precise.",
+      "outputs": [
+        "manuscript/nature_methods/figures/figure_legends.md",
+        "manuscript/nature_methods/audits/figure_legend_audit.md"
+      ],
+      "status": "not_started",
+      "title": "Figure legend and caption audit"
+    },
+    {
+      "gate_predicates": [
+        "paragraph ID set unchanged",
+        "strength caps hold",
+        "limitations remain present"
+      ],
+      "id": "9.24",
+      "objective": "Improve scientific clarity without changing meaning.",
+      "outputs": [
+        "manuscript/nature_methods/audits/editorial_pass_1.md"
+      ],
+      "status": "not_started",
+      "title": "Editorial polish pass I"
+    },
+    {
+      "gate_predicates": [
+        "meaning preserved",
+        "style metrics pass thresholds",
+        "no claim broadened"
+      ],
+      "id": "9.25",
+      "objective": "Tune venue style and readability without broadening claims.",
+      "outputs": [
+        "manuscript/nature_methods/audits/editorial_pass_2.md"
+      ],
+      "status": "not_started",
+      "title": "Editorial polish pass II"
+    },
+    {
+      "gate_predicates": [
+        "no internal ID tokens on reader-facing surfaces",
+        "no stage or substage references on reader-facing surfaces",
+        "legends and captions are free of lineage language",
+        "PanelForge manifest S3 provenance is not cross-referenced from S1 reader-facing keys"
+      ],
+      "id": "9.25b",
+      "objective": "Strip internal IDs and build-language from reader-facing surfaces before assembly.",
+      "outputs": [
+        "manuscript/nature_methods/audits/reader_surface_hygiene_report.md"
+      ],
+      "status": "not_started",
+      "title": "Reader-surface hygiene gate"
+    },
+    {
+      "gate_predicates": [
+        "all eight perspectives present",
+        "blocking concerns have resolution status",
+        "unsupported central claims are routed"
+      ],
+      "id": "9.26",
+      "objective": "Stress-test the manuscript with eight reviewer perspectives.",
+      "outputs": [
+        "manuscript/nature_methods/audits/internal_peer_review_simulation.md",
+        "manuscript/nature_methods/audits/reviewer_action_matrix.csv"
+      ],
+      "status": "not_started",
+      "title": "Internal peer review simulation"
+    },
+    {
+      "gate_predicates": [
+        "required package elements exist",
+        "reader-surface hygiene passed",
+        "Reporting Summary present",
+        "code-for-review present",
+        "consistency audit passes over package"
+      ],
+      "id": "9.27",
+      "objective": "Assemble complete manuscript and submission package after hygiene gate.",
+      "outputs": [
+        "manuscript/nature_methods/submission_package/",
+        "manuscript/nature_methods/submission_package/submission_readiness_checklist.md"
+      ],
+      "status": "not_started",
+      "title": "Submission package assembly"
+    },
+    {
+      "gate_predicates": [
+        "packet covers thesis, claims, figures, risks, limitations, objections, decisions, venue fit, and open items",
+        "human-judgment items are explicit"
+      ],
+      "id": "9.28",
+      "objective": "Prepare final human decision packet.",
+      "outputs": [
+        "manuscript/nature_methods/submission_package/pi_review_packet.md"
+      ],
+      "status": "not_started",
+      "title": "Final human PI review packet"
+    },
+    {
+      "gate_predicates": [
+        "every Stage 9 gate passes",
+        "quarantine has no unresolved blocker",
+        "package, evidence, and release versions are bound"
+      ],
+      "id": "9.29",
+      "objective": "Close Stage 9 with package, evidence, release, and limitation versions bound.",
+      "outputs": [
+        "manuscript/nature_methods/stage9_completion_report.md",
+        "docs/roadmap_execution_memory.json"
+      ],
+      "status": "not_started",
+      "title": "Roadmap closure and version binding"
+    }
+  ]
+}

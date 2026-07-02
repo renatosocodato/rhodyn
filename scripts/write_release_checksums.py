@@ -39,6 +39,7 @@ INCLUDED_PREFIXES = (
     "docs/",
     "examples/",
     "frontend/",
+    "manuscript/",
     "notebooks/",
     "scripts/",
     "src/",

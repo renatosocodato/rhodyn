@@ -11,18 +11,21 @@
   },
   "completion_state": "stage7_7_8_recursively_hardened",
   "counts": {
-    "archive_manifest_rows": 390,
-    "forbidden_phase9_files": 0,
-    "release_checksum_rows": 362,
+    "archive_manifest_rows": 419,
+    "authorized_phase9_scaffold_files": 6,
+    "release_checksum_rows": 405,
     "required_stage7_7_8_files": 27,
     "stage7_7_bundle_members": 18,
     "stage7_7_bundles": 2,
     "stage7_8_checklist_rows": 6,
     "stage7_8_claim_rows": 5,
-    "stage7_8_figure_rows": 6
+    "stage7_8_figure_rows": 6,
+    "stage9_checker_status": "pass",
+    "unauthorized_phase9_files": 0,
+    "unauthorized_stage9_draft_files": 0
   },
   "failures": [],
-  "interpretation_boundary": "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. It does not add biological evidence, change method decisions, or scaffold a Phase 9 manuscript-production stage.",
+  "interpretation_boundary": "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, with no evidence intake or manuscript drafting started.",
   "report_format": "rhodyn.stage7_7_8_recursive_hardening.v1",
   "status": "pass",
   "warnings": []

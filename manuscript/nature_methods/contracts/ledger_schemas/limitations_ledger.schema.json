@@ -1,0 +1,37 @@
+{
+  "$id": "rhodyn.stage9.limitations_ledger.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "claim_id": {
+      "type": "string"
+    },
+    "limitation_id": {
+      "type": "string"
+    },
+    "manuscript_location": {
+      "type": "string"
+    },
+    "retained": {
+      "enum": [
+        "true",
+        "false",
+        "not_applicable",
+        "pending"
+      ],
+      "type": "string"
+    },
+    "scope": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "limitation_id",
+    "claim_id",
+    "scope",
+    "manuscript_location",
+    "retained"
+  ],
+  "title": "Stage 9 limitations_ledger row",
+  "type": "object"
+}

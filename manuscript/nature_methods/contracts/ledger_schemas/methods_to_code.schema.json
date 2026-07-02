@@ -1,0 +1,31 @@
+{
+  "$id": "rhodyn.stage9.methods_to_code.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "art_id": {
+      "type": "string"
+    },
+    "command": {
+      "type": "string"
+    },
+    "commit": {
+      "type": "string"
+    },
+    "methods_stmt_id": {
+      "type": "string"
+    },
+    "repo_path": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "methods_stmt_id",
+    "art_id",
+    "repo_path",
+    "commit",
+    "command"
+  ],
+  "title": "Stage 9 methods_to_code row",
+  "type": "object"
+}

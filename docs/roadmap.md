@@ -34,8 +34,10 @@ documentation, CI wiring, and API stability policy. Stage 7.7 adds a scoped
 usability rehearsal, and Stage 7.8 maps planned methods-manuscript components
 to reproducible evidence, validation, and limitations. The Stage 7.7 and 7.8
 surfaces are now recursively checked against the Stage 7.6 archive and release
-checksums. Stage 8 remains conceptual, and Phase 9 manuscript-production work
-has not been scaffolded.
+checksums. Stage 8 remains conceptual. Stage 9 scaffold has been serialized
+under the v2.1 contract with PanelForge figure-engine integration reserved as
+Stage 9.6b, but manuscript production, evidence intake, citation resolution,
+figure rendering, and drafting remain not started.
 
 ## Execution memory
 
@@ -72,10 +74,15 @@ passes.
    program aligned to standards exemplified by strong computational methods
    papers, with Nature Methods as the primary reference point rather than a
    guaranteed formula. Recursive hardening verifies the Stage 7.7 and 7.8
-   outputs against the release checksum and archive surfaces without starting
-   Phase 9.
+   outputs against the release checksum and archive surfaces while allowing
+   only the Stage 9 manuscript-assembly scaffold.
 6. Stage 8 inherits from Stage 7. Product strategy should not lead or reshape
    the evidence path.
+7. Stage 9 scaffold has been serialized as a Nature Methods manuscript
+   assembly contract. The scaffold defines directories, identifier namespaces,
+   ledger schemas, gate predicates, atomic-write rules, and the future
+   PanelForge rendering handoff only. Manuscript production, evidence intake,
+   citation resolution, figure rendering, and drafting remain not started.
 
 Decision rule for new work. If a proposed task adds another public biological
 system, it is Stage 7 evidence expansion unless it fixes a Stage 3 defect. If a
@@ -84,7 +91,10 @@ bundles, it is Stage 4. If a task adds visual screens or user interaction, it is
 Stage 5. If a task adds packaging, DOI, distribution, or public citation
 surfaces, it is Stage 6. If a task changes commercial packaging, pricing,
 deployment, or team features, it is Stage 8 and must remain downstream of the
-Nature Methods method frame.
+Nature Methods method frame. If a task touches Nature Methods manuscript
+assembly, it is Stage 9 and must map to a serialized substage before any
+evidence intake, citation resolution, PanelForge figure rendering, drafting, or
+submission package work begins.
 
 ## Roadmap lock
 
@@ -100,6 +110,7 @@ as roadmap work.
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
 | Stage 7. Independent methods-program roadmap | Stage 7.8 methods manuscript readiness package complete and recursively hardened against release surfaces. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
+| Stage 9. Nature Methods manuscript assembly | Scaffold serialized, manuscript production not started. | The current boundary is contract/schema scaffolding only, with PanelForge reserved as a future Stage 9.6b rendering dependency. Do not start evidence intake, citation resolution, figure rendering, drafting, review response, or submission packaging without explicit substage authorization. |
 
 ## Non-drift principles
 

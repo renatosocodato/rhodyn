@@ -41,7 +41,10 @@ class Stage778RecursiveHardeningTests(unittest.TestCase):
         self.assertEqual(docs_report["counts"]["stage7_8_figure_rows"], 6)
         self.assertEqual(docs_report["counts"]["stage7_8_claim_rows"], 5)
         self.assertIn("does not add biological evidence", docs_report["interpretation_boundary"])
-        self.assertIn("Phase 9", docs_report["interpretation_boundary"])
+        self.assertIn("Phase 9 is limited to the authorized manuscript-assembly scaffold", docs_report["interpretation_boundary"])
+        self.assertEqual(docs_report["counts"]["unauthorized_phase9_files"], 0)
+        self.assertEqual(docs_report["counts"]["unauthorized_stage9_draft_files"], 0)
+        self.assertEqual(docs_report["counts"]["stage9_checker_status"], "pass")
 
     def test_recursive_audit_recomputes_current_state(self) -> None:
         report = AUDIT.audit_stage7_7_8_recursive_hardening()

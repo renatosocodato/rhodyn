@@ -1,0 +1,37 @@
+{
+  "$id": "rhodyn.stage9.supplementary_callout_ledger.row.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "callout_location": {
+      "type": "string"
+    },
+    "fig_id": {
+      "type": "string"
+    },
+    "role": {
+      "enum": [
+        "essential",
+        "supportive",
+        "archival"
+      ],
+      "type": "string"
+    },
+    "supp_id": {
+      "pattern": "^SUPP-[0-9]{3}$",
+      "type": "string"
+    },
+    "tbl_id": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "supp_id",
+    "fig_id",
+    "tbl_id",
+    "callout_location",
+    "role"
+  ],
+  "title": "Stage 9 supplementary_callout_ledger row",
+  "type": "object"
+}
