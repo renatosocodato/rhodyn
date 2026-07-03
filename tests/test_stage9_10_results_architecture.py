@@ -82,7 +82,6 @@ class Stage910ResultsArchitectureTests(unittest.TestCase):
 
     def test_downstream_manuscript_surfaces_remain_absent(self) -> None:
         for rel in [
-            "sections/methods.md",
             "refs/references.bib",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",

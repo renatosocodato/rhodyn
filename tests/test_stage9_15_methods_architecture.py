@@ -79,7 +79,6 @@ class Stage915MethodsArchitectureTests(unittest.TestCase):
 
     def test_no_downstream_methods_or_submission_surfaces_started(self) -> None:
         forbidden = [
-            "sections/methods.md",
             "refs/references.bib",
             "figures/figure_legends.md",
             "sections/data_availability.md",

@@ -53,6 +53,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_13_discussion_interpretation_map.py",
     "scripts/run_stage9_14_discussion_drafting.py",
     "scripts/run_stage9_15_methods_architecture.py",
+    "scripts/run_stage9_16_methods_drafting.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -108,7 +109,6 @@ ID_PREFIXES = [
 ]
 
 FORBIDDEN_DRAFTS = [
-    "sections/methods.md",
     "sections/data_availability.md",
     "sections/code_availability.md",
     "refs/references.bib",
@@ -218,10 +218,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.15 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.16 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -241,6 +241,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_13_started = "9.13.json" in gate_files
     stage9_14_started = "9.14.json" in gate_files
     stage9_15_started = "9.15.json" in gate_files
+    stage9_16_started = "9.16.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -267,7 +268,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_15_methods_architecture_registered"
+        "stage9_16_methods_drafted"
+        if stage9_16_started
+        else "stage9_15_methods_architecture_registered"
         if stage9_15_started
         else "stage9_14_discussion_drafted"
         if stage9_14_started
@@ -853,7 +856,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
                 failures.append(f"Stage 9.15 methods-to-code ledger missing field: {field}")
         if memory.get("methods_architecture_started") is not True:
             failures.append("Stage 9 execution memory must record methods_architecture_started=true after 9.15")
-        if memory.get("methods_drafting_started") is not False:
+        if not stage9_16_started and memory.get("methods_drafting_started") is not False:
             failures.append("Stage 9 execution memory must keep methods_drafting_started=false after 9.15")
     else:
         for rel in [
@@ -862,6 +865,49 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain Methods architecture output before 9.15: {rel}")
+
+    if stage9_16_started:
+        stage9_16_gate = _read_json(workspace / "gate_verdicts" / "9.16.json", failures)
+        methods_path = workspace / "sections" / "methods.md"
+        if stage9_16_gate.get("pass") is not True or stage9_16_gate.get("substage") != "9.16":
+            failures.append("Stage 9.16 gate verdict must pass when present")
+        if stage9_16_gate.get("next_substage") != "9.17":
+            failures.append("Stage 9.16 gate must point to Stage 9.17")
+        if not (900 <= stage9_16_gate.get("methods_word_count", 0) <= 3000):
+            failures.append("Stage 9.16 Methods word count must remain within the 900-3000 word contract")
+        expected_methods_ids = {f"MTH-{idx:04d}" for idx in range(1, 10)}
+        if set(stage9_16_gate.get("methods_statement_ids", [])) != expected_methods_ids:
+            failures.append("Stage 9.16 gate must cover MTH-0001 through MTH-0009")
+        if stage9_16_gate.get("software_version") != "v0.1.0":
+            failures.append("Stage 9.16 gate must preserve RhoDyn v0.1.0")
+        if not methods_path.exists():
+            failures.append("Stage 9.16 Methods output missing: sections/methods.md")
+            methods_body = ""
+        else:
+            methods_body = methods_path.read_text(encoding="utf-8")
+        visible_methods = "\n".join(line for line in methods_body.splitlines() if not line.startswith("<!--"))
+        for phrase in [
+            "Input schemas and preprocessing",
+            "Residence windows and amplitude comparators",
+            "Bounded-coupling and uncertainty decisions",
+            "Reserve-like endpoint construction",
+            "Routed-output model comparison",
+            "Software surfaces, versioning, and reproducibility",
+            "RhoDyn v0.1.0",
+            "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
+            "not proof that all coupling is absent",
+            "not direct assays of unmeasured biological reserve capacity",
+            "does not identify direct biochemical interactions",
+        ]:
+            if phrase not in methods_body:
+                failures.append(f"Stage 9.16 Methods draft missing phrase: {phrase}")
+        if re.search(r"\b(MTH|ART|CLM)-\d{4}\b", visible_methods):
+            failures.append("Stage 9.16 Methods draft must hide internal IDs from visible reader-facing prose")
+        if memory.get("methods_drafting_started") is not True:
+            failures.append("Stage 9 execution memory must record methods_drafting_started=true after 9.16")
+    else:
+        if (workspace / "sections" / "methods.md").exists():
+            failures.append("Stage 9 state must not contain Methods draft output before 9.16: sections/methods.md")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
@@ -893,6 +939,8 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if stage9_14_started and rel == "sections/discussion.md":
                 continue
             if stage9_15_started and rel == "sections/methods_blueprint.md":
+                continue
+            if stage9_16_started and rel == "sections/methods.md":
                 continue
             if path.name != ".gitkeep":
                 failures.append(f"reader-facing manuscript surface exists during scaffold-only pass: {path.relative_to(workspace)}")

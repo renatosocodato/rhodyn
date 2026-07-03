@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 9.15 Methods architecture complete; Methods drafting not started",
+    "active_stage": "Stage 9.16 Methods drafting complete; availability assembly not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -28,6 +28,7 @@
     "after_stage9_13_discussion_interpretation_map": "Stage 9.13 registered a limitation-aware Discussion interpretation map. It represented Stage 7 limitations without drafting discussion.md, Methods, full reference library, figure legends, or submission-package assembly.",
     "after_stage9_14_discussion_drafting": "Stage 9.14 registered a no-subheading Discussion draft with visible limitations and labeled future directions. It did not start Online Methods, full reference library, figure legends, or submission-package assembly.",
     "after_stage9_15_methods_architecture": "Stage 9.15 registered the Online Methods architecture and methods-to-code ledger. It mapped Methods statements to repo paths, commit, commands, evidence artifacts, and dataset version/date fields. It did not draft methods.md, assemble availability statements, resolve the full reference library, write figure legends, or package the submission.",
+    "after_stage9_16_methods_drafting": "Stage 9.16 registered reviewer-reconstructable Online Methods prose from the Stage 9.15 blueprint. It did not assemble availability statements, resolve the full reference library, write figure legends, create Supplementary Methods, or package the submission.",
     "after_stage9_1_guidance_register": "Stage 9.1 cached official Nature Methods, Nature Portfolio, and Springer Nature guidance, registered Article-format constraints, and kept citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly not started.",
     "after_stage9_2_methods_corpus": "Stage 9.2 registered an eight-DOI representative computational methods-paper corpus and extracted cross-paper archetype features. Stage 9.3 narrative-spine selection, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_3_narrative_spine": "Stage 9.3 selected the Nature Methods Article archetype, registered the RhoDyn narrative spine, and fixed the discovery-versus-demonstration boundary. Stage 9.4 claim freeze, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
@@ -40,11 +41,11 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Methods architecture complete without Methods prose",
-    "next_stage": "Stage 9.16 Methods drafting pass",
+    "current_gate": "Methods draft complete without availability assembly",
+    "next_stage": "Stage 9.17 Software, data, and code availability assembly",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
-    "stage9_active_gate": "Stage 9.15 Methods architecture complete; Methods drafting not started"
+    "stage9_active_gate": "Stage 9.16 Methods drafting complete; availability assembly not started"
   },
   "memory_notes": {
     "after_stage9_6b_panelforge_rendering": "Stage 9.6b generated a renderable PanelForge manifest and six deterministic main-figure mockups from the frozen figure-to-claim-to-artifact spine. Citation resolution, manuscript drafting, supplementary display planning, and submission-package assembly remain not started.",
@@ -439,9 +440,12 @@
         "manuscript/nature_methods/sections/methods_blueprint.md",
         "manuscript/nature_methods/ledgers/methods_to_code_ledger.csv",
         "manuscript/nature_methods/gate_verdicts/9.15.json",
-        "scripts/run_stage9_15_methods_architecture.py"
+        "scripts/run_stage9_15_methods_architecture.py",
+        "manuscript/nature_methods/sections/methods.md",
+        "manuscript/nature_methods/gate_verdicts/9.16.json",
+        "scripts/run_stage9_16_methods_drafting.py"
       ],
-      "current_gate": "Stage 9.15 registered Methods architecture without drafting Methods",
+      "current_gate": "Stage 9.16 registered Methods prose without availability assembly",
       "gate": [
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
         "Stage 9.2 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
@@ -460,12 +464,13 @@
         "Stage 9.12 Introduction cites resolved reference IDs and keeps review-source share under threshold.",
         "Stage 9.13 Discussion map represents Stage 7 limitations and contains no Discussion subheadings.",
         "Stage 9.14 Discussion draft contains no subheadings, visible limitations, and labeled future directions.",
-        "Stage 9.15 Methods architecture maps statements to code, commit, command, dataset version/date, and evidence artifacts."
+        "Stage 9.15 Methods architecture maps statements to code, commit, command, dataset version/date, and evidence artifacts.",
+        "Stage 9.16 Methods draft maps claim-bearing prose to Methods statement IDs and preserves software version boundaries."
       ],
       "name": "Nature Methods manuscript assembly scaffold",
-      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, and Methods architecture only. Do not start Methods drafting, availability assembly, full reference library, figure legends, review response, or submission packaging without explicit substage authorization.",
+      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, and Methods drafting only. Do not start availability assembly, full reference library, figure legends, review response, supplementary methods, or submission packaging without explicit substage authorization.",
       "stage": 9,
-      "status": "stage9_15_methods_architecture_registered",
+      "status": "stage9_16_methods_drafted",
       "subphases": [
         {
           "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
@@ -628,12 +633,13 @@
           "status": "complete_methods_architecture_registered"
         },
         {
-          "evidence": "not_started",
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.16.json",
           "gate": "every Methods claim has a methods statement ID; software version matches evidence manifest; undefined standard-methods phrasing absent",
           "goal": "Draft reviewer-reconstructable Methods.",
           "id": "9.16",
+          "methods_draft_version": "methods-draft@2026-07-03@bfe93b9fa845ed730a4b11a0edeb559ba781100c",
           "name": "Methods drafting pass",
-          "status": "not_started"
+          "status": "complete_methods_drafted"
         },
         {
           "evidence": "not_started",

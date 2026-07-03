@@ -67,7 +67,6 @@ class Stage91VenueGuidanceTests(unittest.TestCase):
 
     def test_no_downstream_manuscript_surfaces_started(self) -> None:
         forbidden = [
-            WORKSPACE / "sections" / "methods.md",
             WORKSPACE / "refs" / "references.bib",
             WORKSPACE / "submission_package" / "pi_review_packet.md",
             WORKSPACE / "submission_package" / "submission_readiness_checklist.md",

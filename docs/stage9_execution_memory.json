@@ -45,7 +45,9 @@
     "manuscript/nature_methods/gate_verdicts/9.14.json",
     "manuscript/nature_methods/sections/methods_blueprint.md",
     "manuscript/nature_methods/ledgers/methods_to_code_ledger.csv",
-    "manuscript/nature_methods/gate_verdicts/9.15.json"
+    "manuscript/nature_methods/gate_verdicts/9.15.json",
+    "manuscript/nature_methods/sections/methods.md",
+    "manuscript/nature_methods/gate_verdicts/9.16.json"
   ],
   "citation_resolution_started": false,
   "claim_freeze_started": true,
@@ -888,10 +890,72 @@
       "status": "pass",
       "substage": "9.15",
       "validation_outcome": "Online Methods architecture and methods-to-code ledger registered without drafting Methods prose"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.15 Methods architecture exists and passes",
+          "name": "stage_9_15_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "Methods blueprint, methods-to-code ledger, and Online Methods contract are available",
+          "name": "methods_architecture_inputs_available",
+          "passed": true
+        },
+        {
+          "detail": "covered_methods_ids=MTH-0001;MTH-0002;MTH-0003;MTH-0004;MTH-0005;MTH-0006;MTH-0007;MTH-0008;MTH-0009 paragraph_count=10",
+          "name": "every_methods_claim_has_statement_id",
+          "passed": true
+        },
+        {
+          "detail": "software_version=v0.1.0 evidence_versions=stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc commit=bfe93b9fa845ed730a4b11a0edeb559ba781100c",
+          "name": "software_version_matches_evidence_manifest",
+          "passed": true
+        },
+        {
+          "detail": "Visible Methods prose avoids vague methods phrasing and hides internal IDs in comments only",
+          "name": "undefined_standard_methods_phrasing_absent",
+          "passed": true
+        },
+        {
+          "detail": "word_count=1005 subheading_count=6",
+          "name": "methods_subheadings_and_boundaries_present",
+          "passed": true
+        },
+        {
+          "detail": "No availability statements, references.bib, figure legends, supplementary methods, or submission package detected",
+          "name": "no_availability_references_legends_or_package_started",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.15.json",
+        "manuscript/nature_methods/sections/methods_blueprint.md",
+        "manuscript/nature_methods/ledgers/methods_to_code_ledger.csv",
+        "manuscript/nature_methods/sections/section_contracts.md"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/sections/methods.md",
+        "manuscript/nature_methods/gate_verdicts/9.16.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.16.json",
+      "methods_draft_version": "methods-draft@2026-07-03@bfe93b9fa845ed730a4b11a0edeb559ba781100c",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.17 software, data, and code availability assembly has not started",
+        "Full reference library and citation audit have not started",
+        "Figure legends have not started",
+        "Supplementary Methods have not started",
+        "Submission-package assembly has not started"
+      ],
+      "status": "pass",
+      "substage": "9.16",
+      "validation_outcome": "Reviewer-reconstructable Methods prose registered from Stage 9.15 Methods architecture"
     }
   ],
-  "current_gate": "Stage 9.15 registered Methods architecture without drafting Methods",
-  "current_substage": "9.15",
+  "current_gate": "Stage 9.16 registered Methods prose without availability assembly",
+  "current_substage": "9.16",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
@@ -907,21 +971,22 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.15 are complete through Methods architecture.",
-    "Stage 9.16 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No methods.md, full reference library, figure legends, availability surfaces, or submission package contents are created in this Methods architecture pass.",
-    "The Methods architecture maps every Methods statement to code, commit, command, evidence artifact, dataset version/date, and interpretation boundary."
+    "Stage 9.0 through Stage 9.16 are complete through Methods drafting.",
+    "Stage 9.17 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No availability statements, full reference library, figure legends, supplementary methods, or submission package contents are created in this Methods drafting pass.",
+    "The Methods draft maps claim-bearing prose to Methods statement IDs in hidden comments while keeping visible prose reader-facing."
   ],
-  "generated_utc": "2026-07-03T14:39:07.653833Z",
+  "generated_utc": "2026-07-03T16:13:13.527153Z",
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
   "manuscript_drafting_started": false,
   "methods_architecture_started": true,
   "methods_architecture_version": "methods-architecture@2026-07-03@2a73afd1fa91d5ce13b30b8662717e4b77c8c987",
-  "methods_drafting_started": false,
+  "methods_draft_version": "methods-draft@2026-07-03@bfe93b9fa845ed730a4b11a0edeb559ba781100c",
+  "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.16",
+  "next_substage": "9.17",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -987,7 +1052,7 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results subsection architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, and Methods architecture only. Do not start Methods drafting, availability assembly, full reference library, figure legends, review response, or submission packaging without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results subsection architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, and Methods drafting only. Do not start availability assembly, full reference library, figure legends, review response, supplementary methods, or submission packaging without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "stage": 9,
@@ -1282,6 +1347,43 @@
     {
       "detail": "No methods.md, references.bib, figure legends, availability surfaces, or submission package detected",
       "name": "no_methods_prose_or_downstream_package_started",
+      "passed": true
+    }
+  ],
+  "stage9_16_checks": [
+    {
+      "detail": "Stage 9.15 Methods architecture exists and passes",
+      "name": "stage_9_15_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Methods blueprint, methods-to-code ledger, and Online Methods contract are available",
+      "name": "methods_architecture_inputs_available",
+      "passed": true
+    },
+    {
+      "detail": "covered_methods_ids=MTH-0001;MTH-0002;MTH-0003;MTH-0004;MTH-0005;MTH-0006;MTH-0007;MTH-0008;MTH-0009 paragraph_count=10",
+      "name": "every_methods_claim_has_statement_id",
+      "passed": true
+    },
+    {
+      "detail": "software_version=v0.1.0 evidence_versions=stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc commit=bfe93b9fa845ed730a4b11a0edeb559ba781100c",
+      "name": "software_version_matches_evidence_manifest",
+      "passed": true
+    },
+    {
+      "detail": "Visible Methods prose avoids vague methods phrasing and hides internal IDs in comments only",
+      "name": "undefined_standard_methods_phrasing_absent",
+      "passed": true
+    },
+    {
+      "detail": "word_count=1005 subheading_count=6",
+      "name": "methods_subheadings_and_boundaries_present",
+      "passed": true
+    },
+    {
+      "detail": "No availability statements, references.bib, figure legends, supplementary methods, or submission package detected",
+      "name": "no_availability_references_legends_or_package_started",
       "passed": true
     }
   ],
@@ -1598,8 +1700,8 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.15 Methods architecture complete; Methods drafting not started",
-  "status": "stage9_15_methods_architecture_registered",
+  "stage9_active_gate": "Stage 9.16 Methods drafting complete; availability assembly not started",
+  "status": "stage9_16_methods_drafted",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

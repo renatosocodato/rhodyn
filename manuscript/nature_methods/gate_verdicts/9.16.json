@@ -1,0 +1,70 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.15 Methods architecture exists and passes",
+      "name": "stage_9_15_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Methods blueprint, methods-to-code ledger, and Online Methods contract are available",
+      "name": "methods_architecture_inputs_available",
+      "passed": true
+    },
+    {
+      "detail": "covered_methods_ids=MTH-0001;MTH-0002;MTH-0003;MTH-0004;MTH-0005;MTH-0006;MTH-0007;MTH-0008;MTH-0009 paragraph_count=10",
+      "name": "every_methods_claim_has_statement_id",
+      "passed": true
+    },
+    {
+      "detail": "software_version=v0.1.0 evidence_versions=stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc commit=bfe93b9fa845ed730a4b11a0edeb559ba781100c",
+      "name": "software_version_matches_evidence_manifest",
+      "passed": true
+    },
+    {
+      "detail": "Visible Methods prose avoids vague methods phrasing and hides internal IDs in comments only",
+      "name": "undefined_standard_methods_phrasing_absent",
+      "passed": true
+    },
+    {
+      "detail": "word_count=1005 subheading_count=6",
+      "name": "methods_subheadings_and_boundaries_present",
+      "passed": true
+    },
+    {
+      "detail": "No availability statements, references.bib, figure legends, supplementary methods, or submission package detected",
+      "name": "no_availability_references_legends_or_package_started",
+      "passed": true
+    }
+  ],
+  "claim_ids": [
+    "CLM-0001",
+    "CLM-0002",
+    "CLM-0003",
+    "CLM-0004",
+    "CLM-0005"
+  ],
+  "methods_draft_version": "methods-draft@2026-07-03@bfe93b9fa845ed730a4b11a0edeb559ba781100c",
+  "methods_paragraph_count": 10,
+  "methods_statement_ids": [
+    "MTH-0001",
+    "MTH-0002",
+    "MTH-0003",
+    "MTH-0004",
+    "MTH-0005",
+    "MTH-0006",
+    "MTH-0007",
+    "MTH-0008",
+    "MTH-0009"
+  ],
+  "methods_word_count": 1005,
+  "next_substage": "9.17",
+  "outputs": [
+    "manuscript/nature_methods/sections/methods.md",
+    "manuscript/nature_methods/gate_verdicts/9.16.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Methods prose only. No availability statements, references.bib, figure legends, Supplementary Methods, Reporting Summary, or submission-package assembly.",
+  "software_version": "v0.1.0",
+  "substage": "9.16",
+  "timestamp": "2026-07-03T16:13:13.527153Z"
+}
