@@ -96,6 +96,8 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/gate_verdicts/9.10.json",
     "manuscript/nature_methods/gate_verdicts/9.11.json",
     "manuscript/nature_methods/gate_verdicts/9.12.json",
+    "manuscript/nature_methods/gate_verdicts/9.13.json",
+    "manuscript/nature_methods/gate_verdicts/9.14.json",
     "manuscript/nature_methods/ledgers/.gitkeep",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
@@ -114,6 +116,8 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
+    "manuscript/nature_methods/sections/discussion_blueprint.md",
+    "manuscript/nature_methods/sections/discussion.md",
     "manuscript/nature_methods/refs/.gitkeep",
     "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
     "manuscript/nature_methods/refs/_cache/.gitkeep",
@@ -160,6 +164,8 @@ ALLOWED_STAGE9_PREFIXES = {
     "scripts/run_stage9_10_results_architecture.py",
     "scripts/run_stage9_11_results_drafting.py",
     "scripts/run_stage9_12_introduction_literature_binding.py",
+    "scripts/run_stage9_13_discussion_interpretation_map.py",
+    "scripts/run_stage9_14_discussion_drafting.py",
     "scripts/scaffold_stage9_manuscript_assembly.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -174,12 +180,13 @@ ALLOWED_STAGE9_PREFIXES = {
     "tests/test_stage9_10_results_architecture.py",
     "tests/test_stage9_11_results_drafting.py",
     "tests/test_stage9_12_introduction_literature_binding.py",
+    "tests/test_stage9_13_discussion_interpretation_map.py",
+    "tests/test_stage9_14_discussion_drafting.py",
     "tests/test_stage9_scaffold.py",
     "tools/panelforge-figures/.gitkeep",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
 }
 FORBIDDEN_STAGE9_DRAFT_FILES = {
-    "manuscript/nature_methods/sections/discussion.md",
     "manuscript/nature_methods/sections/methods.md",
     "manuscript/nature_methods/refs/references.bib",
 }
@@ -442,8 +449,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     memory = _read_json(ROOT / "docs" / "roadmap_execution_memory.json", failures)
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     stage9 = stages.get(9, {})
-    if stage9.get("status") != "stage9_12_introduction_literature_bound":
-        failures.append("roadmap execution memory must record Stage 9 as stage9_12_introduction_literature_bound")
+    if stage9.get("status") != "stage9_14_discussion_drafted":
+        failures.append("roadmap execution memory must record Stage 9 as stage9_14_discussion_drafted")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 execution memory must record 33 serialized substages")
     substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -461,6 +468,10 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         failures.append("Stage 9 execution memory must include the 9.11 Results drafting substage")
     if "9.12" not in substage_ids:
         failures.append("Stage 9 execution memory must include the 9.12 Introduction literature-binding substage")
+    if "9.13" not in substage_ids:
+        failures.append("Stage 9 execution memory must include the 9.13 Discussion interpretation-map substage")
+    if "9.14" not in substage_ids:
+        failures.append("Stage 9 execution memory must include the 9.14 Discussion drafting substage")
     substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if substage_status.get("9.6") != "complete_figure_spine_registered":
         failures.append("Stage 9.6 must be marked complete_figure_spine_registered")
@@ -478,11 +489,15 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         failures.append("Stage 9.11 must be marked complete_results_draft_registered")
     if substage_status.get("9.12") != "complete_introduction_literature_bound":
         failures.append("Stage 9.12 must be marked complete_introduction_literature_bound")
+    if substage_status.get("9.13") != "complete_discussion_interpretation_mapped":
+        failures.append("Stage 9.13 must be marked complete_discussion_interpretation_mapped")
+    if substage_status.get("9.14") != "complete_discussion_drafted":
+        failures.append("Stage 9.14 must be marked complete_discussion_drafted")
     if stages.get(8, {}).get("status") != "conceptual_only":
         failures.append("Stage 8 must remain conceptual after Stage 7.7/7.8 hardening")
     current = memory.get("current_position", {}) if isinstance(memory.get("current_position", {}), dict) else {}
-    if current.get("active_stage") != "Stage 9.12 Introduction literature binding complete; Discussion interpretation map not started":
-        failures.append("roadmap active stage must record the Stage 9.12 Introduction literature-binding boundary")
+    if current.get("active_stage") != "Stage 9.14 Discussion drafting pass complete; Online Methods not started":
+        failures.append("roadmap active stage must record the Stage 9.14 Discussion drafting boundary")
     return {
         "authorized_phase9_scaffold_files": len(stage9_files) - len(unauthorized),
         "unauthorized_phase9_files": len(unauthorized),
@@ -570,7 +585,7 @@ def audit_stage7_7_8_recursive_hardening(root: Path = ROOT) -> dict[str, object]
         "warnings": warnings,
         "interpretation_boundary": (
             "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. "
-            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, Stage 9.0 evidence lock, venue and corpus registration, narrative spine, claim freeze, paragraph planning, Stage 9.6 main figure-spine planning, Stage 9.6b deterministic main-figure mockup rendering, Stage 9.7 supplementary display planning, Stage 9.8 section-contract registration, Stage 9.9 title/abstract strategy, Stage 9.10 Results architecture, Stage 9.11 Results drafting, and Stage 9.12 Introduction literature binding, with no Discussion, Methods, figure legends, full reference-library assembly, full manuscript assembly, or submission packaging started."
+            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, Stage 9.0 evidence lock, venue and corpus registration, narrative spine, claim freeze, paragraph planning, Stage 9.6 main figure-spine planning, Stage 9.6b deterministic main-figure mockup rendering, Stage 9.7 supplementary display planning, Stage 9.8 section-contract registration, Stage 9.9 title/abstract strategy, Stage 9.10 Results architecture, Stage 9.11 Results drafting, Stage 9.12 Introduction literature binding, Stage 9.13 Discussion interpretation mapping, and Stage 9.14 Discussion drafting, with no Methods, figure legends, full reference-library assembly, full manuscript assembly, or submission packaging started."
         ),
     }
     return report

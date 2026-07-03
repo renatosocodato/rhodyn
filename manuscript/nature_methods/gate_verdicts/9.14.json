@@ -1,0 +1,67 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.13 Discussion map exists and passes",
+      "name": "stage_9_13_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.8 Discussion contract and Stage 9.13 blueprint are available",
+      "name": "discussion_contract_and_blueprint_available",
+      "passed": true
+    },
+    {
+      "detail": "Discussion visible word count: 662; headings present: False",
+      "name": "discussion_contains_no_subheadings",
+      "passed": true
+    },
+    {
+      "detail": "Discussion retains Stage 7 limitations and interpretation boundaries",
+      "name": "limitations_remain_visible",
+      "passed": true
+    },
+    {
+      "detail": "Discussion labels future directions without creating a subheading",
+      "name": "future_directions_are_labeled",
+      "passed": true
+    },
+    {
+      "detail": "Discussion avoids universal, therapeutic, clinical, and mechanism-overclaim language",
+      "name": "no_limitation_or_scope_overclaim",
+      "passed": true
+    },
+    {
+      "detail": "covered_para_ids=PARA-DISCUSSION-001;PARA-DISCUSSION-002 covered_claim_ids=CLM-0001;CLM-0002;CLM-0003;CLM-0004;CLM-0005",
+      "name": "discussion_para_and_claim_ids_mapped",
+      "passed": true
+    },
+    {
+      "detail": "No references.bib, Methods, figure legends, or submission package detected",
+      "name": "no_methods_references_or_package_started",
+      "passed": true
+    }
+  ],
+  "claim_ids": [
+    "CLM-0001",
+    "CLM-0002",
+    "CLM-0003",
+    "CLM-0004",
+    "CLM-0005"
+  ],
+  "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
+  "discussion_word_count": 662,
+  "next_substage": "9.15",
+  "outputs": [
+    "manuscript/nature_methods/sections/discussion.md",
+    "manuscript/nature_methods/gate_verdicts/9.14.json"
+  ],
+  "para_ids": [
+    "PARA-DISCUSSION-001",
+    "PARA-DISCUSSION-002"
+  ],
+  "paragraph_count": 5,
+  "pass": true,
+  "scope_boundary": "Discussion draft only. No Online Methods, full reference library, figure legends, or submission-package assembly.",
+  "substage": "9.14",
+  "timestamp": "2026-07-03T14:02:52.689238Z"
+}

@@ -1,0 +1,67 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.12 Introduction literature binding exists and passes",
+      "name": "stage_9_12_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.8 Discussion section contract is available",
+      "name": "discussion_contract_available",
+      "passed": true
+    },
+    {
+      "detail": "Discussion map represents Stage 7 limitations and interpretation boundaries",
+      "name": "stage_7_limitations_represented",
+      "passed": true
+    },
+    {
+      "detail": "Discussion map keeps limits visible rather than converting them into strengths",
+      "name": "no_limitation_converted_into_strength_without_evidence",
+      "passed": true
+    },
+    {
+      "detail": "Discussion map visible word count: 351; headings present: False",
+      "name": "map_has_no_subheadings",
+      "passed": true
+    },
+    {
+      "detail": "covered_para_ids=PARA-DISCUSSION-001;PARA-DISCUSSION-002 covered_claim_ids=CLM-0001;CLM-0002;CLM-0003;CLM-0004;CLM-0005",
+      "name": "discussion_para_and_claim_ids_mapped",
+      "passed": true
+    },
+    {
+      "detail": "Introduction and Results draft are present as upstream context",
+      "name": "prior_sections_available",
+      "passed": true
+    },
+    {
+      "detail": "No discussion.md, references.bib, Methods, figure legends, or submission package detected",
+      "name": "no_discussion_or_downstream_surfaces_started",
+      "passed": true
+    }
+  ],
+  "claim_ids": [
+    "CLM-0001",
+    "CLM-0002",
+    "CLM-0003",
+    "CLM-0004",
+    "CLM-0005"
+  ],
+  "discussion_map_version": "discussion-map@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
+  "discussion_map_word_count": 351,
+  "next_substage": "9.14",
+  "outputs": [
+    "manuscript/nature_methods/sections/discussion_blueprint.md",
+    "manuscript/nature_methods/gate_verdicts/9.13.json"
+  ],
+  "para_ids": [
+    "PARA-DISCUSSION-001",
+    "PARA-DISCUSSION-002"
+  ],
+  "paragraph_count": 5,
+  "pass": true,
+  "scope_boundary": "Discussion interpretation map only. No discussion.md, Methods, full reference library, figure legends, or submission-package assembly.",
+  "substage": "9.13",
+  "timestamp": "2026-07-03T13:54:32.775220Z"
+}

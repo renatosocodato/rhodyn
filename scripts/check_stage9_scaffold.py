@@ -50,6 +50,8 @@ REQUIRED_FILES = [
     "scripts/run_stage9_10_results_architecture.py",
     "scripts/run_stage9_11_results_drafting.py",
     "scripts/run_stage9_12_introduction_literature_binding.py",
+    "scripts/run_stage9_13_discussion_interpretation_map.py",
+    "scripts/run_stage9_14_discussion_drafting.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -104,7 +106,6 @@ ID_PREFIXES = [
 ]
 
 FORBIDDEN_DRAFTS = [
-    "sections/discussion.md",
     "sections/methods.md",
     "sections/data_availability.md",
     "sections/code_availability.md",
@@ -215,10 +216,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.12 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.14 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -235,6 +236,8 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_10_started = "9.10.json" in gate_files
     stage9_11_started = "9.11.json" in gate_files
     stage9_12_started = "9.12.json" in gate_files
+    stage9_13_started = "9.13.json" in gate_files
+    stage9_14_started = "9.14.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -261,7 +264,11 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_12_introduction_literature_bound"
+        "stage9_14_discussion_drafted"
+        if stage9_14_started
+        else "stage9_13_discussion_interpretation_mapped"
+        if stage9_13_started
+        else "stage9_12_introduction_literature_bound"
         if stage9_12_started
         else "stage9_11_results_draft_registered"
         if stage9_11_started
@@ -730,6 +737,73 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain Introduction literature-binding output before 9.12: {rel}")
 
+    if stage9_13_started:
+        stage9_13_gate = _read_json(workspace / "gate_verdicts" / "9.13.json", failures)
+        if stage9_13_gate.get("pass") is not True or stage9_13_gate.get("substage") != "9.13":
+            failures.append("Stage 9.13 gate verdict must pass when present")
+        blueprint_path = workspace / "sections" / "discussion_blueprint.md"
+        if not blueprint_path.exists():
+            failures.append("Stage 9.13 Discussion map output missing: sections/discussion_blueprint.md")
+            blueprint_body = ""
+        else:
+            blueprint_body = blueprint_path.read_text(encoding="utf-8")
+        if stage9_13_gate.get("paragraph_count") != 5:
+            failures.append("Stage 9.13 must register five Discussion map paragraphs")
+        if stage9_13_gate.get("next_substage") != "9.14":
+            failures.append("Stage 9.13 gate must point to Stage 9.14")
+        for phrase in [
+            "declared biological window",
+            "not a causal mechanism",
+            "inconclusive",
+            "reserve-like",
+            "measured endpoint",
+            "direct biochemical interactions",
+            "not a new biological result",
+        ]:
+            if phrase not in blueprint_body:
+                failures.append(f"Stage 9.13 Discussion map missing phrase: {phrase}")
+        if any(line.startswith("#") for line in "\n".join(line for line in blueprint_body.splitlines() if not line.startswith("<!--")).splitlines()):
+            failures.append("Stage 9.13 Discussion map must not contain markdown subheadings")
+        if memory.get("discussion_interpretation_map_started") is not True:
+            failures.append("Stage 9 execution memory must record discussion_interpretation_map_started=true after 9.13")
+    else:
+        if (workspace / "sections" / "discussion_blueprint.md").exists():
+            failures.append("Stage 9 state must not contain Discussion map output before 9.13: sections/discussion_blueprint.md")
+
+    if stage9_14_started:
+        stage9_14_gate = _read_json(workspace / "gate_verdicts" / "9.14.json", failures)
+        if stage9_14_gate.get("pass") is not True or stage9_14_gate.get("substage") != "9.14":
+            failures.append("Stage 9.14 gate verdict must pass when present")
+        discussion_path = workspace / "sections" / "discussion.md"
+        if not discussion_path.exists():
+            failures.append("Stage 9.14 Discussion output missing: sections/discussion.md")
+            discussion_body = ""
+        else:
+            discussion_body = discussion_path.read_text(encoding="utf-8")
+        if not (650 <= stage9_14_gate.get("discussion_word_count", 0) <= 900):
+            failures.append("Stage 9.14 Discussion must remain within the 650-900 word contract")
+        if stage9_14_gate.get("paragraph_count") != 5:
+            failures.append("Stage 9.14 must register five Discussion paragraphs")
+        if stage9_14_gate.get("next_substage") != "9.15":
+            failures.append("Stage 9.14 gate must point to Stage 9.15")
+        for phrase in [
+            "Future directions",
+            "not a causal mechanism",
+            "inconclusive",
+            "reserve-like",
+            "not a new biological result",
+            "not an automatic mechanism-discovery engine",
+        ]:
+            if phrase not in discussion_body:
+                failures.append(f"Stage 9.14 Discussion missing phrase: {phrase}")
+        if any(line.startswith("#") for line in "\n".join(line for line in discussion_body.splitlines() if not line.startswith("<!--")).splitlines()):
+            failures.append("Stage 9.14 Discussion must not contain markdown subheadings")
+        if memory.get("discussion_drafting_started") is not True:
+            failures.append("Stage 9 execution memory must record discussion_drafting_started=true after 9.14")
+    else:
+        if (workspace / "sections" / "discussion.md").exists():
+            failures.append("Stage 9 state must not contain Discussion draft output before 9.14: sections/discussion.md")
+
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
             failures.append(f"Stage 9 scaffold-only pass must not create manuscript/evidence artifact: {rel}")
@@ -754,6 +828,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if stage9_11_started and rel == "sections/results.md":
                 continue
             if stage9_12_started and rel == "sections/introduction.md":
+                continue
+            if stage9_13_started and rel == "sections/discussion_blueprint.md":
+                continue
+            if stage9_14_started and rel == "sections/discussion.md":
                 continue
             if path.name != ".gitkeep":
                 failures.append(f"reader-facing manuscript surface exists during scaffold-only pass: {path.relative_to(workspace)}")

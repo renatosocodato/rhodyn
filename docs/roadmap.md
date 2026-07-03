@@ -40,9 +40,10 @@ the Stage 7.8 methods-readiness package. PanelForge figure-engine integration is
 has registered supplementary display planning, Stage 9.8 has registered
 section contracts, Stage 9.9 has registered title, subtitle, and abstract strategy, Stage
 9.10 has registered Results subsection architecture, Stage 9.11 has
-registered Results drafting, and Stage 9.12 has registered Introduction
-literature binding. Discussion, Methods, full reference-library assembly, and
-package assembly remain not started.
+registered Results drafting, Stage 9.12 has registered Introduction literature
+binding, Stage 9.13 has registered the Discussion interpretation map, and
+Stage 9.14 has registered Discussion drafting. Methods, full reference-library
+assembly, and package assembly remain not started.
 
 ## Execution memory
 
@@ -115,13 +116,13 @@ as roadmap work.
 | Stage 6. Official software release | Public `v0.1.0` GitHub and Zenodo software release live. | RhoDyn is citable through the GitHub release archive and Zenodo DOI. Do not imply PyPI publication until a package-index upload is completed. |
 | Stage 7. Independent methods-program roadmap | Stage 7.8 methods manuscript readiness package complete and recursively hardened against release surfaces. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
-| Stage 9. Nature Methods manuscript assembly | Stage 9.12 Introduction literature binding complete, Discussion interpretation map not started. | The current boundary is evidence intake, official venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, and Introduction literature binding only. Do not start Discussion, Methods, full reference-library assembly, figure legends, review response, or submission packaging without explicit substage authorization. |
+| Stage 9. Nature Methods manuscript assembly | Stage 9.14 Discussion drafting pass complete, Online Methods not started. | The current boundary is evidence intake, official venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, and Discussion drafting only. Do not start Online Methods, full reference-library assembly, figure legends, review response, or submission packaging without explicit substage authorization. |
 
 Stage 9.1 venue guidance source register has been completed. The current
 source-bound constraints are the Nature Methods Article budget, Reporting
 Summary expectation, software/code availability expectations, data availability
 expectations, figure-legend constraints, and statistics-reporting expectations.
-Stage 9.2 representative methods-paper corpus has been completed. Stage 9.3 narrative spine has been completed. Stage 9.4 claim freeze has been completed. Stage 9.5 paragraph-level claim ledger has been completed. Stage 9.6 figure-first manuscript spine has been completed. Stage 9.6b PanelForge rendering has been completed. Stage 9.7 supplementary display planning has been completed. Stage 9.8 section contract blueprint has been completed. Stage 9.9 title, subtitle, and abstract strategy has been completed. Stage 9.10 Results subsection architecture has been completed. Stage 9.11 Results drafting pass has been completed. Stage 9.12 Introduction literature binding has been completed. Stage 9.13 Discussion interpretation map remains the next unstarted manuscript step. Discussion, Methods, full reference-library assembly, and package assembly remain not started.
+Stage 9.2 representative methods-paper corpus has been completed. Stage 9.3 narrative spine has been completed. Stage 9.4 claim freeze has been completed. Stage 9.5 paragraph-level claim ledger has been completed. Stage 9.6 figure-first manuscript spine has been completed. Stage 9.6b PanelForge rendering has been completed. Stage 9.7 supplementary display planning has been completed. Stage 9.8 section contract blueprint has been completed. Stage 9.9 title, subtitle, and abstract strategy has been completed. Stage 9.10 Results subsection architecture has been completed. Stage 9.11 Results drafting pass has been completed. Stage 9.12 Introduction literature binding has been completed. Stage 9.13 Discussion interpretation map has been completed. Stage 9.14 Discussion drafting pass has been completed. Stage 9.15 Online Methods contract implementation remains the next unstarted manuscript step. Methods, full reference-library assembly, and package assembly remain not started.
 
 ## Non-drift principles
 

@@ -44,13 +44,13 @@ class Stage9ScaffoldTests(unittest.TestCase):
             (temp_root / "docs").mkdir()
             for rel in ["stage9_execution_memory.json", "stage9_manuscript_assembly_plan.md"]:
                 shutil.copy2(ROOT / "docs" / rel, temp_root / "docs" / rel)
-            draft = temp_root / "manuscript" / "nature_methods" / "sections" / "discussion.md"
-            draft.write_text("# Discussion\n\nThis draft should not exist before Stage 9.13.\n", encoding="utf-8")
+            draft = temp_root / "manuscript" / "nature_methods" / "sections" / "methods.md"
+            draft.write_text("# Methods\n\nThis draft should not exist before Stage 9.15.\n", encoding="utf-8")
             payload = CHECKER.check_stage9_scaffold(temp_root)
         self.assertEqual(payload["status"], "fail")
         self.assertTrue(any("scaffold-only" in failure for failure in payload["failures"]))
 
-    def test_stage9_checker_rejects_post_9_12_gate_verdicts(self) -> None:
+    def test_stage9_checker_rejects_post_9_14_gate_verdicts(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
             shutil.copytree(ROOT / "manuscript", temp_root / "manuscript")
@@ -58,11 +58,11 @@ class Stage9ScaffoldTests(unittest.TestCase):
             (temp_root / "docs").mkdir()
             for rel in ["stage9_execution_memory.json", "stage9_manuscript_assembly_plan.md"]:
                 shutil.copy2(ROOT / "docs" / rel, temp_root / "docs" / rel)
-            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.13.json"
-            future_gate.write_text('{"substage": "9.13", "pass": true, "checks": []}\n', encoding="utf-8")
+            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.15.json"
+            future_gate.write_text('{"substage": "9.15", "pass": true, "checks": []}\n', encoding="utf-8")
             payload = CHECKER.check_stage9_scaffold(temp_root)
         self.assertEqual(payload["status"], "fail")
-        self.assertTrue(any("post-9.12 gate verdicts" in failure for failure in payload["failures"]))
+        self.assertTrue(any("post-9.14 gate verdicts" in failure for failure in payload["failures"]))
 
 
 if __name__ == "__main__":

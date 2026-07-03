@@ -86,7 +86,6 @@ class Stage96FigureSpineTests(unittest.TestCase):
 
     def test_stage9_6b_rendering_does_not_start_manuscript_surfaces(self) -> None:
         for rel in [
-            "sections/discussion.md",
             "sections/methods.md",
             "refs/references.bib",
             "submission_package/pi_review_packet.md",

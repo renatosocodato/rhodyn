@@ -68,7 +68,6 @@ class Stage97SupplementaryDisplayPlanTests(unittest.TestCase):
 
     def test_downstream_manuscript_surfaces_are_not_started(self) -> None:
         for rel in [
-            "sections/discussion.md",
             "sections/methods.md",
             "refs/references.bib",
             "submission_package/pi_review_packet.md",

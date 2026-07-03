@@ -87,7 +87,6 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
             self.assertNotIn(forbidden, visible)
         for rel in [
             "refs/references.bib",
-            "sections/discussion.md",
             "sections/methods.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
