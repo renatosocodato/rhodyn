@@ -50,6 +50,7 @@ STAGE9_8_RUNNER_PATH = ROOT / "scripts" / "run_stage9_8_section_contract_bluepri
 STAGE9_9_RUNNER_PATH = ROOT / "scripts" / "run_stage9_9_title_abstract_strategy.py"
 STAGE9_10_RUNNER_PATH = ROOT / "scripts" / "run_stage9_10_results_architecture.py"
 STAGE9_11_RUNNER_PATH = ROOT / "scripts" / "run_stage9_11_results_drafting.py"
+STAGE9_12_RUNNER_PATH = ROOT / "scripts" / "run_stage9_12_introduction_literature_binding.py"
 STAGE9_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.-1.json"
 STAGE9_0_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.0.json"
 STAGE9_1_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.1.json"
@@ -64,6 +65,7 @@ STAGE9_8_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / 
 STAGE9_9_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.9.json"
 STAGE9_10_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.10.json"
 STAGE9_11_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.11.json"
+STAGE9_12_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.12.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -113,6 +115,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_9_runner_path = root / STAGE9_9_RUNNER_PATH.relative_to(ROOT)
     stage9_10_runner_path = root / STAGE9_10_RUNNER_PATH.relative_to(ROOT)
     stage9_11_runner_path = root / STAGE9_11_RUNNER_PATH.relative_to(ROOT)
+    stage9_12_runner_path = root / STAGE9_12_RUNNER_PATH.relative_to(ROOT)
     stage9_gate_path = root / STAGE9_GATE_PATH.relative_to(ROOT)
     stage9_0_gate_path = root / STAGE9_0_GATE_PATH.relative_to(ROOT)
     stage9_1_gate_path = root / STAGE9_1_GATE_PATH.relative_to(ROOT)
@@ -127,6 +130,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_9_gate_path = root / STAGE9_9_GATE_PATH.relative_to(ROOT)
     stage9_10_gate_path = root / STAGE9_10_GATE_PATH.relative_to(ROOT)
     stage9_11_gate_path = root / STAGE9_11_GATE_PATH.relative_to(ROOT)
+    stage9_12_gate_path = root / STAGE9_12_GATE_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -147,8 +151,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 9.11 Results drafting pass registered; Introduction literature binding not started":
-        failures.append("active stage must record the Stage 9.11 Results drafting boundary")
+    if current.get("active_stage") != "Stage 9.12 Introduction literature binding complete; Discussion interpretation map not started":
+        failures.append("active stage must record the Stage 9.12 Introduction literature-binding boundary")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -158,7 +162,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         6: "public_citable_v0.1.0",
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
-        9: "stage9_11_results_draft_registered",
+        9: "stage9_12_introduction_literature_bound",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -230,8 +234,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.10 must be complete_results_architecture_registered")
     if stage9_status.get("9.11") != "complete_results_draft_registered":
         failures.append("Stage 9.11 must be complete_results_draft_registered")
+    if stage9_status.get("9.12") != "complete_introduction_literature_bound":
+        failures.append("Stage 9.12 must be complete_introduction_literature_bound")
     for entry in stage9_substages:
-        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11"} and entry.get("status") != "not_started":
+        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12"} and entry.get("status") != "not_started":
             failures.append(f"Stage {entry.get('id')} must remain not_started")
 
     roadmap_flat = " ".join(roadmap.split())
@@ -275,7 +281,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 9.9 title, subtitle, and abstract strategy has been completed",
         "Stage 9.10 Results subsection architecture has been completed",
         "Stage 9.11 Results drafting pass has been completed",
-        "Stage 9.12 Introduction literature binding remains the next unstarted manuscript step",
+        "Stage 9.12 Introduction literature binding has been completed",
+        "Stage 9.13 Discussion interpretation map remains the next unstarted manuscript step",
         "Stage 9. Nature Methods manuscript assembly",
         "PanelForge",
     ]
@@ -338,8 +345,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
 
     stage9_docs = [
-        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "PanelForge", "evidence lock", "Results drafting"]),
-        (stage9_memory_path, "Stage 9 execution memory", ["stage9_11_results_draft_registered", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "figure_engine_clone_started"]),
+        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "PanelForge", "evidence lock", "Results drafting", "Introduction literature binding"]),
+        (stage9_memory_path, "Stage 9 execution memory", ["stage9_12_introduction_literature_bound", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "figure_engine_clone_started"]),
         (stage9_checker_path, "Stage 9 scaffold checker", ["FORBIDDEN_DRAFTS", "FORBIDDEN_RENDER_SUFFIXES", "check_stage9_scaffold", "scaffold_only_boundary_preserved"]),
         (stage9_0_runner_path, "Stage 9.0 evidence intake runner", ["stage9_evidence_manifest.csv", "stage9_evidence_lock.md", "No drafting", "PanelForge execution"]),
         (stage9_1_runner_path, "Stage 9.1 venue guidance runner", ["nature_methods_guidance_register.md", "venue_policy_constraints.md", "No representative corpus", "No manuscript sections"]),
@@ -354,6 +361,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         (stage9_9_runner_path, "Stage 9.9 title and abstract runner", ["title_options.md", "abstract_strategy.md", "abstract.md", "150-word", "CLM-0001"]),
         (stage9_10_runner_path, "Stage 9.10 Results architecture runner", ["results_blueprint.md", "FIG-001", "Allowed conclusion", "No Results prose"]),
         (stage9_11_runner_path, "Stage 9.11 Results drafting runner", ["results.md", "Fig. 1a", "PARA-RESULTS-001", "strength_caps_hold"]),
+        (stage9_12_runner_path, "Stage 9.12 Introduction literature-binding runner", ["introduction.md", "introduction_citation_ledger.csv", "REF-0001", "review_source_share"]),
     ]
     for path, label, phrases in stage9_docs:
         if not path.exists():
@@ -505,6 +513,22 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.11 Results drafting gate must record six Results paragraphs")
         if stage9_11_gate.get("next_substage") != "9.12":
             failures.append("Stage 9.11 Results drafting gate must point to Stage 9.12")
+    if not stage9_12_gate_path.exists():
+        failures.append("missing manuscript/nature_methods/gate_verdicts/9.12.json")
+    else:
+        stage9_12_gate = json.loads(stage9_12_gate_path.read_text(encoding="utf-8"))
+        if stage9_12_gate.get("pass") is not True:
+            failures.append("Stage 9.12 Introduction literature-binding gate must pass")
+        if stage9_12_gate.get("substage") != "9.12":
+            failures.append("Stage 9.12 Introduction literature-binding gate must remain bound to substage 9.12")
+        if not (450 <= stage9_12_gate.get("introduction_word_count", 0) <= 650):
+            failures.append("Stage 9.12 Introduction word count must remain within contract")
+        if stage9_12_gate.get("citation_count") != 11:
+            failures.append("Stage 9.12 Introduction must cite eleven resolved reference IDs")
+        if stage9_12_gate.get("review_source_share", 1.0) > 0.25:
+            failures.append("Stage 9.12 review-source share must remain under threshold")
+        if stage9_12_gate.get("next_substage") != "9.13":
+            failures.append("Stage 9.12 Introduction literature-binding gate must point to Stage 9.13")
 
     stage7_doc_specs = [
         (stage7_source_register_path, "source register", ["Official and community guidance sources", "Representative methods papers", "Candidate dataset classes", "RhoA/microglia reference case"]),
@@ -924,7 +948,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
         warnings.append("Stage 7.8 methods manuscript readiness package is complete; Stage 8 remains conceptual")
-    warnings.append("Stage 9.11 Results drafting is registered; Introduction literature binding, citation resolution, Discussion, Methods, figure legends, and package assembly have not started")
+    warnings.append("Stage 9.12 Introduction literature binding is registered; Discussion, Methods, full reference-library assembly, figure legends, and package assembly have not started")
 
     return {
         "status": "pass" if not failures else "fail",

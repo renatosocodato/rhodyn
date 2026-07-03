@@ -243,6 +243,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_9_title_abstract_strategy.py",
     "scripts/run_stage9_10_results_architecture.py",
     "scripts/run_stage9_11_results_drafting.py",
+    "scripts/run_stage9_12_introduction_literature_binding.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -256,6 +257,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_9_title_abstract_strategy.py",
     "tests/test_stage9_10_results_architecture.py",
     "tests/test_stage9_11_results_drafting.py",
+    "tests/test_stage9_12_introduction_literature_binding.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -279,8 +281,11 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.9.json",
     "manuscript/nature_methods/gate_verdicts/9.10.json",
     "manuscript/nature_methods/gate_verdicts/9.11.json",
+    "manuscript/nature_methods/gate_verdicts/9.12.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
+    "manuscript/nature_methods/sections/introduction.md",
+    "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -454,8 +459,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.11 Results drafting pass registered; Introduction literature binding not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.11 Results drafting boundary as active")
+        if current.get("active_stage") != "Stage 9.12 Introduction literature binding complete; Discussion interpretation map not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.12 Introduction literature-binding boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -469,8 +474,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_11_results_draft_registered":
-            failures.append("roadmap execution memory does not mark Stage 9.11 Results drafting as registered")
+        if stages.get(9, {}).get("status") != "stage9_12_introduction_literature_bound":
+            failures.append("roadmap execution memory does not mark Stage 9.12 Introduction literature binding as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -495,8 +500,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.11 registered Results draft without starting Introduction or citation resolution":
-                failures.append("Stage 9 current gate must record the Stage 9.11 Results drafting state")
+            if stage9.get("current_gate") != "Stage 9.12 registered citation-bound Introduction without starting full reference library":
+                failures.append("Stage 9 current gate must record the Stage 9.12 Introduction literature-binding state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -512,6 +517,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9 must serialize the 9.10 Results architecture substage")
             if "9.11" not in substage_ids:
                 failures.append("Stage 9 must serialize the 9.11 Results drafting substage")
+            if "9.12" not in substage_ids:
+                failures.append("Stage 9 must serialize the 9.12 Introduction literature-binding substage")
             substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
             if substage_status.get("9.0") != "complete_evidence_locked":
                 failures.append("Stage 9.0 must be marked complete_evidence_locked")
@@ -539,6 +546,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.10 must be marked complete_results_architecture_registered")
             if substage_status.get("9.11") != "complete_results_draft_registered":
                 failures.append("Stage 9.11 must be marked complete_results_draft_registered")
+            if substage_status.get("9.12") != "complete_introduction_literature_bound":
+                failures.append("Stage 9.12 must be marked complete_introduction_literature_bound")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

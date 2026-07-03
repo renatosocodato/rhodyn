@@ -70,7 +70,6 @@ class Stage90EvidenceLockTests(unittest.TestCase):
 
     def test_downstream_surfaces_remain_unstarted(self) -> None:
         forbidden = [
-            WORKSPACE / "sections" / "introduction.md",
             WORKSPACE / "sections" / "discussion.md",
             WORKSPACE / "sections" / "methods.md",
             WORKSPACE / "refs" / "references.bib",

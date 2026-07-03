@@ -71,7 +71,6 @@ class Stage92MethodsPaperCorpusTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, archetype)
         for rel in [
-            "sections/introduction.md",
             "sections/discussion.md",
             "submission_package/pi_review_packet.md",
         ]:

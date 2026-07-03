@@ -1,0 +1,81 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.11 Results draft exists and passes",
+      "name": "stage_9_11_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.8 Introduction section contract is available",
+      "name": "introduction_contract_available",
+      "passed": true
+    },
+    {
+      "detail": "Introduction visible word count: 450; headings present: False",
+      "name": "introduction_word_budget_and_structure_hold",
+      "passed": true
+    },
+    {
+      "detail": "cited=11 unresolved=[] uncited_ledger_refs=[]",
+      "name": "all_introduction_citations_resolve",
+      "passed": true
+    },
+    {
+      "detail": "covered_para_ids=PARA-INTRO-001;PARA-INTRO-002 mapped_claim_ids=CLM-0001;CLM-0002",
+      "name": "external_claims_map_to_reference_ids",
+      "passed": true
+    },
+    {
+      "detail": "review_source_share=0.000",
+      "name": "review_source_share_under_threshold",
+      "passed": true
+    },
+    {
+      "detail": "Introduction preserves residence, bounded-coupling, reserve-like, routed-output, inconclusive, and reproducibility boundaries",
+      "name": "strength_caps_hold",
+      "passed": true
+    },
+    {
+      "detail": "No references.bib, Discussion, Methods, figure legends, or submission package detected",
+      "name": "no_full_reference_library_or_downstream_surfaces_started",
+      "passed": true
+    }
+  ],
+  "citation_count": 11,
+  "citation_ids": [
+    "REF-0001",
+    "REF-0002",
+    "REF-0003",
+    "REF-0004",
+    "REF-0005",
+    "REF-0006",
+    "REF-0007",
+    "REF-0008",
+    "REF-0009",
+    "REF-0010",
+    "REF-0011"
+  ],
+  "claim_ids": [
+    "CLM-0001",
+    "CLM-0002"
+  ],
+  "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
+  "introduction_word_count": 450,
+  "next_substage": "9.13",
+  "outputs": [
+    "manuscript/nature_methods/sections/introduction.md",
+    "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
+    "manuscript/nature_methods/gate_verdicts/9.12.json"
+  ],
+  "para_ids": [
+    "PARA-INTRO-001",
+    "PARA-INTRO-002"
+  ],
+  "paragraph_count": 4,
+  "pass": true,
+  "review_source_share": 0.0,
+  "review_source_threshold": 0.25,
+  "scope_boundary": "Citation-bound Introduction only. No full reference library, Discussion, Methods, figure legends, or submission-package assembly.",
+  "substage": "9.12",
+  "timestamp": "2026-07-03T13:32:06.316926Z"
+}

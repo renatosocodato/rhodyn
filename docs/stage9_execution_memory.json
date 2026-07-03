@@ -35,7 +35,10 @@
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/gate_verdicts/9.10.json",
     "manuscript/nature_methods/sections/results.md",
-    "manuscript/nature_methods/gate_verdicts/9.11.json"
+    "manuscript/nature_methods/gate_verdicts/9.11.json",
+    "manuscript/nature_methods/sections/introduction.md",
+    "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
+    "manuscript/nature_methods/gate_verdicts/9.12.json"
   ],
   "citation_resolution_started": false,
   "claim_freeze_started": true,
@@ -610,10 +613,78 @@
       "status": "pass",
       "substage": "9.11",
       "validation_outcome": "Results draft registered in figure-locked order with paragraph IDs and strength caps"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.11 Results draft exists and passes",
+          "name": "stage_9_11_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "Stage 9.8 Introduction section contract is available",
+          "name": "introduction_contract_available",
+          "passed": true
+        },
+        {
+          "detail": "Introduction visible word count: 450; headings present: False",
+          "name": "introduction_word_budget_and_structure_hold",
+          "passed": true
+        },
+        {
+          "detail": "cited=11 unresolved=[] uncited_ledger_refs=[]",
+          "name": "all_introduction_citations_resolve",
+          "passed": true
+        },
+        {
+          "detail": "covered_para_ids=PARA-INTRO-001;PARA-INTRO-002 mapped_claim_ids=CLM-0001;CLM-0002",
+          "name": "external_claims_map_to_reference_ids",
+          "passed": true
+        },
+        {
+          "detail": "review_source_share=0.000",
+          "name": "review_source_share_under_threshold",
+          "passed": true
+        },
+        {
+          "detail": "Introduction preserves residence, bounded-coupling, reserve-like, routed-output, inconclusive, and reproducibility boundaries",
+          "name": "strength_caps_hold",
+          "passed": true
+        },
+        {
+          "detail": "No references.bib, Discussion, Methods, figure legends, or submission package detected",
+          "name": "no_full_reference_library_or_downstream_surfaces_started",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.11.json",
+        "manuscript/nature_methods/sections/section_contracts.md",
+        "manuscript/nature_methods/refs/representative_methods_papers.md",
+        "docs/stage7_public_data_adapters.md",
+        "docs/stage7_endpoint_reserve_routing_demonstrations.md"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/sections/introduction.md",
+        "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
+        "manuscript/nature_methods/gate_verdicts/9.12.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.12.json",
+      "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.13 Discussion interpretation map has not started",
+        "Full reference library and citation audit have not started",
+        "Online Methods and figure legends have not started",
+        "Submission-package assembly has not started"
+      ],
+      "status": "pass",
+      "substage": "9.12",
+      "validation_outcome": "Introduction draft registered with resolved reference IDs and citation ledger"
     }
   ],
-  "current_gate": "Stage 9.11 registered Results draft without starting Introduction or citation resolution",
-  "current_substage": "9.11",
+  "current_gate": "Stage 9.12 registered citation-bound Introduction without starting full reference library",
+  "current_substage": "9.12",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
@@ -625,16 +696,18 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.11 are complete through Results drafting.",
-    "Stage 9.12 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No Introduction, Discussion, Methods, references, figure legends, or submission package contents are created in this Results drafting pass.",
-    "Every Results paragraph has a PARA ID, figure callouts resolve, and strength caps hold."
+    "Stage 9.0 through Stage 9.12 are complete through Introduction literature binding.",
+    "Stage 9.13 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No Discussion, Methods, full reference library, figure legends, or submission package contents are created in this Introduction pass.",
+    "Every Introduction citation resolves to a reference ID in the Introduction citation ledger."
   ],
-  "generated_utc": "2026-07-03T13:14:53.681879Z",
+  "generated_utc": "2026-07-03T13:32:06.316926Z",
+  "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
+  "introduction_literature_binding_started": true,
   "manuscript_drafting_started": false,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.12",
+  "next_substage": "9.13",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -700,7 +773,7 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results subsection architecture, and Results drafting only. Do not start Introduction, citation resolution, Discussion, Methods, figure legends, review response, or submission packaging without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results subsection architecture, Results drafting, and Introduction literature binding only. Do not start Discussion, Methods, full reference library, figure legends, review response, or submission packaging without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "stage": 9,
@@ -827,6 +900,48 @@
     {
       "detail": "No Introduction, Discussion, Methods, references, legends, or submission package detected",
       "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "stage9_12_checks": [
+    {
+      "detail": "Stage 9.11 Results draft exists and passes",
+      "name": "stage_9_11_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.8 Introduction section contract is available",
+      "name": "introduction_contract_available",
+      "passed": true
+    },
+    {
+      "detail": "Introduction visible word count: 450; headings present: False",
+      "name": "introduction_word_budget_and_structure_hold",
+      "passed": true
+    },
+    {
+      "detail": "cited=11 unresolved=[] uncited_ledger_refs=[]",
+      "name": "all_introduction_citations_resolve",
+      "passed": true
+    },
+    {
+      "detail": "covered_para_ids=PARA-INTRO-001;PARA-INTRO-002 mapped_claim_ids=CLM-0001;CLM-0002",
+      "name": "external_claims_map_to_reference_ids",
+      "passed": true
+    },
+    {
+      "detail": "review_source_share=0.000",
+      "name": "review_source_share_under_threshold",
+      "passed": true
+    },
+    {
+      "detail": "Introduction preserves residence, bounded-coupling, reserve-like, routed-output, inconclusive, and reproducibility boundaries",
+      "name": "strength_caps_hold",
+      "passed": true
+    },
+    {
+      "detail": "No references.bib, Discussion, Methods, figure legends, or submission package detected",
+      "name": "no_full_reference_library_or_downstream_surfaces_started",
       "passed": true
     }
   ],
@@ -1143,8 +1258,8 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.11 Results drafting pass registered; Introduction literature binding not started",
-  "status": "stage9_11_results_draft_registered",
+  "stage9_active_gate": "Stage 9.12 Introduction literature binding complete; Discussion interpretation map not started",
+  "status": "stage9_12_introduction_literature_bound",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

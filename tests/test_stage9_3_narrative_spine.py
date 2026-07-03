@@ -44,7 +44,6 @@ class Stage93NarrativeSpineTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, spine)
         for rel in [
-            "sections/introduction.md",
             "sections/discussion.md",
             "sections/methods.md",
             "refs/references.bib",

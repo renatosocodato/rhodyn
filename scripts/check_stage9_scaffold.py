@@ -49,6 +49,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_9_title_abstract_strategy.py",
     "scripts/run_stage9_10_results_architecture.py",
     "scripts/run_stage9_11_results_drafting.py",
+    "scripts/run_stage9_12_introduction_literature_binding.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -103,7 +104,6 @@ ID_PREFIXES = [
 ]
 
 FORBIDDEN_DRAFTS = [
-    "sections/introduction.md",
     "sections/discussion.md",
     "sections/methods.md",
     "sections/data_availability.md",
@@ -215,10 +215,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.11 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.12 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -234,6 +234,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_9_started = "9.9.json" in gate_files
     stage9_10_started = "9.10.json" in gate_files
     stage9_11_started = "9.11.json" in gate_files
+    stage9_12_started = "9.12.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -260,7 +261,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_11_results_draft_registered"
+        "stage9_12_introduction_literature_bound"
+        if stage9_12_started
+        else "stage9_11_results_draft_registered"
         if stage9_11_started
         else "stage9_10_results_architecture_registered"
         if stage9_10_started
@@ -678,6 +681,55 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if (workspace / "sections" / "results.md").exists():
             failures.append("Stage 9 state must not contain Results draft output before 9.11: sections/results.md")
 
+    if stage9_12_started:
+        stage9_12_gate = _read_json(workspace / "gate_verdicts" / "9.12.json", failures)
+        if stage9_12_gate.get("pass") is not True or stage9_12_gate.get("substage") != "9.12":
+            failures.append("Stage 9.12 gate verdict must pass when present")
+        intro_path = workspace / "sections" / "introduction.md"
+        ledger_path = workspace / "refs" / "introduction_citation_ledger.csv"
+        if not intro_path.exists():
+            failures.append("Stage 9.12 Introduction output missing: sections/introduction.md")
+            intro_body = ""
+        else:
+            intro_body = intro_path.read_text(encoding="utf-8")
+        if not ledger_path.exists():
+            failures.append("Stage 9.12 citation ledger output missing: refs/introduction_citation_ledger.csv")
+            ledger_body = ""
+        else:
+            ledger_body = ledger_path.read_text(encoding="utf-8")
+        word_count = stage9_12_gate.get("introduction_word_count", 0)
+        if not (450 <= word_count <= 650):
+            failures.append("Stage 9.12 Introduction must remain within the 450-650 word contract")
+        if stage9_12_gate.get("citation_count") != 11:
+            failures.append("Stage 9.12 Introduction must cite the eleven resolved reference IDs")
+        if stage9_12_gate.get("review_source_share", 1.0) > stage9_12_gate.get("review_source_threshold", 0.25):
+            failures.append("Stage 9.12 review-source share must remain under threshold")
+        if stage9_12_gate.get("next_substage") != "9.13":
+            failures.append("Stage 9.12 gate must point to Stage 9.13")
+        for phrase in [
+            "REF-0001",
+            "REF-0011",
+            "residence-state",
+            "bounded-coupling",
+            "reserve-like",
+            "routed-output",
+            "reproducibility",
+        ]:
+            if phrase not in intro_body:
+                failures.append(f"Stage 9.12 Introduction missing phrase: {phrase}")
+        for phrase in ["ref_id", "doi_or_pmid", "source_type", "resolved"]:
+            if phrase not in ledger_body:
+                failures.append(f"Stage 9.12 citation ledger missing field: {phrase}")
+        if memory.get("introduction_literature_binding_started") is not True:
+            failures.append("Stage 9 execution memory must record introduction_literature_binding_started=true after 9.12")
+    else:
+        for rel in [
+            "sections/introduction.md",
+            "refs/introduction_citation_ledger.csv",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain Introduction literature-binding output before 9.12: {rel}")
+
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
             failures.append(f"Stage 9 scaffold-only pass must not create manuscript/evidence artifact: {rel}")
@@ -693,11 +745,15 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     for path in workspace.rglob("*"):
         if path.is_file() and reader_surface_pattern.search(path.relative_to(workspace).as_posix()):
             rel = path.relative_to(workspace).as_posix()
+            if rel.startswith("_quarantine/") or rel.startswith("_staging/"):
+                continue
             if stage9_9_started and rel in {"sections/abstract.md", "sections/abstract_strategy.md"}:
                 continue
             if stage9_10_started and rel == "sections/results_blueprint.md":
                 continue
             if stage9_11_started and rel == "sections/results.md":
+                continue
+            if stage9_12_started and rel == "sections/introduction.md":
                 continue
             if path.name != ".gitkeep":
                 failures.append(f"reader-facing manuscript surface exists during scaffold-only pass: {path.relative_to(workspace)}")

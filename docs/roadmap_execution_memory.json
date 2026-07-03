@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 9.11 Results drafting pass registered; Introduction literature binding not started",
+    "active_stage": "Stage 9.12 Introduction literature binding complete; Discussion interpretation map not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -24,6 +24,7 @@
     "after_stage9_0_evidence_lock": "Stage 9.0 locked the completed Stage 7.8 methods-readiness evidence package into stage9_evidence_manifest.csv, stage9_evidence_lock.md, and stage7_output_contract.md. Stage 9.1 venue guidance, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_10_results_architecture": "Stage 9.10 registered six Results drafting units mapped to FIG, ART, CLM, PARA, and supplementary support identifiers. It did not start Results prose, citation resolution, full manuscript drafting, or submission-package assembly.",
     "after_stage9_11_results_drafting": "Stage 9.11 registered a figure-locked Results draft with PARA IDs, resolved Fig. 1 through Fig. 6 callouts, and claim-strength boundaries. It did not start Introduction literature binding, citation resolution, Discussion, Methods, figure legends, or submission-package assembly.",
+    "after_stage9_12_introduction_literature_binding": "Stage 9.12 registered a citation-bound Introduction and citation ledger with resolved reference IDs. It did not start the full reference library, Discussion, Methods, figure legends, or submission-package assembly.",
     "after_stage9_1_guidance_register": "Stage 9.1 cached official Nature Methods, Nature Portfolio, and Springer Nature guidance, registered Article-format constraints, and kept citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly not started.",
     "after_stage9_2_methods_corpus": "Stage 9.2 registered an eight-DOI representative computational methods-paper corpus and extracted cross-paper archetype features. Stage 9.3 narrative-spine selection, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_3_narrative_spine": "Stage 9.3 selected the Nature Methods Article archetype, registered the RhoDyn narrative spine, and fixed the discovery-versus-demonstration boundary. Stage 9.4 claim freeze, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
@@ -36,11 +37,11 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Results draft registered without Introduction or citation resolution",
-    "next_stage": "Stage 9.12 Introduction literature binding",
+    "current_gate": "Introduction literature binding complete without full reference library",
+    "next_stage": "Stage 9.13 Discussion interpretation map",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
-    "stage9_active_gate": "Stage 9.11 Results drafting pass registered; Introduction literature binding not started"
+    "stage9_active_gate": "Stage 9.12 Introduction literature binding complete; Discussion interpretation map not started"
   },
   "memory_notes": {
     "after_stage9_6b_panelforge_rendering": "Stage 9.6b generated a renderable PanelForge manifest and six deterministic main-figure mockups from the frozen figure-to-claim-to-artifact spine. Citation resolution, manuscript drafting, supplementary display planning, and submission-package assembly remain not started.",
@@ -421,9 +422,13 @@
         "scripts/run_stage9_10_results_architecture.py",
         "manuscript/nature_methods/sections/results.md",
         "manuscript/nature_methods/gate_verdicts/9.11.json",
-        "scripts/run_stage9_11_results_drafting.py"
+        "scripts/run_stage9_11_results_drafting.py",
+        "manuscript/nature_methods/sections/introduction.md",
+        "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
+        "manuscript/nature_methods/gate_verdicts/9.12.json",
+        "scripts/run_stage9_12_introduction_literature_binding.py"
       ],
-      "current_gate": "Stage 9.11 registered Results draft without starting Introduction or citation resolution",
+      "current_gate": "Stage 9.12 registered citation-bound Introduction without starting full reference library",
       "gate": [
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
         "Stage 9.2 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
@@ -438,12 +443,13 @@
         "Stage 9.8 section contracts bind Abstract, Results, Discussion, and Methods venue rules before prose drafting.",
         "Stage 9.9 front matter is unreferenced, claim-mapped, and within the sourced abstract budget.",
         "Stage 9.10 Results architecture maps every subsection to figure, artifact, claim, paragraph, and strength-cap evidence.",
-        "Stage 9.11 Results draft uses PARA IDs, resolved figure callouts, and strength-capped interpretation."
+        "Stage 9.11 Results draft uses PARA IDs, resolved figure callouts, and strength-capped interpretation.",
+        "Stage 9.12 Introduction cites resolved reference IDs and keeps review-source share under threshold."
       ],
       "name": "Nature Methods manuscript assembly scaffold",
-      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results subsection architecture, and Results drafting only. Do not start Introduction, citation resolution, Discussion, Methods, figure legends, review response, or submission packaging without explicit substage authorization.",
+      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, and Introduction literature binding only. Do not start Discussion, Methods, full reference library, figure legends, review response, or submission packaging without explicit substage authorization.",
       "stage": 9,
-      "status": "stage9_11_results_draft_registered",
+      "status": "stage9_12_introduction_literature_bound",
       "subphases": [
         {
           "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
@@ -570,12 +576,13 @@
           "status": "complete_results_draft_registered"
         },
         {
-          "evidence": "not_started",
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.12.json",
           "gate": "all Introduction citations resolve; external claims map to reference IDs; review-source share is under threshold",
           "goal": "Draft citation-bound Introduction through resolved references.",
           "id": "9.12",
+          "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
           "name": "Introduction literature binding",
-          "status": "not_started"
+          "status": "complete_introduction_literature_bound"
         },
         {
           "evidence": "not_started",

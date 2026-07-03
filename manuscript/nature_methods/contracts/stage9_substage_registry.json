@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.11",
-  "next_substage": "9.12",
+  "last_completed_substage": "9.12",
+  "next_substage": "9.13",
   "patch_ledger": [
     {
       "id": "P1",
@@ -311,7 +311,7 @@
         "manuscript/nature_methods/sections/introduction.md",
         "manuscript/nature_methods/refs/introduction_citation_ledger.csv"
       ],
-      "status": "not_started",
+      "status": "complete_introduction_literature_bound",
       "title": "Introduction literature binding"
     },
     {
