@@ -1,0 +1,79 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.10 Results architecture exists and passes",
+      "name": "stage_9_10_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Results draft resolves to Stage 9.10 Results blueprint",
+      "name": "results_blueprint_available",
+      "passed": true
+    },
+    {
+      "detail": "Covered Results paragraph IDs: PARA-RESULTS-001;PARA-RESULTS-002;PARA-RESULTS-003;PARA-RESULTS-004;PARA-RESULTS-005;PARA-RESULTS-006",
+      "name": "every_results_paragraph_has_para_id",
+      "passed": true
+    },
+    {
+      "detail": "Figure callouts resolve in Fig. 1 through Fig. 6 order",
+      "name": "figure_callouts_resolve",
+      "passed": true
+    },
+    {
+      "detail": "Results draft preserves bounded residence, coupling, reserve-like, routed-output, inconclusive, and reproducibility language",
+      "name": "strength_caps_hold",
+      "passed": true
+    },
+    {
+      "detail": "Results draft contains no citation calls before Stage 9.20 reference resolution",
+      "name": "results_are_unreferenced_until_citation_stage",
+      "passed": true
+    },
+    {
+      "detail": "Results draft contains six topical subheadings",
+      "name": "topical_results_subheadings_present",
+      "passed": true
+    },
+    {
+      "detail": "No Introduction, Discussion, Methods, references, legends, or submission package detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "claim_ids": [
+    "CLM-0001",
+    "CLM-0002",
+    "CLM-0003",
+    "CLM-0004",
+    "CLM-0005"
+  ],
+  "figure_callouts": [
+    "Fig. 1",
+    "Fig. 2",
+    "Fig. 3",
+    "Fig. 4",
+    "Fig. 5",
+    "Fig. 6"
+  ],
+  "next_substage": "9.12",
+  "outputs": [
+    "manuscript/nature_methods/sections/results.md",
+    "manuscript/nature_methods/gate_verdicts/9.11.json"
+  ],
+  "para_ids": [
+    "PARA-RESULTS-001",
+    "PARA-RESULTS-002",
+    "PARA-RESULTS-003",
+    "PARA-RESULTS-004",
+    "PARA-RESULTS-005",
+    "PARA-RESULTS-006"
+  ],
+  "paragraph_count": 6,
+  "pass": true,
+  "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
+  "results_word_count": 872,
+  "scope_boundary": "Results draft only. No Introduction, citation resolution, Discussion, Methods, figure legends, references, or submission-package assembly.",
+  "substage": "9.11",
+  "timestamp": "2026-07-03T13:14:53.681879Z"
+}

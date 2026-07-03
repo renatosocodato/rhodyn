@@ -118,6 +118,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/run_stage9_8_section_contract_blueprint.py",
     "scripts/run_stage9_9_title_abstract_strategy.py",
     "scripts/run_stage9_10_results_architecture.py",
+    "scripts/run_stage9_11_results_drafting.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
     "docs/stage7_6_api_stability_policy.md",
@@ -150,6 +151,7 @@ REQUIRED_ARCHIVE_FILES = {
     "tests/test_stage9_8_section_contract_blueprint.py",
     "tests/test_stage9_9_title_abstract_strategy.py",
     "tests/test_stage9_10_results_architecture.py",
+    "tests/test_stage9_11_results_drafting.py",
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "manuscript/nature_methods/README.md",
@@ -174,7 +176,9 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/gate_verdicts/9.8.json",
     "manuscript/nature_methods/gate_verdicts/9.9.json",
     "manuscript/nature_methods/gate_verdicts/9.10.json",
+    "manuscript/nature_methods/gate_verdicts/9.11.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
+    "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/stage9_narrative_spine.md",
     "manuscript/nature_methods/audits/venue_fit_rationale.md",
     "manuscript/nature_methods/ledgers/claim_hierarchy.md",
@@ -580,8 +584,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9.10 Results subsection architecture registered; Results drafting not started":
-        failures.append("roadmap memory does not mark the Stage 9.10 Results architecture boundary as active")
+    if current.get("active_stage") != "Stage 9.11 Results drafting pass registered; Introduction literature binding not started":
+        failures.append("roadmap memory does not mark the Stage 9.11 Results drafting boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -591,8 +595,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_10_results_architecture_registered":
-        failures.append("Stage 9 is not marked stage9_10_results_architecture_registered")
+    if stage9.get("status") != "stage9_11_results_draft_registered":
+        failures.append("Stage 9 is not marked stage9_11_results_draft_registered")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -606,6 +610,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9 does not serialize the 9.9 title/abstract substage")
     if "9.10" not in stage9_substage_ids:
         failures.append("Stage 9 does not serialize the 9.10 Results architecture substage")
+    if "9.11" not in stage9_substage_ids:
+        failures.append("Stage 9 does not serialize the 9.11 Results drafting substage")
     stage9_substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if stage9_substage_status.get("9.0") != "complete_evidence_locked":
         failures.append("Stage 9.0 is not marked complete_evidence_locked")
@@ -631,6 +637,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9.9 is not marked complete_title_abstract_strategy_registered")
     if stage9_substage_status.get("9.10") != "complete_results_architecture_registered":
         failures.append("Stage 9.10 is not marked complete_results_architecture_registered")
+    if stage9_substage_status.get("9.11") != "complete_results_draft_registered":
+        failures.append("Stage 9.11 is not marked complete_results_draft_registered")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",

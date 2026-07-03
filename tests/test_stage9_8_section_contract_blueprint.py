@@ -55,7 +55,6 @@ class Stage98SectionContractBlueprintTests(unittest.TestCase):
 
     def test_downstream_manuscript_surfaces_remain_absent(self) -> None:
         for rel in [
-            "sections/results.md",
             "sections/introduction.md",
             "sections/discussion.md",
             "sections/methods.md",

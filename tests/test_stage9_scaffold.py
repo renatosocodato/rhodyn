@@ -36,7 +36,7 @@ class Stage9ScaffoldTests(unittest.TestCase):
         self.assertEqual(payload["checks"]["scaffold_only_boundary_preserved"], "pass")
         self.assertEqual(payload["checks"]["figure_engine_binding_serialized"], "pass")
 
-    def test_stage9_checker_rejects_reader_facing_draft(self) -> None:
+    def test_stage9_checker_rejects_unauthorized_reader_facing_draft(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
             shutil.copytree(ROOT / "manuscript", temp_root / "manuscript")
@@ -44,13 +44,13 @@ class Stage9ScaffoldTests(unittest.TestCase):
             (temp_root / "docs").mkdir()
             for rel in ["stage9_execution_memory.json", "stage9_manuscript_assembly_plan.md"]:
                 shutil.copy2(ROOT / "docs" / rel, temp_root / "docs" / rel)
-            draft = temp_root / "manuscript" / "nature_methods" / "sections" / "results.md"
-            draft.write_text("# Results\n\nThis draft should not exist during scaffold-only state.\n", encoding="utf-8")
+            draft = temp_root / "manuscript" / "nature_methods" / "sections" / "introduction.md"
+            draft.write_text("# Introduction\n\nThis draft should not exist before Stage 9.12.\n", encoding="utf-8")
             payload = CHECKER.check_stage9_scaffold(temp_root)
         self.assertEqual(payload["status"], "fail")
         self.assertTrue(any("scaffold-only" in failure for failure in payload["failures"]))
 
-    def test_stage9_checker_rejects_post_9_10_gate_verdicts(self) -> None:
+    def test_stage9_checker_rejects_post_9_11_gate_verdicts(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
             shutil.copytree(ROOT / "manuscript", temp_root / "manuscript")
@@ -58,11 +58,11 @@ class Stage9ScaffoldTests(unittest.TestCase):
             (temp_root / "docs").mkdir()
             for rel in ["stage9_execution_memory.json", "stage9_manuscript_assembly_plan.md"]:
                 shutil.copy2(ROOT / "docs" / rel, temp_root / "docs" / rel)
-            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.11.json"
-            future_gate.write_text('{"substage": "9.11", "pass": true, "checks": []}\n', encoding="utf-8")
+            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.12.json"
+            future_gate.write_text('{"substage": "9.12", "pass": true, "checks": []}\n', encoding="utf-8")
             payload = CHECKER.check_stage9_scaffold(temp_root)
         self.assertEqual(payload["status"], "fail")
-        self.assertTrue(any("post-9.10 gate verdicts" in failure for failure in payload["failures"]))
+        self.assertTrue(any("post-9.11 gate verdicts" in failure for failure in payload["failures"]))
 
 
 if __name__ == "__main__":

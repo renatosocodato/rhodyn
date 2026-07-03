@@ -33,7 +33,9 @@
     "manuscript/nature_methods/sections/abstract.md",
     "manuscript/nature_methods/gate_verdicts/9.9.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
-    "manuscript/nature_methods/gate_verdicts/9.10.json"
+    "manuscript/nature_methods/gate_verdicts/9.10.json",
+    "manuscript/nature_methods/sections/results.md",
+    "manuscript/nature_methods/gate_verdicts/9.11.json"
   ],
   "citation_resolution_started": false,
   "claim_freeze_started": true,
@@ -541,10 +543,77 @@
       "status": "pass",
       "substage": "9.10",
       "validation_outcome": "Results subsection architecture registered as six figure-locked drafting units"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.10 Results architecture exists and passes",
+          "name": "stage_9_10_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "Results draft resolves to Stage 9.10 Results blueprint",
+          "name": "results_blueprint_available",
+          "passed": true
+        },
+        {
+          "detail": "Covered Results paragraph IDs: PARA-RESULTS-001;PARA-RESULTS-002;PARA-RESULTS-003;PARA-RESULTS-004;PARA-RESULTS-005;PARA-RESULTS-006",
+          "name": "every_results_paragraph_has_para_id",
+          "passed": true
+        },
+        {
+          "detail": "Figure callouts resolve in Fig. 1 through Fig. 6 order",
+          "name": "figure_callouts_resolve",
+          "passed": true
+        },
+        {
+          "detail": "Results draft preserves bounded residence, coupling, reserve-like, routed-output, inconclusive, and reproducibility language",
+          "name": "strength_caps_hold",
+          "passed": true
+        },
+        {
+          "detail": "Results draft contains no citation calls before Stage 9.20 reference resolution",
+          "name": "results_are_unreferenced_until_citation_stage",
+          "passed": true
+        },
+        {
+          "detail": "Results draft contains six topical subheadings",
+          "name": "topical_results_subheadings_present",
+          "passed": true
+        },
+        {
+          "detail": "No Introduction, Discussion, Methods, references, legends, or submission package detected",
+          "name": "no_downstream_stage9_surfaces_started",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.10.json",
+        "manuscript/nature_methods/sections/results_blueprint.md",
+        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/sections/results.md",
+        "manuscript/nature_methods/gate_verdicts/9.11.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.11.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.12 Introduction literature binding has not started",
+        "Citation resolution has not started",
+        "Discussion, Methods, and figure legends have not started",
+        "Submission-package assembly has not started"
+      ],
+      "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
+      "status": "pass",
+      "substage": "9.11",
+      "validation_outcome": "Results draft registered in figure-locked order with paragraph IDs and strength caps"
     }
   ],
-  "current_gate": "Stage 9.10 registered Results subsection architecture without drafting Results prose",
-  "current_substage": "9.10",
+  "current_gate": "Stage 9.11 registered Results draft without starting Introduction or citation resolution",
+  "current_substage": "9.11",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
@@ -556,16 +625,16 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.10 are complete through Results subsection architecture.",
-    "Stage 9.11 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No Results draft, Introduction, Discussion, Methods, references, figure legends, or submission package contents are created in this Results architecture pass.",
-    "The Results blueprint maps every subsection to figure IDs, ART IDs, CLM IDs, paragraph rows, and strength-capped allowed conclusions."
+    "Stage 9.0 through Stage 9.11 are complete through Results drafting.",
+    "Stage 9.12 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No Introduction, Discussion, Methods, references, figure legends, or submission package contents are created in this Results drafting pass.",
+    "Every Results paragraph has a PARA ID, figure callouts resolve, and strength caps hold."
   ],
-  "generated_utc": "2026-07-03T12:54:20.139675Z",
+  "generated_utc": "2026-07-03T13:14:53.681879Z",
   "manuscript_drafting_started": false,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.11",
+  "next_substage": "9.12",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -629,7 +698,9 @@
   "representative_methods_corpus_version": "methods-corpus@2026-07-02@5ce55cc235ad1819dcc7a4382343f0293230a282",
   "results_architecture_started": true,
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, and Results subsection architecture only. Do not start Results drafting, citation resolution, Introduction, Discussion, Methods, figure legends, review response, or submission packaging without explicit substage authorization.",
+  "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
+  "results_drafting_started": true,
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results subsection architecture, and Results drafting only. Do not start Introduction, citation resolution, Discussion, Methods, figure legends, review response, or submission packaging without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "stage": 9,
@@ -713,6 +784,48 @@
     },
     {
       "detail": "No Results draft, Introduction, Discussion, Methods, references, legends, or submission package detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "stage9_11_checks": [
+    {
+      "detail": "Stage 9.10 Results architecture exists and passes",
+      "name": "stage_9_10_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Results draft resolves to Stage 9.10 Results blueprint",
+      "name": "results_blueprint_available",
+      "passed": true
+    },
+    {
+      "detail": "Covered Results paragraph IDs: PARA-RESULTS-001;PARA-RESULTS-002;PARA-RESULTS-003;PARA-RESULTS-004;PARA-RESULTS-005;PARA-RESULTS-006",
+      "name": "every_results_paragraph_has_para_id",
+      "passed": true
+    },
+    {
+      "detail": "Figure callouts resolve in Fig. 1 through Fig. 6 order",
+      "name": "figure_callouts_resolve",
+      "passed": true
+    },
+    {
+      "detail": "Results draft preserves bounded residence, coupling, reserve-like, routed-output, inconclusive, and reproducibility language",
+      "name": "strength_caps_hold",
+      "passed": true
+    },
+    {
+      "detail": "Results draft contains no citation calls before Stage 9.20 reference resolution",
+      "name": "results_are_unreferenced_until_citation_stage",
+      "passed": true
+    },
+    {
+      "detail": "Results draft contains six topical subheadings",
+      "name": "topical_results_subheadings_present",
+      "passed": true
+    },
+    {
+      "detail": "No Introduction, Discussion, Methods, references, legends, or submission package detected",
       "name": "no_downstream_stage9_surfaces_started",
       "passed": true
     }
@@ -1030,8 +1143,8 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.10 Results subsection architecture registered; Results drafting not started",
-  "status": "stage9_10_results_architecture_registered",
+  "stage9_active_gate": "Stage 9.11 Results drafting pass registered; Introduction literature binding not started",
+  "status": "stage9_11_results_draft_registered",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

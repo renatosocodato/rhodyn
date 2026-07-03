@@ -66,7 +66,6 @@ class Stage94ClaimFreezeTests(unittest.TestCase):
 
     def test_stage9_4_does_not_start_downstream_manuscript_surfaces(self) -> None:
         for rel in [
-            "sections/results.md",
             "sections/introduction.md",
             "sections/discussion.md",
             "sections/methods.md",
