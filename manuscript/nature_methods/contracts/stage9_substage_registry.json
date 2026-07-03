@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.14",
-  "next_substage": "9.15",
+  "last_completed_substage": "9.15",
+  "next_substage": "9.16",
   "patch_ledger": [
     {
       "id": "P1",
@@ -354,7 +354,7 @@
         "manuscript/nature_methods/sections/methods_blueprint.md",
         "manuscript/nature_methods/ledgers/methods_to_code_ledger.csv"
       ],
-      "status": "not_started",
+      "status": "complete_methods_architecture_registered",
       "title": "Methods architecture"
     },
     {

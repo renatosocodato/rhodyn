@@ -52,6 +52,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_12_introduction_literature_binding.py",
     "scripts/run_stage9_13_discussion_interpretation_map.py",
     "scripts/run_stage9_14_discussion_drafting.py",
+    "scripts/run_stage9_15_methods_architecture.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -103,6 +104,7 @@ ID_PREFIXES = [
     "REF-",
     "STAT-",
     "SUPP-",
+    "MTH-",
 ]
 
 FORBIDDEN_DRAFTS = [
@@ -216,10 +218,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.14 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.15 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -238,6 +240,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_12_started = "9.12.json" in gate_files
     stage9_13_started = "9.13.json" in gate_files
     stage9_14_started = "9.14.json" in gate_files
+    stage9_15_started = "9.15.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -264,7 +267,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_14_discussion_drafted"
+        "stage9_15_methods_architecture_registered"
+        if stage9_15_started
+        else "stage9_14_discussion_drafted"
         if stage9_14_started
         else "stage9_13_discussion_interpretation_mapped"
         if stage9_13_started
@@ -804,6 +809,60 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if (workspace / "sections" / "discussion.md").exists():
             failures.append("Stage 9 state must not contain Discussion draft output before 9.14: sections/discussion.md")
 
+    if stage9_15_started:
+        stage9_15_gate = _read_json(workspace / "gate_verdicts" / "9.15.json", failures)
+        if stage9_15_gate.get("pass") is not True or stage9_15_gate.get("substage") != "9.15":
+            failures.append("Stage 9.15 gate verdict must pass when present")
+        methods_blueprint_path = workspace / "sections" / "methods_blueprint.md"
+        methods_ledger_path = workspace / "ledgers" / "methods_to_code_ledger.csv"
+        if not methods_blueprint_path.exists():
+            failures.append("Stage 9.15 Methods architecture output missing: sections/methods_blueprint.md")
+            methods_blueprint_body = ""
+        else:
+            methods_blueprint_body = methods_blueprint_path.read_text(encoding="utf-8")
+        if not methods_ledger_path.exists():
+            failures.append("Stage 9.15 methods-to-code ledger missing: ledgers/methods_to_code_ledger.csv")
+            methods_ledger_body = ""
+        else:
+            methods_ledger_body = methods_ledger_path.read_text(encoding="utf-8")
+        if stage9_15_gate.get("methods_statement_count", 0) < 6:
+            failures.append("Stage 9.15 must register at least six Methods statements")
+        if stage9_15_gate.get("methods_subheading_count") != 6:
+            failures.append("Stage 9.15 must preserve six Online Methods subheadings")
+        if stage9_15_gate.get("ledger_row_count") != stage9_15_gate.get("methods_statement_count"):
+            failures.append("Stage 9.15 ledger row count must match Methods statement count")
+        if stage9_15_gate.get("next_substage") != "9.16":
+            failures.append("Stage 9.15 gate must point to Stage 9.16")
+        for phrase in [
+            "dataset_version=",
+            "dataset_date=",
+            "Input schemas and preprocessing",
+            "Residence windows and amplitude comparators",
+            "Bounded-coupling and uncertainty decisions",
+            "Reserve-like endpoint construction",
+            "Routed-output model comparison",
+            "Software surfaces, versioning, and reproducibility",
+            "not proof that all coupling is absent",
+            "not direct assays of unmeasured biological reserve capacity",
+            "does not identify direct biochemical interactions",
+        ]:
+            if phrase not in methods_blueprint_body and phrase not in methods_ledger_body:
+                failures.append(f"Stage 9.15 Methods architecture missing phrase: {phrase}")
+        for field in ["methods_stmt_id", "art_id", "repo_path", "commit", "command"]:
+            if field not in methods_ledger_body:
+                failures.append(f"Stage 9.15 methods-to-code ledger missing field: {field}")
+        if memory.get("methods_architecture_started") is not True:
+            failures.append("Stage 9 execution memory must record methods_architecture_started=true after 9.15")
+        if memory.get("methods_drafting_started") is not False:
+            failures.append("Stage 9 execution memory must keep methods_drafting_started=false after 9.15")
+    else:
+        for rel in [
+            "sections/methods_blueprint.md",
+            "ledgers/methods_to_code_ledger.csv",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain Methods architecture output before 9.15: {rel}")
+
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
             failures.append(f"Stage 9 scaffold-only pass must not create manuscript/evidence artifact: {rel}")
@@ -832,6 +891,8 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if stage9_13_started and rel == "sections/discussion_blueprint.md":
                 continue
             if stage9_14_started and rel == "sections/discussion.md":
+                continue
+            if stage9_15_started and rel == "sections/methods_blueprint.md":
                 continue
             if path.name != ".gitkeep":
                 failures.append(f"reader-facing manuscript surface exists during scaffold-only pass: {path.relative_to(workspace)}")

@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.14 Discussion drafting exists and passes",
+      "name": "stage_9_14_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.8 Online Methods contract and topical subheadings are available",
+      "name": "online_methods_contract_available",
+      "passed": true
+    },
+    {
+      "detail": "ledger_rows=9 schema_fields=methods_stmt_id;art_id;repo_path;commit;command",
+      "name": "methods_to_code_ledger_validates",
+      "passed": true
+    },
+    {
+      "detail": "repo_paths_ok=True commit=2a73afd1fa91d5ce13b30b8662717e4b77c8c987 artifacts_ok=True",
+      "name": "methods_statements_map_to_repo_path_and_commit",
+      "passed": true
+    },
+    {
+      "detail": "All ledger commands contain dataset_version and dataset_date, and the blueprint records source dates",
+      "name": "dataset_references_include_version_and_date",
+      "passed": true
+    },
+    {
+      "detail": "claim_coverage=CLM-0001;CLM-0002;CLM-0003;CLM-0004;CLM-0005 subheading_count=6",
+      "name": "all_claims_and_methods_subheadings_covered",
+      "passed": true
+    },
+    {
+      "detail": "Methods blueprint names statement IDs, code surfaces, data references, and scoped boundaries",
+      "name": "methods_blueprint_preserves_interpretation_boundaries",
+      "passed": true
+    },
+    {
+      "detail": "No methods.md, references.bib, figure legends, availability surfaces, or submission package detected",
+      "name": "no_methods_prose_or_downstream_package_started",
+      "passed": true
+    }
+  ],
+  "claim_ids": [
+    "CLM-0001",
+    "CLM-0002",
+    "CLM-0003",
+    "CLM-0004",
+    "CLM-0005"
+  ],
+  "ledger_row_count": 9,
+  "methods_architecture_version": "methods-architecture@2026-07-03@2a73afd1fa91d5ce13b30b8662717e4b77c8c987",
+  "methods_blueprint_word_count": 818,
+  "methods_statement_count": 9,
+  "methods_subheading_count": 6,
+  "next_substage": "9.16",
+  "outputs": [
+    "manuscript/nature_methods/sections/methods_blueprint.md",
+    "manuscript/nature_methods/ledgers/methods_to_code_ledger.csv",
+    "manuscript/nature_methods/gate_verdicts/9.15.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Methods architecture only. No methods.md, full reference library, figure legends, availability statements, Reporting Summary, or submission-package assembly.",
+  "substage": "9.15",
+  "timestamp": "2026-07-03T14:39:07.653833Z"
+}

@@ -246,6 +246,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_12_introduction_literature_binding.py",
     "scripts/run_stage9_13_discussion_interpretation_map.py",
     "scripts/run_stage9_14_discussion_drafting.py",
+    "scripts/run_stage9_15_methods_architecture.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -262,6 +263,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_12_introduction_literature_binding.py",
     "tests/test_stage9_13_discussion_interpretation_map.py",
     "tests/test_stage9_14_discussion_drafting.py",
+    "tests/test_stage9_15_methods_architecture.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -288,11 +290,13 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.12.json",
     "manuscript/nature_methods/gate_verdicts/9.13.json",
     "manuscript/nature_methods/gate_verdicts/9.14.json",
+    "manuscript/nature_methods/gate_verdicts/9.15.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
     "manuscript/nature_methods/sections/discussion_blueprint.md",
     "manuscript/nature_methods/sections/discussion.md",
+    "manuscript/nature_methods/sections/methods_blueprint.md",
     "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
@@ -331,6 +335,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
     "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
     "manuscript/nature_methods/ledgers/claim_strength_rules.md",
+    "manuscript/nature_methods/ledgers/methods_to_code_ledger.csv",
     "manuscript/nature_methods/figures/main_figure_spine.md",
     "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
     "manuscript/nature_methods/figures/display_item_plan.md",
@@ -467,8 +472,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.14 Discussion drafting pass complete; Online Methods not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.14 Discussion drafting boundary as active")
+        if current.get("active_stage") != "Stage 9.15 Methods architecture complete; Methods drafting not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.15 Methods architecture boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -482,8 +487,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_14_discussion_drafted":
-            failures.append("roadmap execution memory does not mark Stage 9.14 Discussion drafting as registered")
+        if stages.get(9, {}).get("status") != "stage9_15_methods_architecture_registered":
+            failures.append("roadmap execution memory does not mark Stage 9.15 Methods architecture as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -508,8 +513,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.14 registered no-subheading Discussion draft without starting Methods":
-                failures.append("Stage 9 current gate must record the Stage 9.14 Discussion drafting state")
+            if stage9.get("current_gate") != "Stage 9.15 registered Methods architecture without drafting Methods":
+                failures.append("Stage 9 current gate must record the Stage 9.15 Methods architecture state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -531,6 +536,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9 must serialize the 9.13 Discussion interpretation-map substage")
             if "9.14" not in substage_ids:
                 failures.append("Stage 9 must serialize the 9.14 Discussion drafting substage")
+            if "9.15" not in substage_ids:
+                failures.append("Stage 9 must serialize the 9.15 Methods architecture substage")
             substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
             if substage_status.get("9.0") != "complete_evidence_locked":
                 failures.append("Stage 9.0 must be marked complete_evidence_locked")
@@ -564,6 +571,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.13 must be marked complete_discussion_interpretation_mapped")
             if substage_status.get("9.14") != "complete_discussion_drafted":
                 failures.append("Stage 9.14 must be marked complete_discussion_drafted")
+            if substage_status.get("9.15") != "complete_methods_architecture_registered":
+                failures.append("Stage 9.15 must be marked complete_methods_architecture_registered")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

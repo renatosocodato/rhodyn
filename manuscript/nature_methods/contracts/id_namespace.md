@@ -14,5 +14,6 @@ Stage 9 uses stable identifiers so claims, paragraphs, figures, tables, referenc
 | `REF-####` | reference | resolved literature or venue reference |
 | `STAT-####` | statistic | single reported quantitative result |
 | `SUPP-###` | supplementary item | supplementary method/table/figure object |
+| `MTH-####` | method statement | Online Methods statement mapped to code, command, commit, and evidence |
 
 IDs are minted once, never reused, and never shown on reader-facing manuscript surfaces. Reader-facing prose must refer to the scientific object, not to the internal identifier.

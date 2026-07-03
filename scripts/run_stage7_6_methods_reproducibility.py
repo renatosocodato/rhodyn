@@ -122,6 +122,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/run_stage9_12_introduction_literature_binding.py",
     "scripts/run_stage9_13_discussion_interpretation_map.py",
     "scripts/run_stage9_14_discussion_drafting.py",
+    "scripts/run_stage9_15_methods_architecture.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
     "docs/stage7_6_api_stability_policy.md",
@@ -158,6 +159,7 @@ REQUIRED_ARCHIVE_FILES = {
     "tests/test_stage9_12_introduction_literature_binding.py",
     "tests/test_stage9_13_discussion_interpretation_map.py",
     "tests/test_stage9_14_discussion_drafting.py",
+    "tests/test_stage9_15_methods_architecture.py",
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "manuscript/nature_methods/README.md",
@@ -186,11 +188,13 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/gate_verdicts/9.12.json",
     "manuscript/nature_methods/gate_verdicts/9.13.json",
     "manuscript/nature_methods/gate_verdicts/9.14.json",
+    "manuscript/nature_methods/gate_verdicts/9.15.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
     "manuscript/nature_methods/sections/discussion_blueprint.md",
     "manuscript/nature_methods/sections/discussion.md",
+    "manuscript/nature_methods/sections/methods_blueprint.md",
     "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
     "manuscript/nature_methods/stage9_narrative_spine.md",
     "manuscript/nature_methods/audits/venue_fit_rationale.md",
@@ -199,6 +203,7 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
     "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
     "manuscript/nature_methods/ledgers/claim_strength_rules.md",
+    "manuscript/nature_methods/ledgers/methods_to_code_ledger.csv",
     "manuscript/nature_methods/figures/main_figure_spine.md",
     "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
     "manuscript/nature_methods/figures/display_item_plan.md",
@@ -597,8 +602,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9.14 Discussion drafting pass complete; Online Methods not started":
-        failures.append("roadmap memory does not mark the Stage 9.14 Discussion drafting boundary as active")
+    if current.get("active_stage") != "Stage 9.15 Methods architecture complete; Methods drafting not started":
+        failures.append("roadmap memory does not mark the Stage 9.15 Methods architecture boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -608,8 +613,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_14_discussion_drafted":
-        failures.append("Stage 9 is not marked stage9_14_discussion_drafted")
+    if stage9.get("status") != "stage9_15_methods_architecture_registered":
+        failures.append("Stage 9 is not marked stage9_15_methods_architecture_registered")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -631,6 +636,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9 does not serialize the 9.13 Discussion interpretation-map substage")
     if "9.14" not in stage9_substage_ids:
         failures.append("Stage 9 does not serialize the 9.14 Discussion drafting substage")
+    if "9.15" not in stage9_substage_ids:
+        failures.append("Stage 9 does not serialize the 9.15 Methods architecture substage")
     stage9_substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if stage9_substage_status.get("9.0") != "complete_evidence_locked":
         failures.append("Stage 9.0 is not marked complete_evidence_locked")
@@ -664,6 +671,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9.13 is not marked complete_discussion_interpretation_mapped")
     if stage9_substage_status.get("9.14") != "complete_discussion_drafted":
         failures.append("Stage 9.14 is not marked complete_discussion_drafted")
+    if stage9_substage_status.get("9.15") != "complete_methods_architecture_registered":
+        failures.append("Stage 9.15 is not marked complete_methods_architecture_registered")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",
