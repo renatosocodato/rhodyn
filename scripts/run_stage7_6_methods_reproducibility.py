@@ -124,6 +124,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/run_stage9_14_discussion_drafting.py",
     "scripts/run_stage9_15_methods_architecture.py",
     "scripts/run_stage9_16_methods_drafting.py",
+    "scripts/run_stage9_17_availability_assembly.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
     "docs/stage7_6_api_stability_policy.md",
@@ -162,6 +163,7 @@ REQUIRED_ARCHIVE_FILES = {
     "tests/test_stage9_14_discussion_drafting.py",
     "tests/test_stage9_15_methods_architecture.py",
     "tests/test_stage9_16_methods_drafting.py",
+    "tests/test_stage9_17_availability_assembly.py",
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "manuscript/nature_methods/README.md",
@@ -192,6 +194,7 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/gate_verdicts/9.14.json",
     "manuscript/nature_methods/gate_verdicts/9.15.json",
     "manuscript/nature_methods/gate_verdicts/9.16.json",
+    "manuscript/nature_methods/gate_verdicts/9.17.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
@@ -199,6 +202,10 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/sections/discussion.md",
     "manuscript/nature_methods/sections/methods_blueprint.md",
     "manuscript/nature_methods/sections/methods.md",
+    "manuscript/nature_methods/sections/data_availability.md",
+    "manuscript/nature_methods/sections/code_availability.md",
+    "manuscript/nature_methods/ledgers/reproducibility_command_index.md",
+    "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
     "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
     "manuscript/nature_methods/stage9_narrative_spine.md",
     "manuscript/nature_methods/audits/venue_fit_rationale.md",
@@ -606,8 +613,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9.16 Methods drafting complete; availability assembly not started":
-        failures.append("roadmap memory does not mark the Stage 9.16 Methods drafting boundary as active")
+    if current.get("active_stage") != "Stage 9.17 availability assembly complete; Supplementary Methods not started":
+        failures.append("roadmap memory does not mark the Stage 9.17 availability assembly boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -617,8 +624,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_16_methods_drafted":
-        failures.append("Stage 9 is not marked stage9_16_methods_drafted")
+    if stage9.get("status") != "stage9_17_availability_assembled":
+        failures.append("Stage 9 is not marked stage9_17_availability_assembled")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]

@@ -54,6 +54,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_14_discussion_drafting.py",
     "scripts/run_stage9_15_methods_architecture.py",
     "scripts/run_stage9_16_methods_drafting.py",
+    "scripts/run_stage9_17_availability_assembly.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -109,9 +110,9 @@ ID_PREFIXES = [
 ]
 
 FORBIDDEN_DRAFTS = [
-    "sections/data_availability.md",
-    "sections/code_availability.md",
     "refs/references.bib",
+    "figures/figure_legends.md",
+    "supplementary/supplementary_methods.md",
     "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
@@ -218,10 +219,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.16 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.17 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -242,6 +243,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_14_started = "9.14.json" in gate_files
     stage9_15_started = "9.15.json" in gate_files
     stage9_16_started = "9.16.json" in gate_files
+    stage9_17_started = "9.17.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -268,7 +270,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_16_methods_drafted"
+        "stage9_17_availability_assembled"
+        if stage9_17_started
+        else "stage9_16_methods_drafted"
         if stage9_16_started
         else "stage9_15_methods_architecture_registered"
         if stage9_15_started
@@ -310,6 +314,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         failures.append(f"Stage 9 execution memory must record {expected_memory_status}")
     if memory.get("next_substage_authorized") is not False:
         failures.append("Stage 9 downstream substages must not be auto-authorized")
+    if stage9_17_started:
+        for flag in ["availability_assembly_started", "reporting_summary_placeholder_started"]:
+            if memory.get(flag) is not True:
+                failures.append(f"Stage 9 execution memory must record {flag}=true after 9.17")
 
     if stage9_0_started:
         stage9_0_gate = _read_json(workspace / "gate_verdicts" / "9.0.json", failures)
@@ -908,6 +916,87 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     else:
         if (workspace / "sections" / "methods.md").exists():
             failures.append("Stage 9 state must not contain Methods draft output before 9.16: sections/methods.md")
+
+    if stage9_17_started:
+        stage9_17_gate = _read_json(workspace / "gate_verdicts" / "9.17.json", failures)
+        data_path = workspace / "sections" / "data_availability.md"
+        code_path = workspace / "sections" / "code_availability.md"
+        command_path = workspace / "ledgers" / "reproducibility_command_index.md"
+        reporting_path = workspace / "submission_package" / "reporting_summary_REQUIRED.md"
+        if stage9_17_gate.get("pass") is not True or stage9_17_gate.get("substage") != "9.17":
+            failures.append("Stage 9.17 gate verdict must pass when present")
+        if stage9_17_gate.get("next_substage") != "9.18":
+            failures.append("Stage 9.17 gate must point to Stage 9.18")
+        if stage9_17_gate.get("software_version") != "v0.1.0":
+            failures.append("Stage 9.17 gate must preserve RhoDyn v0.1.0")
+        if stage9_17_gate.get("release_commit") != "4b1211cadd1fb3af34a1ec3e21f62383ffd9e368":
+            failures.append("Stage 9.17 must pin the v0.1.0 release commit")
+        if stage9_17_gate.get("software_version_doi") != "10.5281/zenodo.21036616":
+            failures.append("Stage 9.17 must record the RhoDyn version DOI")
+        if stage9_17_gate.get("software_concept_doi") != "10.5281/zenodo.21036615":
+            failures.append("Stage 9.17 must record the RhoDyn concept DOI")
+        if stage9_17_gate.get("panel_engine_version_doi") != "10.5281/zenodo.20811171":
+            failures.append("Stage 9.17 must record the PanelForge version DOI")
+        if stage9_17_gate.get("panel_engine_render_command") != "figures render manuscript/nature_methods/figures/figures.manifest.yaml":
+            failures.append("Stage 9.17 must record the PanelForge render command")
+        if stage9_17_gate.get("reporting_summary_required") is not True:
+            failures.append("Stage 9.17 must register Reporting Summary as required")
+        if stage9_17_gate.get("command_count", 0) < 10:
+            failures.append("Stage 9.17 reproducibility command index must include the main regeneration routes")
+        for rel, path in [
+            ("sections/data_availability.md", data_path),
+            ("sections/code_availability.md", code_path),
+            ("ledgers/reproducibility_command_index.md", command_path),
+            ("submission_package/reporting_summary_REQUIRED.md", reporting_path),
+        ]:
+            if not path.exists():
+                failures.append(f"Stage 9.17 availability output missing: {rel}")
+        data_body = data_path.read_text(encoding="utf-8") if data_path.exists() else ""
+        code_body = code_path.read_text(encoding="utf-8") if code_path.exists() else ""
+        command_body = command_path.read_text(encoding="utf-8") if command_path.exists() else ""
+        reporting_body = reporting_path.read_text(encoding="utf-8") if reporting_path.exists() else ""
+        combined = "\n".join([data_body, code_body, command_body, reporting_body])
+        for phrase in [
+            "https://github.com/renatosocodato/rhodyn",
+            "4b1211cadd1fb3af34a1ec3e21f62383ffd9e368",
+            "https://doi.org/10.5281/zenodo.21036616",
+            "https://doi.org/10.5281/zenodo.21036615",
+            "https://doi.org/10.5281/zenodo.14907827",
+            "https://doi.org/10.5281/zenodo.5836623",
+            "https://doi.org/10.5281/zenodo.10011861",
+            "https://github.com/renatosocodato/windowed_rhoA_model",
+            "e63cc93a4b23d8b3d27cf25136b00d53fa6144f4",
+            "https://doi.org/10.5281/zenodo.19796406",
+            "https://doi.org/10.5281/zenodo.20811171",
+            "figures render manuscript/nature_methods/figures/figures.manifest.yaml",
+            "Reporting Summary REQUIRED",
+            "not the completed journal form",
+        ]:
+            if phrase not in combined:
+                failures.append(f"Stage 9.17 availability surfaces missing phrase: {phrase}")
+        for phrase in [
+            "upon request",
+            "available on request",
+            "/" + "Users/",
+            "/" + "Volumes/",
+            "Library/" + "LaunchAgents",
+            "s" + "k-",
+            "g" + "hp_",
+            "github" + "_pat_",
+        ]:
+            if phrase.lower() in combined.lower():
+                failures.append(f"Stage 9.17 availability surfaces contain forbidden phrase: {phrase}")
+        if "PyPI publication is not claimed" not in code_body:
+            failures.append("Stage 9.17 Code availability must keep PyPI unclaimed for v0.1.0")
+    else:
+        for rel in [
+            "sections/data_availability.md",
+            "sections/code_availability.md",
+            "ledgers/reproducibility_command_index.md",
+            "submission_package/reporting_summary_REQUIRED.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain availability output before 9.17: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

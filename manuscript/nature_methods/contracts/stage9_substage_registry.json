@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.16",
-  "next_substage": "9.17",
+  "last_completed_substage": "9.17",
+  "next_substage": "9.18",
   "patch_ledger": [
     {
       "id": "P1",
@@ -387,7 +387,7 @@
         "manuscript/nature_methods/ledgers/reproducibility_command_index.md",
         "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md"
       ],
-      "status": "not_started",
+      "status": "complete_availability_assembled",
       "title": "Software, data, and code availability assembly"
     },
     {

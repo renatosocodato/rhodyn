@@ -47,8 +47,14 @@
     "manuscript/nature_methods/ledgers/methods_to_code_ledger.csv",
     "manuscript/nature_methods/gate_verdicts/9.15.json",
     "manuscript/nature_methods/sections/methods.md",
-    "manuscript/nature_methods/gate_verdicts/9.16.json"
+    "manuscript/nature_methods/gate_verdicts/9.16.json",
+    "manuscript/nature_methods/sections/data_availability.md",
+    "manuscript/nature_methods/sections/code_availability.md",
+    "manuscript/nature_methods/ledgers/reproducibility_command_index.md",
+    "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+    "manuscript/nature_methods/gate_verdicts/9.17.json"
   ],
+  "availability_assembly_started": true,
   "citation_resolution_started": false,
   "claim_freeze_started": true,
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
@@ -952,10 +958,134 @@
       "status": "pass",
       "substage": "9.16",
       "validation_outcome": "Reviewer-reconstructable Methods prose registered from Stage 9.15 Methods architecture"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.16 Methods drafting exists and passes",
+          "name": "stage_9_16_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": [
+            {
+              "final_url": "https://github.com/renatosocodato/rhodyn",
+              "method": "HEAD",
+              "resolved": true,
+              "status": 200,
+              "url": "https://github.com/renatosocodato/rhodyn"
+            },
+            {
+              "final_url": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0",
+              "method": "HEAD",
+              "resolved": true,
+              "status": 200,
+              "url": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0"
+            },
+            {
+              "final_url": "https://zenodo.org/records/21036616",
+              "method": "HEAD",
+              "resolved": true,
+              "status": 200,
+              "url": "https://doi.org/10.5281/zenodo.21036616"
+            },
+            {
+              "final_url": "https://zenodo.org/records/21036616",
+              "method": "HEAD",
+              "resolved": true,
+              "status": 200,
+              "url": "https://doi.org/10.5281/zenodo.21036615"
+            },
+            {
+              "final_url": "https://zenodo.org/records/21036616",
+              "method": "HEAD",
+              "resolved": true,
+              "status": 200,
+              "url": "https://zenodo.org/records/21036616"
+            },
+            {
+              "final_url": "https://zenodo.org/records/20811171",
+              "method": "HEAD",
+              "resolved": true,
+              "status": 200,
+              "url": "https://doi.org/10.5281/zenodo.20811171"
+            },
+            {
+              "final_url": "https://zenodo.org/records/20811171",
+              "method": "HEAD",
+              "resolved": true,
+              "status": 200,
+              "url": "https://doi.org/10.5281/zenodo.20811170"
+            }
+          ],
+          "name": "doi_and_repo_urls_resolve",
+          "passed": true
+        },
+        {
+          "detail": "release_commit=4b1211cadd1fb3af34a1ec3e21f62383ffd9e368 tag_commit=4b1211cadd1fb3af34a1ec3e21f62383ffd9e368 current_commit=a0c343a8b4539df434e63b3b68c0e0cc30be13b0",
+          "name": "release_commit_pinned",
+          "passed": true
+        },
+        {
+          "detail": "software, source data, public examples, and optional RhoA reference-case identifiers are present",
+          "name": "availability_identifiers_present",
+          "passed": true
+        },
+        {
+          "detail": "No upon-request wording, local path, LaunchAgent path, or credential-like token found",
+          "name": "no_upon_request_or_local_path_language",
+          "passed": true
+        },
+        {
+          "detail": "Reporting Summary requirement is registered without completing the final submission form",
+          "name": "reporting_summary_registered_required",
+          "passed": true
+        },
+        {
+          "detail": "PanelForge DOI 10.5281/zenodo.20811171; render command figures render manuscript/nature_methods/figures/figures.manifest.yaml",
+          "name": "panelforge_version_and_render_command_recorded",
+          "passed": true
+        },
+        {
+          "detail": "Command rows include command_id, art_id, command, expected_output, and software_version",
+          "name": "command_index_schema_fields_present",
+          "passed": true
+        },
+        {
+          "detail": "No references.bib, figure legends, Supplementary Methods, PI packet, or readiness checklist detected",
+          "name": "no_reference_legend_supplement_or_full_package_started",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.16.json",
+        "docs/zenodo_publication_report.json",
+        "docs/public_release_integrity_report.json",
+        "manuscript/nature_methods/contracts/stage9_project_binding.json",
+        "case_studies/stage7_methods_reproducibility/methods_reproducibility_commands.tsv"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/sections/data_availability.md",
+        "manuscript/nature_methods/sections/code_availability.md",
+        "manuscript/nature_methods/ledgers/reproducibility_command_index.md",
+        "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+        "manuscript/nature_methods/gate_verdicts/9.17.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.17.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Full reference library and citation audit have not started",
+        "Figure legends have not started",
+        "Supplementary Methods have not started",
+        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
+      ],
+      "status": "pass",
+      "substage": "9.17",
+      "validation_outcome": "Data availability, code availability, reproducibility command index, and Reporting Summary requirement registered"
     }
   ],
-  "current_gate": "Stage 9.16 registered Methods prose without availability assembly",
-  "current_substage": "9.16",
+  "current_gate": "Stage 9.17 registered data/code availability and Reporting Summary placeholder",
+  "current_substage": "9.17",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
@@ -971,12 +1101,12 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.16 are complete through Methods drafting.",
-    "Stage 9.17 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No availability statements, full reference library, figure legends, supplementary methods, or submission package contents are created in this Methods drafting pass.",
-    "The Methods draft maps claim-bearing prose to Methods statement IDs in hidden comments while keeping visible prose reader-facing."
+    "Stage 9.0 through Stage 9.17 are complete through availability assembly.",
+    "Stage 9.18 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No full reference library, figure legends, supplementary methods, PI review packet, or submission readiness checklist are created in this availability pass.",
+    "Reporting Summary is registered as required but not completed as the final journal form."
   ],
-  "generated_utc": "2026-07-03T16:13:13.527153Z",
+  "generated_utc": "2026-07-03T16:36:31.772873Z",
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
   "manuscript_drafting_started": false,
@@ -986,7 +1116,7 @@
   "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.17",
+  "next_substage": "9.18",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -1046,13 +1176,14 @@
     }
   },
   "report_format": "rhodyn.stage9_execution_memory.v1",
+  "reporting_summary_placeholder_started": true,
   "representative_methods_corpus_started": true,
   "representative_methods_corpus_version": "methods-corpus@2026-07-02@5ce55cc235ad1819dcc7a4382343f0293230a282",
   "results_architecture_started": true,
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results subsection architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, and Methods drafting only. Do not start availability assembly, full reference library, figure legends, review response, supplementary methods, or submission packaging without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results subsection architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, and availability assembly only. Do not start the full reference library, figure legends, supplementary methods, or final submission package without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "stage": 9,
@@ -1387,6 +1518,103 @@
       "passed": true
     }
   ],
+  "stage9_17_checks": [
+    {
+      "detail": "Stage 9.16 Methods drafting exists and passes",
+      "name": "stage_9_16_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": [
+        {
+          "final_url": "https://github.com/renatosocodato/rhodyn",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://github.com/renatosocodato/rhodyn"
+        },
+        {
+          "final_url": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0"
+        },
+        {
+          "final_url": "https://zenodo.org/records/21036616",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://doi.org/10.5281/zenodo.21036616"
+        },
+        {
+          "final_url": "https://zenodo.org/records/21036616",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://doi.org/10.5281/zenodo.21036615"
+        },
+        {
+          "final_url": "https://zenodo.org/records/21036616",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://zenodo.org/records/21036616"
+        },
+        {
+          "final_url": "https://zenodo.org/records/20811171",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://doi.org/10.5281/zenodo.20811171"
+        },
+        {
+          "final_url": "https://zenodo.org/records/20811171",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://doi.org/10.5281/zenodo.20811170"
+        }
+      ],
+      "name": "doi_and_repo_urls_resolve",
+      "passed": true
+    },
+    {
+      "detail": "release_commit=4b1211cadd1fb3af34a1ec3e21f62383ffd9e368 tag_commit=4b1211cadd1fb3af34a1ec3e21f62383ffd9e368 current_commit=a0c343a8b4539df434e63b3b68c0e0cc30be13b0",
+      "name": "release_commit_pinned",
+      "passed": true
+    },
+    {
+      "detail": "software, source data, public examples, and optional RhoA reference-case identifiers are present",
+      "name": "availability_identifiers_present",
+      "passed": true
+    },
+    {
+      "detail": "No upon-request wording, local path, LaunchAgent path, or credential-like token found",
+      "name": "no_upon_request_or_local_path_language",
+      "passed": true
+    },
+    {
+      "detail": "Reporting Summary requirement is registered without completing the final submission form",
+      "name": "reporting_summary_registered_required",
+      "passed": true
+    },
+    {
+      "detail": "PanelForge DOI 10.5281/zenodo.20811171; render command figures render manuscript/nature_methods/figures/figures.manifest.yaml",
+      "name": "panelforge_version_and_render_command_recorded",
+      "passed": true
+    },
+    {
+      "detail": "Command rows include command_id, art_id, command, expected_output, and software_version",
+      "name": "command_index_schema_fields_present",
+      "passed": true
+    },
+    {
+      "detail": "No references.bib, figure legends, Supplementary Methods, PI packet, or readiness checklist detected",
+      "name": "no_reference_legend_supplement_or_full_package_started",
+      "passed": true
+    }
+  ],
   "stage9_1_checks": [
     {
       "detail": "Stage 9.0 evidence lock exists and passes",
@@ -1700,8 +1928,8 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.16 Methods drafting complete; availability assembly not started",
-  "status": "stage9_16_methods_drafted",
+  "stage9_active_gate": "Stage 9.17 availability assembly complete; Supplementary Methods not started",
+  "status": "stage9_17_availability_assembled",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

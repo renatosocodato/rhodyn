@@ -81,9 +81,7 @@ class Stage915MethodsArchitectureTests(unittest.TestCase):
         forbidden = [
             "refs/references.bib",
             "figures/figure_legends.md",
-            "sections/data_availability.md",
-            "sections/code_availability.md",
-            "submission_package/reporting_summary_REQUIRED.md",
+            "supplementary/supplementary_methods.md",
             "submission_package/submission_readiness_checklist.md",
         ]
         for rel in forbidden:

@@ -1,0 +1,122 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.16 Methods drafting exists and passes",
+      "name": "stage_9_16_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": [
+        {
+          "final_url": "https://github.com/renatosocodato/rhodyn",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://github.com/renatosocodato/rhodyn"
+        },
+        {
+          "final_url": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0"
+        },
+        {
+          "final_url": "https://zenodo.org/records/21036616",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://doi.org/10.5281/zenodo.21036616"
+        },
+        {
+          "final_url": "https://zenodo.org/records/21036616",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://doi.org/10.5281/zenodo.21036615"
+        },
+        {
+          "final_url": "https://zenodo.org/records/21036616",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://zenodo.org/records/21036616"
+        },
+        {
+          "final_url": "https://zenodo.org/records/20811171",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://doi.org/10.5281/zenodo.20811171"
+        },
+        {
+          "final_url": "https://zenodo.org/records/20811171",
+          "method": "HEAD",
+          "resolved": true,
+          "status": 200,
+          "url": "https://doi.org/10.5281/zenodo.20811170"
+        }
+      ],
+      "name": "doi_and_repo_urls_resolve",
+      "passed": true
+    },
+    {
+      "detail": "release_commit=4b1211cadd1fb3af34a1ec3e21f62383ffd9e368 tag_commit=4b1211cadd1fb3af34a1ec3e21f62383ffd9e368 current_commit=a0c343a8b4539df434e63b3b68c0e0cc30be13b0",
+      "name": "release_commit_pinned",
+      "passed": true
+    },
+    {
+      "detail": "software, source data, public examples, and optional RhoA reference-case identifiers are present",
+      "name": "availability_identifiers_present",
+      "passed": true
+    },
+    {
+      "detail": "No upon-request wording, local path, LaunchAgent path, or credential-like token found",
+      "name": "no_upon_request_or_local_path_language",
+      "passed": true
+    },
+    {
+      "detail": "Reporting Summary requirement is registered without completing the final submission form",
+      "name": "reporting_summary_registered_required",
+      "passed": true
+    },
+    {
+      "detail": "PanelForge DOI 10.5281/zenodo.20811171; render command figures render manuscript/nature_methods/figures/figures.manifest.yaml",
+      "name": "panelforge_version_and_render_command_recorded",
+      "passed": true
+    },
+    {
+      "detail": "Command rows include command_id, art_id, command, expected_output, and software_version",
+      "name": "command_index_schema_fields_present",
+      "passed": true
+    },
+    {
+      "detail": "No references.bib, figure legends, Supplementary Methods, PI packet, or readiness checklist detected",
+      "name": "no_reference_legend_supplement_or_full_package_started",
+      "passed": true
+    }
+  ],
+  "command_count": 12,
+  "next_substage": "9.18",
+  "outputs": [
+    "manuscript/nature_methods/sections/data_availability.md",
+    "manuscript/nature_methods/sections/code_availability.md",
+    "manuscript/nature_methods/ledgers/reproducibility_command_index.md",
+    "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+    "manuscript/nature_methods/gate_verdicts/9.17.json"
+  ],
+  "panel_engine": "panelforge-figures",
+  "panel_engine_render_command": "figures render manuscript/nature_methods/figures/figures.manifest.yaml",
+  "panel_engine_version_doi": "10.5281/zenodo.20811171",
+  "pass": true,
+  "public_data_source_count": 3,
+  "release_commit": "4b1211cadd1fb3af34a1ec3e21f62383ffd9e368",
+  "release_tag": "v0.1.0",
+  "reporting_summary_required": true,
+  "scope_boundary": "Availability assembly only. No references.bib, figure legends, Supplementary Methods, PI packet, readiness checklist, or full submission-package assembly.",
+  "software_concept_doi": "10.5281/zenodo.21036615",
+  "software_version": "v0.1.0",
+  "software_version_doi": "10.5281/zenodo.21036616",
+  "substage": "9.17",
+  "timestamp": "2026-07-03T16:36:31.772873Z"
+}

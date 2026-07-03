@@ -248,6 +248,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_14_discussion_drafting.py",
     "scripts/run_stage9_15_methods_architecture.py",
     "scripts/run_stage9_16_methods_drafting.py",
+    "scripts/run_stage9_17_availability_assembly.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -266,6 +267,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_14_discussion_drafting.py",
     "tests/test_stage9_15_methods_architecture.py",
     "tests/test_stage9_16_methods_drafting.py",
+    "tests/test_stage9_17_availability_assembly.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -294,6 +296,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.14.json",
     "manuscript/nature_methods/gate_verdicts/9.15.json",
     "manuscript/nature_methods/gate_verdicts/9.16.json",
+    "manuscript/nature_methods/gate_verdicts/9.17.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
@@ -301,6 +304,10 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/sections/discussion.md",
     "manuscript/nature_methods/sections/methods_blueprint.md",
     "manuscript/nature_methods/sections/methods.md",
+    "manuscript/nature_methods/sections/data_availability.md",
+    "manuscript/nature_methods/sections/code_availability.md",
+    "manuscript/nature_methods/ledgers/reproducibility_command_index.md",
+    "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
     "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
@@ -476,8 +483,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.16 Methods drafting complete; availability assembly not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.16 Methods drafting boundary as active")
+        if current.get("active_stage") != "Stage 9.17 availability assembly complete; Supplementary Methods not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.17 availability assembly boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -491,8 +498,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_16_methods_drafted":
-            failures.append("roadmap execution memory does not mark Stage 9.16 Methods drafting as registered")
+        if stages.get(9, {}).get("status") != "stage9_17_availability_assembled":
+            failures.append("roadmap execution memory does not mark Stage 9.17 availability assembly as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -517,8 +524,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.16 registered Methods prose without availability assembly":
-                failures.append("Stage 9 current gate must record the Stage 9.16 Methods drafting state")
+            if stage9.get("current_gate") != "Stage 9.17 registered data/code availability and Reporting Summary placeholder":
+                failures.append("Stage 9 current gate must record the Stage 9.17 availability assembly state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
