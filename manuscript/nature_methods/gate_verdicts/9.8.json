@@ -1,0 +1,55 @@
+{
+  "abstract_unreferenced": true,
+  "abstract_word_limit": 150,
+  "checks": [
+    {
+      "detail": "Stage 9.7 supplementary display planning exists and passes",
+      "name": "stage_9_7_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Fifteen manuscript, back-matter, legend, SI, and reporting surfaces have explicit contracts",
+      "name": "every_section_has_a_contract",
+      "passed": true
+    },
+    {
+      "detail": "Results and Online Methods contracts include topical subheading plans",
+      "name": "results_and_methods_require_topical_subheadings",
+      "passed": true
+    },
+    {
+      "detail": "Discussion contract has no topical subheadings and explicitly prohibits them",
+      "name": "discussion_prohibits_subheadings",
+      "passed": true
+    },
+    {
+      "detail": "Abstract contract is capped at 150 words and unreferenced under VENUE-003",
+      "name": "abstract_contract_follows_sourced_budget",
+      "passed": true
+    },
+    {
+      "detail": "Section contracts resolve to locked CLM, FIG, SUPP, and paragraph-planning surfaces",
+      "name": "contracts_link_to_locked_claims_figures_and_supplements",
+      "passed": true
+    },
+    {
+      "detail": "No title, abstract, Results, Introduction, Discussion, Methods, reference bibliography, or submission package detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "discussion_subheading_count": 0,
+  "methods_subheading_count": 6,
+  "next_substage": "9.9",
+  "outputs": [
+    "manuscript/nature_methods/sections/section_contracts.md",
+    "manuscript/nature_methods/gate_verdicts/9.8.json"
+  ],
+  "pass": true,
+  "results_subheading_count": 6,
+  "scope_boundary": "Section contract planning only. No title options, abstract draft, Results, Introduction, Discussion, Methods prose, references, or submission-package assembly.",
+  "section_contract_count": 15,
+  "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
+  "substage": "9.8",
+  "timestamp": "2026-07-03T11:04:21.630557Z"
+}

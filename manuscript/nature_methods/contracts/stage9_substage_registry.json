@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.7",
-  "next_substage": "9.8",
+  "last_completed_substage": "9.8",
+  "next_substage": "9.9",
   "patch_ledger": [
     {
       "id": "P1",
@@ -252,7 +252,7 @@
       "outputs": [
         "manuscript/nature_methods/sections/section_contracts.md"
       ],
-      "status": "not_started",
+      "status": "complete_section_contract_blueprint_registered",
       "title": "Section contract blueprint"
     },
     {

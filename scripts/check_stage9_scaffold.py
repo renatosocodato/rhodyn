@@ -45,6 +45,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_6_figure_spine.py",
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/run_stage9_7_supplementary_display_plan.py",
+    "scripts/run_stage9_8_section_contract_blueprint.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -213,10 +214,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.7 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.8 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -228,6 +229,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_6_started = "9.6.json" in gate_files
     stage9_6b_started = "9.6b.json" in gate_files
     stage9_7_started = "9.7.json" in gate_files
+    stage9_8_started = "9.8.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -254,7 +256,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_7_supplementary_display_plan_registered"
+        "stage9_8_section_contract_blueprint_registered"
+        if stage9_8_started
+        else "stage9_7_supplementary_display_plan_registered"
         if stage9_7_started
         else "stage9_6b_panelforge_rendering_registered"
         if stage9_6b_started
@@ -519,6 +523,37 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain supplementary-plan output before 9.7: {rel}")
+
+    if stage9_8_started:
+        stage9_8_gate = _read_json(workspace / "gate_verdicts" / "9.8.json", failures)
+        if stage9_8_gate.get("pass") is not True or stage9_8_gate.get("substage") != "9.8":
+            failures.append("Stage 9.8 gate verdict must pass when present")
+        if not (workspace / "sections" / "section_contracts.md").exists():
+            failures.append("Stage 9.8 section-contract output missing: sections/section_contracts.md")
+        contract_body = (workspace / "sections" / "section_contracts.md").read_text(encoding="utf-8") if (workspace / "sections" / "section_contracts.md").exists() else ""
+        if stage9_8_gate.get("section_contract_count") != 15:
+            failures.append("Stage 9.8 must register fifteen section contracts")
+        if stage9_8_gate.get("abstract_word_limit") != 150 or stage9_8_gate.get("abstract_unreferenced") is not True:
+            failures.append("Stage 9.8 abstract contract must preserve the 150-word unreferenced budget")
+        if stage9_8_gate.get("results_subheading_count", 0) < 4 or stage9_8_gate.get("methods_subheading_count", 0) < 4:
+            failures.append("Stage 9.8 must require topical subheadings for Results and Online Methods")
+        if stage9_8_gate.get("discussion_subheading_count") != 0:
+            failures.append("Stage 9.8 must prohibit Discussion subheadings")
+        for phrase in [
+            "Abstract. Maximum 150 words and unreferenced.",
+            "Results. Topical subheadings are required.",
+            "Discussion. Subheadings are prohibited.",
+            "Online Methods. Topical subheadings are required",
+            "not a title draft",
+            "not Results prose",
+        ]:
+            if phrase not in contract_body:
+                failures.append(f"Stage 9.8 section contracts missing phrase: {phrase}")
+        if memory.get("section_contracts_started") is not True:
+            failures.append("Stage 9 execution memory must record section_contracts_started=true after 9.8")
+    else:
+        if (workspace / "sections" / "section_contracts.md").exists():
+            failures.append("Stage 9 state must not contain section contracts before 9.8")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
