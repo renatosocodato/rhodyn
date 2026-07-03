@@ -90,7 +90,6 @@ class Stage99TitleAbstractStrategyTests(unittest.TestCase):
 
     def test_downstream_manuscript_surfaces_remain_absent(self) -> None:
         for rel in [
-            "sections/results_blueprint.md",
             "sections/results.md",
             "sections/introduction.md",
             "sections/discussion.md",

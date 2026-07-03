@@ -1,0 +1,89 @@
+{
+  "art_id_count": 36,
+  "checks": [
+    {
+      "detail": "Stage 9.9 title and abstract strategy exists and passes",
+      "name": "stage_9_9_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Results architecture resolves to the Stage 9.8 Results section contract",
+      "name": "results_contract_available",
+      "passed": true
+    },
+    {
+      "detail": "Main figure spine contains FIG-001 through FIG-006",
+      "name": "figure_spine_available",
+      "passed": true
+    },
+    {
+      "detail": "Results units are locked to FIG-001 through FIG-006",
+      "name": "results_units_follow_locked_figure_order",
+      "passed": true
+    },
+    {
+      "detail": "Every Results unit maps to locked ART identifiers in the evidence manifest",
+      "name": "each_subsection_maps_to_figure_and_artifact_ids",
+      "passed": true
+    },
+    {
+      "detail": "Every Results unit maps to frozen CLM and PARA identifiers",
+      "name": "each_subsection_maps_to_claim_and_paragraph_ids",
+      "passed": true
+    },
+    {
+      "detail": "Essential supplementary callouts resolve for evidence-bearing Results units",
+      "name": "supplementary_support_resolved",
+      "passed": true
+    },
+    {
+      "detail": "Allowed conclusions have claim-level strength caps and avoid overclaim phrases",
+      "name": "allowed_conclusion_respects_strength_cap",
+      "passed": true
+    },
+    {
+      "detail": "Every Results unit includes purpose, evidence move, display item, artifacts, and claim mapping",
+      "name": "no_subsection_is_narrative_only",
+      "passed": true
+    },
+    {
+      "detail": "No Results draft, Introduction, Discussion, Methods, references, legends, or submission package detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "claim_ids": [
+    "CLM-0001",
+    "CLM-0002",
+    "CLM-0003",
+    "CLM-0004",
+    "CLM-0005"
+  ],
+  "figure_ids": [
+    "FIG-001",
+    "FIG-002",
+    "FIG-003",
+    "FIG-004",
+    "FIG-005",
+    "FIG-006"
+  ],
+  "next_substage": "9.11",
+  "outputs": [
+    "manuscript/nature_methods/sections/results_blueprint.md",
+    "manuscript/nature_methods/gate_verdicts/9.10.json"
+  ],
+  "paragraph_ids": [
+    "PARA-RESULTS-001",
+    "PARA-RESULTS-002",
+    "PARA-RESULTS-003",
+    "PARA-RESULTS-004",
+    "PARA-RESULTS-005",
+    "PARA-RESULTS-006"
+  ],
+  "pass": true,
+  "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
+  "results_unit_count": 6,
+  "scope_boundary": "Results architecture only. No Results prose, citation resolution, figure legends, Methods, Discussion, or submission-package assembly.",
+  "substage": "9.10",
+  "timestamp": "2026-07-03T12:54:20.139675Z"
+}
