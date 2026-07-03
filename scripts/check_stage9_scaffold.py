@@ -46,6 +46,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/run_stage9_7_supplementary_display_plan.py",
     "scripts/run_stage9_8_section_contract_blueprint.py",
+    "scripts/run_stage9_9_title_abstract_strategy.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -104,7 +105,6 @@ FORBIDDEN_DRAFTS = [
     "sections/introduction.md",
     "sections/discussion.md",
     "sections/methods.md",
-    "sections/abstract.md",
     "sections/data_availability.md",
     "sections/code_availability.md",
     "refs/references.bib",
@@ -214,10 +214,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.8 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.9 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -230,6 +230,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_6b_started = "9.6b.json" in gate_files
     stage9_7_started = "9.7.json" in gate_files
     stage9_8_started = "9.8.json" in gate_files
+    stage9_9_started = "9.9.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -256,7 +257,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_8_section_contract_blueprint_registered"
+        "stage9_9_title_abstract_strategy_registered"
+        if stage9_9_started
+        else "stage9_8_section_contract_blueprint_registered"
         if stage9_8_started
         else "stage9_7_supplementary_display_plan_registered"
         if stage9_7_started
@@ -555,6 +558,51 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if (workspace / "sections" / "section_contracts.md").exists():
             failures.append("Stage 9 state must not contain section contracts before 9.8")
 
+    if stage9_9_started:
+        stage9_9_gate = _read_json(workspace / "gate_verdicts" / "9.9.json", failures)
+        if stage9_9_gate.get("pass") is not True or stage9_9_gate.get("substage") != "9.9":
+            failures.append("Stage 9.9 gate verdict must pass when present")
+        for rel in [
+            "sections/title_options.md",
+            "sections/abstract_strategy.md",
+            "sections/abstract.md",
+        ]:
+            if not (workspace / rel).exists():
+                failures.append(f"Stage 9.9 front-matter output missing: {rel}")
+        abstract_body = (workspace / "sections" / "abstract.md").read_text(encoding="utf-8") if (workspace / "sections" / "abstract.md").exists() else ""
+        title_body = (workspace / "sections" / "title_options.md").read_text(encoding="utf-8") if (workspace / "sections" / "title_options.md").exists() else ""
+        strategy_body = (workspace / "sections" / "abstract_strategy.md").read_text(encoding="utf-8") if (workspace / "sections" / "abstract_strategy.md").exists() else ""
+        if stage9_9_gate.get("abstract_word_count", 999) > 150:
+            failures.append("Stage 9.9 abstract must stay within the 150-word Nature Methods budget")
+        if stage9_9_gate.get("abstract_unreferenced") is not True:
+            failures.append("Stage 9.9 abstract must be unreferenced")
+        if stage9_9_gate.get("title_option_count", 0) < 3:
+            failures.append("Stage 9.9 must register multiple title options")
+        if set(stage9_9_gate.get("abstract_claim_ids", [])) != {"CLM-0001", "CLM-0002", "CLM-0003", "CLM-0004", "CLM-0005"}:
+            failures.append("Stage 9.9 abstract must map to the five frozen CLM identifiers")
+        for phrase in [
+            "RhoDyn infers residence states in live-cell perturbation data",
+            "preferred working option",
+            "150 words",
+            "unreferenced",
+            "CLM-0001;CLM-0002;CLM-0003;CLM-0004",
+            "Live-cell perturbation experiments",
+            "not a complete manuscript",
+        ]:
+            combined = "\n".join([title_body, strategy_body, abstract_body])
+            if phrase not in combined:
+                failures.append(f"Stage 9.9 front-matter surfaces missing phrase: {phrase}")
+        if memory.get("title_abstract_strategy_started") is not True:
+            failures.append("Stage 9 execution memory must record title_abstract_strategy_started=true after 9.9")
+    else:
+        for rel in [
+            "sections/title_options.md",
+            "sections/abstract_strategy.md",
+            "sections/abstract.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain front-matter strategy output before 9.9: {rel}")
+
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
             failures.append(f"Stage 9 scaffold-only pass must not create manuscript/evidence artifact: {rel}")
@@ -569,6 +617,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     reader_surface_pattern = re.compile(r"(sections|submission_package)/(results|introduction|discussion|methods|abstract|main|supplement)", re.I)
     for path in workspace.rglob("*"):
         if path.is_file() and reader_surface_pattern.search(path.relative_to(workspace).as_posix()):
+            rel = path.relative_to(workspace).as_posix()
+            if stage9_9_started and rel in {"sections/abstract.md", "sections/abstract_strategy.md"}:
+                continue
             if path.name != ".gitkeep":
                 failures.append(f"reader-facing manuscript surface exists during scaffold-only pass: {path.relative_to(workspace)}")
 

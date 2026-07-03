@@ -53,11 +53,8 @@ class Stage98SectionContractBlueprintTests(unittest.TestCase):
         self.assertIn("Prohibited content. subheadings", discussion_block)
         self.assertIn("Topical subheadings. none.", discussion_block)
 
-    def test_downstream_reader_surfaces_remain_absent(self) -> None:
+    def test_downstream_manuscript_surfaces_remain_absent(self) -> None:
         for rel in [
-            "sections/title_options.md",
-            "sections/abstract_strategy.md",
-            "sections/abstract.md",
             "sections/results_blueprint.md",
             "sections/results.md",
             "sections/introduction.md",

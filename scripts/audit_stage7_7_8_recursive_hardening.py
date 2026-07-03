@@ -92,6 +92,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/gate_verdicts/9.6b.json",
     "manuscript/nature_methods/gate_verdicts/9.7.json",
     "manuscript/nature_methods/gate_verdicts/9.8.json",
+    "manuscript/nature_methods/gate_verdicts/9.9.json",
     "manuscript/nature_methods/ledgers/.gitkeep",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
@@ -104,6 +105,9 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
     "manuscript/nature_methods/sections/.gitkeep",
     "manuscript/nature_methods/sections/section_contracts.md",
+    "manuscript/nature_methods/sections/title_options.md",
+    "manuscript/nature_methods/sections/abstract_strategy.md",
+    "manuscript/nature_methods/sections/abstract.md",
     "manuscript/nature_methods/refs/.gitkeep",
     "manuscript/nature_methods/refs/_cache/.gitkeep",
     "manuscript/nature_methods/refs/_cache/nature_initial_submission.meta.json",
@@ -145,6 +149,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/run_stage9_7_supplementary_display_plan.py",
     "scripts/run_stage9_8_section_contract_blueprint.py",
+    "scripts/run_stage9_9_title_abstract_strategy.py",
     "scripts/scaffold_stage9_manuscript_assembly.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -155,6 +160,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "tests/test_stage9_6_figure_spine.py",
     "tests/test_stage9_7_supplementary_display_plan.py",
     "tests/test_stage9_8_section_contract_blueprint.py",
+    "tests/test_stage9_9_title_abstract_strategy.py",
     "tests/test_stage9_scaffold.py",
     "tools/panelforge-figures/.gitkeep",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
@@ -425,8 +431,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     memory = _read_json(ROOT / "docs" / "roadmap_execution_memory.json", failures)
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     stage9 = stages.get(9, {})
-    if stage9.get("status") != "stage9_8_section_contract_blueprint_registered":
-        failures.append("roadmap execution memory must record Stage 9 as stage9_8_section_contract_blueprint_registered")
+    if stage9.get("status") != "stage9_9_title_abstract_strategy_registered":
+        failures.append("roadmap execution memory must record Stage 9 as stage9_9_title_abstract_strategy_registered")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 execution memory must record 33 serialized substages")
     substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -436,6 +442,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         failures.append("Stage 9 execution memory must include the 9.7 supplementary display-plan substage")
     if "9.8" not in substage_ids:
         failures.append("Stage 9 execution memory must include the 9.8 section-contract substage")
+    if "9.9" not in substage_ids:
+        failures.append("Stage 9 execution memory must include the 9.9 title/abstract substage")
     substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if substage_status.get("9.6") != "complete_figure_spine_registered":
         failures.append("Stage 9.6 must be marked complete_figure_spine_registered")
@@ -445,11 +453,13 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         failures.append("Stage 9.7 must be marked complete_supplementary_display_plan_registered")
     if substage_status.get("9.8") != "complete_section_contract_blueprint_registered":
         failures.append("Stage 9.8 must be marked complete_section_contract_blueprint_registered")
+    if substage_status.get("9.9") != "complete_title_abstract_strategy_registered":
+        failures.append("Stage 9.9 must be marked complete_title_abstract_strategy_registered")
     if stages.get(8, {}).get("status") != "conceptual_only":
         failures.append("Stage 8 must remain conceptual after Stage 7.7/7.8 hardening")
     current = memory.get("current_position", {}) if isinstance(memory.get("current_position", {}), dict) else {}
-    if current.get("active_stage") != "Stage 9.8 section contracts registered; manuscript drafting not started":
-        failures.append("roadmap active stage must record the Stage 9.8 section-contract boundary")
+    if current.get("active_stage") != "Stage 9.9 title, subtitle, and abstract strategy registered; Results architecture not started":
+        failures.append("roadmap active stage must record the Stage 9.9 front-matter boundary")
     return {
         "authorized_phase9_scaffold_files": len(stage9_files) - len(unauthorized),
         "unauthorized_phase9_files": len(unauthorized),
@@ -537,7 +547,7 @@ def audit_stage7_7_8_recursive_hardening(root: Path = ROOT) -> dict[str, object]
         "warnings": warnings,
         "interpretation_boundary": (
             "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. "
-            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, Stage 9.0 evidence lock, venue and corpus registration, narrative spine, claim freeze, paragraph planning, Stage 9.6 main figure-spine planning, Stage 9.6b deterministic main-figure mockup rendering, Stage 9.7 supplementary display planning, and Stage 9.8 section-contract registration, with no title/abstract strategy, citation resolution, manuscript drafting, or submission packaging started."
+            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, Stage 9.0 evidence lock, venue and corpus registration, narrative spine, claim freeze, paragraph planning, Stage 9.6 main figure-spine planning, Stage 9.6b deterministic main-figure mockup rendering, Stage 9.7 supplementary display planning, Stage 9.8 section-contract registration, and Stage 9.9 title/abstract strategy, with no Results architecture, citation resolution, full manuscript drafting, or submission packaging started."
         ),
     }
     return report

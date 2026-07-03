@@ -1,0 +1,68 @@
+{
+  "abstract_claim_ids": [
+    "CLM-0001",
+    "CLM-0002",
+    "CLM-0003",
+    "CLM-0004",
+    "CLM-0005"
+  ],
+  "abstract_unreferenced": true,
+  "abstract_word_count": 142,
+  "abstract_word_limit": 150,
+  "checks": [
+    {
+      "detail": "Stage 9.8 section contracts exist and pass",
+      "name": "stage_9_8_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Title and abstract strategy resolves to Stage 9.8 section contracts",
+      "name": "section_contracts_available",
+      "passed": true
+    },
+    {
+      "detail": "Every title option is mapped to frozen CLM identifiers",
+      "name": "title_options_map_to_claim_ids",
+      "passed": true
+    },
+    {
+      "detail": "Abstract word count is 142 of the 150-word Nature Methods Article budget",
+      "name": "abstract_word_count_respects_sourced_budget",
+      "passed": true
+    },
+    {
+      "detail": "Abstract contains no detected citations, DOI strings, URLs, reference IDs, or figure calls",
+      "name": "abstract_is_unreferenced",
+      "passed": true
+    },
+    {
+      "detail": "Abstract covers residence, bounded coupling, reserve-like, routed-output, and reproducibility claims without references",
+      "name": "abstract_claims_map_to_claim_ids",
+      "passed": true
+    },
+    {
+      "detail": "Abstract avoids universal, therapeutic, clinical, diagnostic, and original-manuscript-generation claims",
+      "name": "claim_boundary_language_preserved",
+      "passed": true
+    },
+    {
+      "detail": "No Results, Introduction, Discussion, Methods, availability, reference bibliography, or submission package detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
+  "next_substage": "9.10",
+  "outputs": [
+    "manuscript/nature_methods/sections/title_options.md",
+    "manuscript/nature_methods/sections/abstract_strategy.md",
+    "manuscript/nature_methods/sections/abstract.md",
+    "manuscript/nature_methods/gate_verdicts/9.9.json"
+  ],
+  "pass": true,
+  "preferred_title_option": "TITLE-001",
+  "scope_boundary": "Front-matter strategy only. No Results architecture, full manuscript drafting, reference bibliography, figure legends, or submission-package assembly.",
+  "substage": "9.9",
+  "timestamp": "2026-07-03T12:43:22.114689Z",
+  "title_option_count": 4
+}

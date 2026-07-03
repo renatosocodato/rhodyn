@@ -71,7 +71,6 @@ class Stage91VenueGuidanceTests(unittest.TestCase):
             WORKSPACE / "sections" / "introduction.md",
             WORKSPACE / "sections" / "discussion.md",
             WORKSPACE / "sections" / "methods.md",
-            WORKSPACE / "sections" / "abstract.md",
             WORKSPACE / "refs" / "references.bib",
             WORKSPACE / "submission_package" / "pi_review_packet.md",
             WORKSPACE / "submission_package" / "submission_readiness_checklist.md",

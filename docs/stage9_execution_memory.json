@@ -27,7 +27,11 @@
     "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
     "manuscript/nature_methods/gate_verdicts/9.7.json",
     "manuscript/nature_methods/sections/section_contracts.md",
-    "manuscript/nature_methods/gate_verdicts/9.8.json"
+    "manuscript/nature_methods/gate_verdicts/9.8.json",
+    "manuscript/nature_methods/sections/title_options.md",
+    "manuscript/nature_methods/sections/abstract_strategy.md",
+    "manuscript/nature_methods/sections/abstract.md",
+    "manuscript/nature_methods/gate_verdicts/9.9.json"
   ],
   "citation_resolution_started": false,
   "claim_freeze_started": true,
@@ -387,10 +391,79 @@
       "status": "pass",
       "substage": "9.8",
       "validation_outcome": "Section contracts registered with venue subheading, abstract, budget, and non-drafting rules"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.8 section contracts exist and pass",
+          "name": "stage_9_8_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "Title and abstract strategy resolves to Stage 9.8 section contracts",
+          "name": "section_contracts_available",
+          "passed": true
+        },
+        {
+          "detail": "Every title option is mapped to frozen CLM identifiers",
+          "name": "title_options_map_to_claim_ids",
+          "passed": true
+        },
+        {
+          "detail": "Abstract word count is 142 of the 150-word Nature Methods Article budget",
+          "name": "abstract_word_count_respects_sourced_budget",
+          "passed": true
+        },
+        {
+          "detail": "Abstract contains no detected citations, DOI strings, URLs, reference IDs, or figure calls",
+          "name": "abstract_is_unreferenced",
+          "passed": true
+        },
+        {
+          "detail": "Abstract covers residence, bounded coupling, reserve-like, routed-output, and reproducibility claims without references",
+          "name": "abstract_claims_map_to_claim_ids",
+          "passed": true
+        },
+        {
+          "detail": "Abstract avoids universal, therapeutic, clinical, diagnostic, and original-manuscript-generation claims",
+          "name": "claim_boundary_language_preserved",
+          "passed": true
+        },
+        {
+          "detail": "No Results, Introduction, Discussion, Methods, availability, reference bibliography, or submission package detected",
+          "name": "no_downstream_stage9_surfaces_started",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.8.json",
+        "manuscript/nature_methods/sections/section_contracts.md",
+        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+        "manuscript/nature_methods/stage9_narrative_spine.md",
+        "manuscript/nature_methods/figures/main_figure_spine.md"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/sections/title_options.md",
+        "manuscript/nature_methods/sections/abstract_strategy.md",
+        "manuscript/nature_methods/sections/abstract.md",
+        "manuscript/nature_methods/gate_verdicts/9.9.json"
+      ],
+      "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.9.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Stage 9.10 Results subsection architecture has not started",
+        "Citation resolution has not started",
+        "Main manuscript drafting beyond the abstract has not started",
+        "Submission-package assembly has not started"
+      ],
+      "status": "pass",
+      "substage": "9.9",
+      "validation_outcome": "Title options, subtitle/deck strategy, and an unreferenced abstract draft registered within the 150-word budget"
     }
   ],
-  "current_gate": "Stage 9.8 registered section contracts without starting manuscript prose",
-  "current_substage": "9.8",
+  "current_gate": "Stage 9.9 registered title, subtitle, and abstract strategy without starting Results architecture",
+  "current_substage": "9.9",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine_clone_started": false,
@@ -399,18 +472,19 @@
   "figure_rendering_started": true,
   "figure_spine_started": true,
   "figure_spine_version": "figure-spine@2026-07-02@51275ccd63146d72934216cf132768738f132e89",
+  "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.8 are complete through section contract planning.",
-    "Stage 9.9 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No title, abstract, manuscript draft sections, reference bibliography, or submission package contents are created in this section-contract pass.",
-    "Abstract, Introduction, Results, Discussion, Online Methods, availability, references, legends, SI, and reporting surfaces have contract rules before prose drafting."
+    "Stage 9.0 through Stage 9.9 are complete through title, subtitle, and abstract strategy.",
+    "Stage 9.10 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No Results, Introduction, Discussion, Methods, references, figure legends, or submission package contents are created in this front-matter pass.",
+    "The abstract is unreferenced, within the 150-word Nature Methods Article budget, and mapped to frozen CLM identifiers."
   ],
-  "generated_utc": "2026-07-03T11:04:21.630557Z",
+  "generated_utc": "2026-07-03T12:43:22.114689Z",
   "manuscript_drafting_started": false,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.9",
+  "next_substage": "9.10",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -472,7 +546,7 @@
   "report_format": "rhodyn.stage9_execution_memory.v1",
   "representative_methods_corpus_started": true,
   "representative_methods_corpus_version": "methods-corpus@2026-07-02@5ce55cc235ad1819dcc7a4382343f0293230a282",
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, and section-contract planning only. Do not start title/abstract strategy, citation resolution, drafting, review response, or submission packaging without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, and title/abstract strategy only. Do not start Results architecture, citation resolution, full manuscript drafting, review response, or submission packaging without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "stage": 9,
@@ -779,12 +853,55 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.8 section contracts registered; manuscript drafting not started",
-  "status": "stage9_8_section_contract_blueprint_registered",
+  "stage9_9_checks": [
+    {
+      "detail": "Stage 9.8 section contracts exist and pass",
+      "name": "stage_9_8_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Title and abstract strategy resolves to Stage 9.8 section contracts",
+      "name": "section_contracts_available",
+      "passed": true
+    },
+    {
+      "detail": "Every title option is mapped to frozen CLM identifiers",
+      "name": "title_options_map_to_claim_ids",
+      "passed": true
+    },
+    {
+      "detail": "Abstract word count is 142 of the 150-word Nature Methods Article budget",
+      "name": "abstract_word_count_respects_sourced_budget",
+      "passed": true
+    },
+    {
+      "detail": "Abstract contains no detected citations, DOI strings, URLs, reference IDs, or figure calls",
+      "name": "abstract_is_unreferenced",
+      "passed": true
+    },
+    {
+      "detail": "Abstract covers residence, bounded coupling, reserve-like, routed-output, and reproducibility claims without references",
+      "name": "abstract_claims_map_to_claim_ids",
+      "passed": true
+    },
+    {
+      "detail": "Abstract avoids universal, therapeutic, clinical, diagnostic, and original-manuscript-generation claims",
+      "name": "claim_boundary_language_preserved",
+      "passed": true
+    },
+    {
+      "detail": "No Results, Introduction, Discussion, Methods, availability, reference bibliography, or submission package detected",
+      "name": "no_downstream_stage9_surfaces_started",
+      "passed": true
+    }
+  ],
+  "stage9_active_gate": "Stage 9.9 title, subtitle, and abstract strategy registered; Results architecture not started",
+  "status": "stage9_9_title_abstract_strategy_registered",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,
   "supplementary_plan_version": "supplementary-plan@2026-07-02@523b7c69eefa95dc12986bb36f0e8b9b19e7752e",
+  "title_abstract_strategy_started": true,
   "venue_guidance_started": true,
   "venue_guidance_version": "nature-methods-guidance@2026-07-02@9d71e48774c613047315a4957e3087f442ac8643"
 }

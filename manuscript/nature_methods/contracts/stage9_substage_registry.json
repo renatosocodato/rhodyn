@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.8",
-  "next_substage": "9.9",
+  "last_completed_substage": "9.9",
+  "next_substage": "9.10",
   "patch_ledger": [
     {
       "id": "P1",
@@ -268,7 +268,7 @@
         "manuscript/nature_methods/sections/abstract_strategy.md",
         "manuscript/nature_methods/sections/abstract.md"
       ],
-      "status": "not_started",
+      "status": "complete_title_abstract_strategy_registered",
       "title": "Title, subtitle, and abstract strategy"
     },
     {

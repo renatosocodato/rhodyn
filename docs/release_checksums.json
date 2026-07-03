@@ -1,5 +1,5 @@
 {
-  "file_count": 471,
+  "file_count": 477,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -558,8 +558,8 @@
     },
     {
       "path": "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
-      "sha256": "a84bb8b8d2b1215b9473954a6230d3db5192a0e488f7ee32a0bc6931b8bf1a0b",
-      "size_bytes": 1731
+      "sha256": "f1327a668b7e3ef240da4e16a522dfb788662c0b13303ec3ac7927be23d37769",
+      "size_bytes": 1768
     },
     {
       "path": "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json",
@@ -588,17 +588,17 @@
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv",
-      "sha256": "747ec841178e627716e9b9370b9085f9fbd85e218cb0ff0095b98a0de1cfe366",
-      "size_bytes": 68160
+      "sha256": "2c4194fa17107e5fda15bc6008d1f1bb7732b99e13f2e5fbd908dc273c9d8e7f",
+      "size_bytes": 68936
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
-      "sha256": "4492232da8f9852404f24c84d75ce2d033138641feb900e617881464e688435a",
+      "sha256": "b602486b911e46abf99ec42ecb1507c6236eb5b302e5ad44a2d421bc61ac8295",
       "size_bytes": 31216
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
-      "sha256": "b04aef716a5b20760d0f22713ad6e7197af8a0ae02a85272f112396aa5d41b4a",
+      "sha256": "e1492776079cb3bdbbfce82d5787b27f1b0f7fa3a8b84b90b4141fa35105eaae",
       "size_bytes": 4541
     },
     {
@@ -958,13 +958,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "29ac20c06f1d606ee56fd979cc5d7b7f1000629bb1232ce0e0a48379c4a3ff2a",
-      "size_bytes": 33112
+      "sha256": "25cd72305ffff3cf5ef1b02ee045cf3299370e64766fa20fa499f360bd0dde64",
+      "size_bytes": 33336
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "a6f611f6e56edff69f8c8a6588a9769356045bf25e94adfd9f4d9d9cdebf4819",
-      "size_bytes": 50743
+      "sha256": "08b206bf6fcfafef718f19df22e12aa181d44b97829f764aebfd688f103f2f87",
+      "size_bytes": 51736
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -1068,12 +1068,12 @@
     },
     {
       "path": "docs/stage7_6_clean_room_report.json",
-      "sha256": "4492232da8f9852404f24c84d75ce2d033138641feb900e617881464e688435a",
+      "sha256": "b602486b911e46abf99ec42ecb1507c6236eb5b302e5ad44a2d421bc61ac8295",
       "size_bytes": 31216
     },
     {
       "path": "docs/stage7_6_gate_report.json",
-      "sha256": "4492232da8f9852404f24c84d75ce2d033138641feb900e617881464e688435a",
+      "sha256": "b602486b911e46abf99ec42ecb1507c6236eb5b302e5ad44a2d421bc61ac8295",
       "size_bytes": 31216
     },
     {
@@ -1088,13 +1088,13 @@
     },
     {
       "path": "docs/stage7_7_8_recursive_hardening.md",
-      "sha256": "ef49d06d01a2923a80573e1b46cf09a7eeead7ce4f9a79bc6ef1508486ad7396",
-      "size_bytes": 1563
+      "sha256": "80ce45c28cd4c57ccc321b3db2e5099f7651bea056eb6be763459e24af465c35",
+      "size_bytes": 1600
     },
     {
       "path": "docs/stage7_7_8_recursive_hardening_report.json",
-      "sha256": "a84bb8b8d2b1215b9473954a6230d3db5192a0e488f7ee32a0bc6931b8bf1a0b",
-      "size_bytes": 1731
+      "sha256": "f1327a668b7e3ef240da4e16a522dfb788662c0b13303ec3ac7927be23d37769",
+      "size_bytes": 1768
     },
     {
       "path": "docs/stage7_7_gate_report.json",
@@ -1163,7 +1163,7 @@
     },
     {
       "path": "docs/stage7_methods_reproducibility_card.md",
-      "sha256": "b04aef716a5b20760d0f22713ad6e7197af8a0ae02a85272f112396aa5d41b4a",
+      "sha256": "e1492776079cb3bdbbfce82d5787b27f1b0f7fa3a8b84b90b4141fa35105eaae",
       "size_bytes": 4541
     },
     {
@@ -1208,13 +1208,13 @@
     },
     {
       "path": "docs/stage9_execution_memory.json",
-      "sha256": "7b669dc6d3e68af270ef029ae7d49c93e9842f894ae086764e8a05720937bcaa",
-      "size_bytes": 35202
+      "sha256": "49ab6e4e4d456928035119d8796ce0270c82116f9da540660e8564467d2bcd03",
+      "size_bytes": 40178
     },
     {
       "path": "docs/stage9_manuscript_assembly_plan.md",
-      "sha256": "8cfd26fc5c3b01ad6887f2cd19e38eface4cfeaafc8c709f60ecf65528f1dc01",
-      "size_bytes": 11154
+      "sha256": "354125a0b8510bd001e51b4800f68722fa0fdd0fba408821947511d9933838f9",
+      "size_bytes": 11460
     },
     {
       "path": "docs/zenodo_dry_run_report.json",
@@ -1433,8 +1433,8 @@
     },
     {
       "path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
-      "sha256": "84a8852008d78539cde13b23f3944ddc3c40544ec286152093241c003601c518",
-      "size_bytes": 22152
+      "sha256": "9ad7d35e57204a0ed27c2e90665aafd2b617f32312acbfeea5c764a9902ed09f",
+      "size_bytes": 22185
     },
     {
       "path": "manuscript/nature_methods/figures/.gitkeep",
@@ -1525,6 +1525,11 @@
       "path": "manuscript/nature_methods/gate_verdicts/9.8.json",
       "sha256": "e2bb9462594d73a991e433f4865ecb287b3e2e7801bcc740eff9a605e18de20a",
       "size_bytes": 2083
+    },
+    {
+      "path": "manuscript/nature_methods/gate_verdicts/9.9.json",
+      "sha256": "ebaeef20fb7d1a9d8fc5a1652b89f32766d8621080b1662a889f3937d18e7a73",
+      "size_bytes": 2424
     },
     {
       "path": "manuscript/nature_methods/ledgers/.gitkeep",
@@ -1717,9 +1722,24 @@
       "size_bytes": 0
     },
     {
+      "path": "manuscript/nature_methods/sections/abstract.md",
+      "sha256": "acb9a7d253c087c1b9566a651a4c4fcd582db1b713c37f66675e302948203be9",
+      "size_bytes": 1674
+    },
+    {
+      "path": "manuscript/nature_methods/sections/abstract_strategy.md",
+      "sha256": "02522bbd820d1186ed5394427e072359ff0435de472640336c5c44e358adbe9c",
+      "size_bytes": 2341
+    },
+    {
       "path": "manuscript/nature_methods/sections/section_contracts.md",
       "sha256": "0e8262685215c6396e1c0963428209928d3ea744f57b71d5e661bf07362ce908",
       "size_bytes": 15379
+    },
+    {
+      "path": "manuscript/nature_methods/sections/title_options.md",
+      "sha256": "20a46685151526b21d0db9890b0f91a83b4cfb9e20be47ad9160d168c0d59dcf",
+      "size_bytes": 4314
     },
     {
       "path": "manuscript/nature_methods/stage9_narrative_spine.md",
@@ -1858,8 +1878,8 @@
     },
     {
       "path": "scripts/audit_stage7_7_8_recursive_hardening.py",
-      "sha256": "53c9e6ccb749c9be8fcb799e250997a59411540f4c4ed90d5a2781296e1d041c",
-      "size_bytes": 29734
+      "sha256": "d390f597e0b08552c2b57c7773e45e9f65b753a1c41dc8fd0cfb8019750e05af",
+      "size_bytes": 30435
     },
     {
       "path": "scripts/build_stage7_1_synthetic_truth_cases.py",
@@ -1883,18 +1903,18 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "302550a1e35c6abed6cb976ade11b770e40cd27213807bed0bd0129614121c45",
-      "size_bytes": 66458
+      "sha256": "184cb89ee5b97558f03bbbc95cfeaad06ded14f70fd0d1ebfbe6150c32a81e4c",
+      "size_bytes": 67159
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "42fd942dc2062c8234b72015c85d05b084ca7841ce2c92451f4ef14864dee3e3",
-      "size_bytes": 56474
+      "sha256": "1a1e4c1ffdd8e4a66a09440b8139f220c91f2e6c87acc55827bed8973f89357e",
+      "size_bytes": 58197
     },
     {
       "path": "scripts/check_stage9_scaffold.py",
-      "sha256": "a8f6889eb8c9ae631f6a62c1c3a581330e3c4219fff152019a64fecb8e049b13",
-      "size_bytes": 30849
+      "sha256": "170182e451eb2315eb1a876ed0db3c955d89b5151b7440eae531308d9306832e",
+      "size_bytes": 33980
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -1968,8 +1988,8 @@
     },
     {
       "path": "scripts/run_stage7_6_methods_reproducibility.py",
-      "sha256": "578a5e3c8955c434fb1c57cd11ef863f3b8d66514fe3e30cf4f0712e13488488",
-      "size_bytes": 53745
+      "sha256": "19e78f545f026e29801947362d7aceab4d9916e745e3a17e7889d05d5bd8c23e",
+      "size_bytes": 54411
     },
     {
       "path": "scripts/run_stage7_7_usability_rehearsal.py",
@@ -2030,6 +2050,11 @@
       "path": "scripts/run_stage9_8_section_contract_blueprint.py",
       "sha256": "03c05abfcb83b973af804eb63c90b4c2c4be67099c54b174221a3bd3f90a6863",
       "size_bytes": 40944
+    },
+    {
+      "path": "scripts/run_stage9_9_title_abstract_strategy.py",
+      "sha256": "058b4d5159b4c896f0c74694b37d970559e3e37124fcea804da663b50910e00a",
+      "size_bytes": 32414
     },
     {
       "path": "scripts/scaffold_stage9_manuscript_assembly.py",
@@ -2308,8 +2333,8 @@
     },
     {
       "path": "tests/test_stage9_1_venue_guidance.py",
-      "sha256": "d9525656bb90833ca0f58a770acdec1153b8ddac05d2c082dcdd07ddb220fc9f",
-      "size_bytes": 3728
+      "sha256": "d96ffaf0a716dcaf3428449dd727eb9d78fd6b2d2cbc152d8d6554ce1f89e31f",
+      "size_bytes": 3676
     },
     {
       "path": "tests/test_stage9_2_methods_paper_corpus.py",
@@ -2338,18 +2363,23 @@
     },
     {
       "path": "tests/test_stage9_7_supplementary_display_plan.py",
-      "sha256": "818befa6c743177ddd33837301214bd335c05e3d01dfda5ef5484e4f6516d61a",
-      "size_bytes": 3874
+      "sha256": "7effc6d476e19ac5249a4a2e9812691b48f3f23d4203e0275d07a98c3dc65344",
+      "size_bytes": 3838
     },
     {
       "path": "tests/test_stage9_8_section_contract_blueprint.py",
-      "sha256": "18e3766e98c6840cf5ca28ac8157647a22700a237fef0757acad73821823151b",
-      "size_bytes": 3307
+      "sha256": "c47766e32ba27c867e8edf75297c91f71fbbea698e9cbc93f66e2286439c490f",
+      "size_bytes": 3189
+    },
+    {
+      "path": "tests/test_stage9_9_title_abstract_strategy.py",
+      "sha256": "4e1c3e2cedd916656f6a08590aab52d476dc74cf476eed1150ec27f86393a3a1",
+      "size_bytes": 3954
     },
     {
       "path": "tests/test_stage9_scaffold.py",
-      "sha256": "b939e2bcbb82b70602200018262c1634307160f5b2551f0422ec11febcbfcc47",
-      "size_bytes": 3155
+      "sha256": "ee9df7b853930b1c4b4ff998696a6c181eb43ba48cc988136c0399a71e315c56",
+      "size_bytes": 3157
     },
     {
       "path": "tests/test_uncertainty.py",
@@ -2357,7 +2387,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-07-03T11:11:02.272173Z",
+  "generated_utc": "2026-07-03T12:44:50.824211Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

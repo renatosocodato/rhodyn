@@ -72,7 +72,6 @@ class Stage97SupplementaryDisplayPlanTests(unittest.TestCase):
             "sections/introduction.md",
             "sections/discussion.md",
             "sections/methods.md",
-            "sections/abstract.md",
             "refs/references.bib",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",

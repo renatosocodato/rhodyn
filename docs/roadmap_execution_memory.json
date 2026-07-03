@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 9.8 section contracts registered; manuscript drafting not started",
+    "active_stage": "Stage 9.9 title, subtitle, and abstract strategy registered; Results architecture not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -30,14 +30,15 @@
     "after_stage9_6_figure_spine": "Stage 9.6 registered six main display items for the Nature Methods Article spine, each tied to frozen CLM identifiers and locked ART evidence. Stage 9.6b PanelForge rendering, supplementary display planning, citation resolution, manuscript drafting, and submission-package assembly remain not started.",
     "after_stage9_7_supplementary_plan": "Stage 9.7 registered supplementary figures and tables as planned support items with callout locations and roles. It did not draft Supplementary Information, resolve citations, or begin manuscript sections.",
     "after_stage9_8_section_contracts": "Stage 9.8 registered manuscript section contracts for Abstract, Introduction, Results, Discussion, Online Methods, availability, back matter, references, legends, Supplementary Information, and reporting surfaces. It did not draft prose, resolve citations, or assemble a submission package.",
+    "after_stage9_9_title_abstract_strategy": "Stage 9.9 registered title options, subtitle/deck strategy, and a 150-word-budget unreferenced abstract draft mapped to frozen CLM identifiers. It did not start Results architecture, citation resolution, full manuscript drafting, or submission-package assembly.",
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Six main display mockups rendered from the frozen figure-to-claim-to-artifact contract",
-    "next_stage": "Stage 9.7 supplementary display planning",
+    "current_gate": "Front-matter strategy registered without Results architecture",
+    "next_stage": "Stage 9.10 Results subsection architecture",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
-    "stage9_active_gate": "Stage 9.8 section contracts registered; manuscript drafting not started"
+    "stage9_active_gate": "Stage 9.9 title, subtitle, and abstract strategy registered; Results architecture not started"
   },
   "memory_notes": {
     "after_stage9_6b_panelforge_rendering": "Stage 9.6b generated a renderable PanelForge manifest and six deterministic main-figure mockups from the frozen figure-to-claim-to-artifact spine. Citation resolution, manuscript drafting, supplementary display planning, and submission-package assembly remain not started.",
@@ -407,9 +408,14 @@
         "scripts/run_stage9_7_supplementary_display_plan.py",
         "manuscript/nature_methods/sections/section_contracts.md",
         "manuscript/nature_methods/gate_verdicts/9.8.json",
-        "scripts/run_stage9_8_section_contract_blueprint.py"
+        "scripts/run_stage9_8_section_contract_blueprint.py",
+        "manuscript/nature_methods/sections/title_options.md",
+        "manuscript/nature_methods/sections/abstract_strategy.md",
+        "manuscript/nature_methods/sections/abstract.md",
+        "manuscript/nature_methods/gate_verdicts/9.9.json",
+        "scripts/run_stage9_9_title_abstract_strategy.py"
       ],
-      "current_gate": "Stage 9.8 registered section contracts without starting manuscript prose",
+      "current_gate": "Stage 9.9 registered title, subtitle, and abstract strategy without starting Results architecture",
       "gate": [
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
         "Stage 9.2 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
@@ -421,12 +427,13 @@
         "Stage 9.5 paragraph rows resolve to frozen CLM IDs and retain claim strength caps before drafting.",
         "Stage 9.6 main figures resolve to frozen CLM IDs and locked ART IDs before rendering.",
         "Stage 9.7 supplementary material has planned callouts and roles without demoting central evidence from the main figures.",
-        "Stage 9.8 section contracts bind Abstract, Results, Discussion, and Methods venue rules before prose drafting."
+        "Stage 9.8 section contracts bind Abstract, Results, Discussion, and Methods venue rules before prose drafting.",
+        "Stage 9.9 front matter is unreferenced, claim-mapped, and within the sourced abstract budget."
       ],
       "name": "Nature Methods manuscript assembly scaffold",
-      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, and section-contract planning only. Do not start title/abstract strategy, citation resolution, drafting, review response, or submission packaging without explicit substage authorization.",
+      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, and title/abstract strategy only. Do not start Results architecture, citation resolution, full manuscript drafting, review response, or submission packaging without explicit substage authorization.",
       "stage": 9,
-      "status": "stage9_8_section_contract_blueprint_registered",
+      "status": "stage9_9_title_abstract_strategy_registered",
       "subphases": [
         {
           "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
@@ -526,12 +533,13 @@
           "status": "complete_section_contract_blueprint_registered"
         },
         {
-          "evidence": "not_started",
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.9.json",
+          "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
           "gate": "abstract word count respects sourced budget; abstract citation style follows content type; abstract claims map to claim IDs",
           "goal": "Create high-level framing without overselling.",
           "id": "9.9",
           "name": "Title, subtitle, and abstract strategy",
-          "status": "not_started"
+          "status": "complete_title_abstract_strategy_registered"
         },
         {
           "evidence": "not_started",

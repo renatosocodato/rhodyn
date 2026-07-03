@@ -240,6 +240,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_6b_panelforge_rendering.py",
     "scripts/run_stage9_7_supplementary_display_plan.py",
     "scripts/run_stage9_8_section_contract_blueprint.py",
+    "scripts/run_stage9_9_title_abstract_strategy.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -250,6 +251,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_6_figure_spine.py",
     "tests/test_stage9_7_supplementary_display_plan.py",
     "tests/test_stage9_8_section_contract_blueprint.py",
+    "tests/test_stage9_9_title_abstract_strategy.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -270,6 +272,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.6b.json",
     "manuscript/nature_methods/gate_verdicts/9.7.json",
     "manuscript/nature_methods/gate_verdicts/9.8.json",
+    "manuscript/nature_methods/gate_verdicts/9.9.json",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -313,6 +316,9 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
     "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
     "manuscript/nature_methods/sections/section_contracts.md",
+    "manuscript/nature_methods/sections/title_options.md",
+    "manuscript/nature_methods/sections/abstract_strategy.md",
+    "manuscript/nature_methods/sections/abstract.md",
     "manuscript/nature_methods/audits/panelforge_render_report.md",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.pdf",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.png",
@@ -440,8 +446,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.8 section contracts registered; manuscript drafting not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.8 section-contract boundary as active")
+        if current.get("active_stage") != "Stage 9.9 title, subtitle, and abstract strategy registered; Results architecture not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.9 front-matter boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -455,8 +461,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_8_section_contract_blueprint_registered":
-            failures.append("roadmap execution memory does not mark Stage 9.8 section contracts without manuscript drafting")
+        if stages.get(9, {}).get("status") != "stage9_9_title_abstract_strategy_registered":
+            failures.append("roadmap execution memory does not mark Stage 9.9 front matter without Results architecture")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -481,8 +487,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.8 registered section contracts without starting manuscript prose":
-                failures.append("Stage 9 current gate must record the Stage 9.8 section-contract state")
+            if stage9.get("current_gate") != "Stage 9.9 registered title, subtitle, and abstract strategy without starting Results architecture":
+                failures.append("Stage 9 current gate must record the Stage 9.9 front-matter state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -492,6 +498,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9 must serialize the 9.7 supplementary display-plan substage")
             if "9.8" not in substage_ids:
                 failures.append("Stage 9 must serialize the 9.8 section-contract substage")
+            if "9.9" not in substage_ids:
+                failures.append("Stage 9 must serialize the 9.9 title/abstract substage")
             substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
             if substage_status.get("9.0") != "complete_evidence_locked":
                 failures.append("Stage 9.0 must be marked complete_evidence_locked")
@@ -513,6 +521,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.7 must be marked complete_supplementary_display_plan_registered")
             if substage_status.get("9.8") != "complete_section_contract_blueprint_registered":
                 failures.append("Stage 9.8 must be marked complete_section_contract_blueprint_registered")
+            if substage_status.get("9.9") != "complete_title_abstract_strategy_registered":
+                failures.append("Stage 9.9 must be marked complete_title_abstract_strategy_registered")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))
