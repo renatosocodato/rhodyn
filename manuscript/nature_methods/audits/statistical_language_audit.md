@@ -1,11 +1,11 @@
-<!-- STATISTICAL-LANGUAGE-AUDIT stage=9.22 generated=2026-07-04T11:16:47Z commit=1d7a4c63a3d63cd3387af78ba07f3c803ab8bdbe -->
+<!-- STATISTICAL-LANGUAGE-AUDIT stage=9.22 generated=2026-07-04T12:08:40Z commit=7764057031acb6b01d773aad79e9cc6d76fb0f3d -->
 # Stage 9.22 statistical and quantitative language audit
 
 Stage 9.22 recomputes live-number bindings from the frozen Stage 7 evidence surfaces and checks whether the manuscript-facing quantitative language stays inside declared statistical bounds. This pass updates the statistic ledger where a source table has changed, binds each main figure to explicit statistic IDs, and does not write or modify figure legends or final submission assembly.
 
 ## Summary
 
-The live-number audit passed. Nineteen statistic IDs were recomputed or inspected against their source artifacts. No stale live numbers remained after recomputation. `STAT-0018`, the release-archive manifest file count for the reproducibility figure, currently matches `row_count=608`. This changes traceability count reporting only and does not alter a biological result, model comparison, or bounded-coupling decision.
+The live-number audit passed. Nineteen statistic IDs were recomputed or inspected against their source artifacts. No stale live numbers remained after recomputation. `STAT-0018`, the release-archive manifest file count for the reproducibility figure, currently matches `row_count=619`. This changes traceability count reporting only and does not alter a biological result, model comparison, or bounded-coupling decision.
 
 ## Gate checks
 
@@ -40,7 +40,7 @@ The live-number audit passed. Nineteen statistic IDs were recomputed or inspecte
 | STAT-0015 | context_count=7;pass_count=4;fail_count=0;inconclusive_count=3 | context_count=7;pass_count=4;fail_count=0;inconclusive_count=3 | pass |
 | STAT-0016 | row_count=70 | row_count=70 | pass |
 | STAT-0017 | row_count=4 | row_count=4 | pass |
-| STAT-0018 | row_count=608 | row_count=608 | pass |
+| STAT-0018 | row_count=619 | row_count=619 | pass |
 | STAT-0019 | failure modes, ambiguous regimes, and claim-strength caps represented | failure modes, ambiguous regimes, and claim-strength caps represented | inspection_only_pass |
 
 ## Figure-level statistic bindings

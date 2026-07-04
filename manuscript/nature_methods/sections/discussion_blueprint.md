@@ -20,4 +20,4 @@ The fourth paragraph should discuss inspectability through Python, CLI, backend,
 
 <!-- discussion_paragraph=5 role=Closing scope and future-use plan para_ids=PARA-DISCUSSION-001;PARA-DISCUSSION-002 claim_ids=CLM-0001;CLM-0002;CLM-0003;CLM-0004;CLM-0005 -->
 
-The closing paragraph should connect the method contribution to future use without adding new evidence. It should say that future applications should predeclare windows, margins, grouping levels, and reduced alternatives, then report pass, fail, and inconclusive outcomes with the same visibility. The final note should position RhoDyn as a decision framework for dynamic operating-state interpretation, not as an automatic mechanism-discovery engine.
+The closing paragraph should connect the method contribution to future use without adding new evidence. It should say that future applications should predeclare windows, margins, grouping levels, and reduced alternatives, then report pass, fail, and inconclusive outcomes with the same visibility. The final note should position RhoDyn as a decision framework for dynamic operating-state interpretation, not as a mechanism-discovery engine.

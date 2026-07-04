@@ -1,0 +1,83 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.23 figure legend and caption gate is present and points to Stage 9.24",
+      "name": "stage_9_23_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "paragraph_id_errors=[]",
+      "name": "paragraph_id_set_unchanged",
+      "passed": true
+    },
+    {
+      "detail": "unsafe_hits=[]",
+      "name": "strength_caps_hold",
+      "passed": true
+    },
+    {
+      "detail": "missing_limit_terms=[]",
+      "name": "limitations_remain_present",
+      "passed": true
+    },
+    {
+      "detail": "terminal_figure_calls={}",
+      "name": "dynamic_figure_call_flow_preserved",
+      "passed": true
+    },
+    {
+      "detail": "reader_stage_hits=[]",
+      "name": "reader_surface_stage_language_absent",
+      "passed": true
+    },
+    {
+      "detail": "replacement_missing={}",
+      "name": "recursive_editorial_replacements_resolved",
+      "passed": true
+    },
+    {
+      "detail": "downstream_paths=[]",
+      "name": "no_downstream_stage_started",
+      "passed": true
+    }
+  ],
+  "commit": "7764057031acb6b01d773aad79e9cc6d76fb0f3d",
+  "downstream_paths": [],
+  "generated_utc": "2026-07-04T12:08:40Z",
+  "missing_limits": [],
+  "next_substage": "9.25",
+  "outputs": [
+    "manuscript/nature_methods/audits/editorial_pass_1.md",
+    "manuscript/nature_methods/gate_verdicts/9.24.json",
+    "manuscript/nature_methods/sections/introduction.md",
+    "manuscript/nature_methods/sections/results.md",
+    "manuscript/nature_methods/sections/discussion.md",
+    "manuscript/nature_methods/sections/methods.md",
+    "manuscript/nature_methods/figures/figure_legends.md"
+  ],
+  "paragraph_errors": [],
+  "pass": true,
+  "reader_stage_hits": [],
+  "recursive_rounds": [
+    {
+      "focus": "cadence and sentence flow",
+      "round": 1,
+      "status": "pass"
+    },
+    {
+      "focus": "claim-strength and limitation retention",
+      "round": 2,
+      "status": "pass"
+    },
+    {
+      "focus": "reader-surface leakage and downstream-boundary check",
+      "round": 3,
+      "status": "pass"
+    }
+  ],
+  "scope_boundary": "Editorial polish only. No new evidence, analyses, statistics, model outputs, figures, figure numbering, claim expansion, PI packet, readiness checklist, or final package assembly.",
+  "substage": "9.24",
+  "terminal_calls": {},
+  "title": "Editorial polish pass I",
+  "unsafe_hits": []
+}

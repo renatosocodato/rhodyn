@@ -256,6 +256,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_21_cross_document_consistency.py",
     "scripts/run_stage9_22_statistical_language_audit.py",
     "scripts/run_stage9_23_figure_legend_audit.py",
+    "scripts/run_stage9_24_editorial_polish_pass1.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -281,6 +282,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_21_cross_document_consistency.py",
     "tests/test_stage9_22_statistical_language_audit.py",
     "tests/test_stage9_23_figure_legend_audit.py",
+    "tests/test_stage9_24_editorial_polish_pass1.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -316,6 +318,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.21.json",
     "manuscript/nature_methods/gate_verdicts/9.22.json",
     "manuscript/nature_methods/gate_verdicts/9.23.json",
+    "manuscript/nature_methods/gate_verdicts/9.24.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
@@ -323,6 +326,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/sections/discussion.md",
     "manuscript/nature_methods/sections/methods_blueprint.md",
     "manuscript/nature_methods/sections/methods.md",
+    "manuscript/nature_methods/audits/editorial_pass_1.md",
     "manuscript/nature_methods/sections/data_availability.md",
     "manuscript/nature_methods/sections/code_availability.md",
     "manuscript/nature_methods/supplementary/supplementary_methods.md",
@@ -514,8 +518,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.23 Figure legend and caption audit complete; editorial polish pass I not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.23 figure-legend boundary as active")
+        if current.get("active_stage") != "Stage 9.24 Editorial polish pass I complete; editorial polish pass II not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.24 editorial-polish boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -529,8 +533,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_23_figure_legend_caption_audit_bound":
-            failures.append("roadmap execution memory does not mark Stage 9.23 figure-legend audit as registered")
+        if stages.get(9, {}).get("status") != "stage9_24_editorial_polish_pass_1_bound":
+            failures.append("roadmap execution memory does not mark Stage 9.24 editorial polish as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -555,8 +559,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.23 legends and captions cover every planned display item and retain statistic-bound interpretation limits":
-                failures.append("Stage 9 current gate must record the Stage 9.23 figure-legend state")
+            if stage9.get("current_gate") != "Stage 9.24 polish preserved paragraph IDs, claim-strength caps, and limitation language":
+                failures.append("Stage 9 current gate must record the Stage 9.24 editorial-polish state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -596,6 +600,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9 must serialize the 9.22 statistical-language audit substage")
             if "9.23" not in substage_ids:
                 failures.append("Stage 9 must serialize the 9.23 figure-legend substage")
+            if "9.24" not in substage_ids:
+                failures.append("Stage 9 must serialize the 9.24 editorial-polish substage")
             substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
             if substage_status.get("9.0") != "complete_evidence_locked":
                 failures.append("Stage 9.0 must be marked complete_evidence_locked")
@@ -647,6 +653,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.22 must be marked complete_statistical_language_audit_bound")
             if substage_status.get("9.23") != "complete_figure_legend_caption_audit_bound":
                 failures.append("Stage 9.23 must be marked complete_figure_legend_caption_audit_bound")
+            if substage_status.get("9.24") != "complete_editorial_polish_pass_1_bound":
+                failures.append("Stage 9.24 must be marked complete_editorial_polish_pass_1_bound")
         stage9_20_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.20.json"
         if stage9_20_gate_path.exists():
             try:
@@ -850,6 +858,57 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             ]:
                 if phrase not in audit_text:
                     failures.append(f"Stage 9.23 figure-legend audit missing phrase: {phrase}")
+        stage9_24_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.24.json"
+        if stage9_24_gate_path.exists():
+            try:
+                stage9_24_gate = json.loads(stage9_24_gate_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"Stage 9.24 gate is not valid JSON: {exc}")
+                stage9_24_gate = {}
+            if stage9_24_gate.get("pass") is not True:
+                failures.append("Stage 9.24 editorial-polish gate must pass")
+            if stage9_24_gate.get("substage") != "9.24":
+                failures.append("Stage 9.24 editorial-polish gate must remain bound to substage 9.24")
+            if stage9_24_gate.get("next_substage") != "9.25":
+                failures.append("Stage 9.24 editorial-polish gate must point to Stage 9.25")
+            for field in ["paragraph_errors", "unsafe_hits", "missing_limits", "reader_stage_hits", "downstream_paths"]:
+                if stage9_24_gate.get(field) not in ([], None):
+                    failures.append(f"Stage 9.24 editorial-polish gate must have empty {field}")
+            if stage9_24_gate.get("terminal_calls") not in ({}, None):
+                failures.append("Stage 9.24 editorial-polish gate must have no terminal figure calls")
+            expected_924_checks = {
+                "stage_9_23_gate_passed",
+                "paragraph_id_set_unchanged",
+                "strength_caps_hold",
+                "limitations_remain_present",
+                "dynamic_figure_call_flow_preserved",
+                "reader_surface_stage_language_absent",
+                "recursive_editorial_replacements_resolved",
+                "no_downstream_stage_started",
+            }
+            actual_924_checks = {
+                item.get("name")
+                for item in stage9_24_gate.get("checks", [])
+                if isinstance(item, dict) and item.get("passed") is True
+            }
+            if actual_924_checks != expected_924_checks:
+                failures.append(f"Stage 9.24 checks do not match expected checks: {sorted(actual_924_checks)}")
+        else:
+            failures.append("missing Stage 9.24 editorial-polish gate")
+        editorial_audit = root / "manuscript" / "nature_methods" / "audits" / "editorial_pass_1.md"
+        if not editorial_audit.exists():
+            failures.append("missing Stage 9.24 output: manuscript/nature_methods/audits/editorial_pass_1.md")
+        else:
+            audit_text = editorial_audit.read_text(encoding="utf-8")
+            for phrase in [
+                "Stage 9.24 editorial polish pass I",
+                "Paragraph IDs were preserved",
+                "claim-strength caps remained intact",
+                "limitations stayed present",
+                "does not broaden the residence",
+            ]:
+                if phrase not in audit_text:
+                    failures.append(f"Stage 9.24 editorial-polish audit missing phrase: {phrase}")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

@@ -131,6 +131,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/run_stage9_21_cross_document_consistency.py",
     "scripts/run_stage9_22_statistical_language_audit.py",
     "scripts/run_stage9_23_figure_legend_audit.py",
+    "scripts/run_stage9_24_editorial_polish_pass1.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
     "docs/stage7_6_api_stability_policy.md",
@@ -176,6 +177,7 @@ REQUIRED_ARCHIVE_FILES = {
     "tests/test_stage9_21_cross_document_consistency.py",
     "tests/test_stage9_22_statistical_language_audit.py",
     "tests/test_stage9_23_figure_legend_audit.py",
+    "tests/test_stage9_24_editorial_polish_pass1.py",
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "manuscript/nature_methods/README.md",
@@ -213,6 +215,7 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/gate_verdicts/9.21.json",
     "manuscript/nature_methods/gate_verdicts/9.22.json",
     "manuscript/nature_methods/gate_verdicts/9.23.json",
+    "manuscript/nature_methods/gate_verdicts/9.24.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
@@ -236,6 +239,7 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/audits/statistical_language_audit.md",
     "manuscript/nature_methods/audits/live_numbers_diff.csv",
     "manuscript/nature_methods/audits/figure_legend_audit.md",
+    "manuscript/nature_methods/audits/editorial_pass_1.md",
     "manuscript/nature_methods/figures/figure_legends.md",
     "manuscript/nature_methods/stage9_narrative_spine.md",
     "manuscript/nature_methods/audits/venue_fit_rationale.md",
@@ -643,8 +647,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9.23 Figure legend and caption audit complete; editorial polish pass I not started":
-        failures.append("roadmap memory does not mark the Stage 9.23 figure-legend boundary as active")
+    if current.get("active_stage") != "Stage 9.24 Editorial polish pass I complete; editorial polish pass II not started":
+        failures.append("roadmap memory does not mark the Stage 9.24 editorial-polish boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -654,8 +658,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_23_figure_legend_caption_audit_bound":
-        failures.append("Stage 9 is not marked stage9_23_figure_legend_caption_audit_bound")
+    if stage9.get("status") != "stage9_24_editorial_polish_pass_1_bound":
+        failures.append("Stage 9 is not marked stage9_24_editorial_polish_pass_1_bound")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -695,6 +699,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9 does not serialize the 9.22 statistical-language audit substage")
     if "9.23" not in stage9_substage_ids:
         failures.append("Stage 9 does not serialize the 9.23 figure-legend audit substage")
+    if "9.24" not in stage9_substage_ids:
+        failures.append("Stage 9 does not serialize the 9.24 editorial-polish audit substage")
     stage9_substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if stage9_substage_status.get("9.0") != "complete_evidence_locked":
         failures.append("Stage 9.0 is not marked complete_evidence_locked")
@@ -746,6 +752,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9.22 is not marked complete_statistical_language_audit_bound")
     if stage9_substage_status.get("9.23") != "complete_figure_legend_caption_audit_bound":
         failures.append("Stage 9.23 is not marked complete_figure_legend_caption_audit_bound")
+    if stage9_substage_status.get("9.24") != "complete_editorial_polish_pass_1_bound":
+        failures.append("Stage 9.24 is not marked complete_editorial_polish_pass_1_bound")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",

@@ -128,7 +128,7 @@ DISCUSSION_PARAGRAPHS = [
             "The most informative next demonstrations will be those that preserve replicate structure, expose enough sampling density to justify a declared window, and include perturbation designs capable of separating timing from amplitude. "
             "Equally useful will be negative examples in which RhoDyn returns the same conclusion as a simpler endpoint method, because those cases define where extra dynamic structure is unnecessary. "
             "The present evidence supports RhoDyn as a decision framework for dynamic operating-state interpretation in live-cell perturbation biology. "
-            "RhoDyn is not an automatic mechanism-discovery engine, a substitute for perturbation experiments, or a claim that one dynamical summary is privileged in every cell-state problem."
+            "RhoDyn is not a mechanism-discovery engine, a substitute for perturbation experiments, or a claim that one dynamical summary is privileged in every cell-state problem."
         ),
     },
 ]

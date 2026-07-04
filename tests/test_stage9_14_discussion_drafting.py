@@ -47,7 +47,7 @@ class Stage914DiscussionDraftingTests(unittest.TestCase):
             "direct biochemical interactions",
             "not a new biological result",
             "Future directions",
-            "not an automatic mechanism-discovery engine",
+            "not a mechanism-discovery engine",
         ]:
             self.assertIn(phrase, self.discussion)
 

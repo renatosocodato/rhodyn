@@ -127,7 +127,7 @@ DISCUSSION_MAP_PARAGRAPHS = [
         "text": (
             "The closing paragraph should connect the method contribution to future use without adding new evidence. "
             "It should say that future applications should predeclare windows, margins, grouping levels, and reduced alternatives, then report pass, fail, and inconclusive outcomes with the same visibility. "
-            "The final note should position RhoDyn as a decision framework for dynamic operating-state interpretation, not as an automatic mechanism-discovery engine."
+            "The final note should position RhoDyn as a decision framework for dynamic operating-state interpretation, not as a mechanism-discovery engine."
         ),
     },
 ]

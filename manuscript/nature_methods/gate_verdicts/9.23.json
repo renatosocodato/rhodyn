@@ -46,9 +46,9 @@
       "passed": true
     }
   ],
-  "commit": "1d7a4c63a3d63cd3387af78ba07f3c803ab8bdbe",
+  "commit": "7764057031acb6b01d773aad79e9cc6d76fb0f3d",
   "forbidden_package_paths": [],
-  "generated_utc": "2026-07-04T11:16:47Z",
+  "generated_utc": "2026-07-04T12:08:40Z",
   "leakage_hits": [],
   "main_figure_legend_count": 6,
   "next_substage": "9.24",
