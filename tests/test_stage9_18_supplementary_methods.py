@@ -93,7 +93,6 @@ class Stage918SupplementaryMethodsTests(unittest.TestCase):
         for rel in [
             "refs/references.bib",
             "figures/figure_legends.md",
-            "supplementary/supplementary_tables_plan.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

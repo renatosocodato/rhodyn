@@ -1,0 +1,114 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.18 Supplementary Methods exists and passes",
+      "name": "stage_9_18_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "table_ids=STBL-001;STBL-002;STBL-003;STBL-004;STBL-005;STBL-006;STBL-007;STBL-008;STBL-009; supp_ids=SUPP-001;SUPP-002;SUPP-003;SUPP-004;SUPP-005;SUPP-006;SUPP-007;SUPP-008;SUPP-009",
+      "name": "planned_table_set_complete",
+      "passed": true
+    },
+    {
+      "detail": "All supplementary table rows retain planned callout routes and support roles",
+      "name": "each_table_has_callout_and_role",
+      "passed": true
+    },
+    {
+      "detail": "All table claim IDs and source ART IDs resolve to frozen ledgers",
+      "name": "claims_and_source_artifacts_resolve",
+      "passed": true
+    },
+    {
+      "detail": "statistic_ids=STAT-0001;STAT-0002;STAT-0003;STAT-0004;STAT-0005;STAT-0006;STAT-0007;STAT-0008;STAT-0009;STAT-0010;STAT-0011;STAT-0012;STAT-0013;STAT-0014;STAT-0015;STAT-0016;STAT-0017;STAT-0018;STAT-0019",
+      "name": "statistic_ids_bound_to_tables",
+      "passed": true
+    },
+    {
+      "detail": "linked_figures=FIG-001;FIG-002;FIG-003;FIG-004;FIG-005;FIG-006",
+      "name": "figure_source_mapping_covers_main_figures",
+      "passed": true
+    },
+    {
+      "detail": "render_path_count=27",
+      "name": "render_paths_exist_for_all_bound_figures",
+      "passed": true
+    },
+    {
+      "detail": "No references.bib, citation-claim ledger, figure legends, PI packet, or readiness checklist detected",
+      "name": "no_reference_legend_or_submission_package_started",
+      "passed": true
+    },
+    {
+      "detail": "Table plan preserves source-data binding scope without new claims",
+      "name": "scope_boundary_preserved",
+      "passed": true
+    }
+  ],
+  "linked_figures": [
+    "FIG-001",
+    "FIG-002",
+    "FIG-003",
+    "FIG-004",
+    "FIG-005",
+    "FIG-006"
+  ],
+  "next_substage": "9.20",
+  "outputs": [
+    "manuscript/nature_methods/supplementary/supplementary_tables_plan.md",
+    "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
+    "manuscript/nature_methods/ledgers/statistic_ledger.csv",
+    "manuscript/nature_methods/gate_verdicts/9.19.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Supplementary table/source-data binding only. No references.bib, citation-claim ledger, figure legends, PI packet, readiness checklist, cross-document audit, or final submission-package assembly.",
+  "stat_ids": [
+    "STAT-0001",
+    "STAT-0002",
+    "STAT-0003",
+    "STAT-0004",
+    "STAT-0005",
+    "STAT-0006",
+    "STAT-0007",
+    "STAT-0008",
+    "STAT-0009",
+    "STAT-0010",
+    "STAT-0011",
+    "STAT-0012",
+    "STAT-0013",
+    "STAT-0014",
+    "STAT-0015",
+    "STAT-0016",
+    "STAT-0017",
+    "STAT-0018",
+    "STAT-0019"
+  ],
+  "statistic_row_count": 19,
+  "substage": "9.19",
+  "supp_ids": [
+    "SUPP-001",
+    "SUPP-002",
+    "SUPP-003",
+    "SUPP-004",
+    "SUPP-005",
+    "SUPP-006",
+    "SUPP-007",
+    "SUPP-008",
+    "SUPP-009"
+  ],
+  "supplementary_tables_version": "supplementary-table-binding@2026-07-04@6800b50097a6232a994440c2dbdfa1cb40083b68",
+  "table_count": 9,
+  "table_ids": [
+    "STBL-001",
+    "STBL-002",
+    "STBL-003",
+    "STBL-004",
+    "STBL-005",
+    "STBL-006",
+    "STBL-007",
+    "STBL-008",
+    "STBL-009"
+  ],
+  "timestamp": "2026-07-04T09:09:49.317163Z"
+}

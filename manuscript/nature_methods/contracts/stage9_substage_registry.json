@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.18",
-  "next_substage": "9.19",
+  "last_completed_substage": "9.19",
+  "next_substage": "9.20",
   "patch_ledger": [
     {
       "id": "P1",
@@ -416,7 +416,7 @@
         "manuscript/nature_methods/supplementary/supplementary_tables_plan.md",
         "manuscript/nature_methods/supplementary/"
       ],
-      "status": "not_started",
+      "status": "complete_supplementary_tables_bound",
       "title": "Supplementary tables and source-data binding"
     },
     {

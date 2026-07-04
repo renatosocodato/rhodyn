@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import csv
 import re
 from pathlib import Path
 from typing import Any
@@ -56,6 +57,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_16_methods_drafting.py",
     "scripts/run_stage9_17_availability_assembly.py",
     "scripts/run_stage9_18_supplementary_methods.py",
+    "scripts/run_stage9_19_supplementary_tables.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -112,8 +114,8 @@ ID_PREFIXES = [
 
 FORBIDDEN_DRAFTS = [
     "refs/references.bib",
+    "refs/citation_claim_ledger.csv",
     "figures/figure_legends.md",
-    "supplementary/supplementary_tables_plan.md",
     "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
@@ -220,10 +222,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.18 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.19 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -246,6 +248,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_16_started = "9.16.json" in gate_files
     stage9_17_started = "9.17.json" in gate_files
     stage9_18_started = "9.18.json" in gate_files
+    stage9_19_started = "9.19.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -272,7 +275,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_18_supplementary_methods_drafted"
+        "stage9_19_supplementary_tables_bound"
+        if stage9_19_started
+        else "stage9_18_supplementary_methods_drafted"
         if stage9_18_started
         else "stage9_17_availability_assembled"
         if stage9_17_started
@@ -324,6 +329,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
                 failures.append(f"Stage 9 execution memory must record {flag}=true after 9.17")
     if stage9_18_started and memory.get("supplementary_methods_started") is not True:
         failures.append("Stage 9 execution memory must record supplementary_methods_started=true after 9.18")
+    if stage9_19_started:
+        for flag in ["supplementary_tables_started", "source_data_binding_started"]:
+            if memory.get(flag) is not True:
+                failures.append(f"Stage 9 execution memory must record {flag}=true after 9.19")
 
     if stage9_0_started:
         stage9_0_gate = _read_json(workspace / "gate_verdicts" / "9.0.json", failures)
@@ -1057,6 +1066,80 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     else:
         if (workspace / "supplementary" / "supplementary_methods.md").exists():
             failures.append("Stage 9 state must not contain Supplementary Methods before 9.18: supplementary/supplementary_methods.md")
+
+    if stage9_19_started:
+        stage9_19_gate = _read_json(workspace / "gate_verdicts" / "9.19.json", failures)
+        tables_path = workspace / "supplementary" / "supplementary_tables_plan.md"
+        source_binding_path = workspace / "supplementary" / "source_data_binding_ledger.csv"
+        statistic_ledger_path = workspace / "ledgers" / "statistic_ledger.csv"
+        if stage9_19_gate.get("pass") is not True or stage9_19_gate.get("substage") != "9.19":
+            failures.append("Stage 9.19 gate verdict must pass when present")
+        if stage9_19_gate.get("next_substage") != "9.20":
+            failures.append("Stage 9.19 gate must point to Stage 9.20")
+        if stage9_19_gate.get("table_count") != 9:
+            failures.append("Stage 9.19 must register nine supplementary table rows")
+        if stage9_19_gate.get("statistic_row_count") != 19:
+            failures.append("Stage 9.19 must register nineteen statistic rows")
+        if set(stage9_19_gate.get("table_ids", [])) != {f"STBL-{idx:03d}" for idx in range(1, 10)}:
+            failures.append("Stage 9.19 must cover STBL-001 through STBL-009")
+        if set(stage9_19_gate.get("supp_ids", [])) != {f"SUPP-{idx:03d}" for idx in range(1, 10)}:
+            failures.append("Stage 9.19 must cover SUPP-001 through SUPP-009")
+        if set(stage9_19_gate.get("linked_figures", [])) != {f"FIG-{idx:03d}" for idx in range(1, 7)}:
+            failures.append("Stage 9.19 must bind source tables to FIG-001 through FIG-006")
+        for path, label in [
+            (tables_path, "supplementary/supplementary_tables_plan.md"),
+            (source_binding_path, "supplementary/source_data_binding_ledger.csv"),
+            (statistic_ledger_path, "ledgers/statistic_ledger.csv"),
+        ]:
+            if not path.exists():
+                failures.append(f"Stage 9.19 output missing: {label}")
+        if tables_path.exists():
+            tables_body = tables_path.read_text(encoding="utf-8")
+            for phrase in [
+                "Supplementary table and source-data binding plan",
+                "Table evidence map",
+                "Every planned table has a main-text callout route",
+                "Every table references one or more statistic IDs",
+                "Every table also records a figure-source mapping",
+                "do not add new biological demonstrations",
+                "turn model-derived coordinates into direct biological endpoints",
+            ]:
+                if phrase not in tables_body:
+                    failures.append(f"Stage 9.19 table plan missing phrase: {phrase}")
+        if source_binding_path.exists():
+            with source_binding_path.open(newline="", encoding="utf-8") as handle:
+                source_rows = list(csv.DictReader(handle))
+            if len(source_rows) != 9:
+                failures.append("Stage 9.19 source-data binding ledger must contain nine rows")
+            covered_figures = {fig_id for row in source_rows for fig_id in row.get("linked_main_figures", "").split(";") if fig_id}
+            if covered_figures != {f"FIG-{idx:03d}" for idx in range(1, 7)}:
+                failures.append("Stage 9.19 source-data binding ledger must cover all six main figures")
+            for row in source_rows:
+                for field in ["callout_location", "role", "stat_ids", "source_artifacts", "source_paths", "panelforge_recipe", "render_paths", "interpretation_boundary"]:
+                    if not row.get(field):
+                        failures.append(f"Stage 9.19 source-data row {row.get('table_id')} missing {field}")
+                for render_path in [item for item in row.get("render_paths", "").split(";") if item]:
+                    if not (root / render_path).exists():
+                        failures.append(f"Stage 9.19 render path is missing: {render_path}")
+        if statistic_ledger_path.exists():
+            with statistic_ledger_path.open(newline="", encoding="utf-8") as handle:
+                stat_rows = list(csv.DictReader(handle))
+            if len(stat_rows) != 19:
+                failures.append("Stage 9.19 statistic ledger must contain nineteen rows")
+            if {row.get("stat_id", "") for row in stat_rows} != {f"STAT-{idx:04d}" for idx in range(1, 20)}:
+                failures.append("Stage 9.19 statistic ledger must cover STAT-0001 through STAT-0019")
+            for row in stat_rows:
+                for field in ["art_id", "fig_id", "value", "ci", "n", "test", "source_command", "manuscript_locations"]:
+                    if not row.get(field):
+                        failures.append(f"Stage 9.19 statistic row {row.get('stat_id')} missing {field}")
+    else:
+        for rel in [
+            "supplementary/supplementary_tables_plan.md",
+            "supplementary/source_data_binding_ledger.csv",
+            "ledgers/statistic_ledger.csv",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain supplementary table binding before 9.19: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

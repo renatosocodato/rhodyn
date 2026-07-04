@@ -1,0 +1,20 @@
+stat_id,art_id,fig_id,value,ci,n,test,source_command,manuscript_locations
+STAT-0001,ART-0016,FIG-001,"displayed definitions for tidy trajectory, residence window, dwell fraction, dwell time, segment count, and amplitude comparators",not_applicable,see_source_artifact,method specification,python3 scripts/build_stage7_1_synthetic_truth_cases.py,STBL-001; SUPP-001
+STAT-0002,ART-0026,FIG-001,"positive, negative, and ambiguous executable examples represented",not_applicable,see_source_artifact,json gate summary,python3 scripts/build_stage7_1_synthetic_truth_cases.py,STBL-001; SUPP-001
+STAT-0003,ART-0017,FIG-001,failure modes and interpretation boundaries represented,not_applicable,see_source_artifact,limitations matrix,not_applicable_manual_doc_binding,STBL-001; STBL-009; SUPP-001; SUPP-009
+STAT-0004,ART-0029,FIG-002,row_count=12,not_applicable,row_count=12,row count,python3 scripts/run_stage7_2_benchmark_harness.py,STBL-002; SUPP-002
+STAT-0005,ART-0031,FIG-002,row_count=1,not_applicable,row_count=1,row count,python3 scripts/run_stage7_2_benchmark_harness.py,STBL-002; SUPP-002
+STAT-0006,ART-0033,FIG-003,row_count=360,95% CI in paired uncertainty table,row_count=360,row count,python3 scripts/run_stage7_3_public_signaling.py,STBL-003; SUPP-003
+STAT-0007,ART-0034,FIG-003,row_count=180,95% CI in paired uncertainty table,row_count=180,row count,python3 scripts/run_stage7_3_public_signaling.py,STBL-003; SUPP-003
+STAT-0008,ART-0032,FIG-003,DRG and ERK public adapter reports represented,not_applicable,see_source_artifact,source DOI and adapter notes,python3 scripts/run_stage7_3_public_signaling.py,STBL-003; SUPP-003
+STAT-0009,ART-0037,FIG-004,row_count=4,source table ci_low and ci_high,row_count=4,declared-margin interval decision plus TOST where available,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,STBL-004; SUPP-004
+STAT-0010,ART-0037,FIG-004,not_promoted_beyond_declared_margin=2;primary_context_limited_bounded_coupling=1;secondary_pooled_or_contextual_summary=1,source table ci_low and ci_high,see_source_artifact,claim_status count,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,STBL-004; SUPP-004
+STAT-0011,ART-0039,FIG-004,row_count=6,95% CI in uncertainty table,row_count=6,row count,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,STBL-005; SUPP-005
+STAT-0012,ART-0050,FIG-004,row_count=2,source table ci_low and ci_high,row_count=2,bootstrap uncertainty,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,STBL-005; SUPP-005
+STAT-0013,ART-0038,FIG-004,row_count=6,not_applicable,row_count=6,AIC/BIC ranking and delta BIC,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,STBL-006; SUPP-006
+STAT-0014,ART-0051,FIG-004,row_count=5,not_applicable,row_count=5,reduced-alternative decision count,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,STBL-006; SUPP-006
+STAT-0015,ART-0043,FIG-005,context_count=7;pass_count=4;fail_count=0;inconclusive_count=3,not_applicable,see_source_artifact,pass/inconclusive count,python3 scripts/run_stage7_5_heldout_validation.py,STBL-007; SUPP-007
+STAT-0016,ART-0048,FIG-005,row_count=70,source table ci_low and ci_high,row_count=70,margin-sensitivity row count,python3 scripts/run_stage7_5_heldout_validation.py,STBL-007; SUPP-007
+STAT-0017,ART-0024,FIG-006,row_count=4,not_applicable,row_count=4,Python CLI backend frontend-contract parity,python3 scripts/run_stage7_6_methods_reproducibility.py,STBL-008; SUPP-008
+STAT-0018,ART-0021,FIG-006,row_count=556,not_applicable,row_count=556,archive manifest file count,python3 scripts/run_stage7_6_methods_reproducibility.py,STBL-008; SUPP-008
+STAT-0019,ART-0017,FIG-001,"failure modes, ambiguous regimes, and claim-strength caps represented",not_applicable,see_source_artifact,manual limitation matrix binding,not_applicable_manual_doc_binding,STBL-009; SUPP-009

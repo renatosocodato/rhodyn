@@ -54,7 +54,11 @@
     "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
     "manuscript/nature_methods/gate_verdicts/9.17.json",
     "manuscript/nature_methods/supplementary/supplementary_methods.md",
-    "manuscript/nature_methods/gate_verdicts/9.18.json"
+    "manuscript/nature_methods/gate_verdicts/9.18.json",
+    "manuscript/nature_methods/supplementary/supplementary_tables_plan.md",
+    "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
+    "manuscript/nature_methods/ledgers/statistic_ledger.csv",
+    "manuscript/nature_methods/gate_verdicts/9.19.json"
   ],
   "availability_assembly_started": true,
   "citation_resolution_started": false,
@@ -1145,10 +1149,84 @@
       "substage": "9.18",
       "supplementary_methods_version": "supplementary-methods-draft@2026-07-04@b37a1873b72222e4958d6afcff731aaabaa5a389",
       "validation_outcome": "Supplementary Methods drafted from the planned supplementary support map without adding new claim IDs"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.18 Supplementary Methods exists and passes",
+          "name": "stage_9_18_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "table_ids=STBL-001;STBL-002;STBL-003;STBL-004;STBL-005;STBL-006;STBL-007;STBL-008;STBL-009; supp_ids=SUPP-001;SUPP-002;SUPP-003;SUPP-004;SUPP-005;SUPP-006;SUPP-007;SUPP-008;SUPP-009",
+          "name": "planned_table_set_complete",
+          "passed": true
+        },
+        {
+          "detail": "All supplementary table rows retain planned callout routes and support roles",
+          "name": "each_table_has_callout_and_role",
+          "passed": true
+        },
+        {
+          "detail": "All table claim IDs and source ART IDs resolve to frozen ledgers",
+          "name": "claims_and_source_artifacts_resolve",
+          "passed": true
+        },
+        {
+          "detail": "statistic_ids=STAT-0001;STAT-0002;STAT-0003;STAT-0004;STAT-0005;STAT-0006;STAT-0007;STAT-0008;STAT-0009;STAT-0010;STAT-0011;STAT-0012;STAT-0013;STAT-0014;STAT-0015;STAT-0016;STAT-0017;STAT-0018;STAT-0019",
+          "name": "statistic_ids_bound_to_tables",
+          "passed": true
+        },
+        {
+          "detail": "linked_figures=FIG-001;FIG-002;FIG-003;FIG-004;FIG-005;FIG-006",
+          "name": "figure_source_mapping_covers_main_figures",
+          "passed": true
+        },
+        {
+          "detail": "render_path_count=27",
+          "name": "render_paths_exist_for_all_bound_figures",
+          "passed": true
+        },
+        {
+          "detail": "No references.bib, citation-claim ledger, figure legends, PI packet, or readiness checklist detected",
+          "name": "no_reference_legend_or_submission_package_started",
+          "passed": true
+        },
+        {
+          "detail": "Table plan preserves source-data binding scope without new claims",
+          "name": "scope_boundary_preserved",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.18.json",
+        "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
+        "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/supplementary/supplementary_tables_plan.md",
+        "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
+        "manuscript/nature_methods/ledgers/statistic_ledger.csv",
+        "manuscript/nature_methods/gate_verdicts/9.19.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.19.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Full reference library and citation audit have not started",
+        "Cross-document consistency audit has not started",
+        "Figure legends have not started",
+        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
+      ],
+      "status": "pass",
+      "substage": "9.19",
+      "supplementary_tables_version": "supplementary-table-binding@2026-07-04@6800b50097a6232a994440c2dbdfa1cb40083b68",
+      "validation_outcome": "Supplementary table support objects are bound to callouts, source artifacts, statistics, and rendered figure surfaces"
     }
   ],
-  "current_gate": "Stage 9.18 registered Supplementary Methods without supplementary tables",
-  "current_substage": "9.18",
+  "current_gate": "Stage 9.19 bound supplementary tables to source data, statistic IDs, and rendered figures",
+  "current_substage": "9.19",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
@@ -1164,12 +1242,12 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.18 are complete through Supplementary Methods drafting.",
-    "Stage 9.19 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No supplementary table/source-data binding, full reference library, figure legends, PI review packet, or submission readiness checklist are created in this Supplementary Methods pass.",
-    "Supplementary Methods map to planned SUPP callout routes and use only frozen CLM identifiers."
+    "Stage 9.0 through Stage 9.19 are complete through supplementary table and source-data binding.",
+    "Stage 9.20 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No full reference library, figure legends, PI review packet, or submission readiness checklist are created in this supplementary table pass.",
+    "Supplementary table rows map to planned SUPP callout routes, frozen CLM identifiers, source ART records, STAT rows, and Stage 9.6b PanelForge render paths."
   ],
-  "generated_utc": "2026-07-04T08:48:22.059266Z",
+  "generated_utc": "2026-07-04T09:09:49.317163Z",
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
   "manuscript_drafting_started": false,
@@ -1179,7 +1257,7 @@
   "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.19",
+  "next_substage": "9.20",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -1246,9 +1324,10 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results subsection architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, and Supplementary Methods drafting only. Do not start supplementary tables, source-data binding, the full reference library, figure legends, or final submission package without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, and supplementary table/source-data binding only. Do not start the full reference library, figure legends, cross-document audit, or final submission package without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
+  "source_data_binding_started": true,
   "stage": 9,
   "stage9_0_checks": [
     {
@@ -1715,6 +1794,53 @@
       "passed": true
     }
   ],
+  "stage9_19_checks": [
+    {
+      "detail": "Stage 9.18 Supplementary Methods exists and passes",
+      "name": "stage_9_18_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "table_ids=STBL-001;STBL-002;STBL-003;STBL-004;STBL-005;STBL-006;STBL-007;STBL-008;STBL-009; supp_ids=SUPP-001;SUPP-002;SUPP-003;SUPP-004;SUPP-005;SUPP-006;SUPP-007;SUPP-008;SUPP-009",
+      "name": "planned_table_set_complete",
+      "passed": true
+    },
+    {
+      "detail": "All supplementary table rows retain planned callout routes and support roles",
+      "name": "each_table_has_callout_and_role",
+      "passed": true
+    },
+    {
+      "detail": "All table claim IDs and source ART IDs resolve to frozen ledgers",
+      "name": "claims_and_source_artifacts_resolve",
+      "passed": true
+    },
+    {
+      "detail": "statistic_ids=STAT-0001;STAT-0002;STAT-0003;STAT-0004;STAT-0005;STAT-0006;STAT-0007;STAT-0008;STAT-0009;STAT-0010;STAT-0011;STAT-0012;STAT-0013;STAT-0014;STAT-0015;STAT-0016;STAT-0017;STAT-0018;STAT-0019",
+      "name": "statistic_ids_bound_to_tables",
+      "passed": true
+    },
+    {
+      "detail": "linked_figures=FIG-001;FIG-002;FIG-003;FIG-004;FIG-005;FIG-006",
+      "name": "figure_source_mapping_covers_main_figures",
+      "passed": true
+    },
+    {
+      "detail": "render_path_count=27",
+      "name": "render_paths_exist_for_all_bound_figures",
+      "passed": true
+    },
+    {
+      "detail": "No references.bib, citation-claim ledger, figure legends, PI packet, or readiness checklist detected",
+      "name": "no_reference_legend_or_submission_package_started",
+      "passed": true
+    },
+    {
+      "detail": "Table plan preserves source-data binding scope without new claims",
+      "name": "scope_boundary_preserved",
+      "passed": true
+    }
+  ],
   "stage9_1_checks": [
     {
       "detail": "Stage 9.0 evidence lock exists and passes",
@@ -2028,13 +2154,14 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.18 Supplementary Methods complete; supplementary tables and source-data binding not started",
-  "status": "stage9_18_supplementary_methods_drafted",
+  "stage9_active_gate": "Stage 9.19 Supplementary tables/source-data binding complete; reference library and citation audit not started",
+  "status": "stage9_19_supplementary_tables_bound",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,
   "supplementary_methods_started": true,
   "supplementary_plan_version": "supplementary-plan@2026-07-02@523b7c69eefa95dc12986bb36f0e8b9b19e7752e",
+  "supplementary_tables_started": true,
   "title_abstract_strategy_started": true,
   "venue_guidance_started": true,
   "venue_guidance_version": "nature-methods-guidance@2026-07-02@9d71e48774c613047315a4957e3087f442ac8643"
