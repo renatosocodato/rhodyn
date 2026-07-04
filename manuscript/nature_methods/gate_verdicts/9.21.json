@@ -1,0 +1,128 @@
+{
+  "bad_engine_rows": [],
+  "checks": [
+    {
+      "detail": "Stage 9.20 reference library is present and passed",
+      "name": "stage_9_20_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "orphan=0; unknown_refs=0",
+      "name": "orphan_claim_set_empty",
+      "passed": true
+    },
+    {
+      "detail": "orphan=0; unknown_refs=0",
+      "name": "orphan_figure_set_empty",
+      "passed": true
+    },
+    {
+      "detail": "orphan=0; unknown_refs=0",
+      "name": "orphan_statistic_set_empty",
+      "passed": true
+    },
+    {
+      "detail": "dangling_refs=0; unresolved_refs=0; unknown_paragraphs=0; unknown_tables=0",
+      "name": "dangling_reference_set_empty",
+      "passed": true
+    },
+    {
+      "detail": "strength_mismatches=0; missing_render_paths=0; bad_engine_rows=0; missing_source_paths=0; missing_binding_render_paths=0",
+      "name": "version_and_strength_coherence_hold",
+      "passed": true
+    },
+    {
+      "detail": "No Stage 9.22 live-number audit, figure legends, PI packet, readiness checklist, or completion report detected",
+      "name": "no_statistical_language_legend_or_package_started",
+      "passed": true
+    },
+    {
+      "detail": "Cross-document joins only; no statistics recomputed, legends written, or final package assembled",
+      "name": "scope_boundary_preserved",
+      "passed": true
+    }
+  ],
+  "claim_count": 5,
+  "claim_ids": [
+    "CLM-0001",
+    "CLM-0002",
+    "CLM-0003",
+    "CLM-0004",
+    "CLM-0005"
+  ],
+  "commit": "84d13668f633adedee21db918f1458fbf2e5a61c",
+  "dangling_references": [],
+  "figure_count": 6,
+  "figure_ids": [
+    "FIG-001",
+    "FIG-002",
+    "FIG-003",
+    "FIG-004",
+    "FIG-005",
+    "FIG-006"
+  ],
+  "generated_utc": "2026-07-04T10:00:30Z",
+  "missing_binding_render_paths": [],
+  "missing_render_paths": [],
+  "missing_source_paths": [],
+  "next_substage": "9.22",
+  "orphan_claims": [],
+  "orphan_figures": [],
+  "orphan_statistics": [],
+  "outputs": [
+    "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
+    "manuscript/nature_methods/gate_verdicts/9.21.json"
+  ],
+  "paragraph_count": 15,
+  "pass": true,
+  "pnas_figure_count": 6,
+  "ref_ids": [
+    "REF-0001",
+    "REF-0002",
+    "REF-0003",
+    "REF-0004",
+    "REF-0005",
+    "REF-0006",
+    "REF-0007",
+    "REF-0008",
+    "REF-0009",
+    "REF-0010",
+    "REF-0011",
+    "REF-0012",
+    "REF-0013"
+  ],
+  "reference_count": 13,
+  "scope_boundary": "Cross-document consistency joins only. No figure legends, live-number audit, statistical-language audit, PI packet, readiness checklist, or final submission-package assembly.",
+  "source_data_table_count": 9,
+  "stat_ids": [
+    "STAT-0001",
+    "STAT-0002",
+    "STAT-0003",
+    "STAT-0004",
+    "STAT-0005",
+    "STAT-0006",
+    "STAT-0007",
+    "STAT-0008",
+    "STAT-0009",
+    "STAT-0010",
+    "STAT-0011",
+    "STAT-0012",
+    "STAT-0013",
+    "STAT-0014",
+    "STAT-0015",
+    "STAT-0016",
+    "STAT-0017",
+    "STAT-0018",
+    "STAT-0019"
+  ],
+  "statistic_count": 19,
+  "strength_mismatches": [],
+  "substage": "9.21",
+  "supplementary_item_count": 9,
+  "title": "Cross-document consistency audit",
+  "unknown_claim_refs": [],
+  "unknown_figure_refs": [],
+  "unknown_paragraph_refs": [],
+  "unknown_statistic_refs": [],
+  "unknown_table_refs": []
+}

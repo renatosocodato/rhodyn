@@ -1,5 +1,5 @@
 {
-  "file_count": 561,
+  "file_count": 559,
   "files": [
     {
       "path": ".github/workflows/package.yml",
@@ -558,8 +558,8 @@
     },
     {
       "path": "case_studies/stage7_methods_readiness/stage7_7_8_recursive_hardening_report.json",
-      "sha256": "ba20c0af815f80ab5f9621a7870472361333c4b0076a6f14a7579967e66a0644",
-      "size_bytes": 2186
+      "sha256": "856b68d06e9f9f69034da8c34f42e7a4b3ff93aada7d9cbbdd3541812f3a07e6",
+      "size_bytes": 2225
     },
     {
       "path": "case_studies/stage7_methods_readiness/stage7_8_methods_readiness_gate_report.json",
@@ -588,23 +588,23 @@
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv",
-      "sha256": "f199dff263ae1bed06f25830ac3180894c2db9beaeef2dd47866d696fb6bd885",
-      "size_bytes": 80536
+      "sha256": "9e96fa8d46ec5cbad4bd40b1a331ca986ef612e038ad6b7ab71bde647de1ea58",
+      "size_bytes": 81079
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_gate_report.json",
-      "sha256": "59842b3919ae039a3558227ccc9cd77e479765309dfe54dcfaf5d032cae3b5e0",
-      "size_bytes": 31115
+      "sha256": "9d64e72d04af956ee3f1aff245d911dd10b8a59ea1a38521b5975794e50e2dd4",
+      "size_bytes": 31093
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_methods_reproducibility_report.md",
-      "sha256": "fea34a69f2dcc762203e6c962bc2db0a2c81446551be1b3cd49bee8423024a70",
+      "sha256": "9896762d1e3926d4efebb5ff8259e3881e97c059c8714366c933d3d574bccde1",
       "size_bytes": 4541
     },
     {
       "path": "case_studies/stage7_methods_reproducibility/stage7_6_recursive_hardening_report.json",
-      "sha256": "a7f498b576abb6b96a94b219e7270813f37edd1db1cc12e6dca9fa1f844042b9",
-      "size_bytes": 1573
+      "sha256": "dd4ae7d3615d04d30c7412d832a10c8b36b1f193e424b3aa7cc464320518642c",
+      "size_bytes": 1069
     },
     {
       "path": "case_studies/stage7_public_signaling/candidate_ranking.tsv",
@@ -958,13 +958,13 @@
     },
     {
       "path": "docs/roadmap.md",
-      "sha256": "1dd89f9662b1ab34cd420b591d1de0b4bd136478e2b65323d740881cebbe8d31",
-      "size_bytes": 34963
+      "sha256": "d95f4e7dd33e473224698fae1ef1a22eb532e1c4ce9e8e54643df0cfea97d562",
+      "size_bytes": 35131
     },
     {
       "path": "docs/roadmap_execution_memory.json",
-      "sha256": "48b4a8c187f280bce885428193dd09e801490656af3d67c6cee45c819f2308fa",
-      "size_bytes": 61344
+      "sha256": "4e27c5ba0c3488f6b8751278fb3de32d14114736c08960356060c4b1f2ed215b",
+      "size_bytes": 62221
     },
     {
       "path": "docs/screenshot_regression_report.json",
@@ -1068,13 +1068,13 @@
     },
     {
       "path": "docs/stage7_6_clean_room_report.json",
-      "sha256": "59842b3919ae039a3558227ccc9cd77e479765309dfe54dcfaf5d032cae3b5e0",
-      "size_bytes": 31115
+      "sha256": "9d64e72d04af956ee3f1aff245d911dd10b8a59ea1a38521b5975794e50e2dd4",
+      "size_bytes": 31093
     },
     {
       "path": "docs/stage7_6_gate_report.json",
-      "sha256": "59842b3919ae039a3558227ccc9cd77e479765309dfe54dcfaf5d032cae3b5e0",
-      "size_bytes": 31115
+      "sha256": "9d64e72d04af956ee3f1aff245d911dd10b8a59ea1a38521b5975794e50e2dd4",
+      "size_bytes": 31093
     },
     {
       "path": "docs/stage7_6_recursive_hardening.md",
@@ -1083,18 +1083,18 @@
     },
     {
       "path": "docs/stage7_6_recursive_hardening_report.json",
-      "sha256": "a7f498b576abb6b96a94b219e7270813f37edd1db1cc12e6dca9fa1f844042b9",
-      "size_bytes": 1573
+      "sha256": "dd4ae7d3615d04d30c7412d832a10c8b36b1f193e424b3aa7cc464320518642c",
+      "size_bytes": 1069
     },
     {
       "path": "docs/stage7_7_8_recursive_hardening.md",
-      "sha256": "a896b0a6b8fd3cb28948bdd367f9d3c2d216d943baae403ea6f297339599aeba",
-      "size_bytes": 2018
+      "sha256": "954a1ee361f0dd28b6a04589aed7f354e2f70c646ddfde21707bcf53742dba06",
+      "size_bytes": 2057
     },
     {
       "path": "docs/stage7_7_8_recursive_hardening_report.json",
-      "sha256": "ba20c0af815f80ab5f9621a7870472361333c4b0076a6f14a7579967e66a0644",
-      "size_bytes": 2186
+      "sha256": "856b68d06e9f9f69034da8c34f42e7a4b3ff93aada7d9cbbdd3541812f3a07e6",
+      "size_bytes": 2225
     },
     {
       "path": "docs/stage7_7_gate_report.json",
@@ -1163,7 +1163,7 @@
     },
     {
       "path": "docs/stage7_methods_reproducibility_card.md",
-      "sha256": "fea34a69f2dcc762203e6c962bc2db0a2c81446551be1b3cd49bee8423024a70",
+      "sha256": "9896762d1e3926d4efebb5ff8259e3881e97c059c8714366c933d3d574bccde1",
       "size_bytes": 4541
     },
     {
@@ -1208,13 +1208,13 @@
     },
     {
       "path": "docs/stage9_execution_memory.json",
-      "sha256": "de42ab62cf3cf15fe65abd950c60da19119893f6532ddcc840a9f3cc727febdd",
-      "size_bytes": 97435
+      "sha256": "edcb16271f8365da0a6225a3cbc896cbc50d41422965121d504dfab13def392d",
+      "size_bytes": 101826
     },
     {
       "path": "docs/stage9_manuscript_assembly_plan.md",
-      "sha256": "95c9ed43e7f5d594bc89c1700fc426cfead50775e722d984a83c49b230e83f01",
-      "size_bytes": 13426
+      "sha256": "c99e3db7fa093d4857eca5fa09fc694da896f36fb0a5989806d4d61131b588a1",
+      "size_bytes": 13547
     },
     {
       "path": "docs/zenodo_dry_run_report.json",
@@ -1310,6 +1310,11 @@
       "path": "manuscript/nature_methods/audits/.gitkeep",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "size_bytes": 0
+    },
+    {
+      "path": "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
+      "sha256": "905e96b96a2a6688db96b53bd0873943bfd2745420f27e09558e7d65eb6fb2d5",
+      "size_bytes": 3281
     },
     {
       "path": "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md",
@@ -1438,8 +1443,8 @@
     },
     {
       "path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
-      "sha256": "a616f94684426e29ff7c0bbcab7c00ff9a20d9a22af2c5a17331d2bff14da168",
-      "size_bytes": 22444
+      "sha256": "b5c29b4b8a9a313a629ca00520dda9f2b19db2576e5dbf150ae86d6aa45789b0",
+      "size_bytes": 22474
     },
     {
       "path": "manuscript/nature_methods/figures/.gitkeep",
@@ -1550,6 +1555,11 @@
       "path": "manuscript/nature_methods/gate_verdicts/9.20.json",
       "sha256": "f8caf4ce5e82866ba9f8cabe2539ca78358fb3e36adea68fdb260606ff00602c",
       "size_bytes": 2711
+    },
+    {
+      "path": "manuscript/nature_methods/gate_verdicts/9.21.json",
+      "sha256": "19f9844aec19417fda596b1a3cec2e1b679930d9ca1ea2339b8c350c7187e912",
+      "size_bytes": 3303
     },
     {
       "path": "manuscript/nature_methods/gate_verdicts/9.3.json",
@@ -2158,8 +2168,8 @@
     },
     {
       "path": "scripts/audit_stage7_7_8_recursive_hardening.py",
-      "sha256": "ab8b72903c3153d3239292149121bcb4c84d1f943c65c72ceb7514802ab125a7",
-      "size_bytes": 37127
+      "sha256": "175827ad468bc093d818ba2619501606d9d745d8e039dd7e0cb87df0ae7c4b08",
+      "size_bytes": 37960
     },
     {
       "path": "scripts/build_stage7_1_synthetic_truth_cases.py",
@@ -2183,18 +2193,18 @@
     },
     {
       "path": "scripts/check_release.py",
-      "sha256": "c6798a970b4d3cfd5e0d962a9f10d1145a421be55652aebf9208071d16af3d2e",
-      "size_bytes": 75639
+      "sha256": "31436da992cd90046612460fd18679e3e588100afaf5868035a3b314ae58d6ed",
+      "size_bytes": 78007
     },
     {
       "path": "scripts/check_roadmap_memory.py",
-      "sha256": "b7b40765757cc16dd0b35bdd20956a2c5d64c3750b9effd660aabca6b0042324",
-      "size_bytes": 81247
+      "sha256": "57c9f9fa70848d407589652e10bf6161d8c8f87d006321ebb67718a9aed54f6b",
+      "size_bytes": 85152
     },
     {
       "path": "scripts/check_stage9_scaffold.py",
-      "sha256": "009a3dab4313bc5dcc7729970a731240a72780fee9fecb76c4c56b20521b2118",
-      "size_bytes": 73720
+      "sha256": "53dc70fafa9735ea5bd6661e0bfcdb6d402c419a34c8373de43b585b12315e8f",
+      "size_bytes": 77576
     },
     {
       "path": "scripts/fetch_cell_painting_endpoint_benchmark.py",
@@ -2268,8 +2278,8 @@
     },
     {
       "path": "scripts/run_stage7_6_methods_reproducibility.py",
-      "sha256": "e64b90669aad848d63d93cef79eb4cf95540d984607f8bf8215113c909c5cd45",
-      "size_bytes": 60840
+      "sha256": "91830e4cc4f50989b99edc3123bdd1927f1265ac71b6dab34a12c1124f473dcc",
+      "size_bytes": 61391
     },
     {
       "path": "scripts/run_stage7_7_usability_rehearsal.py",
@@ -2345,6 +2355,11 @@
       "path": "scripts/run_stage9_20_reference_audit.py",
       "sha256": "f8fbd282a2984591f021b32e7b07694e26a6e3267cd633ba7ad50f074e421aef",
       "size_bytes": 39981
+    },
+    {
+      "path": "scripts/run_stage9_21_cross_document_consistency.py",
+      "sha256": "c040a7edbaa6342ec334f64aa119a970cdafb8c74917080c5977ac267144675f",
+      "size_bytes": 34951
     },
     {
       "path": "scripts/run_stage9_2_methods_paper_corpus.py",
@@ -2500,36 +2515,6 @@
       "path": "src/rhodyn/uncertainty.py",
       "sha256": "7e4f14cc1536d801506219955c5094c22090a55eb57102d596ce94f0a5228ba6",
       "size_bytes": 7083
-    },
-    {
-      "path": "src/rhodyn.egg-info/PKG-INFO",
-      "sha256": "64bf91ba9b82b0c2aabb66d4ce539921b37532deaa85e5b6b17733d3cdcf8cb3",
-      "size_bytes": 18950
-    },
-    {
-      "path": "src/rhodyn.egg-info/SOURCES.txt",
-      "sha256": "291d0896be63f7b36186b7734207285024373ebb5e8994d3d6ba5f3b260c087a",
-      "size_bytes": 31945
-    },
-    {
-      "path": "src/rhodyn.egg-info/dependency_links.txt",
-      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-      "size_bytes": 1
-    },
-    {
-      "path": "src/rhodyn.egg-info/entry_points.txt",
-      "sha256": "48bcd0143835d6274b450cb062e3b7d25d32070ce9420b7cb8b72b832860ffef",
-      "size_bytes": 43
-    },
-    {
-      "path": "src/rhodyn.egg-info/requires.txt",
-      "sha256": "266e124a999dd191ff6f3924c4b7cd3f0443a4463b410e4671a2f99a3a7f2008",
-      "size_bytes": 306
-    },
-    {
-      "path": "src/rhodyn.egg-info/top_level.txt",
-      "sha256": "4284619994248a8c96e8a7106bdd9ee0ee9f8cf8c68d01d3cfbacd48f867fd29",
-      "size_bytes": 7
     },
     {
       "path": "tests/playwright/stage5.visual.spec.mjs",
@@ -2753,8 +2738,13 @@
     },
     {
       "path": "tests/test_stage9_20_reference_audit.py",
-      "sha256": "172c2a9aa82f697660597112f72ac8d8512dd3536da26516f983ec671394b443",
-      "size_bytes": 3961
+      "sha256": "e356b012a55f7af759cebe74cc6d1cc66e9f9d5873d821613d6c5193f692e7aa",
+      "size_bytes": 3999
+    },
+    {
+      "path": "tests/test_stage9_21_cross_document_consistency.py",
+      "sha256": "458bdb30345197f449a6d8b2ee020c525c18785c3e8cad7dedf8077b0872df50",
+      "size_bytes": 2864
     },
     {
       "path": "tests/test_stage9_2_methods_paper_corpus.py",
@@ -2798,8 +2788,8 @@
     },
     {
       "path": "tests/test_stage9_scaffold.py",
-      "sha256": "90fbd162ca33a04704f64f345efdb19f7a5a6d272e07c77ba93c80f8e19b3be2",
-      "size_bytes": 3160
+      "sha256": "17367019bda4eeb2eb7108ec31ad0b1193d39c88f8fc55f8bfcd05797648818e",
+      "size_bytes": 3166
     },
     {
       "path": "tests/test_uncertainty.py",
@@ -2807,7 +2797,7 @@
       "size_bytes": 2164
     }
   ],
-  "generated_utc": "2026-07-04T09:47:27.293333Z",
+  "generated_utc": "2026-07-04T10:11:34.440464Z",
   "report_format": "rhodyn.release_checksums.v1",
   "root": "."
 }

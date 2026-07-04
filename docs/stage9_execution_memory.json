@@ -62,7 +62,9 @@
     "manuscript/nature_methods/refs/references.bib",
     "manuscript/nature_methods/refs/citation_claim_ledger.csv",
     "manuscript/nature_methods/audits/reference_audit.md",
-    "manuscript/nature_methods/gate_verdicts/9.20.json"
+    "manuscript/nature_methods/gate_verdicts/9.20.json",
+    "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
+    "manuscript/nature_methods/gate_verdicts/9.21.json"
   ],
   "availability_assembly_started": true,
   "citation_resolution_started": true,
@@ -1303,10 +1305,79 @@
       "status": "pass",
       "substage": "9.20",
       "validation_outcome": "Reference library and citation-claim ledger resolve DOI-backed sources to manuscript claims"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.20 reference library is present and passed",
+          "name": "stage_9_20_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "orphan=0; unknown_refs=0",
+          "name": "orphan_claim_set_empty",
+          "passed": true
+        },
+        {
+          "detail": "orphan=0; unknown_refs=0",
+          "name": "orphan_figure_set_empty",
+          "passed": true
+        },
+        {
+          "detail": "orphan=0; unknown_refs=0",
+          "name": "orphan_statistic_set_empty",
+          "passed": true
+        },
+        {
+          "detail": "dangling_refs=0; unresolved_refs=0; unknown_paragraphs=0; unknown_tables=0",
+          "name": "dangling_reference_set_empty",
+          "passed": true
+        },
+        {
+          "detail": "strength_mismatches=0; missing_render_paths=0; bad_engine_rows=0; missing_source_paths=0; missing_binding_render_paths=0",
+          "name": "version_and_strength_coherence_hold",
+          "passed": true
+        },
+        {
+          "detail": "No Stage 9.22 live-number audit, figure legends, PI packet, readiness checklist, or completion report detected",
+          "name": "no_statistical_language_legend_or_package_started",
+          "passed": true
+        },
+        {
+          "detail": "Cross-document joins only; no statistics recomputed, legends written, or final package assembled",
+          "name": "scope_boundary_preserved",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.20.json",
+        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "manuscript/nature_methods/ledgers/statistic_ledger.csv",
+        "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
+        "manuscript/nature_methods/refs/citation_claim_ledger.csv",
+        "manuscript/nature_methods/refs/references.bib"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
+        "manuscript/nature_methods/gate_verdicts/9.21.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.21.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Statistical and quantitative language audit has not started",
+        "Figure legends have not started",
+        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
+      ],
+      "status": "pass",
+      "substage": "9.21",
+      "validation_outcome": "Cross-document joins show no orphan claims, figures, statistics, or references"
     }
   ],
-  "current_gate": "Stage 9.20 resolved DOI-backed references and citation-to-claim bindings",
-  "current_substage": "9.20",
+  "cross_document_consistency_started": true,
+  "current_gate": "Stage 9.21 cross-document consistency joins passed across claims, figures, statistics, references, and strength caps",
+  "current_substage": "9.21",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
@@ -1322,12 +1393,12 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.20 are complete through reference-library and citation-claim audit.",
-    "Stage 9.21 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No figure legends, cross-document consistency audit, PI review packet, or submission readiness checklist are created in this reference pass.",
-    "Every reference has a DOI-form identifier, claim mapping, paragraph route, and clear or justified retraction-check state."
+    "Stage 9.0 through Stage 9.21 are complete through cross-document consistency audit.",
+    "Stage 9.22 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No figure legends, live-number audit, PI review packet, or submission readiness checklist are created in this consistency pass.",
+    "Claims, figures, statistics, source-data support, and references have no orphan or dangling keyed-ledger joins."
   ],
-  "generated_utc": "2026-07-04T09:33:26.476578Z",
+  "generated_utc": "2026-07-04T10:00:30Z",
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
   "manuscript_drafting_started": false,
@@ -1337,7 +1408,7 @@
   "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.21",
+  "next_substage": "9.22",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -1405,7 +1476,7 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, and reference-library/citation audit only. Do not start figure legends, cross-document audit, live-number audit, or final submission package without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, and cross-document consistency audit only. Do not start figure legends, live-number audit, or final submission package without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "source_data_binding_started": true,
@@ -2006,6 +2077,48 @@
       "passed": true
     }
   ],
+  "stage9_21_checks": [
+    {
+      "detail": "Stage 9.20 reference library is present and passed",
+      "name": "stage_9_20_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "orphan=0; unknown_refs=0",
+      "name": "orphan_claim_set_empty",
+      "passed": true
+    },
+    {
+      "detail": "orphan=0; unknown_refs=0",
+      "name": "orphan_figure_set_empty",
+      "passed": true
+    },
+    {
+      "detail": "orphan=0; unknown_refs=0",
+      "name": "orphan_statistic_set_empty",
+      "passed": true
+    },
+    {
+      "detail": "dangling_refs=0; unresolved_refs=0; unknown_paragraphs=0; unknown_tables=0",
+      "name": "dangling_reference_set_empty",
+      "passed": true
+    },
+    {
+      "detail": "strength_mismatches=0; missing_render_paths=0; bad_engine_rows=0; missing_source_paths=0; missing_binding_render_paths=0",
+      "name": "version_and_strength_coherence_hold",
+      "passed": true
+    },
+    {
+      "detail": "No Stage 9.22 live-number audit, figure legends, PI packet, readiness checklist, or completion report detected",
+      "name": "no_statistical_language_legend_or_package_started",
+      "passed": true
+    },
+    {
+      "detail": "Cross-document joins only; no statistics recomputed, legends written, or final package assembled",
+      "name": "scope_boundary_preserved",
+      "passed": true
+    }
+  ],
   "stage9_2_checks": [
     {
       "detail": "Stage 9.1 venue guidance exists and passes",
@@ -2282,8 +2395,8 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.20 Reference library and citation audit complete; cross-document consistency audit not started",
-  "status": "stage9_20_reference_library_bound",
+  "stage9_active_gate": "Stage 9.21 Cross-document consistency audit complete; statistical and quantitative language audit not started",
+  "status": "stage9_21_cross_document_consistency_bound",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

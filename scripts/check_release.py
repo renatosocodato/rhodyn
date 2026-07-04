@@ -252,6 +252,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_18_supplementary_methods.py",
     "scripts/run_stage9_19_supplementary_tables.py",
     "scripts/run_stage9_20_reference_audit.py",
+    "scripts/run_stage9_21_cross_document_consistency.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -273,6 +274,8 @@ REQUIRED_FILES = [
     "tests/test_stage9_17_availability_assembly.py",
     "tests/test_stage9_18_supplementary_methods.py",
     "tests/test_stage9_19_supplementary_tables.py",
+    "tests/test_stage9_20_reference_audit.py",
+    "tests/test_stage9_21_cross_document_consistency.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -498,8 +501,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.20 Reference library and citation audit complete; cross-document consistency audit not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.20 reference-library boundary as active")
+        if current.get("active_stage") != "Stage 9.21 Cross-document consistency audit complete; statistical and quantitative language audit not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.21 cross-document consistency boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -513,8 +516,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_20_reference_library_bound":
-            failures.append("roadmap execution memory does not mark Stage 9.20 reference library as registered")
+        if stages.get(9, {}).get("status") != "stage9_21_cross_document_consistency_bound":
+            failures.append("roadmap execution memory does not mark Stage 9.21 cross-document consistency as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -539,8 +542,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.20 resolved DOI-backed references and citation-to-claim bindings":
-                failures.append("Stage 9 current gate must record the Stage 9.20 reference-library state")
+            if stage9.get("current_gate") != "Stage 9.21 cross-document joins show no orphan claims, figures, statistics, references, or strength-cap mismatches":
+                failures.append("Stage 9 current gate must record the Stage 9.21 cross-document state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -574,6 +577,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9 must serialize the 9.19 supplementary table/source-data substage")
             if "9.20" not in substage_ids:
                 failures.append("Stage 9 must serialize the 9.20 reference-library substage")
+            if "9.21" not in substage_ids:
+                failures.append("Stage 9 must serialize the 9.21 cross-document consistency substage")
             substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
             if substage_status.get("9.0") != "complete_evidence_locked":
                 failures.append("Stage 9.0 must be marked complete_evidence_locked")
@@ -619,6 +624,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.19 must be marked complete_supplementary_tables_bound")
             if substage_status.get("9.20") != "complete_reference_library_bound":
                 failures.append("Stage 9.20 must be marked complete_reference_library_bound")
+            if substage_status.get("9.21") != "complete_cross_document_consistency_bound":
+                failures.append("Stage 9.21 must be marked complete_cross_document_consistency_bound")
         stage9_20_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.20.json"
         if stage9_20_gate_path.exists():
             try:
@@ -642,6 +649,30 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         for source_type in ["methods", "dataset", "software"]:
             if source_type not in citation_ledger_text:
                 failures.append(f"Stage 9.20 citation ledger is missing source type {source_type}")
+        stage9_21_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.21.json"
+        if stage9_21_gate_path.exists():
+            try:
+                stage9_21_gate = json.loads(stage9_21_gate_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"Stage 9.21 gate is not valid JSON: {exc}")
+                stage9_21_gate = {}
+            if stage9_21_gate.get("pass") is not True:
+                failures.append("Stage 9.21 cross-document gate must pass")
+            if stage9_21_gate.get("next_substage") != "9.22":
+                failures.append("Stage 9.21 cross-document gate must point to Stage 9.22")
+            for field, expected in {"claim_count": 5, "figure_count": 6, "statistic_count": 19, "reference_count": 13}.items():
+                if stage9_21_gate.get(field) != expected:
+                    failures.append(f"Stage 9.21 cross-document gate must record {field}={expected}")
+            for field in ["orphan_claims", "orphan_figures", "orphan_statistics", "dangling_references", "strength_mismatches"]:
+                if stage9_21_gate.get(field) not in ([], None):
+                    failures.append(f"Stage 9.21 cross-document gate must have empty {field}")
+        else:
+            failures.append("missing Stage 9.21 cross-document gate")
+        cross_document_audit = root / "manuscript" / "nature_methods" / "audits" / "cross_document_consistency_audit.md"
+        if not cross_document_audit.exists():
+            failures.append("missing Stage 9.21 cross-document audit")
+        elif "The cross-document joins passed" not in cross_document_audit.read_text(encoding="utf-8"):
+            failures.append("Stage 9.21 cross-document audit does not report passed joins")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

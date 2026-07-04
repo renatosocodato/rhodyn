@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.20",
-  "next_substage": "9.21",
+  "last_completed_substage": "9.21",
+  "next_substage": "9.22",
   "patch_ledger": [
     {
       "id": "P1",
@@ -449,7 +449,7 @@
       "outputs": [
         "manuscript/nature_methods/audits/cross_document_consistency_audit.md"
       ],
-      "status": "not_started",
+      "status": "complete_cross_document_consistency_bound",
       "title": "Cross-document consistency audit"
     },
     {

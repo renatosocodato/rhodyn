@@ -59,6 +59,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_18_supplementary_methods.py",
     "scripts/run_stage9_19_supplementary_tables.py",
     "scripts/run_stage9_20_reference_audit.py",
+    "scripts/run_stage9_21_cross_document_consistency.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -115,7 +116,8 @@ ID_PREFIXES = [
 
 FORBIDDEN_DRAFTS = [
     "figures/figure_legends.md",
-    "audits/cross_document_consistency_audit.md",
+    "audits/statistical_language_audit.md",
+    "audits/live_numbers_diff.csv",
     "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
@@ -222,10 +224,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.20 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.21 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -250,6 +252,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_18_started = "9.18.json" in gate_files
     stage9_19_started = "9.19.json" in gate_files
     stage9_20_started = "9.20.json" in gate_files
+    stage9_21_started = "9.21.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -258,7 +261,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.-1 gate checks must all pass")
 
     memory = _read_json(root / "docs" / "stage9_execution_memory.json", failures)
-    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "submission_package_started"]:
+    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "cross_document_consistency_started", "submission_package_started"]:
         if flag == "evidence_intake_started" and stage9_0_started:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record evidence_intake_started=true after 9.0")
@@ -266,6 +269,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if flag == "citation_resolution_started" and stage9_20_started:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record citation_resolution_started=true after 9.20")
+            continue
+        if flag == "cross_document_consistency_started" and stage9_21_started:
+            if memory.get(flag) is not True:
+                failures.append("Stage 9 execution memory must record cross_document_consistency_started=true after 9.21")
             continue
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
@@ -280,7 +287,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_20_reference_library_bound"
+        "stage9_21_cross_document_consistency_bound"
+        if stage9_21_started
+        else "stage9_20_reference_library_bound"
         if stage9_20_started
         else "stage9_19_supplementary_tables_bound"
         if stage9_19_started
@@ -1231,6 +1240,78 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain reference-library output before 9.20: {rel}")
+
+    if stage9_21_started:
+        stage9_21_gate = _read_json(workspace / "gate_verdicts" / "9.21.json", failures)
+        cross_document_audit_path = workspace / "audits" / "cross_document_consistency_audit.md"
+        if stage9_21_gate.get("pass") is not True or stage9_21_gate.get("substage") != "9.21":
+            failures.append("Stage 9.21 gate verdict must pass when present")
+        if stage9_21_gate.get("next_substage") != "9.22":
+            failures.append("Stage 9.21 gate must point to Stage 9.22")
+        expected_921_counts = {
+            "claim_count": 5,
+            "figure_count": 6,
+            "statistic_count": 19,
+            "reference_count": 13,
+            "source_data_table_count": 9,
+        }
+        for field, expected in expected_921_counts.items():
+            if stage9_21_gate.get(field) != expected:
+                failures.append(f"Stage 9.21 gate must record {field}={expected}")
+        for field in [
+            "orphan_claims",
+            "unknown_claim_refs",
+            "orphan_figures",
+            "unknown_figure_refs",
+            "orphan_statistics",
+            "unknown_statistic_refs",
+            "dangling_references",
+            "unknown_paragraph_refs",
+            "unknown_table_refs",
+            "strength_mismatches",
+            "missing_render_paths",
+            "bad_engine_rows",
+            "missing_source_paths",
+            "missing_binding_render_paths",
+        ]:
+            if stage9_21_gate.get(field) not in ([], None):
+                failures.append(f"Stage 9.21 gate must have empty {field}")
+        expected_checks = {
+            "stage_9_20_gate_passed",
+            "orphan_claim_set_empty",
+            "orphan_figure_set_empty",
+            "orphan_statistic_set_empty",
+            "dangling_reference_set_empty",
+            "version_and_strength_coherence_hold",
+            "no_statistical_language_legend_or_package_started",
+            "scope_boundary_preserved",
+        }
+        actual_checks = {
+            item.get("name")
+            for item in stage9_21_gate.get("checks", [])
+            if isinstance(item, dict) and item.get("passed") is True
+        }
+        if actual_checks != expected_checks:
+            failures.append(f"Stage 9.21 checks do not match expected checks: {sorted(actual_checks)}")
+        if not cross_document_audit_path.exists():
+            failures.append("Stage 9.21 output missing: audits/cross_document_consistency_audit.md")
+        else:
+            audit_body = cross_document_audit_path.read_text(encoding="utf-8")
+            for phrase in [
+                "The cross-document joins passed",
+                "no orphan claims, no orphan main figures, no orphan statistic IDs, and no dangling references",
+                "Cross-document joins only",
+                "does not test live-number phrasing",
+                "does not write figure legends",
+            ]:
+                if phrase not in audit_body:
+                    failures.append(f"Stage 9.21 audit missing phrase: {phrase}")
+    else:
+        for rel in [
+            "audits/cross_document_consistency_audit.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain cross-document consistency output before 9.21: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
