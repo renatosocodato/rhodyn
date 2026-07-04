@@ -101,6 +101,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/gate_verdicts/9.15.json",
     "manuscript/nature_methods/gate_verdicts/9.16.json",
     "manuscript/nature_methods/gate_verdicts/9.17.json",
+    "manuscript/nature_methods/gate_verdicts/9.18.json",
     "manuscript/nature_methods/ledgers/.gitkeep",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
@@ -110,6 +111,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
     "manuscript/nature_methods/supplementary/.gitkeep",
     "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
+    "manuscript/nature_methods/supplementary/supplementary_methods.md",
     "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
     "manuscript/nature_methods/sections/.gitkeep",
     "manuscript/nature_methods/sections/section_contracts.md",
@@ -179,6 +181,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "scripts/run_stage9_15_methods_architecture.py",
     "scripts/run_stage9_16_methods_drafting.py",
     "scripts/run_stage9_17_availability_assembly.py",
+    "scripts/run_stage9_18_supplementary_methods.py",
     "scripts/scaffold_stage9_manuscript_assembly.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -198,6 +201,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "tests/test_stage9_15_methods_architecture.py",
     "tests/test_stage9_16_methods_drafting.py",
     "tests/test_stage9_17_availability_assembly.py",
+    "tests/test_stage9_18_supplementary_methods.py",
     "tests/test_stage9_scaffold.py",
     "tools/panelforge-figures/.gitkeep",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
@@ -464,8 +468,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     memory = _read_json(ROOT / "docs" / "roadmap_execution_memory.json", failures)
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     stage9 = stages.get(9, {})
-    if stage9.get("status") != "stage9_17_availability_assembled":
-        failures.append("roadmap execution memory must record Stage 9 as stage9_17_availability_assembled")
+    if stage9.get("status") != "stage9_18_supplementary_methods_drafted":
+        failures.append("roadmap execution memory must record Stage 9 as stage9_18_supplementary_methods_drafted")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 execution memory must record 33 serialized substages")
     substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -491,6 +495,10 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         failures.append("Stage 9 execution memory must include the 9.15 Methods architecture substage")
     if "9.16" not in substage_ids:
         failures.append("Stage 9 execution memory must include the 9.16 Methods drafting substage")
+    if "9.17" not in substage_ids:
+        failures.append("Stage 9 execution memory must include the 9.17 availability assembly substage")
+    if "9.18" not in substage_ids:
+        failures.append("Stage 9 execution memory must include the 9.18 Supplementary Methods substage")
     substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if substage_status.get("9.6") != "complete_figure_spine_registered":
         failures.append("Stage 9.6 must be marked complete_figure_spine_registered")
@@ -518,11 +526,13 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         failures.append("Stage 9.16 must be marked complete_methods_drafted")
     if substage_status.get("9.17") != "complete_availability_assembled":
         failures.append("Stage 9.17 must be marked complete_availability_assembled")
+    if substage_status.get("9.18") != "complete_supplementary_methods_drafted":
+        failures.append("Stage 9.18 must be marked complete_supplementary_methods_drafted")
     if stages.get(8, {}).get("status") != "conceptual_only":
         failures.append("Stage 8 must remain conceptual after Stage 7.7/7.8 hardening")
     current = memory.get("current_position", {}) if isinstance(memory.get("current_position", {}), dict) else {}
-    if current.get("active_stage") != "Stage 9.17 availability assembly complete; Supplementary Methods not started":
-        failures.append("roadmap active stage must record the Stage 9.17 availability assembly boundary")
+    if current.get("active_stage") != "Stage 9.18 Supplementary Methods complete; supplementary tables and source-data binding not started":
+        failures.append("roadmap active stage must record the Stage 9.18 Supplementary Methods boundary")
     return {
         "authorized_phase9_scaffold_files": len(stage9_files) - len(unauthorized),
         "unauthorized_phase9_files": len(unauthorized),

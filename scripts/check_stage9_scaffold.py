@@ -55,6 +55,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_15_methods_architecture.py",
     "scripts/run_stage9_16_methods_drafting.py",
     "scripts/run_stage9_17_availability_assembly.py",
+    "scripts/run_stage9_18_supplementary_methods.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -112,7 +113,7 @@ ID_PREFIXES = [
 FORBIDDEN_DRAFTS = [
     "refs/references.bib",
     "figures/figure_legends.md",
-    "supplementary/supplementary_methods.md",
+    "supplementary/supplementary_tables_plan.md",
     "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
@@ -219,10 +220,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.17 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.18 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -244,6 +245,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_15_started = "9.15.json" in gate_files
     stage9_16_started = "9.16.json" in gate_files
     stage9_17_started = "9.17.json" in gate_files
+    stage9_18_started = "9.18.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -270,7 +272,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_17_availability_assembled"
+        "stage9_18_supplementary_methods_drafted"
+        if stage9_18_started
+        else "stage9_17_availability_assembled"
         if stage9_17_started
         else "stage9_16_methods_drafted"
         if stage9_16_started
@@ -318,6 +322,8 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         for flag in ["availability_assembly_started", "reporting_summary_placeholder_started"]:
             if memory.get(flag) is not True:
                 failures.append(f"Stage 9 execution memory must record {flag}=true after 9.17")
+    if stage9_18_started and memory.get("supplementary_methods_started") is not True:
+        failures.append("Stage 9 execution memory must record supplementary_methods_started=true after 9.18")
 
     if stage9_0_started:
         stage9_0_gate = _read_json(workspace / "gate_verdicts" / "9.0.json", failures)
@@ -997,6 +1003,60 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain availability output before 9.17: {rel}")
+
+    if stage9_18_started:
+        stage9_18_gate = _read_json(workspace / "gate_verdicts" / "9.18.json", failures)
+        supplementary_path = workspace / "supplementary" / "supplementary_methods.md"
+        if stage9_18_gate.get("pass") is not True or stage9_18_gate.get("substage") != "9.18":
+            failures.append("Stage 9.18 gate verdict must pass when present")
+        if stage9_18_gate.get("next_substage") != "9.19":
+            failures.append("Stage 9.18 gate must point to Stage 9.19")
+        if stage9_18_gate.get("supplementary_methods_section_count") != 7:
+            failures.append("Stage 9.18 must register seven Supplementary Methods sections")
+        if set(stage9_18_gate.get("supp_ids", [])) != {f"SUPP-{idx:03d}" for idx in range(1, 10)}:
+            failures.append("Stage 9.18 must cover SUPP-001 through SUPP-009")
+        if set(stage9_18_gate.get("claim_ids", [])) != {"CLM-0001", "CLM-0002", "CLM-0003", "CLM-0004", "CLM-0005"}:
+            failures.append("Stage 9.18 must stay within the five frozen CLM identifiers")
+        if not supplementary_path.exists():
+            failures.append("Stage 9.18 Supplementary Methods output missing: supplementary/supplementary_methods.md")
+            supplementary_body = ""
+        else:
+            supplementary_body = supplementary_path.read_text(encoding="utf-8")
+        visible_supplementary = "\n".join(line for line in supplementary_body.splitlines() if not line.startswith("<!--"))
+        for phrase in [
+            "# Supplementary Methods",
+            "Input contracts, method definitions, and truth cases",
+            "Public live-cell signaling adapters",
+            "Bounded-coupling decisions and held-out contexts",
+            "Reserve-like endpoint construction",
+            "Routed-output reduced-architecture comparison",
+            "Software parity, export bundles, and archive reproduction",
+            "Non-example cases and interpretation boundaries",
+            "not independent biological evidence",
+            "not proof that all coupling is absent",
+            "not direct assays of unmeasured biological reserve capacity",
+            "does not identify direct biochemical interactions",
+            "does not imply PyPI publication",
+            "not a universal biological rule",
+        ]:
+            if phrase not in supplementary_body:
+                failures.append(f"Stage 9.18 Supplementary Methods missing phrase: {phrase}")
+        for phrase in [
+            "universal residence law",
+            "automatic mechanism-discovery",
+            "true biological reserve",
+            "literal molecular edge",
+            "absence of all coupling",
+            "private-data reproduction claim",
+            "PyPI publication is claimed",
+        ]:
+            if phrase.lower() in visible_supplementary.lower():
+                failures.append(f"Stage 9.18 Supplementary Methods contains forbidden phrase: {phrase}")
+        if re.search(r"\b(CLM|ART|SUPP|PARA|FIG|STBL|SFIG)-\d{3,4}\b", visible_supplementary):
+            failures.append("Stage 9.18 Supplementary Methods must hide internal IDs from visible prose")
+    else:
+        if (workspace / "supplementary" / "supplementary_methods.md").exists():
+            failures.append("Stage 9 state must not contain Supplementary Methods before 9.18: supplementary/supplementary_methods.md")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

@@ -88,7 +88,7 @@ class Stage917AvailabilityAssemblyTests(unittest.TestCase):
         forbidden = [
             "refs/references.bib",
             "figures/figure_legends.md",
-            "supplementary/supplementary_methods.md",
+            "supplementary/supplementary_tables_plan.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]

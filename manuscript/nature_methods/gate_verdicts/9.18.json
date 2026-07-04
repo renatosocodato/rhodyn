@@ -1,0 +1,69 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.17 availability assembly exists and passes",
+      "name": "stage_9_17_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.7 supplementary item plan and callout ledger are available",
+      "name": "supplementary_plan_and_callout_ledger_available",
+      "passed": true
+    },
+    {
+      "detail": "covered_supp_ids=SUPP-001;SUPP-002;SUPP-003;SUPP-004;SUPP-005;SUPP-006;SUPP-007;SUPP-008;SUPP-009",
+      "name": "all_supplementary_items_covered",
+      "passed": true
+    },
+    {
+      "detail": "hidden_claim_ids=CLM-0001;CLM-0002;CLM-0003;CLM-0004;CLM-0005",
+      "name": "claim_ids_limited_to_claim_freeze",
+      "passed": true
+    },
+    {
+      "detail": "All SUPP items retain planned main-text callout routes",
+      "name": "items_callable_from_main_text",
+      "passed": true
+    },
+    {
+      "detail": "word_count=985",
+      "name": "interpretation_boundaries_preserved",
+      "passed": true
+    },
+    {
+      "detail": "No references.bib, figure legends, supplementary tables plan, PI packet, or readiness checklist detected",
+      "name": "no_references_legends_tables_or_package_started",
+      "passed": true
+    }
+  ],
+  "claim_ids": [
+    "CLM-0001",
+    "CLM-0002",
+    "CLM-0003",
+    "CLM-0004",
+    "CLM-0005"
+  ],
+  "next_substage": "9.19",
+  "outputs": [
+    "manuscript/nature_methods/supplementary/supplementary_methods.md",
+    "manuscript/nature_methods/gate_verdicts/9.18.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Supplementary Methods only. No supplementary tables/source-data binding, references.bib, figure legends, PI packet, readiness checklist, or final submission-package assembly.",
+  "substage": "9.18",
+  "supp_ids": [
+    "SUPP-001",
+    "SUPP-002",
+    "SUPP-003",
+    "SUPP-004",
+    "SUPP-005",
+    "SUPP-006",
+    "SUPP-007",
+    "SUPP-008",
+    "SUPP-009"
+  ],
+  "supplementary_methods_section_count": 7,
+  "supplementary_methods_version": "supplementary-methods-draft@2026-07-04@b37a1873b72222e4958d6afcff731aaabaa5a389",
+  "supplementary_methods_word_count": 985,
+  "timestamp": "2026-07-04T08:48:22.059266Z"
+}

@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.17",
-  "next_substage": "9.18",
+  "last_completed_substage": "9.18",
+  "next_substage": "9.19",
   "patch_ledger": [
     {
       "id": "P1",
@@ -400,7 +400,7 @@
       "outputs": [
         "manuscript/nature_methods/supplementary/supplementary_methods.md"
       ],
-      "status": "not_started",
+      "status": "complete_supplementary_methods_drafted",
       "title": "Supplementary Methods drafting"
     },
     {

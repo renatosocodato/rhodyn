@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 9.17 availability assembly complete; Supplementary Methods not started",
+    "active_stage": "Stage 9.18 Supplementary Methods complete; supplementary tables and source-data binding not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -30,6 +30,7 @@
     "after_stage9_15_methods_architecture": "Stage 9.15 registered the Online Methods architecture and methods-to-code ledger. It mapped Methods statements to repo paths, commit, commands, evidence artifacts, and dataset version/date fields. It did not draft methods.md, assemble availability statements, resolve the full reference library, write figure legends, or package the submission.",
     "after_stage9_16_methods_drafting": "Stage 9.16 registered reviewer-reconstructable Online Methods prose from the Stage 9.15 blueprint. It did not assemble availability statements, resolve the full reference library, write figure legends, create Supplementary Methods, or package the submission.",
     "after_stage9_17_availability_assembly": "Stage 9.17 registered data availability, code availability, reproducibility command index, and the required Reporting Summary placeholder. It did not assemble the full reference library, write figure legends, create Supplementary Methods, or complete the final submission package.",
+    "after_stage9_18_supplementary_methods": "Stage 9.18 registered Supplementary Methods prose for the planned SUPP support items. It did not assemble supplementary tables/source-data binding, resolve the full reference library, write figure legends, or complete the final submission package.",
     "after_stage9_1_guidance_register": "Stage 9.1 cached official Nature Methods, Nature Portfolio, and Springer Nature guidance, registered Article-format constraints, and kept citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly not started.",
     "after_stage9_2_methods_corpus": "Stage 9.2 registered an eight-DOI representative computational methods-paper corpus and extracted cross-paper archetype features. Stage 9.3 narrative-spine selection, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_3_narrative_spine": "Stage 9.3 selected the Nature Methods Article archetype, registered the RhoDyn narrative spine, and fixed the discovery-versus-demonstration boundary. Stage 9.4 claim freeze, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
@@ -42,11 +43,11 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Availability assembly complete without full submission-package assembly",
-    "next_stage": "Stage 9.18 Supplementary Methods drafting",
+    "current_gate": "Supplementary Methods drafted without supplementary table binding",
+    "next_stage": "Stage 9.19 Supplementary tables and source-data binding",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
-    "stage9_active_gate": "Stage 9.17 availability assembly complete; Supplementary Methods not started"
+    "stage9_active_gate": "Stage 9.18 Supplementary Methods complete; supplementary tables and source-data binding not started"
   },
   "memory_notes": {
     "after_stage9_6b_panelforge_rendering": "Stage 9.6b generated a renderable PanelForge manifest and six deterministic main-figure mockups from the frozen figure-to-claim-to-artifact spine. Citation resolution, manuscript drafting, supplementary display planning, and submission-package assembly remain not started.",
@@ -450,9 +451,12 @@
         "manuscript/nature_methods/ledgers/reproducibility_command_index.md",
         "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
         "manuscript/nature_methods/gate_verdicts/9.17.json",
-        "scripts/run_stage9_17_availability_assembly.py"
+        "scripts/run_stage9_17_availability_assembly.py",
+        "manuscript/nature_methods/supplementary/supplementary_methods.md",
+        "manuscript/nature_methods/gate_verdicts/9.18.json",
+        "scripts/run_stage9_18_supplementary_methods.py"
       ],
-      "current_gate": "Stage 9.17 registered data/code availability and Reporting Summary placeholder",
+      "current_gate": "Stage 9.18 registered Supplementary Methods without supplementary tables",
       "gate": [
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
         "Stage 9.2 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
@@ -473,12 +477,13 @@
         "Stage 9.14 Discussion draft contains no subheadings, visible limitations, and labeled future directions.",
         "Stage 9.15 Methods architecture maps statements to code, commit, command, dataset version/date, and evidence artifacts.",
         "Stage 9.16 Methods draft maps claim-bearing prose to Methods statement IDs and preserves software version boundaries.",
-        "Stage 9.17 availability assembly registers exact software, data, code, command-index, and Reporting Summary requirement surfaces."
+        "Stage 9.17 availability assembly registers exact software, data, code, command-index, and Reporting Summary requirement surfaces.",
+        "Stage 9.18 Supplementary Methods maps planned SUPP support items to frozen claims without opening table, legend, reference, or package assembly."
       ],
       "name": "Nature Methods manuscript assembly scaffold",
-      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, and availability assembly only. Do not start the full reference library, figure legends, review response, supplementary methods, or final submission packaging without explicit substage authorization.",
+      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, and Supplementary Methods drafting only. Do not start supplementary tables/source-data binding, the full reference library, figure legends, review response, or final submission packaging without explicit substage authorization.",
       "stage": 9,
-      "status": "stage9_17_availability_assembled",
+      "status": "stage9_18_supplementary_methods_drafted",
       "subphases": [
         {
           "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
@@ -658,12 +663,13 @@
           "status": "complete_availability_assembled"
         },
         {
-          "evidence": "not_started",
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.18.json",
           "gate": "items are callable from main text; no new claim ID absent from claim freeze",
           "goal": "Move technical depth into structured Supplementary Methods.",
           "id": "9.18",
           "name": "Supplementary Methods drafting",
-          "status": "not_started"
+          "status": "complete_supplementary_methods_drafted",
+          "supplementary_methods_version": "supplementary-methods-draft@2026-07-04@b37a1873b72222e4958d6afcff731aaabaa5a389"
         },
         {
           "evidence": "not_started",
