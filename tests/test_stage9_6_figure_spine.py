@@ -44,13 +44,21 @@ class Stage96FigureSpineTests(unittest.TestCase):
         claim_rows = {row["claim_id"]: row for row in _csv_rows(WORKSPACE / "ledgers" / "claim_hierarchy.csv")}
         artifact_rows = {row["art_id"]: row for row in _csv_rows(WORKSPACE / "ledgers" / "stage9_evidence_manifest.csv")}
         self.assertEqual([row["fig_id"] for row in figure_rows], [f"FIG-00{idx}" for idx in range(1, 7)])
+        expected_stat_ids = {
+            "FIG-001": "STAT-0001;STAT-0002;STAT-0003;STAT-0019",
+            "FIG-002": "STAT-0004;STAT-0005",
+            "FIG-003": "STAT-0006;STAT-0007;STAT-0008",
+            "FIG-004": "STAT-0009;STAT-0010;STAT-0011;STAT-0012;STAT-0013;STAT-0014",
+            "FIG-005": "STAT-0015;STAT-0016",
+            "FIG-006": "STAT-0017;STAT-0018",
+        }
         all_claims = set()
         for row in figure_rows:
             self.assertEqual(row["placement"], "main")
             self.assertEqual(row["engine_version"], "panelforge-figures@v3.14.1")
             self.assertEqual(row["engine_commit"], "d8ab4c5d25be6243aa7209ad1ee6af144820c920")
             self.assertEqual(row["drift_ok"], "accepted_stage9.6b")
-            self.assertEqual(row["stat_ids"], "pending_stage9.22")
+            self.assertEqual(row["stat_ids"], expected_stat_ids[row["fig_id"]])
             self.assertTrue(row["render_path"].endswith(f"{row['fig_id']}/{row['fig_id']}.svg"))
             self.assertTrue((ROOT / row["render_path"]).exists())
             self.assertTrue(row["recipe"].startswith("panelforge:"))

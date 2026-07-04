@@ -79,8 +79,7 @@ class Stage920ReferenceAuditTests(unittest.TestCase):
         self.assertGreaterEqual(len(list(CACHE_PATH.glob("*.json"))), 13)
         for rel in [
             "figures/figure_legends.md",
-            "audits/statistical_language_audit.md",
-            "audits/live_numbers_diff.csv",
+            "audits/figure_legend_audit.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

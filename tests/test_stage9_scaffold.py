@@ -36,7 +36,7 @@ class Stage9ScaffoldTests(unittest.TestCase):
         self.assertEqual(payload["checks"]["scaffold_only_boundary_preserved"], "pass")
         self.assertEqual(payload["checks"]["figure_engine_binding_serialized"], "pass")
 
-    def test_stage9_checker_rejects_unauthorized_statistical_language_audit(self) -> None:
+    def test_stage9_checker_rejects_unauthorized_figure_legend_audit(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
             shutil.copytree(ROOT / "manuscript", temp_root / "manuscript")
@@ -44,13 +44,13 @@ class Stage9ScaffoldTests(unittest.TestCase):
             (temp_root / "docs").mkdir()
             for rel in ["stage9_execution_memory.json", "stage9_manuscript_assembly_plan.md"]:
                 shutil.copy2(ROOT / "docs" / rel, temp_root / "docs" / rel)
-            draft = temp_root / "manuscript" / "nature_methods" / "audits" / "statistical_language_audit.md"
-            draft.write_text("# Premature statistical-language audit\n", encoding="utf-8")
+            draft = temp_root / "manuscript" / "nature_methods" / "audits" / "figure_legend_audit.md"
+            draft.write_text("# Premature figure-legend audit\n", encoding="utf-8")
             payload = CHECKER.check_stage9_scaffold(temp_root)
         self.assertEqual(payload["status"], "fail")
         self.assertTrue(any("scaffold-only" in failure for failure in payload["failures"]))
 
-    def test_stage9_checker_rejects_post_9_21_gate_verdicts(self) -> None:
+    def test_stage9_checker_rejects_post_9_22_gate_verdicts(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
             shutil.copytree(ROOT / "manuscript", temp_root / "manuscript")
@@ -58,11 +58,11 @@ class Stage9ScaffoldTests(unittest.TestCase):
             (temp_root / "docs").mkdir()
             for rel in ["stage9_execution_memory.json", "stage9_manuscript_assembly_plan.md"]:
                 shutil.copy2(ROOT / "docs" / rel, temp_root / "docs" / rel)
-            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.22.json"
-            future_gate.write_text('{"substage": "9.22", "pass": true, "checks": []}\n', encoding="utf-8")
+            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.23.json"
+            future_gate.write_text('{"substage": "9.23", "pass": true, "checks": []}\n', encoding="utf-8")
             payload = CHECKER.check_stage9_scaffold(temp_root)
         self.assertEqual(payload["status"], "fail")
-        self.assertTrue(any("post-9.21 gate verdicts" in failure for failure in payload["failures"]))
+        self.assertTrue(any("post-9.22 gate verdicts" in failure for failure in payload["failures"]))
 
 
 if __name__ == "__main__":

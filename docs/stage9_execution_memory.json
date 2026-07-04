@@ -64,7 +64,10 @@
     "manuscript/nature_methods/audits/reference_audit.md",
     "manuscript/nature_methods/gate_verdicts/9.20.json",
     "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
-    "manuscript/nature_methods/gate_verdicts/9.21.json"
+    "manuscript/nature_methods/gate_verdicts/9.21.json",
+    "manuscript/nature_methods/audits/statistical_language_audit.md",
+    "manuscript/nature_methods/audits/live_numbers_diff.csv",
+    "manuscript/nature_methods/gate_verdicts/9.22.json"
   ],
   "availability_assembly_started": true,
   "citation_resolution_started": true,
@@ -1373,11 +1376,78 @@
       "status": "pass",
       "substage": "9.21",
       "validation_outcome": "Cross-document joins show no orphan claims, figures, statistics, or references"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.21 cross-document consistency gate is present and passed",
+          "name": "stage_9_21_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "checked=19; updated=0; failures=0",
+          "name": "every_statistic_recomputes_within_tolerance",
+          "passed": true
+        },
+        {
+          "detail": "figures_with_pending_stats=0; unknown_figure_stat_ids=0; unsupported_reader_surface_statements=0",
+          "name": "quantitative_statements_have_statistic_ids",
+          "passed": true
+        },
+        {
+          "detail": "unsafe_hits=[]; methods_terms=['\\\\Delta', 'TOST', 'ROPE', '0.95']; results_margin_scoped=True",
+          "name": "equivalence_claims_state_bounds",
+          "passed": true
+        },
+        {
+          "detail": "diff_rows=19",
+          "name": "live_numbers_diff_written",
+          "passed": true
+        },
+        {
+          "detail": "No figure legends, figure-legend audit, PI packet, readiness checklist, or completion report detected",
+          "name": "no_figure_legend_or_package_started",
+          "passed": true
+        },
+        {
+          "detail": "Live-number/statistical-language audit only; no new data, model outputs, figure legends, or submission package",
+          "name": "scope_boundary_preserved",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.21.json",
+        "manuscript/nature_methods/ledgers/statistic_ledger.csv",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "case_studies/stage7_benchmarks/synthetic_residence_baseline_comparison.csv",
+        "case_studies/stage7_public_signaling/drg_calcium_residence_amplitude_summary.csv",
+        "case_studies/stage7_public_signaling/erk_gpcr_residence_amplitude_summary.csv",
+        "case_studies/stage7_endpoint_reserve_routing/erk_akt_bounded_coupling_decisions.csv",
+        "case_studies/stage7_heldout_validation/heldout_validation_outcomes.tsv",
+        "case_studies/stage7_methods_reproducibility/release_archive_manifest.tsv"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/audits/statistical_language_audit.md",
+        "manuscript/nature_methods/audits/live_numbers_diff.csv",
+        "manuscript/nature_methods/ledgers/statistic_ledger.csv",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "manuscript/nature_methods/gate_verdicts/9.22.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.22.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Figure legends have not started",
+        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
+      ],
+      "status": "pass",
+      "substage": "9.22",
+      "updated_stat_ids": [],
+      "validation_outcome": "Nineteen statistic IDs were recomputed or inspected; statistic traceability is bound to explicit figure-level STAT IDs"
     }
   ],
   "cross_document_consistency_started": true,
-  "current_gate": "Stage 9.21 cross-document consistency joins passed across claims, figures, statistics, references, and strength caps",
-  "current_substage": "9.21",
+  "current_gate": "Stage 9.22 live-number and statistical-language audit passed with explicit statistic IDs for all main figures",
+  "current_substage": "9.22",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
@@ -1393,14 +1463,15 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.21 are complete through cross-document consistency audit.",
-    "Stage 9.22 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No figure legends, live-number audit, PI review packet, or submission readiness checklist are created in this consistency pass.",
-    "Claims, figures, statistics, source-data support, and references have no orphan or dangling keyed-ledger joins."
+    "Stage 9.0 through Stage 9.22 are complete through statistical and quantitative language audit.",
+    "Stage 9.23 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No figure legends, PI review packet, or submission readiness checklist are created in this statistical traceability pass.",
+    "All nineteen statistic IDs are recomputed or inspected, and all six main figures have explicit statistic-ID bindings."
   ],
-  "generated_utc": "2026-07-04T10:00:30Z",
+  "generated_utc": "2026-07-04T10:48:50Z",
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
+  "live_number_audit_started": true,
   "manuscript_drafting_started": false,
   "methods_architecture_started": true,
   "methods_architecture_version": "methods-architecture@2026-07-03@2a73afd1fa91d5ce13b30b8662717e4b77c8c987",
@@ -1408,7 +1479,7 @@
   "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.22",
+  "next_substage": "9.23",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -1476,7 +1547,7 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, and cross-document consistency audit only. Do not start figure legends, live-number audit, or final submission package without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, cross-document consistency audit, and statistical/quantitative language audit only. Do not start figure legends or final submission package without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "source_data_binding_started": true,
@@ -2119,6 +2190,43 @@
       "passed": true
     }
   ],
+  "stage9_22_checks": [
+    {
+      "detail": "Stage 9.21 cross-document consistency gate is present and passed",
+      "name": "stage_9_21_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "checked=19; updated=0; failures=0",
+      "name": "every_statistic_recomputes_within_tolerance",
+      "passed": true
+    },
+    {
+      "detail": "figures_with_pending_stats=0; unknown_figure_stat_ids=0; unsupported_reader_surface_statements=0",
+      "name": "quantitative_statements_have_statistic_ids",
+      "passed": true
+    },
+    {
+      "detail": "unsafe_hits=[]; methods_terms=['\\\\Delta', 'TOST', 'ROPE', '0.95']; results_margin_scoped=True",
+      "name": "equivalence_claims_state_bounds",
+      "passed": true
+    },
+    {
+      "detail": "diff_rows=19",
+      "name": "live_numbers_diff_written",
+      "passed": true
+    },
+    {
+      "detail": "No figure legends, figure-legend audit, PI packet, readiness checklist, or completion report detected",
+      "name": "no_figure_legend_or_package_started",
+      "passed": true
+    },
+    {
+      "detail": "Live-number/statistical-language audit only; no new data, model outputs, figure legends, or submission package",
+      "name": "scope_boundary_preserved",
+      "passed": true
+    }
+  ],
   "stage9_2_checks": [
     {
       "detail": "Stage 9.1 venue guidance exists and passes",
@@ -2395,8 +2503,9 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.21 Cross-document consistency audit complete; statistical and quantitative language audit not started",
-  "status": "stage9_21_cross_document_consistency_bound",
+  "stage9_active_gate": "Stage 9.22 Statistical and quantitative language audit complete; figure legend and caption audit not started",
+  "statistical_language_audit_started": true,
+  "status": "stage9_22_statistical_language_audit_bound",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

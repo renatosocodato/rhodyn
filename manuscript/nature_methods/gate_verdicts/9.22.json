@@ -1,0 +1,83 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.21 cross-document consistency gate is present and passed",
+      "name": "stage_9_21_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "checked=19; updated=0; failures=0",
+      "name": "every_statistic_recomputes_within_tolerance",
+      "passed": true
+    },
+    {
+      "detail": "figures_with_pending_stats=0; unknown_figure_stat_ids=0; unsupported_reader_surface_statements=0",
+      "name": "quantitative_statements_have_statistic_ids",
+      "passed": true
+    },
+    {
+      "detail": "unsafe_hits=[]; methods_terms=['\\\\Delta', 'TOST', 'ROPE', '0.95']; results_margin_scoped=True",
+      "name": "equivalence_claims_state_bounds",
+      "passed": true
+    },
+    {
+      "detail": "diff_rows=19",
+      "name": "live_numbers_diff_written",
+      "passed": true
+    },
+    {
+      "detail": "No figure legends, figure-legend audit, PI packet, readiness checklist, or completion report detected",
+      "name": "no_figure_legend_or_package_started",
+      "passed": true
+    },
+    {
+      "detail": "Live-number/statistical-language audit only; no new data, model outputs, figure legends, or submission package",
+      "name": "scope_boundary_preserved",
+      "passed": true
+    }
+  ],
+  "commit": "3bdd76225816941f5b032e45785a6e5e6a3258a2",
+  "equivalence_language": {
+    "passed": true,
+    "required_methods_terms_present": [
+      "\\Delta",
+      "TOST",
+      "ROPE",
+      "0.95"
+    ],
+    "results_margin_scoped": true,
+    "unsafe_hits": []
+  },
+  "failed_stat_ids": [],
+  "figure_stat_id_map": {
+    "FIG-001": "STAT-0001;STAT-0002;STAT-0003;STAT-0019",
+    "FIG-002": "STAT-0004;STAT-0005",
+    "FIG-003": "STAT-0006;STAT-0007;STAT-0008",
+    "FIG-004": "STAT-0009;STAT-0010;STAT-0011;STAT-0012;STAT-0013;STAT-0014",
+    "FIG-005": "STAT-0015;STAT-0016",
+    "FIG-006": "STAT-0017;STAT-0018"
+  },
+  "figure_stat_id_map_complete": true,
+  "forbidden_started_paths": [],
+  "generated_utc": "2026-07-04T10:48:50Z",
+  "inspection_only_count": 5,
+  "live_number_row_count": 19,
+  "next_substage": "9.23",
+  "outputs": [
+    "manuscript/nature_methods/audits/statistical_language_audit.md",
+    "manuscript/nature_methods/audits/live_numbers_diff.csv",
+    "manuscript/nature_methods/ledgers/statistic_ledger.csv",
+    "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+    "manuscript/nature_methods/gate_verdicts/9.22.json"
+  ],
+  "pass": true,
+  "scope_boundary": "Statistical and quantitative traceability audit only. No figure legends, new data, new model outputs, biological claim changes, PI packet, readiness checklist, or final submission-package assembly.",
+  "statistic_count": 19,
+  "substage": "9.22",
+  "title": "Statistical and quantitative language audit",
+  "unknown_figure_stat_ids": [],
+  "unresolved_figures": [],
+  "unsupported_quantitative_statements": [],
+  "updated_stat_ids": [],
+  "updated_statistic_count": 0
+}

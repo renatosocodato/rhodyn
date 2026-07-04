@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.21",
-  "next_substage": "9.22",
+  "last_completed_substage": "9.22",
+  "next_substage": "9.23",
   "patch_ledger": [
     {
       "id": "P1",
@@ -465,7 +465,7 @@
         "manuscript/nature_methods/audits/live_numbers_diff.csv",
         "manuscript/nature_methods/ledgers/statistic_ledger.csv"
       ],
-      "status": "not_started",
+      "status": "complete_statistical_language_audit_bound",
       "title": "Statistical and quantitative language audit"
     },
     {

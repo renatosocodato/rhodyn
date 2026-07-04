@@ -60,6 +60,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_19_supplementary_tables.py",
     "scripts/run_stage9_20_reference_audit.py",
     "scripts/run_stage9_21_cross_document_consistency.py",
+    "scripts/run_stage9_22_statistical_language_audit.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -116,8 +117,7 @@ ID_PREFIXES = [
 
 FORBIDDEN_DRAFTS = [
     "figures/figure_legends.md",
-    "audits/statistical_language_audit.md",
-    "audits/live_numbers_diff.csv",
+    "audits/figure_legend_audit.md",
     "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
@@ -224,10 +224,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json", "9.22.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.21 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.22 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -253,6 +253,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_19_started = "9.19.json" in gate_files
     stage9_20_started = "9.20.json" in gate_files
     stage9_21_started = "9.21.json" in gate_files
+    stage9_22_started = "9.22.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -261,7 +262,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.-1 gate checks must all pass")
 
     memory = _read_json(root / "docs" / "stage9_execution_memory.json", failures)
-    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "cross_document_consistency_started", "submission_package_started"]:
+    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "cross_document_consistency_started", "statistical_language_audit_started", "live_number_audit_started", "submission_package_started"]:
         if flag == "evidence_intake_started" and stage9_0_started:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record evidence_intake_started=true after 9.0")
@@ -273,6 +274,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if flag == "cross_document_consistency_started" and stage9_21_started:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record cross_document_consistency_started=true after 9.21")
+            continue
+        if flag in {"statistical_language_audit_started", "live_number_audit_started"} and stage9_22_started:
+            if memory.get(flag) is not True:
+                failures.append(f"Stage 9 execution memory must record {flag}=true after 9.22")
             continue
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
@@ -287,7 +292,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_21_cross_document_consistency_bound"
+        "stage9_22_statistical_language_audit_bound"
+        if stage9_22_started
+        else "stage9_21_cross_document_consistency_bound"
         if stage9_21_started
         else "stage9_20_reference_library_bound"
         if stage9_20_started
@@ -1312,6 +1319,120 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain cross-document consistency output before 9.21: {rel}")
+
+    if stage9_22_started:
+        stage9_22_gate = _read_json(workspace / "gate_verdicts" / "9.22.json", failures)
+        statistical_audit_path = workspace / "audits" / "statistical_language_audit.md"
+        live_diff_path = workspace / "audits" / "live_numbers_diff.csv"
+        statistic_ledger_path = workspace / "ledgers" / "statistic_ledger.csv"
+        figure_ledger_path = workspace / "ledgers" / "figure_to_claim_to_artifact.csv"
+        if stage9_22_gate.get("pass") is not True or stage9_22_gate.get("substage") != "9.22":
+            failures.append("Stage 9.22 gate verdict must pass when present")
+        if stage9_22_gate.get("next_substage") != "9.23":
+            failures.append("Stage 9.22 gate must point to Stage 9.23")
+        expected_922_counts = {
+            "statistic_count": 19,
+            "live_number_row_count": 19,
+        }
+        for field, expected in expected_922_counts.items():
+            if stage9_22_gate.get(field) != expected:
+                failures.append(f"Stage 9.22 gate must record {field}={expected}")
+        updated_stat_ids = stage9_22_gate.get("updated_stat_ids", [])
+        if stage9_22_gate.get("updated_statistic_count") != len(updated_stat_ids):
+            failures.append("Stage 9.22 gate updated_statistic_count must match updated_stat_ids")
+        if any(stat_id != "STAT-0018" for stat_id in updated_stat_ids):
+            failures.append("Stage 9.22 gate may only update STAT-0018")
+        if stage9_22_gate.get("failed_stat_ids") not in ([], None):
+            failures.append("Stage 9.22 gate must have no failed statistic IDs")
+        if stage9_22_gate.get("unsupported_quantitative_statements") not in ([], None):
+            failures.append("Stage 9.22 gate must have no unsupported reader-facing quantitative statements")
+        if stage9_22_gate.get("figure_stat_id_map_complete") is not True:
+            failures.append("Stage 9.22 gate must complete the figure statistic-ID map")
+        equivalence_language = stage9_22_gate.get("equivalence_language", {})
+        if not isinstance(equivalence_language, dict) or equivalence_language.get("passed") is not True:
+            failures.append("Stage 9.22 gate must pass the equivalence-language bounds check")
+        expected_checks = {
+            "stage_9_21_gate_passed",
+            "every_statistic_recomputes_within_tolerance",
+            "quantitative_statements_have_statistic_ids",
+            "equivalence_claims_state_bounds",
+            "live_numbers_diff_written",
+            "no_figure_legend_or_package_started",
+            "scope_boundary_preserved",
+        }
+        actual_checks = {
+            item.get("name")
+            for item in stage9_22_gate.get("checks", [])
+            if isinstance(item, dict) and item.get("passed") is True
+        }
+        if actual_checks != expected_checks:
+            failures.append(f"Stage 9.22 checks do not match expected checks: {sorted(actual_checks)}")
+        for path, label in [
+            (statistical_audit_path, "audits/statistical_language_audit.md"),
+            (live_diff_path, "audits/live_numbers_diff.csv"),
+        ]:
+            if not path.exists():
+                failures.append(f"Stage 9.22 output missing: {label}")
+        if live_diff_path.exists():
+            with live_diff_path.open(newline="", encoding="utf-8") as handle:
+                diff_rows = list(csv.DictReader(handle))
+            if len(diff_rows) != 19:
+                failures.append("Stage 9.22 live-number diff must contain nineteen rows")
+            source_manifest = root / "case_studies" / "stage7_methods_reproducibility" / "release_archive_manifest.tsv"
+            expected_stat18 = None
+            if source_manifest.exists():
+                with source_manifest.open(newline="", encoding="utf-8") as handle:
+                    source_rows = list(csv.DictReader(handle, delimiter="\t"))
+                expected_stat18 = f"row_count={len(source_rows)}"
+            stat18 = next((row for row in diff_rows if row.get("stat_id") == "STAT-0018"), None)
+            if not stat18 or stat18.get("expected_value") != expected_stat18 or stat18.get("status") not in {"pass", "updated"}:
+                failures.append("Stage 9.22 live-number diff must record STAT-0018 at the current archive manifest row count")
+        if statistic_ledger_path.exists():
+            with statistic_ledger_path.open(newline="", encoding="utf-8") as handle:
+                stat_rows = {row.get("stat_id"): row for row in csv.DictReader(handle)}
+            source_manifest = root / "case_studies" / "stage7_methods_reproducibility" / "release_archive_manifest.tsv"
+            expected_stat18 = None
+            if source_manifest.exists():
+                with source_manifest.open(newline="", encoding="utf-8") as handle:
+                    source_rows = list(csv.DictReader(handle, delimiter="\t"))
+                expected_stat18 = f"row_count={len(source_rows)}"
+            stat18 = stat_rows.get("STAT-0018", {})
+            if stat18.get("value") != expected_stat18 or stat18.get("n") != expected_stat18:
+                failures.append("Stage 9.22 statistic ledger must keep STAT-0018 aligned with the archive manifest row count")
+        if figure_ledger_path.exists():
+            figure_text = figure_ledger_path.read_text(encoding="utf-8")
+            if "pending_stage9.22" in figure_text:
+                failures.append("Stage 9.22 figure ledger must not retain pending_stage9.22 statistic IDs")
+            expected_map = {
+                "FIG-001": "STAT-0001;STAT-0002;STAT-0003;STAT-0019",
+                "FIG-002": "STAT-0004;STAT-0005",
+                "FIG-003": "STAT-0006;STAT-0007;STAT-0008",
+                "FIG-004": "STAT-0009;STAT-0010;STAT-0011;STAT-0012;STAT-0013;STAT-0014",
+                "FIG-005": "STAT-0015;STAT-0016",
+                "FIG-006": "STAT-0017;STAT-0018",
+            }
+            with figure_ledger_path.open(newline="", encoding="utf-8") as handle:
+                figure_rows = {row.get("fig_id"): row for row in csv.DictReader(handle)}
+            for fig_id, expected in expected_map.items():
+                if figure_rows.get(fig_id, {}).get("stat_ids") != expected:
+                    failures.append(f"Stage 9.22 figure ledger must map {fig_id} to {expected}")
+        if statistical_audit_path.exists():
+            audit_body = statistical_audit_path.read_text(encoding="utf-8")
+            for phrase in [
+                "The live-number audit passed",
+                "`STAT-0018`, the release-archive manifest file count",
+                "bounded-coupling language remains scoped to declared margins",
+                "does not write figure legends",
+            ]:
+                if phrase not in audit_body:
+                    failures.append(f"Stage 9.22 audit missing phrase: {phrase}")
+    else:
+        for rel in [
+            "audits/statistical_language_audit.md",
+            "audits/live_numbers_diff.csv",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain statistical-language output before 9.22: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

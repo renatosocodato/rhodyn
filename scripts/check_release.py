@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import csv
 import re
 import subprocess
 import sys
@@ -253,6 +254,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_19_supplementary_tables.py",
     "scripts/run_stage9_20_reference_audit.py",
     "scripts/run_stage9_21_cross_document_consistency.py",
+    "scripts/run_stage9_22_statistical_language_audit.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -276,6 +278,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_19_supplementary_tables.py",
     "tests/test_stage9_20_reference_audit.py",
     "tests/test_stage9_21_cross_document_consistency.py",
+    "tests/test_stage9_22_statistical_language_audit.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -308,6 +311,8 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.18.json",
     "manuscript/nature_methods/gate_verdicts/9.19.json",
     "manuscript/nature_methods/gate_verdicts/9.20.json",
+    "manuscript/nature_methods/gate_verdicts/9.21.json",
+    "manuscript/nature_methods/gate_verdicts/9.22.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
@@ -327,6 +332,9 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/refs/references.bib",
     "manuscript/nature_methods/refs/citation_claim_ledger.csv",
     "manuscript/nature_methods/audits/reference_audit.md",
+    "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
+    "manuscript/nature_methods/audits/statistical_language_audit.md",
+    "manuscript/nature_methods/audits/live_numbers_diff.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -501,8 +509,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.21 Cross-document consistency audit complete; statistical and quantitative language audit not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.21 cross-document consistency boundary as active")
+        if current.get("active_stage") != "Stage 9.22 Statistical and quantitative language audit complete; figure legend and caption audit not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.22 statistical-language boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -516,8 +524,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_21_cross_document_consistency_bound":
-            failures.append("roadmap execution memory does not mark Stage 9.21 cross-document consistency as registered")
+        if stages.get(9, {}).get("status") != "stage9_22_statistical_language_audit_bound":
+            failures.append("roadmap execution memory does not mark Stage 9.22 statistical-language audit as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -542,8 +550,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.21 cross-document joins show no orphan claims, figures, statistics, references, or strength-cap mismatches":
-                failures.append("Stage 9 current gate must record the Stage 9.21 cross-document state")
+            if stage9.get("current_gate") != "Stage 9.22 statistic traceability binds all main figures to recomputed or inspected STAT IDs":
+                failures.append("Stage 9 current gate must record the Stage 9.22 statistical-language state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -626,6 +634,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.20 must be marked complete_reference_library_bound")
             if substage_status.get("9.21") != "complete_cross_document_consistency_bound":
                 failures.append("Stage 9.21 must be marked complete_cross_document_consistency_bound")
+            if substage_status.get("9.22") != "complete_statistical_language_audit_bound":
+                failures.append("Stage 9.22 must be marked complete_statistical_language_audit_bound")
         stage9_20_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.20.json"
         if stage9_20_gate_path.exists():
             try:
@@ -673,6 +683,67 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("missing Stage 9.21 cross-document audit")
         elif "The cross-document joins passed" not in cross_document_audit.read_text(encoding="utf-8"):
             failures.append("Stage 9.21 cross-document audit does not report passed joins")
+        stage9_22_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.22.json"
+        if stage9_22_gate_path.exists():
+            try:
+                stage9_22_gate = json.loads(stage9_22_gate_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"Stage 9.22 gate is not valid JSON: {exc}")
+                stage9_22_gate = {}
+            if stage9_22_gate.get("pass") is not True:
+                failures.append("Stage 9.22 statistical-language gate must pass")
+            if stage9_22_gate.get("next_substage") != "9.23":
+                failures.append("Stage 9.22 statistical-language gate must point to Stage 9.23")
+            if stage9_22_gate.get("statistic_count") != 19 or stage9_22_gate.get("live_number_row_count") != 19:
+                failures.append("Stage 9.22 statistical-language gate must record nineteen statistic/live-number rows")
+            updated_stat_ids = stage9_22_gate.get("updated_stat_ids", [])
+            if stage9_22_gate.get("updated_statistic_count") != len(updated_stat_ids):
+                failures.append("Stage 9.22 statistical-language gate updated_statistic_count must match updated_stat_ids")
+            if any(stat_id != "STAT-0018" for stat_id in updated_stat_ids):
+                failures.append("Stage 9.22 statistical-language gate may update only STAT-0018")
+            if stage9_22_gate.get("figure_stat_id_map_complete") is not True:
+                failures.append("Stage 9.22 statistical-language gate must complete figure statistic bindings")
+            if stage9_22_gate.get("unsupported_quantitative_statements") not in ([], None):
+                failures.append("Stage 9.22 statistical-language gate must have no unsupported quantitative statements")
+        else:
+            failures.append("missing Stage 9.22 statistical-language gate")
+        statistical_audit = root / "manuscript" / "nature_methods" / "audits" / "statistical_language_audit.md"
+        live_diff = root / "manuscript" / "nature_methods" / "audits" / "live_numbers_diff.csv"
+        statistic_ledger = root / "manuscript" / "nature_methods" / "ledgers" / "statistic_ledger.csv"
+        figure_ledger = root / "manuscript" / "nature_methods" / "ledgers" / "figure_to_claim_to_artifact.csv"
+        if not statistical_audit.exists():
+            failures.append("missing Stage 9.22 statistical-language audit")
+        elif "The live-number audit passed" not in statistical_audit.read_text(encoding="utf-8"):
+            failures.append("Stage 9.22 statistical-language audit does not report passed live-number checks")
+        if live_diff.exists():
+            with live_diff.open(newline="", encoding="utf-8") as handle:
+                diff_rows = list(csv.DictReader(handle))
+            if len(diff_rows) != 19:
+                failures.append("Stage 9.22 live-number diff must contain nineteen rows")
+            source_manifest = root / "case_studies" / "stage7_methods_reproducibility" / "release_archive_manifest.tsv"
+            expected_stat18 = None
+            if source_manifest.exists():
+                with source_manifest.open(newline="", encoding="utf-8") as handle:
+                    source_rows = list(csv.DictReader(handle, delimiter="\t"))
+                expected_stat18 = f"row_count={len(source_rows)}"
+            stat18 = next((row for row in diff_rows if row.get("stat_id") == "STAT-0018"), {})
+            if stat18.get("expected_value") != expected_stat18 or stat18.get("status") not in {"pass", "updated"}:
+                failures.append("Stage 9.22 live-number diff must record the STAT-0018 row_count update")
+        else:
+            failures.append("missing Stage 9.22 live-number diff")
+        if statistic_ledger.exists():
+            with statistic_ledger.open(newline="", encoding="utf-8") as handle:
+                stat_rows = {row.get("stat_id"): row for row in csv.DictReader(handle)}
+            source_manifest = root / "case_studies" / "stage7_methods_reproducibility" / "release_archive_manifest.tsv"
+            expected_stat18 = None
+            if source_manifest.exists():
+                with source_manifest.open(newline="", encoding="utf-8") as handle:
+                    source_rows = list(csv.DictReader(handle, delimiter="\t"))
+                expected_stat18 = f"row_count={len(source_rows)}"
+            if stat_rows.get("STAT-0018", {}).get("value") != expected_stat18:
+                failures.append("Stage 9.22 statistic ledger must align STAT-0018 to the archive manifest row count")
+        if figure_ledger.exists() and "pending_stage9.22" in figure_ledger.read_text(encoding="utf-8"):
+            failures.append("Stage 9.22 figure ledger must not retain pending_stage9.22")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

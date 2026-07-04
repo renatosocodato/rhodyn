@@ -1,0 +1,20 @@
+stat_id,source_command,expected_value,manuscript_value,rounding_tolerance,status
+STAT-0001,python3 scripts/build_stage7_1_synthetic_truth_cases.py,"displayed definitions for tidy trajectory, residence window, dwell fraction, dwell time, segment count, and amplitude comparators","displayed definitions for tidy trajectory, residence window, dwell fraction, dwell time, segment count, and amplitude comparators",inspection,inspection_only_pass
+STAT-0002,python3 scripts/build_stage7_1_synthetic_truth_cases.py,"positive, negative, and ambiguous executable examples represented","positive, negative, and ambiguous executable examples represented",inspection,inspection_only_pass
+STAT-0003,not_applicable_manual_doc_binding,failure modes and interpretation boundaries represented,failure modes and interpretation boundaries represented,inspection,inspection_only_pass
+STAT-0004,python3 scripts/run_stage7_2_benchmark_harness.py,row_count=12,row_count=12,exact,pass
+STAT-0005,python3 scripts/run_stage7_2_benchmark_harness.py,row_count=1,row_count=1,exact,pass
+STAT-0006,python3 scripts/run_stage7_3_public_signaling.py,row_count=360,row_count=360,exact,pass
+STAT-0007,python3 scripts/run_stage7_3_public_signaling.py,row_count=180,row_count=180,exact,pass
+STAT-0008,python3 scripts/run_stage7_3_public_signaling.py,DRG and ERK public adapter reports represented,DRG and ERK public adapter reports represented,inspection,inspection_only_pass
+STAT-0009,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,row_count=4,row_count=4,exact,pass
+STAT-0010,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,not_promoted_beyond_declared_margin=2;primary_context_limited_bounded_coupling=1;secondary_pooled_or_contextual_summary=1,not_promoted_beyond_declared_margin=2;primary_context_limited_bounded_coupling=1;secondary_pooled_or_contextual_summary=1,exact,pass
+STAT-0011,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,row_count=6,row_count=6,exact,pass
+STAT-0012,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,row_count=2,row_count=2,exact,pass
+STAT-0013,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,row_count=6,row_count=6,exact,pass
+STAT-0014,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,row_count=5,row_count=5,exact,pass
+STAT-0015,python3 scripts/run_stage7_5_heldout_validation.py,context_count=7;pass_count=4;fail_count=0;inconclusive_count=3,context_count=7;pass_count=4;fail_count=0;inconclusive_count=3,exact,pass
+STAT-0016,python3 scripts/run_stage7_5_heldout_validation.py,row_count=70,row_count=70,exact,pass
+STAT-0017,python3 scripts/run_stage7_6_methods_reproducibility.py,row_count=4,row_count=4,exact,pass
+STAT-0018,python3 scripts/run_stage7_6_methods_reproducibility.py,row_count=603,row_count=603,exact,pass
+STAT-0019,not_applicable_manual_doc_binding,"failure modes, ambiguous regimes, and claim-strength caps represented","failure modes, ambiguous regimes, and claim-strength caps represented",inspection,inspection_only_pass

@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 9.21 Cross-document consistency audit complete; statistical and quantitative language audit not started",
+    "active_stage": "Stage 9.22 Statistical and quantitative language audit complete; figure legend and caption audit not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -35,6 +35,7 @@
     "after_stage9_1_guidance_register": "Stage 9.1 cached official Nature Methods, Nature Portfolio, and Springer Nature guidance, registered Article-format constraints, and kept citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly not started.",
     "after_stage9_20_reference_audit": "Stage 9.20 registered the DOI-backed reference library, citation-claim ledger, and reference audit. It did not write figure legends, run the cross-document consistency audit, perform the live-number audit, or assemble the final submission package.",
     "after_stage9_21_cross_document_consistency": "Stage 9.21 registered the cross-document consistency audit and verified that claims, figures, statistics, source-data support, and references have no orphan or dangling keyed-ledger joins. It did not write figure legends, perform the live-number or statistical-language audit, or assemble the final submission package.",
+    "after_stage9_22_statistical_language_audit": "Stage 9.22 recomputed or inspected all nineteen statistic IDs, verified the reproducibility archive manifest count as row_count=603, resolved all six main figures to explicit STAT IDs, and confirmed that bounded-coupling language remains margin-scoped. It did not write figure legends or assemble the final submission package.",
     "after_stage9_2_methods_corpus": "Stage 9.2 registered an eight-DOI representative computational methods-paper corpus and extracted cross-paper archetype features. Stage 9.3 narrative-spine selection, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_3_narrative_spine": "Stage 9.3 selected the Nature Methods Article archetype, registered the RhoDyn narrative spine, and fixed the discovery-versus-demonstration boundary. Stage 9.4 claim freeze, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_4_claim_freeze": "Stage 9.4 froze five central RhoDyn methods-paper claims with evidence artifact links, strength caps, and explicit non-claims. Stage 9.5 paragraph claim ledger, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
@@ -46,11 +47,11 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Cross-document consistency audit completed without figure legend or statistical-language assembly",
-    "next_stage": "Stage 9.22 Statistical and quantitative language audit",
+    "current_gate": "Statistical and quantitative language audit completed without figure legend or package assembly",
+    "next_stage": "Stage 9.23 Figure legend and caption audit",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
-    "stage9_active_gate": "Stage 9.21 Cross-document consistency audit complete; statistical and quantitative language audit not started"
+    "stage9_active_gate": "Stage 9.22 Statistical and quantitative language audit complete; figure legend and caption audit not started"
   },
   "memory_notes": {
     "after_stage9_6b_panelforge_rendering": "Stage 9.6b generated a renderable PanelForge manifest and six deterministic main-figure mockups from the frozen figure-to-claim-to-artifact spine. Citation resolution, manuscript drafting, supplementary display planning, and submission-package assembly remain not started.",
@@ -470,9 +471,13 @@
         "scripts/run_stage9_20_reference_audit.py",
         "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
         "manuscript/nature_methods/gate_verdicts/9.21.json",
-        "scripts/run_stage9_21_cross_document_consistency.py"
+        "scripts/run_stage9_21_cross_document_consistency.py",
+        "manuscript/nature_methods/audits/statistical_language_audit.md",
+        "manuscript/nature_methods/audits/live_numbers_diff.csv",
+        "manuscript/nature_methods/gate_verdicts/9.22.json",
+        "scripts/run_stage9_22_statistical_language_audit.py"
       ],
-      "current_gate": "Stage 9.21 cross-document joins show no orphan claims, figures, statistics, references, or strength-cap mismatches",
+      "current_gate": "Stage 9.22 statistic traceability binds all main figures to recomputed or inspected STAT IDs",
       "gate": [
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
         "Stage 9.2 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
@@ -497,12 +502,13 @@
         "Stage 9.18 Supplementary Methods maps planned SUPP support items to frozen claims without opening table, legend, reference, or package assembly.",
         "Stage 9.19 supplementary table rows map to planned callouts, frozen claims, source artifacts, statistic IDs, and PanelForge render paths.",
         "Stage 9.20 references resolve with DOI metadata, clear or justified retraction checks, reference count under cap, and claim mappings.",
-        "Stage 9.21 cross-document joins have empty orphan claim, orphan figure, orphan statistic, and dangling-reference sets."
+        "Stage 9.21 cross-document joins have empty orphan claim, orphan figure, orphan statistic, and dangling-reference sets.",
+        "Stage 9.22 recomputed or inspected all nineteen statistic IDs and resolved main-figure STAT bindings."
       ],
       "name": "Nature Methods manuscript assembly scaffold",
-      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, and cross-document consistency audit only. Do not start figure legends, statistical-language audit, live-number audit, review response, or final submission packaging without explicit substage authorization.",
+      "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, cross-document consistency audit, and statistical-language audit only. Do not start figure legends, review response, or final submission packaging without explicit substage authorization.",
       "stage": 9,
-      "status": "stage9_21_cross_document_consistency_bound",
+      "status": "stage9_22_statistical_language_audit_bound",
       "subphases": [
         {
           "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
@@ -717,12 +723,12 @@
           "status": "complete_cross_document_consistency_bound"
         },
         {
-          "evidence": "not_started",
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.22.json",
           "gate": "every statistic recomputes within tolerance; quantitative statements have statistic IDs; equivalence claims state bounds",
           "goal": "Recompute reported numbers from frozen artifacts and diff manuscript text.",
           "id": "9.22",
           "name": "Statistical and quantitative language audit",
-          "status": "not_started"
+          "status": "complete_statistical_language_audit_bound"
         },
         {
           "evidence": "not_started",
