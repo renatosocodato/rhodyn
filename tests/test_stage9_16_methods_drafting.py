@@ -70,7 +70,7 @@ class Stage916MethodsDraftingTests(unittest.TestCase):
 
     def test_downstream_surfaces_remain_unstarted(self) -> None:
         forbidden = [
-            "figures/figure_legends.md",
+            "audits/editorial_pass_1.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]

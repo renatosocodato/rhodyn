@@ -1,0 +1,71 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.22 statistical and quantitative language gate is present and passed",
+      "name": "stage_9_22_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "main_figure_legends=6; missing=[]",
+      "name": "each_main_figure_has_legend",
+      "passed": true
+    },
+    {
+      "detail": "supplementary_figures=9; supplementary_tables=9; missing_figures=[]; missing_tables=[]",
+      "name": "each_supplementary_figure_and_table_has_caption",
+      "passed": true
+    },
+    {
+      "detail": "missing_panel_mentions=[]",
+      "name": "main_figure_panel_coverage_complete",
+      "passed": true
+    },
+    {
+      "detail": "stat_resolution_errors=[]; statistic_ids=19",
+      "name": "legend_statistics_resolve",
+      "passed": true
+    },
+    {
+      "detail": "supplementary_link_errors=[]",
+      "name": "supplementary_callouts_resolve_to_captions",
+      "passed": true
+    },
+    {
+      "detail": "unsafe_claim_hits=[]",
+      "name": "legends_do_not_assert_absent_claims",
+      "passed": true
+    },
+    {
+      "detail": "leakage_patterns=[]",
+      "name": "legend_seed_text_has_no_internal_or_panelforge_leakage",
+      "passed": true
+    },
+    {
+      "detail": "forbidden_package_paths=[]",
+      "name": "no_final_package_started",
+      "passed": true
+    }
+  ],
+  "commit": "1d7a4c63a3d63cd3387af78ba07f3c803ab8bdbe",
+  "forbidden_package_paths": [],
+  "generated_utc": "2026-07-04T11:16:47Z",
+  "leakage_hits": [],
+  "main_figure_legend_count": 6,
+  "next_substage": "9.24",
+  "outputs": [
+    "manuscript/nature_methods/figures/figure_legends.md",
+    "manuscript/nature_methods/audits/figure_legend_audit.md",
+    "manuscript/nature_methods/gate_verdicts/9.23.json"
+  ],
+  "panel_coverage_errors": [],
+  "pass": true,
+  "scope_boundary": "Figure legends and table captions only. No new analyses, model outputs, figure rendering, editorial polish, PI packet, readiness checklist, or final package assembly.",
+  "stat_resolution_errors": [],
+  "statistic_count": 19,
+  "substage": "9.23",
+  "supplementary_figure_caption_count": 9,
+  "supplementary_link_errors": [],
+  "supplementary_table_caption_count": 9,
+  "title": "Figure legend and caption audit",
+  "unsafe_claim_hits": []
+}

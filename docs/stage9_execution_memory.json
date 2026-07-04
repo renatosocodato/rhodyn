@@ -67,7 +67,10 @@
     "manuscript/nature_methods/gate_verdicts/9.21.json",
     "manuscript/nature_methods/audits/statistical_language_audit.md",
     "manuscript/nature_methods/audits/live_numbers_diff.csv",
-    "manuscript/nature_methods/gate_verdicts/9.22.json"
+    "manuscript/nature_methods/gate_verdicts/9.22.json",
+    "manuscript/nature_methods/figures/figure_legends.md",
+    "manuscript/nature_methods/audits/figure_legend_audit.md",
+    "manuscript/nature_methods/gate_verdicts/9.23.json"
   ],
   "availability_assembly_started": true,
   "citation_resolution_started": true,
@@ -1405,12 +1408,12 @@
           "passed": true
         },
         {
-          "detail": "No figure legends, figure-legend audit, PI packet, readiness checklist, or completion report detected",
+          "detail": "No PI packet, readiness checklist, or completion report detected; this statistical pass did not write or modify figure legends",
           "name": "no_figure_legend_or_package_started",
           "passed": true
         },
         {
-          "detail": "Live-number/statistical-language audit only; no new data, model outputs, figure legends, or submission package",
+          "detail": "Live-number/statistical-language audit only; no new data, model outputs, biological claims, figure-legend changes, or submission package",
           "name": "scope_boundary_preserved",
           "passed": true
         }
@@ -1436,26 +1439,100 @@
       "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.22.json",
       "pass": true,
       "remaining_blockers": [
-        "Figure legends have not started",
+        "Figure legends are handled by Stage 9.23",
         "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
       ],
       "status": "pass",
       "substage": "9.22",
       "updated_stat_ids": [],
       "validation_outcome": "Nineteen statistic IDs were recomputed or inspected; statistic traceability is bound to explicit figure-level STAT IDs"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.22 statistical and quantitative language gate is present and passed",
+          "name": "stage_9_22_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "main_figure_legends=6; missing=[]",
+          "name": "each_main_figure_has_legend",
+          "passed": true
+        },
+        {
+          "detail": "supplementary_figures=9; supplementary_tables=9; missing_figures=[]; missing_tables=[]",
+          "name": "each_supplementary_figure_and_table_has_caption",
+          "passed": true
+        },
+        {
+          "detail": "missing_panel_mentions=[]",
+          "name": "main_figure_panel_coverage_complete",
+          "passed": true
+        },
+        {
+          "detail": "stat_resolution_errors=[]; statistic_ids=19",
+          "name": "legend_statistics_resolve",
+          "passed": true
+        },
+        {
+          "detail": "supplementary_link_errors=[]",
+          "name": "supplementary_callouts_resolve_to_captions",
+          "passed": true
+        },
+        {
+          "detail": "unsafe_claim_hits=[]",
+          "name": "legends_do_not_assert_absent_claims",
+          "passed": true
+        },
+        {
+          "detail": "leakage_patterns=[]",
+          "name": "legend_seed_text_has_no_internal_or_panelforge_leakage",
+          "passed": true
+        },
+        {
+          "detail": "forbidden_package_paths=[]",
+          "name": "no_final_package_started",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.22.json",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "manuscript/nature_methods/ledgers/statistic_ledger.csv",
+        "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
+        "manuscript/nature_methods/ledgers/supplementary_callout_ledger.csv",
+        "manuscript/nature_methods/sections/results.md"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/figures/figure_legends.md",
+        "manuscript/nature_methods/audits/figure_legend_audit.md",
+        "manuscript/nature_methods/gate_verdicts/9.23.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.23.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Editorial polish pass I has not started",
+        "Reader-surface hygiene gate remains downstream",
+        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
+      ],
+      "status": "pass",
+      "substage": "9.23",
+      "validation_outcome": "Six main figure legends, nine supplementary figure legends, and nine supplementary table captions were written with clean reader-facing language"
     }
   ],
   "cross_document_consistency_started": true,
-  "current_gate": "Stage 9.22 live-number and statistical-language audit passed with explicit statistic IDs for all main figures",
-  "current_substage": "9.22",
+  "current_gate": "Stage 9.23 figure legends and captions passed coverage, statistic-resolution, and reader-surface checks",
+  "current_substage": "9.23",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
   "discussion_map_version": "discussion-map@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
+  "figure_caption_audit_started": true,
   "figure_engine_clone_started": false,
   "figure_engine_install_started": true,
+  "figure_legends_started": true,
   "figure_manifest_status": "renderable_panelforge_manifest",
   "figure_rendering_started": true,
   "figure_spine_started": true,
@@ -1463,12 +1540,12 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.22 are complete through statistical and quantitative language audit.",
-    "Stage 9.23 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No figure legends, PI review packet, or submission readiness checklist are created in this statistical traceability pass.",
-    "All nineteen statistic IDs are recomputed or inspected, and all six main figures have explicit statistic-ID bindings."
+    "Stage 9.0 through Stage 9.23 are complete through figure legend and caption audit.",
+    "Stage 9.24 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No editorial polish, PI review packet, or submission readiness checklist is created in this legend pass.",
+    "All six main figures, nine supplementary figures, and nine supplementary tables have self-contained captions."
   ],
-  "generated_utc": "2026-07-04T10:48:50Z",
+  "generated_utc": "2026-07-04T11:16:47Z",
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
   "live_number_audit_started": true,
@@ -1479,7 +1556,7 @@
   "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.23",
+  "next_substage": "9.24",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -1547,7 +1624,7 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, cross-document consistency audit, and statistical/quantitative language audit only. Do not start figure legends or final submission package without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, cross-document consistency audit, statistical/quantitative language audit, and figure legend/caption audit only. Do not start editorial polishing or final submission package without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "source_data_binding_started": true,
@@ -2217,13 +2294,60 @@
       "passed": true
     },
     {
-      "detail": "No figure legends, figure-legend audit, PI packet, readiness checklist, or completion report detected",
+      "detail": "No PI packet, readiness checklist, or completion report detected; this statistical pass did not write or modify figure legends",
       "name": "no_figure_legend_or_package_started",
       "passed": true
     },
     {
-      "detail": "Live-number/statistical-language audit only; no new data, model outputs, figure legends, or submission package",
+      "detail": "Live-number/statistical-language audit only; no new data, model outputs, biological claims, figure-legend changes, or submission package",
       "name": "scope_boundary_preserved",
+      "passed": true
+    }
+  ],
+  "stage9_23_checks": [
+    {
+      "detail": "Stage 9.22 statistical and quantitative language gate is present and passed",
+      "name": "stage_9_22_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "main_figure_legends=6; missing=[]",
+      "name": "each_main_figure_has_legend",
+      "passed": true
+    },
+    {
+      "detail": "supplementary_figures=9; supplementary_tables=9; missing_figures=[]; missing_tables=[]",
+      "name": "each_supplementary_figure_and_table_has_caption",
+      "passed": true
+    },
+    {
+      "detail": "missing_panel_mentions=[]",
+      "name": "main_figure_panel_coverage_complete",
+      "passed": true
+    },
+    {
+      "detail": "stat_resolution_errors=[]; statistic_ids=19",
+      "name": "legend_statistics_resolve",
+      "passed": true
+    },
+    {
+      "detail": "supplementary_link_errors=[]",
+      "name": "supplementary_callouts_resolve_to_captions",
+      "passed": true
+    },
+    {
+      "detail": "unsafe_claim_hits=[]",
+      "name": "legends_do_not_assert_absent_claims",
+      "passed": true
+    },
+    {
+      "detail": "leakage_patterns=[]",
+      "name": "legend_seed_text_has_no_internal_or_panelforge_leakage",
+      "passed": true
+    },
+    {
+      "detail": "forbidden_package_paths=[]",
+      "name": "no_final_package_started",
       "passed": true
     }
   ],
@@ -2503,9 +2627,9 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.22 Statistical and quantitative language audit complete; figure legend and caption audit not started",
+  "stage9_active_gate": "Stage 9.23 Figure legend and caption audit complete; editorial polish pass I not started",
   "statistical_language_audit_started": true,
-  "status": "stage9_22_statistical_language_audit_bound",
+  "status": "stage9_23_figure_legend_caption_audit_bound",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

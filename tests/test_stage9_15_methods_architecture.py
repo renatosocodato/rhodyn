@@ -79,7 +79,7 @@ class Stage915MethodsArchitectureTests(unittest.TestCase):
 
     def test_no_downstream_methods_or_submission_surfaces_started(self) -> None:
         forbidden = [
-            "figures/figure_legends.md",
+            "audits/editorial_pass_1.md",
             "submission_package/submission_readiness_checklist.md",
         ]
         for rel in forbidden:

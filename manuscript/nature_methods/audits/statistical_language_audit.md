@@ -1,11 +1,11 @@
-<!-- STATISTICAL-LANGUAGE-AUDIT stage=9.22 generated=2026-07-04T10:48:50Z commit=3bdd76225816941f5b032e45785a6e5e6a3258a2 -->
+<!-- STATISTICAL-LANGUAGE-AUDIT stage=9.22 generated=2026-07-04T11:16:47Z commit=1d7a4c63a3d63cd3387af78ba07f3c803ab8bdbe -->
 # Stage 9.22 statistical and quantitative language audit
 
-Stage 9.22 recomputes live-number bindings from the frozen Stage 7 evidence surfaces and checks whether the manuscript-facing quantitative language stays inside declared statistical bounds. This pass updates the statistic ledger where a source table has changed, binds each main figure to explicit statistic IDs, and leaves figure legends and final submission assembly for later stages.
+Stage 9.22 recomputes live-number bindings from the frozen Stage 7 evidence surfaces and checks whether the manuscript-facing quantitative language stays inside declared statistical bounds. This pass updates the statistic ledger where a source table has changed, binds each main figure to explicit statistic IDs, and does not write or modify figure legends or final submission assembly.
 
 ## Summary
 
-The live-number audit passed. Nineteen statistic IDs were recomputed or inspected against their source artifacts. No stale live numbers remained after recomputation. `STAT-0018`, the release-archive manifest file count for the reproducibility figure, currently matches `row_count=603`. This changes traceability count reporting only and does not alter a biological result, model comparison, or bounded-coupling decision.
+The live-number audit passed. Nineteen statistic IDs were recomputed or inspected against their source artifacts. No stale live numbers remained after recomputation. `STAT-0018`, the release-archive manifest file count for the reproducibility figure, currently matches `row_count=608`. This changes traceability count reporting only and does not alter a biological result, model comparison, or bounded-coupling decision.
 
 ## Gate checks
 
@@ -16,8 +16,8 @@ The live-number audit passed. Nineteen statistic IDs were recomputed or inspecte
 | quantitative_statements_have_statistic_ids | pass | figures_with_pending_stats=0; unknown_figure_stat_ids=0; unsupported_reader_surface_statements=0 |
 | equivalence_claims_state_bounds | pass | unsafe_hits=[]; methods_terms=['\\Delta', 'TOST', 'ROPE', '0.95']; results_margin_scoped=True |
 | live_numbers_diff_written | pass | diff_rows=19 |
-| no_figure_legend_or_package_started | pass | No figure legends, figure-legend audit, PI packet, readiness checklist, or completion report detected |
-| scope_boundary_preserved | pass | Live-number/statistical-language audit only; no new data, model outputs, figure legends, or submission package |
+| no_figure_legend_or_package_started | pass | No PI packet, readiness checklist, or completion report detected; this statistical pass did not write or modify figure legends |
+| scope_boundary_preserved | pass | Live-number/statistical-language audit only; no new data, model outputs, biological claims, figure-legend changes, or submission package |
 
 ## Live-number diff
 
@@ -40,7 +40,7 @@ The live-number audit passed. Nineteen statistic IDs were recomputed or inspecte
 | STAT-0015 | context_count=7;pass_count=4;fail_count=0;inconclusive_count=3 | context_count=7;pass_count=4;fail_count=0;inconclusive_count=3 | pass |
 | STAT-0016 | row_count=70 | row_count=70 | pass |
 | STAT-0017 | row_count=4 | row_count=4 | pass |
-| STAT-0018 | row_count=603 | row_count=603 | pass |
+| STAT-0018 | row_count=608 | row_count=608 | pass |
 | STAT-0019 | failure modes, ambiguous regimes, and claim-strength caps represented | failure modes, ambiguous regimes, and claim-strength caps represented | inspection_only_pass |
 
 ## Figure-level statistic bindings
@@ -66,4 +66,4 @@ Unsupported exact statistic phrases found in Results or Methods. []
 
 Updated statistic IDs. none
 
-This audit does not write figure legends, does not create the PI review packet, does not assemble the final manuscript package, and does not add new data, figures, analyses, model outputs, or biological claims. It only makes the quantitative traceability layer match the frozen evidence surfaces and confirms that statistical language remains bounded.
+This audit does not write or modify figure legends, does not create the PI review packet, does not assemble the final manuscript package, and does not add new data, figures, analyses, model outputs, or biological claims. It only makes the quantitative traceability layer match the frozen evidence surfaces and confirms that statistical language remains bounded.

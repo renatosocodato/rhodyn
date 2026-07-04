@@ -77,15 +77,15 @@ class Stage922StatisticalLanguageAuditTests(unittest.TestCase):
             "Nineteen statistic IDs were recomputed or inspected",
             "`STAT-0018`, the release-archive manifest file count",
             "bounded-coupling language remains scoped to declared margins",
-            "does not write figure legends",
+            "does not write or modify figure legends",
             "does not add new data, figures, analyses, model outputs, or biological claims",
         ]:
             self.assertIn(phrase, audit)
 
     def test_downstream_surfaces_remain_unstarted(self) -> None:
         for rel in [
-            "figures/figure_legends.md",
-            "audits/figure_legend_audit.md",
+            "audits/editorial_pass_1.md",
+            "audits/reader_surface_hygiene_report.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

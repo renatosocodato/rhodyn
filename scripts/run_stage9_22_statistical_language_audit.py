@@ -47,8 +47,6 @@ OUTPUTS = {
 }
 
 FORBIDDEN_STARTED_PATHS = [
-    WORKSPACE / "figures" / "figure_legends.md",
-    WORKSPACE / "audits" / "figure_legend_audit.md",
     WORKSPACE / "submission_package" / "pi_review_packet.md",
     WORKSPACE / "submission_package" / "submission_readiness_checklist.md",
     WORKSPACE / "stage9_completion_report.md",
@@ -308,12 +306,12 @@ def _run_analysis() -> dict[str, Any]:
         {
             "name": "no_figure_legend_or_package_started",
             "passed": not forbidden_started,
-            "detail": "No figure legends, figure-legend audit, PI packet, readiness checklist, or completion report detected",
+            "detail": "No PI packet, readiness checklist, or completion report detected; this statistical pass did not write or modify figure legends",
         },
         {
             "name": "scope_boundary_preserved",
             "passed": True,
-            "detail": "Live-number/statistical-language audit only; no new data, model outputs, figure legends, or submission package",
+            "detail": "Live-number/statistical-language audit only; no new data, model outputs, biological claims, figure-legend changes, or submission package",
         },
     ]
     return {
@@ -360,7 +358,7 @@ def _build_audit(analysis: dict[str, Any]) -> str:
     return f"""<!-- STATISTICAL-LANGUAGE-AUDIT stage=9.22 generated={analysis['generated_utc']} commit={analysis['commit']} -->
 # Stage 9.22 statistical and quantitative language audit
 
-Stage 9.22 recomputes live-number bindings from the frozen Stage 7 evidence surfaces and checks whether the manuscript-facing quantitative language stays inside declared statistical bounds. This pass updates the statistic ledger where a source table has changed, binds each main figure to explicit statistic IDs, and leaves figure legends and final submission assembly for later stages.
+Stage 9.22 recomputes live-number bindings from the frozen Stage 7 evidence surfaces and checks whether the manuscript-facing quantitative language stays inside declared statistical bounds. This pass updates the statistic ledger where a source table has changed, binds each main figure to explicit statistic IDs, and does not write or modify figure legends or final submission assembly.
 
 ## Summary
 
@@ -396,7 +394,7 @@ Unsupported exact statistic phrases found in Results or Methods. {analysis['unsu
 
 Updated statistic IDs. {updated}
 
-This audit does not write figure legends, does not create the PI review packet, does not assemble the final manuscript package, and does not add new data, figures, analyses, model outputs, or biological claims. It only makes the quantitative traceability layer match the frozen evidence surfaces and confirms that statistical language remains bounded.
+This audit does not write or modify figure legends, does not create the PI review packet, does not assemble the final manuscript package, and does not add new data, figures, analyses, model outputs, or biological claims. It only makes the quantitative traceability layer match the frozen evidence surfaces and confirms that statistical language remains bounded.
 """
 
 
@@ -428,7 +426,7 @@ def _gate_payload(analysis: dict[str, Any]) -> dict[str, Any]:
             "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
             "manuscript/nature_methods/gate_verdicts/9.22.json",
         ],
-        "scope_boundary": "Statistical and quantitative traceability audit only. No figure legends, new data, new model outputs, biological claim changes, PI packet, readiness checklist, or final submission-package assembly.",
+        "scope_boundary": "Statistical and quantitative traceability audit only. No figure-legend changes, new data, new model outputs, biological claim changes, PI packet, readiness checklist, or final submission-package assembly.",
         "next_substage": "9.23",
     }
 
@@ -510,7 +508,7 @@ def _upsert_completed_substage(memory: dict[str, Any], checks: list[dict[str, An
         ],
         "updated_stat_ids": updated_stat_ids,
         "remaining_blockers": [
-            "Figure legends have not started",
+            "Figure legends are handled by Stage 9.23",
             "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder",
         ],
         "checks": checks,
@@ -544,7 +542,7 @@ def _update_memory(generated_utc: str, checks: list[dict[str, Any]], updated_sta
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
         "Stage 9.0 through Stage 9.22 are complete through statistical and quantitative language audit.",
         "Stage 9.23 through Stage 9.29 plus Stage 9.25b remain not started.",
-        "No figure legends, PI review packet, or submission readiness checklist are created in this statistical traceability pass.",
+        "No figure legends are written or modified, and no PI review packet or submission readiness checklist is created in this statistical traceability pass.",
         "All nineteen statistic IDs are recomputed or inspected, and all six main figures have explicit statistic-ID bindings.",
     ]
     memory["scope_rule"] = (

@@ -63,8 +63,8 @@ class Stage921CrossDocumentConsistencyTests(unittest.TestCase):
 
     def test_downstream_surfaces_remain_unstarted(self) -> None:
         for rel in [
-            "figures/figure_legends.md",
-            "audits/figure_legend_audit.md",
+            "audits/editorial_pass_1.md",
+            "audits/reader_surface_hygiene_report.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

@@ -255,6 +255,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_20_reference_audit.py",
     "scripts/run_stage9_21_cross_document_consistency.py",
     "scripts/run_stage9_22_statistical_language_audit.py",
+    "scripts/run_stage9_23_figure_legend_audit.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -279,6 +280,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_20_reference_audit.py",
     "tests/test_stage9_21_cross_document_consistency.py",
     "tests/test_stage9_22_statistical_language_audit.py",
+    "tests/test_stage9_23_figure_legend_audit.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -313,6 +315,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.20.json",
     "manuscript/nature_methods/gate_verdicts/9.21.json",
     "manuscript/nature_methods/gate_verdicts/9.22.json",
+    "manuscript/nature_methods/gate_verdicts/9.23.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
@@ -335,6 +338,8 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
     "manuscript/nature_methods/audits/statistical_language_audit.md",
     "manuscript/nature_methods/audits/live_numbers_diff.csv",
+    "manuscript/nature_methods/audits/figure_legend_audit.md",
+    "manuscript/nature_methods/figures/figure_legends.md",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -509,8 +514,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.22 Statistical and quantitative language audit complete; figure legend and caption audit not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.22 statistical-language boundary as active")
+        if current.get("active_stage") != "Stage 9.23 Figure legend and caption audit complete; editorial polish pass I not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.23 figure-legend boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -524,8 +529,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_22_statistical_language_audit_bound":
-            failures.append("roadmap execution memory does not mark Stage 9.22 statistical-language audit as registered")
+        if stages.get(9, {}).get("status") != "stage9_23_figure_legend_caption_audit_bound":
+            failures.append("roadmap execution memory does not mark Stage 9.23 figure-legend audit as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -550,8 +555,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.22 statistic traceability binds all main figures to recomputed or inspected STAT IDs":
-                failures.append("Stage 9 current gate must record the Stage 9.22 statistical-language state")
+            if stage9.get("current_gate") != "Stage 9.23 legends and captions cover every planned display item and retain statistic-bound interpretation limits":
+                failures.append("Stage 9 current gate must record the Stage 9.23 figure-legend state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -587,6 +592,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9 must serialize the 9.20 reference-library substage")
             if "9.21" not in substage_ids:
                 failures.append("Stage 9 must serialize the 9.21 cross-document consistency substage")
+            if "9.22" not in substage_ids:
+                failures.append("Stage 9 must serialize the 9.22 statistical-language audit substage")
+            if "9.23" not in substage_ids:
+                failures.append("Stage 9 must serialize the 9.23 figure-legend substage")
             substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
             if substage_status.get("9.0") != "complete_evidence_locked":
                 failures.append("Stage 9.0 must be marked complete_evidence_locked")
@@ -636,6 +645,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.21 must be marked complete_cross_document_consistency_bound")
             if substage_status.get("9.22") != "complete_statistical_language_audit_bound":
                 failures.append("Stage 9.22 must be marked complete_statistical_language_audit_bound")
+            if substage_status.get("9.23") != "complete_figure_legend_caption_audit_bound":
+                failures.append("Stage 9.23 must be marked complete_figure_legend_caption_audit_bound")
         stage9_20_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.20.json"
         if stage9_20_gate_path.exists():
             try:
@@ -744,6 +755,101 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.22 statistic ledger must align STAT-0018 to the archive manifest row count")
         if figure_ledger.exists() and "pending_stage9.22" in figure_ledger.read_text(encoding="utf-8"):
             failures.append("Stage 9.22 figure ledger must not retain pending_stage9.22")
+        stage9_23_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.23.json"
+        if stage9_23_gate_path.exists():
+            try:
+                stage9_23_gate = json.loads(stage9_23_gate_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"Stage 9.23 gate is not valid JSON: {exc}")
+                stage9_23_gate = {}
+            if stage9_23_gate.get("pass") is not True:
+                failures.append("Stage 9.23 figure-legend gate must pass")
+            if stage9_23_gate.get("substage") != "9.23":
+                failures.append("Stage 9.23 figure-legend gate must remain bound to substage 9.23")
+            if stage9_23_gate.get("next_substage") != "9.24":
+                failures.append("Stage 9.23 figure-legend gate must point to Stage 9.24")
+            expected_923_counts = {
+                "main_figure_legend_count": 6,
+                "supplementary_figure_caption_count": 9,
+                "supplementary_table_caption_count": 9,
+                "statistic_count": 19,
+            }
+            for field, expected in expected_923_counts.items():
+                if stage9_23_gate.get(field) != expected:
+                    failures.append(f"Stage 9.23 figure-legend gate must record {field}={expected}")
+            for field in [
+                "panel_coverage_errors",
+                "stat_resolution_errors",
+                "supplementary_link_errors",
+                "leakage_hits",
+                "unsafe_claim_hits",
+                "forbidden_package_paths",
+            ]:
+                if stage9_23_gate.get(field) not in ([], None):
+                    failures.append(f"Stage 9.23 figure-legend gate must have empty {field}")
+            expected_923_checks = {
+                "stage_9_22_gate_passed",
+                "each_main_figure_has_legend",
+                "each_supplementary_figure_and_table_has_caption",
+                "main_figure_panel_coverage_complete",
+                "legend_statistics_resolve",
+                "supplementary_callouts_resolve_to_captions",
+                "legends_do_not_assert_absent_claims",
+                "legend_seed_text_has_no_internal_or_panelforge_leakage",
+                "no_final_package_started",
+            }
+            actual_923_checks = {
+                item.get("name")
+                for item in stage9_23_gate.get("checks", [])
+                if isinstance(item, dict) and item.get("passed") is True
+            }
+            if actual_923_checks != expected_923_checks:
+                failures.append(f"Stage 9.23 checks do not match expected checks: {sorted(actual_923_checks)}")
+        else:
+            failures.append("missing Stage 9.23 figure-legend gate")
+        figure_legends = root / "manuscript" / "nature_methods" / "figures" / "figure_legends.md"
+        figure_legend_audit = root / "manuscript" / "nature_methods" / "audits" / "figure_legend_audit.md"
+        for output_path in [figure_legends, figure_legend_audit]:
+            if not output_path.exists():
+                failures.append(f"missing Stage 9.23 output: {output_path.relative_to(root)}")
+        if figure_legends.exists():
+            legend_text = figure_legends.read_text(encoding="utf-8")
+            for phrase in [
+                "Figure legends and table captions",
+                "Figure 1 | RhoDyn defines residence-state inference as an executable method object.",
+                "Figure 6 | Software parity and archive reproduction make RhoDyn decisions inspectable.",
+                "Supplementary Fig. 9 | Interpretation boundaries and non-example cases.",
+                "Supplementary Table 9 | Failure modes, ambiguous regimes, claim-strength caps, and wording boundaries",
+            ]:
+                if phrase not in legend_text:
+                    failures.append(f"Stage 9.23 figure legends missing phrase: {phrase}")
+            leakage_pattern = re.compile(
+                r"\b(?:FIG|SFIG|STBL|SUPP|STAT|ART|CLM|PARA|MTH)-\d{3,}\b|"
+                r"PanelForge|panelforge|Stage 9|stage9|manifest|ledger|audit|provenance|"
+                r"render_path|source_paths|/" + r"Users/|/" + r"Volumes/"
+            )
+            if leakage_pattern.search(legend_text):
+                failures.append("Stage 9.23 figure legends must not expose internal IDs, paths, or engine provenance")
+            for unsafe in [
+                "no crosstalk",
+                "absence of all pathway communication",
+                "literal molecular edge",
+                "direct live metabolic reserve assay",
+                "universal coupling rule",
+                "PyPI publication",
+            ]:
+                if unsafe.lower() in legend_text.lower():
+                    failures.append(f"Stage 9.23 figure legends contain unsafe claim wording: {unsafe}")
+        if figure_legend_audit.exists():
+            audit_text = figure_legend_audit.read_text(encoding="utf-8")
+            for phrase in [
+                "The figure legend and caption audit passed",
+                "Six main figure legends, nine supplementary figure legends, and nine supplementary table captions were written",
+                "every figure and table statistic binding resolves",
+                "does not assemble the full manuscript",
+            ]:
+                if phrase not in audit_text:
+                    failures.append(f"Stage 9.23 figure-legend audit missing phrase: {phrase}")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

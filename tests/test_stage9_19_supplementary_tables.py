@@ -93,7 +93,7 @@ class Stage919SupplementaryTablesTests(unittest.TestCase):
 
     def test_downstream_reference_legend_and_package_surfaces_are_absent(self) -> None:
         for rel in [
-            "figures/figure_legends.md",
+            "audits/editorial_pass_1.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

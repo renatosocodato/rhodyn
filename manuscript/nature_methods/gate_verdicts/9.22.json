@@ -26,17 +26,17 @@
       "passed": true
     },
     {
-      "detail": "No figure legends, figure-legend audit, PI packet, readiness checklist, or completion report detected",
+      "detail": "No PI packet, readiness checklist, or completion report detected; this statistical pass did not write or modify figure legends",
       "name": "no_figure_legend_or_package_started",
       "passed": true
     },
     {
-      "detail": "Live-number/statistical-language audit only; no new data, model outputs, figure legends, or submission package",
+      "detail": "Live-number/statistical-language audit only; no new data, model outputs, biological claims, figure-legend changes, or submission package",
       "name": "scope_boundary_preserved",
       "passed": true
     }
   ],
-  "commit": "3bdd76225816941f5b032e45785a6e5e6a3258a2",
+  "commit": "1d7a4c63a3d63cd3387af78ba07f3c803ab8bdbe",
   "equivalence_language": {
     "passed": true,
     "required_methods_terms_present": [
@@ -59,7 +59,7 @@
   },
   "figure_stat_id_map_complete": true,
   "forbidden_started_paths": [],
-  "generated_utc": "2026-07-04T10:48:50Z",
+  "generated_utc": "2026-07-04T11:16:47Z",
   "inspection_only_count": 5,
   "live_number_row_count": 19,
   "next_substage": "9.23",
@@ -71,7 +71,7 @@
     "manuscript/nature_methods/gate_verdicts/9.22.json"
   ],
   "pass": true,
-  "scope_boundary": "Statistical and quantitative traceability audit only. No figure legends, new data, new model outputs, biological claim changes, PI packet, readiness checklist, or final submission-package assembly.",
+  "scope_boundary": "Statistical and quantitative traceability audit only. No figure-legend changes, new data, new model outputs, biological claim changes, PI packet, readiness checklist, or final submission-package assembly.",
   "statistic_count": 19,
   "substage": "9.22",
   "title": "Statistical and quantitative language audit",

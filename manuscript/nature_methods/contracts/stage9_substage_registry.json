@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.22",
-  "next_substage": "9.23",
+  "last_completed_substage": "9.23",
+  "next_substage": "9.24",
   "patch_ledger": [
     {
       "id": "P1",
@@ -481,7 +481,7 @@
         "manuscript/nature_methods/figures/figure_legends.md",
         "manuscript/nature_methods/audits/figure_legend_audit.md"
       ],
-      "status": "not_started",
+      "status": "complete_figure_legend_caption_audit_bound",
       "title": "Figure legend and caption audit"
     },
     {

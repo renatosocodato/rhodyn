@@ -62,6 +62,7 @@ STAGE9_19_RUNNER_PATH = ROOT / "scripts" / "run_stage9_19_supplementary_tables.p
 STAGE9_20_RUNNER_PATH = ROOT / "scripts" / "run_stage9_20_reference_audit.py"
 STAGE9_21_RUNNER_PATH = ROOT / "scripts" / "run_stage9_21_cross_document_consistency.py"
 STAGE9_22_RUNNER_PATH = ROOT / "scripts" / "run_stage9_22_statistical_language_audit.py"
+STAGE9_23_RUNNER_PATH = ROOT / "scripts" / "run_stage9_23_figure_legend_audit.py"
 STAGE9_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.-1.json"
 STAGE9_0_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.0.json"
 STAGE9_1_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.1.json"
@@ -87,6 +88,7 @@ STAGE9_19_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" /
 STAGE9_20_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.20.json"
 STAGE9_21_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.21.json"
 STAGE9_22_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.22.json"
+STAGE9_23_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.23.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -147,6 +149,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_20_runner_path = root / STAGE9_20_RUNNER_PATH.relative_to(ROOT)
     stage9_21_runner_path = root / STAGE9_21_RUNNER_PATH.relative_to(ROOT)
     stage9_22_runner_path = root / STAGE9_22_RUNNER_PATH.relative_to(ROOT)
+    stage9_23_runner_path = root / STAGE9_23_RUNNER_PATH.relative_to(ROOT)
     stage9_gate_path = root / STAGE9_GATE_PATH.relative_to(ROOT)
     stage9_0_gate_path = root / STAGE9_0_GATE_PATH.relative_to(ROOT)
     stage9_1_gate_path = root / STAGE9_1_GATE_PATH.relative_to(ROOT)
@@ -172,6 +175,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_20_gate_path = root / STAGE9_20_GATE_PATH.relative_to(ROOT)
     stage9_21_gate_path = root / STAGE9_21_GATE_PATH.relative_to(ROOT)
     stage9_22_gate_path = root / STAGE9_22_GATE_PATH.relative_to(ROOT)
+    stage9_23_gate_path = root / STAGE9_23_GATE_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -192,8 +196,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 9.22 Statistical and quantitative language audit complete; figure legend and caption audit not started":
-        failures.append("active stage must record the Stage 9.22 statistical-language boundary")
+    if current.get("active_stage") != "Stage 9.23 Figure legend and caption audit complete; editorial polish pass I not started":
+        failures.append("active stage must record the Stage 9.23 figure-legend boundary")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -203,7 +207,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         6: "public_citable_v0.1.0",
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
-        9: "stage9_22_statistical_language_audit_bound",
+        9: "stage9_23_figure_legend_caption_audit_bound",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -297,8 +301,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.21 must be complete_cross_document_consistency_bound")
     if stage9_status.get("9.22") != "complete_statistical_language_audit_bound":
         failures.append("Stage 9.22 must be complete_statistical_language_audit_bound")
+    if stage9_status.get("9.23") != "complete_figure_legend_caption_audit_bound":
+        failures.append("Stage 9.23 must be complete_figure_legend_caption_audit_bound")
     for entry in stage9_substages:
-        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22"} and entry.get("status") != "not_started":
+        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "9.23"} and entry.get("status") != "not_started":
             failures.append(f"Stage {entry.get('id')} must remain not_started")
 
     roadmap_flat = " ".join(roadmap.split())
@@ -353,7 +359,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 9.20 Reference library and citation audit has been completed",
         "Stage 9.21 Cross-document consistency audit has been completed",
         "Stage 9.22 Statistical and quantitative language audit has been completed",
-        "Stage 9.23 Figure legend and caption audit remains the next unstarted manuscript step",
+        "Stage 9.23 Figure legend and caption audit has been completed",
+        "Stage 9.24 Editorial polish pass I remains the next unstarted manuscript step",
         "Stage 9. Nature Methods manuscript assembly",
         "PanelForge",
     ]
@@ -416,8 +423,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
 
     stage9_docs = [
-        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "PanelForge", "evidence lock", "Results drafting", "Introduction literature binding", "Discussion drafting", "Methods architecture", "Methods prose", "data availability", "code availability", "Supplementary Methods", "supplementary table/source-data binding", "reference library", "Cross-document consistency", "statistical"]),
-        (stage9_memory_path, "Stage 9 execution memory", ["stage9_22_statistical_language_audit_bound", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "figure_engine_clone_started", "reference_library_started", "cross_document_consistency_started", "statistical_language_audit_started"]),
+        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "9.23", "PanelForge", "evidence lock", "Results drafting", "Introduction literature binding", "Discussion drafting", "Methods architecture", "Methods prose", "data availability", "code availability", "Supplementary Methods", "supplementary table/source-data binding", "reference library", "Cross-document consistency", "statistical", "figure legends"]),
+        (stage9_memory_path, "Stage 9 execution memory", ["stage9_23_figure_legend_caption_audit_bound", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "9.23", "figure_engine_clone_started", "reference_library_started", "cross_document_consistency_started", "statistical_language_audit_started", "figure_legends_started"]),
         (stage9_checker_path, "Stage 9 scaffold checker", ["FORBIDDEN_DRAFTS", "FORBIDDEN_RENDER_SUFFIXES", "check_stage9_scaffold", "scaffold_only_boundary_preserved"]),
         (stage9_0_runner_path, "Stage 9.0 evidence intake runner", ["stage9_evidence_manifest.csv", "stage9_evidence_lock.md", "No drafting", "PanelForge execution"]),
         (stage9_1_runner_path, "Stage 9.1 venue guidance runner", ["nature_methods_guidance_register.md", "venue_policy_constraints.md", "No representative corpus", "No manuscript sections"]),
@@ -443,6 +450,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         (stage9_20_runner_path, "Stage 9.20 reference-library runner", ["references.bib", "citation_claim_ledger.csv", "reference_audit.md", "reference_count", "retraction"]),
         (stage9_21_runner_path, "Stage 9.21 cross-document consistency runner", ["cross_document_consistency_audit.md", "orphan_claim_set_empty", "orphan_statistic_set_empty", "version_and_strength_coherence_hold", "Stage 9.22"]),
         (stage9_22_runner_path, "Stage 9.22 statistical language runner", ["statistical_language_audit.md", "live_numbers_diff.csv", "STAT-0018", "equivalence_claims_state_bounds", "Stage 9.23"]),
+        (stage9_23_runner_path, "Stage 9.23 figure legend runner", ["figure_legends.md", "figure_legend_audit.md", "main_figure_panel_coverage_complete", "legend_statistics_resolve", "Stage 9.24"]),
     ]
     for path, label, phrases in stage9_docs:
         if not path.exists():
@@ -894,6 +902,63 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         if figure_ledger_path.exists() and "pending_stage9.22" in figure_ledger_path.read_text(encoding="utf-8"):
             failures.append("Stage 9.22 figure ledger must not retain pending_stage9.22")
 
+    if not stage9_23_gate_path.exists():
+        failures.append("missing manuscript/nature_methods/gate_verdicts/9.23.json")
+    else:
+        stage9_23_gate = json.loads(stage9_23_gate_path.read_text(encoding="utf-8"))
+        if stage9_23_gate.get("pass") is not True:
+            failures.append("Stage 9.23 figure-legend gate must pass")
+        if stage9_23_gate.get("substage") != "9.23":
+            failures.append("Stage 9.23 figure-legend gate must remain bound to substage 9.23")
+        if stage9_23_gate.get("next_substage") != "9.24":
+            failures.append("Stage 9.23 figure-legend gate must point to Stage 9.24")
+        expected_923_counts = {
+            "main_figure_legend_count": 6,
+            "supplementary_figure_caption_count": 9,
+            "supplementary_table_caption_count": 9,
+            "statistic_count": 19,
+        }
+        for field, expected in expected_923_counts.items():
+            if stage9_23_gate.get(field) != expected:
+                failures.append(f"Stage 9.23 figure-legend gate must record {field}={expected}")
+        for field in [
+            "panel_coverage_errors",
+            "stat_resolution_errors",
+            "supplementary_link_errors",
+            "leakage_hits",
+            "unsafe_claim_hits",
+            "forbidden_package_paths",
+        ]:
+            if stage9_23_gate.get(field) not in ([], None):
+                failures.append(f"Stage 9.23 figure-legend gate must have empty {field}")
+        figure_legends_path = root / "manuscript" / "nature_methods" / "figures" / "figure_legends.md"
+        figure_legend_audit_path = root / "manuscript" / "nature_methods" / "audits" / "figure_legend_audit.md"
+        for output_path in [figure_legends_path, figure_legend_audit_path]:
+            if not output_path.exists():
+                failures.append(f"missing Stage 9.23 output: {output_path.relative_to(root)}")
+        if figure_legends_path.exists():
+            legend_text = figure_legends_path.read_text(encoding="utf-8")
+            for phrase in [
+                "Figure 1 | RhoDyn defines residence-state inference as an executable method object.",
+                "Figure 4 | Endpoint analyses expose bounded coupling, reserve-like buffering, and routed-output alternatives.",
+                "Supplementary Fig. 9 | Interpretation boundaries and non-example cases.",
+                "Supplementary Table 9 | Failure modes, ambiguous regimes, claim-strength caps, and wording boundaries",
+            ]:
+                if phrase not in legend_text:
+                    failures.append(f"Stage 9.23 figure legends missing phrase: {phrase}")
+            leakage_pattern = "FIG-|SFIG-|STBL-|SUPP-|STAT-|ART-|CLM-|PARA-|PanelForge|panelforge|render_path|source_paths|/" + "Users/|/" + "Volumes/"
+            if any(token in legend_text for token in leakage_pattern.split("|")):
+                failures.append("Stage 9.23 figure legends must not expose internal IDs, paths, or engine provenance")
+        if figure_legend_audit_path.exists():
+            audit_text = figure_legend_audit_path.read_text(encoding="utf-8")
+            for phrase in [
+                "The figure legend and caption audit passed",
+                "every figure and table statistic binding resolves",
+                "does not assemble the full manuscript",
+            ]:
+                if phrase not in audit_text:
+                    failures.append(f"Stage 9.23 figure-legend audit missing phrase: {phrase}")
+
     stage7_doc_specs = [
         (stage7_source_register_path, "source register", ["Official and community guidance sources", "Representative methods papers", "Candidate dataset classes", "RhoA/microglia reference case"]),
         (stage7_baseline_inventory_path, "baseline inventory", ["Endpoint value", "Peak amplitude", "Generic trajectory features", "Domain-standard method"]),
@@ -1312,7 +1377,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
         warnings.append("Stage 7.8 methods manuscript readiness package is complete; Stage 8 remains conceptual")
-    warnings.append("Stage 9.22 statistical and quantitative language audit is registered; figure legends, full manuscript assembly, and final package assembly have not started")
+    warnings.append("Stage 9.23 figure legend and caption audit is registered; editorial polish, full manuscript assembly, and final package assembly have not started")
 
     return {
         "status": "pass" if not failures else "fail",
