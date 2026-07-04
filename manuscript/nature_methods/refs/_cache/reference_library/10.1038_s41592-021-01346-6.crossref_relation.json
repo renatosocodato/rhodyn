@@ -1,0 +1,21 @@
+{
+  "doi": "10.1038/s41592-021-01346-6",
+  "relation": {
+    "has-preprint": [
+      {
+        "asserted-by": "object",
+        "id": "10.21203/rs.3.rs-94819/v1",
+        "id-type": "doi"
+      },
+      {
+        "asserted-by": "object",
+        "id": "10.1101/2020.10.19.345983",
+        "id-type": "doi"
+      }
+    ]
+  },
+  "relation_keys": [
+    "has-preprint"
+  ],
+  "status": "clear"
+}

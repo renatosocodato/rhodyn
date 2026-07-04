@@ -103,6 +103,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/gate_verdicts/9.17.json",
     "manuscript/nature_methods/gate_verdicts/9.18.json",
     "manuscript/nature_methods/gate_verdicts/9.19.json",
+    "manuscript/nature_methods/gate_verdicts/9.20.json",
     "manuscript/nature_methods/ledgers/.gitkeep",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
@@ -132,6 +133,9 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/sections/code_availability.md",
     "manuscript/nature_methods/refs/.gitkeep",
     "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
+    "manuscript/nature_methods/refs/references.bib",
+    "manuscript/nature_methods/refs/citation_claim_ledger.csv",
+    "manuscript/nature_methods/refs/_cache/reference_library/",
     "manuscript/nature_methods/refs/_cache/.gitkeep",
     "manuscript/nature_methods/refs/_cache/nature_initial_submission.meta.json",
     "manuscript/nature_methods/refs/_cache/nature_initial_submission.txt",
@@ -155,6 +159,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "manuscript/nature_methods/audits/methods_paper_archetype_analysis.md",
     "manuscript/nature_methods/audits/venue_fit_rationale.md",
     "manuscript/nature_methods/audits/panelforge_render_report.md",
+    "manuscript/nature_methods/audits/reference_audit.md",
     "manuscript/nature_methods/stage9_narrative_spine.md",
     "manuscript/nature_methods/ledgers/claim_hierarchy.md",
     "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
@@ -187,6 +192,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "scripts/run_stage9_17_availability_assembly.py",
     "scripts/run_stage9_18_supplementary_methods.py",
     "scripts/run_stage9_19_supplementary_tables.py",
+    "scripts/run_stage9_20_reference_audit.py",
     "scripts/scaffold_stage9_manuscript_assembly.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -213,7 +219,7 @@ ALLOWED_STAGE9_PREFIXES = {
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
 }
 FORBIDDEN_STAGE9_DRAFT_FILES = {
-    "manuscript/nature_methods/refs/references.bib",
+    "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
 }
 
 
@@ -474,8 +480,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     memory = _read_json(ROOT / "docs" / "roadmap_execution_memory.json", failures)
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     stage9 = stages.get(9, {})
-    if stage9.get("status") != "stage9_19_supplementary_tables_bound":
-        failures.append("roadmap execution memory must record Stage 9 as stage9_19_supplementary_tables_bound")
+    if stage9.get("status") != "stage9_20_reference_library_bound":
+        failures.append("roadmap execution memory must record Stage 9 as stage9_20_reference_library_bound")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 execution memory must record 33 serialized substages")
     substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -507,6 +513,8 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         failures.append("Stage 9 execution memory must include the 9.18 Supplementary Methods substage")
     if "9.19" not in substage_ids:
         failures.append("Stage 9 execution memory must include the 9.19 supplementary table/source-data substage")
+    if "9.20" not in substage_ids:
+        failures.append("Stage 9 execution memory must include the 9.20 reference-library substage")
     substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if substage_status.get("9.6") != "complete_figure_spine_registered":
         failures.append("Stage 9.6 must be marked complete_figure_spine_registered")
@@ -538,11 +546,13 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         failures.append("Stage 9.18 must be marked complete_supplementary_methods_drafted")
     if substage_status.get("9.19") != "complete_supplementary_tables_bound":
         failures.append("Stage 9.19 must be marked complete_supplementary_tables_bound")
+    if substage_status.get("9.20") != "complete_reference_library_bound":
+        failures.append("Stage 9.20 must be marked complete_reference_library_bound")
     if stages.get(8, {}).get("status") != "conceptual_only":
         failures.append("Stage 8 must remain conceptual after Stage 7.7/7.8 hardening")
     current = memory.get("current_position", {}) if isinstance(memory.get("current_position", {}), dict) else {}
-    if current.get("active_stage") != "Stage 9.19 Supplementary tables/source-data binding complete; reference library and citation audit not started":
-        failures.append("roadmap active stage must record the Stage 9.19 supplementary table/source-data boundary")
+    if current.get("active_stage") != "Stage 9.20 Reference library and citation audit complete; cross-document consistency audit not started":
+        failures.append("roadmap active stage must record the Stage 9.20 reference-library boundary")
     return {
         "authorized_phase9_scaffold_files": len(stage9_files) - len(unauthorized),
         "unauthorized_phase9_files": len(unauthorized),
@@ -630,7 +640,7 @@ def audit_stage7_7_8_recursive_hardening(root: Path = ROOT) -> dict[str, object]
         "warnings": warnings,
         "interpretation_boundary": (
             "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. "
-            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, Stage 9.0 evidence lock, venue and corpus registration, narrative spine, claim freeze, paragraph planning, Stage 9.6 main figure-spine planning, Stage 9.6b deterministic main-figure mockup rendering, Stage 9.7 supplementary display planning, Stage 9.8 section-contract registration, Stage 9.9 title/abstract strategy, Stage 9.10 Results architecture, Stage 9.11 Results drafting, Stage 9.12 Introduction literature binding, Stage 9.13 Discussion interpretation mapping, Stage 9.14 Discussion drafting, Stage 9.15 Methods architecture, Stage 9.16 Methods drafting, Stage 9.17 availability assembly, Stage 9.18 Supplementary Methods, and Stage 9.19 supplementary table/source-data binding, with no figure legends, full reference-library assembly, cross-document consistency audit, full manuscript assembly, or submission packaging started."
+            "It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, Stage 9.0 evidence lock, venue and corpus registration, narrative spine, claim freeze, paragraph planning, Stage 9.6 main figure-spine planning, Stage 9.6b deterministic main-figure mockup rendering, Stage 9.7 supplementary display planning, Stage 9.8 section-contract registration, Stage 9.9 title/abstract strategy, Stage 9.10 Results architecture, Stage 9.11 Results drafting, Stage 9.12 Introduction literature binding, Stage 9.13 Discussion interpretation mapping, Stage 9.14 Discussion drafting, Stage 9.15 Methods architecture, Stage 9.16 Methods drafting, Stage 9.17 availability assembly, Stage 9.18 Supplementary Methods, Stage 9.19 supplementary table/source-data binding, and Stage 9.20 reference-library/citation audit, with no figure legends, cross-document consistency audit, full manuscript assembly, or submission packaging started."
         ),
     }
     return report

@@ -1,6 +1,6 @@
 # Stage 7.6 methods-program reproducibility card
 
-Generated UTC. 2026-07-04T09:23:46.719192Z
+Generated UTC. 2026-07-04T09:47:07.395494Z
 
 Overall status. pass
 
@@ -69,9 +69,9 @@ Stage 7.6 hardens the methods-paper evidence set. It checks whether the Stage 7.
 
 Manifest status. pass
 
-Files inspected. 562
+Files inspected. 594
 
-Text files inspected. 490
+Text files inspected. 521
 
 Raw/private-like files. 0
 
@@ -81,7 +81,7 @@ Selected deterministic outputs present. 30
 
 Source-distribution status. pass
 
-Source-distribution members inspected. 562
+Source-distribution members inspected. 594
 
 ## Interpretation boundary
 

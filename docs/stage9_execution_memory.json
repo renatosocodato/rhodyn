@@ -58,10 +58,14 @@
     "manuscript/nature_methods/supplementary/supplementary_tables_plan.md",
     "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
     "manuscript/nature_methods/ledgers/statistic_ledger.csv",
-    "manuscript/nature_methods/gate_verdicts/9.19.json"
+    "manuscript/nature_methods/gate_verdicts/9.19.json",
+    "manuscript/nature_methods/refs/references.bib",
+    "manuscript/nature_methods/refs/citation_claim_ledger.csv",
+    "manuscript/nature_methods/audits/reference_audit.md",
+    "manuscript/nature_methods/gate_verdicts/9.20.json"
   ],
   "availability_assembly_started": true,
-  "citation_resolution_started": false,
+  "citation_resolution_started": true,
   "claim_freeze_started": true,
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
   "completed_substages": [
@@ -1223,10 +1227,86 @@
       "substage": "9.19",
       "supplementary_tables_version": "supplementary-table-binding@2026-07-04@6800b50097a6232a994440c2dbdfa1cb40083b68",
       "validation_outcome": "Supplementary table support objects are bound to callouts, source artifacts, statistics, and rendered figure surfaces"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.19 supplementary table/source-data binding exists and passes",
+          "name": "stage_9_19_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "reference_count=13; cap=50; ref_ids=REF-0001;REF-0002;REF-0003;REF-0004;REF-0005;REF-0006;REF-0007;REF-0008;REF-0009;REF-0010;REF-0011;REF-0012;REF-0013",
+          "name": "reference_set_complete_and_under_cap",
+          "passed": true
+        },
+        {
+          "detail": "All references have DOI-form identifiers and resolved DOI metadata",
+          "name": "references_resolve_with_doi",
+          "passed": true
+        },
+        {
+          "detail": "Crossref relation checks are clear for papers; Zenodo dataset/software records are marked not applicable",
+          "name": "retraction_checks_clear_or_justified",
+          "passed": true
+        },
+        {
+          "detail": "All citation rows resolve to frozen CLM IDs and paragraph routes; Stage 9.12 Introduction refs are included",
+          "name": "references_map_to_claims_and_paragraphs",
+          "passed": true
+        },
+        {
+          "detail": "Public datasets, RhoDyn software DOI, and PanelForge software DOI are present",
+          "name": "software_and_dataset_records_included",
+          "passed": true
+        },
+        {
+          "detail": "BibTeX library contains exactly the expected REF keys",
+          "name": "bibtex_contains_one_entry_per_reference",
+          "passed": true
+        },
+        {
+          "detail": "No figure legends, cross-document consistency audit, PI packet, or readiness checklist detected",
+          "name": "no_legend_consistency_or_package_started",
+          "passed": true
+        },
+        {
+          "detail": "Reference audit preserves citation-support scope without new biological claims",
+          "name": "scope_boundary_preserved",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.19.json",
+        "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
+        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+        "manuscript/nature_methods/sections/data_availability.md",
+        "manuscript/nature_methods/sections/code_availability.md"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/refs/references.bib",
+        "manuscript/nature_methods/refs/citation_claim_ledger.csv",
+        "manuscript/nature_methods/audits/reference_audit.md",
+        "manuscript/nature_methods/refs/_cache/reference_library/",
+        "manuscript/nature_methods/gate_verdicts/9.20.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.20.json",
+      "pass": true,
+      "reference_version": "reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
+      "remaining_blockers": [
+        "Cross-document consistency audit has not started",
+        "Live-number and statistical-language audit has not started",
+        "Figure legends have not started",
+        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
+      ],
+      "status": "pass",
+      "substage": "9.20",
+      "validation_outcome": "Reference library and citation-claim ledger resolve DOI-backed sources to manuscript claims"
     }
   ],
-  "current_gate": "Stage 9.19 bound supplementary tables to source data, statistic IDs, and rendered figures",
-  "current_substage": "9.19",
+  "current_gate": "Stage 9.20 resolved DOI-backed references and citation-to-claim bindings",
+  "current_substage": "9.20",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
@@ -1242,12 +1322,12 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.19 are complete through supplementary table and source-data binding.",
-    "Stage 9.20 through Stage 9.29 plus Stage 9.25b remain not started.",
-    "No full reference library, figure legends, PI review packet, or submission readiness checklist are created in this supplementary table pass.",
-    "Supplementary table rows map to planned SUPP callout routes, frozen CLM identifiers, source ART records, STAT rows, and Stage 9.6b PanelForge render paths."
+    "Stage 9.0 through Stage 9.20 are complete through reference-library and citation-claim audit.",
+    "Stage 9.21 through Stage 9.29 plus Stage 9.25b remain not started.",
+    "No figure legends, cross-document consistency audit, PI review packet, or submission readiness checklist are created in this reference pass.",
+    "Every reference has a DOI-form identifier, claim mapping, paragraph route, and clear or justified retraction-check state."
   ],
-  "generated_utc": "2026-07-04T09:09:49.317163Z",
+  "generated_utc": "2026-07-04T09:33:26.476578Z",
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
   "manuscript_drafting_started": false,
@@ -1257,7 +1337,7 @@
   "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.20",
+  "next_substage": "9.21",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -1316,6 +1396,7 @@
       "venue": "Nature Methods"
     }
   },
+  "reference_library_started": true,
   "report_format": "rhodyn.stage9_execution_memory.v1",
   "reporting_summary_placeholder_started": true,
   "representative_methods_corpus_started": true,
@@ -1324,7 +1405,7 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, and supplementary table/source-data binding only. Do not start the full reference library, figure legends, cross-document audit, or final submission package without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, and reference-library/citation audit only. Do not start figure legends, cross-document audit, live-number audit, or final submission package without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "source_data_binding_started": true,
@@ -1878,6 +1959,53 @@
       "passed": true
     }
   ],
+  "stage9_20_checks": [
+    {
+      "detail": "Stage 9.19 supplementary table/source-data binding exists and passes",
+      "name": "stage_9_19_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "reference_count=13; cap=50; ref_ids=REF-0001;REF-0002;REF-0003;REF-0004;REF-0005;REF-0006;REF-0007;REF-0008;REF-0009;REF-0010;REF-0011;REF-0012;REF-0013",
+      "name": "reference_set_complete_and_under_cap",
+      "passed": true
+    },
+    {
+      "detail": "All references have DOI-form identifiers and resolved DOI metadata",
+      "name": "references_resolve_with_doi",
+      "passed": true
+    },
+    {
+      "detail": "Crossref relation checks are clear for papers; Zenodo dataset/software records are marked not applicable",
+      "name": "retraction_checks_clear_or_justified",
+      "passed": true
+    },
+    {
+      "detail": "All citation rows resolve to frozen CLM IDs and paragraph routes; Stage 9.12 Introduction refs are included",
+      "name": "references_map_to_claims_and_paragraphs",
+      "passed": true
+    },
+    {
+      "detail": "Public datasets, RhoDyn software DOI, and PanelForge software DOI are present",
+      "name": "software_and_dataset_records_included",
+      "passed": true
+    },
+    {
+      "detail": "BibTeX library contains exactly the expected REF keys",
+      "name": "bibtex_contains_one_entry_per_reference",
+      "passed": true
+    },
+    {
+      "detail": "No figure legends, cross-document consistency audit, PI packet, or readiness checklist detected",
+      "name": "no_legend_consistency_or_package_started",
+      "passed": true
+    },
+    {
+      "detail": "Reference audit preserves citation-support scope without new biological claims",
+      "name": "scope_boundary_preserved",
+      "passed": true
+    }
+  ],
   "stage9_2_checks": [
     {
       "detail": "Stage 9.1 venue guidance exists and passes",
@@ -2154,8 +2282,8 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.19 Supplementary tables/source-data binding complete; reference library and citation audit not started",
-  "status": "stage9_19_supplementary_tables_bound",
+  "stage9_active_gate": "Stage 9.20 Reference library and citation audit complete; cross-document consistency audit not started",
+  "status": "stage9_20_reference_library_bound",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

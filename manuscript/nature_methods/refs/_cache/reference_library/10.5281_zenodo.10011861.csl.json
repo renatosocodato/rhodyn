@@ -1,0 +1,46 @@
+{
+  "DOI": "10.5281/ZENODO.10011861",
+  "URL": "https://zenodo.org/doi/10.5281/zenodo.10011861",
+  "abstract": "Code: https://github.com/srijitseal/BioMorph_Space\n\nCell Painting assays generate morphological profiles that are versatile descriptors of biological systems and have been used to predict in vitro and in vivo drug effects. However, Cell Painting features are based on image statistics, and are, therefore, often not readily biologically interpretable. In this study, we introduce an approach that maps specific Cell Painting features into the BioMorph space using readouts from comprehensive Cell Health assays. We validated that the resulting BioMorph space effectively connected compounds not only with the morphological features associated with their bioactivity but with deeper insights into phenotypic characteristics and cellular processes associated with the given bioactivity. The BioMorph space revealed the mechanism of action for individual compounds, including dual-acting compounds such as emetine, an inhibitor of both protein synthesis and DNA replication. In summary, BioMorph space offers a more biologically relevant way to interpret cell morphological features from the Cell Painting assays and to generate hypotheses for experimental validation.\n\n\n\u00a0\n\n\nThe following datasets are released:\n\u00a0\n\n\nCell_Health_median_357_profiles_70_labels.csv :\nThe Cell Heath dataset for CRISPR perturbations.\u00a0Contains\u00a0median consensus signatures for the 357 consensus profiles (119 CRISPR perturbations \u00d7 3 cell lines) Ref: Way et al.\n\n\nCell_Painitng_CRISPR_Perturbations_357_profiles_827_features_scaled.csv:\nThe Cell Painting dataset for CRISPR perturbations.\u00a0Contains 827 morphology features (and metadata annotation) for 357 consensus profiles (119 CRISPR perturbations \u00d7 3 cell lines).\u00a0Ref: Way et al.\n\n\nCell_Painting_data_658_compounds_827_Features_scaled.csv\nThe Cell Painting dataset for compound perturbations.\u00a0Contains 658 structurally unique compounds with 827 Cell Painting features. Ref: Bray et al\n\n\nEndpoints_9_Mitotox_biological_activities_658_compounds.csv\nThe biological assay activity labels\u00a0for compound perturbations.\u00a0Contains 658 structurally unique compounds with\u00a09 biological activity consensus hit calls.\u00a0Ref: ToxCast/MoleculeNet\n\n\nBioMoprh_pvalue_658_compunds_398_BioMorph_terms.csv:\nThe dataset of standardised BioMorph term p-values. Contains\u00a0398 BioMorph terms for the 658 compounds in the biological activity dataset.\u00a0\n\nReferences:\u00a0\nWay et al. Predicting cell health phenotypes using image-based morphology profiling. Mol Biol Cell. 2021;32(9):995-1005.\nBray et al. A dataset of images and morphological profiles of 30 000 small-molecule treatments using the Cell Painting assay. Gigascience. 2017;6(12):1-5.\u00a0\nMoleculeNet: Wu\u00a0et al. MoleculeNet: A benchmark for molecular machine learning. Chem Sci. 2018;9(2):513-530.\u00a0\nToxCast:\u00a0Exploring ToxCast Data | US EPA https://www.epa.gov/chemical-research/exploring-toxcast-data (accessed Jul 9, 2023).",
+  "author": [
+    {
+      "family": "Srijit Seal"
+    },
+    {
+      "family": "Jordi Carreras-Puigvert"
+    },
+    {
+      "family": "Anne E Carpenter"
+    },
+    {
+      "family": "Ola Spjuth"
+    },
+    {
+      "family": "Andreas Bender"
+    }
+  ],
+  "categories": [
+    "Cell Painting",
+    "Cell Health",
+    "BioMorph",
+    "Toxicity Prediction",
+    "Cell Morphology",
+    "Interpretability",
+    "Image-based profiling",
+    "Machine Learning"
+  ],
+  "copyright": "Creative Commons Attribution 4.0 International",
+  "id": "https://doi.org/10.5281/zenodo.10011861",
+  "issued": {
+    "date-parts": [
+      [
+        2024,
+        1,
+        3
+      ]
+    ]
+  },
+  "publisher": "Zenodo",
+  "title": "From Pixels to Phenotypes: Integrating Image-Based Profiling with Cell Health Data Improves Interpretability",
+  "type": "dataset"
+}

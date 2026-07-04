@@ -1,0 +1,29 @@
+{
+  "DOI": "10.5281/ZENODO.5836623",
+  "URL": "https://zenodo.org/record/5836623",
+  "abstract": "Source data and scripts to reproduce the figures that are part of the publication \"Single cell imaging of ERK and Akt activation dynamics and heterogeneity induced by G protein-coupled receptors\". Journal of Cell Science (2022) 135, jcs259685, DOI: 10.1242/jcs.259685 An earlier version of this work is published as a preprint: \"Heterogeneity and dynamics of ERK and Akt activation by G protein-coupled receptors depend on the activated heterotrimeric G proteins\", DOI: 10.1101/2021.07.27.453948",
+  "author": [
+    {
+      "family": "Chavez-Abiega",
+      "given": "Sergei"
+    },
+    {
+      "family": "Goedhart",
+      "given": "Joachim"
+    }
+  ],
+  "copyright": "Creative Commons Attribution 4.0 International",
+  "id": "https://doi.org/10.5281/zenodo.5836623",
+  "issued": {
+    "date-parts": [
+      [
+        2022,
+        1,
+        11
+      ]
+    ]
+  },
+  "publisher": "Zenodo",
+  "title": "Single cell imaging of ERK and Akt activation dynamics and heterogeneity induced by G protein-coupled receptors - Scripts &amp; Source data",
+  "type": "dataset"
+}

@@ -31,7 +31,8 @@
         "methods",
         "review",
         "venue",
-        "dataset"
+        "dataset",
+        "software"
       ],
       "type": "string"
     }

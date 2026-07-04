@@ -251,6 +251,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_17_availability_assembly.py",
     "scripts/run_stage9_18_supplementary_methods.py",
     "scripts/run_stage9_19_supplementary_tables.py",
+    "scripts/run_stage9_20_reference_audit.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -303,6 +304,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.17.json",
     "manuscript/nature_methods/gate_verdicts/9.18.json",
     "manuscript/nature_methods/gate_verdicts/9.19.json",
+    "manuscript/nature_methods/gate_verdicts/9.20.json",
     "manuscript/nature_methods/sections/results_blueprint.md",
     "manuscript/nature_methods/sections/results.md",
     "manuscript/nature_methods/sections/introduction.md",
@@ -319,6 +321,9 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/ledgers/reproducibility_command_index.md",
     "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
     "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
+    "manuscript/nature_methods/refs/references.bib",
+    "manuscript/nature_methods/refs/citation_claim_ledger.csv",
+    "manuscript/nature_methods/audits/reference_audit.md",
     "manuscript/nature_methods/ledgers/stage9_evidence_manifest.csv",
     "manuscript/nature_methods/ledgers/stage9_evidence_lock.md",
     "manuscript/nature_methods/ledgers/stage7_output_contract.md",
@@ -493,8 +498,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.19 Supplementary tables/source-data binding complete; reference library and citation audit not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.19 supplementary table/source-data boundary as active")
+        if current.get("active_stage") != "Stage 9.20 Reference library and citation audit complete; cross-document consistency audit not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.20 reference-library boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -508,8 +513,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_19_supplementary_tables_bound":
-            failures.append("roadmap execution memory does not mark Stage 9.19 supplementary tables as registered")
+        if stages.get(9, {}).get("status") != "stage9_20_reference_library_bound":
+            failures.append("roadmap execution memory does not mark Stage 9.20 reference library as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -534,8 +539,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.19 bound supplementary tables to source data, statistic IDs, and rendered figures":
-                failures.append("Stage 9 current gate must record the Stage 9.19 supplementary table/source-data state")
+            if stage9.get("current_gate") != "Stage 9.20 resolved DOI-backed references and citation-to-claim bindings":
+                failures.append("Stage 9 current gate must record the Stage 9.20 reference-library state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -567,6 +572,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9 must serialize the 9.18 Supplementary Methods substage")
             if "9.19" not in substage_ids:
                 failures.append("Stage 9 must serialize the 9.19 supplementary table/source-data substage")
+            if "9.20" not in substage_ids:
+                failures.append("Stage 9 must serialize the 9.20 reference-library substage")
             substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
             if substage_status.get("9.0") != "complete_evidence_locked":
                 failures.append("Stage 9.0 must be marked complete_evidence_locked")
@@ -610,6 +617,31 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.18 must be marked complete_supplementary_methods_drafted")
             if substage_status.get("9.19") != "complete_supplementary_tables_bound":
                 failures.append("Stage 9.19 must be marked complete_supplementary_tables_bound")
+            if substage_status.get("9.20") != "complete_reference_library_bound":
+                failures.append("Stage 9.20 must be marked complete_reference_library_bound")
+        stage9_20_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.20.json"
+        if stage9_20_gate_path.exists():
+            try:
+                stage9_20_gate = json.loads(stage9_20_gate_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"Stage 9.20 gate is not valid JSON: {exc}")
+                stage9_20_gate = {}
+            if stage9_20_gate.get("pass") is not True:
+                failures.append("Stage 9.20 reference-library gate must pass")
+            if stage9_20_gate.get("next_substage") != "9.21":
+                failures.append("Stage 9.20 reference-library gate must point to Stage 9.21")
+            if stage9_20_gate.get("reference_count") != 13:
+                failures.append("Stage 9.20 reference-library gate must record thirteen references")
+            if stage9_20_gate.get("reference_cap") != 50:
+                failures.append("Stage 9.20 reference-library gate must preserve the 50-reference cap")
+        bib_text = (root / "manuscript" / "nature_methods" / "refs" / "references.bib").read_text(encoding="utf-8") if (root / "manuscript" / "nature_methods" / "refs" / "references.bib").exists() else ""
+        citation_ledger_text = (root / "manuscript" / "nature_methods" / "refs" / "citation_claim_ledger.csv").read_text(encoding="utf-8") if (root / "manuscript" / "nature_methods" / "refs" / "citation_claim_ledger.csv").exists() else ""
+        for doi in ["10.5281/zenodo.21036616", "10.5281/zenodo.20811171", "10.1038/s41587-019-0071-9"]:
+            if doi not in bib_text:
+                failures.append(f"Stage 9.20 BibTeX is missing DOI {doi}")
+        for source_type in ["methods", "dataset", "software"]:
+            if source_type not in citation_ledger_text:
+                failures.append(f"Stage 9.20 citation ledger is missing source type {source_type}")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

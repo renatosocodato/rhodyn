@@ -58,6 +58,7 @@ STAGE9_16_RUNNER_PATH = ROOT / "scripts" / "run_stage9_16_methods_drafting.py"
 STAGE9_17_RUNNER_PATH = ROOT / "scripts" / "run_stage9_17_availability_assembly.py"
 STAGE9_18_RUNNER_PATH = ROOT / "scripts" / "run_stage9_18_supplementary_methods.py"
 STAGE9_19_RUNNER_PATH = ROOT / "scripts" / "run_stage9_19_supplementary_tables.py"
+STAGE9_20_RUNNER_PATH = ROOT / "scripts" / "run_stage9_20_reference_audit.py"
 STAGE9_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.-1.json"
 STAGE9_0_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.0.json"
 STAGE9_1_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.1.json"
@@ -80,6 +81,7 @@ STAGE9_16_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" /
 STAGE9_17_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.17.json"
 STAGE9_18_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.18.json"
 STAGE9_19_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.19.json"
+STAGE9_20_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.20.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -137,6 +139,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_17_runner_path = root / STAGE9_17_RUNNER_PATH.relative_to(ROOT)
     stage9_18_runner_path = root / STAGE9_18_RUNNER_PATH.relative_to(ROOT)
     stage9_19_runner_path = root / STAGE9_19_RUNNER_PATH.relative_to(ROOT)
+    stage9_20_runner_path = root / STAGE9_20_RUNNER_PATH.relative_to(ROOT)
     stage9_gate_path = root / STAGE9_GATE_PATH.relative_to(ROOT)
     stage9_0_gate_path = root / STAGE9_0_GATE_PATH.relative_to(ROOT)
     stage9_1_gate_path = root / STAGE9_1_GATE_PATH.relative_to(ROOT)
@@ -159,6 +162,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_17_gate_path = root / STAGE9_17_GATE_PATH.relative_to(ROOT)
     stage9_18_gate_path = root / STAGE9_18_GATE_PATH.relative_to(ROOT)
     stage9_19_gate_path = root / STAGE9_19_GATE_PATH.relative_to(ROOT)
+    stage9_20_gate_path = root / STAGE9_20_GATE_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -179,8 +183,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 9.19 Supplementary tables/source-data binding complete; reference library and citation audit not started":
-        failures.append("active stage must record the Stage 9.19 supplementary table/source-data boundary")
+    if current.get("active_stage") != "Stage 9.20 Reference library and citation audit complete; cross-document consistency audit not started":
+        failures.append("active stage must record the Stage 9.20 reference-library boundary")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -190,7 +194,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         6: "public_citable_v0.1.0",
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
-        9: "stage9_19_supplementary_tables_bound",
+        9: "stage9_20_reference_library_bound",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -278,8 +282,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.18 must be complete_supplementary_methods_drafted")
     if stage9_status.get("9.19") != "complete_supplementary_tables_bound":
         failures.append("Stage 9.19 must be complete_supplementary_tables_bound")
+    if stage9_status.get("9.20") != "complete_reference_library_bound":
+        failures.append("Stage 9.20 must be complete_reference_library_bound")
     for entry in stage9_substages:
-        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19"} and entry.get("status") != "not_started":
+        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20"} and entry.get("status") != "not_started":
             failures.append(f"Stage {entry.get('id')} must remain not_started")
 
     roadmap_flat = " ".join(roadmap.split())
@@ -331,7 +337,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 9.17 software, data, and code availability assembly has been completed",
         "Stage 9.18 Supplementary Methods drafting has been completed",
         "Stage 9.19 Supplementary tables and source-data binding has been completed",
-        "Stage 9.20 Reference library and citation audit remains the next unstarted manuscript step",
+        "Stage 9.20 Reference library and citation audit has been completed",
+        "Stage 9.21 Cross-document consistency audit remains the next unstarted manuscript step",
         "Stage 9. Nature Methods manuscript assembly",
         "PanelForge",
     ]
@@ -394,8 +401,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
 
     stage9_docs = [
-        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "PanelForge", "evidence lock", "Results drafting", "Introduction literature binding", "Discussion drafting", "Methods architecture", "Methods prose", "data availability", "code availability", "Supplementary Methods", "supplementary table/source-data binding"]),
-        (stage9_memory_path, "Stage 9 execution memory", ["stage9_19_supplementary_tables_bound", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "figure_engine_clone_started"]),
+        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "PanelForge", "evidence lock", "Results drafting", "Introduction literature binding", "Discussion drafting", "Methods architecture", "Methods prose", "data availability", "code availability", "Supplementary Methods", "supplementary table/source-data binding", "reference library"]),
+        (stage9_memory_path, "Stage 9 execution memory", ["stage9_20_reference_library_bound", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "figure_engine_clone_started", "reference_library_started"]),
         (stage9_checker_path, "Stage 9 scaffold checker", ["FORBIDDEN_DRAFTS", "FORBIDDEN_RENDER_SUFFIXES", "check_stage9_scaffold", "scaffold_only_boundary_preserved"]),
         (stage9_0_runner_path, "Stage 9.0 evidence intake runner", ["stage9_evidence_manifest.csv", "stage9_evidence_lock.md", "No drafting", "PanelForge execution"]),
         (stage9_1_runner_path, "Stage 9.1 venue guidance runner", ["nature_methods_guidance_register.md", "venue_policy_constraints.md", "No representative corpus", "No manuscript sections"]),
@@ -418,6 +425,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         (stage9_17_runner_path, "Stage 9.17 availability assembly runner", ["data_availability.md", "code_availability.md", "reproducibility_command_index.md", "Reporting Summary", "PanelForge"]),
         (stage9_18_runner_path, "Stage 9.18 Supplementary Methods runner", ["supplementary_methods.md", "SUPP-001", "No supplementary tables", "claim_ids_limited_to_claim_freeze"]),
         (stage9_19_runner_path, "Stage 9.19 supplementary table runner", ["supplementary_tables_plan.md", "source_data_binding_ledger.csv", "statistic_ledger.csv", "STAT-0001", "figure-source mapping"]),
+        (stage9_20_runner_path, "Stage 9.20 reference-library runner", ["references.bib", "citation_claim_ledger.csv", "reference_audit.md", "reference_count", "retraction"]),
     ]
     for path, label, phrases in stage9_docs:
         if not path.exists():
@@ -699,6 +707,55 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.19 supplementary table gate must cover STAT-0001 through STAT-0019")
         if set(stage9_19_gate.get("linked_figures", [])) != {f"FIG-{idx:03d}" for idx in range(1, 7)}:
             failures.append("Stage 9.19 supplementary table gate must bind all six main figures")
+    if not stage9_20_gate_path.exists():
+        failures.append("missing manuscript/nature_methods/gate_verdicts/9.20.json")
+    else:
+        stage9_20_gate = json.loads(stage9_20_gate_path.read_text(encoding="utf-8"))
+        if stage9_20_gate.get("pass") is not True:
+            failures.append("Stage 9.20 reference-library gate must pass")
+        if stage9_20_gate.get("substage") != "9.20":
+            failures.append("Stage 9.20 reference-library gate must remain bound to substage 9.20")
+        if stage9_20_gate.get("next_substage") != "9.21":
+            failures.append("Stage 9.20 reference-library gate must point to Stage 9.21")
+        if stage9_20_gate.get("reference_count") != 13:
+            failures.append("Stage 9.20 reference-library gate must record thirteen references")
+        if stage9_20_gate.get("reference_cap") != 50:
+            failures.append("Stage 9.20 reference-library gate must preserve the Nature Methods 50-reference cap")
+        if set(stage9_20_gate.get("ref_ids", [])) != {f"REF-{idx:04d}" for idx in range(1, 14)}:
+            failures.append("Stage 9.20 reference-library gate must cover REF-0001 through REF-0013")
+        stage9_20_checks = {
+            item.get("name"): item.get("passed")
+            for item in stage9_20_gate.get("checks", [])
+            if isinstance(item, dict)
+        }
+        for check_name in ["references_resolve_with_doi", "retraction_checks_clear_or_justified"]:
+            if stage9_20_checks.get(check_name) is not True:
+                failures.append(f"Stage 9.20 reference-library gate check must pass: {check_name}")
+        bib_path = root / "manuscript" / "nature_methods" / "refs" / "references.bib"
+        citation_ledger_path = root / "manuscript" / "nature_methods" / "refs" / "citation_claim_ledger.csv"
+        reference_audit_path = root / "manuscript" / "nature_methods" / "audits" / "reference_audit.md"
+        for output_path in [bib_path, citation_ledger_path, reference_audit_path]:
+            if not output_path.exists():
+                failures.append(f"missing Stage 9.20 output: {output_path.relative_to(root)}")
+        if bib_path.exists():
+            bib_text = bib_path.read_text(encoding="utf-8")
+            for doi in [
+                "10.1038/s41587-019-0071-9",
+                "10.5281/zenodo.21036616",
+                "10.5281/zenodo.20811171",
+            ]:
+                if doi not in bib_text:
+                    failures.append(f"Stage 9.20 BibTeX is missing DOI {doi}")
+        if citation_ledger_path.exists():
+            ledger_text = citation_ledger_path.read_text(encoding="utf-8")
+            for phrase in ["source_type", "software", "dataset", "methods", "REF-0013"]:
+                if phrase not in ledger_text:
+                    failures.append(f"Stage 9.20 citation ledger missing phrase: {phrase}")
+        if reference_audit_path.exists():
+            audit_text = reference_audit_path.read_text(encoding="utf-8")
+            for phrase in ["Reference count", "DOI-resolved references", "Retraction-check clear or not applicable"]:
+                if phrase not in audit_text:
+                    failures.append(f"Stage 9.20 reference audit missing phrase: {phrase}")
 
     stage7_doc_specs = [
         (stage7_source_register_path, "source register", ["Official and community guidance sources", "Representative methods papers", "Candidate dataset classes", "RhoA/microglia reference case"]),
@@ -1118,7 +1175,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
         warnings.append("Stage 7.8 methods manuscript readiness package is complete; Stage 8 remains conceptual")
-    warnings.append("Stage 9.19 supplementary table/source-data binding is registered; full reference-library assembly, figure legends, cross-document consistency audit, and final package assembly have not started")
+    warnings.append("Stage 9.20 reference library and citation audit is registered; cross-document consistency audit, figure legends, full manuscript assembly, and final package assembly have not started")
 
     return {
         "status": "pass" if not failures else "fail",

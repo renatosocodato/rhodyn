@@ -58,6 +58,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_17_availability_assembly.py",
     "scripts/run_stage9_18_supplementary_methods.py",
     "scripts/run_stage9_19_supplementary_tables.py",
+    "scripts/run_stage9_20_reference_audit.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -113,9 +114,8 @@ ID_PREFIXES = [
 ]
 
 FORBIDDEN_DRAFTS = [
-    "refs/references.bib",
-    "refs/citation_claim_ledger.csv",
     "figures/figure_legends.md",
+    "audits/cross_document_consistency_audit.md",
     "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
@@ -222,10 +222,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.19 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.20 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -249,6 +249,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_17_started = "9.17.json" in gate_files
     stage9_18_started = "9.18.json" in gate_files
     stage9_19_started = "9.19.json" in gate_files
+    stage9_20_started = "9.20.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -261,6 +262,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if flag == "evidence_intake_started" and stage9_0_started:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record evidence_intake_started=true after 9.0")
+            continue
+        if flag == "citation_resolution_started" and stage9_20_started:
+            if memory.get(flag) is not True:
+                failures.append("Stage 9 execution memory must record citation_resolution_started=true after 9.20")
             continue
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
@@ -275,7 +280,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_19_supplementary_tables_bound"
+        "stage9_20_reference_library_bound"
+        if stage9_20_started
+        else "stage9_19_supplementary_tables_bound"
         if stage9_19_started
         else "stage9_18_supplementary_methods_drafted"
         if stage9_18_started
@@ -333,6 +340,8 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         for flag in ["supplementary_tables_started", "source_data_binding_started"]:
             if memory.get(flag) is not True:
                 failures.append(f"Stage 9 execution memory must record {flag}=true after 9.19")
+    if stage9_20_started and memory.get("reference_library_started") is not True:
+        failures.append("Stage 9 execution memory must record reference_library_started=true after 9.20")
 
     if stage9_0_started:
         stage9_0_gate = _read_json(workspace / "gate_verdicts" / "9.0.json", failures)
@@ -1140,6 +1149,88 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain supplementary table binding before 9.19: {rel}")
+
+    if stage9_20_started:
+        stage9_20_gate = _read_json(workspace / "gate_verdicts" / "9.20.json", failures)
+        references_path = workspace / "refs" / "references.bib"
+        citation_ledger_path = workspace / "refs" / "citation_claim_ledger.csv"
+        reference_audit_path = workspace / "audits" / "reference_audit.md"
+        if stage9_20_gate.get("pass") is not True or stage9_20_gate.get("substage") != "9.20":
+            failures.append("Stage 9.20 gate verdict must pass when present")
+        if stage9_20_gate.get("next_substage") != "9.21":
+            failures.append("Stage 9.20 gate must point to Stage 9.21")
+        if stage9_20_gate.get("reference_count") != 13:
+            failures.append("Stage 9.20 must register thirteen references")
+        if stage9_20_gate.get("reference_cap") != 50:
+            failures.append("Stage 9.20 must retain the Nature Methods reference cap")
+        expected_refs = {f"REF-{idx:04d}" for idx in range(1, 14)}
+        if set(stage9_20_gate.get("ref_ids", [])) != expected_refs:
+            failures.append("Stage 9.20 must cover REF-0001 through REF-0013")
+        for path, label in [
+            (references_path, "refs/references.bib"),
+            (citation_ledger_path, "refs/citation_claim_ledger.csv"),
+            (reference_audit_path, "audits/reference_audit.md"),
+        ]:
+            if not path.exists():
+                failures.append(f"Stage 9.20 output missing: {label}")
+        if references_path.exists():
+            references_body = references_path.read_text(encoding="utf-8")
+            for ref_id in sorted(expected_refs):
+                if f"{{{ref_id}," not in references_body:
+                    failures.append(f"Stage 9.20 references.bib missing entry for {ref_id}")
+            for phrase in [
+                "10.1038/s41587-019-0071-9",
+                "10.5281/zenodo.14907827",
+                "10.5281/zenodo.21036616",
+                "10.5281/zenodo.20811171",
+            ]:
+                if phrase not in references_body:
+                    failures.append(f"Stage 9.20 references.bib missing DOI: {phrase}")
+        if citation_ledger_path.exists():
+            with citation_ledger_path.open(newline="", encoding="utf-8") as handle:
+                citation_rows = list(csv.DictReader(handle))
+            if len(citation_rows) != 13:
+                failures.append("Stage 9.20 citation-claim ledger must contain thirteen rows")
+            if {row.get("ref_id", "") for row in citation_rows} != expected_refs:
+                failures.append("Stage 9.20 citation-claim ledger must cover REF-0001 through REF-0013")
+            source_types = {row.get("source_type", "") for row in citation_rows}
+            if not {"methods", "dataset", "software"} <= source_types:
+                failures.append("Stage 9.20 citation-claim ledger must include methods, dataset, and software source types")
+            for row in citation_rows:
+                for field in ["claim_id", "doi_or_pmid", "resolved", "access_date", "source_type", "paragraph_ids", "support_role", "retraction_check"]:
+                    if not row.get(field):
+                        failures.append(f"Stage 9.20 citation row {row.get('ref_id')} missing {field}")
+                if row.get("resolved") != "true":
+                    failures.append(f"Stage 9.20 citation row {row.get('ref_id')} is not resolved")
+                if not row.get("doi_or_pmid", "").startswith("10."):
+                    failures.append(f"Stage 9.20 citation row {row.get('ref_id')} lacks DOI-form identifier")
+                if row.get("retraction_check") not in {"clear", "not_applicable_zenodo_record"}:
+                    failures.append(f"Stage 9.20 citation row {row.get('ref_id')} has unresolved retraction status")
+        if reference_audit_path.exists():
+            audit_body = reference_audit_path.read_text(encoding="utf-8")
+            for phrase in [
+                "Reference count. 13 of 50",
+                "DOI-resolved references. 13 of 13",
+                "Retraction-check clear or not applicable. 13 of 13",
+                "Source-type counts. dataset=3; methods=8; software=2",
+                "does not add a new biological demonstration",
+                "does not replace the later cross-document consistency audit",
+            ]:
+                if phrase not in audit_body:
+                    failures.append(f"Stage 9.20 reference audit missing phrase: {phrase}")
+        cache_dir = workspace / "refs" / "_cache" / "reference_library"
+        cache_files = sorted(cache_dir.glob("*.json")) if cache_dir.exists() else []
+        if len(cache_files) < 13:
+            failures.append("Stage 9.20 must cache DOI metadata and relation checks for reference-library entries")
+    else:
+        for rel in [
+            "refs/references.bib",
+            "refs/citation_claim_ledger.csv",
+            "audits/reference_audit.md",
+            "refs/_cache/reference_library",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain reference-library output before 9.20: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

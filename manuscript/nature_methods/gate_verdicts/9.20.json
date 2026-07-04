@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.19 supplementary table/source-data binding exists and passes",
+      "name": "stage_9_19_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "reference_count=13; cap=50; ref_ids=REF-0001;REF-0002;REF-0003;REF-0004;REF-0005;REF-0006;REF-0007;REF-0008;REF-0009;REF-0010;REF-0011;REF-0012;REF-0013",
+      "name": "reference_set_complete_and_under_cap",
+      "passed": true
+    },
+    {
+      "detail": "All references have DOI-form identifiers and resolved DOI metadata",
+      "name": "references_resolve_with_doi",
+      "passed": true
+    },
+    {
+      "detail": "Crossref relation checks are clear for papers; Zenodo dataset/software records are marked not applicable",
+      "name": "retraction_checks_clear_or_justified",
+      "passed": true
+    },
+    {
+      "detail": "All citation rows resolve to frozen CLM IDs and paragraph routes; Stage 9.12 Introduction refs are included",
+      "name": "references_map_to_claims_and_paragraphs",
+      "passed": true
+    },
+    {
+      "detail": "Public datasets, RhoDyn software DOI, and PanelForge software DOI are present",
+      "name": "software_and_dataset_records_included",
+      "passed": true
+    },
+    {
+      "detail": "BibTeX library contains exactly the expected REF keys",
+      "name": "bibtex_contains_one_entry_per_reference",
+      "passed": true
+    },
+    {
+      "detail": "No figure legends, cross-document consistency audit, PI packet, or readiness checklist detected",
+      "name": "no_legend_consistency_or_package_started",
+      "passed": true
+    },
+    {
+      "detail": "Reference audit preserves citation-support scope without new biological claims",
+      "name": "scope_boundary_preserved",
+      "passed": true
+    }
+  ],
+  "next_substage": "9.21",
+  "outputs": [
+    "manuscript/nature_methods/refs/references.bib",
+    "manuscript/nature_methods/refs/citation_claim_ledger.csv",
+    "manuscript/nature_methods/audits/reference_audit.md",
+    "manuscript/nature_methods/gate_verdicts/9.20.json"
+  ],
+  "pass": true,
+  "ref_ids": [
+    "REF-0001",
+    "REF-0002",
+    "REF-0003",
+    "REF-0004",
+    "REF-0005",
+    "REF-0006",
+    "REF-0007",
+    "REF-0008",
+    "REF-0009",
+    "REF-0010",
+    "REF-0011",
+    "REF-0012",
+    "REF-0013"
+  ],
+  "reference_cap": 50,
+  "reference_count": 13,
+  "reference_version": "reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
+  "scope_boundary": "Reference library and citation audit only. No figure legends, cross-document consistency audit, live-number audit, PI packet, readiness checklist, or final submission-package assembly.",
+  "substage": "9.20",
+  "timestamp": "2026-07-04T09:33:26.476578Z"
+}

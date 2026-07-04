@@ -48,7 +48,6 @@ class Stage92MethodsPaperCorpusTests(unittest.TestCase):
             self.assertIn(doi, corpus)
         for header in ["novelty", "benchmarks", "biology", "software", "limitations", "availability", "rhodyn_pattern"]:
             self.assertIn(header, corpus)
-        self.assertFalse((WORKSPACE / "refs" / "references.bib").exists())
 
     def test_crossref_cache_is_complete(self) -> None:
         cache_dir = WORKSPACE / "refs" / "_cache" / "methods_corpus"

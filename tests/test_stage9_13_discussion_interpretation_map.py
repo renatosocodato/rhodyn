@@ -51,7 +51,6 @@ class Stage913DiscussionInterpretationMapTests(unittest.TestCase):
 
     def test_map_does_not_start_downstream_surfaces(self) -> None:
         for rel in [
-            "refs/references.bib",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

@@ -1,0 +1,29 @@
+{
+  "doi": "10.1038/s41587-019-0071-9",
+  "relation": {
+    "has-preprint": [
+      {
+        "asserted-by": "object",
+        "id": "10.1101/276907",
+        "id-type": "doi"
+      }
+    ],
+    "has-review": [
+      {
+        "asserted-by": "object",
+        "id": "10.3410/f.735426885.793559368",
+        "id-type": "doi"
+      },
+      {
+        "asserted-by": "object",
+        "id": "10.3410/f.735426885.793558521",
+        "id-type": "doi"
+      }
+    ]
+  },
+  "relation_keys": [
+    "has-preprint",
+    "has-review"
+  ],
+  "status": "clear"
+}

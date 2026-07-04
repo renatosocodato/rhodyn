@@ -69,7 +69,6 @@ class Stage914DiscussionDraftingTests(unittest.TestCase):
 
     def test_no_methods_reference_library_or_package_started(self) -> None:
         for rel in [
-            "refs/references.bib",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

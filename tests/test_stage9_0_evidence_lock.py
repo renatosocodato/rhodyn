@@ -70,7 +70,6 @@ class Stage90EvidenceLockTests(unittest.TestCase):
 
     def test_downstream_surfaces_remain_unstarted(self) -> None:
         forbidden = [
-            WORKSPACE / "refs" / "references.bib",
             WORKSPACE / "submission_package" / "pi_review_packet.md",
             ROOT / ".venv-panelforge",
             ROOT / "tools" / "panelforge-figures" / ".git",

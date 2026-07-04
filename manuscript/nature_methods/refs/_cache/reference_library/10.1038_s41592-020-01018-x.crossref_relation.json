@@ -1,0 +1,24 @@
+{
+  "doi": "10.1038/s41592-020-01018-x",
+  "relation": {
+    "has-preprint": [
+      {
+        "asserted-by": "object",
+        "id": "10.1101/2020.02.02.931238",
+        "id-type": "doi"
+      }
+    ],
+    "has-review": [
+      {
+        "asserted-by": "object",
+        "id": "10.3410/f.739206616.793584985",
+        "id-type": "doi"
+      }
+    ]
+  },
+  "relation_keys": [
+    "has-preprint",
+    "has-review"
+  ],
+  "status": "clear"
+}

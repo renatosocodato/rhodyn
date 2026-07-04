@@ -1,0 +1,37 @@
+{
+  "DOI": "10.5281/ZENODO.14907827",
+  "URL": "https://zenodo.org/doi/10.5281/zenodo.14907827",
+  "abstract": "Raw data and analysis code that accompanies the manuscript titled \"A distributed coding logic for thermosensation and inflammatory pain\" published in Nature by Ghitani et al. in 2025.\n\nAnalysis code is provided as an R script \"single_cell_transcriptomics.R\" for single cell transcriptomic analysis of DRG neurons and as a Jupyter notebook \"thermosensation.ipynb\" for the analysis of in vivo calcium imaging, animal behavior and statistical analysis.\n\nRaw data are provided as .csv spreadsheet files.\n\nDetailed descriptions of data files, installation and execution of code are included in the README.md file.\n\n\u00a0",
+  "author": [
+    {
+      "family": "von Buchholtz",
+      "given": "Lars Johann"
+    }
+  ],
+  "categories": [
+    "Pain",
+    "Facial Pain",
+    "Calcium Signaling",
+    "Neurosciences",
+    "FOS: Clinical medicine",
+    "Behavior, Animal",
+    "Trigeminal Ganglion",
+    "Inflammation",
+    "Thermosensation"
+  ],
+  "copyright": "Creative Commons Attribution 4.0 International",
+  "id": "https://doi.org/10.5281/zenodo.14907827",
+  "issued": {
+    "date-parts": [
+      [
+        2025,
+        2,
+        26
+      ]
+    ]
+  },
+  "language": "en",
+  "publisher": "Zenodo",
+  "title": "A distributed coding logic for thermosensation and inflammatory pain",
+  "type": "dataset"
+}

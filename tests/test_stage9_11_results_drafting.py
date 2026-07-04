@@ -85,7 +85,6 @@ class Stage911ResultsDraftingTests(unittest.TestCase):
             self.assertNotIn(forbidden, visible)
         self.assertIsNone(re.search(r"\(\d+(?:-\d+|,\s*\d+)*\)", visible))
         for rel in [
-            "refs/references.bib",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

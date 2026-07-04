@@ -1,0 +1,35 @@
+{
+  "DOI": "10.5281/ZENODO.21036616",
+  "URL": "https://zenodo.org/doi/10.5281/zenodo.21036616",
+  "abstract": "RhoDyn is a standalone Python toolkit for residence-window scoring, bounded-coupling decisions, reserve-like buffering summaries, stochastic timing utilities, reduced-architecture comparison, reproducible reports, a command-line interface, a backend service, and a contract-bound browser workbench for live-cell signaling and perturbation data. The software is independent from the RhoA/microglia manuscript; manuscript materials are optional reference use cases, not runtime dependencies.",
+  "author": [
+    {
+      "family": "Socodato",
+      "given": "Renato"
+    }
+  ],
+  "categories": [
+    "live-cell signaling",
+    "residence time",
+    "bounded coupling",
+    "reserve buffering",
+    "perturbation analysis",
+    "systems biology",
+    "scientific software"
+  ],
+  "copyright": "Apache License 2.0",
+  "id": "https://doi.org/10.5281/zenodo.21036616",
+  "issued": {
+    "date-parts": [
+      [
+        2026,
+        6,
+        29
+      ]
+    ]
+  },
+  "publisher": "Zenodo",
+  "title": "RhoDyn: dynamic residence-state analysis for live-cell signaling and perturbation data",
+  "type": "software",
+  "version": "0.1.0"
+}
