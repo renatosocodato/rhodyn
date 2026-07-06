@@ -69,7 +69,6 @@ class Stage914DiscussionDraftingTests(unittest.TestCase):
 
     def test_no_methods_reference_library_or_package_started(self) -> None:
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

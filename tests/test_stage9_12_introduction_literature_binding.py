@@ -85,7 +85,6 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
         ]:
             self.assertNotIn(forbidden, visible)
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

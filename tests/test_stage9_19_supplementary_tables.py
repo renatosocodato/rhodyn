@@ -93,7 +93,6 @@ class Stage919SupplementaryTablesTests(unittest.TestCase):
 
     def test_downstream_reference_legend_and_package_surfaces_are_absent(self) -> None:
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

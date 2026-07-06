@@ -90,10 +90,13 @@ class Stage928PiReviewAutoRevisionTests(unittest.TestCase):
         for body in [self.packet, self.revision_log, self.literature]:
             for token in forbidden:
                 self.assertNotIn(token, body)
-        self.assertFalse((WORKSPACE / "stage9_completion_report.md").exists())
+        if (WORKSPACE / "gate_verdicts" / "9.29.json").exists():
+            self.assertTrue((WORKSPACE / "stage9_completion_report.md").exists())
+        else:
+            self.assertFalse((WORKSPACE / "stage9_completion_report.md").exists())
 
     def test_submission_manifests_record_pi_review_as_complete(self) -> None:
-        self.assertEqual(self.package_manifest["current_substage"], "9.28")
+        self.assertIn(self.package_manifest["current_substage"], {"9.28", "9.29"})
         self.assertEqual(self.package_manifest["pi_review_status"], "complete_pi_review_packet")
         self.assertIn("manuscript/nature_methods/submission_package/pi_review_packet.md", self.package_manifest["package_files"])
         self.assertNotIn("manuscript/nature_methods/submission_package/pi_review_packet.md", self.package_manifest["not_started"])

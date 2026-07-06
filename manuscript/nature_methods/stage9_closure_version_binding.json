@@ -1,0 +1,204 @@
+{
+  "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
+  "closure_commit": "5ad1a1f325057e8049e28fbe92dfbd50db627f70",
+  "content_type": "Article",
+  "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
+  "figure_engine": {
+    "cli": "figures",
+    "clone_path": "tools/panelforge-figures",
+    "concept_doi": "10.5281/zenodo.20811170",
+    "data_class": "research",
+    "execution_status": "rendered_by_transient_pinned_install_no_repo_clone",
+    "install": "pip install -e \".[dev]\"",
+    "install_alt": "pip install \"git+https://github.com/renatosocodato/panelforge-figures@v3.14.1\"",
+    "license": "MIT",
+    "manifest": "manuscript/nature_methods/figures/figures.manifest.yaml",
+    "name": "panelforge-figures",
+    "pinned_ref": "v3.14.1",
+    "python": ">=3.11,<3.13",
+    "render_cmd": "figures render manuscript/nature_methods/figures/figures.manifest.yaml",
+    "repo_url": "https://github.com/renatosocodato/panelforge-figures",
+    "runtime_env": ".venv-panelforge",
+    "telemetry": "off",
+    "validate_cmd": "figures validate figures.manifest.yaml",
+    "version_doi": "10.5281/zenodo.20811171"
+  },
+  "figure_status": {
+    "all_files_exist": true,
+    "figure_ids": [
+      "FIG-001",
+      "FIG-002",
+      "FIG-003",
+      "FIG-004",
+      "FIG-005",
+      "FIG-006"
+    ],
+    "formats": [
+      "pdf",
+      "png",
+      "svg"
+    ],
+    "gate_rendered_file_count": 18,
+    "panelforge_ref": null,
+    "rendered_file_count": 18
+  },
+  "generated_utc": "2026-07-06T14:09:36Z",
+  "human_submission_actions": [
+    "Complete the official Springer Nature Reporting Summary form.",
+    "Confirm final portal metadata, corresponding-author details, and journal-specific file names.",
+    "Perform final human author approval before upload."
+  ],
+  "method": "RhoDyn",
+  "package_files": [
+    {
+      "bytes": 35938,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+      "sha256": "c9f288d89d713d68c8fe4796a2ab051e280b50680180ea6ee96b058ac94aab3f"
+    },
+    {
+      "bytes": 11912,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+      "sha256": "d5bf3eadafa0932021fe626589de53796e7212fb93ea2e02584266b46fc61d03"
+    },
+    {
+      "bytes": 2195,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/submission_manifest.md",
+      "sha256": "8c121a4569831f33c223a2522028f72db5b1d04084f088c2891ca8fae32938ee"
+    },
+    {
+      "bytes": 2241,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
+      "sha256": "e37f7239263885eddca64068fd3d66c668aacfd3364726bede45873924294614"
+    },
+    {
+      "bytes": 5472,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/code_for_review.md",
+      "sha256": "669b4108eea3e6e0fb034822b8a38800e7a0e305b0a9a192ad315775e0df6fd9"
+    },
+    {
+      "bytes": 1679,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/package_consistency_audit.md",
+      "sha256": "1d55cc484144907d12dd601304122b66477573cf76a8c914f80aa15fcc6964d4"
+    },
+    {
+      "bytes": 4121,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
+      "sha256": "e5230d7be7fb22cfcb7385b3fc2fbe32c6e069e5f8f77a6db31fa489b3747656"
+    },
+    {
+      "bytes": 6267,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
+      "sha256": "de736e886ee29a242ed83a21ab2371d8afa62650c0d1ecf925ef5800cd6b6b47"
+    },
+    {
+      "bytes": 6503,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/references_for_submission.bib",
+      "sha256": "eaf20b336015f8d237596d0649d0de9caaa78615d0c07646bd89988d61cbc794"
+    },
+    {
+      "bytes": 1448,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+      "sha256": "b83b8d2f639ec3361eb5b7ec54a71f680fcc0214cb020f82e45cc31141e0527f"
+    },
+    {
+      "bytes": 4822,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/submission_package_manifest.json",
+      "sha256": "4b7abc566a86380df377beabfda0b6006faf805fdd7fe4a11596e572bda796a9"
+    },
+    {
+      "bytes": 7833,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/pi_review_packet.md",
+      "sha256": "283a56dc3f679327a5aab0104e728fadcedceb853b4ca35c1439e238c6be7500"
+    },
+    {
+      "bytes": 2203,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+      "sha256": "e3acfd5835157baf052595c535c4730c6f20e2b3a7a3d9c30f23967ec16fff1b"
+    },
+    {
+      "bytes": 1639,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+      "sha256": "40f1b06f686938100c1b582d7b22d4a9b9591ae729e7ae5557f008719a38aae4"
+    },
+    {
+      "bytes": 1493,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
+      "sha256": "b03493ece6c5bb6530eb1c770cc35c272b443dd2e402ee51d38f05ffaab0243a"
+    }
+  ],
+  "package_version": "stage9.29-closure@5ad1a1f325057e8049e28fbe92dfbd50db627f70",
+  "pi_review_action_decisions": [
+    {
+      "closure_status": "closed",
+      "codex_decision": "accept_auto_revision",
+      "item_id": "PI-9.28-MAJ-001",
+      "previous_status": "auto_revised",
+      "rationale": "The source edit is already present in the manuscript package and does not require new evidence.",
+      "remaining_requirement": "Final author review should preserve this narrower novelty framing."
+    },
+    {
+      "closure_status": "closed",
+      "codex_decision": "accept_auto_revision",
+      "item_id": "PI-9.28-MAJ-002",
+      "previous_status": "auto_revised",
+      "rationale": "The source edit is already present in the manuscript package and does not require new evidence.",
+      "remaining_requirement": "New datasets would be required for a stronger generality claim."
+    },
+    {
+      "closure_status": "closed",
+      "codex_decision": "accept_auto_revision",
+      "item_id": "PI-9.28-MAJ-003",
+      "previous_status": "auto_revised",
+      "rationale": "The source edit is already present in the manuscript package and does not require new evidence.",
+      "remaining_requirement": "Human review should verify the official Reporting Summary and supplementary tables retain these fields."
+    },
+    {
+      "closure_status": "closed",
+      "codex_decision": "retain_boundary_without_new_edit",
+      "item_id": "PI-9.28-MAJ-004",
+      "previous_status": "retained_boundary",
+      "rationale": "The manuscript keeps the claim scoped to declared margins, measured endpoints, and tested alternatives.",
+      "remaining_requirement": "Maintain this wording during final author upload review."
+    },
+    {
+      "closure_status": "closed",
+      "codex_decision": "close_as_boundary_present",
+      "item_id": "PI-9.28-MAJ-005",
+      "previous_status": "open_human_check",
+      "rationale": "Reader-facing Results, Methods, Discussion, and legends already state that effective parameters do not identify biochemical edges.",
+      "remaining_requirement": "Do not strengthen routed-output language without new mechanistic evidence."
+    },
+    {
+      "closure_status": "not_blocking_stage9_closure",
+      "codex_decision": "retain_as_external_submission_action",
+      "item_id": "PI-9.28-HUMAN-001",
+      "previous_status": "human_action_required",
+      "rationale": "The official Reporting Summary and portal metadata are journal-upload actions, not repository-derived scientific content.",
+      "remaining_requirement": "Complete the official Springer Nature form and portal metadata before journal submission."
+    }
+  ],
+  "pyproject_version": "0.1.0",
+  "reference_version": "reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
+  "repository": "https://github.com/renatosocodato/rhodyn",
+  "scientific_boundary": "Closure binds the current methods manuscript package and versioned release surfaces. It does not add biological evidence, new benchmarks, new figure renders, or journal acceptance.",
+  "software": "RhoDyn",
+  "software_archive_doi": "10.5281/zenodo.21036616",
+  "software_concept_doi": "10.5281/zenodo.21036615",
+  "software_version": "v0.1.0",
+  "venue": "Nature Methods"
+}

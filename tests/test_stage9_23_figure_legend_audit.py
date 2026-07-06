@@ -118,7 +118,6 @@ class Stage923FigureLegendAuditTests(unittest.TestCase):
 
     def test_downstream_editorial_and_package_surfaces_remain_unstarted(self) -> None:
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

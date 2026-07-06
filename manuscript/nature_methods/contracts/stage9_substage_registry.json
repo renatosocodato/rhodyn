@@ -14,7 +14,7 @@
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
   "last_completed_substage": "9.25b",
-  "next_substage": "9.29",
+  "next_substage": "none",
   "patch_ledger": [
     {
       "id": "P1",
@@ -582,9 +582,11 @@
       "objective": "Close Stage 9 with package, evidence, release, and limitation versions bound.",
       "outputs": [
         "manuscript/nature_methods/stage9_completion_report.md",
-        "docs/roadmap_execution_memory.json"
+        "docs/roadmap_execution_memory.json",
+        "manuscript/nature_methods/stage9_closure_version_binding.json",
+        "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv"
       ],
-      "status": "not_started",
+      "status": "complete_stage9_closed_version_bound",
       "title": "Roadmap closure and version binding"
     }
   ],

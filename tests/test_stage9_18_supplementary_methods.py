@@ -75,7 +75,6 @@ class Stage918SupplementaryMethodsTests(unittest.TestCase):
         ]:
             self.assertNotIn(phrase, visible)
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

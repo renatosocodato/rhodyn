@@ -18,5 +18,7 @@ Git commit. 773f468b3e2b238052a6d814fcdcf28cf269220d
 | PI review action matrix | `pi_review_action_matrix.csv` | Location-anchored revision and open-item matrix. |
 | PI review revision log | `pi_review_revision_log.md` | Evidence-safe source-edit log and unresolved human actions. |
 | PI review literature calibration | `pi_review_literature_calibration.md` | Prior-art and novelty calibration note. |
+| PI review action decisions | `pi_review_action_decisions.csv` | Codex closure decisions for the PI-review action matrix. |
+| Stage 9 completion report | `../stage9_completion_report.md` | Final closure and version-binding surface for the current Nature Methods package. |
 
 Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and support files, but it does not submit the manuscript or close Stage 9.

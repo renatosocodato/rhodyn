@@ -44,13 +44,21 @@ class Stage9ScaffoldTests(unittest.TestCase):
             (temp_root / "docs").mkdir()
             for rel in ["stage9_execution_memory.json", "stage9_manuscript_assembly_plan.md"]:
                 shutil.copy2(ROOT / "docs" / rel, temp_root / "docs" / rel)
+            for rel in [
+                "gate_verdicts/9.29.json",
+                "stage9_closure_version_binding.json",
+                "submission_package/pi_review_action_decisions.csv",
+            ]:
+                target = temp_root / "manuscript" / "nature_methods" / rel
+                if target.exists():
+                    target.unlink()
             draft = temp_root / "manuscript" / "nature_methods" / "stage9_completion_report.md"
             draft.write_text("# Premature Stage 9 closure\n", encoding="utf-8")
             payload = CHECKER.check_stage9_scaffold(temp_root)
         self.assertEqual(payload["status"], "fail")
         self.assertTrue(any("scaffold-only" in failure for failure in payload["failures"]))
 
-    def test_stage9_checker_rejects_post_9_28_gate_verdicts(self) -> None:
+    def test_stage9_checker_rejects_post_9_29_gate_verdicts(self) -> None:
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_root = Path(temp_dir)
             shutil.copytree(ROOT / "manuscript", temp_root / "manuscript")
@@ -58,11 +66,11 @@ class Stage9ScaffoldTests(unittest.TestCase):
             (temp_root / "docs").mkdir()
             for rel in ["stage9_execution_memory.json", "stage9_manuscript_assembly_plan.md"]:
                 shutil.copy2(ROOT / "docs" / rel, temp_root / "docs" / rel)
-            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.29.json"
-            future_gate.write_text('{"substage": "9.29", "pass": true, "checks": []}\n', encoding="utf-8")
+            future_gate = temp_root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.30.json"
+            future_gate.write_text('{"substage": "9.30", "pass": true, "checks": []}\n', encoding="utf-8")
             payload = CHECKER.check_stage9_scaffold(temp_root)
         self.assertEqual(payload["status"], "fail")
-        self.assertTrue(any("post-9.28" in failure for failure in payload["failures"]))
+        self.assertTrue(any("post-9.29" in failure for failure in payload["failures"]))
 
 
 if __name__ == "__main__":

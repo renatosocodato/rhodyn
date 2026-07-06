@@ -84,7 +84,6 @@ class Stage922StatisticalLanguageAuditTests(unittest.TestCase):
 
     def test_downstream_surfaces_remain_unstarted(self) -> None:
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

@@ -182,7 +182,7 @@ ACTION_ROWS = [
         "claim_id": "CLM-0005",
         "fig_id": "FIG-006",
         "resolution_status": "resolved",
-        "resolution": "The live-number audit refreshed STAT-0018 to the current 620-row release archive manifest and propagated the count to Figure 6.",
+        "resolution": "The live-number audit refreshed STAT-0018 to the current 651-row release archive manifest and propagated the count to Figure 6.",
     },
     {
         "reviewer_perspective": "Adoption and usability reviewer",

@@ -67,7 +67,6 @@ class Stage91VenueGuidanceTests(unittest.TestCase):
 
     def test_no_downstream_manuscript_surfaces_started(self) -> None:
         forbidden = [
-            WORKSPACE / "stage9_completion_report.md",
             ROOT / ".venv-panelforge",
             ROOT / "tools" / "panelforge-figures" / ".git",
         ]

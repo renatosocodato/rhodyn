@@ -16,7 +16,7 @@ statistic,STAT-0014,FIG-004,python3 scripts/run_stage7_4_endpoint_reserve_routin
 statistic,STAT-0015,FIG-005,python3 scripts/run_stage7_5_heldout_validation.py,context_count=7;pass_count=4;fail_count=0;inconclusive_count=3,pass/inconclusive count
 statistic,STAT-0016,FIG-005,python3 scripts/run_stage7_5_heldout_validation.py,row_count=70,margin-sensitivity row count
 statistic,STAT-0017,FIG-006,python3 scripts/run_stage7_6_methods_reproducibility.py,row_count=4,Python CLI backend frontend-contract parity
-statistic,STAT-0018,FIG-006,python3 scripts/run_stage7_6_methods_reproducibility.py,row_count=632,archive manifest file count
+statistic,STAT-0018,FIG-006,python3 scripts/run_stage7_6_methods_reproducibility.py,row_count=651,archive manifest file count
 statistic,STAT-0019,FIG-001,not_applicable_manual_doc_binding,"failure modes, ambiguous regimes, and claim-strength caps represented",manual limitation matrix binding
 source_data,STBL-001,FIG-001,docs/stage7_method_specification.md;docs/stage7_limitations_matrix.md;docs/stage7_synthetic_truth_cases.md;case_studies/stage7_synthetic_truth/stage7_1_synthetic_truth_report.json,essential,Method definition and counterexample support only; not independent biological evidence.
 source_data,STBL-002,FIG-002,docs/stage7_baseline_comparison_report.md;case_studies/stage7_benchmarks/stage7_2_benchmark_report.json;case_studies/stage7_benchmarks/synthetic_residence_baseline_comparison.csv;case_studies/stage7_benchmarks/synthetic_model_baseline_comparison.csv;case_studies/stage7_benchmarks/failure_behavior_summary.csv,essential,Synthetic benchmark behavior only; not a new biological system.

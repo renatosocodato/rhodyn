@@ -94,7 +94,6 @@ class Stage96FigureSpineTests(unittest.TestCase):
 
     def test_stage9_6b_rendering_does_not_start_manuscript_surfaces(self) -> None:
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists())
         rendered = [

@@ -1,6 +1,6 @@
 # Stage 9 Nature Methods manuscript assembly plan
 
-Stage 9 converts the completed Stage 7 methods-program evidence package into a Nature Methods-oriented manuscript package. This repository state serializes the entire Stage 9 v2.1 plan and has completed the scaffold, evidence lock, venue guidance, reference corpus, narrative spine, claim freeze, paragraph ledger, figure spine, PanelForge rendering pass, supplementary display plan, section contracts, title and abstract strategy, Results, Introduction, Discussion, Methods, availability, Supplementary Methods, supplementary table/source-data binding, reference-library audit, cross-document consistency audit, statistical language audit, figure legends, two editorial polish passes, reader-surface hygiene, and internal peer review simulation, submission package assembly, and PI review packet assembly through Stage 9.28. Stage 9 closure has not started.
+Stage 9 converts the completed Stage 7 methods-program evidence package into a Nature Methods-oriented manuscript package. This repository state serializes the entire Stage 9 v2.1 plan and has completed the scaffold, evidence lock, venue guidance, reference corpus, narrative spine, claim freeze, paragraph ledger, figure spine, PanelForge rendering pass, supplementary display plan, section contracts, title and abstract strategy, Results, Introduction, Discussion, Methods, availability, Supplementary Methods, supplementary table/source-data binding, reference-library audit, cross-document consistency audit, statistical language audit, figure legends, two editorial polish passes, reader-surface hygiene, and internal peer review simulation, submission package assembly, and PI review packet assembly, and Stage 9.29 closure and version binding. Stage 9 is closed for the current Nature Methods manuscript package.
 
 ## Project binding
 
@@ -77,7 +77,7 @@ Stage 9.-1 created the workspace, ID namespace, ledger schemas, gate convention,
 | 9.26 | Internal peer review simulation | complete_internal_peer_review_bound | Stress-test the manuscript with eight reviewer perspectives. |
 | 9.27 | Submission package assembly | complete_submission_package_assembled | Assemble complete manuscript and submission package after hygiene gate. |
 | 9.28 | Final human PI review packet | complete_pi_review_packet | Prepare final human decision packet. |
-| 9.29 | Roadmap closure and version binding | not_started | Close Stage 9 with package, evidence, release, and limitation versions bound. |
+| 9.29 | Roadmap closure and version binding | complete_stage9_closed_version_bound | Close Stage 9 with package, evidence, release, and limitation versions bound. |
 
 ## Final deliverables at Stage 9 completion
 
@@ -92,7 +92,7 @@ Stage 9.-1 created the workspace, ID namespace, ledger schemas, gate convention,
 9. Reproducibility command index.
 10. Contract and schema layer with all gate verdict JSON files.
 11. Cross-document consistency, statistical language, reader-surface hygiene, and internal peer review reports.
-12. PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory.
+12. PI review packet, PI-review action decisions, submission-readiness checklist, Stage 9 completion report, version-binding record, and updated roadmap memory.
 
 ## Completion rule
 

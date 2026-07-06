@@ -78,7 +78,6 @@ class Stage920ReferenceAuditTests(unittest.TestCase):
     def test_metadata_cache_and_downstream_surfaces(self) -> None:
         self.assertGreaterEqual(len(list(CACHE_PATH.glob("*.json"))), 13)
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

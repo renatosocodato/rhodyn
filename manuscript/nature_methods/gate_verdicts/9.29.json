@@ -1,0 +1,100 @@
+{
+  "action_decision_rows": 6,
+  "checks": [
+    {
+      "detail": "PI-review gate remains passing",
+      "name": "stage_9_28_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "failing_gates=[]",
+      "name": "all_stage9_gates_pass",
+      "passed": true
+    },
+    {
+      "detail": "quarantine_files=[]",
+      "name": "quarantine_has_no_unresolved_blocker",
+      "passed": true
+    },
+    {
+      "detail": "package_file_count=15",
+      "name": "package_files_present",
+      "passed": true
+    },
+    {
+      "detail": "stage9.29-closure@5ad1a1f325057e8049e28fbe92dfbd50db627f70",
+      "name": "package_version_bound",
+      "passed": true
+    },
+    {
+      "detail": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
+      "name": "evidence_version_bound",
+      "passed": true
+    },
+    {
+      "detail": "v0.1.0 10.5281/zenodo.21036616",
+      "name": "release_version_bound",
+      "passed": true
+    },
+    {
+      "detail": "claim=claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af reference=reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
+      "name": "limitation_version_bound",
+      "passed": true
+    },
+    {
+      "detail": "rows=6 open=0 human_submission_actions=1",
+      "name": "pi_review_action_decisions_recorded",
+      "passed": true
+    },
+    {
+      "detail": "rows=1",
+      "name": "human_submission_actions_retained",
+      "passed": true
+    },
+    {
+      "detail": "manuscript/nature_methods/stage9_completion_report.md",
+      "name": "completion_report_present",
+      "passed": true
+    },
+    {
+      "detail": "manuscript/nature_methods/stage9_closure_version_binding.json",
+      "name": "version_binding_present",
+      "passed": true
+    },
+    {
+      "detail": "package_hits=[]",
+      "name": "package_safety_scan_clear",
+      "passed": true
+    },
+    {
+      "detail": "rendered_file_count=18",
+      "name": "panelforge_status_bound",
+      "passed": true
+    }
+  ],
+  "closure_status": "complete_stage9_closed_version_bound",
+  "generated_utc": "2026-07-06T14:09:36Z",
+  "git_sha": "5ad1a1f325057e8049e28fbe92dfbd50db627f70",
+  "human_submission_action_rows": 1,
+  "next_substage": "none",
+  "outputs": {
+    "action_decisions": "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
+    "completion_report": "manuscript/nature_methods/stage9_completion_report.md",
+    "gate": "manuscript/nature_methods/gate_verdicts/9.29.json",
+    "version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json"
+  },
+  "package_file_count": 15,
+  "pass": true,
+  "rendered_figure_file_count": 18,
+  "scope_boundary": "Closure and version binding only. No new analysis, figure, dataset, model output, manuscript claim, or journal upload is created.",
+  "status": "pass",
+  "substage": "9.29",
+  "version_binding": {
+    "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
+    "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
+    "package_version": "stage9.29-closure@5ad1a1f325057e8049e28fbe92dfbd50db627f70",
+    "reference_version": "reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
+    "software_archive_doi": "10.5281/zenodo.21036616",
+    "software_version": "v0.1.0"
+  }
+}

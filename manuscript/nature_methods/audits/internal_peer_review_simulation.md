@@ -80,7 +80,7 @@ Primary read. Stage 9.6b rendered six main figures in PDF, PNG, and SVG; Stage 9
 | Concern | Claim | Figure | Status | Resolution |
 | --- | --- | --- | --- | --- |
 | The six-figure spine must be rendered and captioned without leaking figure-engine or lineage language into reader-facing captions. | CLM-0005 | FIG-006 | resolved | Stage 9.6b rendered six main figures in PDF, PNG, and SVG; Stage 9.23 resolved legends and captions; Stage 9.25b removed reader-facing lineage wording. |
-| The archive-count statistic in Figure 6 must match the current release archive manifest. | CLM-0005 | FIG-006 | resolved | The live-number audit refreshed STAT-0018 to the current 632-row release archive manifest and propagated the count to Figure 6. |
+| The archive-count statistic in Figure 6 must match the current release archive manifest. | CLM-0005 | FIG-006 | resolved | The live-number audit refreshed STAT-0018 to the current 651-row release archive manifest and propagated the count to Figure 6. |
 
 ### 8. Adoption and usability reviewer
 

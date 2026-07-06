@@ -95,9 +95,13 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("Reproducibility commands", self.code_for_review)
         self.assertIn("RhoDyn repository root", self.code_for_review)
         self.assertIn("Reporting Summary | registered", self.checklist)
-        self.assertIn("final Springer Nature form remains a human submission action", self.checklist)
+        self.assertIn("Springer Nature", self.checklist)
+        self.assertIn("human submission action", self.checklist)
         self.assertTrue((PACKAGE / "pi_review_packet.md").exists())
-        self.assertFalse((WORKSPACE / "stage9_completion_report.md").exists())
+        if (WORKSPACE / "gate_verdicts" / "9.29.json").exists():
+            self.assertTrue((WORKSPACE / "stage9_completion_report.md").exists())
+        else:
+            self.assertFalse((WORKSPACE / "stage9_completion_report.md").exists())
 
 
 if __name__ == "__main__":

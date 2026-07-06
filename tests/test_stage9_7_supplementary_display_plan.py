@@ -68,7 +68,6 @@ class Stage97SupplementaryDisplayPlanTests(unittest.TestCase):
 
     def test_downstream_manuscript_surfaces_are_not_started(self) -> None:
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

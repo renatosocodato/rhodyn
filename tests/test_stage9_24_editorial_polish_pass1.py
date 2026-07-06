@@ -101,7 +101,6 @@ class Stage924EditorialPolishPass1Tests(unittest.TestCase):
         ]:
             self.assertNotIn(phrase.lower(), self.combined.lower(), phrase)
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

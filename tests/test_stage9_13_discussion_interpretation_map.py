@@ -51,7 +51,6 @@ class Stage913DiscussionInterpretationMapTests(unittest.TestCase):
 
     def test_map_does_not_start_downstream_surfaces(self) -> None:
         for rel in [
-            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

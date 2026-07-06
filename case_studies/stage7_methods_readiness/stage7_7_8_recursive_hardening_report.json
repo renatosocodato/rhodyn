@@ -11,8 +11,8 @@
   },
   "completion_state": "stage7_7_8_recursively_hardened",
   "counts": {
-    "archive_manifest_rows": 632,
-    "authorized_phase9_scaffold_files": 9,
+    "archive_manifest_rows": 651,
+    "authorized_phase9_scaffold_files": 11,
     "release_checksum_rows": 581,
     "required_stage7_7_8_files": 27,
     "stage7_7_bundle_members": 18,
@@ -25,7 +25,7 @@
     "unauthorized_stage9_draft_files": 0
   },
   "failures": [],
-  "interpretation_boundary": "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, Stage 9.0 evidence lock, venue and corpus registration, narrative spine, claim freeze, paragraph planning, Stage 9.6 main figure-spine planning, Stage 9.6b deterministic main-figure mockup rendering, Stage 9.7 supplementary display planning, Stage 9.8 section-contract registration, Stage 9.9 title/abstract strategy, Stage 9.10 Results architecture, Stage 9.11 Results drafting, Stage 9.12 Introduction literature binding, Stage 9.13 Discussion interpretation mapping, Stage 9.14 Discussion drafting, Stage 9.15 Methods architecture, Stage 9.16 Methods drafting, Stage 9.17 availability assembly, Stage 9.18 Supplementary Methods, Stage 9.19 supplementary table/source-data binding, Stage 9.20 reference-library/citation audit, Stage 9.21 cross-document consistency audit, Stage 9.22 statistical-language audit, Stage 9.23 figure legend/caption audit, Stage 9.24 editorial polish pass I, Stage 9.25 editorial polish pass II, Stage 9.25b reader-surface hygiene, Stage 9.26 internal peer-review simulation, Stage 9.27 collaborator-review submission package assembly, and Stage 9.28 PI review packet assembly, with Stage 9 closure not started.",
+  "interpretation_boundary": "This recursive hardening verifies release consistency for Stage 7.7 usability and Stage 7.8 methods-readiness outputs. It does not add biological evidence or change method decisions. Phase 9 is limited to the authorized manuscript-assembly scaffold, Stage 9.0 evidence lock, venue and corpus registration, narrative spine, claim freeze, paragraph planning, Stage 9.6 main figure-spine planning, Stage 9.6b deterministic main-figure mockup rendering, Stage 9.7 supplementary display planning, Stage 9.8 section-contract registration, Stage 9.9 title/abstract strategy, Stage 9.10 Results architecture, Stage 9.11 Results drafting, Stage 9.12 Introduction literature binding, Stage 9.13 Discussion interpretation mapping, Stage 9.14 Discussion drafting, Stage 9.15 Methods architecture, Stage 9.16 Methods drafting, Stage 9.17 availability assembly, Stage 9.18 Supplementary Methods, Stage 9.19 supplementary table/source-data binding, Stage 9.20 reference-library/citation audit, Stage 9.21 cross-document consistency audit, Stage 9.22 statistical-language audit, Stage 9.23 figure legend/caption audit, Stage 9.24 editorial polish pass I, Stage 9.25 editorial polish pass II, Stage 9.25b reader-surface hygiene, Stage 9.26 internal peer-review simulation, Stage 9.27 collaborator-review submission package assembly, Stage 9.28 PI review packet assembly, and Stage 9.29 closure and version binding. Stage 9 is closed for the current Nature Methods manuscript package.",
   "report_format": "rhodyn.stage7_7_8_recursive_hardening.v1",
   "status": "pass",
   "warnings": []

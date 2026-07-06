@@ -101,11 +101,9 @@ class Stage926InternalPeerReviewTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, self.report)
 
-    def test_stage9_closure_remains_unstarted(self) -> None:
-        for rel in [
-            "stage9_completion_report.md",
-        ]:
-            self.assertFalse((WORKSPACE / rel).exists(), rel)
+    def test_stage9_closure_is_now_recorded_downstream(self) -> None:
+        self.assertTrue((WORKSPACE / "stage9_completion_report.md").exists())
+        self.assertTrue((WORKSPACE / "gate_verdicts" / "9.29.json").exists())
 
 
 if __name__ == "__main__":
