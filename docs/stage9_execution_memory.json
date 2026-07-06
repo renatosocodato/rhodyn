@@ -79,7 +79,18 @@
     "manuscript/nature_methods/gate_verdicts/9.25b.json",
     "manuscript/nature_methods/audits/internal_peer_review_simulation.md",
     "manuscript/nature_methods/audits/reviewer_action_matrix.csv",
-    "manuscript/nature_methods/gate_verdicts/9.26.json"
+    "manuscript/nature_methods/gate_verdicts/9.26.json",
+    "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+    "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+    "manuscript/nature_methods/submission_package/submission_manifest.md",
+    "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
+    "manuscript/nature_methods/submission_package/code_for_review.md",
+    "manuscript/nature_methods/submission_package/package_consistency_audit.md",
+    "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
+    "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
+    "manuscript/nature_methods/submission_package/references_for_submission.bib",
+    "manuscript/nature_methods/submission_package/submission_package_manifest.json",
+    "manuscript/nature_methods/gate_verdicts/9.27.json"
   ],
   "availability_assembly_started": true,
   "citation_resolution_started": true,
@@ -1815,11 +1826,116 @@
       "status": "pass",
       "substage": "9.26",
       "validation_outcome": "Eight-perspective internal peer-review simulation completed with all concerns carrying resolution status"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.26 internal peer-review gate passes and points to package assembly",
+          "name": "stage_9_26_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "missing_inputs=[]",
+          "name": "required_inputs_present",
+          "passed": true
+        },
+        {
+          "detail": "Main manuscript source assembled",
+          "name": "main_text_present",
+          "passed": true
+        },
+        {
+          "detail": "Supplementary Information source assembled",
+          "name": "supplement_present",
+          "passed": true
+        },
+        {
+          "detail": "reader_hits=[]",
+          "name": "reader_surface_hygiene_passed",
+          "passed": true
+        },
+        {
+          "detail": "Stage 9.21 cross-document consistency gate remains passing",
+          "name": "cross_document_consistency_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "Stage 9.23 figure legend and caption gate remains passing",
+          "name": "legend_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "figure_file_rows=18",
+          "name": "figure_files_present",
+          "passed": true
+        },
+        {
+          "detail": "Stage 9.6b has six rendered main display items",
+          "name": "panelforge_status_bound",
+          "passed": true
+        },
+        {
+          "detail": "Reporting Summary requirement placeholder is present",
+          "name": "reporting_summary_present",
+          "passed": true
+        },
+        {
+          "detail": "Code-for-review surface includes reproducibility commands",
+          "name": "code_for_review_present",
+          "passed": true
+        },
+        {
+          "detail": "package_hits=[]",
+          "name": "package_safety_scan_clear",
+          "passed": true
+        },
+        {
+          "detail": "downstream_paths=[]",
+          "name": "no_downstream_pi_or_closure_started",
+          "passed": true
+        },
+        {
+          "detail": "All package prerequisites, reader-surface, figure, reporting, code, and safety checks pass",
+          "name": "package_consistency_audit_passed",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.26.json",
+        "manuscript/nature_methods/audits/internal_peer_review_simulation.md",
+        "manuscript/nature_methods/audits/reader_surface_hygiene_report.md",
+        "manuscript/nature_methods/gate_verdicts/9.21.json",
+        "manuscript/nature_methods/gate_verdicts/9.23.json"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+        "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+        "manuscript/nature_methods/submission_package/submission_manifest.md",
+        "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
+        "manuscript/nature_methods/submission_package/code_for_review.md",
+        "manuscript/nature_methods/submission_package/package_consistency_audit.md",
+        "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
+        "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
+        "manuscript/nature_methods/submission_package/references_for_submission.bib",
+        "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+        "manuscript/nature_methods/submission_package/submission_package_manifest.json",
+        "manuscript/nature_methods/gate_verdicts/9.27.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.27.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Final Springer Nature Reporting Summary form remains a human submission action",
+        "PI review packet has not started",
+        "Stage 9 closure has not started"
+      ],
+      "status": "pass",
+      "substage": "9.27",
+      "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, Reporting Summary placeholder, and readiness checklist"
     }
   ],
   "cross_document_consistency_started": true,
-  "current_gate": "Stage 9.26 internal peer review simulation stress-tested the reader-clean manuscript",
-  "current_substage": "9.26",
+  "current_gate": "Stage 9.27 assembled the collaborator-review submission package",
+  "current_substage": "9.27",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
@@ -1839,12 +1955,12 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.26 are complete through internal peer review simulation.",
-    "Stage 9.27 through Stage 9.29 remain not started.",
-    "No PI review packet, submission readiness checklist, or final package assembly is created in this pass.",
-    "Eight reviewer perspectives stress-tested the manuscript and every concern has a resolution status."
+    "Stage 9.0 through Stage 9.27 are complete through submission package assembly.",
+    "Stage 9.28 and Stage 9.29 remain not started.",
+    "No PI review packet or Stage 9 completion report is created in this pass.",
+    "The package contains reader-clean main text, Supplementary Information, code-for-review, figure inventory, source-data/statistics inventory, Reporting Summary placeholder, and readiness checklist."
   ],
-  "generated_utc": "2026-07-06T09:53:23Z",
+  "generated_utc": "2026-07-06T11:08:34Z",
   "internal_peer_review_started": true,
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
@@ -1856,7 +1972,7 @@
   "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.27",
+  "next_substage": "9.28",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -1925,7 +2041,7 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, cross-document consistency audit, statistical/quantitative language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, and internal peer review simulation only. Do not start final submission package assembly without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, guidance, corpus, narrative spine, claim freeze, paragraph and figure planning, PanelForge rendering, supplementary planning, drafting, availability, references, consistency, statistics, legends, polish, reader-surface hygiene, internal peer review, and submission package assembly. Do not start the PI review packet or Stage 9 closure without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "source_data_binding_started": true,
@@ -2815,6 +2931,78 @@
       "passed": true
     }
   ],
+  "stage9_27_checks": [
+    {
+      "detail": "Stage 9.26 internal peer-review gate passes and points to package assembly",
+      "name": "stage_9_26_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "missing_inputs=[]",
+      "name": "required_inputs_present",
+      "passed": true
+    },
+    {
+      "detail": "Main manuscript source assembled",
+      "name": "main_text_present",
+      "passed": true
+    },
+    {
+      "detail": "Supplementary Information source assembled",
+      "name": "supplement_present",
+      "passed": true
+    },
+    {
+      "detail": "reader_hits=[]",
+      "name": "reader_surface_hygiene_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.21 cross-document consistency gate remains passing",
+      "name": "cross_document_consistency_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.23 figure legend and caption gate remains passing",
+      "name": "legend_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "figure_file_rows=18",
+      "name": "figure_files_present",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.6b has six rendered main display items",
+      "name": "panelforge_status_bound",
+      "passed": true
+    },
+    {
+      "detail": "Reporting Summary requirement placeholder is present",
+      "name": "reporting_summary_present",
+      "passed": true
+    },
+    {
+      "detail": "Code-for-review surface includes reproducibility commands",
+      "name": "code_for_review_present",
+      "passed": true
+    },
+    {
+      "detail": "package_hits=[]",
+      "name": "package_safety_scan_clear",
+      "passed": true
+    },
+    {
+      "detail": "downstream_paths=[]",
+      "name": "no_downstream_pi_or_closure_started",
+      "passed": true
+    },
+    {
+      "detail": "All package prerequisites, reader-surface, figure, reporting, code, and safety checks pass",
+      "name": "package_consistency_audit_passed",
+      "passed": true
+    }
+  ],
   "stage9_2_checks": [
     {
       "detail": "Stage 9.1 venue guidance exists and passes",
@@ -3091,10 +3279,10 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.26 Internal peer review simulation complete; submission package assembly not started",
+  "stage9_active_gate": "Stage 9.27 Submission package assembly complete; final PI review not started",
   "statistical_language_audit_started": true,
-  "status": "stage9_26_internal_peer_review_bound",
-  "submission_package_started": false,
+  "status": "stage9_27_submission_package_assembled",
+  "submission_package_started": true,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,
   "supplementary_methods_started": true,

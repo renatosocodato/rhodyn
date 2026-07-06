@@ -116,7 +116,6 @@ class Stage925bReaderSurfaceHygieneTests(unittest.TestCase):
     def test_downstream_surfaces_remain_unstarted(self) -> None:
         for rel in [
             "submission_package/pi_review_packet.md",
-            "submission_package/submission_readiness_checklist.md",
             "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)

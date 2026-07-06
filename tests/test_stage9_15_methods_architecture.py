@@ -79,7 +79,6 @@ class Stage915MethodsArchitectureTests(unittest.TestCase):
 
     def test_no_downstream_methods_or_submission_surfaces_started(self) -> None:
         forbidden = [
-            "submission_package/submission_readiness_checklist.md",
         ]
         for rel in forbidden:
             self.assertFalse((WORKSPACE / rel).exists(), rel)

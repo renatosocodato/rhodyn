@@ -86,7 +86,6 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
             self.assertNotIn(forbidden, visible)
         for rel in [
             "submission_package/pi_review_packet.md",
-            "submission_package/submission_readiness_checklist.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

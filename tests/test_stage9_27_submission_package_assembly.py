@@ -1,0 +1,104 @@
+"""Regression checks for Stage 9.27 submission package assembly."""
+
+from __future__ import annotations
+
+import csv
+import json
+from pathlib import Path
+import unittest
+
+
+ROOT = Path(__file__).resolve().parents[1]
+WORKSPACE = ROOT / "manuscript" / "nature_methods"
+PACKAGE = WORKSPACE / "submission_package"
+GATE_PATH = WORKSPACE / "gate_verdicts" / "9.27.json"
+
+
+class Stage927SubmissionPackageTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls) -> None:
+        cls.gate = json.loads(GATE_PATH.read_text(encoding="utf-8"))
+        cls.main_text = (PACKAGE / "main_text_for_submission.md").read_text(encoding="utf-8")
+        cls.supplement = (PACKAGE / "supplementary_information_for_submission.md").read_text(encoding="utf-8")
+        cls.checklist = (PACKAGE / "submission_readiness_checklist.md").read_text(encoding="utf-8")
+        cls.code_for_review = (PACKAGE / "code_for_review.md").read_text(encoding="utf-8")
+        with (PACKAGE / "figure_file_inventory.csv").open(newline="", encoding="utf-8") as handle:
+            cls.figure_rows = list(csv.DictReader(handle))
+        with (PACKAGE / "source_data_and_statistics_inventory.csv").open(newline="", encoding="utf-8") as handle:
+            cls.source_rows = list(csv.DictReader(handle))
+
+    def test_gate_passes_and_points_to_pi_review(self) -> None:
+        self.assertTrue(self.gate["pass"])
+        self.assertEqual(self.gate["substage"], "9.27")
+        self.assertEqual(self.gate["next_substage"], "9.28")
+        self.assertEqual(self.gate["figure_file_count"], 18)
+        self.assertEqual(self.gate["source_inventory_rows"], 28)
+        self.assertEqual(self.gate["reporting_summary_status"], "placeholder_present_final_form_human_action")
+
+    def test_all_expected_checks_pass(self) -> None:
+        expected = {
+            "stage_9_26_gate_passed",
+            "required_inputs_present",
+            "main_text_present",
+            "supplement_present",
+            "reader_surface_hygiene_passed",
+            "cross_document_consistency_gate_passed",
+            "legend_gate_passed",
+            "figure_files_present",
+            "panelforge_status_bound",
+            "reporting_summary_present",
+            "code_for_review_present",
+            "package_safety_scan_clear",
+            "no_downstream_pi_or_closure_started",
+            "package_consistency_audit_passed",
+        }
+        actual = {item["name"] for item in self.gate["checks"] if item.get("passed") is True}
+        self.assertEqual(actual, expected)
+
+    def test_reader_surfaces_are_complete_and_clean(self) -> None:
+        for phrase in [
+            "# RhoDyn infers residence states in live-cell perturbation data",
+            "## Abstract",
+            "## Results",
+            "## Online Methods",
+            "## References",
+            "### Main figure legends",
+        ]:
+            self.assertIn(phrase, self.main_text)
+        for phrase in [
+            "# Supplementary Information",
+            "## Supplementary Methods",
+            "### Supplementary figure legends",
+            "### Supplementary table captions",
+        ]:
+            self.assertIn(phrase, self.supplement)
+        forbidden = [
+            "/" + "Users/",
+            "/" + "Volumes/",
+            "Library/" + "LaunchAgents",
+            "github" + "_pat_",
+            "ghp" + "_",
+            "sk" + "-",
+        ]
+        for body in [self.main_text, self.supplement]:
+            for token in forbidden:
+                self.assertNotIn(token, body)
+
+    def test_figure_and_source_inventories_are_populated(self) -> None:
+        self.assertEqual(len(self.figure_rows), 18)
+        self.assertTrue(all(row["exists"] == "true" for row in self.figure_rows))
+        self.assertEqual({row["format"] for row in self.figure_rows}, {"pdf", "png", "svg"})
+        self.assertEqual(len(self.source_rows), 28)
+        self.assertEqual({row["record_type"] for row in self.source_rows}, {"statistic", "source_data"})
+
+    def test_code_and_reporting_surfaces_remain_review_scoped(self) -> None:
+        self.assertIn("Reproducibility commands", self.code_for_review)
+        self.assertIn("RhoDyn repository root", self.code_for_review)
+        self.assertIn("Reporting Summary | registered", self.checklist)
+        self.assertIn("final Springer Nature form remains a human submission action", self.checklist)
+        self.assertFalse((PACKAGE / "pi_review_packet.md").exists())
+        self.assertFalse((WORKSPACE / "stage9_completion_report.md").exists())
+
+
+if __name__ == "__main__":
+    unittest.main()

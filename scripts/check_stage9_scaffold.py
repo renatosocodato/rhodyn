@@ -66,6 +66,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_25_editorial_polish_pass2.py",
     "scripts/run_stage9_25b_reader_surface_hygiene.py",
     "scripts/run_stage9_26_internal_peer_review.py",
+    "scripts/run_stage9_27_submission_package_assembly.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -75,6 +76,18 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/contracts/ledger_schema_map.json",
     "manuscript/nature_methods/figures/figures.manifest.yaml",
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
+    "manuscript/nature_methods/gate_verdicts/9.27.json",
+    "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+    "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+    "manuscript/nature_methods/submission_package/submission_manifest.md",
+    "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
+    "manuscript/nature_methods/submission_package/code_for_review.md",
+    "manuscript/nature_methods/submission_package/package_consistency_audit.md",
+    "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
+    "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
+    "manuscript/nature_methods/submission_package/references_for_submission.bib",
+    "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/submission_package_manifest.json",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
 ]
 
@@ -121,7 +134,6 @@ ID_PREFIXES = [
 ]
 
 FORBIDDEN_DRAFTS = [
-    "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
 ]
@@ -227,10 +239,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json", "9.22.json", "9.23.json", "9.24.json", "9.25.json", "9.25b.json", "9.26.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json", "9.22.json", "9.23.json", "9.24.json", "9.25.json", "9.25b.json", "9.26.json", "9.27.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.26 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.27 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -262,6 +274,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_25_started = "9.25.json" in gate_files
     stage9_25b_started = "9.25b.json" in gate_files
     stage9_26_started = "9.26.json" in gate_files
+    stage9_27_started = "9.27.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -307,6 +320,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record internal_peer_review_started=true after 9.26")
             continue
+        if flag == "submission_package_started" and stage9_27_started:
+            if memory.get(flag) is not True:
+                failures.append("Stage 9 execution memory must record submission_package_started=true after 9.27")
+            continue
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
     if memory.get("figure_engine_clone_started") is not False:
@@ -320,7 +337,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_26_internal_peer_review_bound"
+        "stage9_27_submission_package_assembled"
+        if stage9_27_started
+        else "stage9_26_internal_peer_review_bound"
         if stage9_26_started
         else "stage9_25b_reader_surface_hygiene_bound"
         if stage9_25b_started
@@ -1882,6 +1901,108 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain internal peer-review output before 9.26: {rel}")
 
+    if stage9_27_started:
+        stage9_27_gate = _read_json(workspace / "gate_verdicts" / "9.27.json", failures)
+        if stage9_27_gate.get("pass") is not True or stage9_27_gate.get("substage") != "9.27":
+            failures.append("Stage 9.27 gate verdict must pass when present")
+        if stage9_27_gate.get("next_substage") != "9.28":
+            failures.append("Stage 9.27 gate must point to Stage 9.28")
+        expected_checks = {
+            "stage_9_26_gate_passed",
+            "required_inputs_present",
+            "main_text_present",
+            "supplement_present",
+            "reader_surface_hygiene_passed",
+            "cross_document_consistency_gate_passed",
+            "legend_gate_passed",
+            "figure_files_present",
+            "panelforge_status_bound",
+            "reporting_summary_present",
+            "code_for_review_present",
+            "package_safety_scan_clear",
+            "no_downstream_pi_or_closure_started",
+            "package_consistency_audit_passed",
+        }
+        actual_checks = {
+            item.get("name")
+            for item in stage9_27_gate.get("checks", [])
+            if isinstance(item, dict) and item.get("passed") is True
+        }
+        if actual_checks != expected_checks:
+            failures.append(f"Stage 9.27 checks do not match expected checks: {sorted(actual_checks)}")
+        if stage9_27_gate.get("figure_file_count") != 18:
+            failures.append("Stage 9.27 gate must record eighteen rendered figure files")
+        if stage9_27_gate.get("source_inventory_rows") != 28:
+            failures.append("Stage 9.27 gate must record twenty-eight source/statistics inventory rows")
+        if stage9_27_gate.get("reporting_summary_status") != "placeholder_present_final_form_human_action":
+            failures.append("Stage 9.27 must preserve Reporting Summary as a required placeholder and human action")
+        package_files = set(stage9_27_gate.get("package_files", []))
+        expected_package_files = {
+            "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+            "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+            "manuscript/nature_methods/submission_package/submission_manifest.md",
+            "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
+            "manuscript/nature_methods/submission_package/code_for_review.md",
+            "manuscript/nature_methods/submission_package/package_consistency_audit.md",
+            "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
+            "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
+            "manuscript/nature_methods/submission_package/references_for_submission.bib",
+            "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+            "manuscript/nature_methods/submission_package/submission_package_manifest.json",
+        }
+        if package_files != expected_package_files:
+            failures.append(f"Stage 9.27 package file set does not match expected set: {sorted(package_files)}")
+        for rel in expected_package_files:
+            if not (root / rel).exists():
+                failures.append(f"Stage 9.27 package output missing: {rel}")
+        if (workspace / "submission_package" / "pi_review_packet.md").exists():
+            failures.append("Stage 9.27 must not create the PI review packet")
+        if (workspace / "stage9_completion_report.md").exists():
+            failures.append("Stage 9.27 must not create the Stage 9 completion report")
+        main_text = workspace / "submission_package" / "main_text_for_submission.md"
+        supplement = workspace / "submission_package" / "supplementary_information_for_submission.md"
+        if main_text.exists():
+            body = main_text.read_text(encoding="utf-8")
+            for phrase in ["# RhoDyn infers residence states", "## Abstract", "## Results", "## Online Methods", "## References", "### Main figure legends"]:
+                if phrase not in body:
+                    failures.append(f"Stage 9.27 main manuscript source missing phrase: {phrase}")
+            if re.search(r"\b(?:PARA|CLM|MTH|FIG|SFIG|STBL|STAT|ART|SUPP|REF)-\d{3,4}\b|Stage 9|stage9|<!--|-->", body):
+                failures.append("Stage 9.27 main manuscript source exposes internal tokens")
+        if supplement.exists():
+            body = supplement.read_text(encoding="utf-8")
+            for phrase in ["# Supplementary Information", "## Supplementary Methods", "### Supplementary figure legends", "### Supplementary table captions"]:
+                if phrase not in body:
+                    failures.append(f"Stage 9.27 Supplementary Information source missing phrase: {phrase}")
+            if re.search(r"\b(?:PARA|CLM|MTH|FIG|SFIG|STBL|STAT|ART|SUPP|REF)-\d{3,4}\b|Stage 9|stage9|<!--|-->", body):
+                failures.append("Stage 9.27 Supplementary Information source exposes internal tokens")
+        figure_inventory = workspace / "submission_package" / "figure_file_inventory.csv"
+        if figure_inventory.exists():
+            with figure_inventory.open(newline="", encoding="utf-8") as handle:
+                figure_rows = list(csv.DictReader(handle))
+            if len(figure_rows) != 18 or any(row.get("exists") != "true" for row in figure_rows):
+                failures.append("Stage 9.27 figure inventory must contain eighteen existing rendered files")
+        checklist = workspace / "submission_package" / "submission_readiness_checklist.md"
+        if checklist.exists():
+            body = checklist.read_text(encoding="utf-8")
+            for phrase in ["Main manuscript source | ready", "Supplementary Information source | ready", "Reporting Summary | registered", "final Springer Nature form remains a human submission action"]:
+                if phrase not in body:
+                    failures.append(f"Stage 9.27 readiness checklist missing phrase: {phrase}")
+    else:
+        for rel in [
+            "submission_package/main_text_for_submission.md",
+            "submission_package/supplementary_information_for_submission.md",
+            "submission_package/submission_manifest.md",
+            "submission_package/submission_readiness_checklist.md",
+            "submission_package/code_for_review.md",
+            "submission_package/package_consistency_audit.md",
+            "submission_package/figure_file_inventory.csv",
+            "submission_package/source_data_and_statistics_inventory.csv",
+            "submission_package/references_for_submission.bib",
+            "submission_package/submission_package_manifest.json",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain submission-package output before 9.27: {rel}")
+
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():
             failures.append(f"Stage 9 scaffold-only pass must not create manuscript/evidence artifact: {rel}")
@@ -1914,6 +2035,8 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if stage9_15_started and rel == "sections/methods_blueprint.md":
                 continue
             if stage9_16_started and rel == "sections/methods.md":
+                continue
+            if stage9_27_started and rel in {"submission_package/main_text_for_submission.md", "submission_package/supplementary_information_for_submission.md"}:
                 continue
             if path.name != ".gitkeep":
                 failures.append(f"reader-facing manuscript surface exists during scaffold-only pass: {path.relative_to(workspace)}")

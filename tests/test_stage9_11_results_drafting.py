@@ -84,7 +84,6 @@ class Stage911ResultsDraftingTests(unittest.TestCase):
         self.assertIsNone(re.search(r"\(\d+(?:-\d+|,\s*\d+)*\)", visible))
         for rel in [
             "submission_package/pi_review_packet.md",
-            "submission_package/submission_readiness_checklist.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

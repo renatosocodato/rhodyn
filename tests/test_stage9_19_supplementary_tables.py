@@ -94,7 +94,6 @@ class Stage919SupplementaryTablesTests(unittest.TestCase):
     def test_downstream_reference_legend_and_package_surfaces_are_absent(self) -> None:
         for rel in [
             "submission_package/pi_review_packet.md",
-            "submission_package/submission_readiness_checklist.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

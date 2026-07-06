@@ -93,7 +93,6 @@ class Stage99TitleAbstractStrategyTests(unittest.TestCase):
     def test_downstream_manuscript_surfaces_remain_absent(self) -> None:
         for rel in [
             "submission_package/pi_review_packet.md",
-            "submission_package/submission_readiness_checklist.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

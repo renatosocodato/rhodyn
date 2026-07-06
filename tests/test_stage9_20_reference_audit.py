@@ -79,7 +79,6 @@ class Stage920ReferenceAuditTests(unittest.TestCase):
         self.assertGreaterEqual(len(list(CACHE_PATH.glob("*.json"))), 13)
         for rel in [
             "submission_package/pi_review_packet.md",
-            "submission_package/submission_readiness_checklist.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

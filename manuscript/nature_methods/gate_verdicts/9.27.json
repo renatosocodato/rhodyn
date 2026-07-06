@@ -1,0 +1,102 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.26 internal peer-review gate passes and points to package assembly",
+      "name": "stage_9_26_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "missing_inputs=[]",
+      "name": "required_inputs_present",
+      "passed": true
+    },
+    {
+      "detail": "Main manuscript source assembled",
+      "name": "main_text_present",
+      "passed": true
+    },
+    {
+      "detail": "Supplementary Information source assembled",
+      "name": "supplement_present",
+      "passed": true
+    },
+    {
+      "detail": "reader_hits=[]",
+      "name": "reader_surface_hygiene_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.21 cross-document consistency gate remains passing",
+      "name": "cross_document_consistency_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.23 figure legend and caption gate remains passing",
+      "name": "legend_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "figure_file_rows=18",
+      "name": "figure_files_present",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.6b has six rendered main display items",
+      "name": "panelforge_status_bound",
+      "passed": true
+    },
+    {
+      "detail": "Reporting Summary requirement placeholder is present",
+      "name": "reporting_summary_present",
+      "passed": true
+    },
+    {
+      "detail": "Code-for-review surface includes reproducibility commands",
+      "name": "code_for_review_present",
+      "passed": true
+    },
+    {
+      "detail": "package_hits=[]",
+      "name": "package_safety_scan_clear",
+      "passed": true
+    },
+    {
+      "detail": "downstream_paths=[]",
+      "name": "no_downstream_pi_or_closure_started",
+      "passed": true
+    },
+    {
+      "detail": "All package prerequisites, reader-surface, figure, reporting, code, and safety checks pass",
+      "name": "package_consistency_audit_passed",
+      "passed": true
+    }
+  ],
+  "commit": "781a58089b2ae9f848f40891801c9b458d0c5f2f",
+  "figure_file_count": 18,
+  "generated_utc": "2026-07-06T11:08:34Z",
+  "next_substage": "9.28",
+  "package_files": [
+    "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+    "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+    "manuscript/nature_methods/submission_package/submission_manifest.md",
+    "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
+    "manuscript/nature_methods/submission_package/code_for_review.md",
+    "manuscript/nature_methods/submission_package/package_consistency_audit.md",
+    "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
+    "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
+    "manuscript/nature_methods/submission_package/references_for_submission.bib",
+    "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/submission_package_manifest.json"
+  ],
+  "pass": true,
+  "reader_surface_files": [
+    "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+    "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md"
+  ],
+  "reporting_summary_status": "placeholder_present_final_form_human_action",
+  "scope_boundary": "Submission package assembly only. No PI review packet, final journal upload, new analysis, new figure, new biological claim, or Stage 9 closure is created.",
+  "source_inventory_rows": 28,
+  "status": "pass",
+  "substage": "9.27",
+  "title": "Submission package assembly"
+}

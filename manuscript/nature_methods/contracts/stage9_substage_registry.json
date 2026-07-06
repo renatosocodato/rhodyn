@@ -14,7 +14,7 @@
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
   "last_completed_substage": "9.25b",
-  "next_substage": "9.27",
+  "next_substage": "9.28",
   "patch_ledger": [
     {
       "id": "P1",
@@ -556,7 +556,7 @@
         "manuscript/nature_methods/submission_package/",
         "manuscript/nature_methods/submission_package/submission_readiness_checklist.md"
       ],
-      "status": "not_started",
+      "status": "complete_submission_package_assembled",
       "title": "Submission package assembly"
     },
     {
@@ -588,5 +588,5 @@
       "title": "Roadmap closure and version binding"
     }
   ],
-  "updated_utc": "2026-07-06T09:53:23Z"
+  "updated_utc": "2026-07-06T11:08:34Z"
 }

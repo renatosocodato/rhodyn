@@ -260,6 +260,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_25_editorial_polish_pass2.py",
     "scripts/run_stage9_25b_reader_surface_hygiene.py",
     "scripts/run_stage9_26_internal_peer_review.py",
+    "scripts/run_stage9_27_submission_package_assembly.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -289,6 +290,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_25_editorial_polish_pass2.py",
     "tests/test_stage9_25b_reader_surface_hygiene.py",
     "tests/test_stage9_26_internal_peer_review.py",
+    "tests/test_stage9_27_submission_package_assembly.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -308,6 +310,18 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.6.json",
     "manuscript/nature_methods/gate_verdicts/9.6b.json",
     "manuscript/nature_methods/gate_verdicts/9.7.json",
+    "manuscript/nature_methods/gate_verdicts/9.27.json",
+    "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+    "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+    "manuscript/nature_methods/submission_package/submission_manifest.md",
+    "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
+    "manuscript/nature_methods/submission_package/code_for_review.md",
+    "manuscript/nature_methods/submission_package/package_consistency_audit.md",
+    "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
+    "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
+    "manuscript/nature_methods/submission_package/references_for_submission.bib",
+    "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/submission_package_manifest.json",
     "manuscript/nature_methods/gate_verdicts/9.8.json",
     "manuscript/nature_methods/gate_verdicts/9.9.json",
     "manuscript/nature_methods/gate_verdicts/9.10.json",
@@ -531,8 +545,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.26 Internal peer review simulation complete; submission package assembly not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.26 internal peer-review boundary as active")
+        if current.get("active_stage") != "Stage 9.27 Submission package assembly complete; final PI review not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.27 submission-package boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -546,8 +560,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_26_internal_peer_review_bound":
-            failures.append("roadmap execution memory does not mark Stage 9.26 internal peer review as registered")
+        if stages.get(9, {}).get("status") != "stage9_27_submission_package_assembled":
+            failures.append("roadmap execution memory does not mark Stage 9.27 submission package assembly as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -572,8 +586,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.26 internal peer review simulation stress-tested the reader-clean manuscript":
-                failures.append("Stage 9 current gate must record the Stage 9.26 internal peer-review state")
+            if stage9.get("current_gate") != "Stage 9.27 assembled the collaborator-review submission package":
+                failures.append("Stage 9 current gate must record the Stage 9.27 submission-package state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -1137,6 +1151,57 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append(f"Stage 9.26 reviewer action matrix has unsupported statuses: {bad_statuses}")
             if any(not row.get("resolution", "").strip() for row in rows):
                 failures.append("Stage 9.26 reviewer action matrix must include a resolution for every row")
+        stage9_27_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.27.json"
+        if stage9_27_gate_path.exists():
+            try:
+                stage9_27_gate = json.loads(stage9_27_gate_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"Stage 9.27 gate is not valid JSON: {exc}")
+                stage9_27_gate = {}
+            if stage9_27_gate.get("pass") is not True:
+                failures.append("Stage 9.27 submission package gate must pass")
+            if stage9_27_gate.get("substage") != "9.27":
+                failures.append("Stage 9.27 submission package gate must remain bound to substage 9.27")
+            if stage9_27_gate.get("next_substage") != "9.28":
+                failures.append("Stage 9.27 submission package gate must point to Stage 9.28")
+            if stage9_27_gate.get("figure_file_count") != 18:
+                failures.append("Stage 9.27 submission package gate must record eighteen figure files")
+            if stage9_27_gate.get("source_inventory_rows") != 28:
+                failures.append("Stage 9.27 submission package gate must record twenty-eight source/statistics inventory rows")
+            expected_927_checks = {
+                "stage_9_26_gate_passed",
+                "required_inputs_present",
+                "main_text_present",
+                "supplement_present",
+                "reader_surface_hygiene_passed",
+                "cross_document_consistency_gate_passed",
+                "legend_gate_passed",
+                "figure_files_present",
+                "panelforge_status_bound",
+                "reporting_summary_present",
+                "code_for_review_present",
+                "package_safety_scan_clear",
+                "no_downstream_pi_or_closure_started",
+                "package_consistency_audit_passed",
+            }
+            actual_927_checks = {
+                item.get("name")
+                for item in stage9_27_gate.get("checks", [])
+                if isinstance(item, dict) and item.get("passed") is True
+            }
+            if actual_927_checks != expected_927_checks:
+                failures.append(f"Stage 9.27 checks do not match expected checks: {sorted(actual_927_checks)}")
+        else:
+            failures.append("missing Stage 9.27 submission package gate")
+        for rel in [
+            "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+            "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+            "manuscript/nature_methods/submission_package/code_for_review.md",
+            "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
+            "manuscript/nature_methods/submission_package/package_consistency_audit.md",
+        ]:
+            if not (root / rel).exists():
+                failures.append(f"missing Stage 9.27 package output: {rel}")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

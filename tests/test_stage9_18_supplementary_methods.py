@@ -76,7 +76,6 @@ class Stage918SupplementaryMethodsTests(unittest.TestCase):
             self.assertNotIn(phrase, visible)
         for rel in [
             "submission_package/pi_review_packet.md",
-            "submission_package/submission_readiness_checklist.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 
