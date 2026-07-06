@@ -14,7 +14,7 @@
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
   "last_completed_substage": "9.25b",
-  "next_substage": "9.26",
+  "next_substage": "9.27",
   "patch_ledger": [
     {
       "id": "P1",
@@ -539,7 +539,7 @@
         "manuscript/nature_methods/audits/internal_peer_review_simulation.md",
         "manuscript/nature_methods/audits/reviewer_action_matrix.csv"
       ],
-      "status": "not_started",
+      "status": "complete_internal_peer_review_bound",
       "title": "Internal peer review simulation"
     },
     {
@@ -587,5 +587,6 @@
       "status": "not_started",
       "title": "Roadmap closure and version binding"
     }
-  ]
+  ],
+  "updated_utc": "2026-07-06T09:53:23Z"
 }

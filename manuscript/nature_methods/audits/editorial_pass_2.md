@@ -1,4 +1,4 @@
-<!-- EDITORIAL-PASS-2 stage=9.25 generated=2026-07-06T08:12:31Z commit=e8d22abeb19d24b2ae152d458c27da739a679112 -->
+<!-- EDITORIAL-PASS-2 stage=9.25 generated=2026-07-06T09:53:23Z commit=adc11681f39660eb65e489d8e7903834da907458 -->
 # Stage 9.25 editorial polish pass II
 
 Stage 9.25 performs the second reader-facing polish loop after editorial polish pass I. The pass removes residual process-like phrasing, tightens venue-style readability, varies supplementary-legend openings, and preserves the current evidence boundaries. It does not change statistics, figures, source data, model outputs, figure numbering, or method claims.

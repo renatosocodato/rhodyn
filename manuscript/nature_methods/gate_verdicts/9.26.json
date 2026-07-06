@@ -1,0 +1,83 @@
+{
+  "action_row_count": 16,
+  "blocking_without_resolution": [],
+  "checks": [
+    {
+      "detail": "Stage 9.25b reader-surface hygiene gate is present and points to Stage 9.26",
+      "name": "stage_9_25b_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "perspectives=8; missing=[]",
+      "name": "all_eight_perspectives_present",
+      "passed": true
+    },
+    {
+      "detail": "action_rows=16; schema_errors=[]",
+      "name": "blocking_concerns_have_resolution_status",
+      "passed": true
+    },
+    {
+      "detail": "unsupported_rows=0",
+      "name": "unsupported_central_claims_are_routed",
+      "passed": true
+    },
+    {
+      "detail": "figures=6; rendered_files=18; missing=[]",
+      "name": "panelforge_figure_assembly_status_recorded",
+      "passed": true
+    },
+    {
+      "detail": "downstream_paths=[]",
+      "name": "no_submission_package_started",
+      "passed": true
+    }
+  ],
+  "commit": "adc11681f39660eb65e489d8e7903834da907458",
+  "downstream_paths": [],
+  "generated_utc": "2026-07-06T09:53:23Z",
+  "missing_perspectives": [],
+  "next_substage": "9.27",
+  "outputs": [
+    "manuscript/nature_methods/audits/internal_peer_review_simulation.md",
+    "manuscript/nature_methods/audits/reviewer_action_matrix.csv",
+    "manuscript/nature_methods/gate_verdicts/9.26.json"
+  ],
+  "panelforge_status": {
+    "engine": {
+      "commit": "d8ab4c5d25be6243aa7209ad1ee6af144820c920",
+      "name": "panelforge-figures",
+      "pinned_ref": "v3.14.1",
+      "version": "3.14.1",
+      "version_doi": "10.5281/zenodo.20811171"
+    },
+    "figure_ledger_rows": 6,
+    "legend_gate_counts": {
+      "main_figure_legend_count": 6,
+      "statistic_count": 19,
+      "supplementary_figure_caption_count": 9,
+      "supplementary_table_caption_count": 9
+    },
+    "legend_gate_pass": true,
+    "manifest_present": true,
+    "missing_rendered_paths": [],
+    "render_report_present": true,
+    "rendered_figures": [
+      "FIG-001",
+      "FIG-002",
+      "FIG-003",
+      "FIG-004",
+      "FIG-005",
+      "FIG-006"
+    ],
+    "rendered_file_count": 18
+  },
+  "pass": true,
+  "reviewer_perspective_count": 8,
+  "schema_errors": [],
+  "scope_boundary": "Internal peer-review simulation only. No manuscript prose, data, analyses, figures, figure numbering, submission package, or PI packet is changed.",
+  "status": "pass",
+  "substage": "9.26",
+  "title": "Internal peer review simulation",
+  "unsupported_rows": []
+}

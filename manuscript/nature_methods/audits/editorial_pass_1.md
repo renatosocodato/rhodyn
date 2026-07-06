@@ -1,4 +1,4 @@
-<!-- EDITORIAL-PASS-1 stage=9.24 generated=2026-07-04T12:08:40Z commit=7764057031acb6b01d773aad79e9cc6d76fb0f3d -->
+<!-- EDITORIAL-PASS-1 stage=9.24 generated=2026-07-06T09:53:23Z commit=adc11681f39660eb65e489d8e7903834da907458 -->
 # Stage 9.24 editorial polish pass I
 
 Stage 9.24 performs the first reader-facing polish loop after the figure legend and caption audit. The pass improves cadence, reduces mechanical transitions, and keeps claim language inside the frozen method boundaries. It does not change evidence files, statistics, figures, model outputs, figure numbering, or the biological-method claims.
@@ -32,7 +32,7 @@ The editorial polish pass completed three recursive checks. Paragraph IDs were p
 
 | Surface | Most common sentence starts | Maximum paragraph words |
 |---|---|---|
-| manuscript/nature_methods/sections/introduction.md | {'RhoDyn': 3, 'The': 3, 'For': 2, 'It': 2, 'Live': 1} | 128 |
+| manuscript/nature_methods/sections/introduction.md | {'RhoDyn': 3, 'The': 3, 'For': 2, 'It': 2, 'Live': 1} | 126 |
 | manuscript/nature_methods/sections/results.md | {'In': 6, 'The': 5, 'These': 3, 'Boundary': 1, 'Executable': 1} | 161 |
 | manuscript/nature_methods/sections/discussion.md | {'The': 6, 'It': 3, 'They': 3, 'RhoDyn': 2, 'This': 2} | 166 |
 | manuscript/nature_methods/sections/methods.md | {'The': 8, 'For': 5, 'This': 3, 'Each': 2, 'These': 2} | 125 |
@@ -42,10 +42,10 @@ The editorial polish pass completed three recursive checks. Paragraph IDs were p
 
 | Surface | Replacement status |
 |---|---|
-| manuscript/nature_methods/sections/introduction.md | replacement_2_already_present, replacement_3_already_present |
-| manuscript/nature_methods/sections/results.md | replacement_3_already_present, replacement_6_already_present, replacement_7_already_present, replacement_8_already_present, replacement_9_already_present |
-| manuscript/nature_methods/sections/discussion.md | replacement_1_already_present, replacement_2_already_present, replacement_4_already_present, replacement_5_already_present |
-| manuscript/nature_methods/sections/methods.md | replacement_1_already_present, replacement_2_already_present |
+| manuscript/nature_methods/sections/introduction.md |  |
+| manuscript/nature_methods/sections/results.md | replacement_3_already_present, replacement_6_already_present, replacement_7_already_present, replacement_8_already_present |
+| manuscript/nature_methods/sections/discussion.md | replacement_1_already_present, replacement_5_already_present |
+| manuscript/nature_methods/sections/methods.md | replacement_2_already_present |
 | manuscript/nature_methods/figures/figure_legends.md | replacement_1, replacement_2, replacement_3 |
 
 ## Scope boundary

@@ -1,4 +1,4 @@
-<!-- FIGURE-LEGEND-AUDIT stage=9.23 generated=2026-07-06T08:10:51Z commit=e8d22abeb19d24b2ae152d458c27da739a679112 -->
+<!-- FIGURE-LEGEND-AUDIT stage=9.23 generated=2026-07-06T09:53:12Z commit=adc11681f39660eb65e489d8e7903834da907458 -->
 # Stage 9.23 figure legend and caption audit
 
 Stage 9.23 writes the first reader-facing legend and caption surface for the six main display items, nine planned supplementary figures, and nine planned supplementary tables. The visible legend text uses standard figure and table names, while this audit checks the hidden joins to figure panels, statistics, supplementary support, and claim boundaries.

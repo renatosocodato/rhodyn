@@ -1,4 +1,4 @@
-<!-- READER-SURFACE-HYGIENE stage=9.25b generated=2026-07-06T08:12:31Z commit=e8d22abeb19d24b2ae152d458c27da739a679112 -->
+<!-- READER-SURFACE-HYGIENE stage=9.25b generated=2026-07-06T09:53:23Z commit=adc11681f39660eb65e489d8e7903834da907458 -->
 # Stage 9.25b reader-surface hygiene report
 
 Stage 9.25b cleans the manuscript-facing surfaces after the second editorial polish pass. The pass removes internal paragraph IDs, claim IDs, method-statement IDs, reference tokens, source-artifact IDs, stage metadata, and HTML comments from the reader-facing Markdown. It does not change the evidence set, statistics, figures, source data, model outputs, figure calls, biological examples, or interpretation limits.

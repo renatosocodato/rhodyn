@@ -76,7 +76,7 @@ class Stage924EditorialPolishPass1Tests(unittest.TestCase):
             "results.md": "Together, these definitions establish RhoDyn",
             "discussion.md": "Taken together, the present evidence supports RhoDyn",
             "methods.md": "not evidence that the software generated the motivating RhoA/microglia manuscript",
-            "figure_legends.md": "before any biological demonstration is considered",
+            "figure_legends.md": "before biological demonstrations are interpreted",
         }
         for name, phrase in expected.items():
             self.assertIn(phrase, self.sections[name], name)

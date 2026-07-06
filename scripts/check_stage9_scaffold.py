@@ -65,6 +65,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_24_editorial_polish_pass1.py",
     "scripts/run_stage9_25_editorial_polish_pass2.py",
     "scripts/run_stage9_25b_reader_surface_hygiene.py",
+    "scripts/run_stage9_26_internal_peer_review.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -120,8 +121,6 @@ ID_PREFIXES = [
 ]
 
 FORBIDDEN_DRAFTS = [
-    "audits/internal_peer_review_simulation.md",
-    "audits/reviewer_action_matrix.csv",
     "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
@@ -228,10 +227,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json", "9.22.json", "9.23.json", "9.24.json", "9.25.json", "9.25b.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json", "9.22.json", "9.23.json", "9.24.json", "9.25.json", "9.25b.json", "9.26.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.25 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.26 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -262,6 +261,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_24_started = "9.24.json" in gate_files
     stage9_25_started = "9.25.json" in gate_files
     stage9_25b_started = "9.25b.json" in gate_files
+    stage9_26_started = "9.26.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -270,7 +270,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.-1 gate checks must all pass")
 
     memory = _read_json(root / "docs" / "stage9_execution_memory.json", failures)
-    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "cross_document_consistency_started", "statistical_language_audit_started", "live_number_audit_started", "figure_legends_started", "figure_caption_audit_started", "editorial_polish_pass_1_started", "editorial_polish_pass_2_started", "reader_surface_hygiene_started", "submission_package_started"]:
+    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "cross_document_consistency_started", "statistical_language_audit_started", "live_number_audit_started", "figure_legends_started", "figure_caption_audit_started", "editorial_polish_pass_1_started", "editorial_polish_pass_2_started", "reader_surface_hygiene_started", "internal_peer_review_started", "submission_package_started"]:
         if flag == "evidence_intake_started" and stage9_0_started:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record evidence_intake_started=true after 9.0")
@@ -303,6 +303,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record reader_surface_hygiene_started=true after 9.25b")
             continue
+        if flag == "internal_peer_review_started" and stage9_26_started:
+            if memory.get(flag) is not True:
+                failures.append("Stage 9 execution memory must record internal_peer_review_started=true after 9.26")
+            continue
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
     if memory.get("figure_engine_clone_started") is not False:
@@ -316,7 +320,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_25b_reader_surface_hygiene_bound"
+        "stage9_26_internal_peer_review_bound"
+        if stage9_26_started
+        else "stage9_25b_reader_surface_hygiene_bound"
         if stage9_25b_started
         else "stage9_25_editorial_polish_pass_2_bound"
         if stage9_25_started
@@ -1785,6 +1791,96 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain reader-surface hygiene output before 9.25b: {rel}")
+
+    if stage9_26_started:
+        stage9_26_gate = _read_json(workspace / "gate_verdicts" / "9.26.json", failures)
+        review_path = workspace / "audits" / "internal_peer_review_simulation.md"
+        matrix_path = workspace / "audits" / "reviewer_action_matrix.csv"
+        if stage9_26_gate.get("pass") is not True or stage9_26_gate.get("substage") != "9.26":
+            failures.append("Stage 9.26 gate verdict must pass when present")
+        if stage9_26_gate.get("next_substage") != "9.27":
+            failures.append("Stage 9.26 gate must point to Stage 9.27")
+        if stage9_26_gate.get("reviewer_perspective_count") != 8:
+            failures.append("Stage 9.26 gate must record eight reviewer perspectives")
+        if stage9_26_gate.get("action_row_count") != 16:
+            failures.append("Stage 9.26 gate must record sixteen reviewer action rows")
+        for field in [
+            "missing_perspectives",
+            "unsupported_rows",
+            "blocking_without_resolution",
+            "schema_errors",
+            "downstream_paths",
+        ]:
+            if stage9_26_gate.get(field) not in ([], None):
+                failures.append(f"Stage 9.26 gate must have empty {field}")
+        expected_checks = {
+            "stage_9_25b_gate_passed",
+            "all_eight_perspectives_present",
+            "blocking_concerns_have_resolution_status",
+            "unsupported_central_claims_are_routed",
+            "panelforge_figure_assembly_status_recorded",
+            "no_submission_package_started",
+        }
+        actual_checks = {
+            item.get("name")
+            for item in stage9_26_gate.get("checks", [])
+            if isinstance(item, dict) and item.get("passed") is True
+        }
+        if actual_checks != expected_checks:
+            failures.append(f"Stage 9.26 checks do not match expected checks: {sorted(actual_checks)}")
+        panelforge_status = stage9_26_gate.get("panelforge_status", {})
+        if panelforge_status.get("rendered_file_count") != 18 or panelforge_status.get("missing_rendered_paths") not in ([], None):
+            failures.append("Stage 9.26 PanelForge status must record eighteen rendered main-figure files and no missing paths")
+        if panelforge_status.get("legend_gate_pass") is not True:
+            failures.append("Stage 9.26 PanelForge status must retain passing legend/caption status")
+        for path, label in [
+            (review_path, "audits/internal_peer_review_simulation.md"),
+            (matrix_path, "audits/reviewer_action_matrix.csv"),
+        ]:
+            if not path.exists():
+                failures.append(f"Stage 9.26 output missing: {label}")
+        if review_path.exists():
+            review_body = review_path.read_text(encoding="utf-8")
+            for phrase in [
+                "Stage 9.26 internal peer-review simulation",
+                "PanelForge figure assembly status",
+                "No fatal scientific blocker is left without a resolution status",
+                "Proceed to Stage 9.27 package assembly with the action matrix attached",
+            ]:
+                if phrase not in review_body:
+                    failures.append(f"Stage 9.26 review report missing phrase: {phrase}")
+            for perspective in [
+                "Nature Methods handling editor",
+                "Computational methods reviewer",
+                "Live-cell signaling reviewer",
+                "Statistics and uncertainty reviewer",
+                "Endpoint perturbation reviewer",
+                "Software reproducibility reviewer",
+                "Figure and data-visualization reviewer",
+                "Adoption and usability reviewer",
+            ]:
+                if perspective not in review_body:
+                    failures.append(f"Stage 9.26 review report missing perspective: {perspective}")
+        if matrix_path.exists():
+            with matrix_path.open(newline="", encoding="utf-8") as handle:
+                matrix_rows = list(csv.DictReader(handle))
+            perspectives = {row.get("reviewer_perspective") for row in matrix_rows}
+            allowed_statuses = {"resolved", "narrowed", "routed_upstream", "open"}
+            if len(matrix_rows) != 16:
+                failures.append("Stage 9.26 action matrix must contain sixteen rows")
+            if len(perspectives) != 8:
+                failures.append("Stage 9.26 action matrix must contain all eight reviewer perspectives")
+            if any(row.get("resolution_status") not in allowed_statuses for row in matrix_rows):
+                failures.append("Stage 9.26 action matrix contains invalid resolution_status")
+            if any(not row.get("resolution") for row in matrix_rows):
+                failures.append("Stage 9.26 action matrix contains rows without resolutions")
+    else:
+        for rel in [
+            "audits/internal_peer_review_simulation.md",
+            "audits/reviewer_action_matrix.csv",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain internal peer-review output before 9.26: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

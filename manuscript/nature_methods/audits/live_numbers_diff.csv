@@ -16,5 +16,5 @@ STAT-0014,python3 scripts/run_stage7_4_endpoint_reserve_routing.py,row_count=5,r
 STAT-0015,python3 scripts/run_stage7_5_heldout_validation.py,context_count=7;pass_count=4;fail_count=0;inconclusive_count=3,context_count=7;pass_count=4;fail_count=0;inconclusive_count=3,exact,pass
 STAT-0016,python3 scripts/run_stage7_5_heldout_validation.py,row_count=70,row_count=70,exact,pass
 STAT-0017,python3 scripts/run_stage7_6_methods_reproducibility.py,row_count=4,row_count=4,exact,pass
-STAT-0018,python3 scripts/run_stage7_6_methods_reproducibility.py,row_count=620,row_count=616,exact,updated
+STAT-0018,python3 scripts/run_stage7_6_methods_reproducibility.py,row_count=632,row_count=625,exact,updated
 STAT-0019,not_applicable_manual_doc_binding,"failure modes, ambiguous regimes, and claim-strength caps represented","failure modes, ambiguous regimes, and claim-strength caps represented",inspection,inspection_only_pass

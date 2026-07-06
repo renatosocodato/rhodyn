@@ -115,7 +115,6 @@ class Stage925EditorialPolishPass2Tests(unittest.TestCase):
 
     def test_downstream_reader_surfaces_remain_unstarted(self) -> None:
         for rel in [
-            "audits/internal_peer_review_simulation.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
             "stage9_completion_report.md",
