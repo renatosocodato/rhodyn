@@ -14,7 +14,7 @@
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
   "last_completed_substage": "9.25b",
-  "next_substage": "9.28",
+  "next_substage": "9.29",
   "patch_ledger": [
     {
       "id": "P1",
@@ -569,7 +569,7 @@
       "outputs": [
         "manuscript/nature_methods/submission_package/pi_review_packet.md"
       ],
-      "status": "not_started",
+      "status": "complete_pi_review_packet",
       "title": "Final human PI review packet"
     },
     {
@@ -588,5 +588,5 @@
       "title": "Roadmap closure and version binding"
     }
   ],
-  "updated_utc": "2026-07-06T11:08:34Z"
+  "updated_utc": "2026-07-06T11:44:38Z"
 }

@@ -12,7 +12,7 @@
 
 ### Figure 3 | Public live-cell reporters show residence-amplitude separation beyond the reference use case.
 
-**a**, The public-data adapter map shows how external calcium and ERK reporter time series enter the same tidy trajectory schema without changing their source biological context. **b**, In the DRG calcium demonstration, 360 trace summaries separate time spent inside the declared response window from calcium amplitude. **c**, In the ERK GPCR demonstration, 180 trace summaries show the same separation between window occupancy and peak or endpoint signaling. **d**, Window-sensitivity and uncertainty summaries show where the interpretation is stable, fragile, or unresolved as the declared window changes. These examples show that residence and amplitude can diverge in more than one public live-cell reporter system.
+**a**, The public-data adapter map shows how external calcium and ERK reporter time series enter the same tidy trajectory schema without changing their source biological context. **b**, In the DRG calcium demonstration, 360 trace summaries separate time spent inside the declared response window from calcium amplitude. **c**, In the ERK GPCR demonstration, 180 trace summaries show the same separation between window occupancy and peak or endpoint signaling. **d**, Window-sensitivity and uncertainty summaries show where the interpretation is stable, fragile, or unresolved as the declared window changes. These examples show that residence and amplitude can diverge in more than one public live-cell reporter system while leaving amplitude-sufficient and unresolved reporters within the method boundary.
 
 ### Figure 4 | Endpoint analyses expose bounded coupling, reserve-like buffering, and routed-output alternatives.
 

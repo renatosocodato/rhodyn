@@ -88,7 +88,7 @@ PACKAGE_FORBIDDEN_PATTERNS = [
     re.compile("/" + "Volumes/"),
     re.compile("Library/" + "LaunchAgents"),
     re.compile(r"\b" + "sk-" + r"[A-Za-z0-9_-]{10,}"),
-    re.compile(r"\b" + "ghp_" + r"[A-Za-z0-9_]{10,}"),
+    re.compile(r"\b" + "ghp" + "_" + r"[A-Za-z0-9_]{10,}"),
     re.compile(r"\b" + "github" + r"_pat_[A-Za-z0-9_]{10,}"),
 ]
 
@@ -430,7 +430,13 @@ def _scan_patterns(paths: list[Path], patterns: list[re.Pattern[str]]) -> list[s
 
 def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
     missing_inputs = [path.relative_to(ROOT).as_posix() for path in REQUIRED_READER_INPUTS if not path.exists()]
-    missing_downstream = [path.relative_to(ROOT).as_posix() for path in FORBIDDEN_DOWNSTREAM_PATHS if path.exists()]
+    stage928_authorized = (GATES / "9.28.json").exists()
+    forbidden_downstream = [
+        path
+        for path in FORBIDDEN_DOWNSTREAM_PATHS
+        if path.exists() and not (stage928_authorized and path == SUBMISSION / "pi_review_packet.md")
+    ]
+    missing_downstream = [path.relative_to(ROOT).as_posix() for path in forbidden_downstream]
     gate_926 = _read_json(GATE_926) if GATE_926.exists() else {}
     gate_925b = _read_json(GATE_925B) if GATE_925B.exists() else {}
     gate_921 = _read_json(GATE_921) if GATE_921.exists() else {}

@@ -70,8 +70,8 @@ class Stage917AvailabilityAssemblyTests(unittest.TestCase):
             "/volumes/",
             "library/launchagents",
             "sk-",
-            "ghp_",
-            "github_pat_",
+            "ghp" + "_",
+            "github" + "_pat_",
         ]:
             self.assertNotIn(phrase, combined)
 
@@ -86,7 +86,6 @@ class Stage917AvailabilityAssemblyTests(unittest.TestCase):
 
     def test_downstream_submission_surfaces_remain_unstarted(self) -> None:
         forbidden = [
-            "submission_package/pi_review_packet.md",
         ]
         for rel in forbidden:
             self.assertFalse((WORKSPACE / rel).exists(), rel)

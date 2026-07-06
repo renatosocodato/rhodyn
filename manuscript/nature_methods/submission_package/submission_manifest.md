@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-06T11:08:34Z
-Git commit. 781a58089b2ae9f848f40891801c9b458d0c5f2f
+Generated UTC. 2026-07-06T11:44:38Z
+Git commit. 773f468b3e2b238052a6d814fcdcf28cf269220d
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -14,5 +14,9 @@ Git commit. 781a58089b2ae9f848f40891801c9b458d0c5f2f
 | Code for review | `code_for_review.md` | Release identity and reproducibility-command surface. |
 | Readiness checklist | `submission_readiness_checklist.md` | Collaborator handoff checklist. |
 | Consistency audit | `package_consistency_audit.md` | Package assembly checks. |
+| PI review packet | `pi_review_packet.md` | Final human PI-style review surface for author decision. |
+| PI review action matrix | `pi_review_action_matrix.csv` | Location-anchored revision and open-item matrix. |
+| PI review revision log | `pi_review_revision_log.md` | Evidence-safe source-edit log and unresolved human actions. |
+| PI review literature calibration | `pi_review_literature_calibration.md` | Prior-art and novelty calibration note. |
 
-Scope. This package assembles the current Nature Methods Article surfaces for collaborator review. It does not create the PI review packet, submit the manuscript, or close Stage 9.
+Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and support files, but it does not submit the manuscript or close Stage 9.

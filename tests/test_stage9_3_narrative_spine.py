@@ -44,7 +44,7 @@ class Stage93NarrativeSpineTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, spine)
         for rel in [
-            "submission_package/pi_review_packet.md",
+            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists())
 

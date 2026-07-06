@@ -76,7 +76,7 @@ class Stage925bReaderSurfaceHygieneTests(unittest.TestCase):
         self.assertIn("# Abstract", self.surfaces["sections/abstract.md"])
         self.assertIn("(1-4)", self.surfaces["sections/introduction.md"])
         self.assertIn("(9,10)", self.surfaces["sections/introduction.md"])
-        self.assertIn("(5-8)", self.surfaces["sections/introduction.md"])
+        self.assertIn("(1-8)", self.surfaces["sections/introduction.md"])
         self.assertIn("(10,11)", self.surfaces["sections/introduction.md"])
 
     def test_scientific_boundaries_and_availability_survive(self) -> None:
@@ -115,7 +115,6 @@ class Stage925bReaderSurfaceHygieneTests(unittest.TestCase):
 
     def test_downstream_surfaces_remain_unstarted(self) -> None:
         for rel in [
-            "submission_package/pi_review_packet.md",
             "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)

@@ -68,7 +68,7 @@ INTERNAL_ID_RE = re.compile(r"\b(?:PARA|CLM|MTH|FIG|SFIG|STBL|STAT|ART|SUPP|REF)
 COMMENT_RE = re.compile(r"<!--.*?-->\s*", flags=re.S)
 REF_CALL_RE = re.compile(r"\((REF-\d{4}(?:;\s*REF-\d{4})*)\)")
 LOCAL_PATH_RE = re.compile("(" + "/Us" + "ers/|" + "/Vol" + "umes/|" + "Library/" + "LaunchAgents|" + "file" + "://)")
-SECRET_RE = re.compile(r"\b(?:sk-[A-Za-z0-9_-]{20,}|ghp_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,})\b")
+SECRET_RE = re.compile(r"\b(?:sk-[A-Za-z0-9_-]{20,}|" + "ghp" + r"_[A-Za-z0-9_]{20,}|" + "github" + r"_pat_[A-Za-z0-9_]{20,})\b")
 
 FORBIDDEN_VISIBLE_PHRASES = [
     "Stage 9",

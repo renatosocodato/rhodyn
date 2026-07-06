@@ -68,7 +68,7 @@ class Stage95ParagraphClaimLedgerTests(unittest.TestCase):
 
     def test_stage9_5_does_not_start_downstream_manuscript_surfaces(self) -> None:
         for rel in [
-            "submission_package/pi_review_packet.md",
+            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists())
 

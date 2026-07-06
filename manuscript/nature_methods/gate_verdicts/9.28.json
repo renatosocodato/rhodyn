@@ -1,0 +1,100 @@
+{
+  "action_matrix_rows": 6,
+  "auto_revision_count": 5,
+  "checks": [
+    {
+      "detail": "e_inventory.csv\",\n    \"manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv\",\n    \"manuscript/nature_methods/submission_package/references_for_submission.bib\",\n    \"manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md\",\n    \"manuscript/nature_methods/submission_package/submission_package_manifest.json\",\n    \"manuscript/nature_methods/gate_verdicts/9.27.json\"\n  ],\n  \"source_inventory_rows\": 28,\n  \"status\": \"completed\",\n  \"substage\": \"9.27\"\n}\n",
+      "name": "stage_9_27_package_regenerated",
+      "passed": true
+    },
+    {
+      "detail": "prompt_sha256=adead74864e6b76a6123a0e8d3b20e0d74748f81d82795fbb62c334cf2c2eb40",
+      "name": "persona_prompt_available",
+      "passed": true
+    },
+    {
+      "detail": "PI review packet assembled",
+      "name": "pi_review_packet_present",
+      "passed": true
+    },
+    {
+      "detail": "headings=['Executive Summary', 'Revision Aspects', 'Confidential Recommendation to the Editor']",
+      "name": "required_review_headings_exact",
+      "passed": true
+    },
+    {
+      "detail": "major=7 minor=8",
+      "name": "major_minor_review_items_present",
+      "passed": true
+    },
+    {
+      "detail": "Potentially Accept after Major Revision and Re-review",
+      "name": "confidential_recommendation_allowed",
+      "passed": true
+    },
+    {
+      "detail": "forbidden_meta=False",
+      "name": "review_surface_hygiene_passed",
+      "passed": true
+    },
+    {
+      "detail": "statuses=['already_present', 'already_present', 'already_present', 'already_present', 'already_present']",
+      "name": "safe_source_revisions_applied",
+      "passed": true
+    },
+    {
+      "detail": "rows=6",
+      "name": "action_matrix_present",
+      "passed": true
+    },
+    {
+      "detail": "revision log assembled",
+      "name": "revision_log_present",
+      "passed": true
+    },
+    {
+      "detail": "novelty calibration recorded",
+      "name": "literature_calibration_present",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.27 package gate remains passing after source edits",
+      "name": "reader_surface_hygiene_passed",
+      "passed": true
+    },
+    {
+      "detail": "package_hits=[]",
+      "name": "package_safety_scan_clear",
+      "passed": true
+    },
+    {
+      "detail": "rendered_file_count=18",
+      "name": "panelforge_status_unchanged",
+      "passed": true
+    },
+    {
+      "detail": "closure_paths=[]",
+      "name": "no_stage9_closure_started",
+      "passed": true
+    }
+  ],
+  "generated_utc": "2026-07-06T11:44:38Z",
+  "git_commit": "773f468b3e2b238052a6d814fcdcf28cf269220d",
+  "major_review_item_count": 7,
+  "minor_review_item_count": 8,
+  "newly_applied_edit_count": 0,
+  "next_substage": "9.29",
+  "outputs": [
+    "manuscript/nature_methods/submission_package/pi_review_packet.md",
+    "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+    "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+    "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
+    "manuscript/nature_methods/gate_verdicts/9.28.json"
+  ],
+  "pass": true,
+  "review_recommendation": "Potentially Accept after Major Revision and Re-review",
+  "safe_revision_count": 5,
+  "scope_boundary": "PI review and evidence-safe auto-revision only. No new analysis, figure, dataset, model output, final journal upload, or Stage 9 closure is created.",
+  "status": "pass",
+  "substage": "9.28"
+}

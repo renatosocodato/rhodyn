@@ -136,6 +136,7 @@ REQUIRED_ARCHIVE_FILES = {
     "scripts/run_stage9_25b_reader_surface_hygiene.py",
     "scripts/run_stage9_26_internal_peer_review.py",
     "scripts/run_stage9_27_submission_package_assembly.py",
+    "scripts/run_stage9_28_pi_review_auto_revision.py",
     "scripts/run_stage7_7_usability_rehearsal.py",
     "docs/stage7_methods_program.md",
     "docs/stage7_6_api_stability_policy.md",
@@ -186,6 +187,7 @@ REQUIRED_ARCHIVE_FILES = {
     "tests/test_stage9_25b_reader_surface_hygiene.py",
     "tests/test_stage9_26_internal_peer_review.py",
     "tests/test_stage9_27_submission_package_assembly.py",
+    "tests/test_stage9_28_pi_review_auto_revision.py",
     "docs/stage9_manuscript_assembly_plan.md",
     "docs/stage9_execution_memory.json",
     "manuscript/nature_methods/README.md",
@@ -251,6 +253,10 @@ REQUIRED_ARCHIVE_FILES = {
     "manuscript/nature_methods/submission_package/references_for_submission.bib",
     "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
     "manuscript/nature_methods/submission_package/submission_package_manifest.json",
+    "manuscript/nature_methods/submission_package/pi_review_packet.md",
+    "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+    "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+    "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
     "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
     "manuscript/nature_methods/refs/references.bib",
     "manuscript/nature_methods/refs/citation_claim_ledger.csv",
@@ -667,8 +673,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     stage7 = stages.get(7, {}) if isinstance(stages.get(7, {}), dict) else {}
     subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
     subphase_status = {entry.get("id"): entry.get("status") for entry in subphases if isinstance(entry, dict)}
-    if current.get("active_stage") != "Stage 9.27 Submission package assembly complete; final PI review not started":
-        failures.append("roadmap memory does not mark the Stage 9.27 submission-package boundary as active")
+    if current.get("active_stage") != "Stage 9.28 PI review packet complete; Stage 9 closure not started":
+        failures.append("roadmap memory does not mark the Stage 9.28 PI-review boundary as active")
     if stage7.get("status") != "stage7_8_complete_methods_readiness":
         failures.append("Stage 7 status is not stage7_8_complete_methods_readiness")
     if subphase_status.get("7.6") != "complete_methods_reproducibility_hardening":
@@ -678,8 +684,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
     if subphase_status.get("7.8") != "complete_methods_manuscript_readiness_package":
         failures.append("Stage 7.8 subphase is not complete")
     stage9 = stages.get(9, {}) if isinstance(stages.get(9, {}), dict) else {}
-    if stage9.get("status") != "stage9_27_submission_package_assembled":
-        failures.append("Stage 9 is not marked stage9_27_submission_package_assembled")
+    if stage9.get("status") != "stage9_28_pi_review_packet_complete":
+        failures.append("Stage 9 is not marked stage9_28_pi_review_packet_complete")
     if stage9.get("substage_count") != 33:
         failures.append("Stage 9 does not serialize all 33 substages")
     stage9_substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -729,6 +735,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9 does not serialize the 9.26 internal peer-review substage")
     if "9.27" not in stage9_substage_ids:
         failures.append("Stage 9 does not serialize the 9.27 submission-package substage")
+    if "9.28" not in stage9_substage_ids:
+        failures.append("Stage 9 does not serialize the 9.28 PI-review substage")
     stage9_substage_status = {entry.get("id"): entry.get("status") for entry in stage9.get("subphases", []) if isinstance(entry, dict)}
     if stage9_substage_status.get("9.0") != "complete_evidence_locked":
         failures.append("Stage 9.0 is not marked complete_evidence_locked")
@@ -790,6 +798,8 @@ def _roadmap_state_scan(root: Path) -> StepResult:
         failures.append("Stage 9.26 is not marked complete_internal_peer_review_bound")
     if stage9_substage_status.get("9.27") != "complete_submission_package_assembled":
         failures.append("Stage 9.27 is not marked complete_submission_package_assembled")
+    if stage9_substage_status.get("9.28") != "complete_pi_review_packet":
+        failures.append("Stage 9.28 is not marked complete_pi_review_packet")
     for rel in [
         "docs/roadmap.md",
         "docs/stage7_methods_program.md",

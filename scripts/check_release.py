@@ -261,6 +261,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_25b_reader_surface_hygiene.py",
     "scripts/run_stage9_26_internal_peer_review.py",
     "scripts/run_stage9_27_submission_package_assembly.py",
+    "scripts/run_stage9_28_pi_review_auto_revision.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -291,6 +292,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_25b_reader_surface_hygiene.py",
     "tests/test_stage9_26_internal_peer_review.py",
     "tests/test_stage9_27_submission_package_assembly.py",
+    "tests/test_stage9_28_pi_review_auto_revision.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -311,6 +313,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/gate_verdicts/9.6b.json",
     "manuscript/nature_methods/gate_verdicts/9.7.json",
     "manuscript/nature_methods/gate_verdicts/9.27.json",
+    "manuscript/nature_methods/gate_verdicts/9.28.json",
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
     "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
     "manuscript/nature_methods/submission_package/submission_manifest.md",
@@ -322,6 +325,10 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/submission_package/references_for_submission.bib",
     "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
     "manuscript/nature_methods/submission_package/submission_package_manifest.json",
+    "manuscript/nature_methods/submission_package/pi_review_packet.md",
+    "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+    "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+    "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
     "manuscript/nature_methods/gate_verdicts/9.8.json",
     "manuscript/nature_methods/gate_verdicts/9.9.json",
     "manuscript/nature_methods/gate_verdicts/9.10.json",
@@ -545,8 +552,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.27 Submission package assembly complete; final PI review not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.27 submission-package boundary as active")
+        if current.get("active_stage") != "Stage 9.28 PI review packet complete; Stage 9 closure not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.28 PI-review boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -560,8 +567,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_27_submission_package_assembled":
-            failures.append("roadmap execution memory does not mark Stage 9.27 submission package assembly as registered")
+        if stages.get(9, {}).get("status") != "stage9_28_pi_review_packet_complete":
+            failures.append("roadmap execution memory does not mark Stage 9.28 PI review as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -586,8 +593,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.27 assembled the collaborator-review submission package":
-                failures.append("Stage 9 current gate must record the Stage 9.27 submission-package state")
+            if stage9.get("current_gate") != "Stage 9.28 prepared the final human PI review packet":
+                failures.append("Stage 9 current gate must record the Stage 9.28 PI-review state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -1202,6 +1209,61 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         ]:
             if not (root / rel).exists():
                 failures.append(f"missing Stage 9.27 package output: {rel}")
+        stage9_28_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.28.json"
+        if stage9_28_gate_path.exists():
+            try:
+                stage9_28_gate = json.loads(stage9_28_gate_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"Stage 9.28 gate is not valid JSON: {exc}")
+                stage9_28_gate = {}
+            if stage9_28_gate.get("pass") is not True:
+                failures.append("Stage 9.28 PI-review gate must pass")
+            if stage9_28_gate.get("substage") != "9.28":
+                failures.append("Stage 9.28 PI-review gate must remain bound to substage 9.28")
+            if stage9_28_gate.get("next_substage") != "9.29":
+                failures.append("Stage 9.28 PI-review gate must point to Stage 9.29")
+            if stage9_28_gate.get("auto_revision_count") != 5:
+                failures.append("Stage 9.28 must retain five evidence-safe source revisions")
+            if stage9_28_gate.get("major_review_item_count") != 7:
+                failures.append("Stage 9.28 PI review packet must contain seven major items")
+            if stage9_28_gate.get("minor_review_item_count") != 8:
+                failures.append("Stage 9.28 PI review packet must contain eight minor items")
+            if stage9_28_gate.get("action_matrix_rows") != 6:
+                failures.append("Stage 9.28 action matrix must contain six rows")
+            expected_928_checks = {
+                "stage_9_27_package_regenerated",
+                "persona_prompt_available",
+                "pi_review_packet_present",
+                "required_review_headings_exact",
+                "major_minor_review_items_present",
+                "confidential_recommendation_allowed",
+                "review_surface_hygiene_passed",
+                "safe_source_revisions_applied",
+                "action_matrix_present",
+                "revision_log_present",
+                "literature_calibration_present",
+                "reader_surface_hygiene_passed",
+                "package_safety_scan_clear",
+                "panelforge_status_unchanged",
+                "no_stage9_closure_started",
+            }
+            actual_928_checks = {
+                item.get("name")
+                for item in stage9_28_gate.get("checks", [])
+                if isinstance(item, dict) and item.get("passed") is True
+            }
+            if actual_928_checks != expected_928_checks:
+                failures.append(f"Stage 9.28 checks do not match expected checks: {sorted(actual_928_checks)}")
+        else:
+            failures.append("missing Stage 9.28 PI-review gate")
+        for rel in [
+            "manuscript/nature_methods/submission_package/pi_review_packet.md",
+            "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+            "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+            "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
+        ]:
+            if not (root / rel).exists():
+                failures.append(f"missing Stage 9.28 PI-review output: {rel}")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

@@ -90,7 +90,12 @@
     "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
     "manuscript/nature_methods/submission_package/references_for_submission.bib",
     "manuscript/nature_methods/submission_package/submission_package_manifest.json",
-    "manuscript/nature_methods/gate_verdicts/9.27.json"
+    "manuscript/nature_methods/gate_verdicts/9.27.json",
+    "manuscript/nature_methods/submission_package/pi_review_packet.md",
+    "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+    "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+    "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
+    "manuscript/nature_methods/gate_verdicts/9.28.json"
   ],
   "availability_assembly_started": true,
   "citation_resolution_started": true,
@@ -1931,11 +1936,113 @@
       "status": "pass",
       "substage": "9.27",
       "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, Reporting Summary placeholder, and readiness checklist"
+    },
+    {
+      "checks": [
+        {
+          "detail": "e_inventory.csv\",\n    \"manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv\",\n    \"manuscript/nature_methods/submission_package/references_for_submission.bib\",\n    \"manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md\",\n    \"manuscript/nature_methods/submission_package/submission_package_manifest.json\",\n    \"manuscript/nature_methods/gate_verdicts/9.27.json\"\n  ],\n  \"source_inventory_rows\": 28,\n  \"status\": \"completed\",\n  \"substage\": \"9.27\"\n}\n",
+          "name": "stage_9_27_package_regenerated",
+          "passed": true
+        },
+        {
+          "detail": "prompt_sha256=adead74864e6b76a6123a0e8d3b20e0d74748f81d82795fbb62c334cf2c2eb40",
+          "name": "persona_prompt_available",
+          "passed": true
+        },
+        {
+          "detail": "PI review packet assembled",
+          "name": "pi_review_packet_present",
+          "passed": true
+        },
+        {
+          "detail": "headings=['Executive Summary', 'Revision Aspects', 'Confidential Recommendation to the Editor']",
+          "name": "required_review_headings_exact",
+          "passed": true
+        },
+        {
+          "detail": "major=7 minor=8",
+          "name": "major_minor_review_items_present",
+          "passed": true
+        },
+        {
+          "detail": "Potentially Accept after Major Revision and Re-review",
+          "name": "confidential_recommendation_allowed",
+          "passed": true
+        },
+        {
+          "detail": "forbidden_meta=False",
+          "name": "review_surface_hygiene_passed",
+          "passed": true
+        },
+        {
+          "detail": "statuses=['already_present', 'already_present', 'already_present', 'already_present', 'already_present']",
+          "name": "safe_source_revisions_applied",
+          "passed": true
+        },
+        {
+          "detail": "rows=6",
+          "name": "action_matrix_present",
+          "passed": true
+        },
+        {
+          "detail": "revision log assembled",
+          "name": "revision_log_present",
+          "passed": true
+        },
+        {
+          "detail": "novelty calibration recorded",
+          "name": "literature_calibration_present",
+          "passed": true
+        },
+        {
+          "detail": "Stage 9.27 package gate remains passing after source edits",
+          "name": "reader_surface_hygiene_passed",
+          "passed": true
+        },
+        {
+          "detail": "package_hits=[]",
+          "name": "package_safety_scan_clear",
+          "passed": true
+        },
+        {
+          "detail": "rendered_file_count=18",
+          "name": "panelforge_status_unchanged",
+          "passed": true
+        },
+        {
+          "detail": "closure_paths=[]",
+          "name": "no_stage9_closure_started",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.27.json",
+        "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+        "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+        "manuscript/nature_methods/audits/internal_peer_review_simulation.md"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/submission_package/pi_review_packet.md",
+        "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+        "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+        "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
+        "manuscript/nature_methods/gate_verdicts/9.28.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.28.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Final Springer Nature Reporting Summary form remains a human submission action",
+        "Final portal metadata and file naming remain human submission actions",
+        "Stage 9 closure has not started"
+      ],
+      "status": "pass",
+      "substage": "9.28",
+      "validation_outcome": "PI review packet assembled, safe source revisions applied, submission package regenerated, and remaining human actions preserved"
     }
   ],
   "cross_document_consistency_started": true,
-  "current_gate": "Stage 9.27 assembled the collaborator-review submission package",
-  "current_substage": "9.27",
+  "current_gate": "Stage 9.28 prepared the final human PI review packet and evidence-safe source revisions",
+  "current_substage": "9.28",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
@@ -1955,12 +2062,12 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.27 are complete through submission package assembly.",
-    "Stage 9.28 and Stage 9.29 remain not started.",
-    "No PI review packet or Stage 9 completion report is created in this pass.",
-    "The package contains reader-clean main text, Supplementary Information, code-for-review, figure inventory, source-data/statistics inventory, Reporting Summary placeholder, and readiness checklist."
+    "Stage 9.0 through Stage 9.28 are complete through final human PI review packet assembly.",
+    "Stage 9.29 remains not started.",
+    "No Stage 9 completion report is created in this pass.",
+    "The package now contains the PI review packet, action matrix, revision log, and literature calibration record."
   ],
-  "generated_utc": "2026-07-06T11:08:34Z",
+  "generated_utc": "2026-07-06T11:44:38Z",
   "internal_peer_review_started": true,
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
@@ -1972,10 +2079,11 @@
   "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.28",
+  "next_substage": "9.29",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
+  "pi_review_started": true,
   "project_binding": {
     "archive_doi": "10.5281/zenodo.21036616",
     "code_central": true,
@@ -2041,7 +2149,7 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, guidance, corpus, narrative spine, claim freeze, paragraph and figure planning, PanelForge rendering, supplementary planning, drafting, availability, references, consistency, statistics, legends, polish, reader-surface hygiene, internal peer review, and submission package assembly. Do not start the PI review packet or Stage 9 closure without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, guidance, corpus, narrative spine, claim freeze, paragraph and figure planning, PanelForge rendering, supplementary planning, drafting, availability, references, consistency, statistics, legends, polish, reader-surface hygiene, internal peer review, submission package assembly, and PI review packet assembly. Do not start Stage 9 closure without explicit authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "source_data_binding_started": true,
@@ -3003,6 +3111,83 @@
       "passed": true
     }
   ],
+  "stage9_28_checks": [
+    {
+      "detail": "e_inventory.csv\",\n    \"manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv\",\n    \"manuscript/nature_methods/submission_package/references_for_submission.bib\",\n    \"manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md\",\n    \"manuscript/nature_methods/submission_package/submission_package_manifest.json\",\n    \"manuscript/nature_methods/gate_verdicts/9.27.json\"\n  ],\n  \"source_inventory_rows\": 28,\n  \"status\": \"completed\",\n  \"substage\": \"9.27\"\n}\n",
+      "name": "stage_9_27_package_regenerated",
+      "passed": true
+    },
+    {
+      "detail": "prompt_sha256=adead74864e6b76a6123a0e8d3b20e0d74748f81d82795fbb62c334cf2c2eb40",
+      "name": "persona_prompt_available",
+      "passed": true
+    },
+    {
+      "detail": "PI review packet assembled",
+      "name": "pi_review_packet_present",
+      "passed": true
+    },
+    {
+      "detail": "headings=['Executive Summary', 'Revision Aspects', 'Confidential Recommendation to the Editor']",
+      "name": "required_review_headings_exact",
+      "passed": true
+    },
+    {
+      "detail": "major=7 minor=8",
+      "name": "major_minor_review_items_present",
+      "passed": true
+    },
+    {
+      "detail": "Potentially Accept after Major Revision and Re-review",
+      "name": "confidential_recommendation_allowed",
+      "passed": true
+    },
+    {
+      "detail": "forbidden_meta=False",
+      "name": "review_surface_hygiene_passed",
+      "passed": true
+    },
+    {
+      "detail": "statuses=['already_present', 'already_present', 'already_present', 'already_present', 'already_present']",
+      "name": "safe_source_revisions_applied",
+      "passed": true
+    },
+    {
+      "detail": "rows=6",
+      "name": "action_matrix_present",
+      "passed": true
+    },
+    {
+      "detail": "revision log assembled",
+      "name": "revision_log_present",
+      "passed": true
+    },
+    {
+      "detail": "novelty calibration recorded",
+      "name": "literature_calibration_present",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.27 package gate remains passing after source edits",
+      "name": "reader_surface_hygiene_passed",
+      "passed": true
+    },
+    {
+      "detail": "package_hits=[]",
+      "name": "package_safety_scan_clear",
+      "passed": true
+    },
+    {
+      "detail": "rendered_file_count=18",
+      "name": "panelforge_status_unchanged",
+      "passed": true
+    },
+    {
+      "detail": "closure_paths=[]",
+      "name": "no_stage9_closure_started",
+      "passed": true
+    }
+  ],
   "stage9_2_checks": [
     {
       "detail": "Stage 9.1 venue guidance exists and passes",
@@ -3279,9 +3464,9 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.27 Submission package assembly complete; final PI review not started",
+  "stage9_active_gate": "Stage 9.28 PI review packet complete; Stage 9 closure not started",
   "statistical_language_audit_started": true,
-  "status": "stage9_27_submission_package_assembled",
+  "status": "stage9_28_pi_review_packet_complete",
   "submission_package_started": true,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

@@ -42,7 +42,7 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
         for phrase in [
             "(1-4)",
             "(9,10)",
-            "(5-8)",
+            "(1-8)",
             "(10,11)",
             "residence-state",
             "bounded-coupling",
@@ -57,7 +57,7 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
         visible = _visible_text(self.introduction)
         ledger_refs = {row["ref_id"] for row in self.ledger_rows}
         self.assertEqual(len(ledger_refs), 11)
-        self.assertEqual(set(re.findall(r"\((?:\d+(?:-\d+)?)(?:,\d+)*\)", visible)), {"(1-4)", "(5-8)", "(9,10)", "(10,11)"})
+        self.assertEqual(set(re.findall(r"\((?:\d+(?:-\d+)?)(?:,\d+)*\)", visible)), {"(1-4)", "(1-8)", "(9,10)", "(10,11)"})
         for row in self.ledger_rows:
             self.assertEqual(row["resolved"], "true")
             self.assertRegex(row["doi_or_pmid"], r"^(10\.\d+/.+|PMID:\d+)$")
@@ -85,7 +85,7 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
         ]:
             self.assertNotIn(forbidden, visible)
         for rel in [
-            "submission_package/pi_review_packet.md",
+            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)
 

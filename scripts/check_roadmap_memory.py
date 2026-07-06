@@ -68,6 +68,7 @@ STAGE9_25_RUNNER_PATH = ROOT / "scripts" / "run_stage9_25_editorial_polish_pass2
 STAGE9_25B_RUNNER_PATH = ROOT / "scripts" / "run_stage9_25b_reader_surface_hygiene.py"
 STAGE9_26_RUNNER_PATH = ROOT / "scripts" / "run_stage9_26_internal_peer_review.py"
 STAGE9_27_RUNNER_PATH = ROOT / "scripts" / "run_stage9_27_submission_package_assembly.py"
+STAGE9_28_RUNNER_PATH = ROOT / "scripts" / "run_stage9_28_pi_review_auto_revision.py"
 STAGE9_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.-1.json"
 STAGE9_0_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.0.json"
 STAGE9_1_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.1.json"
@@ -99,6 +100,7 @@ STAGE9_25_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" /
 STAGE9_25B_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.25b.json"
 STAGE9_26_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.26.json"
 STAGE9_27_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.27.json"
+STAGE9_28_GATE_PATH = ROOT / "manuscript" / "nature_methods" / "gate_verdicts" / "9.28.json"
 
 
 def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
@@ -165,6 +167,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_25b_runner_path = root / STAGE9_25B_RUNNER_PATH.relative_to(ROOT)
     stage9_26_runner_path = root / STAGE9_26_RUNNER_PATH.relative_to(ROOT)
     stage9_27_runner_path = root / STAGE9_27_RUNNER_PATH.relative_to(ROOT)
+    stage9_28_runner_path = root / STAGE9_28_RUNNER_PATH.relative_to(ROOT)
     stage9_gate_path = root / STAGE9_GATE_PATH.relative_to(ROOT)
     stage9_0_gate_path = root / STAGE9_0_GATE_PATH.relative_to(ROOT)
     stage9_1_gate_path = root / STAGE9_1_GATE_PATH.relative_to(ROOT)
@@ -196,6 +199,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     stage9_25b_gate_path = root / STAGE9_25B_GATE_PATH.relative_to(ROOT)
     stage9_26_gate_path = root / STAGE9_26_GATE_PATH.relative_to(ROOT)
     stage9_27_gate_path = root / STAGE9_27_GATE_PATH.relative_to(ROOT)
+    stage9_28_gate_path = root / STAGE9_28_GATE_PATH.relative_to(ROOT)
 
     if not memory_path.exists():
         failures.append("missing docs/roadmap_execution_memory.json")
@@ -216,8 +220,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 9.27 Submission package assembly complete; final PI review not started":
-        failures.append("active stage must record the Stage 9.27 submission-package boundary")
+    if current.get("active_stage") != "Stage 9.28 PI review packet complete; Stage 9 closure not started":
+        failures.append("active stage must record the Stage 9.28 PI-review boundary")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -227,7 +231,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         6: "public_citable_v0.1.0",
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
-        9: "stage9_27_submission_package_assembled",
+        9: "stage9_28_pi_review_packet_complete",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -333,8 +337,10 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.26 must be complete_internal_peer_review_bound")
     if stage9_status.get("9.27") != "complete_submission_package_assembled":
         failures.append("Stage 9.27 must be complete_submission_package_assembled")
+    if stage9_status.get("9.28") != "complete_pi_review_packet":
+        failures.append("Stage 9.28 must be complete_pi_review_packet")
     for entry in stage9_substages:
-        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "9.23", "9.24", "9.25", "9.25b", "9.26", "9.27"} and entry.get("status") != "not_started":
+        if isinstance(entry, dict) and entry.get("id") not in {"9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "9.23", "9.24", "9.25", "9.25b", "9.26", "9.27", "9.28"} and entry.get("status") != "not_started":
             failures.append(f"Stage {entry.get('id')} must remain not_started")
 
     roadmap_flat = " ".join(roadmap.split())
@@ -395,7 +401,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 9.25b Reader-surface hygiene has been completed",
         "Stage 9.26 Internal peer review simulation has been completed",
         "Stage 9.27 Submission package assembly has been completed",
-        "Stage 9.28 Final human PI review packet remains the next unstarted manuscript step",
+        "Stage 9.28 Final human PI review packet has been completed",
+        "Stage 9.29 closure remains the next unstarted manuscript step",
         "Stage 9. Nature Methods manuscript assembly",
         "PanelForge",
     ]
@@ -458,8 +465,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"Stage 7 execution plan is missing phrase: {phrase}")
 
     stage9_docs = [
-        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "9.23", "9.24", "9.25", "9.25b", "9.26", "9.27", "PanelForge", "evidence lock", "Results drafting", "Introduction literature binding", "Discussion drafting", "Methods architecture", "Methods prose", "data availability", "code availability", "Supplementary Methods", "supplementary table/source-data binding", "reference library", "Cross-document consistency", "statistical", "figure legends", "Editorial polish pass I", "Editorial polish pass II", "reader-surface hygiene", "internal peer review", "submission package"]),
-        (stage9_memory_path, "Stage 9 execution memory", ["stage9_27_submission_package_assembled", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "9.23", "9.24", "9.25", "9.25b", "9.26", "9.27", "figure_engine_clone_started", "reference_library_started", "cross_document_consistency_started", "statistical_language_audit_started", "figure_legends_started", "editorial_polish_pass_1_started", "editorial_polish_pass_2_started", "reader_surface_hygiene_started", "internal_peer_review_started", "submission_package_started"]),
+        (stage9_plan_path, "Stage 9 manuscript assembly plan", ["9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "9.23", "9.24", "9.25", "9.25b", "9.26", "9.27", "9.28", "PanelForge", "evidence lock", "Results drafting", "Introduction literature binding", "Discussion drafting", "Methods architecture", "Methods prose", "data availability", "code availability", "Supplementary Methods", "supplementary table/source-data binding", "reference library", "Cross-document consistency", "statistical", "figure legends", "Editorial polish pass I", "Editorial polish pass II", "reader-surface hygiene", "internal peer review", "submission package", "PI review"]),
+        (stage9_memory_path, "Stage 9 execution memory", ["stage9_28_pi_review_packet_complete", "9.-1", "9.0", "9.1", "9.2", "9.3", "9.4", "9.5", "9.6", "9.6b", "9.7", "9.8", "9.9", "9.10", "9.11", "9.12", "9.13", "9.14", "9.15", "9.16", "9.17", "9.18", "9.19", "9.20", "9.21", "9.22", "9.23", "9.24", "9.25", "9.25b", "9.26", "9.27", "9.28", "figure_engine_clone_started", "reference_library_started", "cross_document_consistency_started", "statistical_language_audit_started", "figure_legends_started", "editorial_polish_pass_1_started", "editorial_polish_pass_2_started", "reader_surface_hygiene_started", "internal_peer_review_started", "submission_package_started", "pi_review_started"]),
         (stage9_checker_path, "Stage 9 scaffold checker", ["FORBIDDEN_DRAFTS", "FORBIDDEN_RENDER_SUFFIXES", "check_stage9_scaffold", "scaffold_only_boundary_preserved"]),
         (stage9_0_runner_path, "Stage 9.0 evidence intake runner", ["stage9_evidence_manifest.csv", "stage9_evidence_lock.md", "No drafting", "PanelForge execution"]),
         (stage9_1_runner_path, "Stage 9.1 venue guidance runner", ["nature_methods_guidance_register.md", "venue_policy_constraints.md", "No representative corpus", "No manuscript sections"]),
@@ -491,6 +498,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         (stage9_25b_runner_path, "Stage 9.25b reader-surface hygiene runner", ["reader_surface_hygiene_report.md", "internal_ids_absent_from_reader_surfaces", "Stage 9.26"]),
         (stage9_26_runner_path, "Stage 9.26 internal peer-review runner", ["internal_peer_review_simulation.md", "reviewer_action_matrix.csv", "all_eight_perspectives_present", "Stage 9.27"]),
         (stage9_27_runner_path, "Stage 9.27 submission package runner", ["main_text_for_submission.md", "submission_readiness_checklist.md", "code_for_review.md", "package_consistency_audit_passed", "Stage 9.28"]),
+        (stage9_28_runner_path, "Stage 9.28 PI review runner", ["pi_review_packet.md", "pi_review_action_matrix.csv", "pi_review_revision_log.md", "pi_review_literature_calibration.md", "Stage 9.29"]),
     ]
     for path, label, phrases in stage9_docs:
         if not path.exists():
@@ -1256,6 +1264,57 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             if not (root / rel).exists():
                 failures.append(f"missing Stage 9.27 package output: {rel}")
 
+    if not stage9_28_gate_path.exists():
+        failures.append("missing manuscript/nature_methods/gate_verdicts/9.28.json")
+    else:
+        stage9_28_gate = json.loads(stage9_28_gate_path.read_text(encoding="utf-8"))
+        if stage9_28_gate.get("pass") is not True:
+            failures.append("Stage 9.28 PI-review gate must pass")
+        if stage9_28_gate.get("substage") != "9.28":
+            failures.append("Stage 9.28 PI-review gate must remain bound to substage 9.28")
+        if stage9_28_gate.get("next_substage") != "9.29":
+            failures.append("Stage 9.28 PI-review gate must point to Stage 9.29")
+        if stage9_28_gate.get("auto_revision_count") != 5:
+            failures.append("Stage 9.28 must retain five evidence-safe source revisions")
+        if stage9_28_gate.get("major_review_item_count") != 7:
+            failures.append("Stage 9.28 PI review packet must contain seven major items")
+        if stage9_28_gate.get("minor_review_item_count") != 8:
+            failures.append("Stage 9.28 PI review packet must contain eight minor items")
+        if stage9_28_gate.get("action_matrix_rows") != 6:
+            failures.append("Stage 9.28 action matrix must contain six rows")
+        stage9_28_checks = {
+            item.get("name"): item.get("passed")
+            for item in stage9_28_gate.get("checks", [])
+            if isinstance(item, dict)
+        }
+        for check_name in [
+            "stage_9_27_package_regenerated",
+            "persona_prompt_available",
+            "pi_review_packet_present",
+            "required_review_headings_exact",
+            "major_minor_review_items_present",
+            "confidential_recommendation_allowed",
+            "review_surface_hygiene_passed",
+            "safe_source_revisions_applied",
+            "action_matrix_present",
+            "revision_log_present",
+            "literature_calibration_present",
+            "reader_surface_hygiene_passed",
+            "package_safety_scan_clear",
+            "panelforge_status_unchanged",
+            "no_stage9_closure_started",
+        ]:
+            if stage9_28_checks.get(check_name) is not True:
+                failures.append(f"Stage 9.28 PI-review gate check must pass: {check_name}")
+        for rel in [
+            "manuscript/nature_methods/submission_package/pi_review_packet.md",
+            "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+            "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+            "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
+        ]:
+            if not (root / rel).exists():
+                failures.append(f"missing Stage 9.28 PI-review output: {rel}")
+
     stage7_doc_specs = [
         (stage7_source_register_path, "source register", ["Official and community guidance sources", "Representative methods papers", "Candidate dataset classes", "RhoA/microglia reference case"]),
         (stage7_baseline_inventory_path, "baseline inventory", ["Endpoint value", "Peak amplitude", "Generic trajectory features", "Domain-standard method"]),
@@ -1674,7 +1733,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         warnings.append("Stage 3 is frozen for the current gate; new public systems should be Stage 7 unless a Stage 3 defect is documented")
         warnings.append("Stage 6 v0.1.0 is publicly citable through GitHub and Zenodo; PyPI remains dry-run only until a later distribution decision")
         warnings.append("Stage 7.8 methods manuscript readiness package is complete; Stage 8 remains conceptual")
-    warnings.append("Stage 9.27 submission package assembly is registered; PI review and final package assembly have not started")
+    warnings.append("Stage 9.28 PI review packet is registered; Stage 9 closure has not started")
 
     return {
         "status": "pass" if not failures else "fail",

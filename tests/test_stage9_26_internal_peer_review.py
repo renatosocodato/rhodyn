@@ -101,9 +101,8 @@ class Stage926InternalPeerReviewTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, self.report)
 
-    def test_pi_review_and_closure_remain_unstarted(self) -> None:
+    def test_stage9_closure_remains_unstarted(self) -> None:
         for rel in [
-            "submission_package/pi_review_packet.md",
             "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)

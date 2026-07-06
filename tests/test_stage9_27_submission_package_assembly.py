@@ -96,7 +96,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("RhoDyn repository root", self.code_for_review)
         self.assertIn("Reporting Summary | registered", self.checklist)
         self.assertIn("final Springer Nature form remains a human submission action", self.checklist)
-        self.assertFalse((PACKAGE / "pi_review_packet.md").exists())
+        self.assertTrue((PACKAGE / "pi_review_packet.md").exists())
         self.assertFalse((WORKSPACE / "stage9_completion_report.md").exists())
 
 

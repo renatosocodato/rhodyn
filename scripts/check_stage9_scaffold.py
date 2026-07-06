@@ -67,6 +67,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_25b_reader_surface_hygiene.py",
     "scripts/run_stage9_26_internal_peer_review.py",
     "scripts/run_stage9_27_submission_package_assembly.py",
+    "scripts/run_stage9_28_pi_review_auto_revision.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -77,6 +78,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/figures/figures.manifest.yaml",
     "manuscript/nature_methods/gate_verdicts/9.-1.json",
     "manuscript/nature_methods/gate_verdicts/9.27.json",
+    "manuscript/nature_methods/gate_verdicts/9.28.json",
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
     "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
     "manuscript/nature_methods/submission_package/submission_manifest.md",
@@ -88,6 +90,10 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/submission_package/references_for_submission.bib",
     "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
     "manuscript/nature_methods/submission_package/submission_package_manifest.json",
+    "manuscript/nature_methods/submission_package/pi_review_packet.md",
+    "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+    "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+    "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
     "tools/panelforge-figures/STAGE9_PLACEHOLDER.md",
 ]
 
@@ -134,7 +140,6 @@ ID_PREFIXES = [
 ]
 
 FORBIDDEN_DRAFTS = [
-    "submission_package/pi_review_packet.md",
     "stage9_completion_report.md",
 ]
 FORBIDDEN_RENDER_SUFFIXES = {".png", ".pdf", ".svg"}
@@ -239,10 +244,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json", "9.22.json", "9.23.json", "9.24.json", "9.25.json", "9.25b.json", "9.26.json", "9.27.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json", "9.22.json", "9.23.json", "9.24.json", "9.25.json", "9.25b.json", "9.26.json", "9.27.json", "9.28.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.27 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.28 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -275,6 +280,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_25b_started = "9.25b.json" in gate_files
     stage9_26_started = "9.26.json" in gate_files
     stage9_27_started = "9.27.json" in gate_files
+    stage9_28_started = "9.28.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -283,7 +289,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.-1 gate checks must all pass")
 
     memory = _read_json(root / "docs" / "stage9_execution_memory.json", failures)
-    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "cross_document_consistency_started", "statistical_language_audit_started", "live_number_audit_started", "figure_legends_started", "figure_caption_audit_started", "editorial_polish_pass_1_started", "editorial_polish_pass_2_started", "reader_surface_hygiene_started", "internal_peer_review_started", "submission_package_started"]:
+    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "cross_document_consistency_started", "statistical_language_audit_started", "live_number_audit_started", "figure_legends_started", "figure_caption_audit_started", "editorial_polish_pass_1_started", "editorial_polish_pass_2_started", "reader_surface_hygiene_started", "internal_peer_review_started", "submission_package_started", "pi_review_started"]:
         if flag == "evidence_intake_started" and stage9_0_started:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record evidence_intake_started=true after 9.0")
@@ -324,6 +330,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record submission_package_started=true after 9.27")
             continue
+        if flag == "pi_review_started" and stage9_28_started:
+            if memory.get(flag) is not True:
+                failures.append("Stage 9 execution memory must record pi_review_started=true after 9.28")
+            continue
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
     if memory.get("figure_engine_clone_started") is not False:
@@ -337,7 +347,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_27_submission_package_assembled"
+        "stage9_28_pi_review_packet_complete"
+        if stage9_28_started
+        else "stage9_27_submission_package_assembled"
         if stage9_27_started
         else "stage9_26_internal_peer_review_bound"
         if stage9_26_started
@@ -1955,7 +1967,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         for rel in expected_package_files:
             if not (root / rel).exists():
                 failures.append(f"Stage 9.27 package output missing: {rel}")
-        if (workspace / "submission_package" / "pi_review_packet.md").exists():
+        if not stage9_28_started and (workspace / "submission_package" / "pi_review_packet.md").exists():
             failures.append("Stage 9.27 must not create the PI review packet")
         if (workspace / "stage9_completion_report.md").exists():
             failures.append("Stage 9.27 must not create the Stage 9 completion report")
@@ -1987,7 +1999,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             for phrase in ["Main manuscript source | ready", "Supplementary Information source | ready", "Reporting Summary | registered", "final Springer Nature form remains a human submission action"]:
                 if phrase not in body:
                     failures.append(f"Stage 9.27 readiness checklist missing phrase: {phrase}")
-    else:
+    if not stage9_27_started:
         for rel in [
             "submission_package/main_text_for_submission.md",
             "submission_package/supplementary_information_for_submission.md",
@@ -2002,6 +2014,75 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain submission-package output before 9.27: {rel}")
+
+    if stage9_28_started:
+        stage9_28_gate = _read_json(workspace / "gate_verdicts" / "9.28.json", failures)
+        if stage9_28_gate.get("pass") is not True or stage9_28_gate.get("substage") != "9.28":
+            failures.append("Stage 9.28 gate verdict must pass when present")
+        if stage9_28_gate.get("next_substage") != "9.29":
+            failures.append("Stage 9.28 gate must point to Stage 9.29")
+        expected_928_checks = {
+            "stage_9_27_package_regenerated",
+            "persona_prompt_available",
+            "pi_review_packet_present",
+            "required_review_headings_exact",
+            "major_minor_review_items_present",
+            "confidential_recommendation_allowed",
+            "review_surface_hygiene_passed",
+            "safe_source_revisions_applied",
+            "action_matrix_present",
+            "revision_log_present",
+            "literature_calibration_present",
+            "reader_surface_hygiene_passed",
+            "package_safety_scan_clear",
+            "panelforge_status_unchanged",
+            "no_stage9_closure_started",
+        }
+        actual_928_checks = {
+            item.get("name")
+            for item in stage9_28_gate.get("checks", [])
+            if isinstance(item, dict) and item.get("passed") is True
+        }
+        if actual_928_checks != expected_928_checks:
+            failures.append(f"Stage 9.28 checks do not match expected checks: {sorted(actual_928_checks)}")
+        if stage9_28_gate.get("auto_revision_count") != 5:
+            failures.append("Stage 9.28 must retain five safe source revisions")
+        if stage9_28_gate.get("major_review_item_count") != 7:
+            failures.append("Stage 9.28 PI review packet must contain seven major items")
+        if stage9_28_gate.get("minor_review_item_count") != 8:
+            failures.append("Stage 9.28 PI review packet must contain eight minor items")
+        if stage9_28_gate.get("action_matrix_rows") != 6:
+            failures.append("Stage 9.28 action matrix must contain six rows")
+        for rel in [
+            "submission_package/pi_review_packet.md",
+            "submission_package/pi_review_action_matrix.csv",
+            "submission_package/pi_review_revision_log.md",
+            "submission_package/pi_review_literature_calibration.md",
+        ]:
+            if not (workspace / rel).exists():
+                failures.append(f"Stage 9.28 package output missing: {rel}")
+        packet_path = workspace / "submission_package" / "pi_review_packet.md"
+        if packet_path.exists():
+            packet_body = packet_path.read_text(encoding="utf-8")
+            headings = [line[2:].strip() for line in packet_body.splitlines() if line.startswith("# ")]
+            if headings != ["Executive Summary", "Revision Aspects", "Confidential Recommendation to the Editor"]:
+                failures.append(f"Stage 9.28 PI review packet headings are not exact: {headings}")
+            if "## Major" not in packet_body or "## Minor" not in packet_body:
+                failures.append("Stage 9.28 PI review packet must contain Major and Minor review sections")
+            recommendation = packet_body.split("# Confidential Recommendation to the Editor", 1)[1].strip().splitlines()[0] if "# Confidential Recommendation to the Editor" in packet_body else ""
+            if recommendation != "Potentially Accept after Major Revision and Re-review":
+                failures.append("Stage 9.28 PI review packet has the wrong confidential recommendation")
+        if (workspace / "stage9_completion_report.md").exists():
+            failures.append("Stage 9.28 must not create the Stage 9 completion report")
+    else:
+        for rel in [
+            "submission_package/pi_review_packet.md",
+            "submission_package/pi_review_action_matrix.csv",
+            "submission_package/pi_review_revision_log.md",
+            "submission_package/pi_review_literature_calibration.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain PI-review output before 9.28: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

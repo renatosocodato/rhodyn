@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 9.27 Submission package assembly complete; final PI review not started",
+    "active_stage": "Stage 9.28 PI review packet complete; Stage 9 closure not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
@@ -42,6 +42,7 @@
     "after_stage9_25b_reader_surface_hygiene": "Stage 9.25b removed internal IDs, hidden comments, stage metadata, and lineage wording from reader-facing manuscript surfaces. It preserved figure-call flow, availability identifiers, claim boundaries, and the evidence set, and did not start internal peer review or package assembly.",
     "after_stage9_26_internal_peer_review": "Stage 9.26 completed an eight-perspective internal peer-review simulation and reviewer action matrix. It preserved the reader-clean manuscript, routed scoped concerns, and recorded the current PanelForge figure assembly status without starting package assembly.",
     "after_stage9_27_submission_package_assembly": "Stage 9.27 assembled the collaborator-review Nature Methods package from the reader-clean main text, Supplementary Information, figures, references, code-for-review surface, source-data/statistics inventory, Reporting Summary placeholder, and readiness checklist.",
+    "after_stage9_28_pi_review_packet": "Stage 9.28 prepared the PI-review decision packet, applied evidence-safe source revisions, regenerated the submission package, and preserved Reporting Summary, portal metadata, and closure as human/downstream actions.",
     "after_stage9_2_methods_corpus": "Stage 9.2 registered an eight-DOI representative computational methods-paper corpus and extracted cross-paper archetype features. Stage 9.3 narrative-spine selection, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_3_narrative_spine": "Stage 9.3 selected the Nature Methods Article archetype, registered the RhoDyn narrative spine, and fixed the discovery-versus-demonstration boundary. Stage 9.4 claim freeze, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_4_claim_freeze": "Stage 9.4 froze five central RhoDyn methods-paper claims with evidence artifact links, strength caps, and explicit non-claims. Stage 9.5 paragraph claim ledger, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
@@ -53,11 +54,11 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Submission package assembled for collaborator review",
-    "next_stage": "Stage 9.28 Final human PI review packet",
+    "current_gate": "PI review packet complete",
+    "next_stage": "Stage 9.29 Roadmap closure and version binding",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
-    "stage9_active_gate": "Stage 9.27 Submission package assembly complete; final PI review not started"
+    "stage9_active_gate": "Stage 9.28 PI review packet complete; Stage 9 closure not started"
   },
   "memory_notes": {
     "after_stage9_6b_panelforge_rendering": "Stage 9.6b generated a renderable PanelForge manifest and six deterministic main-figure mockups from the frozen figure-to-claim-to-artifact spine. Citation resolution, manuscript drafting, supplementary display planning, and submission-package assembly remain not started.",
@@ -510,9 +511,15 @@
         "manuscript/nature_methods/submission_package/references_for_submission.bib",
         "manuscript/nature_methods/submission_package/submission_package_manifest.json",
         "manuscript/nature_methods/gate_verdicts/9.27.json",
-        "scripts/run_stage9_27_submission_package_assembly.py"
+        "scripts/run_stage9_27_submission_package_assembly.py",
+        "manuscript/nature_methods/submission_package/pi_review_packet.md",
+        "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
+        "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+        "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
+        "manuscript/nature_methods/gate_verdicts/9.28.json",
+        "scripts/run_stage9_28_pi_review_auto_revision.py"
       ],
-      "current_gate": "Stage 9.27 assembled the collaborator-review submission package",
+      "current_gate": "Stage 9.28 prepared the final human PI review packet",
       "gate": [
         "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
         "Stage 9.2 through Stage 9.29 plus Stage 9.6b and Stage 9.25b remain not started.",
@@ -544,12 +551,13 @@
         "Stage 9.25 tightened venue-style readability while preserving meaning, figure-call order, and claim boundaries.",
         "Stage 9.25b removed internal reader-surface tokens while preserving evidence boundaries and figure-call flow.",
         "Stage 9.26 stress-tested the reader-clean manuscript with eight reviewer perspectives and routed concerns.",
-        "Stage 9.27 assembled the collaborator-review package with reader-clean manuscript surfaces and package-level consistency checks."
+        "Stage 9.27 assembled the collaborator-review package with reader-clean manuscript surfaces and package-level consistency checks.",
+        "Stage 9.28 prepared the final PI review packet and applied evidence-safe source revisions without new analyses."
       ],
       "name": "Nature Methods manuscript assembly scaffold",
-      "scope_rule": "Stage 9 has completed through submission package assembly. Final human PI review and Stage 9 closure remain not started.",
+      "scope_rule": "Stage 9 has completed through PI review packet assembly. Stage 9 closure remains not started.",
       "stage": 9,
-      "status": "stage9_27_submission_package_assembled",
+      "status": "stage9_28_pi_review_packet_complete",
       "subphases": [
         {
           "evidence": "manuscript/nature_methods/gate_verdicts/9.-1.json",
@@ -820,12 +828,12 @@
           "status": "complete_submission_package_assembled"
         },
         {
-          "evidence": "not_started",
+          "evidence": "manuscript/nature_methods/gate_verdicts/9.28.json",
           "gate": "packet covers thesis, claims, figures, risks, limitations, objections, decisions, venue fit, and open items; human-judgment items are explicit",
           "goal": "Prepare final human decision packet.",
           "id": "9.28",
           "name": "Final human PI review packet",
-          "status": "not_started"
+          "status": "complete_pi_review_packet"
         },
         {
           "evidence": "not_started",

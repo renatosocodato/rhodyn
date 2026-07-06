@@ -70,7 +70,7 @@ class Stage92MethodsPaperCorpusTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, archetype)
         for rel in [
-            "submission_package/pi_review_packet.md",
+            "stage9_completion_report.md",
         ]:
             self.assertFalse((WORKSPACE / rel).exists())
 

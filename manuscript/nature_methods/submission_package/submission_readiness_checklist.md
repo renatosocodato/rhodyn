@@ -12,5 +12,7 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 | Reader-surface hygiene | ready | Main manuscript and Supplementary Information surfaces are free of internal IDs and build-language tokens. |
 | Package safety scan | ready | Package files were scanned for local machine paths and token-like strings. |
 | Consistency audit | ready | Package-level consistency checks passed. |
+| PI review packet | ready | `pi_review_packet.md` contains the final human PI-style review packet with the required three review sections. |
+| PI review support files | ready | Action matrix, revision log, and literature-calibration note are present. |
 
-Human actions before journal upload. Complete the official Springer Nature Reporting Summary form, choose the final corresponding-author and portal metadata, verify any journal-specific file naming rules, and review the assembled main text and Supplementary Information for final author approval.
+Human actions before journal upload. Complete the official Springer Nature Reporting Summary form, choose the final corresponding-author and portal metadata, verify any journal-specific file naming rules, review the assembled main text and Supplementary Information for final author approval, and decide whether any open PI-review items require new evidence before Stage 9 closure.
