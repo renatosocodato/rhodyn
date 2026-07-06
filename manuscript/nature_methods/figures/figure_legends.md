@@ -24,7 +24,7 @@
 
 ### Figure 6 | Software parity and archive reproduction make RhoDyn decisions inspectable.
 
-**a**, The parity panel compares Python, command-line, backend, and workbench outputs for retained evidence paths. **b**, The export-bundle view shows that inputs, schema details, parameter choices, summaries, figures, and reports are written together rather than hidden in session state. **c**, Source-distribution clean-room reproduction checks the installable release boundary against selected retained outputs. **d**, The archive and checksum panel records a four-surface parity check and a 616-row release archive inventory. **e**, The adoption and user-path rehearsal tests whether biologist-facing and quantitative workflows can reach the same reviewable outputs. The figure supports reproducibility of the demonstrated analyses without turning software availability into a new biological result.
+**a**, The parity panel compares Python, command-line, backend, and workbench outputs for retained evidence paths. **b**, The export-bundle view shows that inputs, schema details, parameter choices, summaries, figures, and reports are written together rather than hidden in session state. **c**, Source-distribution clean-room reproduction checks the installable release boundary against selected retained outputs. **d**, The archive and checksum panel records a four-surface parity check and a 620-row release archive inventory. **e**, The adoption and user-path rehearsal tests whether biologist-facing and quantitative workflows can reach the same reviewable outputs. The figure supports reproducibility of the demonstrated analyses without turning software availability into a new biological result.
 
 ## Supplementary figure legends
 

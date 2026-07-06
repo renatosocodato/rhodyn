@@ -43,14 +43,11 @@ class Stage911ResultsDraftingTests(unittest.TestCase):
         self.assertTrue(all(row["passed"] for row in gate["checks"]))
         self.assertIn("Results draft only", gate["scope_boundary"])
 
-    def test_results_draft_is_figure_locked_and_para_tagged(self) -> None:
+    def test_results_draft_is_figure_ordered_and_reader_clean(self) -> None:
         body = (WORKSPACE / "sections" / "results.md").read_text(encoding="utf-8")
         self.assertIn("# Results", body)
         self.assertEqual(len(re.findall(r"^## ", body, flags=re.MULTILINE)), 6)
-        self.assertEqual(len(re.findall(r"para_ids=", body)), 6)
         for phrase in [
-            "PARA-RESULTS-001",
-            "PARA-RESULTS-006",
             "RhoDyn defines residence-state inference as an executable method object",
             "Software parity and archive reproduction make the method inspectable",
             "Fig. 1a",
@@ -62,6 +59,7 @@ class Stage911ResultsDraftingTests(unittest.TestCase):
         ]:
             self.assertIn(phrase, body)
         visible = _visible_results_text()
+        self.assertNotRegex(visible, r"PARA-RESULTS-\d{3}|CLM-\d{4}|FIG-\d{3}|<!--")
         first_positions = [visible.index(f"Fig. {idx}") for idx in range(1, 7)]
         self.assertEqual(first_positions, sorted(first_positions))
 

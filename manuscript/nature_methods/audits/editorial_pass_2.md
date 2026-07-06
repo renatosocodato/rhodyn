@@ -1,4 +1,4 @@
-<!-- EDITORIAL-PASS-2 stage=9.25 generated=2026-07-06T07:43:55Z commit=954c0d09ca5115992ee6a6394d0be1e856ed0916 -->
+<!-- EDITORIAL-PASS-2 stage=9.25 generated=2026-07-06T08:12:31Z commit=e8d22abeb19d24b2ae152d458c27da739a679112 -->
 # Stage 9.25 editorial polish pass II
 
 Stage 9.25 performs the second reader-facing polish loop after editorial polish pass I. The pass removes residual process-like phrasing, tightens venue-style readability, varies supplementary-legend openings, and preserves the current evidence boundaries. It does not change statistics, figures, source data, model outputs, figure numbering, or method claims.
@@ -33,7 +33,7 @@ The second editorial polish pass completed four recursive checks. Paragraph IDs,
 
 | Surface | Most common sentence starts | Maximum paragraph words | Maximum repeated sentence start |
 |---|---|---:|---:|
-| manuscript/nature_methods/sections/introduction.md | {'RhoDyn': 3, 'The': 3, 'For': 2, 'It': 2, 'Live': 1, 'Benchmarking': 1} | 128 | 1 |
+| manuscript/nature_methods/sections/introduction.md | {'RhoDyn': 3, 'The': 3, 'For': 2, 'It': 2, 'Live': 1, 'Benchmarking': 1} | 126 | 1 |
 | manuscript/nature_methods/sections/results.md | {'In': 6, 'The': 5, 'These': 3, 'Boundary': 1, 'Executable': 1, 'Together': 1} | 161 | 2 |
 | manuscript/nature_methods/sections/discussion.md | {'The': 6, 'It': 3, 'They': 3, 'RhoDyn': 2, 'This': 2, 'DRG': 1} | 166 | 3 |
 | manuscript/nature_methods/sections/methods.md | {'The': 8, 'For': 5, 'This': 3, 'Each': 2, 'These': 2, 'Trajectory': 1} | 125 | 2 |

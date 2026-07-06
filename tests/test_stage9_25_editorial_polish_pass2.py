@@ -105,22 +105,16 @@ class Stage925EditorialPolishPass2Tests(unittest.TestCase):
         for phrase in forbidden:
             self.assertNotIn(phrase.lower(), lower, phrase)
 
-    def test_dynamic_figure_call_flow_and_claim_ids_remain_intact(self) -> None:
-        for para_id in [
-            "PARA-INTRO-001",
-            "PARA-INTRO-002",
-            "PARA-RESULTS-001",
-            "PARA-RESULTS-006",
-            "PARA-DISCUSSION-001",
-            "PARA-DISCUSSION-002",
-        ]:
-            self.assertIn(para_id, self.combined)
+    def test_dynamic_figure_call_flow_and_reader_surface_ids_are_clean(self) -> None:
+        self.assertEqual(self.gate["paragraph_errors"], [])
+        self.assertEqual(self.gate["claim_id_errors"], [])
+        self.assertEqual(self.gate["figure_call_errors"], [])
+        self.assertNotRegex(self.combined, r"\b(?:PARA|CLM|MTH|FIG|SFIG|STBL|STAT|ART|SUPP|REF)-\d{3,4}\b|<!--")
         terminal_call_pattern = re.compile(r"[^.!?]*\((?:Fig\.|Supplementary Fig\.|Supplementary Table)[^)]+\)\.")
         self.assertIsNone(terminal_call_pattern.search(self.combined))
 
     def test_downstream_reader_surfaces_remain_unstarted(self) -> None:
         for rel in [
-            "audits/reader_surface_hygiene_report.md",
             "audits/internal_peer_review_simulation.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",

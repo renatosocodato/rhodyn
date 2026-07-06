@@ -1,5 +1,3 @@
-<!-- CODE-AVAILABILITY stage=9.17 generated_utc=2026-07-03T16:36:31.772873Z -->
-
 # Code availability
 
 RhoDyn source code is available at https://github.com/renatosocodato/rhodyn. The citable software release used for this Article is v0.1.0, GitHub release https://github.com/renatosocodato/rhodyn/releases/tag/v0.1.0, pinned to commit `4b1211cadd1fb3af34a1ec3e21f62383ffd9e368` and archived at Zenodo version DOI https://doi.org/10.5281/zenodo.21036616. The Zenodo concept DOI https://doi.org/10.5281/zenodo.21036615 resolves to the latest RhoDyn software record, and the public record for this version is https://zenodo.org/records/21036616. The release is distributed under the Apache-2.0 license and includes the Python package, command-line interface, backend service code, workbench interface, documentation, tests, synthetic examples, public-derived case-study tables, and reproducibility scripts.

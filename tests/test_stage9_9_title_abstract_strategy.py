@@ -14,7 +14,9 @@ WORKSPACE = ROOT / "manuscript" / "nature_methods"
 
 def _abstract_text() -> str:
     body = (WORKSPACE / "sections" / "abstract.md").read_text(encoding="utf-8")
-    return body.split("## Abstract", 1)[1].strip()
+    if "## Abstract" in body:
+        return body.split("## Abstract", 1)[1].strip()
+    return body.split("# Abstract", 1)[1].strip()
 
 
 class Stage99TitleAbstractStrategyTests(unittest.TestCase):

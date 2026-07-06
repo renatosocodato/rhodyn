@@ -51,26 +51,14 @@ class Stage916MethodsDraftingTests(unittest.TestCase):
             self.assertIn(phrase, visible)
         self.assertNotRegex(visible, r"\b(MTH|ART|CLM)-\d{4}\b")
 
-    def test_hidden_comments_cover_methods_and_claim_ids(self) -> None:
+    def test_methods_statement_ids_remain_in_gate_not_reader_surface(self) -> None:
         methods = METHODS_PATH.read_text(encoding="utf-8")
-        methods_ids = {
-            item
-            for group in re.findall(r"methods_stmt_ids=([^ ]+)", methods)
-            for item in group.split(";")
-            if item
-        }
-        claim_ids = {
-            item
-            for group in re.findall(r"claim_ids=([^ ]+)", methods)
-            for item in group.split(";")
-            if item
-        }
-        self.assertEqual(methods_ids, {f"MTH-{idx:04d}" for idx in range(1, 10)})
-        self.assertEqual(claim_ids, {f"CLM-{idx:04d}" for idx in range(1, 6)})
+        gate = json.loads(GATE_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(set(gate["methods_statement_ids"]), {f"MTH-{idx:04d}" for idx in range(1, 10)})
+        self.assertNotRegex(methods, r"methods_stmt_ids=|claim_ids=|repo_paths=|<!--|MTH-\d{4}|CLM-\d{4}")
 
     def test_downstream_surfaces_remain_unstarted(self) -> None:
         forbidden = [
-            "audits/reader_surface_hygiene_report.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]

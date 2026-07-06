@@ -36,7 +36,7 @@
       "passed": true
     }
   ],
-  "commit": "954c0d09ca5115992ee6a6394d0be1e856ed0916",
+  "commit": "e8d22abeb19d24b2ae152d458c27da739a679112",
   "equivalence_language": {
     "passed": true,
     "required_methods_terms_present": [
@@ -59,7 +59,7 @@
   },
   "figure_stat_id_map_complete": true,
   "forbidden_started_paths": [],
-  "generated_utc": "2026-07-06T07:43:28Z",
+  "generated_utc": "2026-07-06T08:10:29Z",
   "inspection_only_count": 5,
   "live_number_row_count": 19,
   "next_substage": "9.23",

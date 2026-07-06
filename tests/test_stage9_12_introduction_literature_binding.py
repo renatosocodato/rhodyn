@@ -40,25 +40,24 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
         self.assertNotIn("#", visible)
         self.assertNotIn("##", visible)
         for phrase in [
-            "PARA-INTRO-001",
-            "PARA-INTRO-002",
-            "CLM-0001",
-            "CLM-0002",
-            "REF-0001",
-            "REF-0011",
+            "(1-4)",
+            "(9,10)",
+            "(5-8)",
+            "(10,11)",
             "residence-state",
             "bounded-coupling",
             "reserve-like",
             "routed-output",
             "reproducible",
         ]:
-            self.assertIn(phrase, self.introduction)
+            self.assertIn(phrase, visible)
+        self.assertNotRegex(visible, r"\b(?:PARA|CLM|REF)-\d{3,4}\b|<!--")
 
-    def test_reference_tokens_match_resolved_citation_ledger(self) -> None:
-        visible_refs = set(re.findall(r"REF-\d{4}", _visible_text(self.introduction)))
+    def test_numbered_citations_match_resolved_citation_ledger(self) -> None:
+        visible = _visible_text(self.introduction)
         ledger_refs = {row["ref_id"] for row in self.ledger_rows}
-        self.assertEqual(visible_refs, ledger_refs)
         self.assertEqual(len(ledger_refs), 11)
+        self.assertEqual(set(re.findall(r"\((?:\d+(?:-\d+)?)(?:,\d+)*\)", visible)), {"(1-4)", "(5-8)", "(9,10)", "(10,11)"})
         for row in self.ledger_rows:
             self.assertEqual(row["resolved"], "true")
             self.assertRegex(row["doi_or_pmid"], r"^(10\.\d+/.+|PMID:\d+)$")

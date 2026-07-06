@@ -30,28 +30,12 @@ class Stage918SupplementaryMethodsTests(unittest.TestCase):
         self.assertEqual(set(gate["claim_ids"]), {f"CLM-{idx:04d}" for idx in range(1, 6)})
         self.assertTrue(all(item["passed"] for item in gate["checks"]))
 
-    def test_supplementary_methods_cover_support_items_and_callout_routes(self) -> None:
+    def test_supplementary_support_ids_remain_in_gate_not_reader_surface(self) -> None:
         body = SUPPLEMENTARY_PATH.read_text(encoding="utf-8")
-        hidden_supp_ids = {
-            item
-            for group in re.findall(r"supp_ids=([^ ]+)", body)
-            for item in group.split(";")
-            if item
-        }
-        hidden_claim_ids = {
-            item
-            for group in re.findall(r"claim_ids=([^ ]+)", body)
-            for item in group.split(";")
-            if item
-        }
-        self.assertEqual(hidden_supp_ids, {f"SUPP-{idx:03d}" for idx in range(1, 10)})
-        self.assertEqual(hidden_claim_ids, {f"CLM-{idx:04d}" for idx in range(1, 6)})
-        for phrase in [
-            "main_text_callouts=PARA-RESULTS-001; PARA-METHODS-001",
-            "main_text_callouts=PARA-RESULTS-006; PARA-METHODS-005",
-            "main_text_callouts=PARA-DISCUSSION-001; PARA-DISCUSSION-002",
-        ]:
-            self.assertIn(phrase, body)
+        gate = json.loads(GATE_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(set(gate["supp_ids"]), {f"SUPP-{idx:03d}" for idx in range(1, 10)})
+        self.assertEqual(set(gate["claim_ids"]), {f"CLM-{idx:04d}" for idx in range(1, 6)})
+        self.assertNotRegex(body, r"supp_ids=|claim_ids=|main_text_callouts=|source_artifacts=|<!--|SUPP-\d{3}|CLM-\d{4}|PARA-")
 
     def test_visible_text_contains_methods_depth_and_boundaries(self) -> None:
         visible = _visible_text(SUPPLEMENTARY_PATH.read_text(encoding="utf-8"))
@@ -91,7 +75,6 @@ class Stage918SupplementaryMethodsTests(unittest.TestCase):
         ]:
             self.assertNotIn(phrase, visible)
         for rel in [
-            "audits/reader_surface_hygiene_report.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

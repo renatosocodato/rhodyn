@@ -258,6 +258,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_23_figure_legend_audit.py",
     "scripts/run_stage9_24_editorial_polish_pass1.py",
     "scripts/run_stage9_25_editorial_polish_pass2.py",
+    "scripts/run_stage9_25b_reader_surface_hygiene.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -285,6 +286,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_23_figure_legend_audit.py",
     "tests/test_stage9_24_editorial_polish_pass1.py",
     "tests/test_stage9_25_editorial_polish_pass2.py",
+    "tests/test_stage9_25b_reader_surface_hygiene.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -522,8 +524,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.25 Editorial polish pass II complete; reader-surface hygiene not started":
-            failures.append("roadmap execution memory does not mark the Stage 9.25 editorial-polish boundary as active")
+        if current.get("active_stage") != "Stage 9.25b Reader-surface hygiene complete; internal peer review not started":
+            failures.append("roadmap execution memory does not mark the Stage 9.25b reader-surface hygiene boundary as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -537,8 +539,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 7.8 methods readiness complete")
         if stages.get(8, {}).get("status") != "conceptual_only":
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
-        if stages.get(9, {}).get("status") != "stage9_25_editorial_polish_pass_2_bound":
-            failures.append("roadmap execution memory does not mark Stage 9.25 editorial polish as registered")
+        if stages.get(9, {}).get("status") != "stage9_25b_reader_surface_hygiene_bound":
+            failures.append("roadmap execution memory does not mark Stage 9.25b reader-surface hygiene as registered")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
@@ -563,8 +565,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 7.8 must be complete_methods_manuscript_readiness_package in roadmap execution memory")
         stage9 = stages.get(9, {})
         if isinstance(stage9, dict):
-            if stage9.get("current_gate") != "Stage 9.25 polish preserved meaning and tightened venue-style readability":
-                failures.append("Stage 9 current gate must record the Stage 9.25 editorial-polish state")
+            if stage9.get("current_gate") != "Stage 9.25b reader-surface hygiene removed internal manuscript-assembly tokens":
+                failures.append("Stage 9 current gate must record the Stage 9.25b reader-surface hygiene state")
             if stage9.get("substage_count") != 33:
                 failures.append("Stage 9 must serialize 33 substages")
             substage_ids = [entry.get("id") for entry in stage9.get("subphases", []) if isinstance(entry, dict)]
@@ -661,8 +663,10 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.23 must be marked complete_figure_legend_caption_audit_bound")
             if substage_status.get("9.24") != "complete_editorial_polish_pass_1_bound":
                 failures.append("Stage 9.24 must be marked complete_editorial_polish_pass_1_bound")
-            if substage_status.get("9.25") != "complete_editorial_polish_pass_2_bound":
-                failures.append("Stage 9.25 must be marked complete_editorial_polish_pass_2_bound")
+        if substage_status.get("9.25") != "complete_editorial_polish_pass_2_bound":
+            failures.append("Stage 9.25 must be marked complete_editorial_polish_pass_2_bound")
+        if substage_status.get("9.25b") != "complete_reader_surface_hygiene_bound":
+            failures.append("Stage 9.25b must be marked complete_reader_surface_hygiene_bound")
         stage9_20_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.20.json"
         if stage9_20_gate_path.exists():
             try:
@@ -968,6 +972,70 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             ]:
                 if phrase not in audit_text:
                     failures.append(f"Stage 9.25 editorial-polish audit missing phrase: {phrase}")
+        stage9_25b_gate_path = root / "manuscript" / "nature_methods" / "gate_verdicts" / "9.25b.json"
+        if stage9_25b_gate_path.exists():
+            try:
+                stage9_25b_gate = json.loads(stage9_25b_gate_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"Stage 9.25b gate is not valid JSON: {exc}")
+                stage9_25b_gate = {}
+            if stage9_25b_gate.get("pass") is not True:
+                failures.append("Stage 9.25b reader-surface hygiene gate must pass")
+            if stage9_25b_gate.get("substage") != "9.25b":
+                failures.append("Stage 9.25b reader-surface hygiene gate must remain bound to substage 9.25b")
+            if stage9_25b_gate.get("next_substage") != "9.26":
+                failures.append("Stage 9.25b reader-surface hygiene gate must point to Stage 9.26")
+            for field in [
+                "comment_hits",
+                "internal_id_hits",
+                "stage_language_hits",
+                "unsafe_hits",
+                "local_path_hits",
+                "secret_hits",
+                "missing_required_terms",
+                "figure_call_errors",
+                "downstream_paths",
+                "panel_s3_crossrefs",
+            ]:
+                if stage9_25b_gate.get(field) not in ([], None):
+                    failures.append(f"Stage 9.25b reader-surface hygiene gate must have empty {field}")
+            if stage9_25b_gate.get("terminal_calls") not in ({}, None):
+                failures.append("Stage 9.25b reader-surface hygiene gate must have no terminal figure calls")
+            if stage9_25b_gate.get("missing_surface_phrases") not in ({}, None):
+                failures.append("Stage 9.25b reader-surface hygiene gate must have no missing surface phrases")
+            expected_925b_checks = {
+                "stage_9_25_gate_passed",
+                "reader_comments_removed",
+                "internal_ids_absent_from_reader_surfaces",
+                "stage_and_build_language_absent",
+                "legends_and_captions_free_of_lineage_language",
+                "meaning_and_figure_flow_preserved",
+                "claim_boundaries_preserved",
+                "local_path_and_secret_scan_clear",
+                "no_internal_peer_review_or_package_started",
+            }
+            actual_925b_checks = {
+                item.get("name")
+                for item in stage9_25b_gate.get("checks", [])
+                if isinstance(item, dict) and item.get("passed") is True
+            }
+            if actual_925b_checks != expected_925b_checks:
+                failures.append(f"Stage 9.25b checks do not match expected checks: {sorted(actual_925b_checks)}")
+        else:
+            failures.append("missing Stage 9.25b reader-surface hygiene gate")
+        hygiene_audit = root / "manuscript" / "nature_methods" / "audits" / "reader_surface_hygiene_report.md"
+        if not hygiene_audit.exists():
+            failures.append("missing Stage 9.25b output: manuscript/nature_methods/audits/reader_surface_hygiene_report.md")
+        else:
+            audit_text = hygiene_audit.read_text(encoding="utf-8")
+            for phrase in [
+                "Stage 9.25b reader-surface hygiene report",
+                "Hidden comments were removed",
+                "Introduction reference tokens were converted",
+                "does not add new biological evidence",
+            ]:
+                if phrase not in audit_text:
+                    failures.append(f"Stage 9.25b reader-surface hygiene audit missing phrase: {phrase}")
     if gate_path.exists():
         try:
             gate = json.loads(gate_path.read_text(encoding="utf-8"))

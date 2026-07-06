@@ -1,0 +1,127 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.25 editorial polish pass II gate is present and points to Stage 9.25b",
+      "name": "stage_9_25_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "comment_hits=[]; removed_comments={'manuscript/nature_methods/sections/abstract.md': 0, 'manuscript/nature_methods/sections/introduction.md': 0, 'manuscript/nature_methods/sections/results.md': 0, 'manuscript/nature_methods/sections/discussion.md': 0, 'manuscript/nature_methods/sections/methods.md': 0, 'manuscript/nature_methods/sections/data_availability.md': 0, 'manuscript/nature_methods/sections/code_availability.md': 0, 'manuscript/nature_methods/figures/figure_legends.md': 0, 'manuscript/nature_methods/supplementary/supplementary_methods.md': 0}",
+      "name": "reader_comments_removed",
+      "passed": true
+    },
+    {
+      "detail": "internal_id_hits=[]; ref_replacements={'manuscript/nature_methods/sections/abstract.md': 0, 'manuscript/nature_methods/sections/introduction.md': 0, 'manuscript/nature_methods/sections/results.md': 0, 'manuscript/nature_methods/sections/discussion.md': 0, 'manuscript/nature_methods/sections/methods.md': 0, 'manuscript/nature_methods/sections/data_availability.md': 0, 'manuscript/nature_methods/sections/code_availability.md': 0, 'manuscript/nature_methods/figures/figure_legends.md': 0, 'manuscript/nature_methods/supplementary/supplementary_methods.md': 0}",
+      "name": "internal_ids_absent_from_reader_surfaces",
+      "passed": true
+    },
+    {
+      "detail": "stage_language_hits=[]; abstract_stage_header_present=False",
+      "name": "stage_and_build_language_absent",
+      "passed": true
+    },
+    {
+      "detail": "panel_s3_crossrefs=[]",
+      "name": "legends_and_captions_free_of_lineage_language",
+      "passed": true
+    },
+    {
+      "detail": "figure_call_errors=[]; terminal_calls={}; missing_required_terms=[]; missing_surface_phrases={}",
+      "name": "meaning_and_figure_flow_preserved",
+      "passed": true
+    },
+    {
+      "detail": "unsafe_hits=[]",
+      "name": "claim_boundaries_preserved",
+      "passed": true
+    },
+    {
+      "detail": "local_path_hits=[]; secret_hits=[]",
+      "name": "local_path_and_secret_scan_clear",
+      "passed": true
+    },
+    {
+      "detail": "downstream_paths=[]",
+      "name": "no_internal_peer_review_or_package_started",
+      "passed": true
+    }
+  ],
+  "comment_hits": [],
+  "commit": "e8d22abeb19d24b2ae152d458c27da739a679112",
+  "downstream_paths": [],
+  "figure_call_errors": [],
+  "generated_utc": "2026-07-06T08:12:31Z",
+  "hygiene_actions": {
+    "ref_replacements": {
+      "manuscript/nature_methods/figures/figure_legends.md": 0,
+      "manuscript/nature_methods/sections/abstract.md": 0,
+      "manuscript/nature_methods/sections/code_availability.md": 0,
+      "manuscript/nature_methods/sections/data_availability.md": 0,
+      "manuscript/nature_methods/sections/discussion.md": 0,
+      "manuscript/nature_methods/sections/introduction.md": 0,
+      "manuscript/nature_methods/sections/methods.md": 0,
+      "manuscript/nature_methods/sections/results.md": 0,
+      "manuscript/nature_methods/supplementary/supplementary_methods.md": 0
+    },
+    "removed_comments": {
+      "manuscript/nature_methods/figures/figure_legends.md": 0,
+      "manuscript/nature_methods/sections/abstract.md": 0,
+      "manuscript/nature_methods/sections/code_availability.md": 0,
+      "manuscript/nature_methods/sections/data_availability.md": 0,
+      "manuscript/nature_methods/sections/discussion.md": 0,
+      "manuscript/nature_methods/sections/introduction.md": 0,
+      "manuscript/nature_methods/sections/methods.md": 0,
+      "manuscript/nature_methods/sections/results.md": 0,
+      "manuscript/nature_methods/supplementary/supplementary_methods.md": 0
+    }
+  },
+  "internal_id_hits": [],
+  "local_path_hits": [],
+  "missing_required_terms": [],
+  "missing_surface_phrases": {},
+  "next_substage": "9.26",
+  "outputs": [
+    "manuscript/nature_methods/audits/reader_surface_hygiene_report.md",
+    "manuscript/nature_methods/gate_verdicts/9.25b.json",
+    "manuscript/nature_methods/sections/abstract.md",
+    "manuscript/nature_methods/sections/introduction.md",
+    "manuscript/nature_methods/sections/results.md",
+    "manuscript/nature_methods/sections/discussion.md",
+    "manuscript/nature_methods/sections/methods.md",
+    "manuscript/nature_methods/sections/data_availability.md",
+    "manuscript/nature_methods/sections/code_availability.md",
+    "manuscript/nature_methods/figures/figure_legends.md",
+    "manuscript/nature_methods/supplementary/supplementary_methods.md"
+  ],
+  "panel_s3_crossrefs": [],
+  "pass": true,
+  "recursive_rounds": [
+    {
+      "focus": "hidden metadata and HTML-comment removal",
+      "round": 1,
+      "status": "pass"
+    },
+    {
+      "focus": "internal ID and REF token removal from reader surfaces",
+      "round": 2,
+      "status": "pass"
+    },
+    {
+      "focus": "stage, lineage, and figure-caption leakage scan",
+      "round": 3,
+      "status": "pass"
+    },
+    {
+      "focus": "scientific boundary, citation, figure-call, and availability preservation",
+      "round": 4,
+      "status": "pass"
+    }
+  ],
+  "scope_boundary": "Reader-surface hygiene only. No new evidence, analyses, statistics, model outputs, figures, figure numbering, claim expansion, internal peer-review simulation, PI packet, readiness checklist, or final package assembly.",
+  "secret_hits": [],
+  "stage_language_hits": [],
+  "substage": "9.25b",
+  "terminal_calls": {},
+  "title": "Reader-surface hygiene gate",
+  "unsafe_hits": []
+}

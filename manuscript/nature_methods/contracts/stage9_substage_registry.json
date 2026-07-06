@@ -13,8 +13,8 @@
     "Cross-document consistency, statistical language, reader-surface hygiene, and internal peer-review reports.",
     "PI review packet, submission-readiness checklist, Stage 9 completion report, and updated roadmap memory."
   ],
-  "last_completed_substage": "9.25",
-  "next_substage": "9.25b",
+  "last_completed_substage": "9.25b",
+  "next_substage": "9.26",
   "patch_ledger": [
     {
       "id": "P1",
@@ -524,7 +524,7 @@
       "outputs": [
         "manuscript/nature_methods/audits/reader_surface_hygiene_report.md"
       ],
-      "status": "not_started",
+      "status": "complete_reader_surface_hygiene_bound",
       "title": "Reader-surface hygiene gate"
     },
     {

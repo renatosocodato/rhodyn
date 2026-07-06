@@ -1,5 +1,3 @@
-<!-- DATA-AVAILABILITY stage=9.17 generated_utc=2026-07-03T16:36:31.772873Z -->
-
 # Data availability
 
 The evidence tables used for the RhoDyn Nature Methods Article are retained with the RhoDyn v0.1.0 source release and software archive. The citable release is available from https://github.com/renatosocodato/rhodyn and the Zenodo version DOI https://doi.org/10.5281/zenodo.21036616. The concept DOI https://doi.org/10.5281/zenodo.21036615 resolves to the current RhoDyn software concept. The released repository contains synthetic truth cases, public-derived trajectory tables, public-derived endpoint tables, reserve-like summaries, bounded-coupling summaries, routed-output comparison outputs, held-out validation outputs, checksums, and report files needed to inspect the manuscript evidence set.

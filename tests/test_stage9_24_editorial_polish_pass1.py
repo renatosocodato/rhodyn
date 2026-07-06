@@ -81,16 +81,8 @@ class Stage924EditorialPolishPass1Tests(unittest.TestCase):
         for name, phrase in expected.items():
             self.assertIn(phrase, self.sections[name], name)
 
-    def test_paragraph_ids_and_call_flow_remain_intact(self) -> None:
-        for para_id in [
-            "PARA-INTRO-001",
-            "PARA-INTRO-002",
-            "PARA-RESULTS-001",
-            "PARA-RESULTS-006",
-            "PARA-DISCUSSION-001",
-            "PARA-DISCUSSION-002",
-        ]:
-            self.assertIn(para_id, self.combined)
+    def test_call_flow_remains_intact_and_reader_tokens_are_clean(self) -> None:
+        self.assertNotRegex(self.combined, r"\b(?:PARA|CLM|MTH|FIG|SFIG|STBL|STAT|ART|SUPP|REF)-\d{3,4}\b|<!--")
         terminal_call_pattern = re.compile(r"[^.!?]*\((?:Fig\.|Supplementary Fig\.|Supplementary Table)[^)]+\)\.")
         self.assertIsNone(terminal_call_pattern.search(self.combined))
 
@@ -109,8 +101,6 @@ class Stage924EditorialPolishPass1Tests(unittest.TestCase):
         ]:
             self.assertNotIn(phrase.lower(), self.combined.lower(), phrase)
         for rel in [
-            "audits/reader_surface_hygiene_report.md",
-            "audits/reader_surface_hygiene_report.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
             "stage9_completion_report.md",
