@@ -1,0 +1,92 @@
+{
+  "checks": [
+    {
+      "detail": "Stage 9.24 editorial polish pass I gate is present and points to Stage 9.25",
+      "name": "stage_9_24_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "paragraph_errors=[]; claim_id_errors=[]; figure_call_errors=[]",
+      "name": "meaning_preserved",
+      "passed": true
+    },
+    {
+      "detail": "style_errors=[]",
+      "name": "style_metrics_pass_thresholds",
+      "passed": true
+    },
+    {
+      "detail": "unsafe_hits=[]; missing_limit_terms=[]",
+      "name": "no_claim_broadened",
+      "passed": true
+    },
+    {
+      "detail": "final_phrase_missing={}; process_hits=[]",
+      "name": "venue_style_replacements_resolved",
+      "passed": true
+    },
+    {
+      "detail": "terminal_figure_calls={}",
+      "name": "dynamic_figure_call_flow_preserved",
+      "passed": true
+    },
+    {
+      "detail": "reader_stage_hits=[]",
+      "name": "reader_surface_stage_language_absent",
+      "passed": true
+    },
+    {
+      "detail": "downstream_paths=[]",
+      "name": "no_reader_hygiene_or_package_started",
+      "passed": true
+    }
+  ],
+  "claim_id_errors": [],
+  "commit": "954c0d09ca5115992ee6a6394d0be1e856ed0916",
+  "downstream_paths": [],
+  "figure_call_errors": [],
+  "generated_utc": "2026-07-06T07:43:55Z",
+  "missing_limits": [],
+  "next_substage": "9.25b",
+  "outputs": [
+    "manuscript/nature_methods/audits/editorial_pass_2.md",
+    "manuscript/nature_methods/gate_verdicts/9.25.json",
+    "manuscript/nature_methods/sections/introduction.md",
+    "manuscript/nature_methods/sections/results.md",
+    "manuscript/nature_methods/sections/discussion.md",
+    "manuscript/nature_methods/sections/methods.md",
+    "manuscript/nature_methods/figures/figure_legends.md"
+  ],
+  "paragraph_errors": [],
+  "pass": true,
+  "process_hits": [],
+  "reader_stage_hits": [],
+  "recursive_rounds": [
+    {
+      "focus": "venue-style process phrase removal",
+      "round": 1,
+      "status": "pass"
+    },
+    {
+      "focus": "paragraph rhythm and repeated-start thresholds",
+      "round": 2,
+      "status": "pass"
+    },
+    {
+      "focus": "meaning, claim-strength, and limitation retention",
+      "round": 3,
+      "status": "pass"
+    },
+    {
+      "focus": "figure-call flow and downstream-boundary check",
+      "round": 4,
+      "status": "pass"
+    }
+  ],
+  "scope_boundary": "Editorial polish pass II only. No new evidence, analyses, statistics, model outputs, figures, figure numbering, claim expansion, reader-surface hygiene report, PI packet, readiness checklist, or final package assembly.",
+  "style_errors": [],
+  "substage": "9.25",
+  "terminal_calls": {},
+  "title": "Editorial polish pass II",
+  "unsafe_hits": []
+}

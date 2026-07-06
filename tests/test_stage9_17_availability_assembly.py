@@ -86,7 +86,7 @@ class Stage917AvailabilityAssemblyTests(unittest.TestCase):
 
     def test_downstream_submission_surfaces_remain_unstarted(self) -> None:
         forbidden = [
-            "audits/editorial_pass_2.md",
+            "audits/reader_surface_hygiene_report.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]

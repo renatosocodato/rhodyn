@@ -63,6 +63,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_22_statistical_language_audit.py",
     "scripts/run_stage9_23_figure_legend_audit.py",
     "scripts/run_stage9_24_editorial_polish_pass1.py",
+    "scripts/run_stage9_25_editorial_polish_pass2.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -118,7 +119,6 @@ ID_PREFIXES = [
 ]
 
 FORBIDDEN_DRAFTS = [
-    "audits/editorial_pass_2.md",
     "audits/reader_surface_hygiene_report.md",
     "submission_package/submission_readiness_checklist.md",
     "submission_package/pi_review_packet.md",
@@ -226,10 +226,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"ID namespace missing prefix: {prefix}")
 
     gate_files = sorted(path.name for path in (workspace / "gate_verdicts").glob("*.json")) if (workspace / "gate_verdicts").exists() else []
-    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json", "9.22.json", "9.23.json", "9.24.json"}
+    allowed_gate_files = {"9.-1.json", "9.0.json", "9.1.json", "9.2.json", "9.3.json", "9.4.json", "9.5.json", "9.6.json", "9.6b.json", "9.7.json", "9.8.json", "9.9.json", "9.10.json", "9.11.json", "9.12.json", "9.13.json", "9.14.json", "9.15.json", "9.16.json", "9.17.json", "9.18.json", "9.19.json", "9.20.json", "9.21.json", "9.22.json", "9.23.json", "9.24.json", "9.25.json"}
     unexpected_gate_files = [name for name in gate_files if name not in allowed_gate_files]
     if unexpected_gate_files:
-        failures.append(f"Stage 9 must not contain post-9.24 gate verdicts before authorization: {unexpected_gate_files}")
+        failures.append(f"Stage 9 must not contain post-9.25 gate verdicts before authorization: {unexpected_gate_files}")
     if "9.-1.json" not in gate_files:
         failures.append(f"Stage 9 scaffold must contain the 9.-1 gate verdict, found: {gate_files}")
     stage9_0_started = "9.0.json" in gate_files
@@ -258,6 +258,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
     stage9_22_started = "9.22.json" in gate_files
     stage9_23_started = "9.23.json" in gate_files
     stage9_24_started = "9.24.json" in gate_files
+    stage9_25_started = "9.25.json" in gate_files
     gate = _read_json(workspace / "gate_verdicts" / "9.-1.json", failures)
     if gate.get("pass") is not True or gate.get("substage") != "9.-1":
         failures.append("Stage 9.-1 gate verdict must pass")
@@ -266,7 +267,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         failures.append("Stage 9.-1 gate checks must all pass")
 
     memory = _read_json(root / "docs" / "stage9_execution_memory.json", failures)
-    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "cross_document_consistency_started", "statistical_language_audit_started", "live_number_audit_started", "figure_legends_started", "figure_caption_audit_started", "editorial_polish_pass_1_started", "submission_package_started"]:
+    for flag in ["manuscript_drafting_started", "evidence_intake_started", "citation_resolution_started", "cross_document_consistency_started", "statistical_language_audit_started", "live_number_audit_started", "figure_legends_started", "figure_caption_audit_started", "editorial_polish_pass_1_started", "editorial_polish_pass_2_started", "submission_package_started"]:
         if flag == "evidence_intake_started" and stage9_0_started:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record evidence_intake_started=true after 9.0")
@@ -291,6 +292,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not True:
                 failures.append("Stage 9 execution memory must record editorial_polish_pass_1_started=true after 9.24")
             continue
+        if flag == "editorial_polish_pass_2_started" and stage9_25_started:
+            if memory.get(flag) is not True:
+                failures.append("Stage 9 execution memory must record editorial_polish_pass_2_started=true after 9.25")
+            continue
         if memory.get(flag) is not False:
             failures.append(f"Stage 9 scaffold memory must keep {flag}=false")
     if memory.get("figure_engine_clone_started") is not False:
@@ -304,7 +309,9 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             if memory.get(flag) is not False:
                 failures.append(f"Stage 9 scaffold memory must keep {flag}=false before 9.6b")
     expected_memory_status = (
-        "stage9_24_editorial_polish_pass_1_bound"
+        "stage9_25_editorial_polish_pass_2_bound"
+        if stage9_25_started
+        else "stage9_24_editorial_polish_pass_1_bound"
         if stage9_24_started
         else "stage9_23_figure_legend_caption_audit_bound"
         if stage9_23_started
@@ -792,7 +799,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "bounded-coupling",
             "reserve-like",
             "routed-output",
-            "reproducibility",
+            "reproducible",
         ]:
             if phrase not in intro_body:
                 failures.append(f"Stage 9.12 Introduction missing phrase: {phrase}")
@@ -958,7 +965,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "Routed-output model comparison",
             "Software surfaces, versioning, and reproducibility",
             "RhoDyn v0.1.0",
-            "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
+            "evidence snapshot dated 2026-06-30",
             "not proof that all coupling is absent",
             "not direct assays of unmeasured biological reserve capacity",
             "does not identify direct biochemical interactions",
@@ -1607,6 +1614,77 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if (workspace / rel).exists():
                 failures.append(f"Stage 9 state must not contain editorial polish pass I output before 9.24: {rel}")
+
+    if stage9_25_started:
+        stage9_25_gate = _read_json(workspace / "gate_verdicts" / "9.25.json", failures)
+        editorial_audit_path = workspace / "audits" / "editorial_pass_2.md"
+        if stage9_25_gate.get("pass") is not True or stage9_25_gate.get("substage") != "9.25":
+            failures.append("Stage 9.25 gate verdict must pass when present")
+        if stage9_25_gate.get("next_substage") != "9.25b":
+            failures.append("Stage 9.25 gate must point to Stage 9.25b")
+        for field in [
+            "paragraph_errors",
+            "claim_id_errors",
+            "figure_call_errors",
+            "style_errors",
+            "unsafe_hits",
+            "missing_limits",
+            "process_hits",
+            "reader_stage_hits",
+            "downstream_paths",
+        ]:
+            if stage9_25_gate.get(field) not in ([], None):
+                failures.append(f"Stage 9.25 gate must have empty {field}")
+        terminal_calls = stage9_25_gate.get("terminal_calls", {})
+        if terminal_calls not in ({}, None):
+            failures.append("Stage 9.25 gate must have no terminal figure-call dumps")
+        expected_checks = {
+            "stage_9_24_gate_passed",
+            "meaning_preserved",
+            "style_metrics_pass_thresholds",
+            "no_claim_broadened",
+            "venue_style_replacements_resolved",
+            "dynamic_figure_call_flow_preserved",
+            "reader_surface_stage_language_absent",
+            "no_reader_hygiene_or_package_started",
+        }
+        actual_checks = {
+            item.get("name")
+            for item in stage9_25_gate.get("checks", [])
+            if isinstance(item, dict) and item.get("passed") is True
+        }
+        if actual_checks != expected_checks:
+            failures.append(f"Stage 9.25 checks do not match expected checks: {sorted(actual_checks)}")
+        if not editorial_audit_path.exists():
+            failures.append("Stage 9.25 output missing: audits/editorial_pass_2.md")
+        else:
+            audit_body = editorial_audit_path.read_text(encoding="utf-8")
+            for phrase in [
+                "Stage 9.25 editorial polish pass II",
+                "second reader-facing polish loop",
+                "Paragraph IDs, claim IDs, and Results figure calls were preserved",
+                "within threshold",
+                "does not broaden the residence",
+            ]:
+                if phrase not in audit_body:
+                    failures.append(f"Stage 9.25 audit missing phrase: {phrase}")
+        surface_expectations = {
+            "sections/introduction.md": "explicit checks that allow each component to be tested in sequence",
+            "sections/results.md": "The held-out analysis therefore keeps pass and inconclusive outcomes side by side",
+            "sections/discussion.md": "Reproducibility evidence strengthens the method",
+            "sections/methods.md": "Methods section refer to RhoDyn v0.1.0",
+            "figures/figure_legends.md": "Non-example panels collect ambiguous regimes",
+        }
+        for rel, phrase in surface_expectations.items():
+            path = workspace / rel
+            if not path.exists() or phrase not in path.read_text(encoding="utf-8"):
+                failures.append(f"Stage 9.25 polished surface missing phrase: {phrase}")
+    else:
+        for rel in [
+            "audits/editorial_pass_2.md",
+        ]:
+            if (workspace / rel).exists():
+                failures.append(f"Stage 9 state must not contain editorial polish pass II output before 9.25: {rel}")
 
     for rel in FORBIDDEN_DRAFTS:
         if (workspace / rel).exists():

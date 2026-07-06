@@ -16,5 +16,5 @@ STAT-0014,ART-0051,FIG-004,row_count=5,not_applicable,row_count=5,reduced-altern
 STAT-0015,ART-0043,FIG-005,context_count=7;pass_count=4;fail_count=0;inconclusive_count=3,not_applicable,see_source_artifact,pass/inconclusive count,python3 scripts/run_stage7_5_heldout_validation.py,STBL-007; SUPP-007
 STAT-0016,ART-0048,FIG-005,row_count=70,source table ci_low and ci_high,row_count=70,margin-sensitivity row count,python3 scripts/run_stage7_5_heldout_validation.py,STBL-007; SUPP-007
 STAT-0017,ART-0024,FIG-006,row_count=4,not_applicable,row_count=4,Python CLI backend frontend-contract parity,python3 scripts/run_stage7_6_methods_reproducibility.py,STBL-008; SUPP-008
-STAT-0018,ART-0021,FIG-006,row_count=619,not_applicable,row_count=619,archive manifest file count,python3 scripts/run_stage7_6_methods_reproducibility.py,STBL-008; SUPP-008
+STAT-0018,ART-0021,FIG-006,row_count=616,not_applicable,row_count=616,archive manifest file count,python3 scripts/run_stage7_6_methods_reproducibility.py,STBL-008; SUPP-008
 STAT-0019,ART-0017,FIG-001,"failure modes, ambiguous regimes, and claim-strength caps represented",not_applicable,see_source_artifact,manual limitation matrix binding,not_applicable_manual_doc_binding,STBL-009; SUPP-009

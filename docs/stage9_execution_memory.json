@@ -72,7 +72,9 @@
     "manuscript/nature_methods/audits/figure_legend_audit.md",
     "manuscript/nature_methods/gate_verdicts/9.23.json",
     "manuscript/nature_methods/audits/editorial_pass_1.md",
-    "manuscript/nature_methods/gate_verdicts/9.24.json"
+    "manuscript/nature_methods/gate_verdicts/9.24.json",
+    "manuscript/nature_methods/audits/editorial_pass_2.md",
+    "manuscript/nature_methods/gate_verdicts/9.25.json"
   ],
   "availability_assembly_started": true,
   "citation_resolution_started": true,
@@ -1385,12 +1387,85 @@
     {
       "checks": [
         {
+          "detail": "Stage 9.23 figure legend and caption gate is present and points to Stage 9.24",
+          "name": "stage_9_23_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "paragraph_id_errors=[]",
+          "name": "paragraph_id_set_unchanged",
+          "passed": true
+        },
+        {
+          "detail": "unsafe_hits=[]",
+          "name": "strength_caps_hold",
+          "passed": true
+        },
+        {
+          "detail": "missing_limit_terms=[]",
+          "name": "limitations_remain_present",
+          "passed": true
+        },
+        {
+          "detail": "terminal_figure_calls={}",
+          "name": "dynamic_figure_call_flow_preserved",
+          "passed": true
+        },
+        {
+          "detail": "reader_stage_hits=[]",
+          "name": "reader_surface_stage_language_absent",
+          "passed": true
+        },
+        {
+          "detail": "replacement_missing={}",
+          "name": "recursive_editorial_replacements_resolved",
+          "passed": true
+        },
+        {
+          "detail": "downstream_paths=[]",
+          "name": "no_downstream_stage_started",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.23.json",
+        "manuscript/nature_methods/ledgers/claim_strength_rules.md",
+        "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
+        "manuscript/nature_methods/sections/introduction.md",
+        "manuscript/nature_methods/sections/results.md",
+        "manuscript/nature_methods/sections/discussion.md",
+        "manuscript/nature_methods/sections/methods.md",
+        "manuscript/nature_methods/figures/figure_legends.md"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/audits/editorial_pass_1.md",
+        "manuscript/nature_methods/gate_verdicts/9.24.json",
+        "manuscript/nature_methods/sections/introduction.md",
+        "manuscript/nature_methods/sections/results.md",
+        "manuscript/nature_methods/sections/discussion.md",
+        "manuscript/nature_methods/sections/methods.md",
+        "manuscript/nature_methods/figures/figure_legends.md"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.24.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Editorial polish pass II has not started",
+        "Reader-surface hygiene gate remains downstream",
+        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
+      ],
+      "status": "pass",
+      "substage": "9.24",
+      "validation_outcome": "Reader-facing cadence and claim-strength polish completed without changing evidence bindings"
+    },
+    {
+      "checks": [
+        {
           "detail": "Stage 9.21 cross-document consistency gate is present and passed",
           "name": "stage_9_21_gate_passed",
           "passed": true
         },
         {
-          "detail": "checked=19; updated=0; failures=0",
+          "detail": "checked=19; updated=1; failures=0",
           "name": "every_statistic_recomputes_within_tolerance",
           "passed": true
         },
@@ -1446,7 +1521,9 @@
       ],
       "status": "pass",
       "substage": "9.22",
-      "updated_stat_ids": [],
+      "updated_stat_ids": [
+        "STAT-0018"
+      ],
       "validation_outcome": "Nineteen statistic IDs were recomputed or inspected; statistic traceability is bound to explicit figure-level STAT IDs"
     },
     {
@@ -1524,23 +1601,28 @@
     {
       "checks": [
         {
-          "detail": "Stage 9.23 figure legend and caption gate is present and points to Stage 9.24",
-          "name": "stage_9_23_gate_passed",
+          "detail": "Stage 9.24 editorial polish pass I gate is present and points to Stage 9.25",
+          "name": "stage_9_24_gate_passed",
           "passed": true
         },
         {
-          "detail": "paragraph_id_errors=[]",
-          "name": "paragraph_id_set_unchanged",
+          "detail": "paragraph_errors=[]; claim_id_errors=[]; figure_call_errors=[]",
+          "name": "meaning_preserved",
           "passed": true
         },
         {
-          "detail": "unsafe_hits=[]",
-          "name": "strength_caps_hold",
+          "detail": "style_errors=[]",
+          "name": "style_metrics_pass_thresholds",
           "passed": true
         },
         {
-          "detail": "missing_limit_terms=[]",
-          "name": "limitations_remain_present",
+          "detail": "unsafe_hits=[]; missing_limit_terms=[]",
+          "name": "no_claim_broadened",
+          "passed": true
+        },
+        {
+          "detail": "final_phrase_missing={}; process_hits=[]",
+          "name": "venue_style_replacements_resolved",
           "passed": true
         },
         {
@@ -1554,18 +1636,13 @@
           "passed": true
         },
         {
-          "detail": "replacement_missing={}",
-          "name": "recursive_editorial_replacements_resolved",
-          "passed": true
-        },
-        {
           "detail": "downstream_paths=[]",
-          "name": "no_downstream_stage_started",
+          "name": "no_reader_hygiene_or_package_started",
           "passed": true
         }
       ],
       "evidence_dependencies": [
-        "manuscript/nature_methods/gate_verdicts/9.23.json",
+        "manuscript/nature_methods/gate_verdicts/9.24.json",
         "manuscript/nature_methods/ledgers/claim_strength_rules.md",
         "manuscript/nature_methods/ledgers/non_claims_and_scope_boundaries.md",
         "manuscript/nature_methods/sections/introduction.md",
@@ -1575,34 +1652,35 @@
         "manuscript/nature_methods/figures/figure_legends.md"
       ],
       "files_created_or_modified": [
-        "manuscript/nature_methods/audits/editorial_pass_1.md",
-        "manuscript/nature_methods/gate_verdicts/9.24.json",
+        "manuscript/nature_methods/audits/editorial_pass_2.md",
+        "manuscript/nature_methods/gate_verdicts/9.25.json",
         "manuscript/nature_methods/sections/introduction.md",
         "manuscript/nature_methods/sections/results.md",
         "manuscript/nature_methods/sections/discussion.md",
         "manuscript/nature_methods/sections/methods.md",
         "manuscript/nature_methods/figures/figure_legends.md"
       ],
-      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.24.json",
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.25.json",
       "pass": true,
       "remaining_blockers": [
-        "Editorial polish pass II has not started",
         "Reader-surface hygiene gate remains downstream",
+        "Internal peer-review simulation has not started",
         "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
       ],
       "status": "pass",
-      "substage": "9.24",
-      "validation_outcome": "Reader-facing cadence and claim-strength polish completed without changing evidence bindings"
+      "substage": "9.25",
+      "validation_outcome": "Venue-style readability polish completed without changing evidence bindings"
     }
   ],
   "cross_document_consistency_started": true,
-  "current_gate": "Stage 9.24 editorial polish pass I preserved paragraph IDs, claim caps, and limitations",
-  "current_substage": "9.24",
+  "current_gate": "Stage 9.25 editorial polish pass II preserved meaning and tightened venue style",
+  "current_substage": "9.25",
   "discussion_draft_version": "discussion-draft@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "discussion_drafting_started": true,
   "discussion_interpretation_map_started": true,
   "discussion_map_version": "discussion-map@2026-07-03@679ca73472fbc8bdb2b32c2f449b31cf36bc26d2",
   "editorial_polish_pass_1_started": true,
+  "editorial_polish_pass_2_started": true,
   "evidence_intake_started": true,
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_caption_audit_started": true,
@@ -1616,12 +1694,12 @@
   "front_matter_strategy_version": "front-matter-strategy@2026-07-03@dbb6de87afff360b62b8bb5f48ccee76422b0a8d",
   "gate": [
     "Stage 9.-1 contract and schema files exist and pass the scaffold checker.",
-    "Stage 9.0 through Stage 9.24 are complete through editorial polish pass I.",
-    "Stage 9.25, Stage 9.25b, and Stage 9.26 through Stage 9.29 remain not started.",
-    "No editorial polish pass II, reader-surface hygiene report, PI review packet, or submission readiness checklist is created in this pass.",
-    "Paragraph IDs, claim-strength caps, and limitations remain intact."
+    "Stage 9.0 through Stage 9.25 are complete through editorial polish pass II.",
+    "Stage 9.25b and Stage 9.26 through Stage 9.29 remain not started.",
+    "No reader-surface hygiene report, internal peer-review simulation, PI review packet, or submission readiness checklist is created in this pass.",
+    "Meaning, claim-strength caps, limitations, and Results figure-call order remain intact."
   ],
-  "generated_utc": "2026-07-04T12:08:40Z",
+  "generated_utc": "2026-07-06T07:43:55Z",
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
   "live_number_audit_started": true,
@@ -1632,7 +1710,7 @@
   "methods_drafting_started": true,
   "narrative_spine_started": true,
   "narrative_spine_version": "narrative-spine@2026-07-02@3d01c5f009828471aa9ed3268cb7ce1557ebafa4",
-  "next_substage": "9.25",
+  "next_substage": "9.25b",
   "next_substage_authorized": false,
   "paragraph_claim_ledger_started": true,
   "paragraph_claim_ledger_version": "paragraph-ledger@2026-07-02@3f877fe6b47bb50c1198a992977b5e40bed60c2c",
@@ -1700,7 +1778,7 @@
   "results_architecture_version": "results-architecture@2026-07-03@be61043e8cfb614028ea9d8a940357ba0e579c67",
   "results_draft_version": "results-draft@2026-07-03@3e952a3de6128f2c9074c6f40b2c19fb3790106e",
   "results_drafting_started": true,
-  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, cross-document consistency audit, statistical/quantitative language audit, figure legend/caption audit, and editorial polish pass I only. Do not start editorial polish pass II, reader-surface hygiene, or final submission package without explicit substage authorization.",
+  "scope_rule": "Stage 9 has completed evidence intake, venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, title/abstract strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, cross-document consistency audit, statistical/quantitative language audit, figure legend/caption audit, and editorial polish passes I and II only. Do not start reader-surface hygiene, internal peer review, or final submission package without explicit substage authorization.",
   "section_contract_version": "section-contracts@2026-07-03@7bdbc4d0f43e92ada9f5367e673c08362e7e9c46",
   "section_contracts_started": true,
   "source_data_binding_started": true,
@@ -2350,7 +2428,7 @@
       "passed": true
     },
     {
-      "detail": "checked=19; updated=0; failures=0",
+      "detail": "checked=19; updated=1; failures=0",
       "name": "every_statistic_recomputes_within_tolerance",
       "passed": true
     },
@@ -2466,6 +2544,48 @@
     {
       "detail": "downstream_paths=[]",
       "name": "no_downstream_stage_started",
+      "passed": true
+    }
+  ],
+  "stage9_25_checks": [
+    {
+      "detail": "Stage 9.24 editorial polish pass I gate is present and points to Stage 9.25",
+      "name": "stage_9_24_gate_passed",
+      "passed": true
+    },
+    {
+      "detail": "paragraph_errors=[]; claim_id_errors=[]; figure_call_errors=[]",
+      "name": "meaning_preserved",
+      "passed": true
+    },
+    {
+      "detail": "style_errors=[]",
+      "name": "style_metrics_pass_thresholds",
+      "passed": true
+    },
+    {
+      "detail": "unsafe_hits=[]; missing_limit_terms=[]",
+      "name": "no_claim_broadened",
+      "passed": true
+    },
+    {
+      "detail": "final_phrase_missing={}; process_hits=[]",
+      "name": "venue_style_replacements_resolved",
+      "passed": true
+    },
+    {
+      "detail": "terminal_figure_calls={}",
+      "name": "dynamic_figure_call_flow_preserved",
+      "passed": true
+    },
+    {
+      "detail": "reader_stage_hits=[]",
+      "name": "reader_surface_stage_language_absent",
+      "passed": true
+    },
+    {
+      "detail": "downstream_paths=[]",
+      "name": "no_reader_hygiene_or_package_started",
       "passed": true
     }
   ],
@@ -2745,9 +2865,9 @@
       "passed": true
     }
   ],
-  "stage9_active_gate": "Stage 9.24 Editorial polish pass I complete; editorial polish pass II not started",
+  "stage9_active_gate": "Stage 9.25 Editorial polish pass II complete; reader-surface hygiene not started",
   "statistical_language_audit_started": true,
-  "status": "stage9_24_editorial_polish_pass_1_bound",
+  "status": "stage9_25_editorial_polish_pass_2_bound",
   "submission_package_started": false,
   "substage_registry_path": "manuscript/nature_methods/contracts/stage9_substage_registry.json",
   "supplementary_display_planning_started": true,

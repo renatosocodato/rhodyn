@@ -50,7 +50,7 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
             "bounded-coupling",
             "reserve-like",
             "routed-output",
-            "reproducibility",
+            "reproducible",
         ]:
             self.assertIn(phrase, self.introduction)
 

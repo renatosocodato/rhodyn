@@ -6,7 +6,7 @@
       "passed": true
     },
     {
-      "detail": "checked=19; updated=0; failures=0",
+      "detail": "checked=19; updated=1; failures=0",
       "name": "every_statistic_recomputes_within_tolerance",
       "passed": true
     },
@@ -36,7 +36,7 @@
       "passed": true
     }
   ],
-  "commit": "7764057031acb6b01d773aad79e9cc6d76fb0f3d",
+  "commit": "954c0d09ca5115992ee6a6394d0be1e856ed0916",
   "equivalence_language": {
     "passed": true,
     "required_methods_terms_present": [
@@ -59,7 +59,7 @@
   },
   "figure_stat_id_map_complete": true,
   "forbidden_started_paths": [],
-  "generated_utc": "2026-07-04T12:08:40Z",
+  "generated_utc": "2026-07-06T07:43:28Z",
   "inspection_only_count": 5,
   "live_number_row_count": 19,
   "next_substage": "9.23",
@@ -78,6 +78,8 @@
   "unknown_figure_stat_ids": [],
   "unresolved_figures": [],
   "unsupported_quantitative_statements": [],
-  "updated_stat_ids": [],
-  "updated_statistic_count": 0
+  "updated_stat_ids": [
+    "STAT-0018"
+  ],
+  "updated_statistic_count": 1
 }

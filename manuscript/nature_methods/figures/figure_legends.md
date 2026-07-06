@@ -4,7 +4,7 @@
 
 ### Figure 1 | RhoDyn defines residence-state inference as an executable method object.
 
-**a**, The method-object schematic defines the input contract for trajectory and endpoint analyses, including tidy records, declared biological windows, replicate variables, and exportable decisions. **b**, Residence-window summaries separate dwell fraction, dwell time, and segment count from peak, endpoint, and average amplitude so that time spent inside a declared interval is visible as its own measurement. **c**, Failure-mode examples show when missing time, condition, replicate, or window definitions should prevent a residence call. **d**, Executable positive, negative, and ambiguous truth cases show that the same method object can return a result or withhold one when the input does not support interpretation. The figure establishes the analysis object and its boundaries before biological demonstrations are interpreted.
+**a**, The method-object schematic defines the input contract for trajectory and endpoint analyses, including tidy records, declared biological windows, replicate variables, and exportable decisions. **b**, Residence-window summaries separate dwell fraction, dwell time, and segment count from peak, endpoint, and average amplitude so that time spent inside a declared interval is visible as its own measurement. **c**, Failure-mode examples show when missing time, condition, replicate, or window definitions should prevent a residence call. **d**, Executable positive, negative, and ambiguous truth cases show that the same method object can return a result or withhold one when the input does not support interpretation. The figure establishes the analysis object and its boundaries before any biological demonstration is considered.
 
 ### Figure 2 | Synthetic benchmarks distinguish residence structure from amplitude-only summaries.
 
@@ -24,45 +24,45 @@
 
 ### Figure 6 | Software parity and archive reproduction make RhoDyn decisions inspectable.
 
-**a**, The parity panel compares Python, command-line, backend, and workbench outputs for retained evidence paths. **b**, The export-bundle view shows that inputs, schema details, parameter choices, summaries, figures, and reports are written together rather than hidden in session state. **c**, Source-distribution clean-room reproduction checks the installable release boundary against selected retained outputs. **d**, The archive and checksum panel records a four-surface parity check and a 619-row release archive inventory. **e**, The adoption and user-path rehearsal tests whether biologist-facing and quantitative workflows can reach the same reviewable outputs. The figure supports reproducibility of the demonstrated analyses without turning software availability into a new biological result.
+**a**, The parity panel compares Python, command-line, backend, and workbench outputs for retained evidence paths. **b**, The export-bundle view shows that inputs, schema details, parameter choices, summaries, figures, and reports are written together rather than hidden in session state. **c**, Source-distribution clean-room reproduction checks the installable release boundary against selected retained outputs. **d**, The archive and checksum panel records a four-surface parity check and a 616-row release archive inventory. **e**, The adoption and user-path rehearsal tests whether biologist-facing and quantitative workflows can reach the same reviewable outputs. The figure supports reproducibility of the demonstrated analyses without turning software availability into a new biological result.
 
 ## Supplementary figure legends
 
 ### Supplementary Fig. 1 | Input contracts, method definitions, and executable truth cases.
 
-Panels expand the main method-object figure with tidy trajectory and endpoint schemas, residence-window metric definitions, executable positive and negative truth cases, and boundary examples where the supplied input does not support interpretation.
+Expanded method-object panels place tidy trajectory and endpoint schemas, residence-window metric definitions, executable positive and negative truth cases, and boundary examples next to the main display.
 
 ### Supplementary Fig. 2 | Synthetic benchmark grid, baseline comparisons, and failure behavior.
 
-Panels provide the known-truth benchmark grid, residence-versus-amplitude comparisons, reduced-summary comparisons, and negative or ambiguous cases that sit behind the compressed synthetic benchmark figure.
+The known-truth benchmark grid, residence-versus-amplitude comparisons, reduced-summary comparisons, and negative or ambiguous cases provide the detailed support for the synthetic benchmark display.
 
 ### Supplementary Fig. 3 | Public live-cell signaling adapters and residence-amplitude sensitivity.
 
-Panels document the public-data adapter contract, DRG calcium and ERK GPCR residence-amplitude summaries, and the window or uncertainty sensitivity analyses used to scope the public reporter demonstrations.
+Public-data adapter panels document the DRG calcium and ERK GPCR residence-amplitude summaries and the window or uncertainty sensitivity analyses used to scope the public reporter demonstrations.
 
 ### Supplementary Fig. 4 | Bounded-coupling decisions under declared margins.
 
-Panels show the endpoint pairing contract, declared margin table, bounded-coupling interval display, and inconclusive decision examples used to keep coupling claims tied to the stated margin and context.
+Endpoint-pairing panels show the declared margin table, bounded-coupling interval display, and inconclusive decision examples that keep coupling claims tied to the stated margin and context.
 
 ### Supplementary Fig. 5 | Reserve-like endpoint construction and uncertainty.
 
-Panels separate measured endpoint components, the reserve-like coordinate construction, uncertainty summaries, and label-scope boundaries so that buffering language remains tied to the measured assay.
+Measured endpoint panels separate reserve-like coordinate construction, uncertainty summaries, and label-scope boundaries so that buffering language remains tied to the assay.
 
 ### Supplementary Fig. 6 | Routed-output reduced-architecture comparison.
 
-Panels provide the routed architecture matrix, reduced-alternative comparison, residual profile, and decision-boundary table behind the endpoint model-comparison display.
+The routed-output supplement provides the architecture matrix, reduced-alternative comparison, residual profile, and decision-boundary table behind the endpoint model-comparison display.
 
 ### Supplementary Fig. 7 | Held-out validation pass and boundary cases.
 
-Panels show the fixed held-out plan, pass contexts, margin-boundary inconclusive contexts, margin sensitivity, and controlled-access notes that prevent held-out validation from becoming a single unqualified score.
+Held-out validation panels show the fixed analysis plan, pass contexts, margin-boundary inconclusive contexts, margin sensitivity, and controlled-access notes that prevent validation from becoming a single unqualified score.
 
 ### Supplementary Fig. 8 | Software parity, clean-room reproduction, and archive contents.
 
-Panels document cross-surface parity, export-bundle contents, clean-room reproduction summaries, archive records, checksums, and usability-path boundaries for the retained evidence surfaces.
+Cross-surface reproducibility panels document parity, export-bundle contents, clean-room reproduction summaries, archive records, checksums, and usability-path boundaries for the retained evidence surfaces.
 
 ### Supplementary Fig. 9 | Interpretation boundaries and non-example cases.
 
-Panels collect non-example cases, ambiguous regimes, claim-strength caps, and recommended wording boundaries so that limitations remain visible without carrying the main argument.
+Non-example panels collect ambiguous regimes, claim-strength caps, and recommended wording boundaries so that limitations remain visible without carrying the main argument.
 
 ## Supplementary table captions
 

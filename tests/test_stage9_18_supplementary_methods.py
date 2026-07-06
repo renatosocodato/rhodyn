@@ -91,7 +91,7 @@ class Stage918SupplementaryMethodsTests(unittest.TestCase):
         ]:
             self.assertNotIn(phrase, visible)
         for rel in [
-            "audits/editorial_pass_2.md",
+            "audits/reader_surface_hygiene_report.md",
             "submission_package/pi_review_packet.md",
             "submission_package/submission_readiness_checklist.md",
         ]:

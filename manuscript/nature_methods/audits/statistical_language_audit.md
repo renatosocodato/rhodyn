@@ -1,18 +1,18 @@
-<!-- STATISTICAL-LANGUAGE-AUDIT stage=9.22 generated=2026-07-04T12:08:40Z commit=7764057031acb6b01d773aad79e9cc6d76fb0f3d -->
+<!-- STATISTICAL-LANGUAGE-AUDIT stage=9.22 generated=2026-07-06T07:43:28Z commit=954c0d09ca5115992ee6a6394d0be1e856ed0916 -->
 # Stage 9.22 statistical and quantitative language audit
 
 Stage 9.22 recomputes live-number bindings from the frozen Stage 7 evidence surfaces and checks whether the manuscript-facing quantitative language stays inside declared statistical bounds. This pass updates the statistic ledger where a source table has changed, binds each main figure to explicit statistic IDs, and does not write or modify figure legends or final submission assembly.
 
 ## Summary
 
-The live-number audit passed. Nineteen statistic IDs were recomputed or inspected against their source artifacts. No stale live numbers remained after recomputation. `STAT-0018`, the release-archive manifest file count for the reproducibility figure, currently matches `row_count=619`. This changes traceability count reporting only and does not alter a biological result, model comparison, or bounded-coupling decision.
+The live-number audit passed. Nineteen statistic IDs were recomputed or inspected against their source artifacts. One stale live number was corrected. `STAT-0018`, the release-archive manifest file count for the reproducibility figure, changed from `row_count=619` to `row_count=616` after the latest archive refresh. This changes traceability count reporting only and does not alter a biological result, model comparison, or bounded-coupling decision.
 
 ## Gate checks
 
 | Check | Status | Detail |
 |---|---|---|
 | stage_9_21_gate_passed | pass | Stage 9.21 cross-document consistency gate is present and passed |
-| every_statistic_recomputes_within_tolerance | pass | checked=19; updated=0; failures=0 |
+| every_statistic_recomputes_within_tolerance | pass | checked=19; updated=1; failures=0 |
 | quantitative_statements_have_statistic_ids | pass | figures_with_pending_stats=0; unknown_figure_stat_ids=0; unsupported_reader_surface_statements=0 |
 | equivalence_claims_state_bounds | pass | unsafe_hits=[]; methods_terms=['\\Delta', 'TOST', 'ROPE', '0.95']; results_margin_scoped=True |
 | live_numbers_diff_written | pass | diff_rows=19 |
@@ -40,7 +40,7 @@ The live-number audit passed. Nineteen statistic IDs were recomputed or inspecte
 | STAT-0015 | context_count=7;pass_count=4;fail_count=0;inconclusive_count=3 | context_count=7;pass_count=4;fail_count=0;inconclusive_count=3 | pass |
 | STAT-0016 | row_count=70 | row_count=70 | pass |
 | STAT-0017 | row_count=4 | row_count=4 | pass |
-| STAT-0018 | row_count=619 | row_count=619 | pass |
+| STAT-0018 | row_count=616 | row_count=619 | updated |
 | STAT-0019 | failure modes, ambiguous regimes, and claim-strength caps represented | failure modes, ambiguous regimes, and claim-strength caps represented | inspection_only_pass |
 
 ## Figure-level statistic bindings
@@ -64,6 +64,6 @@ Unsupported exact statistic phrases found in Results or Methods. []
 
 ## Scope boundary
 
-Updated statistic IDs. none
+Updated statistic IDs. STAT-0018
 
 This audit does not write or modify figure legends, does not create the PI review packet, does not assemble the final manuscript package, and does not add new data, figures, analyses, model outputs, or biological claims. It only makes the quantitative traceability layer match the frozen evidence surfaces and confirms that statistical language remains bounded.
