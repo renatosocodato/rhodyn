@@ -27,6 +27,8 @@ VERSION_BINDING = WORKSPACE / "stage9_closure_version_binding.json"
 
 RISK_MATRIX = AUDITS / "nature_methods_desk_rejection_risk_matrix.csv"
 HARDENING_REPORT = AUDITS / "nature_methods_editorial_hardening_report.md"
+TRIAGE_SIMULATION = AUDITS / "nature_methods_editor_triage_simulation.md"
+TRIAGE_SIMULATION_JSON = AUDITS / "nature_methods_editor_triage_simulation.json"
 TRIAGE_NOTE = STAGING / "nature_methods_editor_triage_note_draft.md"
 PACKAGE_TRIAGE_NOTE = SUBMISSION / "editor_triage_note_for_cover_letter.md"
 PACKAGE_EDITORIAL_PITCH = SUBMISSION / "editorial_pitch_for_submission.md"
@@ -322,6 +324,152 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
     HARDENING_REPORT.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
 
 
+def _triage_rows(rows: list[dict[str, str]], main_text: str) -> list[dict[str, str]]:
+    abstract = _section(main_text, "Abstract")
+    results = _section(main_text, "Results")
+    methods = _section(main_text, "Online Methods")
+    discussion = _section(main_text, "Discussion")
+    package_triage = _read(PACKAGE_TRIAGE_NOTE)
+    package_software = _read(PACKAGE_SOFTWARE_CHECKLIST)
+    article_fit = _read(PACKAGE_ARTICLE_FIT)
+    high_or_open = {
+        row["risk_id"]: row
+        for row in rows
+        if row["status"] not in {"hardened_in_current_text", "human_submission_action_remaining"}
+    }
+    human_actions = [row for row in rows if row["status"] == "human_submission_action_remaining"]
+    return [
+        {
+            "criterion": "Article content-type fit",
+            "current_evidence": "Article-fit checklist, six display items, unreferenced abstract, Results/Methods subheadings, and Article rather than Resource framing are present.",
+            "simulated_editor_read": "The package reads as an Article describing a computational method/tool rather than a pure resource or biological application.",
+            "risk_level": "low" if "Content-type decision" in article_fit and "Abstract length" in article_fit else "medium",
+            "recommended_action": "Keep Article framing visible in the cover letter and avoid recasting RhoDyn as only a software resource.",
+        },
+        {
+            "criterion": "Novel method object",
+            "current_evidence": "Abstract and cover-letter draft define RhoDyn as residence-state inference with amplitude comparators, bounded-coupling margins, reserve-like endpoints, routed alternatives, and uncertainty summaries.",
+            "simulated_editor_read": "The novelty is credible if framed as an integrated decision workflow, not as the observation that live-cell signals are dynamic.",
+            "risk_level": "low" if "reviewable analysis object" in main_text and "not the broad observation that cell signaling is dynamic" in package_triage else "medium",
+            "recommended_action": "Preserve the narrow novelty framing during author edits and upload.",
+        },
+        {
+            "criterion": "Validation breadth and transferability",
+            "current_evidence": "Results describe synthetic truth cases, public DRG calcium, public ERK, public endpoint/paired-reporter demonstrations, held-out bounded-coupling contexts, and inconclusive cases.",
+            "simulated_editor_read": "The validation ladder is broad enough for editorial consideration, but the wording must not imply universal residence biology.",
+            "risk_level": "medium",
+            "recommended_action": "Keep examples as method stress tests and avoid claiming every reporter has a residence regime.",
+        },
+        {
+            "criterion": "Performance comparison and alternatives",
+            "current_evidence": "Results and Methods compare residence summaries with endpoint, peak, mean, latency, threshold, bounded-coupling, and reduced-architecture alternatives.",
+            "simulated_editor_read": "The paper answers why residence adds information in selected regimes while retaining amplitude-sufficient and unresolved cases.",
+            "risk_level": "low" if "amplitude-sufficient" in abstract + discussion else "medium",
+            "recommended_action": "Do not remove the amplitude-sufficient and withheld-decision examples.",
+        },
+        {
+            "criterion": "Reproducibility and software readiness",
+            "current_evidence": "Software checklist, code-for-review file, GitHub release, Zenodo DOI, CLI/backend/workbench parity, checksums, and expected outputs are recorded.",
+            "simulated_editor_read": "Software reproducibility is strong for review if access links, version, and sample workflows remain available at upload.",
+            "risk_level": "low" if "Source code supplied for review" in package_software and "Zenodo version DOI" in main_text else "medium",
+            "recommended_action": "Verify reviewer access to the public repository and Zenodo archive immediately before submission.",
+        },
+        {
+            "criterion": "Biological utility without overclaiming",
+            "current_evidence": "RhoA/microglia is described as a reference use case; reserve-like, bounded-coupling, and routed-output boundaries are stated in Methods and Discussion.",
+            "simulated_editor_read": "The use case helps show biological utility as long as it remains a demonstration of method behavior, not a hidden primary biology claim.",
+            "risk_level": "low" if "not a mechanism-discovery engine" in discussion and "reference use case" in package_triage else "medium",
+            "recommended_action": "Keep the RhoA/microglia language scoped to reference-use-case evidence.",
+        },
+        {
+            "criterion": "Submission completeness",
+            "current_evidence": "Main manuscript, Supplementary Information, cover-letter draft, Reporting Summary placeholder, author-declarations checklist, inventories, and readiness checklist are present.",
+            "simulated_editor_read": "Repository-derived package contents are complete, but journal forms and portal fields remain author actions.",
+            "risk_level": "medium" if human_actions else "low",
+            "recommended_action": "Complete the official Reporting Summary, author declarations, portal metadata, and author approval before upload.",
+        },
+        {
+            "criterion": "Desk-rejection residual risk",
+            "current_evidence": f"Risk matrix rows={len(rows)}, unresolved non-human rows={len(high_or_open)}, human upload rows={len(human_actions)}, Results words={_word_count(results)}, Methods words={_word_count(methods)}.",
+            "simulated_editor_read": "The package is suitable for a serious initial editor read if the author-side upload fields are completed, but it is not guaranteed to proceed to review.",
+            "risk_level": "medium",
+            "recommended_action": "Use the editorial pitch to foreground Article fit, validation breadth, and calibrated scope in the cover letter.",
+        },
+    ]
+
+
+def _write_triage_simulation(rows: list[dict[str, str]], main_text: str) -> None:
+    triage_rows = _triage_rows(rows, main_text)
+    high_rows = [row for row in triage_rows if row["risk_level"] == "high"]
+    medium_rows = [row for row in triage_rows if row["risk_level"] == "medium"]
+    simulated_verdict = (
+        "Potentially suitable for full editorial consideration after author upload actions"
+        if not high_rows
+        else "Not ready for editorial consideration until high-risk rows are addressed"
+    )
+    payload = {
+        "status": "pass" if not high_rows else "warning",
+        "simulated_verdict": simulated_verdict,
+        "scope": "Author-side stress test only. This is not a journal decision and does not add evidence.",
+        "criteria": triage_rows,
+        "risk_counts": {
+            "high": len(high_rows),
+            "medium": len(medium_rows),
+            "low": sum(row["risk_level"] == "low" for row in triage_rows),
+        },
+        "official_sources": {
+            "nature_methods_content_types": "https://www.nature.com/nmeth/content",
+            "nature_methods_preparing_your_material": "https://www.nature.com/nmeth/submission-guidelines/preparing-your-submission",
+        },
+    }
+    TRIAGE_SIMULATION_JSON.parent.mkdir(parents=True, exist_ok=True)
+    TRIAGE_SIMULATION_JSON.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    lines = [
+        "# Nature Methods simulated editor triage",
+        "",
+        "This is an author-side stress test, not a journal decision. It reads the current package against Nature Methods Article criteria for a novel method or tool, strong validation, reproducibility, general applicability, practical biological utility, and complete submission materials.",
+        "",
+        "## Simulated initial read",
+        "",
+        f"{simulated_verdict}. The package now presents RhoDyn as a computational methods Article rather than a disease-biology manuscript or software-only resource. The strongest editorial argument is the validation ladder across synthetic truth cases, public live-cell reporter examples, public endpoint or paired-reporter demonstrations, held-out contexts, and software parity checks. The main residual risk is not manuscript content that Codex can safely edit, but author-side upload completion and continued restraint around generality.",
+        "",
+        "## Criterion-level read",
+        "",
+        "| criterion | risk | simulated editor read | recommended author action |",
+        "|---|---|---|---|",
+    ]
+    for row in triage_rows:
+        lines.append(
+            f"| {row['criterion']} | {row['risk_level']} | {row['simulated_editor_read']} | {row['recommended_action']} |"
+        )
+    lines.extend(
+        [
+            "",
+            "## Likely editor questions",
+            "",
+            "1. Is RhoDyn a method Article rather than a package note or a biological case study?",
+            "2. Does residence-state inference outperform or complement endpoint, amplitude, threshold, and generic trajectory summaries in enough settings?",
+            "3. Are declared windows, equivalence margins, reserve-like endpoints, and routed-output alternatives transparent enough for immediate use?",
+            "4. Can reviewers run the software and reproduce representative outputs without private manuscript data?",
+            "5. Are the RhoA/microglia examples clearly separated from the method-validation evidence?",
+            "",
+            "## Decision pressure points",
+            "",
+            "- Keep the cover letter focused on method object, validation ladder, software reproducibility, and calibrated scope.",
+            "- Do not claim that RhoDyn discovers biological states automatically or that every live-cell system contains a residence regime.",
+            "- Complete the official Reporting Summary, author declarations, portal metadata, and author approval before submission.",
+            "",
+            "## Most useful final author actions",
+            "",
+            "1. Confirm the author-side declarations and portal fields without inferring them from repository files.",
+            "2. Verify that GitHub and Zenodo review links resolve from a clean browser session.",
+            "3. Use the package-bound cover-letter draft as the upload text, preserving the limitation language.",
+        ]
+    )
+    TRIAGE_SIMULATION.parent.mkdir(parents=True, exist_ok=True)
+    TRIAGE_SIMULATION.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+
+
 def _write_triage_note() -> None:
     lines = [
         "# Draft editor-triage note for Nature Methods",
@@ -374,6 +522,7 @@ def run() -> dict[str, object]:
     rows = _risk_rows(main_text, pi_review)
     _write_csv(RISK_MATRIX, rows)
     _write_report(rows, main_text)
+    _write_triage_simulation(rows, main_text)
     _write_triage_note()
     _write_prior_art_note()
     statuses = {row["status"] for row in rows}
@@ -389,6 +538,8 @@ def run() -> dict[str, object]:
         "outputs": {
             "risk_matrix": RISK_MATRIX.relative_to(ROOT).as_posix(),
             "hardening_report": HARDENING_REPORT.relative_to(ROOT).as_posix(),
+            "triage_simulation": TRIAGE_SIMULATION.relative_to(ROOT).as_posix(),
+            "triage_simulation_json": TRIAGE_SIMULATION_JSON.relative_to(ROOT).as_posix(),
             "triage_note": TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_triage_note": PACKAGE_TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_editorial_pitch": PACKAGE_EDITORIAL_PITCH.relative_to(ROOT).as_posix(),

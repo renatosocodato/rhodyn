@@ -1,0 +1,72 @@
+{
+  "criteria": [
+    {
+      "criterion": "Article content-type fit",
+      "current_evidence": "Article-fit checklist, six display items, unreferenced abstract, Results/Methods subheadings, and Article rather than Resource framing are present.",
+      "recommended_action": "Keep Article framing visible in the cover letter and avoid recasting RhoDyn as only a software resource.",
+      "risk_level": "low",
+      "simulated_editor_read": "The package reads as an Article describing a computational method/tool rather than a pure resource or biological application."
+    },
+    {
+      "criterion": "Novel method object",
+      "current_evidence": "Abstract and cover-letter draft define RhoDyn as residence-state inference with amplitude comparators, bounded-coupling margins, reserve-like endpoints, routed alternatives, and uncertainty summaries.",
+      "recommended_action": "Preserve the narrow novelty framing during author edits and upload.",
+      "risk_level": "low",
+      "simulated_editor_read": "The novelty is credible if framed as an integrated decision workflow, not as the observation that live-cell signals are dynamic."
+    },
+    {
+      "criterion": "Validation breadth and transferability",
+      "current_evidence": "Results describe synthetic truth cases, public DRG calcium, public ERK, public endpoint/paired-reporter demonstrations, held-out bounded-coupling contexts, and inconclusive cases.",
+      "recommended_action": "Keep examples as method stress tests and avoid claiming every reporter has a residence regime.",
+      "risk_level": "medium",
+      "simulated_editor_read": "The validation ladder is broad enough for editorial consideration, but the wording must not imply universal residence biology."
+    },
+    {
+      "criterion": "Performance comparison and alternatives",
+      "current_evidence": "Results and Methods compare residence summaries with endpoint, peak, mean, latency, threshold, bounded-coupling, and reduced-architecture alternatives.",
+      "recommended_action": "Do not remove the amplitude-sufficient and withheld-decision examples.",
+      "risk_level": "low",
+      "simulated_editor_read": "The paper answers why residence adds information in selected regimes while retaining amplitude-sufficient and unresolved cases."
+    },
+    {
+      "criterion": "Reproducibility and software readiness",
+      "current_evidence": "Software checklist, code-for-review file, GitHub release, Zenodo DOI, CLI/backend/workbench parity, checksums, and expected outputs are recorded.",
+      "recommended_action": "Verify reviewer access to the public repository and Zenodo archive immediately before submission.",
+      "risk_level": "low",
+      "simulated_editor_read": "Software reproducibility is strong for review if access links, version, and sample workflows remain available at upload."
+    },
+    {
+      "criterion": "Biological utility without overclaiming",
+      "current_evidence": "RhoA/microglia is described as a reference use case; reserve-like, bounded-coupling, and routed-output boundaries are stated in Methods and Discussion.",
+      "recommended_action": "Keep the RhoA/microglia language scoped to reference-use-case evidence.",
+      "risk_level": "low",
+      "simulated_editor_read": "The use case helps show biological utility as long as it remains a demonstration of method behavior, not a hidden primary biology claim."
+    },
+    {
+      "criterion": "Submission completeness",
+      "current_evidence": "Main manuscript, Supplementary Information, cover-letter draft, Reporting Summary placeholder, author-declarations checklist, inventories, and readiness checklist are present.",
+      "recommended_action": "Complete the official Reporting Summary, author declarations, portal metadata, and author approval before upload.",
+      "risk_level": "medium",
+      "simulated_editor_read": "Repository-derived package contents are complete, but journal forms and portal fields remain author actions."
+    },
+    {
+      "criterion": "Desk-rejection residual risk",
+      "current_evidence": "Risk matrix rows=15, unresolved non-human rows=0, human upload rows=1, Results words=850, Methods words=1017.",
+      "recommended_action": "Use the editorial pitch to foreground Article fit, validation breadth, and calibrated scope in the cover letter.",
+      "risk_level": "medium",
+      "simulated_editor_read": "The package is suitable for a serious initial editor read if the author-side upload fields are completed, but it is not guaranteed to proceed to review."
+    }
+  ],
+  "official_sources": {
+    "nature_methods_content_types": "https://www.nature.com/nmeth/content",
+    "nature_methods_preparing_your_material": "https://www.nature.com/nmeth/submission-guidelines/preparing-your-submission"
+  },
+  "risk_counts": {
+    "high": 0,
+    "low": 5,
+    "medium": 3
+  },
+  "scope": "Author-side stress test only. This is not a journal decision and does not add evidence.",
+  "simulated_verdict": "Potentially suitable for full editorial consideration after author upload actions",
+  "status": "pass"
+}
