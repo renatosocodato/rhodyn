@@ -1,5 +1,5 @@
 item_id,previous_status,codex_decision,closure_status,rationale,remaining_requirement
-PI-9.28-MAJ-001,auto_revised,accept_auto_revision,closed,The source edit is already present in the manuscript package and does not require new evidence.,Final author review should preserve this narrower novelty framing.
+PI-9.28-MAJ-001,auto_revised,accept_auto_revision,closed,The source edit is present and the prior-art positioning matrix now makes the novelty boundary explicit for final author review.,Final author review should preserve this narrower novelty framing.
 PI-9.28-MAJ-002,auto_revised,accept_auto_revision,closed,The source edit is already present in the manuscript package and does not require new evidence.,New datasets would be required for a stronger generality claim.
 PI-9.28-MAJ-003,auto_revised,accept_auto_revision,closed,The source edit is already present in the manuscript package and does not require new evidence.,Human review should verify the official Reporting Summary and supplementary tables retain these fields.
 PI-9.28-MAJ-004,retained_boundary,retain_boundary_without_new_edit,closed,"The manuscript keeps the claim scoped to declared margins, measured endpoints, and tested alternatives.",Maintain this wording during final author upload review.

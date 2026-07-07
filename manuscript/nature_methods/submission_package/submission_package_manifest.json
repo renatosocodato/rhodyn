@@ -86,6 +86,11 @@
       "passed": true
     },
     {
+      "detail": "Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence",
+      "name": "prior_art_positioning_matrix_present",
+      "passed": true
+    },
+    {
       "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
       "name": "software_reporting_checklist_present",
       "passed": true
@@ -112,9 +117,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "6a7e38338a98a4bf5d78b249783d86e1b5150814",
+  "commit": "59a54a6f8b93187a4edb4216820462e5652d5543",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T12:56:31Z",
+  "generated_utc": "2026-07-07T13:08:18Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -134,6 +139,7 @@
     "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
     "manuscript/nature_methods/submission_package/pi_review_packet.md",
     "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
+    "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
     "manuscript/nature_methods/submission_package/references_for_submission.bib",
     "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
     "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
@@ -159,10 +165,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "6a7e38338a98a4bf5d78b249783d86e1b5150814",
+    "closure_commit": "59a54a6f8b93187a4edb4216820462e5652d5543",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@6a7e38338a98a4bf5d78b249783d86e1b5150814",
+    "package_version": "stage9.29-closure@59a54a6f8b93187a4edb4216820462e5652d5543",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

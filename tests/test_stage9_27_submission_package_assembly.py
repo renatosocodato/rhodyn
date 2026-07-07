@@ -26,6 +26,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         cls.ai_disclosure = (PACKAGE / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         cls.title_author_metadata = (PACKAGE / "title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         cls.reporting_summary_answer_bank = (PACKAGE / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+        cls.prior_art_positioning = (PACKAGE / "prior_art_positioning_matrix.md").read_text(encoding="utf-8")
         with (PACKAGE / "figure_file_inventory.csv").open(newline="", encoding="utf-8") as handle:
             cls.figure_rows = list(csv.DictReader(handle))
         with (PACKAGE / "source_data_and_statistics_inventory.csv").open(newline="", encoding="utf-8") as handle:
@@ -55,6 +56,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "code_for_review_present",
             "editor_triage_note_present",
             "editorial_pitch_present",
+            "prior_art_positioning_matrix_present",
             "software_reporting_checklist_present",
             "article_fit_checklist_present",
             "author_declarations_present",
@@ -134,6 +136,10 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("Software and code", self.reporting_summary_answer_bank)
         self.assertIn("Life-science study design", self.reporting_summary_answer_bank)
         self.assertIn("Materials and experimental systems", self.reporting_summary_answer_bank)
+        self.assertIn("Prior-art positioning matrix", self.prior_art_positioning)
+        self.assertIn("should not be positioned as the first method to treat live-cell signals as dynamic", self.prior_art_positioning)
+        self.assertIn("does not add citations, performance results, biological datasets, or manuscript claims", self.prior_art_positioning)
+        self.assertIn("Prior-art positioning matrix | ready", self.checklist)
         self.assertIn("Author declarations | registered", self.checklist)
         self.assertIn("AI disclosure draft | registered", self.checklist)
         self.assertIn("Title and author metadata | registered", self.checklist)

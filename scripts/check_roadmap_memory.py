@@ -1258,6 +1258,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "code_for_review_present",
             "editor_triage_note_present",
             "editorial_pitch_present",
+            "prior_art_positioning_matrix_present",
             "software_reporting_checklist_present",
             "article_fit_checklist_present",
             "author_declarations_present",
@@ -1275,6 +1276,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "manuscript/nature_methods/submission_package/code_for_review.md",
             "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
             "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
+            "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
             "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
             "manuscript/nature_methods/submission_package/article_fit_checklist.md",
             "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
@@ -1353,8 +1355,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.29 must record six PI-review action decisions")
         if stage9_29_gate.get("human_submission_action_rows") != 1:
             failures.append("Stage 9.29 must retain one human submission action")
-        if stage9_29_gate.get("package_file_count") != 23:
-            failures.append("Stage 9.29 must bind twenty-three package files")
+        if stage9_29_gate.get("package_file_count") != 24:
+            failures.append("Stage 9.29 must bind twenty-four package files")
         if stage9_29_gate.get("rendered_figure_file_count") != 18:
             failures.append("Stage 9.29 must bind eighteen rendered figure files")
         stage9_29_checks = {

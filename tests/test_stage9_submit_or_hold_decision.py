@@ -40,6 +40,7 @@ class Stage9SubmitOrHoldDecisionTests(unittest.TestCase):
             "public_urls_resolve",
             "unresolved_reference_case_links_not_public_facing",
             "code_and_data_availability_present",
+            "prior_art_positioning_matrix_present",
             "stage9_closure_passed",
             "pi_review_actions_resolved_or_submission_only",
         ]:

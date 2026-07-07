@@ -48,6 +48,7 @@ PACKAGE_FILES = [
     SUBMISSION / "submission_readiness_checklist.md",
     SUBMISSION / "editor_triage_note_for_cover_letter.md",
     SUBMISSION / "editorial_pitch_for_submission.md",
+    SUBMISSION / "prior_art_positioning_matrix.md",
     SUBMISSION / "software_reporting_checklist.md",
     SUBMISSION / "article_fit_checklist.md",
     SUBMISSION / "author_declarations_REQUIRED.md",
@@ -201,6 +202,9 @@ def _action_decisions() -> list[dict[str, str]]:
             (WORKSPACE / "figures" / "figure_legends.md").read_text(encoding="utf-8"),
         ]
     )
+    prior_art_matrix = (SUBMISSION / "prior_art_positioning_matrix.md").read_text(
+        encoding="utf-8"
+    ) if (SUBMISSION / "prior_art_positioning_matrix.md").exists() else ""
     boundary_present = all(
         phrase in source_text
         for phrase in [
@@ -216,7 +220,10 @@ def _action_decisions() -> list[dict[str, str]]:
         if status == "auto_revised":
             decision = "accept_auto_revision"
             closure_status = "closed"
-            rationale = "The source edit is already present in the manuscript package and does not require new evidence."
+            if item_id == "PI-9.28-MAJ-001" and "RhoDyn should not be positioned as the first method" in prior_art_matrix:
+                rationale = "The source edit is present and the prior-art positioning matrix now makes the novelty boundary explicit for final author review."
+            else:
+                rationale = "The source edit is already present in the manuscript package and does not require new evidence."
             remaining = row.get("remaining_requirement", "")
         elif status == "retained_boundary":
             decision = "retain_boundary_without_new_edit"
@@ -412,6 +419,12 @@ def _update_submission_manifest() -> None:
             + "\n| Stage 9 completion report | `../stage9_completion_report.md` | Final closure and version-binding surface for the current Nature Methods package. |"
         )
         body = body.replace(anchor, replacement)
+    if "| Prior-art positioning matrix | `prior_art_positioning_matrix.md` |" not in body:
+        anchor = "| Editorial pitch | `editorial_pitch_for_submission.md` | Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage. |"
+        body = body.replace(
+            anchor,
+            anchor + "\n| Prior-art positioning matrix | `prior_art_positioning_matrix.md` | Novelty-boundary comparison against related dynamic-state, trajectory, imaging, and software-method literature. |",
+        )
     body = body.replace(
         "Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and support files, but it does not submit the manuscript or close Stage 9.",
         "Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and Stage 9.29 closure support files, but it does not submit the manuscript or replace final journal-upload approval.",
@@ -447,6 +460,7 @@ def _update_submission_package_manifest(version_binding: dict[str, Any]) -> None
         "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
         "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+        "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
         "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
         "manuscript/nature_methods/stage9_completion_report.md",

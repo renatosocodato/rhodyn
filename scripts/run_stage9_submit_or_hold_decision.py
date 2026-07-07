@@ -61,6 +61,7 @@ def build_report() -> dict[str, Any]:
     title_author_metadata = _read(PACKAGE / "title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md")
     reporting_summary = _read(PACKAGE / "reporting_summary_REQUIRED.md")
     reporting_summary_answer_bank = _read(PACKAGE / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md")
+    prior_art_positioning = _read(PACKAGE / "prior_art_positioning_matrix.md")
     article_fit = _read(PACKAGE / "article_fit_checklist.md")
     code_for_review = _read(PACKAGE / "code_for_review.md")
     editor_note = _read(PACKAGE / "editor_triage_note_for_cover_letter.md")
@@ -135,6 +136,13 @@ def build_report() -> dict[str, Any]:
             "computational methods Article" in editor_note
             and "method travels beyond one motivating system" in editor_note,
             "Editor-triage note presents the Nature Methods fit and validation ladder.",
+        ),
+        _check(
+            "prior_art_positioning_matrix_present",
+            "Prior-art positioning matrix" in prior_art_positioning
+            and "should not be positioned as the first method to treat live-cell signals as dynamic" in prior_art_positioning
+            and "does not add citations, performance results, biological datasets, or manuscript claims" in prior_art_positioning,
+            "Prior-art positioning matrix makes the RhoDyn novelty boundary explicit for collaborator/editorial review.",
         ),
         _check(
             "stage9_closure_passed",

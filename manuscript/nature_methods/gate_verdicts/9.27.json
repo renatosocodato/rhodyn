@@ -86,6 +86,11 @@
       "passed": true
     },
     {
+      "detail": "Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence",
+      "name": "prior_art_positioning_matrix_present",
+      "passed": true
+    },
+    {
       "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
       "name": "software_reporting_checklist_present",
       "passed": true
@@ -111,9 +116,9 @@
       "passed": true
     }
   ],
-  "commit": "6a7e38338a98a4bf5d78b249783d86e1b5150814",
+  "commit": "59a54a6f8b93187a4edb4216820462e5652d5543",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T12:56:31Z",
+  "generated_utc": "2026-07-07T13:08:18Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -122,6 +127,7 @@
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
     "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
+    "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
     "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
