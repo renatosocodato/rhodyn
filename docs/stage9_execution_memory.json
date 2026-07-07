@@ -118,9 +118,9 @@
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
   "closure_version_binding": {
     "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-    "closure_commit": "e140ca1ce0c0d9a212155ad7834a265ed290d710",
+    "closure_commit": "34956aed446b1c813b052d0fd656986ea709245e",
     "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
-    "package_version": "stage9.29-closure@e140ca1ce0c0d9a212155ad7834a265ed290d710",
+    "package_version": "stage9.29-closure@34956aed446b1c813b052d0fd656986ea709245e",
     "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
@@ -2152,7 +2152,7 @@
     "No Stage 9 completion report is created in this pass.",
     "The package now contains the PI review packet, action matrix, revision log, and literature calibration record."
   ],
-  "generated_utc": "2026-07-07T13:18:28Z",
+  "generated_utc": "2026-07-07T13:22:53Z",
   "internal_peer_review_started": true,
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,

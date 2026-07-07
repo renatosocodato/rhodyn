@@ -66,6 +66,7 @@ def build_report() -> dict[str, Any]:
     article_fit = _read(PACKAGE / "article_fit_checklist.md")
     code_for_review = _read(PACKAGE / "code_for_review.md")
     editor_note = _read(PACKAGE / "editor_triage_note_for_cover_letter.md")
+    editorial_pitch = _read(PACKAGE / "editorial_pitch_for_submission.md")
     package_manifest = _json(PACKAGE / "submission_package_manifest.json")
     public_access = _json(AUDITS / "nature_methods_public_access_verification.json")
     closure_gate = _json(WORKSPACE / "gate_verdicts" / "9.29.json")
@@ -137,6 +138,14 @@ def build_report() -> dict[str, Any]:
             "computational methods Article" in editor_note
             and "method travels beyond one motivating system" in editor_note,
             "Editor-triage note presents the Nature Methods fit and validation ladder.",
+        ),
+        _check(
+            "cover_letter_pitch_boundary_present",
+            "Article-level computational method, not a software wrapper around existing summaries" in editorial_pitch
+            and "not the broad observation that cell signaling is dynamic" in editorial_pitch
+            and "reference use case rather than as hidden evidence for every methods claim" in editorial_pitch
+            and "rather than as a software note or a single-system biological study" in editorial_pitch,
+            "Cover-letter and presubmission drafts state the method novelty, validation breadth, and non-overclaim boundaries.",
         ),
         _check(
             "prior_art_positioning_matrix_present",

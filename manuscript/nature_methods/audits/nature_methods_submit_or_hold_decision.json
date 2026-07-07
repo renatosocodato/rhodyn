@@ -1,7 +1,7 @@
 {
   "collaborator_review_ready": true,
   "decision": "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. Final journal upload should remain on hold until the listed human-attested submission fields are completed.",
-  "generated_utc": "2026-07-07T13:18:48Z",
+  "generated_utc": "2026-07-07T13:23:15Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
     "Confirm title page, author order, affiliations, ORCID, corresponding-author metadata, funding, competing interests, and author contributions.",
@@ -45,6 +45,11 @@
     {
       "detail": "Editor-triage note presents the Nature Methods fit and validation ladder.",
       "name": "editorial_fit_argument_present",
+      "passed": true
+    },
+    {
+      "detail": "Cover-letter and presubmission drafts state the method novelty, validation breadth, and non-overclaim boundaries.",
+      "name": "cover_letter_pitch_boundary_present",
       "passed": true
     },
     {
