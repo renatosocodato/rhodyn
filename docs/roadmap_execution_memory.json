@@ -766,7 +766,7 @@
           "goal": "Resolve and audit complete reference library.",
           "id": "9.20",
           "name": "Reference library and citation audit",
-          "reference_version": "reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
+          "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
           "status": "complete_reference_library_bound"
         },
         {
@@ -842,7 +842,7 @@
           "status": "complete_pi_review_packet"
         },
         {
-          "closure_version": "stage9.29-closure@5ad1a1f325057e8049e28fbe92dfbd50db627f70",
+          "closure_version": "stage9.29-closure@62c2841691ce15ec6960440ea2faba7f60124e81",
           "evidence": "manuscript/nature_methods/gate_verdicts/9.29.json",
           "gate": "every Stage 9 gate passes; quarantine has no unresolved blocker; package, evidence, and release versions are bound",
           "goal": "Close Stage 9 with package, evidence, release, and limitation versions bound.",

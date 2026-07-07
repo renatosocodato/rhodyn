@@ -1,6 +1,6 @@
 {
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-  "closure_commit": "5ad1a1f325057e8049e28fbe92dfbd50db627f70",
+  "closure_commit": "62c2841691ce15ec6960440ea2faba7f60124e81",
   "content_type": "Article",
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine": {
@@ -42,7 +42,7 @@
     "panelforge_ref": null,
     "rendered_file_count": 18
   },
-  "generated_utc": "2026-07-06T14:09:36Z",
+  "generated_utc": "2026-07-07T10:55:35Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form.",
     "Confirm final portal metadata, corresponding-author details, and journal-specific file names.",
@@ -51,10 +51,10 @@
   "method": "RhoDyn",
   "package_files": [
     {
-      "bytes": 35938,
+      "bytes": 36166,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/main_text_for_submission.md",
-      "sha256": "c9f288d89d713d68c8fe4796a2ab051e280b50680180ea6ee96b058ac94aab3f"
+      "sha256": "fdb9bba9aa83a6fafc8b79d5be3b28976fbc59d83db405040283eca8e01a1775"
     },
     {
       "bytes": 11912,
@@ -66,7 +66,7 @@
       "bytes": 2195,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_manifest.md",
-      "sha256": "8c121a4569831f33c223a2522028f72db5b1d04084f088c2891ca8fae32938ee"
+      "sha256": "705eff2ed6f82be28d86c7f8c73b8b530ba8de91baa54feb12bc6a5dba8143f2"
     },
     {
       "bytes": 2241,
@@ -81,10 +81,10 @@
       "sha256": "669b4108eea3e6e0fb034822b8a38800e7a0e305b0a9a192ad315775e0df6fd9"
     },
     {
-      "bytes": 1679,
+      "bytes": 1730,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/package_consistency_audit.md",
-      "sha256": "1d55cc484144907d12dd601304122b66477573cf76a8c914f80aa15fcc6964d4"
+      "sha256": "dae6616c45c2cbe89961687382d33137d085665df66863e20e2b9ed88a46a32b"
     },
     {
       "bytes": 4121,
@@ -96,13 +96,13 @@
       "bytes": 6267,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
-      "sha256": "de736e886ee29a242ed83a21ab2371d8afa62650c0d1ecf925ef5800cd6b6b47"
+      "sha256": "7cfc0ef56a00345fdb71f6e0b07bd63388631444656c520eb41050de91a53cc2"
     },
     {
-      "bytes": 6503,
+      "bytes": 6973,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/references_for_submission.bib",
-      "sha256": "eaf20b336015f8d237596d0649d0de9caaa78615d0c07646bd89988d61cbc794"
+      "sha256": "c37151ef73f257f99ad110e11f48804e3e45c103d710292846c6e726458a9f0d"
     },
     {
       "bytes": 1448,
@@ -111,10 +111,10 @@
       "sha256": "b83b8d2f639ec3361eb5b7ec54a71f680fcc0214cb020f82e45cc31141e0527f"
     },
     {
-      "bytes": 4822,
+      "bytes": 4873,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_package_manifest.json",
-      "sha256": "4b7abc566a86380df377beabfda0b6006faf805fdd7fe4a11596e572bda796a9"
+      "sha256": "12b0a803809c06aa254e54c9b97cfc852ab43db5186c7e28c68869b915b60ed8"
     },
     {
       "bytes": 7833,
@@ -132,16 +132,16 @@
       "bytes": 1639,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
-      "sha256": "40f1b06f686938100c1b582d7b22d4a9b9591ae729e7ae5557f008719a38aae4"
+      "sha256": "f4be168ea826fa35daed73ef92744ebd763fd553dfa6f388fccdff0ae0aef90b"
     },
     {
-      "bytes": 1493,
+      "bytes": 1534,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
-      "sha256": "b03493ece6c5bb6530eb1c770cc35c272b443dd2e402ee51d38f05ffaab0243a"
+      "sha256": "294348ba0cb637360ccb676e09937c925a0af671508669db1de68b7017b9aebc"
     }
   ],
-  "package_version": "stage9.29-closure@5ad1a1f325057e8049e28fbe92dfbd50db627f70",
+  "package_version": "stage9.29-closure@62c2841691ce15ec6960440ea2faba7f60124e81",
   "pi_review_action_decisions": [
     {
       "closure_status": "closed",
@@ -193,7 +193,7 @@
     }
   ],
   "pyproject_version": "0.1.0",
-  "reference_version": "reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
+  "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
   "repository": "https://github.com/renatosocodato/rhodyn",
   "scientific_boundary": "Closure binds the current methods manuscript package and versioned release surfaces. It does not add biological evidence, new benchmarks, new figure renders, or journal acceptance.",
   "software": "RhoDyn",

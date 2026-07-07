@@ -32,7 +32,7 @@
       "passed": true
     },
     {
-      "detail": "No Stage 9.22 live-number audit, figure legends, PI packet, readiness checklist, or completion report detected",
+      "detail": "Closed Stage 9.29 package refresh allowed existing downstream surfaces",
       "name": "no_statistical_language_legend_or_package_started",
       "passed": true
     },
@@ -50,7 +50,7 @@
     "CLM-0004",
     "CLM-0005"
   ],
-  "commit": "84d13668f633adedee21db918f1458fbf2e5a61c",
+  "commit": "62c2841691ce15ec6960440ea2faba7f60124e81",
   "dangling_references": [],
   "figure_count": 6,
   "figure_ids": [
@@ -61,7 +61,7 @@
     "FIG-005",
     "FIG-006"
   ],
-  "generated_utc": "2026-07-04T10:00:30Z",
+  "generated_utc": "2026-07-07T10:51:23Z",
   "missing_binding_render_paths": [],
   "missing_render_paths": [],
   "missing_source_paths": [],
@@ -89,9 +89,10 @@
     "REF-0010",
     "REF-0011",
     "REF-0012",
-    "REF-0013"
+    "REF-0013",
+    "REF-0014"
   ],
-  "reference_count": 13,
+  "reference_count": 14,
   "scope_boundary": "Cross-document consistency joins only. No figure legends, live-number audit, statistical-language audit, PI packet, readiness checklist, or final submission-package assembly.",
   "source_data_table_count": 9,
   "stat_ids": [

@@ -23,7 +23,7 @@ class Stage921CrossDocumentConsistencyTests(unittest.TestCase):
         self.assertEqual(gate["figure_count"], 6)
         self.assertEqual(gate["statistic_count"], 19)
         self.assertEqual(gate["source_data_table_count"], 9)
-        self.assertEqual(gate["reference_count"], 13)
+        self.assertEqual(gate["reference_count"], 14)
         self.assertTrue(all(item["passed"] for item in gate["checks"]))
 
     def test_join_mismatch_sets_are_empty(self) -> None:
@@ -54,7 +54,7 @@ class Stage921CrossDocumentConsistencyTests(unittest.TestCase):
             "Frozen claims | 5",
             "Main figures | 6",
             "Statistics | 19",
-            "References | 13",
+            "References | 14",
             "Cross-document joins only",
             "does not test live-number phrasing",
             "does not write figure legends",

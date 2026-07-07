@@ -718,13 +718,13 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.20 reference-library gate must pass")
             if stage9_20_gate.get("next_substage") != "9.21":
                 failures.append("Stage 9.20 reference-library gate must point to Stage 9.21")
-            if stage9_20_gate.get("reference_count") != 13:
-                failures.append("Stage 9.20 reference-library gate must record thirteen references")
+            if stage9_20_gate.get("reference_count") != 14:
+                failures.append("Stage 9.20 reference-library gate must record fourteen references")
             if stage9_20_gate.get("reference_cap") != 50:
                 failures.append("Stage 9.20 reference-library gate must preserve the 50-reference cap")
         bib_text = (root / "manuscript" / "nature_methods" / "refs" / "references.bib").read_text(encoding="utf-8") if (root / "manuscript" / "nature_methods" / "refs" / "references.bib").exists() else ""
         citation_ledger_text = (root / "manuscript" / "nature_methods" / "refs" / "citation_claim_ledger.csv").read_text(encoding="utf-8") if (root / "manuscript" / "nature_methods" / "refs" / "citation_claim_ledger.csv").exists() else ""
-        for doi in ["10.5281/zenodo.21036616", "10.5281/zenodo.20811171", "10.1038/s41587-019-0071-9"]:
+        for doi in ["10.5281/zenodo.21036616", "10.5281/zenodo.20811171", "10.1038/s41587-019-0071-9", "10.1038/s42003-023-04837-8"]:
             if doi not in bib_text:
                 failures.append(f"Stage 9.20 BibTeX is missing DOI {doi}")
         for source_type in ["methods", "dataset", "software"]:
@@ -741,7 +741,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.21 cross-document gate must pass")
             if stage9_21_gate.get("next_substage") != "9.22":
                 failures.append("Stage 9.21 cross-document gate must point to Stage 9.22")
-            for field, expected in {"claim_count": 5, "figure_count": 6, "statistic_count": 19, "reference_count": 13}.items():
+            for field, expected in {"claim_count": 5, "figure_count": 6, "statistic_count": 19, "reference_count": 14}.items():
                 if stage9_21_gate.get(field) != expected:
                     failures.append(f"Stage 9.21 cross-document gate must record {field}={expected}")
             for field in ["orphan_claims", "orphan_figures", "orphan_statistics", "dangling_references", "strength_mismatches"]:

@@ -128,9 +128,9 @@ REQUIRED_SURFACE_PHRASES = {
     SECTIONS_DIR / "abstract.md": ["# Abstract", "RhoDyn therefore provides a reproducible route"],
     SECTIONS_DIR / "introduction.md": [
         "(1-4)",
-        "(9,10)",
-        "(5-8)",
         "(10,11)",
+        "(1-9)",
+        "(11,12)",
         "explicit checks that allow each component to be tested in sequence",
     ],
     SECTIONS_DIR / "results.md": [

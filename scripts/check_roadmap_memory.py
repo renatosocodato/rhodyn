@@ -667,8 +667,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.12 Introduction literature-binding gate must remain bound to substage 9.12")
         if not (450 <= stage9_12_gate.get("introduction_word_count", 0) <= 650):
             failures.append("Stage 9.12 Introduction word count must remain within contract")
-        if stage9_12_gate.get("citation_count") != 11:
-            failures.append("Stage 9.12 Introduction must cite eleven resolved reference IDs")
+        if stage9_12_gate.get("citation_count") != 12:
+            failures.append("Stage 9.12 Introduction must cite twelve resolved reference IDs")
         if stage9_12_gate.get("review_source_share", 1.0) > 0.25:
             failures.append("Stage 9.12 review-source share must remain under threshold")
         if stage9_12_gate.get("next_substage") != "9.13":
@@ -797,12 +797,12 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.20 reference-library gate must remain bound to substage 9.20")
         if stage9_20_gate.get("next_substage") != "9.21":
             failures.append("Stage 9.20 reference-library gate must point to Stage 9.21")
-        if stage9_20_gate.get("reference_count") != 13:
-            failures.append("Stage 9.20 reference-library gate must record thirteen references")
+        if stage9_20_gate.get("reference_count") != 14:
+            failures.append("Stage 9.20 reference-library gate must record fourteen references")
         if stage9_20_gate.get("reference_cap") != 50:
             failures.append("Stage 9.20 reference-library gate must preserve the Nature Methods 50-reference cap")
-        if set(stage9_20_gate.get("ref_ids", [])) != {f"REF-{idx:04d}" for idx in range(1, 14)}:
-            failures.append("Stage 9.20 reference-library gate must cover REF-0001 through REF-0013")
+        if set(stage9_20_gate.get("ref_ids", [])) != {f"REF-{idx:04d}" for idx in range(1, 15)}:
+            failures.append("Stage 9.20 reference-library gate must cover REF-0001 through REF-0014")
         stage9_20_checks = {
             item.get("name"): item.get("passed")
             for item in stage9_20_gate.get("checks", [])
@@ -828,7 +828,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                     failures.append(f"Stage 9.20 BibTeX is missing DOI {doi}")
         if citation_ledger_path.exists():
             ledger_text = citation_ledger_path.read_text(encoding="utf-8")
-            for phrase in ["source_type", "software", "dataset", "methods", "REF-0013"]:
+            for phrase in ["source_type", "software", "dataset", "methods", "REF-0014"]:
                 if phrase not in ledger_text:
                     failures.append(f"Stage 9.20 citation ledger missing phrase: {phrase}")
         if reference_audit_path.exists():
@@ -851,7 +851,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "figure_count": 6,
             "statistic_count": 19,
             "source_data_table_count": 9,
-            "reference_count": 13,
+            "reference_count": 14,
         }
         for field, expected in expected_counts.items():
             if stage9_21_gate.get(field) != expected:

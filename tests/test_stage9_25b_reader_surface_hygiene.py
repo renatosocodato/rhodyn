@@ -75,9 +75,9 @@ class Stage925bReaderSurfaceHygieneTests(unittest.TestCase):
         )
         self.assertIn("# Abstract", self.surfaces["sections/abstract.md"])
         self.assertIn("(1-4)", self.surfaces["sections/introduction.md"])
-        self.assertIn("(9,10)", self.surfaces["sections/introduction.md"])
-        self.assertIn("(1-8)", self.surfaces["sections/introduction.md"])
         self.assertIn("(10,11)", self.surfaces["sections/introduction.md"])
+        self.assertIn("(1-9)", self.surfaces["sections/introduction.md"])
+        self.assertIn("(11,12)", self.surfaces["sections/introduction.md"])
 
     def test_scientific_boundaries_and_availability_survive(self) -> None:
         for phrase in [

@@ -42,6 +42,8 @@ GATE_925B = GATES / "9.25b.json"
 GATE_921 = GATES / "9.21.json"
 GATE_923 = GATES / "9.23.json"
 GATE_96B = GATES / "9.6b.json"
+GATE_928 = GATES / "9.28.json"
+GATE_929 = GATES / "9.29.json"
 
 OUTPUTS = {
     "main_text": SUBMISSION / "main_text_for_submission.md",
@@ -107,6 +109,16 @@ def _git_sha() -> str:
         check=False,
     )
     return result.stdout.strip() if result.returncode == 0 else "unknown"
+
+
+def _closed_stage9_refresh_allowed() -> bool:
+    if not GATE_929.exists():
+        return False
+    gate = _read_json(GATE_929)
+    return (
+        gate.get("pass") is True
+        and gate.get("closure_status") == "complete_stage9_closed_version_bound"
+    )
 
 
 def _read_json(path: Path) -> dict[str, Any]:
@@ -431,10 +443,13 @@ def _scan_patterns(paths: list[Path], patterns: list[re.Pattern[str]]) -> list[s
 def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
     missing_inputs = [path.relative_to(ROOT).as_posix() for path in REQUIRED_READER_INPUTS if not path.exists()]
     stage928_authorized = (GATES / "9.28.json").exists()
+    closed_refresh = _closed_stage9_refresh_allowed()
     forbidden_downstream = [
         path
         for path in FORBIDDEN_DOWNSTREAM_PATHS
-        if path.exists() and not (stage928_authorized and path == SUBMISSION / "pi_review_packet.md")
+        if path.exists()
+        and not (stage928_authorized and path == SUBMISSION / "pi_review_packet.md")
+        and not closed_refresh
     ]
     missing_downstream = [path.relative_to(ROOT).as_posix() for path in forbidden_downstream]
     gate_926 = _read_json(GATE_926) if GATE_926.exists() else {}
@@ -514,7 +529,11 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
         {
             "name": "no_downstream_pi_or_closure_started",
             "passed": not missing_downstream,
-            "detail": f"downstream_paths={missing_downstream}",
+            "detail": (
+                "Closed Stage 9.29 package refresh allowed existing downstream surfaces"
+                if closed_refresh and not missing_downstream
+                else f"downstream_paths={missing_downstream}"
+            ),
         },
     ]
     checks.append(
@@ -676,7 +695,11 @@ def _upsert_completed_substage(memory: dict[str, Any], checks: list[dict[str, An
         ],
         "checks": checks,
     }
-    entries = [item for item in memory.get("completed_substages", []) if item.get("substage") != "9.27"]
+    entries = [
+        item
+        for item in memory.get("completed_substages", [])
+        if not (isinstance(item, dict) and item.get("substage") == "9.27") and item != "9.27"
+    ]
     entries.append(record)
     memory["completed_substages"] = entries
 

@@ -1,0 +1,16 @@
+{
+  "doi": "10.1038/s42003-023-04837-8",
+  "relation": {
+    "has-preprint": [
+      {
+        "asserted-by": "object",
+        "id": "10.21203/rs.3.rs-2347203/v1",
+        "id-type": "doi"
+      }
+    ]
+  },
+  "relation_keys": [
+    "has-preprint"
+  ],
+  "status": "clear"
+}

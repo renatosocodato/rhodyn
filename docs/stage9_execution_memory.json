@@ -108,10 +108,10 @@
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
   "closure_version_binding": {
     "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-    "closure_commit": "5ad1a1f325057e8049e28fbe92dfbd50db627f70",
+    "closure_commit": "62c2841691ce15ec6960440ea2faba7f60124e81",
     "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
-    "package_version": "stage9.29-closure@5ad1a1f325057e8049e28fbe92dfbd50db627f70",
-    "reference_version": "reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
+    "package_version": "stage9.29-closure@62c2841691ce15ec6960440ea2faba7f60124e81",
+    "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   },
@@ -1278,150 +1278,6 @@
     {
       "checks": [
         {
-          "detail": "Stage 9.19 supplementary table/source-data binding exists and passes",
-          "name": "stage_9_19_gate_passed",
-          "passed": true
-        },
-        {
-          "detail": "reference_count=13; cap=50; ref_ids=REF-0001;REF-0002;REF-0003;REF-0004;REF-0005;REF-0006;REF-0007;REF-0008;REF-0009;REF-0010;REF-0011;REF-0012;REF-0013",
-          "name": "reference_set_complete_and_under_cap",
-          "passed": true
-        },
-        {
-          "detail": "All references have DOI-form identifiers and resolved DOI metadata",
-          "name": "references_resolve_with_doi",
-          "passed": true
-        },
-        {
-          "detail": "Crossref relation checks are clear for papers; Zenodo dataset/software records are marked not applicable",
-          "name": "retraction_checks_clear_or_justified",
-          "passed": true
-        },
-        {
-          "detail": "All citation rows resolve to frozen CLM IDs and paragraph routes; Stage 9.12 Introduction refs are included",
-          "name": "references_map_to_claims_and_paragraphs",
-          "passed": true
-        },
-        {
-          "detail": "Public datasets, RhoDyn software DOI, and PanelForge software DOI are present",
-          "name": "software_and_dataset_records_included",
-          "passed": true
-        },
-        {
-          "detail": "BibTeX library contains exactly the expected REF keys",
-          "name": "bibtex_contains_one_entry_per_reference",
-          "passed": true
-        },
-        {
-          "detail": "No figure legends, cross-document consistency audit, PI packet, or readiness checklist detected",
-          "name": "no_legend_consistency_or_package_started",
-          "passed": true
-        },
-        {
-          "detail": "Reference audit preserves citation-support scope without new biological claims",
-          "name": "scope_boundary_preserved",
-          "passed": true
-        }
-      ],
-      "evidence_dependencies": [
-        "manuscript/nature_methods/gate_verdicts/9.19.json",
-        "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
-        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
-        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
-        "manuscript/nature_methods/sections/data_availability.md",
-        "manuscript/nature_methods/sections/code_availability.md"
-      ],
-      "files_created_or_modified": [
-        "manuscript/nature_methods/refs/references.bib",
-        "manuscript/nature_methods/refs/citation_claim_ledger.csv",
-        "manuscript/nature_methods/audits/reference_audit.md",
-        "manuscript/nature_methods/refs/_cache/reference_library/",
-        "manuscript/nature_methods/gate_verdicts/9.20.json"
-      ],
-      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.20.json",
-      "pass": true,
-      "reference_version": "reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
-      "remaining_blockers": [
-        "Cross-document consistency audit has not started",
-        "Live-number and statistical-language audit has not started",
-        "Figure legends have not started",
-        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
-      ],
-      "status": "pass",
-      "substage": "9.20",
-      "validation_outcome": "Reference library and citation-claim ledger resolve DOI-backed sources to manuscript claims"
-    },
-    {
-      "checks": [
-        {
-          "detail": "Stage 9.20 reference library is present and passed",
-          "name": "stage_9_20_gate_passed",
-          "passed": true
-        },
-        {
-          "detail": "orphan=0; unknown_refs=0",
-          "name": "orphan_claim_set_empty",
-          "passed": true
-        },
-        {
-          "detail": "orphan=0; unknown_refs=0",
-          "name": "orphan_figure_set_empty",
-          "passed": true
-        },
-        {
-          "detail": "orphan=0; unknown_refs=0",
-          "name": "orphan_statistic_set_empty",
-          "passed": true
-        },
-        {
-          "detail": "dangling_refs=0; unresolved_refs=0; unknown_paragraphs=0; unknown_tables=0",
-          "name": "dangling_reference_set_empty",
-          "passed": true
-        },
-        {
-          "detail": "strength_mismatches=0; missing_render_paths=0; bad_engine_rows=0; missing_source_paths=0; missing_binding_render_paths=0",
-          "name": "version_and_strength_coherence_hold",
-          "passed": true
-        },
-        {
-          "detail": "No Stage 9.22 live-number audit, figure legends, PI packet, readiness checklist, or completion report detected",
-          "name": "no_statistical_language_legend_or_package_started",
-          "passed": true
-        },
-        {
-          "detail": "Cross-document joins only; no statistics recomputed, legends written, or final package assembled",
-          "name": "scope_boundary_preserved",
-          "passed": true
-        }
-      ],
-      "evidence_dependencies": [
-        "manuscript/nature_methods/gate_verdicts/9.20.json",
-        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
-        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
-        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
-        "manuscript/nature_methods/ledgers/statistic_ledger.csv",
-        "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
-        "manuscript/nature_methods/refs/citation_claim_ledger.csv",
-        "manuscript/nature_methods/refs/references.bib"
-      ],
-      "files_created_or_modified": [
-        "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
-        "manuscript/nature_methods/gate_verdicts/9.21.json"
-      ],
-      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.21.json",
-      "pass": true,
-      "remaining_blockers": [
-        "Statistical and quantitative language audit has not started",
-        "Figure legends have not started",
-        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
-      ],
-      "status": "pass",
-      "substage": "9.21",
-      "validation_outcome": "Cross-document joins show no orphan claims, figures, statistics, or references"
-    },
-    {
-      "checks": [
-        {
           "detail": "Stage 9.21 cross-document consistency gate is present and passed",
           "name": "stage_9_21_gate_passed",
           "passed": true
@@ -1846,6 +1702,151 @@
       "substage": "9.26",
       "validation_outcome": "Eight-perspective internal peer-review simulation completed with all concerns carrying resolution status"
     },
+    "9.29",
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.19 supplementary table/source-data binding exists and passes",
+          "name": "stage_9_19_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "reference_count=14; cap=50; ref_ids=REF-0001;REF-0002;REF-0003;REF-0004;REF-0005;REF-0006;REF-0007;REF-0008;REF-0009;REF-0010;REF-0011;REF-0012;REF-0013;REF-0014",
+          "name": "reference_set_complete_and_under_cap",
+          "passed": true
+        },
+        {
+          "detail": "All references have DOI-form identifiers and resolved DOI metadata",
+          "name": "references_resolve_with_doi",
+          "passed": true
+        },
+        {
+          "detail": "Crossref relation checks are clear for papers; Zenodo dataset/software records are marked not applicable",
+          "name": "retraction_checks_clear_or_justified",
+          "passed": true
+        },
+        {
+          "detail": "All citation rows resolve to frozen CLM IDs and paragraph routes; Stage 9.12 Introduction refs are included",
+          "name": "references_map_to_claims_and_paragraphs",
+          "passed": true
+        },
+        {
+          "detail": "Public datasets, RhoDyn software DOI, and PanelForge software DOI are present",
+          "name": "software_and_dataset_records_included",
+          "passed": true
+        },
+        {
+          "detail": "BibTeX library contains exactly the expected REF keys",
+          "name": "bibtex_contains_one_entry_per_reference",
+          "passed": true
+        },
+        {
+          "detail": "Closed Stage 9.29 package refresh allowed existing downstream surfaces",
+          "name": "no_legend_consistency_or_package_started",
+          "passed": true
+        },
+        {
+          "detail": "Reference audit preserves citation-support scope without new biological claims",
+          "name": "scope_boundary_preserved",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.19.json",
+        "manuscript/nature_methods/refs/introduction_citation_ledger.csv",
+        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+        "manuscript/nature_methods/sections/data_availability.md",
+        "manuscript/nature_methods/sections/code_availability.md"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/refs/references.bib",
+        "manuscript/nature_methods/refs/citation_claim_ledger.csv",
+        "manuscript/nature_methods/audits/reference_audit.md",
+        "manuscript/nature_methods/refs/_cache/reference_library/",
+        "manuscript/nature_methods/gate_verdicts/9.20.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.20.json",
+      "pass": true,
+      "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
+      "remaining_blockers": [
+        "Cross-document consistency audit has not started",
+        "Live-number and statistical-language audit has not started",
+        "Figure legends have not started",
+        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
+      ],
+      "status": "pass",
+      "substage": "9.20",
+      "validation_outcome": "Reference library and citation-claim ledger resolve DOI-backed sources to manuscript claims"
+    },
+    {
+      "checks": [
+        {
+          "detail": "Stage 9.20 reference library is present and passed",
+          "name": "stage_9_20_gate_passed",
+          "passed": true
+        },
+        {
+          "detail": "orphan=0; unknown_refs=0",
+          "name": "orphan_claim_set_empty",
+          "passed": true
+        },
+        {
+          "detail": "orphan=0; unknown_refs=0",
+          "name": "orphan_figure_set_empty",
+          "passed": true
+        },
+        {
+          "detail": "orphan=0; unknown_refs=0",
+          "name": "orphan_statistic_set_empty",
+          "passed": true
+        },
+        {
+          "detail": "dangling_refs=0; unresolved_refs=0; unknown_paragraphs=0; unknown_tables=0",
+          "name": "dangling_reference_set_empty",
+          "passed": true
+        },
+        {
+          "detail": "strength_mismatches=0; missing_render_paths=0; bad_engine_rows=0; missing_source_paths=0; missing_binding_render_paths=0",
+          "name": "version_and_strength_coherence_hold",
+          "passed": true
+        },
+        {
+          "detail": "Closed Stage 9.29 package refresh allowed existing downstream surfaces",
+          "name": "no_statistical_language_legend_or_package_started",
+          "passed": true
+        },
+        {
+          "detail": "Cross-document joins only; no statistics recomputed, legends written, or final package assembled",
+          "name": "scope_boundary_preserved",
+          "passed": true
+        }
+      ],
+      "evidence_dependencies": [
+        "manuscript/nature_methods/gate_verdicts/9.20.json",
+        "manuscript/nature_methods/ledgers/claim_hierarchy.csv",
+        "manuscript/nature_methods/ledgers/paragraph_claim_ledger.csv",
+        "manuscript/nature_methods/ledgers/figure_to_claim_to_artifact.csv",
+        "manuscript/nature_methods/ledgers/statistic_ledger.csv",
+        "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
+        "manuscript/nature_methods/refs/citation_claim_ledger.csv",
+        "manuscript/nature_methods/refs/references.bib"
+      ],
+      "files_created_or_modified": [
+        "manuscript/nature_methods/audits/cross_document_consistency_audit.md",
+        "manuscript/nature_methods/gate_verdicts/9.21.json"
+      ],
+      "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.21.json",
+      "pass": true,
+      "remaining_blockers": [
+        "Statistical and quantitative language audit has not started",
+        "Figure legends have not started",
+        "Full submission-package assembly has not started beyond the Reporting Summary requirement placeholder"
+      ],
+      "status": "pass",
+      "substage": "9.21",
+      "validation_outcome": "Cross-document joins show no orphan claims, figures, statistics, or references"
+    },
     {
       "checks": [
         {
@@ -1909,7 +1910,7 @@
           "passed": true
         },
         {
-          "detail": "downstream_paths=[]",
+          "detail": "Closed Stage 9.29 package refresh allowed existing downstream surfaces",
           "name": "no_downstream_pi_or_closure_started",
           "passed": true
         },
@@ -2024,7 +2025,7 @@
           "passed": true
         },
         {
-          "detail": "closure_paths=[]",
+          "detail": "Closed Stage 9.29 package refresh allowed existing closure surfaces",
           "name": "no_stage9_closure_started",
           "passed": true
         }
@@ -2052,8 +2053,7 @@
       "status": "pass",
       "substage": "9.28",
       "validation_outcome": "PI review packet assembled, safe source revisions applied, submission package regenerated, and remaining human actions preserved"
-    },
-    "9.29"
+    }
   ],
   "cross_document_consistency_started": true,
   "current_gate": "Stage 9 closed and version-bound",
@@ -2082,7 +2082,7 @@
     "No Stage 9 completion report is created in this pass.",
     "The package now contains the PI review packet, action matrix, revision log, and literature calibration record."
   ],
-  "generated_utc": "2026-07-06T11:44:38Z",
+  "generated_utc": "2026-07-07T10:55:03Z",
   "internal_peer_review_started": true,
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
@@ -2725,7 +2725,7 @@
       "passed": true
     },
     {
-      "detail": "reference_count=13; cap=50; ref_ids=REF-0001;REF-0002;REF-0003;REF-0004;REF-0005;REF-0006;REF-0007;REF-0008;REF-0009;REF-0010;REF-0011;REF-0012;REF-0013",
+      "detail": "reference_count=14; cap=50; ref_ids=REF-0001;REF-0002;REF-0003;REF-0004;REF-0005;REF-0006;REF-0007;REF-0008;REF-0009;REF-0010;REF-0011;REF-0012;REF-0013;REF-0014",
       "name": "reference_set_complete_and_under_cap",
       "passed": true
     },
@@ -2755,7 +2755,7 @@
       "passed": true
     },
     {
-      "detail": "No figure legends, cross-document consistency audit, PI packet, or readiness checklist detected",
+      "detail": "Closed Stage 9.29 package refresh allowed existing downstream surfaces",
       "name": "no_legend_consistency_or_package_started",
       "passed": true
     },
@@ -2797,7 +2797,7 @@
       "passed": true
     },
     {
-      "detail": "No Stage 9.22 live-number audit, figure legends, PI packet, readiness checklist, or completion report detected",
+      "detail": "Closed Stage 9.29 package refresh allowed existing downstream surfaces",
       "name": "no_statistical_language_legend_or_package_started",
       "passed": true
     },
@@ -3116,7 +3116,7 @@
       "passed": true
     },
     {
-      "detail": "downstream_paths=[]",
+      "detail": "Closed Stage 9.29 package refresh allowed existing downstream surfaces",
       "name": "no_downstream_pi_or_closure_started",
       "passed": true
     },
@@ -3198,7 +3198,7 @@
       "passed": true
     },
     {
-      "detail": "closure_paths=[]",
+      "detail": "Closed Stage 9.29 package refresh allowed existing closure surfaces",
       "name": "no_stage9_closure_started",
       "passed": true
     }

@@ -843,15 +843,15 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         word_count = stage9_12_gate.get("introduction_word_count", 0)
         if not (450 <= word_count <= 650):
             failures.append("Stage 9.12 Introduction must remain within the 450-650 word contract")
-        if stage9_12_gate.get("citation_count") != 11:
-            failures.append("Stage 9.12 Introduction must cite the eleven resolved reference IDs")
+        if stage9_12_gate.get("citation_count") != 12:
+            failures.append("Stage 9.12 Introduction must cite the twelve resolved reference IDs")
         if stage9_12_gate.get("review_source_share", 1.0) > stage9_12_gate.get("review_source_threshold", 0.25):
             failures.append("Stage 9.12 review-source share must remain under threshold")
         if stage9_12_gate.get("next_substage") != "9.13":
             failures.append("Stage 9.12 gate must point to Stage 9.13")
         for phrase in [
             "(1-4)" if stage9_25b_started else "REF-0001",
-            "(10,11)" if stage9_25b_started else "REF-0011",
+            "(11,12)" if stage9_25b_started else "REF-0012",
             "residence-state",
             "bounded-coupling",
             "reserve-like",
@@ -1258,13 +1258,13 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.20 gate verdict must pass when present")
         if stage9_20_gate.get("next_substage") != "9.21":
             failures.append("Stage 9.20 gate must point to Stage 9.21")
-        if stage9_20_gate.get("reference_count") != 13:
-            failures.append("Stage 9.20 must register thirteen references")
+        if stage9_20_gate.get("reference_count") != 14:
+            failures.append("Stage 9.20 must register fourteen references")
         if stage9_20_gate.get("reference_cap") != 50:
             failures.append("Stage 9.20 must retain the Nature Methods reference cap")
-        expected_refs = {f"REF-{idx:04d}" for idx in range(1, 14)}
+        expected_refs = {f"REF-{idx:04d}" for idx in range(1, 15)}
         if set(stage9_20_gate.get("ref_ids", [])) != expected_refs:
-            failures.append("Stage 9.20 must cover REF-0001 through REF-0013")
+            failures.append("Stage 9.20 must cover REF-0001 through REF-0014")
         for path, label in [
             (references_path, "refs/references.bib"),
             (citation_ledger_path, "refs/citation_claim_ledger.csv"),
@@ -1279,6 +1279,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
                     failures.append(f"Stage 9.20 references.bib missing entry for {ref_id}")
             for phrase in [
                 "10.1038/s41587-019-0071-9",
+                "10.1038/s42003-023-04837-8",
                 "10.5281/zenodo.14907827",
                 "10.5281/zenodo.21036616",
                 "10.5281/zenodo.20811171",
@@ -1288,10 +1289,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if citation_ledger_path.exists():
             with citation_ledger_path.open(newline="", encoding="utf-8") as handle:
                 citation_rows = list(csv.DictReader(handle))
-            if len(citation_rows) != 13:
-                failures.append("Stage 9.20 citation-claim ledger must contain thirteen rows")
+            if len(citation_rows) != 14:
+                failures.append("Stage 9.20 citation-claim ledger must contain fourteen rows")
             if {row.get("ref_id", "") for row in citation_rows} != expected_refs:
-                failures.append("Stage 9.20 citation-claim ledger must cover REF-0001 through REF-0013")
+                failures.append("Stage 9.20 citation-claim ledger must cover REF-0001 through REF-0014")
             source_types = {row.get("source_type", "") for row in citation_rows}
             if not {"methods", "dataset", "software"} <= source_types:
                 failures.append("Stage 9.20 citation-claim ledger must include methods, dataset, and software source types")
@@ -1308,10 +1309,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         if reference_audit_path.exists():
             audit_body = reference_audit_path.read_text(encoding="utf-8")
             for phrase in [
-                "Reference count. 13 of 50",
-                "DOI-resolved references. 13 of 13",
-                "Retraction-check clear or not applicable. 13 of 13",
-                "Source-type counts. dataset=3; methods=8; software=2",
+                "Reference count. 14 of 50",
+                "DOI-resolved references. 14 of 14",
+                "Retraction-check clear or not applicable. 14 of 14",
+                "Source-type counts. dataset=3; methods=9; software=2",
                 "does not add a new biological demonstration",
                 "does not replace the later cross-document consistency audit",
             ]:
@@ -1319,7 +1320,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
                     failures.append(f"Stage 9.20 reference audit missing phrase: {phrase}")
         cache_dir = workspace / "refs" / "_cache" / "reference_library"
         cache_files = sorted(cache_dir.glob("*.json")) if cache_dir.exists() else []
-        if len(cache_files) < 13:
+        if len(cache_files) < 14:
             failures.append("Stage 9.20 must cache DOI metadata and relation checks for reference-library entries")
     else:
         for rel in [
@@ -1342,7 +1343,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "claim_count": 5,
             "figure_count": 6,
             "statistic_count": 19,
-            "reference_count": 13,
+            "reference_count": 14,
             "source_data_table_count": 9,
         }
         for field, expected in expected_921_counts.items():

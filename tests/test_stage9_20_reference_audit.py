@@ -27,19 +27,20 @@ class Stage920ReferenceAuditTests(unittest.TestCase):
         self.assertIs(gate["pass"], True)
         self.assertEqual(gate["substage"], "9.20")
         self.assertEqual(gate["next_substage"], "9.21")
-        self.assertEqual(gate["reference_count"], 13)
+        self.assertEqual(gate["reference_count"], 14)
         self.assertEqual(gate["reference_cap"], 50)
-        self.assertEqual(set(gate["ref_ids"]), {f"REF-{idx:04d}" for idx in range(1, 14)})
+        self.assertEqual(set(gate["ref_ids"]), {f"REF-{idx:04d}" for idx in range(1, 15)})
         self.assertTrue(all(item["passed"] for item in gate["checks"]))
 
     def test_bibtex_contains_expected_entries_and_key_dois(self) -> None:
         bib = BIB_PATH.read_text(encoding="utf-8")
-        self.assertEqual(bib.count("\n@"), 13)
-        for ref_id in [f"REF-{idx:04d}" for idx in range(1, 14)]:
+        self.assertEqual(bib.count("\n@"), 14)
+        for ref_id in [f"REF-{idx:04d}" for idx in range(1, 15)]:
             self.assertIn(ref_id, bib)
         for doi in [
             "10.1038/s41587-019-0071-9",
             "10.1038/s41592-020-01018-x",
+            "10.1038/s42003-023-04837-8",
             "10.5281/zenodo.14907827",
             "10.5281/zenodo.21036616",
             "10.5281/zenodo.20811171",
@@ -48,8 +49,8 @@ class Stage920ReferenceAuditTests(unittest.TestCase):
 
     def test_citation_ledger_maps_claims_sources_and_retraction_status(self) -> None:
         rows = self._citation_rows()
-        self.assertEqual(len(rows), 13)
-        self.assertEqual({row["ref_id"] for row in rows}, {f"REF-{idx:04d}" for idx in range(1, 14)})
+        self.assertEqual(len(rows), 14)
+        self.assertEqual({row["ref_id"] for row in rows}, {f"REF-{idx:04d}" for idx in range(1, 15)})
         self.assertEqual(
             {row["source_type"] for row in rows},
             {"methods", "dataset", "software"},
@@ -66,17 +67,17 @@ class Stage920ReferenceAuditTests(unittest.TestCase):
     def test_reference_audit_reports_scope_and_counts(self) -> None:
         audit = AUDIT_PATH.read_text(encoding="utf-8")
         for phrase in [
-            "Reference count. 13 of 50",
-            "DOI-resolved references. 13 of 13",
-            "Retraction-check clear or not applicable. 13 of 13",
-            "Source-type counts. dataset=3; methods=8; software=2",
+            "Reference count. 14 of 50",
+            "DOI-resolved references. 14 of 14",
+            "Retraction-check clear or not applicable. 14 of 14",
+            "Source-type counts. dataset=3; methods=9; software=2",
             "does not add a new biological demonstration",
             "does not replace the later cross-document consistency audit",
         ]:
             self.assertIn(phrase, audit)
 
     def test_metadata_cache_and_downstream_surfaces(self) -> None:
-        self.assertGreaterEqual(len(list(CACHE_PATH.glob("*.json"))), 13)
+        self.assertGreaterEqual(len(list(CACHE_PATH.glob("*.json"))), 14)
         for rel in [
         ]:
             self.assertFalse((WORKSPACE / rel).exists(), rel)

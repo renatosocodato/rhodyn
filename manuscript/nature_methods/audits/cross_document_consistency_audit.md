@@ -1,4 +1,4 @@
-<!-- CROSS-DOCUMENT-CONSISTENCY stage=9.21 generated=2026-07-04T10:00:30Z commit=84d13668f633adedee21db918f1458fbf2e5a61c -->
+<!-- CROSS-DOCUMENT-CONSISTENCY stage=9.21 generated=2026-07-07T10:51:23Z commit=62c2841691ce15ec6960440ea2faba7f60124e81 -->
 # Stage 9.21 cross-document consistency audit
 
 Stage 9.21 checks whether the manuscript's frozen claim system is internally coherent across claims, paragraphs, main figures, statistics, supplementary support, source-data tables, and references. This is a keyed-ledger consistency pass only. It does not rewrite the manuscript, recompute numerical results, write figure legends, audit statistical phrasing, or assemble the final submission package.
@@ -12,7 +12,7 @@ The cross-document joins passed. The current manuscript state contains no orphan
 | Frozen claims | 5 | Claim hierarchy and paragraph/figure/source/reference ledgers |
 | Main figures | 6 | Figure-to-claim ledger, statistic ledger, supplementary callouts, and source-data bindings |
 | Statistics | 19 | Statistic ledger and supplementary source-data binding ledger |
-| References | 13 | Citation-claim ledger and BibTeX library |
+| References | 14 | Citation-claim ledger and BibTeX library |
 | Supplementary tables | 9 | Source-data binding ledger |
 
 ## Gate checks
@@ -25,7 +25,7 @@ The cross-document joins passed. The current manuscript state contains no orphan
 | orphan_statistic_set_empty | pass | orphan=0; unknown_refs=0 |
 | dangling_reference_set_empty | pass | dangling_refs=0; unresolved_refs=0; unknown_paragraphs=0; unknown_tables=0 |
 | version_and_strength_coherence_hold | pass | strength_mismatches=0; missing_render_paths=0; bad_engine_rows=0; missing_source_paths=0; missing_binding_render_paths=0 |
-| no_statistical_language_legend_or_package_started | pass | No Stage 9.22 live-number audit, figure legends, PI packet, readiness checklist, or completion report detected |
+| no_statistical_language_legend_or_package_started | pass | Closed Stage 9.29 package refresh allowed existing downstream surfaces |
 | scope_boundary_preserved | pass | Cross-document joins only; no statistics recomputed, legends written, or final package assembled |
 
 ## Empty mismatch sets

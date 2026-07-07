@@ -6,7 +6,7 @@
       "passed": true
     },
     {
-      "detail": "reference_count=13; cap=50; ref_ids=REF-0001;REF-0002;REF-0003;REF-0004;REF-0005;REF-0006;REF-0007;REF-0008;REF-0009;REF-0010;REF-0011;REF-0012;REF-0013",
+      "detail": "reference_count=14; cap=50; ref_ids=REF-0001;REF-0002;REF-0003;REF-0004;REF-0005;REF-0006;REF-0007;REF-0008;REF-0009;REF-0010;REF-0011;REF-0012;REF-0013;REF-0014",
       "name": "reference_set_complete_and_under_cap",
       "passed": true
     },
@@ -36,7 +36,7 @@
       "passed": true
     },
     {
-      "detail": "No figure legends, cross-document consistency audit, PI packet, or readiness checklist detected",
+      "detail": "Closed Stage 9.29 package refresh allowed existing downstream surfaces",
       "name": "no_legend_consistency_or_package_started",
       "passed": true
     },
@@ -67,12 +67,13 @@
     "REF-0010",
     "REF-0011",
     "REF-0012",
-    "REF-0013"
+    "REF-0013",
+    "REF-0014"
   ],
   "reference_cap": 50,
-  "reference_count": 13,
-  "reference_version": "reference-library@2026-07-04@42be37d69bc6b0229aa611f260215454db4e3f12",
+  "reference_count": 14,
+  "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
   "scope_boundary": "Reference library and citation audit only. No figure legends, cross-document consistency audit, live-number audit, PI packet, readiness checklist, or final submission-package assembly.",
   "substage": "9.20",
-  "timestamp": "2026-07-04T09:33:26.476578Z"
+  "timestamp": "2026-07-07T10:50:20.079069Z"
 }

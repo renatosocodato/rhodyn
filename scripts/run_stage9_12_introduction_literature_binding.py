@@ -170,6 +170,17 @@ CITATIONS = [
     ),
     Citation(
         ref_id="REF-0009",
+        citation_label="Copperman et al. 2023",
+        title="Morphodynamical cell state description via live-cell imaging trajectory embedding",
+        doi_or_pmid="10.1038/s42003-023-04837-8",
+        source_type="methods",
+        claim_id="CLM-0001;CLM-0002",
+        paragraph_ids="PARA-INTRO-002",
+        source_file="manuscript/nature_methods/refs/_cache/reference_library/10.1038_s42003-023-04837-8.csl.json",
+        supports_external_claim="Live-cell morphodynamic trajectory embedding is established prior art for time-lapse cell-state analysis.",
+    ),
+    Citation(
+        ref_id="REF-0010",
         citation_label="von Buchholtz 2025 dataset",
         title="Public DRG calcium imaging archive used as a live-cell signaling demonstration",
         doi_or_pmid="10.5281/zenodo.14907827",
@@ -180,7 +191,7 @@ CITATIONS = [
         supports_external_claim="Public DRG calcium traces provide an independent calcium trajectory demonstration.",
     ),
     Citation(
-        ref_id="REF-0010",
+        ref_id="REF-0011",
         citation_label="Wan et al. 2021 dataset",
         title="Public ERK GPCR and paired ERK/Akt live-cell reporter archive",
         doi_or_pmid="10.5281/zenodo.5836623",
@@ -191,7 +202,7 @@ CITATIONS = [
         supports_external_claim="Public ERK GPCR and ERK/Akt reporter traces support trajectory and bounded-coupling demonstrations.",
     ),
     Citation(
-        ref_id="REF-0011",
+        ref_id="REF-0012",
         citation_label="Seal et al. 2023 dataset",
         title="Public Cell Painting and MitoTox endpoint archive",
         doi_or_pmid="10.5281/zenodo.10011861",
@@ -220,22 +231,22 @@ INTRODUCTION_PARAGRAPHS = [
     {
         "para_ids": ("PARA-INTRO-001",),
         "claim_ids": ("CLM-0001",),
-        "refs": ("REF-0009", "REF-0010"),
+        "refs": ("REF-0010", "REF-0011"),
         "text": (
             "RhoDyn addresses this gap by defining residence-state inference for tidy live-cell trajectories and paired endpoint inputs. "
             "For a declared biological window, it separates dwell fraction, dwell time, and segment count from peak, endpoint, mean activity, latency, and threshold-style comparators. "
             "That separation is deliberately scoped. The window is not automatically discovered by the software, and a residence summary is not a causal mechanism by itself. "
             "Instead, RhoDyn makes the comparison inspectable so users can see whether a calcium, kinase, or other reporter trajectory changes interpretation when time spent in a declared response interval is placed beside amplitude. "
-            "The current evidence set uses public DRG calcium and ERK GPCR reporter trajectories as independent live-cell demonstrations beyond the RhoA/microglia reference use case (REF-0009; REF-0010)."
+            "The current evidence set uses public DRG calcium and ERK GPCR reporter trajectories as independent live-cell demonstrations beyond the RhoA/microglia reference use case (REF-0010; REF-0011)."
         ),
     },
     {
         "para_ids": ("PARA-INTRO-002",),
         "claim_ids": ("CLM-0002",),
-        "refs": ("REF-0005", "REF-0006", "REF-0007", "REF-0008"),
+        "refs": ("REF-0005", "REF-0006", "REF-0007", "REF-0008", "REF-0009"),
         "text": (
             "A residence method also has to report when the supplied data do not justify a stronger conclusion. "
-            "Successful computational methods papers typically combine a formal input object, benchmark comparisons, visible uncertainty, software surfaces, and examples that expose both strengths and limits (REF-0005; REF-0006; REF-0007; REF-0008). "
+            "Successful computational methods papers typically combine a formal input object, benchmark comparisons, visible uncertainty, software surfaces, and examples that expose both strengths and limits (REF-0005; REF-0006; REF-0007; REF-0008; REF-0009). "
             "RhoDyn follows that pattern by returning bounded-coupling decisions only under declared margins and uncertainty support, keeping margin-sensitive contrasts inconclusive, and treating reserve-like summaries as measurement-scoped endpoint coordinates. "
             "It also compares routed-output alternatives against reduced architectures without treating effective parameters as direct biochemical interactions."
         ),
@@ -243,10 +254,10 @@ INTRODUCTION_PARAGRAPHS = [
     {
         "para_ids": ("PARA-INTRO-002",),
         "claim_ids": ("CLM-0002",),
-        "refs": ("REF-0010", "REF-0011"),
+        "refs": ("REF-0011", "REF-0012"),
         "text": (
             "The resulting manuscript is therefore a methods Article rather than a new primary disease-biology claim. "
-            "Its public demonstrations include paired ERK/Akt reporter trajectories for bounded coupling and Cell Painting/MitoTox endpoint tables for reserve-like and routed-output analyses (REF-0010; REF-0011). "
+            "Its public demonstrations include paired ERK/Akt reporter trajectories for bounded coupling and Cell Painting/MitoTox endpoint tables for reserve-like and routed-output analyses (REF-0011; REF-0012). "
             "Across those examples, the central question is not whether every biological system contains a residence regime. "
             "It is whether a reviewable method can preserve dynamic operating-state information, reveal cases where amplitude or endpoint summaries are sufficient, and withhold interpretation when the data do not resolve the boundary. "
             "RhoDyn is designed to make those decisions reproducible across Python, command-line, backend, workbench, and archive surfaces, with explicit reproducibility checks, before the Results tests each component in figure-locked order."

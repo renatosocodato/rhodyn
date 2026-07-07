@@ -30,7 +30,7 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
         self.assertEqual(self.gate["paragraph_count"], 4)
         self.assertGreaterEqual(self.gate["introduction_word_count"], 450)
         self.assertLessEqual(self.gate["introduction_word_count"], 650)
-        self.assertEqual(self.gate["citation_count"], 11)
+        self.assertEqual(self.gate["citation_count"], 12)
         self.assertLessEqual(self.gate["review_source_share"], self.gate["review_source_threshold"])
         self.assertEqual(self.gate["next_substage"], "9.13")
         self.assertTrue(all(check["passed"] for check in self.gate["checks"]))
@@ -41,9 +41,9 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
         self.assertNotIn("##", visible)
         for phrase in [
             "(1-4)",
-            "(9,10)",
-            "(1-8)",
             "(10,11)",
+            "(1-9)",
+            "(11,12)",
             "residence-state",
             "bounded-coupling",
             "reserve-like",
@@ -56,8 +56,8 @@ class Stage912IntroductionLiteratureBindingTests(unittest.TestCase):
     def test_numbered_citations_match_resolved_citation_ledger(self) -> None:
         visible = _visible_text(self.introduction)
         ledger_refs = {row["ref_id"] for row in self.ledger_rows}
-        self.assertEqual(len(ledger_refs), 11)
-        self.assertEqual(set(re.findall(r"\((?:\d+(?:-\d+)?)(?:,\d+)*\)", visible)), {"(1-4)", "(1-8)", "(9,10)", "(10,11)"})
+        self.assertEqual(len(ledger_refs), 12)
+        self.assertEqual(set(re.findall(r"\((?:\d+(?:-\d+)?)(?:,\d+)*\)", visible)), {"(1-4)", "(1-9)", "(10,11)", "(11,12)"})
         for row in self.ledger_rows:
             self.assertEqual(row["resolved"], "true")
             self.assertRegex(row["doi_or_pmid"], r"^(10\.\d+/.+|PMID:\d+)$")

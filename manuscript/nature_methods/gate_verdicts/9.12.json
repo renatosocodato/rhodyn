@@ -11,12 +11,12 @@
       "passed": true
     },
     {
-      "detail": "Introduction visible word count: 450; headings present: False",
+      "detail": "Introduction visible word count: 465; headings present: False",
       "name": "introduction_word_budget_and_structure_hold",
       "passed": true
     },
     {
-      "detail": "cited=11 unresolved=[] uncited_ledger_refs=[]",
+      "detail": "cited=12 unresolved=[] uncited_ledger_refs=[]",
       "name": "all_introduction_citations_resolve",
       "passed": true
     },
@@ -41,7 +41,7 @@
       "passed": true
     }
   ],
-  "citation_count": 11,
+  "citation_count": 12,
   "citation_ids": [
     "REF-0001",
     "REF-0002",
@@ -53,14 +53,15 @@
     "REF-0008",
     "REF-0009",
     "REF-0010",
-    "REF-0011"
+    "REF-0011",
+    "REF-0012"
   ],
   "claim_ids": [
     "CLM-0001",
     "CLM-0002"
   ],
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
-  "introduction_word_count": 450,
+  "introduction_word_count": 465,
   "next_substage": "9.13",
   "outputs": [
     "manuscript/nature_methods/sections/introduction.md",

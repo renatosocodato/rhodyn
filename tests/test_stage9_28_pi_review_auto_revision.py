@@ -76,7 +76,7 @@ class Stage928PiReviewAutoRevisionTests(unittest.TestCase):
         for edit_id in [f"REV-9.28-00{idx}" for idx in range(1, 6)]:
             self.assertIn(edit_id, self.revision_log)
         self.assertIn("No new biological datasets, analyses, model outputs, or figure renders were created.", self.revision_log)
-        self.assertIn("No new reference was added in Stage 9.28", self.literature)
+        self.assertIn("live-cell morphodynamic trajectory-embedding prior-art citation", self.literature)
 
     def test_package_safety_and_closure_boundary(self) -> None:
         forbidden = [

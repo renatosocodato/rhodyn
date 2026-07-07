@@ -36,6 +36,7 @@ PLAN_PATH = ROOT / "docs" / "stage9_manuscript_assembly_plan.md"
 ROADMAP_PATH = ROOT / "docs" / "roadmap.md"
 
 GATE_919 = GATE_DIR / "9.19.json"
+GATE_929 = GATE_DIR / "9.29.json"
 CLAIM_HIERARCHY = WORKSPACE / "ledgers" / "claim_hierarchy.csv"
 PARAGRAPH_LEDGER = WORKSPACE / "ledgers" / "paragraph_claim_ledger.csv"
 INTRO_LEDGER = REFS_DIR / "introduction_citation_ledger.csv"
@@ -155,6 +156,16 @@ REFERENCE_SPECS: tuple[ReferenceSpec, ...] = (
     ),
     ReferenceSpec(
         "REF-0009",
+        "Copperman et al. 2023",
+        "10.1038/s42003-023-04837-8",
+        "methods",
+        "CLM-0001;CLM-0002",
+        "PARA-INTRO-002;PARA-DISCUSSION-001",
+        "live-cell morphodynamic trajectory-embedding prior-art context",
+        "Promoted Stage 9.29 editorial-hardening prior-art support for live-cell trajectory methods.",
+    ),
+    ReferenceSpec(
+        "REF-0010",
         "von Buchholtz 2025 dataset",
         "10.5281/zenodo.14907827",
         "dataset",
@@ -164,7 +175,7 @@ REFERENCE_SPECS: tuple[ReferenceSpec, ...] = (
         "Stage 7.3 public signaling adapter and provenance.",
     ),
     ReferenceSpec(
-        "REF-0010",
+        "REF-0011",
         "Wan et al. 2021 dataset",
         "10.5281/zenodo.5836623",
         "dataset",
@@ -174,7 +185,7 @@ REFERENCE_SPECS: tuple[ReferenceSpec, ...] = (
         "Stage 7.3, Stage 7.4, and Stage 7.5 public signaling adapters.",
     ),
     ReferenceSpec(
-        "REF-0011",
+        "REF-0012",
         "Seal et al. 2023 dataset",
         "10.5281/zenodo.10011861",
         "dataset",
@@ -184,7 +195,7 @@ REFERENCE_SPECS: tuple[ReferenceSpec, ...] = (
         "Stage 7.4 endpoint, reserve-like, and routed-output demonstration.",
     ),
     ReferenceSpec(
-        "REF-0012",
+        "REF-0013",
         "Socodato 2026 RhoDyn software",
         "10.5281/zenodo.21036616",
         "software",
@@ -194,7 +205,7 @@ REFERENCE_SPECS: tuple[ReferenceSpec, ...] = (
         "Stage 9.17 code availability statement and Stage 7.6 release archive.",
     ),
     ReferenceSpec(
-        "REF-0013",
+        "REF-0014",
         "Socodato 2026 PanelForge software",
         "10.5281/zenodo.20811171",
         "software",
@@ -404,6 +415,13 @@ def _paragraph_ids() -> set[str]:
 
 
 def _no_downstream_started() -> tuple[bool, list[str]]:
+    if GATE_929.exists():
+        try:
+            gate_929 = _read_json(GATE_929)
+        except json.JSONDecodeError:
+            gate_929 = {}
+        if gate_929.get("pass") is True and gate_929.get("substage") == "9.29":
+            return True, ["closed_stage9_refresh_allowed"]
     forbidden = [path.relative_to(ROOT).as_posix() for path in FORBIDDEN_STARTED_PATHS if path.exists()]
     return not forbidden, forbidden
 
@@ -520,7 +538,7 @@ def _validate(rows: list[dict[str, str]], bibtex: str, audit: str) -> list[dict[
         },
         {
             "name": "software_and_dataset_records_included",
-            "passed": {"REF-0009", "REF-0010", "REF-0011", "REF-0012", "REF-0013"} <= row_ref_ids,
+            "passed": {"REF-0010", "REF-0011", "REF-0012", "REF-0013", "REF-0014"} <= row_ref_ids,
             "detail": "Public datasets, RhoDyn software DOI, and PanelForge software DOI are present",
         },
         {
@@ -531,7 +549,11 @@ def _validate(rows: list[dict[str, str]], bibtex: str, audit: str) -> list[dict[
         {
             "name": "no_legend_consistency_or_package_started",
             "passed": downstream_ok,
-            "detail": "No figure legends, cross-document consistency audit, PI packet, or readiness checklist detected"
+            "detail": (
+                "Closed Stage 9.29 package refresh allowed existing downstream surfaces"
+                if downstream_paths == ["closed_stage9_refresh_allowed"]
+                else "No figure legends, cross-document consistency audit, PI packet, or readiness checklist detected"
+            )
             if downstream_ok
             else "; ".join(downstream_paths),
         },
@@ -604,7 +626,11 @@ def _upsert_completed_substage(memory: dict[str, Any], reference_version: str, c
         "reference_version": reference_version,
         "checks": checks,
     }
-    entries = [item for item in memory.get("completed_substages", []) if item.get("substage") != "9.20"]
+    entries = [
+        item
+        for item in memory.get("completed_substages", [])
+        if not (isinstance(item, dict) and item.get("substage") == "9.20")
+    ]
     entries.append(record)
     memory["completed_substages"] = entries
 

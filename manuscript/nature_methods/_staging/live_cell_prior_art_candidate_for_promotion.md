@@ -1,6 +1,6 @@
-# Optional live-cell prior-art citation candidate
+# Promoted live-cell prior-art citation record
 
-This note records one evidence-safe prior-art addition candidate for a later package-promotion pass. It is not promoted into the closed Stage 9.29 package by this runner.
+This note records the evidence-safe prior-art addition promoted during the Stage 9.29 closure refresh.
 
 ## Candidate reference
 
@@ -8,14 +8,14 @@ Copperman, J. et al. Morphodynamical cell state description via live-cell imagin
 
 ## Why this may help
 
-The current Introduction already cites trajectory inference, dynamic transient-state modeling, state-space visualization, CellRank, Cellpose, Squidpy, scvi-tools, and DeepLabCut. A Nature Methods editor may still ask whether live-cell morphodynamic trajectory embedding is directly acknowledged. This reference would sharpen the claim that RhoDyn is not claiming novelty for time-lapse trajectory analysis itself, but for the integrated residence, bounded-coupling, reserve-like, routed-output, and reproducibility decision object.
+The current Introduction now cites trajectory inference, dynamic transient-state modeling, state-space visualization, CellRank, Cellpose, Squidpy, scvi-tools, DeepLabCut, and live-cell morphodynamic trajectory embedding. This sharpens the claim that RhoDyn is not claiming novelty for time-lapse trajectory analysis itself, but for the integrated residence, bounded-coupling, reserve-like, routed-output, and reproducibility decision object.
 
-## Candidate insertion
+## Promoted insertion
 
-In the third Introduction paragraph, revise the citation range in the sentence beginning `The novelty claimed here is not...` so that live-cell morphodynamic trajectory embedding is explicitly included among established prior dynamic live-cell approaches.
+The third Introduction paragraph now states that RhoDyn does not claim novelty for signaling dynamics, transient cell states, live-cell reporters, or morphodynamic trajectory embeddings, with the citation range expanded to references 1-9.
 
-## Promotion requirements
+## Boundaries preserved
 
-- Renumber dataset, software, and PanelForge references consistently in `main_text_for_submission.md`, `references.bib`, `references_for_submission.bib`, citation ledgers, and availability sections.
-- Re-run package assembly and Stage 9 validation after promotion.
-- Do not add this citation if the final author decision is to keep the reference list compact for triage.
+- The reference is prior-art calibration only, not a new biological demonstration.
+- Dataset references, software references, and PanelForge references are renumbered consistently in the regenerated package.
+- RhoDyn remains framed as an integrated residence-state decision object, not as a generic live-cell trajectory-embedding method.

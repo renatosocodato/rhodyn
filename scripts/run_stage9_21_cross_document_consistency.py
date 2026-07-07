@@ -31,6 +31,7 @@ PLAN_PATH = ROOT / "docs" / "stage9_manuscript_assembly_plan.md"
 ROADMAP_PATH = ROOT / "docs" / "roadmap.md"
 
 GATE_920 = GATE_DIR / "9.20.json"
+GATE_929 = GATE_DIR / "9.29.json"
 CLAIM_HIERARCHY = WORKSPACE / "ledgers" / "claim_hierarchy.csv"
 PARAGRAPH_LEDGER = WORKSPACE / "ledgers" / "paragraph_claim_ledger.csv"
 FIGURE_LEDGER = WORKSPACE / "ledgers" / "figure_to_claim_to_artifact.csv"
@@ -95,6 +96,16 @@ def _sorted(values: set[str]) -> list[str]:
 
 def _extract_bib_ids(body: str) -> set[str]:
     return set(re.findall(r"@\w+\{(REF-\d{4}),", body))
+
+
+def _closed_stage9_refresh_allowed() -> bool:
+    if not GATE_929.exists():
+        return False
+    try:
+        gate = _read_json(GATE_929)
+    except json.JSONDecodeError:
+        return False
+    return gate.get("pass") is True and gate.get("substage") == "9.29"
 
 
 def _join_analysis() -> dict[str, Any]:
@@ -251,8 +262,10 @@ def _join_analysis() -> dict[str, Any]:
         },
         {
             "name": "no_statistical_language_legend_or_package_started",
-            "passed": not [path for path in FORBIDDEN_STARTED_PATHS if path.exists()],
-            "detail": "No Stage 9.22 live-number audit, figure legends, PI packet, readiness checklist, or completion report detected",
+            "passed": _closed_stage9_refresh_allowed() or not [path for path in FORBIDDEN_STARTED_PATHS if path.exists()],
+            "detail": "Closed Stage 9.29 package refresh allowed existing downstream surfaces"
+            if _closed_stage9_refresh_allowed()
+            else "No Stage 9.22 live-number audit, figure legends, PI packet, readiness checklist, or completion report detected",
         },
         {
             "name": "scope_boundary_preserved",
@@ -454,7 +467,11 @@ def _upsert_completed_substage(memory: dict[str, Any], checks: list[dict[str, An
         ],
         "checks": checks,
     }
-    entries = [item for item in memory.get("completed_substages", []) if item.get("substage") != "9.21"]
+    entries = [
+        item
+        for item in memory.get("completed_substages", [])
+        if not (isinstance(item, dict) and item.get("substage") == "9.21")
+    ]
     entries.append(record)
     memory["completed_substages"] = entries
 

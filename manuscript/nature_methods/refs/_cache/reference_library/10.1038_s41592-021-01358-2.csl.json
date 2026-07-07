@@ -259,14 +259,14 @@
       [
         2026,
         7,
-        3
+        7
       ]
     ],
-    "date-time": "2026-07-03T17:19:26Z",
-    "timestamp": 1783099166139,
+    "date-time": "2026-07-07T09:09:16Z",
+    "timestamp": 1783415356385,
     "version": "3.54.6"
   },
-  "is-referenced-by-count": 1062,
+  "is-referenced-by-count": 1065,
   "issue": "2",
   "issued": {
     "date-parts": [

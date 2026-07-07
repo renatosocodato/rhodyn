@@ -16,7 +16,7 @@ The relevant editorial bar is a novel method or substantial improvement with bro
 ## Current manuscript profile
 
 - Abstract word count. `150`.
-- Introduction word count. `461`.
+- Introduction word count. `465`.
 - Results word count. `850`.
 - Discussion word count. `661`.
 - Online Methods word count. `1017`.
@@ -28,7 +28,7 @@ The relevant editorial bar is a novel method or substantial improvement with bro
 |---|---|---|
 | NM-DESK-001 | hardened_in_current_text | Keep the novelty sentence centered on the integrated decision object. Do not broaden into a general theory of cell dynamics. |
 | NM-DESK-002 | hardened_in_current_text | Frame examples as portability and decision-behavior tests, not field-wide biological generality. |
-| NM-DESK-003 | candidate_revision_prepared | Consider adding Copperman et al. 2023, Communications Biology, doi:10.1038/s42003-023-04837-8, only if the Introduction is reopened for reference renumbering. |
+| NM-DESK-003 | hardened_in_current_text | Keep the prior-art contrast explicit. Do not claim novelty for live-cell trajectory embedding itself. |
 | NM-DESK-004 | hardened_in_current_text | Keep invalid-input and withheld-decision language visible. Do not describe RhoDyn as fully automated state discovery. |
 | NM-DESK-005 | hardened_in_current_text | Preserve the margin/context and measured-endpoint boundary in all upload-facing files. |
 | NM-DESK-006 | hardened_in_current_text | Use the editor-triage note to make software parity part of the method validation argument, not a back-matter afterthought. |
@@ -39,15 +39,14 @@ The relevant editorial bar is a novel method or substantial improvement with bro
 
 ## Recommended author action
 
-The package is defensible for editor triage if the cover/editor note foregrounds the method contribution as a decision framework rather than a generic dynamics statement. The strongest optional manuscript improvement is to add one specific live-cell morphodynamic trajectory prior-art citation if the Introduction is reopened for reference renumbering.
+The package is defensible for editor triage if the cover/editor note foregrounds the method contribution as a decision framework rather than a generic dynamics statement. The live-cell morphodynamic trajectory prior-art citation has been promoted, so the remaining package-side action is to preserve the calibrated claim boundary.
 
 ## Items not automatically promoted
 
-- No new reference was inserted automatically, because that would require reference renumbering across the closed package.
+- The live-cell morphodynamic prior-art citation has been promoted and renumbered across the current package.
 - No title, Abstract, Results, Methods, figure, or data changes were made.
 - The official Reporting Summary remains a human submission action.
 
 ## Remaining non-hardened rows
 
-- `NM-DESK-003`. candidate_revision_prepared. Consider adding Copperman et al. 2023, Communications Biology, doi:10.1038/s42003-023-04837-8, only if the Introduction is reopened for reference renumbering.
 - `NM-DESK-010`. human_submission_action_remaining. Complete the official Springer Nature Reporting Summary and portal fields after author approval.

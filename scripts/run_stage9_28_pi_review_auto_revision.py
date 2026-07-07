@@ -46,6 +46,7 @@ PERSONA_PROMPT = Path(
 
 GATE_927 = GATES / "9.27.json"
 GATE_96B = GATES / "9.6b.json"
+GATE_929 = GATES / "9.29.json"
 STAGE927_RUNNER = ROOT / "scripts" / "run_stage9_27_submission_package_assembly.py"
 
 OUTPUTS = {
@@ -119,6 +120,16 @@ def _git_sha() -> str:
     return result.stdout.strip() if result.returncode == 0 else "unknown"
 
 
+def _closed_stage9_refresh_allowed() -> bool:
+    if not GATE_929.exists():
+        return False
+    gate = _read_json(GATE_929)
+    return (
+        gate.get("pass") is True
+        and gate.get("closure_status") == "complete_stage9_closed_version_bound"
+    )
+
+
 def _read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -188,8 +199,8 @@ def _apply_safe_revisions() -> list[dict[str, str]]:
     edits.append(
         _replace_once(
             SECTIONS / "introduction.md",
-            "A residence method also has to report when the supplied data do not justify a stronger conclusion. Successful computational methods papers typically combine a formal input object, benchmark comparisons, visible uncertainty, software surfaces, and examples that expose both strengths and limits (5-8). RhoDyn follows that pattern by returning bounded-coupling decisions only under declared margins and uncertainty support, keeping margin-sensitive contrasts inconclusive, and treating reserve-like summaries as measurement-scoped endpoint coordinates. It also compares routed-output alternatives against reduced architectures without treating effective parameters as direct biochemical interactions.",
             "The novelty claimed here is not that signaling dynamics, transient cell states, or live-cell reporters matter. Those ideas are already well established in trajectory-inference, dynamic-state, live-cell reporter, and computational-methods literature (1-8). The contribution is a reviewable analysis object that places residence windows, amplitude comparators, bounded-coupling margins, reserve-like endpoint coordinates, routed-output alternatives, and cross-surface reproducibility into one reproducible workflow. RhoDyn therefore has to report when the supplied data do not justify a stronger conclusion. It returns bounded-coupling decisions only under declared margins and uncertainty support, keeps margin-sensitive contrasts inconclusive, treats reserve-like summaries as measurement-scoped endpoint coordinates, and compares routed-output alternatives against reduced architectures without treating effective parameters as direct biochemical interactions.",
+            "The novelty claimed here is not that signaling dynamics, transient cell states, live-cell reporters, or morphodynamic trajectory embeddings matter. Those ideas are already well established in trajectory-inference, dynamic-state, live-cell reporter, morphodynamic, and computational-methods literature (1-9). The contribution is a reviewable analysis object that places residence windows, amplitude comparators, bounded-coupling margins, reserve-like endpoint coordinates, routed-output alternatives, and cross-surface reproducibility into one reproducible workflow. RhoDyn therefore has to report when the supplied data do not justify a stronger conclusion. It returns bounded-coupling decisions only under declared margins and uncertainty support, keeps margin-sensitive contrasts inconclusive, treats reserve-like summaries as measurement-scoped endpoint coordinates, and compares routed-output alternatives against reduced architectures without treating effective parameters as direct biochemical interactions.",
             "REV-9.28-002",
             "Make novelty positioning explicit against the current state of computational and live-cell dynamics methods.",
         )
@@ -383,11 +394,11 @@ Generated UTC. {generated_utc}
 
 ## Calibration result
 
-The current reference set already supports the main methods-positioning needs: trajectory-inference benchmarking, dynamic-state modeling, single-cell state-space visualization, directed fate mapping, software-method validation, spatial-omics workbench structure, probabilistic software architecture, public live-cell reporter datasets, public endpoint datasets, and citable RhoDyn/PanelForge release surfaces.
+The current reference set supports the main methods-positioning needs: trajectory-inference benchmarking, dynamic-state modeling, single-cell state-space visualization, directed fate mapping, live-cell morphodynamic trajectory embedding, software-method validation, spatial-omics workbench structure, probabilistic software architecture, public live-cell reporter datasets, public endpoint datasets, and citable RhoDyn/PanelForge release surfaces.
 
 ## Auto-revision decision
 
-No new reference was added in Stage 9.28 because the PI-review pass did not identify a single unsupported manuscript claim that required broadening the compact reference library. Instead, the Introduction and Discussion were edited to narrow the novelty claim. The revised framing states that RhoDyn does not claim novelty for live-cell dynamics broadly, and instead claims a reproducible method object that combines declared residence windows, amplitude comparators, bounded-coupling margins, reserve-like endpoint coordinates, routed-output alternatives, and cross-surface reproducibility.
+The Stage 9.29 closure decision promoted the live-cell morphodynamic trajectory-embedding prior-art citation into the reference library before this PI-review packet was regenerated. The revised framing states that RhoDyn does not claim novelty for live-cell dynamics, transient cell states, live-cell reporters, or morphodynamic trajectory analysis broadly, and instead claims a reproducible method object that combines declared residence windows, amplitude comparators, bounded-coupling margins, reserve-like endpoint coordinates, routed-output alternatives, and cross-surface reproducibility.
 
 ## Human-review note
 
@@ -461,7 +472,12 @@ def _stage_outputs(generated_utc: str, edits: list[dict[str, str]], stage927_ok:
     ])
     applied_or_present = [edit for edit in edits if edit["status"] in {"applied", "already_present"}]
     anchor_missing = [edit for edit in edits if edit["status"] == "anchor_missing"]
-    no_closure = [path.relative_to(ROOT).as_posix() for path in FORBIDDEN_CLOSURE_PATHS if path.exists()]
+    closed_refresh = _closed_stage9_refresh_allowed()
+    no_closure = [
+        path.relative_to(ROOT).as_posix()
+        for path in FORBIDDEN_CLOSURE_PATHS
+        if path.exists() and not closed_refresh
+    ]
 
     checks = [
         {"name": "stage_9_27_package_regenerated", "passed": stage927_ok and stage927_gate.get("pass") is True, "detail": stage927_output[-500:]},
@@ -474,11 +490,19 @@ def _stage_outputs(generated_utc: str, edits: list[dict[str, str]], stage927_ok:
         {"name": "safe_source_revisions_applied", "passed": len(applied_or_present) == len(edits) and not anchor_missing, "detail": f"statuses={[edit['status'] for edit in edits]}"},
         {"name": "action_matrix_present", "passed": len(action_rows) >= 6, "detail": f"rows={len(action_rows)}"},
         {"name": "revision_log_present", "passed": bool(revision_log), "detail": "revision log assembled"},
-        {"name": "literature_calibration_present", "passed": bool(literature) and "No new reference was added" in literature, "detail": "novelty calibration recorded"},
+        {"name": "literature_calibration_present", "passed": bool(literature) and "live-cell morphodynamic trajectory-embedding prior-art citation" in literature, "detail": "novelty calibration recorded"},
         {"name": "reader_surface_hygiene_passed", "passed": stage927_gate.get("pass") is True, "detail": "Stage 9.27 package gate remains passing after source edits"},
         {"name": "package_safety_scan_clear", "passed": not package_hits, "detail": f"package_hits={package_hits}"},
         {"name": "panelforge_status_unchanged", "passed": panelforge_gate.get("rendered_file_count") == 18, "detail": f"rendered_file_count={panelforge_gate.get('rendered_file_count')}"},
-        {"name": "no_stage9_closure_started", "passed": not no_closure, "detail": f"closure_paths={no_closure}"},
+        {
+            "name": "no_stage9_closure_started",
+            "passed": not no_closure,
+            "detail": (
+                "Closed Stage 9.29 package refresh allowed existing closure surfaces"
+                if closed_refresh and not no_closure
+                else f"closure_paths={no_closure}"
+            ),
+        },
     ]
     pass_status = all(check["passed"] for check in checks)
     outputs = [path.relative_to(ROOT).as_posix() for path in OUTPUTS.values()]
@@ -613,7 +637,11 @@ def _upsert_completed_substage(memory: dict[str, Any], checks: list[dict[str, An
         ],
         "checks": checks,
     }
-    entries = [item for item in memory.get("completed_substages", []) if item.get("substage") != "9.28"]
+    entries = [
+        item
+        for item in memory.get("completed_substages", [])
+        if not (isinstance(item, dict) and item.get("substage") == "9.28") and item != "9.28"
+    ]
     entries.append(record)
     memory["completed_substages"] = entries
 
