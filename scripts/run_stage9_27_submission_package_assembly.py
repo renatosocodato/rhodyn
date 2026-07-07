@@ -990,6 +990,7 @@ Select one option, revise it to match the actual author-confirmed record, and pl
 
 
 def _manifest_json(generated_utc: str, checks: list[dict[str, Any]], package_dir: Path) -> dict[str, Any]:
+    assembly_source_commit = _git_sha()
     package_files = [
         (SUBMISSION / path.name).relative_to(ROOT).as_posix()
         for path in sorted(package_dir.glob("*"))
@@ -999,7 +1000,13 @@ def _manifest_json(generated_utc: str, checks: list[dict[str, Any]], package_dir
         "stage": "9.27",
         "title": "Submission package assembly",
         "generated_utc": generated_utc,
-        "commit": _git_sha(),
+        "assembly_source_commit": assembly_source_commit,
+        "commit": assembly_source_commit,
+        "commit_binding_scope": (
+            "The Git anchor records the repository state used as input when the package was assembled. "
+            "A final archival commit that contains the regenerated package files may be a descendant of this anchor. "
+            "Package file hashes are the content authority."
+        ),
         "source_package_root": "manuscript/nature_methods",
         "package_root": "manuscript/nature_methods/submission_package",
         "package_files": package_files,
@@ -1083,7 +1090,8 @@ def _submission_manifest(generated_utc: str) -> str:
         "# Submission package manifest",
         "",
         f"Generated UTC. {generated_utc}",
-        f"Git commit. {_git_sha()}",
+        f"Assembly source commit. {_git_sha()}",
+        "Commit-binding scope. The Git anchor records the repository state used as input when the package was assembled. A final archival commit that contains the regenerated package files may be a descendant of this anchor. Package file hashes are the content authority.",
         "",
         "| Component | File | Role |",
         "| --- | --- | --- |",

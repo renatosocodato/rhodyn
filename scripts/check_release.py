@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-import json
 import csv
+import hashlib
+import json
 import re
 import subprocess
 import sys
@@ -11,6 +12,16 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def _sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 REQUIRED_FILES = [
     "README.md",
     "LICENSE",
@@ -1355,6 +1366,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "all_stage9_gates_pass",
                 "quarantine_has_no_unresolved_blocker",
                 "package_files_present",
+                "assembly_source_commit_in_history",
                 "package_version_bound",
                 "evidence_version_bound",
                 "release_version_bound",
@@ -1381,6 +1393,39 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 9.29 must bind thirty-one package files")
             if stage9_29_gate.get("rendered_figure_file_count") != 18:
                 failures.append("Stage 9.29 must bind eighteen rendered figure files")
+            binding_path = root / "manuscript" / "nature_methods" / "stage9_closure_version_binding.json"
+            if binding_path.exists():
+                try:
+                    binding = json.loads(binding_path.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 9.29 version binding is not valid JSON: {exc}")
+                    binding = {}
+                assembly_commit = binding.get("assembly_source_commit") or binding.get("closure_commit")
+                if not assembly_commit:
+                    failures.append("Stage 9.29 version binding must record an assembly source commit")
+                else:
+                    ancestor = subprocess.run(
+                        ["git", "merge-base", "--is-ancestor", str(assembly_commit), "HEAD"],
+                        cwd=root,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        text=True,
+                        check=False,
+                    )
+                    if ancestor.returncode != 0:
+                        failures.append("Stage 9.29 assembly source commit must be in the current repository history")
+                for row in binding.get("package_files", []):
+                    rel = row.get("path")
+                    if not rel:
+                        failures.append("Stage 9.29 package file row is missing a path")
+                        continue
+                    path = root / rel
+                    if not path.exists():
+                        failures.append(f"Stage 9.29 package file listed in binding is missing: {rel}")
+                        continue
+                    expected_hash = row.get("sha256")
+                    if expected_hash and _sha256(path) != expected_hash:
+                        failures.append(f"Stage 9.29 package file hash is stale: {rel}")
         else:
             failures.append("missing Stage 9.29 closure gate")
         for rel in [

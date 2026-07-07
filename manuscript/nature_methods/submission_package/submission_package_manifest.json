@@ -1,4 +1,5 @@
 {
+  "assembly_source_commit": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
   "checks": [
     {
       "detail": "Stage 9.26 internal peer-review gate passes and points to package assembly",
@@ -152,9 +153,10 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "4ea6815463ac7a60a656a97d0273f6e78cd3430e",
+  "commit": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+  "commit_binding_scope": "The Git anchor records the repository state used as input when the package was assembled. A final archival commit that contains the regenerated package files may be a descendant of this anchor. Package file hashes are the content authority.",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T14:32:28Z",
+  "generated_utc": "2026-07-07T14:39:55Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -207,10 +209,12 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "4ea6815463ac7a60a656a97d0273f6e78cd3430e",
+    "assembly_source_commit": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+    "closure_commit": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+    "commit_binding_scope": "The Git anchor records the repository state used as input when the closure files were assembled. A final archival commit that contains the regenerated closure files may be a descendant of this anchor. Package file hashes are the content authority for the assembled submission package.",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@4ea6815463ac7a60a656a97d0273f6e78cd3430e",
+    "package_version": "stage9.29-closure@0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

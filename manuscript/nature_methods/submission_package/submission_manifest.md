@@ -1,7 +1,8 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T14:32:28Z
-Git commit. 4ea6815463ac7a60a656a97d0273f6e78cd3430e
+Generated UTC. 2026-07-07T14:39:54Z
+Assembly source commit. 0b5d64ed94eb488136bb04ef9b64c3df527d43a9
+Commit-binding scope. The Git anchor records the repository state used as input when the package was assembled. A final archival commit that contains the regenerated package files may be a descendant of this anchor. Package file hashes are the content authority.
 
 | Component | File | Role |
 | --- | --- | --- |

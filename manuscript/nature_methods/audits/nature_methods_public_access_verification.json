@@ -105,7 +105,7 @@
       "normalization": "none",
       "ok": true,
       "raw_url": "https://www.nature.com/nmeth/content",
-      "resolved_url": "https://www.nature.com/nmeth/content?error=cookies_not_supported&code=a1433c58-0329-4f71-877a-5ae1eb474a82",
+      "resolved_url": "https://www.nature.com/nmeth/content?error=cookies_not_supported&code=b487b531-de54-4f89-af25-16f7a5c4e55b",
       "source": "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
       "status_code": 200,
       "url": "https://www.nature.com/nmeth/content"
@@ -116,7 +116,7 @@
       "normalization": "none",
       "ok": true,
       "raw_url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards",
-      "resolved_url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards?error=cookies_not_supported&code=7dc23b7d-aaaf-49ea-b011-886870726217",
+      "resolved_url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards?error=cookies_not_supported&code=37ce2a58-04fc-4523-8b93-849496822235",
       "source": "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
       "status_code": 200,
       "url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards"
@@ -372,7 +372,7 @@
   "failed_urls": [],
   "failures": [],
   "forbidden_public_reference_hits": [],
-  "generated_utc": "2026-07-07T14:32:52Z",
+  "generated_utc": "2026-07-07T14:40:29Z",
   "interpretation_boundary": "This report verifies public URL accessibility for the Nature Methods submission-package surfaces. It does not upload files, alter DOI records, modify GitHub or Zenodo state, or certify journal acceptance.",
   "missing_expected_urls": [],
   "report_format": "rhodyn.stage9_public_access_verification.v1",

@@ -42,6 +42,7 @@ class Stage929ClosureAssemblyTests(unittest.TestCase):
             "all_stage9_gates_pass",
             "quarantine_has_no_unresolved_blocker",
             "package_files_present",
+            "assembly_source_commit_in_history",
             "package_version_bound",
             "evidence_version_bound",
             "release_version_bound",
@@ -59,6 +60,8 @@ class Stage929ClosureAssemblyTests(unittest.TestCase):
     def test_version_binding_records_package_evidence_release_and_figures(self) -> None:
         self.assertEqual(self.binding["software_version"], "v0.1.0")
         self.assertEqual(self.binding["pyproject_version"], "0.1.0")
+        self.assertRegex(self.binding["assembly_source_commit"], r"^[0-9a-f]{40}$")
+        self.assertIn("Package file hashes are the content authority", self.binding["commit_binding_scope"])
         self.assertEqual(self.binding["software_archive_doi"], "10.5281/zenodo.21036616")
         self.assertEqual(self.binding["software_concept_doi"], "10.5281/zenodo.21036615")
         self.assertEqual(self.binding["figure_engine"]["pinned_ref"], "v3.14.1")
@@ -67,6 +70,8 @@ class Stage929ClosureAssemblyTests(unittest.TestCase):
         self.assertTrue(self.binding["figure_status"]["all_files_exist"])
         self.assertIn("stage7.8-methods-readiness", self.binding["evidence_version"])
         self.assertIn("reference-library", self.binding["reference_version"])
+        self.assertIn("Assembly source commit.", self.report)
+        self.assertIn("Commit-binding scope.", self.report)
 
     def test_pi_review_actions_are_closed_or_submission_only(self) -> None:
         self.assertEqual(len(self.action_rows), 6)

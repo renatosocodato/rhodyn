@@ -117,6 +117,20 @@ def _git_sha() -> str:
     return result.stdout.strip() if result.returncode == 0 else "unknown"
 
 
+def _commit_is_ancestor(commit: str, descendant: str = "HEAD") -> bool:
+    if not commit or commit == "unknown":
+        return False
+    result = subprocess.run(
+        ["git", "merge-base", "--is-ancestor", commit, descendant],
+        cwd=ROOT,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    return result.returncode == 0
+
+
 def _read_json(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -283,7 +297,7 @@ def _figure_status() -> dict[str, Any]:
 def _version_binding(package_rows: list[dict[str, Any]], action_decisions: list[dict[str, str]]) -> dict[str, Any]:
     project = _read_json(PROJECT_BINDING_PATH)
     stage9_memory = _read_json(MEMORY_PATH)
-    release_commit = _git_sha()
+    assembly_source_commit = _git_sha()
     subphases = stage9_memory.get("substage_status", [])
     if not isinstance(subphases, list):
         subphases = []
@@ -296,7 +310,13 @@ def _version_binding(package_rows: list[dict[str, Any]], action_decisions: list[
     claim_freeze_version = stage9_memory.get("claim_freeze_version") or subphase_by_id.get("9.4", {}).get("claim_freeze_version")
     return {
         "generated_utc": _now(),
-        "closure_commit": release_commit,
+        "assembly_source_commit": assembly_source_commit,
+        "closure_commit": assembly_source_commit,
+        "commit_binding_scope": (
+            "The Git anchor records the repository state used as input when the closure files were assembled. "
+            "A final archival commit that contains the regenerated closure files may be a descendant of this anchor. "
+            "Package file hashes are the content authority for the assembled submission package."
+        ),
         "method": project.get("method_name"),
         "software": project.get("software_name"),
         "software_version": project.get("software_version"),
@@ -309,7 +329,7 @@ def _version_binding(package_rows: list[dict[str, Any]], action_decisions: list[
         "evidence_version": stage9_memory.get("evidence_version"),
         "claim_freeze_version": claim_freeze_version,
         "reference_version": reference_version,
-        "package_version": f"stage9.29-closure@{release_commit}",
+        "package_version": f"stage9.29-closure@{assembly_source_commit}",
         "figure_engine": project.get("figure_engine_binding", {}),
         "figure_status": _figure_status(),
         "package_files": package_rows,
@@ -362,7 +382,8 @@ Codex closed `{len(closed)}` PI-review action items from existing manuscript evi
 - Software version. `{version_binding['software_version']}`.
 - Pyproject version. `{version_binding['pyproject_version']}`.
 - Repository. `{version_binding['repository']}`.
-- Closure commit. `{version_binding['closure_commit']}`.
+- Assembly source commit. `{version_binding['assembly_source_commit']}`.
+- Commit-binding scope. {version_binding['commit_binding_scope']}
 - Software archive DOI. `{version_binding['software_archive_doi']}`.
 - Software concept DOI. `{version_binding['software_concept_doi']}`.
 - Evidence version. `{version_binding['evidence_version']}`.
@@ -534,7 +555,9 @@ def _update_submission_package_manifest(version_binding: dict[str, Any]) -> None
     payload["pi_review_action_decisions"] = "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv"
     payload["not_started"] = []
     payload["version_binding"] = {
+        "assembly_source_commit": version_binding["assembly_source_commit"],
         "closure_commit": version_binding["closure_commit"],
+        "commit_binding_scope": version_binding["commit_binding_scope"],
         "software_version": version_binding["software_version"],
         "software_archive_doi": version_binding["software_archive_doi"],
         "package_version": version_binding["package_version"],
@@ -584,7 +607,9 @@ def _update_stage9_memory(version_binding: dict[str, Any]) -> None:
     memory["stage9_closure_started"] = True
     memory["stage9_closed"] = True
     memory["closure_version_binding"] = {
+        "assembly_source_commit": version_binding["assembly_source_commit"],
         "closure_commit": version_binding["closure_commit"],
+        "commit_binding_scope": version_binding["commit_binding_scope"],
         "package_version": version_binding["package_version"],
         "software_version": version_binding["software_version"],
         "software_archive_doi": version_binding["software_archive_doi"],
@@ -730,6 +755,7 @@ def _build_checks(version_binding: dict[str, Any], action_decisions: list[dict[s
         {"name": "all_stage9_gates_pass", "passed": stage9_gates_pass, "detail": f"failing_gates={failing_gates}"},
         {"name": "quarantine_has_no_unresolved_blocker", "passed": not quarantine_files, "detail": f"quarantine_files={quarantine_files}"},
         {"name": "package_files_present", "passed": package_files_present, "detail": f"package_file_count={len(package_rows)}"},
+        {"name": "assembly_source_commit_in_history", "passed": _commit_is_ancestor(version_binding.get("assembly_source_commit", "")), "detail": str(version_binding.get("assembly_source_commit"))},
         {"name": "package_version_bound", "passed": bool(version_binding.get("package_version")), "detail": str(version_binding.get("package_version"))},
         {"name": "evidence_version_bound", "passed": bool(version_binding.get("evidence_version")), "detail": str(version_binding.get("evidence_version"))},
         {"name": "release_version_bound", "passed": version_binding.get("software_version") == "v0.1.0" and version_binding.get("software_archive_doi") == "10.5281/zenodo.21036616", "detail": f"{version_binding.get('software_version')} {version_binding.get('software_archive_doi')}"},
@@ -752,13 +778,16 @@ def main() -> int:
     action_decisions = _action_decisions()
     _write_csv(OUTPUTS["action_decisions"], action_decisions, ACTION_DECISION_FIELDS)
 
+    _update_submission_manifest()
+    package_rows = _package_file_rows()
+    version_binding = _version_binding(package_rows, action_decisions)
+    _update_submission_package_manifest(version_binding)
+
     package_rows = _package_file_rows()
     version_binding = _version_binding(package_rows, action_decisions)
     _write_json(OUTPUTS["version_binding"], version_binding)
     _write_text(OUTPUTS["completion_report"], _completion_report(version_binding, action_decisions))
 
-    _update_submission_manifest()
-    _update_submission_package_manifest(version_binding)
     _update_registry()
     _update_stage9_memory(version_binding)
     _update_roadmap_memory(version_binding)
@@ -770,7 +799,7 @@ def main() -> int:
         "status": "pass" if all(item["passed"] for item in checks) else "fail",
         "pass": all(item["passed"] for item in checks),
         "generated_utc": _now(),
-        "git_sha": version_binding["closure_commit"],
+        "git_sha": version_binding["assembly_source_commit"],
         "next_substage": "none",
         "closure_status": "complete_stage9_closed_version_bound",
         "action_decision_rows": len(action_decisions),
@@ -778,6 +807,7 @@ def main() -> int:
         "package_file_count": len(package_rows),
         "rendered_figure_file_count": version_binding["figure_status"]["rendered_file_count"],
         "version_binding": {
+            "assembly_source_commit": version_binding["assembly_source_commit"],
             "package_version": version_binding["package_version"],
             "software_version": version_binding["software_version"],
             "software_archive_doi": version_binding["software_archive_doi"],

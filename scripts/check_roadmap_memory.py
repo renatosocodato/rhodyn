@@ -1383,6 +1383,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "all_stage9_gates_pass",
             "quarantine_has_no_unresolved_blocker",
             "package_files_present",
+            "assembly_source_commit_in_history",
             "package_version_bound",
             "evidence_version_bound",
             "release_version_bound",
