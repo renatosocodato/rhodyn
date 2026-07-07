@@ -847,7 +847,7 @@
           "status": "complete_pi_review_packet"
         },
         {
-          "closure_version": "stage9.29-closure@94dcc5093f4f00e30a2363cdd130f100ebe8cd56",
+          "closure_version": "stage9.29-closure@976dc7c1473b63babbdd46ed3cfa1357e3607e04",
           "evidence": "manuscript/nature_methods/gate_verdicts/9.29.json",
           "gate": "every Stage 9 gate passes; quarantine has no unresolved blocker; package, evidence, and release versions are bound",
           "goal": "Close Stage 9 with package, evidence, release, and limitation versions bound.",

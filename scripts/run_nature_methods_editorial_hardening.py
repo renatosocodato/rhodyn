@@ -227,6 +227,15 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "recommended_action": "Complete the author declarations before upload. Do not infer author attestations from repository files.",
             "promotion_target": "submission_package/author_declarations_REQUIRED.md.",
         },
+        {
+            "risk_id": "NM-DESK-015",
+            "editorial_risk": "The cover letter could miss upload-facing statements about related manuscripts, prior editor discussions, dual consideration, author approval, or optional reviewer suggestions.",
+            "nature_methods_requirement": "Nature Methods asks cover letters to explain importance for its diverse readership and to disclose related manuscripts, prior editor discussions, double-blind metadata when applicable, and optional reviewer suggestions. Springer Nature also expects dual-consideration and author-approval statements.",
+            "current_evidence": "The editorial pitch now includes a Nature Methods cover-letter draft and an author-confirmed upload checklist for related manuscripts, prior editor discussions, dual consideration, author approval, double-blind review, and reviewer suggestions or exclusions.",
+            "status": "hardened_in_current_text" if "Cover-letter upload checklist" in package_pitch and "not under consideration by another journal" in package_pitch and "Prior editor discussions" in package_pitch else "needs_revision",
+            "recommended_action": "Complete the cover-letter checklist before upload, using only author-confirmed statements.",
+            "promotion_target": "submission_package/editorial_pitch_for_submission.md.",
+        },
     ]
 
 
@@ -296,6 +305,7 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "- The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.",
             "- The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.",
             "- The author-declarations checklist is included in the submission package as `author_declarations_REQUIRED.md`.",
+            "- The cover-letter draft includes an author-confirmed upload checklist for related manuscripts, prior editor discussions, dual-consideration, author approval, double-blind review, and optional reviewer suggestions.",
             "- No title, Abstract, Results, Methods, figure, or data changes were made.",
             "- The official Reporting Summary and author declarations remain human submission actions.",
             "",

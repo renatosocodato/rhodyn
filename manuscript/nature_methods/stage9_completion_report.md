@@ -23,13 +23,13 @@ Codex closed `5` PI-review action items from existing manuscript evidence and re
 - Software version. `v0.1.0`.
 - Pyproject version. `0.1.0`.
 - Repository. `https://github.com/renatosocodato/rhodyn`.
-- Closure commit. `94dcc5093f4f00e30a2363cdd130f100ebe8cd56`.
+- Closure commit. `976dc7c1473b63babbdd46ed3cfa1357e3607e04`.
 - Software archive DOI. `10.5281/zenodo.21036616`.
 - Software concept DOI. `10.5281/zenodo.21036615`.
 - Evidence version. `stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc`.
 - Claim-freeze version. `claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af`.
 - Reference version. `reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81`.
-- Package version. `stage9.29-closure@94dcc5093f4f00e30a2363cdd130f100ebe8cd56`.
+- Package version. `stage9.29-closure@976dc7c1473b63babbdd46ed3cfa1357e3607e04`.
 - PanelForge version. `v3.14.1` with DOI `10.5281/zenodo.20811171`.
 
 ## Figure and package state
@@ -40,24 +40,24 @@ PanelForge remains unchanged in this closure step. The package has `18` rendered
 |---|---:|---:|
 | `manuscript/nature_methods/submission_package/main_text_for_submission.md` | `26d096530df0` | `36158` |
 | `manuscript/nature_methods/submission_package/supplementary_information_for_submission.md` | `d5bf3eadafa0` | `11912` |
-| `manuscript/nature_methods/submission_package/submission_manifest.md` | `29930ae1b9f8` | `2900` |
-| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `1e62d79e7278` | `2870` |
+| `manuscript/nature_methods/submission_package/submission_manifest.md` | `ff72e514e084` | `2583` |
+| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `47771a571d76` | `2570` |
 | `manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md` | `9fc7e15e22fd` | `2079` |
-| `manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md` | `94fba2281dd6` | `4692` |
+| `manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md` | `196ee35bb536` | `6512` |
 | `manuscript/nature_methods/submission_package/software_reporting_checklist.md` | `34d4d62ebbca` | `4048` |
 | `manuscript/nature_methods/submission_package/article_fit_checklist.md` | `e98ff50a846f` | `2408` |
 | `manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md` | `93a5448c6ff8` | `2267` |
 | `manuscript/nature_methods/submission_package/code_for_review.md` | `669b4108eea3` | `5472` |
-| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `82eb5ac1fb00` | `2470` |
+| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `5fcc351c6e4e` | `2492` |
 | `manuscript/nature_methods/submission_package/figure_file_inventory.csv` | `e5230d7be7fb` | `4121` |
 | `manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv` | `7cfc0ef56a00` | `6267` |
 | `manuscript/nature_methods/submission_package/references_for_submission.bib` | `c37151ef73f2` | `6973` |
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | `b83b8d2f639e` | `1448` |
-| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `da4a0e182f49` | `6320` |
+| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `e47eda38c05f` | `5481` |
 | `manuscript/nature_methods/submission_package/pi_review_packet.md` | `283a56dc3f67` | `7833` |
 | `manuscript/nature_methods/submission_package/pi_review_action_matrix.csv` | `e3acfd583515` | `2203` |
-| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `c1a65bf119fb` | `1639` |
-| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `923d81a190b4` | `1534` |
+| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `3ff376164524` | `1639` |
+| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `362ebab9dd91` | `1534` |
 
 ## Scientific boundary
 

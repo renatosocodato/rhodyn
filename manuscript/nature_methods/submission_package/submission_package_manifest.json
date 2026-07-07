@@ -66,7 +66,7 @@
       "passed": true
     },
     {
-      "detail": "Editorial pitch includes cover-letter and presubmission-inquiry drafts",
+      "detail": "Editorial pitch includes cover-letter, author-confirmation, and presubmission-inquiry drafts",
       "name": "editorial_pitch_present",
       "passed": true
     },
@@ -97,9 +97,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "cf8ce230d1adbc55519928be47e5cb619fcb9e5d",
+  "commit": "976dc7c1473b63babbdd46ed3cfa1357e3607e04",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T11:47:59Z",
+  "generated_utc": "2026-07-07T11:56:58Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -141,10 +141,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "94dcc5093f4f00e30a2363cdd130f100ebe8cd56",
+    "closure_commit": "976dc7c1473b63babbdd46ed3cfa1357e3607e04",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@94dcc5093f4f00e30a2363cdd130f100ebe8cd56",
+    "package_version": "stage9.29-closure@976dc7c1473b63babbdd46ed3cfa1357e3607e04",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }
