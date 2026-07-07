@@ -96,6 +96,11 @@
       "passed": true
     },
     {
+      "detail": "Two-minute editor triage simulation checks first-pass method fit, validation breadth, and claim boundaries",
+      "name": "editor_two_minute_triage_simulation_present",
+      "passed": true
+    },
+    {
       "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
       "name": "software_reporting_checklist_present",
       "passed": true
@@ -122,9 +127,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "34956aed446b1c813b052d0fd656986ea709245e",
+  "commit": "025584f2fe1e0a91e7fa15c3bf37478fd00aeab2",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T13:22:53Z",
+  "generated_utc": "2026-07-07T13:32:08Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -136,6 +141,7 @@
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
+    "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
     "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -171,10 +177,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "34956aed446b1c813b052d0fd656986ea709245e",
+    "closure_commit": "025584f2fe1e0a91e7fa15c3bf37478fd00aeab2",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@34956aed446b1c813b052d0fd656986ea709245e",
+    "package_version": "stage9.29-closure@025584f2fe1e0a91e7fa15c3bf37478fd00aeab2",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

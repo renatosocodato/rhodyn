@@ -28,6 +28,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         cls.reporting_summary_answer_bank = (PACKAGE / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         cls.prior_art_positioning = (PACKAGE / "prior_art_positioning_matrix.md").read_text(encoding="utf-8")
         cls.editor_objection_response = (PACKAGE / "editor_objection_response_map.md").read_text(encoding="utf-8")
+        cls.editor_two_minute_triage = (PACKAGE / "editor_two_minute_triage_simulation.md").read_text(encoding="utf-8")
         with (PACKAGE / "figure_file_inventory.csv").open(newline="", encoding="utf-8") as handle:
             cls.figure_rows = list(csv.DictReader(handle))
         with (PACKAGE / "source_data_and_statistics_inventory.csv").open(newline="", encoding="utf-8") as handle:
@@ -59,6 +60,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "editorial_pitch_present",
             "prior_art_positioning_matrix_present",
             "editor_objection_response_map_present",
+            "editor_two_minute_triage_simulation_present",
             "software_reporting_checklist_present",
             "article_fit_checklist_present",
             "author_declarations_present",
@@ -151,6 +153,12 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("does not add evidence, citations, figures, datasets, performance claims, or manuscript text", self.editor_objection_response)
         self.assertIn("If answering an objection would require new data, new benchmarking, or a stronger biological claim", self.editor_objection_response)
         self.assertIn("Editor-objection response map | ready", self.checklist)
+        self.assertIn("Two-minute editor triage simulation", self.editor_two_minute_triage)
+        self.assertIn("does not add evidence, citations, analyses, figures, datasets, performance claims, or manuscript text", self.editor_two_minute_triage)
+        self.assertIn("What an editor can see quickly", self.editor_two_minute_triage)
+        self.assertIn("The current package should be readable as a Nature Methods computational-methods Article", self.editor_two_minute_triage)
+        self.assertIn("If an editor can answer these three questions in the first two minutes", self.editor_two_minute_triage)
+        self.assertIn("Two-minute editor triage simulation | ready", self.checklist)
         self.assertIn("Author declarations | registered", self.checklist)
         self.assertIn("AI disclosure draft | registered", self.checklist)
         self.assertIn("Title and author metadata | registered", self.checklist)
