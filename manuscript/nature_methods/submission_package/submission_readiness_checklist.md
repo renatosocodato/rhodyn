@@ -11,6 +11,7 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 | Code for review | ready | `code_for_review.md` records release identity and reproducibility commands. |
 | Editor-triage note | ready | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |
 | Editorial pitch | ready | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |
+| Software-reporting checklist | ready | `software_reporting_checklist.md` maps RhoDyn to Nature Methods software and algorithm reporting expectations. |
 | Reader-surface hygiene | ready | Main manuscript and Supplementary Information surfaces are free of internal IDs and build-language tokens. |
 | Package safety scan | ready | Package files were scanned for local machine paths and token-like strings. |
 | Consistency audit | ready | Package-level consistency checks passed. |

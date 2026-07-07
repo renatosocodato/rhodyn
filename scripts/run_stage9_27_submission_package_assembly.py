@@ -52,6 +52,7 @@ OUTPUTS = {
     "readiness": SUBMISSION / "submission_readiness_checklist.md",
     "editor_triage_note": SUBMISSION / "editor_triage_note_for_cover_letter.md",
     "editorial_pitch": SUBMISSION / "editorial_pitch_for_submission.md",
+    "software_reporting_checklist": SUBMISSION / "software_reporting_checklist.md",
     "code_review": SUBMISSION / "code_for_review.md",
     "package_audit": SUBMISSION / "package_consistency_audit.md",
     "figure_inventory": SUBMISSION / "figure_file_inventory.csv",
@@ -397,6 +398,28 @@ We would value the editors' view on whether this framing fits Nature Methods as 
 """
 
 
+def _software_reporting_checklist() -> str:
+    return """# Nature Methods software-reporting checklist
+
+This checklist maps the current RhoDyn package to Nature Methods software and algorithm reporting expectations. It is a review-support surface for the submitted computational method and does not add new analyses, figures, datasets, or manuscript claims.
+
+Official guidance used. Nature Methods Article content type expects a novel method or tool with a full technical description and strong validation for performance, reproducibility, general applicability, and potential for discovering new biology. Nature Methods software guidance asks that central unpublished software be supplied in usable form, with source code or an equivalent mathematical/algorithmic description, documentation, sample data, expected output, version information, and license terms where appropriate.
+
+| Reporting item | RhoDyn package evidence | Status | Residual action |
+| --- | --- | --- | --- |
+| Source code supplied for review | Public GitHub release `v0.1.0`, pinned commit `4b1211cadd1fb3af34a1ec3e21f62383ffd9e368`, and Zenodo version DOI `10.5281/zenodo.21036616`. | ready | Verify reviewer access to the public repository at upload. |
+| Full algorithmic or mathematical description | Main Online Methods, Supplementary Information, `docs/stage7_method_specification.md`, `docs/stage7_limitations_matrix.md`, and `docs/api_reference.md` define input objects, residence windows, bounded coupling, reserve-like summaries, routed-output comparisons, uncertainty summaries, and failure modes. | ready | Preserve the distinction between declared windows and automatic state discovery during final edits. |
+| Installation and user documentation | `README.md`, `docs/index.md`, `docs/input_schema_guide.md`, `docs/cli_reference.md`, `docs/api_reference.md`, `docs/example_workflows.md`, and `docs/reproducibility_card.md` describe installation, schemas, CLI/API use, and clean-room checks. | ready | Confirm final upload links point to the versioned release. |
+| Sample data supplied | `examples/` plus public-derived case-study tables used by Stage 7 demonstrations provide trajectory, endpoint, reserve-like, and bounded-coupling inputs without redistributing controlled raw material. | ready | Do not add private or manuscript-controlled raw data to the software package. |
+| Expected outputs documented | `manuscript/nature_methods/ledgers/reproducibility_command_index.md`, `code_for_review.md`, and Stage 7 gate reports define commands and expected outputs for synthetic cases, public signaling, endpoint/reserve/routing demonstrations, held-out validation, documentation, backend/workbench parity, and figure rendering. | ready | Keep command outputs tied to the cited release tag. |
+| Software version and parameter recording | Release identity, command index, exported analysis bundles, backend job model, and package manifests preserve input schema, parameter choices, software version, checksums, and report exports. | ready | Check final reviewer bundle retains the command index. |
+| License and reuse terms | RhoDyn is Apache-2.0. PanelForge figure rendering is MIT and pinned to `panelforge-figures` v3.14.1 with DOI `10.5281/zenodo.20811171`. | ready | Confirm license files remain in the release archive. |
+| Web or service component | Backend and workbench surfaces are included as reproducible local/service code with parity tests. No hosted web service is claimed as required for evaluation. | ready | If a hosted demo is later offered, provide anonymous reviewer access separately. |
+| Restrictions and boundaries | PyPI publication is not claimed for v0.1.0. RhoDyn is not presented as image segmentation, raw microscopy ingestion, disease prediction, or automatic mechanism discovery. | ready | Keep these boundaries in any cover-letter or portal wording. |
+| Journal upload forms | Reporting Summary and portal metadata are registered as human submission actions rather than repository-derived scientific evidence. | human action | Complete the official Springer Nature forms before submission. |
+"""
+
+
 def _manifest_json(generated_utc: str, checks: list[dict[str, Any]], package_dir: Path) -> dict[str, Any]:
     package_files = [
         (SUBMISSION / path.name).relative_to(ROOT).as_posix()
@@ -436,6 +459,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Code for review | {'ready' if check_map.get('code_for_review_present') else 'blocked'} | `code_for_review.md` records release identity and reproducibility commands. |",
         f"| Editor-triage note | {'ready' if check_map.get('editor_triage_note_present') else 'blocked'} | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |",
         f"| Editorial pitch | {'ready' if check_map.get('editorial_pitch_present') else 'blocked'} | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |",
+        f"| Software-reporting checklist | {'ready' if check_map.get('software_reporting_checklist_present') else 'blocked'} | `software_reporting_checklist.md` maps RhoDyn to Nature Methods software and algorithm reporting expectations. |",
         f"| Reader-surface hygiene | {'ready' if check_map.get('reader_surface_hygiene_passed') else 'blocked'} | Main manuscript and Supplementary Information surfaces are free of internal IDs and build-language tokens. |",
         f"| Package safety scan | {'ready' if check_map.get('package_safety_scan_clear') else 'blocked'} | Package files were scanned for local machine paths and token-like strings. |",
         f"| Consistency audit | {'ready' if check_map.get('package_consistency_audit_passed') else 'blocked'} | Package-level consistency checks passed. |",
@@ -456,6 +480,7 @@ def _submission_manifest(generated_utc: str) -> str:
         ("Code for review", "code_for_review.md", "Release identity and reproducibility-command surface."),
         ("Editor-triage note", "editor_triage_note_for_cover_letter.md", "Cover-letter-ready Nature Methods fit, validation, and claim-boundary note."),
         ("Editorial pitch", "editorial_pitch_for_submission.md", "Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage."),
+        ("Software-reporting checklist", "software_reporting_checklist.md", "Nature Methods software and algorithm reporting cross-check."),
         ("Readiness checklist", "submission_readiness_checklist.md", "Collaborator handoff checklist."),
         ("Consistency audit", "package_consistency_audit.md", "Package assembly checks."),
     ]
@@ -587,6 +612,14 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
             "detail": "Editorial pitch includes cover-letter and presubmission-inquiry drafts",
         },
         {
+            "name": "software_reporting_checklist_present",
+            "passed": (package_dir / "software_reporting_checklist.md").exists()
+            and "Nature Methods software-reporting checklist" in (package_dir / "software_reporting_checklist.md").read_text(encoding="utf-8")
+            and "Source code supplied for review" in (package_dir / "software_reporting_checklist.md").read_text(encoding="utf-8")
+            and "Sample data supplied" in (package_dir / "software_reporting_checklist.md").read_text(encoding="utf-8"),
+            "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
+        },
+        {
             "name": "package_safety_scan_clear",
             "passed": not package_hits,
             "detail": f"package_hits={package_hits}",
@@ -692,6 +725,7 @@ def _stage_outputs(generated_utc: str) -> tuple[dict[str, Any], dict[str, Any]]:
     _write_text(staging_submission / "code_for_review.md", _code_for_review())
     _write_text(staging_submission / "editor_triage_note_for_cover_letter.md", _editor_triage_note())
     _write_text(staging_submission / "editorial_pitch_for_submission.md", _editorial_pitch())
+    _write_text(staging_submission / "software_reporting_checklist.md", _software_reporting_checklist())
     _write_text(staging_submission / "references_for_submission.bib", _submission_bib())
     _write_csv(
         staging_submission / "figure_file_inventory.csv",
@@ -852,7 +886,7 @@ Current status. Stage 9.27 submission package assembly complete.
 
 The workspace now contains the authorized manuscript components through collaborator-review package assembly. Evidence intake, venue guidance, methods-paper corpus analysis, narrative spine, claim freeze, paragraph planning, figure planning, deterministic main-figure rendering, supplementary display planning, section contracts, front matter, Results, Introduction, Discussion, Methods, availability statements, Supplementary Methods, supplementary table/source-data binding, reference audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review, and submission package assembly are present.
 
-The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
+The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/software_reporting_checklist.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
 
 The official Springer Nature Reporting Summary form remains a human submission action. The PI review packet and Stage 9 closure report have not started.
 

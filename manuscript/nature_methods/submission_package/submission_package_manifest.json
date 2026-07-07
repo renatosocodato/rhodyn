@@ -66,6 +66,11 @@
       "passed": true
     },
     {
+      "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
+      "name": "software_reporting_checklist_present",
+      "passed": true
+    },
+    {
       "detail": "package_hits=[]",
       "name": "package_safety_scan_clear",
       "passed": true
@@ -82,9 +87,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "768deca3d679af02fc9536638dc6361d85cf4f21",
+  "commit": "d1b48ec06586d0749f95d937d24dec2d22f28619",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T11:18:20Z",
+  "generated_utc": "2026-07-07T11:24:15Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -103,6 +108,7 @@
     "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
     "manuscript/nature_methods/submission_package/references_for_submission.bib",
     "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
     "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
     "manuscript/nature_methods/submission_package/submission_manifest.md",
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
@@ -123,10 +129,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "768deca3d679af02fc9536638dc6361d85cf4f21",
+    "closure_commit": "d1b48ec06586d0749f95d937d24dec2d22f28619",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@768deca3d679af02fc9536638dc6361d85cf4f21",
+    "package_version": "stage9.29-closure@d1b48ec06586d0749f95d937d24dec2d22f28619",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

@@ -30,6 +30,7 @@ HARDENING_REPORT = AUDITS / "nature_methods_editorial_hardening_report.md"
 TRIAGE_NOTE = STAGING / "nature_methods_editor_triage_note_draft.md"
 PACKAGE_TRIAGE_NOTE = SUBMISSION / "editor_triage_note_for_cover_letter.md"
 PACKAGE_EDITORIAL_PITCH = SUBMISSION / "editorial_pitch_for_submission.md"
+PACKAGE_SOFTWARE_CHECKLIST = SUBMISSION / "software_reporting_checklist.md"
 PRIOR_ART_NOTE = STAGING / "live_cell_prior_art_candidate_for_promotion.md"
 
 
@@ -74,6 +75,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
     figure_legends_present = "### Main figure legends" in main_text and "#### Figure 6" in main_text
     package_triage = _read(PACKAGE_TRIAGE_NOTE)
     package_pitch = _read(PACKAGE_EDITORIAL_PITCH)
+    package_software = _read(PACKAGE_SOFTWARE_CHECKLIST)
     invalid_input_language = (
         "validation issues" in methods
         and "missing time units" in methods
@@ -184,6 +186,15 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "recommended_action": "Use the package-bound editorial pitch as the starting point for the final cover letter or presubmission inquiry after author approval.",
             "promotion_target": "submission_package/editorial_pitch_for_submission.md.",
         },
+        {
+            "risk_id": "NM-DESK-012",
+            "editorial_risk": "Software and algorithm reporting evidence may be too distributed across code, docs, Methods, and package ledgers for a fast reviewer or editor to evaluate.",
+            "nature_methods_requirement": "Central software should be supplied in usable form with source code or equivalent algorithmic description, documentation, sample data, expected outputs, version information, and license terms.",
+            "current_evidence": "The package now includes a Nature Methods software-reporting checklist that maps source code, mathematical description, documentation, sample data, expected outputs, versioning, license, service scope, and restrictions to existing RhoDyn surfaces.",
+            "status": "hardened_in_current_text" if "Source code supplied for review" in package_software and "Sample data supplied" in package_software and "Expected outputs documented" in package_software else "needs_revision",
+            "recommended_action": "Keep the software-reporting checklist with the package so software review can start from a single evidence map.",
+            "promotion_target": "submission_package/software_reporting_checklist.md.",
+        },
     ]
 
 
@@ -250,6 +261,7 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "- The live-cell morphodynamic prior-art citation has been promoted and renumbered across the current package.",
             "- The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.",
             "- The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.",
+            "- The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.",
             "- No title, Abstract, Results, Methods, figure, or data changes were made.",
             "- The official Reporting Summary remains a human submission action.",
             "",
@@ -336,6 +348,7 @@ def run() -> dict[str, object]:
             "triage_note": TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_triage_note": PACKAGE_TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_editorial_pitch": PACKAGE_EDITORIAL_PITCH.relative_to(ROOT).as_posix(),
+            "package_software_reporting_checklist": PACKAGE_SOFTWARE_CHECKLIST.relative_to(ROOT).as_posix(),
             "prior_art_note": PRIOR_ART_NOTE.relative_to(ROOT).as_posix(),
         },
         "scope": "Editorial hardening addendum only. No data, figures, model outputs, manuscript claims, or closed package files were changed.",

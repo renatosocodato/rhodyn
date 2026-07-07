@@ -93,6 +93,7 @@
     "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
     "manuscript/nature_methods/submission_package/references_for_submission.bib",
     "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
     "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
     "manuscript/nature_methods/submission_package/submission_manifest.md",
     "manuscript/nature_methods/submission_package/submission_package_manifest.json",
@@ -110,9 +111,9 @@
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
   "closure_version_binding": {
     "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-    "closure_commit": "768deca3d679af02fc9536638dc6361d85cf4f21",
+    "closure_commit": "d1b48ec06586d0749f95d937d24dec2d22f28619",
     "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
-    "package_version": "stage9.29-closure@768deca3d679af02fc9536638dc6361d85cf4f21",
+    "package_version": "stage9.29-closure@d1b48ec06586d0749f95d937d24dec2d22f28619",
     "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
@@ -1917,6 +1918,11 @@
           "passed": true
         },
         {
+          "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
+          "name": "software_reporting_checklist_present",
+          "passed": true
+        },
+        {
           "detail": "package_hits=[]",
           "name": "package_safety_scan_clear",
           "passed": true
@@ -1946,6 +1952,7 @@
         "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
         "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
         "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
+        "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
         "manuscript/nature_methods/submission_package/code_for_review.md",
         "manuscript/nature_methods/submission_package/package_consistency_audit.md",
         "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
@@ -2096,7 +2103,7 @@
     "No Stage 9 completion report is created in this pass.",
     "The package now contains the PI review packet, action matrix, revision log, and literature calibration record."
   ],
-  "generated_utc": "2026-07-07T11:18:19Z",
+  "generated_utc": "2026-07-07T11:24:15Z",
   "internal_peer_review_started": true,
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
@@ -3132,6 +3139,11 @@
     {
       "detail": "Editorial pitch includes cover-letter and presubmission-inquiry drafts",
       "name": "editorial_pitch_present",
+      "passed": true
+    },
+    {
+      "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
+      "name": "software_reporting_checklist_present",
       "passed": true
     },
     {
