@@ -22,12 +22,12 @@
       "passed": true
     },
     {
-      "detail": "9e2b522a0fff715af290a5fa72bb593d2b47eded",
+      "detail": "8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c",
       "name": "assembly_source_commit_in_history",
       "passed": true
     },
     {
-      "detail": "stage9.29-closure@9e2b522a0fff715af290a5fa72bb593d2b47eded",
+      "detail": "stage9.29-closure@8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c",
       "name": "package_version_bound",
       "passed": true
     },
@@ -78,8 +78,8 @@
     }
   ],
   "closure_status": "complete_stage9_closed_version_bound",
-  "generated_utc": "2026-07-07T17:00:54Z",
-  "git_sha": "9e2b522a0fff715af290a5fa72bb593d2b47eded",
+  "generated_utc": "2026-07-07T17:17:39Z",
+  "git_sha": "8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c",
   "human_submission_action_rows": 1,
   "next_substage": "none",
   "outputs": {
@@ -95,10 +95,10 @@
   "status": "pass",
   "substage": "9.29",
   "version_binding": {
-    "assembly_source_commit": "9e2b522a0fff715af290a5fa72bb593d2b47eded",
+    "assembly_source_commit": "8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c",
     "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
     "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
-    "package_version": "stage9.29-closure@9e2b522a0fff715af290a5fa72bb593d2b47eded",
+    "package_version": "stage9.29-closure@8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c",
     "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"

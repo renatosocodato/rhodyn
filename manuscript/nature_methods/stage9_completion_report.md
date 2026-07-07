@@ -23,14 +23,14 @@ Codex closed `5` PI-review action items from existing manuscript evidence and re
 - Software version. `v0.1.0`.
 - Pyproject version. `0.1.0`.
 - Repository. `https://github.com/renatosocodato/rhodyn`.
-- Assembly source commit. `9e2b522a0fff715af290a5fa72bb593d2b47eded`.
+- Assembly source commit. `8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c`.
 - Commit-binding scope. The Git anchor records the repository state used as input when the closure files were assembled. A final archival commit that contains the regenerated closure files may be a descendant of this anchor. Package file hashes are the content authority for the assembled submission package.
 - Software archive DOI. `10.5281/zenodo.21036616`.
 - Software concept DOI. `10.5281/zenodo.21036615`.
 - Evidence version. `stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc`.
 - Claim-freeze version. `claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af`.
 - Reference version. `reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81`.
-- Package version. `stage9.29-closure@9e2b522a0fff715af290a5fa72bb593d2b47eded`.
+- Package version. `stage9.29-closure@8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c`.
 - PanelForge version. `v3.14.1` with DOI `10.5281/zenodo.20811171`.
 
 ## Figure and package state
@@ -66,7 +66,7 @@ PanelForge remains unchanged in this closure step. The package has `18` rendered
 | `manuscript/nature_methods/submission_package/references_for_submission.bib` | `c37151ef73f2` | `6973` |
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | `b83b8d2f639e` | `1448` |
 | `manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` | `2b5fac1cbf22` | `9335` |
-| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `e54b243a8dde` | `11008` |
+| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `53a249d7da10` | `11008` |
 | `manuscript/nature_methods/submission_package/pi_review_packet.md` | `283a56dc3f67` | `7833` |
 | `manuscript/nature_methods/submission_package/pi_review_action_matrix.csv` | `e3acfd583515` | `2203` |
 | `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `cdfdb82ddcbf` | `1639` |

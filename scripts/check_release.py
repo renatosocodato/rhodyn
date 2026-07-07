@@ -614,6 +614,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.4 sealed held-out validation complete; Stage 10.5 method-first figure architecture not started",
             "Stage 10.5 method-first figure architecture complete; Stage 10.6 manuscript-pitch transformation not started",
             "Stage 10.6 manuscript-pitch transformation complete; Stage 10.7 benchmark-ready release candidate not started",
+            "Stage 10.7 benchmark-ready release candidate complete; Stage 10.8 adversarial EIC red-team simulation not started",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -634,8 +635,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_6_complete_manuscript_pitch_transformation":
-                failures.append("roadmap execution memory does not mark Stage 10.6 manuscript-pitch transformation as complete")
+            if stage10.get("status") != "stage10_7_complete_benchmark_release_candidate":
+                failures.append("roadmap execution memory does not mark Stage 10.7 benchmark release candidate as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -691,6 +692,14 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "manuscript/nature_methods/stage10_6/stage10_6_claim_boundary_audit.tsv",
                 "case_studies/stage10_manuscript_pitch/stage10_6_gate_report.json",
                 "case_studies/stage10_manuscript_pitch/stage10_6_manuscript_pitch_brief.md",
+                "docs/stage10_7_benchmark_release_candidate.md",
+                "scripts/run_stage10_7_benchmark_release_candidate.py",
+                "tests/test_stage10_7_benchmark_release_candidate.py",
+                "case_studies/stage10_release_candidate/stage10_7_reproducibility_commands.tsv",
+                "case_studies/stage10_release_candidate/stage10_7_checksum_manifest.tsv",
+                "case_studies/stage10_release_candidate/stage10_7_archive_manifest.json",
+                "case_studies/stage10_release_candidate/stage10_7_gate_report.json",
+                "case_studies/stage10_release_candidate/stage10_7_release_candidate_brief.md",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -808,6 +817,25 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                         failures.append("Stage 10.6 must retain six method-first Results subsections")
             else:
                 failures.append("Stage 10.6 manuscript-pitch report is missing")
+            stage10_release_gate = root / "case_studies" / "stage10_release_candidate" / "stage10_7_gate_report.json"
+            if stage10_release_gate.exists():
+                try:
+                    release_payload = json.loads(stage10_release_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.7 release-candidate report is not valid JSON: {exc}")
+                else:
+                    if release_payload.get("status") != "pass":
+                        failures.append("Stage 10.7 release-candidate report must pass")
+                    gates = release_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.7 release-candidate gates must all pass")
+                    summary = release_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("reproducibility_command_count", 0) < 9:
+                        failures.append("Stage 10.7 must retain at least nine reproducibility commands")
+                    if not isinstance(summary, dict) or summary.get("checksum_row_count", 0) < 50:
+                        failures.append("Stage 10.7 checksum manifest must cover at least fifty Stage 10 artifacts")
+            else:
+                failures.append("Stage 10.7 release-candidate report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

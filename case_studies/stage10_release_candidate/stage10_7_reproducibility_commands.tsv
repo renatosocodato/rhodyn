@@ -1,0 +1,10 @@
+step	stage	command	purpose	expected_outputs	fresh_clone_ready
+1	10.1	python3 scripts/run_stage10_1_method_object_v2.py	Regenerate method-object decisions, fixtures, and gate report.	case_studies/stage10_method_object_v2/stage10_1_method_object_gate_report.json	yes
+2	10.2	python3 scripts/run_stage10_2_named_benchmarking.py	Regenerate named-baseline benchmark tables and boundary report.	case_studies/stage10_named_benchmarks/stage10_2_named_benchmark_report.json	yes
+3	10.3	python3 scripts/run_stage10_3_public_biological_breadth.py	Regenerate public-system breadth matrix and source-access records.	case_studies/stage10_public_breadth/stage10_3_public_breadth_report.json	yes
+4	10.4	python3 scripts/run_stage10_4_heldout_validation.py	Regenerate fixed-rule held-out validation decisions.	case_studies/stage10_heldout_validation/stage10_4_gate_report.json	yes
+5	10.5	python3 scripts/run_stage10_5_figure_architecture.py	Regenerate method-first figure architecture and panel-evidence crosswalk.	case_studies/stage10_figure_architecture/stage10_5_gate_report.json	yes
+6	10.6	python3 scripts/run_stage10_6_manuscript_pitch.py	Regenerate method-first manuscript and EIC-facing pitch surfaces.	case_studies/stage10_manuscript_pitch/stage10_6_gate_report.json	yes
+7	validation	PYTHONPATH=src python3 -m unittest discover -s tests -p 'test_stage10_*.py'	Run the Stage 10-specific regression tests.	all Stage 10 tests pass	yes
+8	validation	python3 scripts/check_release.py	Verify the full release surface still registers the Stage 10 evidence.	status pass	yes
+9	validation	python3 scripts/check_roadmap_memory.py	Verify the roadmap memory binds Stage 10.7 as the current completion state.	status pass	yes

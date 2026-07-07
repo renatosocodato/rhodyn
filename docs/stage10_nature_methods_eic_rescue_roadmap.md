@@ -116,6 +116,12 @@ Stage 10.6 is now implemented as the method-first manuscript and editor-pitch tr
 
 The preferred title is `Residence-state inference for live-cell perturbation data`. The abstract now names named baseline families, four public demonstration systems, sealed held-out positive, comparator-sufficient, and inconclusive outcomes, and the reproducible Python, command-line, API, workbench, and archive surfaces. The Results route follows the Stage 10.5 method-first figure architecture, with the method object, named baselines, public biological breadth, endpoint and routed-output extensions, held-out validation, and only then software reproducibility. This change is a presentation and pitch transformation only. It does not add biological data, benchmark results, rendered figures, or software capabilities.
 
+### Stage 10.7 completion update
+
+Stage 10.7 is now implemented as a benchmark-ready release-candidate package. The executable runner is `scripts/run_stage10_7_benchmark_release_candidate.py`, the documentation page is `docs/stage10_7_benchmark_release_candidate.md`, and the release-candidate outputs are under `case_studies/stage10_release_candidate/`.
+
+The completed package records a fresh-clone command index for Stages 10.1 through 10.6, a checksum manifest over the registered Stage 10 evidence surfaces, an archive manifest, a gate report, and a short release-candidate brief. This stage does not add biological data, benchmark results, rendered figures, or manuscript claims. Its purpose is to make the Stage 10 method-elevation evidence replayable before adversarial EIC red-team review.
+
 ## Stage 10.2 named benchmarking ladder
 
 The named benchmarking track must be explicit enough that a methods editor does not see only self-comparison against simple summaries.
@@ -288,10 +294,11 @@ python3 scripts/run_stage10_3_public_biological_breadth.py
 python3 scripts/run_stage10_4_heldout_validation.py
 python3 scripts/run_stage10_5_figure_architecture.py
 python3 scripts/run_stage10_6_manuscript_pitch.py
+python3 scripts/run_stage10_7_benchmark_release_candidate.py
 python3 scripts/run_stage10_8_eic_red_team.py
 python3 scripts/check_release.py
 ```
 
 ## Reflection update
 
-Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 is now the active scientific-methods elevation program. It is justified because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. Stages 10.1 through 10.6 have now strengthened the mathematical method object, named benchmarking, public biological breadth, no-retuning held-out validation, method-first figure architecture, and method-first manuscript/pitch surfaces. The next risk is whether those Stage 10 outputs can be frozen into a benchmark-ready release candidate that a fresh clone can reproduce without hidden state.
+Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 is now the active scientific-methods elevation program. It is justified because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. Stages 10.1 through 10.7 have now strengthened the mathematical method object, named benchmarking, public biological breadth, no-retuning held-out validation, method-first figure architecture, method-first manuscript/pitch surfaces, and benchmark-ready replay packaging. The next risk is adversarial editorial review, where the package must be stress-tested as a Nature Methods submission rather than as a software workflow.

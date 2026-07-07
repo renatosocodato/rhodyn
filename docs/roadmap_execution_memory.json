@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 10.6 manuscript-pitch transformation complete; Stage 10.7 benchmark-ready release candidate not started",
+    "active_stage": "Stage 9.29 closed and version-bound",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage10_0_eic_rescue_scaffold": "Stage 10.0 serialized the post-closure Nature Methods EIC rescue and methodological-elevation roadmap. The next work must lower desk-rejection risk through named baseline benchmarking, broader independent public biological demonstrations, a stronger mathematical method object, and adversarial EIC simulation before any second editor contact.",
     "after_stage10_1_method_object_v2": "Stage 10.1 completed an explicit RhoDyn method-object v2 with a decision-divergence definition, bounded-coupling, reserve-like, and routed-output calls, interpretation boundaries, executable positive, counterexample, and ambiguous fixtures, and a non-blocking API gap list. This enabled the now-completed Stage 10.2 named benchmarking pass.",
@@ -9,6 +9,7 @@
     "after_stage10_4_heldout_validation": "Stage 10.4 completed a sealed no-retuning held-out validation route over retained public-derived tables. It writes a predeclaration, preserves positive residence-divergence and bounded-coupling calls, preserves a negative or comparator-sufficient ERK GPCR boundary, and keeps ERK/Akt margin-boundary inconclusive contexts visible. This strengthens the method reading without claiming prospective blinded validation or universal RhoDyn superiority.",
     "after_stage10_5_figure_architecture": "Stage 10.5 rebuilt the Nature Methods display plan around a method-first sequence. Figures 1-3 now foreground the method object, named-baseline benchmarking, and public biological breadth; Figure 4 covers endpoint, reserve-like, bounded-coupling, and routed-output extensions; Figure 5 shows sealed held-out validation; Figure 6 moves software parity and archive reproduction after the method evidence. This is a figure-architecture plan, not new biological evidence or a new PanelForge render.",
     "after_stage10_6_manuscript_pitch": "Stage 10.6 transformed the Nature Methods-facing manuscript and editor pitch around the method-first evidence hierarchy. The new preferred title, abstract, Results route, Discussion landing, cover-letter opening, and presubmission pitch foreground residence-state inference, named baselines, public biological breadth, and held-out positive/comparator-sufficient/inconclusive boundaries before software reproducibility.",
+    "after_stage10_7_benchmark_release_candidate": "Stage 10.7 packaged the Stage 10 method-elevation evidence as a benchmark-ready release candidate with a reproducibility command index, checksum manifest, archive manifest, gate report, and brief. The package binds Stage 10.1 through 10.6 gates and outputs without adding biological data, new benchmark results, new figures, or manuscript claims.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
     "after_stage5_closeout": "Stage 5 is completed as a contract-bound scientific workbench with upload parity, operation-specific visualizations, export provenance, browser regression, and adversarial layout guards.",
@@ -62,9 +63,9 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Stage 10.6 manuscript-pitch transformation complete",
-    "next_stage": "Stage 10.7 benchmark-ready release candidate, not started",
-    "stage10_active_gate": "Stage 10.6 manuscript-pitch transformation complete; Stage 10.7 benchmark-ready release candidate not started",
+    "current_gate": "Stage 9 closed and version-bound",
+    "next_stage": "Stage 10 or journal-specific submission actions, not started",
+    "stage10_active_gate": "Stage 10.7 benchmark-ready release candidate complete; Stage 10.8 adversarial EIC red-team simulation not started",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
     "stage9_active_gate": "Stage 9.29 closed and version-bound"
@@ -868,7 +869,7 @@
           "status": "complete_pi_review_packet"
         },
         {
-          "closure_version": "stage9.29-closure@9e2b522a0fff715af290a5fa72bb593d2b47eded",
+          "closure_version": "stage9.29-closure@8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c",
           "evidence": "manuscript/nature_methods/gate_verdicts/9.29.json",
           "gate": "every Stage 9 gate passes; quarantine has no unresolved blocker; package, evidence, and release versions are bound",
           "goal": "Close Stage 9 with package, evidence, release, and limitation versions bound.",
@@ -940,9 +941,17 @@
         "manuscript/nature_methods/stage10_6/stage10_6_change_matrix.tsv",
         "manuscript/nature_methods/stage10_6/stage10_6_claim_boundary_audit.tsv",
         "case_studies/stage10_manuscript_pitch/stage10_6_gate_report.json",
-        "case_studies/stage10_manuscript_pitch/stage10_6_manuscript_pitch_brief.md"
+        "case_studies/stage10_manuscript_pitch/stage10_6_manuscript_pitch_brief.md",
+        "docs/stage10_7_benchmark_release_candidate.md",
+        "scripts/run_stage10_7_benchmark_release_candidate.py",
+        "tests/test_stage10_7_benchmark_release_candidate.py",
+        "case_studies/stage10_release_candidate/stage10_7_reproducibility_commands.tsv",
+        "case_studies/stage10_release_candidate/stage10_7_checksum_manifest.tsv",
+        "case_studies/stage10_release_candidate/stage10_7_archive_manifest.json",
+        "case_studies/stage10_release_candidate/stage10_7_gate_report.json",
+        "case_studies/stage10_release_candidate/stage10_7_release_candidate_brief.md"
       ],
-      "current_gate": "Stage 10.6 manuscript-pitch transformation complete; Stage 10.7 benchmark-ready release candidate has not started.",
+      "current_gate": "Stage 10.7 benchmark-ready release candidate complete; Stage 10.8 adversarial EIC red-team simulation has not started.",
       "gate": [
         "Named baseline and named-tool benchmarking must be materially broader than Stage 7.2.",
         "At least two additional independent public biological demonstrations should be added before a stronger Nature Methods generality claim.",
@@ -952,7 +961,7 @@
       "name": "Nature Methods EIC rescue and methodological elevation",
       "scope_rule": "Stage 10 is a post-closure evidence-elevation program, not a Stage 9 polish pass. It must lower the risk that RhoDyn is read as workflow/software integration by adding named baseline benchmarking, independent public biological breadth, mathematical method-object elevation, held-out validation, and EIC red-team simulation before any second editor contact.",
       "stage": 10,
-      "status": "stage10_6_complete_manuscript_pitch_transformation",
+      "status": "stage10_7_complete_benchmark_release_candidate",
       "subphases": [
         {
           "evidence": "docs/stage10_nature_methods_eic_rescue_roadmap.md",
@@ -1003,9 +1012,11 @@
           "status": "complete_manuscript_pitch_transformation"
         },
         {
+          "evidence": "case_studies/stage10_release_candidate/stage10_7_gate_report.json",
+          "gate": "Stage 10.1 through 10.6 commands, gate reports, outputs, source scripts, tests, and checksums are bound for fresh-clone replay",
           "id": "10.7",
           "name": "Benchmark-ready release candidate",
-          "status": "not_started"
+          "status": "complete_benchmark_release_candidate"
         },
         {
           "id": "10.8",
