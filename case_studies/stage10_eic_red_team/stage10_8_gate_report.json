@@ -1,0 +1,34 @@
+{
+  "action_unrouted_items": [],
+  "gates": {
+    "all_actions_routed": true,
+    "critical_domains_covered": true,
+    "no_unresolved_high_severity_desk_reject_risk": true,
+    "required_verdict_categories_defined": true,
+    "six_perspectives_present": true,
+    "software_secondary_boundary_preserved": true,
+    "stage10_7_prerequisite_passed": true,
+    "verdicts_cover_contact_options": true
+  },
+  "generated_utc": "2026-07-07T17:33:38Z",
+  "git_sha": "c43adba06d5f84e89afa9faa16a37d4255222152",
+  "interpretation_boundary": "Stage 10.8 is an adversarial editorial-risk simulation. It does not add biological data, benchmark results, figures, or manuscript claims.",
+  "next_phase": "Stage 10.9 EIC-contact decision",
+  "stage": "10.8",
+  "status": "pass",
+  "summary_metrics": {
+    "action_row_count": 12,
+    "critical_domain_count": 4,
+    "perspective_count": 6,
+    "unresolved_high_severity_count": 0,
+    "verdict_category_count": 5
+  },
+  "unresolved_high_severity_items": [],
+  "verdict_counts": {
+    "delay for another dataset": 1,
+    "desk-reject likely": 0,
+    "full submission viable": 8,
+    "pivot venue": 1,
+    "presubmission only": 2
+  }
+}

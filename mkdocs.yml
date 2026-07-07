@@ -52,4 +52,5 @@ nav:
   - Stage 10.5 figure architecture: stage10_5_method_first_figure_architecture.md
   - Stage 10.6 manuscript pitch: stage10_6_manuscript_pitch_transformation.md
   - Stage 10.7 benchmark release candidate: stage10_7_benchmark_release_candidate.md
+  - Stage 10.8 EIC red team: stage10_8_adversarial_eic_red_team.md
   - Release checklist: release_checklist.md

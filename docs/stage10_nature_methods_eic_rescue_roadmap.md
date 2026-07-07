@@ -257,6 +257,12 @@ Required verdict categories:
 
 The EIC-contact gate passes only if no reviewer gives an unresolved high-severity desk-reject risk for novelty, validation breadth, named benchmarking, or overclaiming.
 
+### Stage 10.8 completion update
+
+Stage 10.8 is now implemented as an adversarial EIC red-team simulation. The executable runner is `scripts/run_stage10_8_eic_red_team.py`, the documentation page is `docs/stage10_8_adversarial_eic_red_team.md`, and the red-team outputs are under `case_studies/stage10_eic_red_team/`.
+
+The completed simulation covers six perspectives comprising a Nature Methods EIC, methods editor, computational methods reviewer, live-cell signaling biologist, statistician/benchmarking reviewer, and software reproducibility reviewer. No unresolved high-severity desk-rejection risk remains in novelty, validation breadth, named benchmarking, or overclaiming. The remaining risks are medium-severity route choices, with presubmission-style contact favored as the lowest-risk Stage 10.9 path.
+
 ## Stage 10.9 EIC-contact decision rule
 
 Do not ask the EIC to "take another look" at the old paper. If contact is made, it should be a new, concise presubmission-style note framed around the Stage 10 evidence.
@@ -301,4 +307,4 @@ python3 scripts/check_release.py
 
 ## Reflection update
 
-Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 is now the active scientific-methods elevation program. It is justified because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. Stages 10.1 through 10.7 have now strengthened the mathematical method object, named benchmarking, public biological breadth, no-retuning held-out validation, method-first figure architecture, method-first manuscript/pitch surfaces, and benchmark-ready replay packaging. The next risk is adversarial editorial review, where the package must be stress-tested as a Nature Methods submission rather than as a software workflow.
+Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 is now the active scientific-methods elevation program. It is justified because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. Stages 10.1 through 10.8 have now strengthened the mathematical method object, named benchmarking, public biological breadth, no-retuning held-out validation, method-first figure architecture, method-first manuscript/pitch surfaces, benchmark-ready replay packaging, and adversarial editorial risk simulation. The next risk is the Stage 10.9 contact decision, where the author team must choose presubmission query, direct full submission, delay for another dataset, or venue pivot.

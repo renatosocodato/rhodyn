@@ -235,6 +235,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.5 method-first figure architecture complete; Stage 10.6 manuscript-pitch transformation not started",
         "Stage 10.6 manuscript-pitch transformation complete; Stage 10.7 benchmark-ready release candidate not started",
         "Stage 10.7 benchmark-ready release candidate complete; Stage 10.8 adversarial EIC red-team simulation not started",
+        "Stage 10.8 adversarial EIC red-team simulation complete; Stage 10.9 EIC-contact decision not started",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -248,7 +249,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_7_complete_benchmark_release_candidate",
+        10: "stage10_8_complete_adversarial_eic_red_team",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -325,6 +326,14 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_release_candidate/stage10_7_archive_manifest.json",
             "case_studies/stage10_release_candidate/stage10_7_gate_report.json",
             "case_studies/stage10_release_candidate/stage10_7_release_candidate_brief.md",
+            "docs/stage10_8_adversarial_eic_red_team.md",
+            "scripts/run_stage10_8_eic_red_team.py",
+            "tests/test_stage10_8_eic_red_team.py",
+            "case_studies/stage10_eic_red_team/stage10_8_verdict_rubric.tsv",
+            "case_studies/stage10_eic_red_team/stage10_8_red_team_action_matrix.tsv",
+            "case_studies/stage10_eic_red_team/stage10_8_red_team_report.md",
+            "case_studies/stage10_eic_red_team/stage10_8_decision_brief.md",
+            "case_studies/stage10_eic_red_team/stage10_8_gate_report.json",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -464,9 +473,29 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.7 release-candidate gates must all pass")
         else:
             failures.append("missing Stage 10.7 release-candidate report")
-        for subphase in ["10.8", "10.9"]:
-            if subphase_status.get(subphase) != "not_started":
-                failures.append(f"Stage {subphase} must remain not_started after Stage 10.7")
+        if subphase_status.get("10.8") != "complete_adversarial_eic_red_team":
+            failures.append("Stage 10.8 must be complete_adversarial_eic_red_team")
+        red_team_report_path = root / "case_studies" / "stage10_eic_red_team" / "stage10_8_gate_report.json"
+        if red_team_report_path.exists():
+            red_team_report = json.loads(red_team_report_path.read_text(encoding="utf-8"))
+            if red_team_report.get("status") != "pass":
+                failures.append("Stage 10.8 EIC red-team report must pass")
+            summary = red_team_report.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("perspective_count") != 6:
+                failures.append("Stage 10.8 must retain six reviewer perspectives")
+            if not isinstance(summary, dict) or summary.get("unresolved_high_severity_count") != 0:
+                failures.append("Stage 10.8 must leave no unresolved high-severity critical-domain risk")
+            if not isinstance(summary, dict) or summary.get("action_row_count", 0) < 10:
+                failures.append("Stage 10.8 action matrix must retain at least ten rows")
+            if not isinstance(summary, dict) or summary.get("verdict_category_count") != 5:
+                failures.append("Stage 10.8 verdict rubric must retain five verdict categories")
+            gates = red_team_report.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.8 EIC red-team gates must all pass")
+        else:
+            failures.append("missing Stage 10.8 EIC red-team report")
+        if subphase_status.get("10.9") != "not_started":
+            failures.append("Stage 10.9 must remain not_started after Stage 10.8")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

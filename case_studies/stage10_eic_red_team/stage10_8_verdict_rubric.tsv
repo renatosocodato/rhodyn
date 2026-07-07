@@ -1,0 +1,6 @@
+verdict_category	meaning	stage10_8_use
+desk-reject likely	A high-severity unresolved risk remains for novelty, validation breadth, named benchmarking, or overclaiming.	defined but not selected as final recommendation
+presubmission only	Evidence is strong enough for an editor-facing query, but not yet the safest direct full-submission route.	selected by some reviewers as conservative contact route
+full submission viable	The methods claim is defensible if boundaries and validation ladder remain visible.	selected by most method and reproducibility perspectives
+delay for another dataset	Additional public or collaborator evidence would materially lower risk, but the current state is not necessarily blocked.	retained as optional strengthening rather than blocking gate
+pivot venue	If Nature Methods still reads software integration first, pivot to a venue aligned with systems biology or software methods.	retained as fallback for Stage 10.9
