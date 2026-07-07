@@ -339,7 +339,7 @@
   "failed_urls": [],
   "failures": [],
   "forbidden_public_reference_hits": [],
-  "generated_utc": "2026-07-07T12:55:08Z",
+  "generated_utc": "2026-07-07T12:56:50Z",
   "interpretation_boundary": "This report verifies public URL accessibility for the Nature Methods submission-package surfaces. It does not upload files, alter DOI records, modify GitHub or Zenodo state, or certify journal acceptance.",
   "missing_expected_urls": [],
   "report_format": "rhodyn.stage9_public_access_verification.v1",
