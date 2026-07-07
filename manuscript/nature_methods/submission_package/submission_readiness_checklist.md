@@ -4,7 +4,7 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 
 | Item | Status | Note |
 | --- | --- | --- |
-| Main manuscript source | ready | `main_text_for_submission.md` assembles Abstract, Introduction, Results, Discussion, Online Methods, availability text, references, and figure legends. |
+| Main manuscript source | ready | `main_text_for_submission.md` assembles Abstract, unheaded Introduction text, Results, Discussion, Online Methods, availability text, references, and figure legends. |
 | Supplementary Information source | ready | `supplementary_information_for_submission.md` assembles Supplementary Methods, supplementary figure legends, supplementary table captions, and a compact traceability note. |
 | Main figures | ready | Six main display items are present in PDF, PNG, and SVG. |
 | Reporting Summary | registered | The required Reporting Summary placeholder is present. The final Springer Nature form remains a human submission action. |

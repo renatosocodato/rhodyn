@@ -69,6 +69,11 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "### Main figure legends",
         ]:
             self.assertIn(phrase, self.main_text)
+        self.assertNotIn("## Introduction", self.main_text)
+        self.assertIn(
+            "Live-cell perturbation experiments increasingly record the temporal structure",
+            self.main_text,
+        )
         for phrase in [
             "# Supplementary Information",
             "## Supplementary Methods",

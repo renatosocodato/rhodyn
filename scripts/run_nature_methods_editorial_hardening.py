@@ -49,6 +49,16 @@ def _word_count(text: str) -> int:
 
 
 def _section(text: str, heading: str) -> str:
+    if heading == "Abstract":
+        match = re.search(r"^## Abstract\n+(?P<body>.*?)(?:\n{2,}|\Z)", text, flags=re.M | re.S)
+        return match.group("body").strip() if match else ""
+    if heading == "Introduction":
+        match = re.search(
+            r"^## Abstract\n+.*?\n{2,}(?P<body>.*?)(?=^## Results\n)",
+            text,
+            flags=re.M | re.S,
+        )
+        return match.group("body").strip() if match else ""
     pattern = re.compile(rf"^## {re.escape(heading)}\n(?P<body>.*?)(?=^## |\Z)", re.M | re.S)
     match = pattern.search(text)
     return match.group("body").strip() if match else ""

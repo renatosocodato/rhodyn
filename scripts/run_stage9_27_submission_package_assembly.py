@@ -173,6 +173,16 @@ def _word_count(text: str) -> int:
 
 
 def _assembled_section(text: str, heading: str) -> str:
+    if heading == "Abstract":
+        match = re.search(r"^## Abstract\n+(?P<body>.*?)(?:\n{2,}|\Z)", text, flags=re.M | re.S)
+        return match.group("body").strip() if match else ""
+    if heading == "Introduction":
+        match = re.search(
+            r"^## Abstract\n+.*?\n{2,}(?P<body>.*?)(?=^## Results\n)",
+            text,
+            flags=re.M | re.S,
+        )
+        return match.group("body").strip() if match else ""
     pattern = re.compile(rf"^## {re.escape(heading)}\n(?P<body>.*?)(?=^## |\Z)", re.M | re.S)
     match = pattern.search(text)
     return match.group("body").strip() if match else ""
@@ -194,6 +204,14 @@ def _section(title: str, path: Path, demote: bool = True) -> str:
     if demote:
         body = _demote_headings(body)
     return f"## {title}\n\n{body.strip()}\n"
+
+
+def _unheaded_section(path: Path, demote: bool = True) -> str:
+    body = _strip_html_comments(path.read_text(encoding="utf-8"))
+    body = _drop_first_heading(body)
+    if demote:
+        body = _demote_headings(body)
+    return body.strip() + "\n"
 
 
 def _preferred_title() -> str:
@@ -256,7 +274,7 @@ def _assemble_main_text() -> str:
         f"# {_preferred_title()}",
         "",
         _section("Abstract", SECTIONS / "abstract.md", demote=False),
-        _section("Introduction", SECTIONS / "introduction.md"),
+        _unheaded_section(SECTIONS / "introduction.md"),
         _section("Results", SECTIONS / "results.md"),
         _section("Discussion", SECTIONS / "discussion.md"),
         _section("Online Methods", SECTIONS / "methods.md"),
@@ -265,7 +283,7 @@ def _assemble_main_text() -> str:
         _references_markdown(),
         _main_legend_block(),
     ]
-    return "\n".join(part.strip() for part in parts if part.strip()) + "\n"
+    return "\n\n".join(part.strip() for part in parts if part.strip()) + "\n"
 
 
 def _assemble_supplement() -> str:
@@ -454,7 +472,7 @@ def _article_fit_checklist(main_text: str) -> str:
         ("Main text length", f"{main_body_words} words", "Nature Methods Article target is 3,000 words, with up to 5,000 words at editorial discretion, excluding abstract, Methods, references, and figure legends.", "pass" if main_body_words <= 3000 else "check"),
         ("Main display items", f"{display_items} figures", "Nature Methods Article limit is up to six main figures and/or tables.", "pass" if display_items <= 6 else "check"),
         ("Reference count", f"{references} references", "Nature Methods Article guidance typically recommends up to 50 references.", "pass" if references <= 50 else "check"),
-        ("Article section order", "Abstract, Introduction text, Results, Discussion, Online Methods, availability, references, legends", "The assembled review package labels the Introduction for navigation. Nature Methods Article formatting should remove any visible Introduction heading if the final journal template requires an unheaded opening section.", "format note"),
+        ("Article section order", "Abstract, unheaded Introduction text, Results, Discussion, Online Methods, availability, references, legends", "The assembled submission source keeps the Introduction text before Results without a visible Introduction heading, matching the Nature Methods Article structure.", "pass"),
         ("Results subheadings", "present" if results_has_subheadings else "absent", "Nature Methods permits topical Results subheadings.", "pass" if results_has_subheadings else "check"),
         ("Methods subheadings", "present" if methods_has_subheadings else "absent", "Nature Methods permits topical Online Methods subheadings.", "pass" if methods_has_subheadings else "check"),
         ("Discussion subheadings", "absent" if not discussion_has_subheadings else "present", "Nature Methods Article Discussion does not contain subheadings.", "pass" if not discussion_has_subheadings else "check"),
@@ -472,7 +490,7 @@ def _article_fit_checklist(main_text: str) -> str:
     lines.extend(
         [
             "",
-            "Residual human action. Confirm final file naming, Reporting Summary, portal metadata, and final Nature Methods template handling of the Introduction heading at upload. These are submission actions, not evidence gaps in the current manuscript package.",
+            "Residual human action. Confirm final file naming, Reporting Summary, and portal metadata at upload. These are submission actions, not evidence gaps in the current manuscript package.",
         ]
     )
     return "\n".join(lines) + "\n"
@@ -510,7 +528,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         "",
         "| Item | Status | Note |",
         "| --- | --- | --- |",
-        f"| Main manuscript source | {'ready' if check_map.get('main_text_present') else 'blocked'} | `main_text_for_submission.md` assembles Abstract, Introduction, Results, Discussion, Online Methods, availability text, references, and figure legends. |",
+        f"| Main manuscript source | {'ready' if check_map.get('main_text_present') else 'blocked'} | `main_text_for_submission.md` assembles Abstract, unheaded Introduction text, Results, Discussion, Online Methods, availability text, references, and figure legends. |",
         f"| Supplementary Information source | {'ready' if check_map.get('supplement_present') else 'blocked'} | `supplementary_information_for_submission.md` assembles Supplementary Methods, supplementary figure legends, supplementary table captions, and a compact traceability note. |",
         f"| Main figures | {'ready' if check_map.get('figure_files_present') else 'blocked'} | Six main display items are present in PDF, PNG, and SVG. |",
         f"| Reporting Summary | {'registered' if check_map.get('reporting_summary_present') else 'blocked'} | The required Reporting Summary placeholder is present. The final Springer Nature form remains a human submission action. |",

@@ -23,13 +23,13 @@ Codex closed `5` PI-review action items from existing manuscript evidence and re
 - Software version. `v0.1.0`.
 - Pyproject version. `0.1.0`.
 - Repository. `https://github.com/renatosocodato/rhodyn`.
-- Closure commit. `a5d8df03e7b0500a069869d8fc4a5e241be86ef6`.
+- Closure commit. `38cff4e149921addbf54bd797e788d6af6b5c196`.
 - Software archive DOI. `10.5281/zenodo.21036616`.
 - Software concept DOI. `10.5281/zenodo.21036615`.
 - Evidence version. `stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc`.
 - Claim-freeze version. `claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af`.
 - Reference version. `reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81`.
-- Package version. `stage9.29-closure@a5d8df03e7b0500a069869d8fc4a5e241be86ef6`.
+- Package version. `stage9.29-closure@38cff4e149921addbf54bd797e788d6af6b5c196`.
 - PanelForge version. `v3.14.1` with DOI `10.5281/zenodo.20811171`.
 
 ## Figure and package state
@@ -38,25 +38,25 @@ PanelForge remains unchanged in this closure step. The package has `18` rendered
 
 | package file | sha256 prefix | bytes |
 |---|---:|---:|
-| `manuscript/nature_methods/submission_package/main_text_for_submission.md` | `fdb9bba9aa83` | `36166` |
+| `manuscript/nature_methods/submission_package/main_text_for_submission.md` | `26d096530df0` | `36158` |
 | `manuscript/nature_methods/submission_package/supplementary_information_for_submission.md` | `d5bf3eadafa0` | `11912` |
-| `manuscript/nature_methods/submission_package/submission_manifest.md` | `2cfa61e1b420` | `2457` |
-| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `8c8108f53550` | `2505` |
+| `manuscript/nature_methods/submission_package/submission_manifest.md` | `2bfe450f70c2` | `2457` |
+| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `debb861eaad6` | `2519` |
 | `manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md` | `9fc7e15e22fd` | `2079` |
 | `manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md` | `94fba2281dd6` | `4692` |
 | `manuscript/nature_methods/submission_package/software_reporting_checklist.md` | `34d4d62ebbca` | `4048` |
-| `manuscript/nature_methods/submission_package/article_fit_checklist.md` | `0173cbd88f2f` | `2530` |
+| `manuscript/nature_methods/submission_package/article_fit_checklist.md` | `e98ff50a846f` | `2408` |
 | `manuscript/nature_methods/submission_package/code_for_review.md` | `669b4108eea3` | `5472` |
-| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `ec7462ae0837` | `2292` |
+| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `88c444f8656b` | `2292` |
 | `manuscript/nature_methods/submission_package/figure_file_inventory.csv` | `e5230d7be7fb` | `4121` |
 | `manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv` | `7cfc0ef56a00` | `6267` |
 | `manuscript/nature_methods/submission_package/references_for_submission.bib` | `c37151ef73f2` | `6973` |
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | `b83b8d2f639e` | `1448` |
-| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `70471052437e` | `5140` |
+| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `de6fca206a81` | `5140` |
 | `manuscript/nature_methods/submission_package/pi_review_packet.md` | `283a56dc3f67` | `7833` |
 | `manuscript/nature_methods/submission_package/pi_review_action_matrix.csv` | `e3acfd583515` | `2203` |
-| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `4d4bcad2b0c1` | `1639` |
-| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `7f8ada74e675` | `1534` |
+| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `706d5e4c5dd8` | `1639` |
+| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `17a2e46f1683` | `1534` |
 
 ## Scientific boundary
 
