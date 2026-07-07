@@ -23,13 +23,13 @@ Codex closed `5` PI-review action items from existing manuscript evidence and re
 - Software version. `v0.1.0`.
 - Pyproject version. `0.1.0`.
 - Repository. `https://github.com/renatosocodato/rhodyn`.
-- Closure commit. `4e3906b89ad6515644bb3edec539630c6ff140b1`.
+- Closure commit. `32a94e2918852704c704c771bec7f60fd3e39d23`.
 - Software archive DOI. `10.5281/zenodo.21036616`.
 - Software concept DOI. `10.5281/zenodo.21036615`.
 - Evidence version. `stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc`.
 - Claim-freeze version. `claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af`.
 - Reference version. `reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81`.
-- Package version. `stage9.29-closure@4e3906b89ad6515644bb3edec539630c6ff140b1`.
+- Package version. `stage9.29-closure@32a94e2918852704c704c771bec7f60fd3e39d23`.
 - PanelForge version. `v3.14.1` with DOI `10.5281/zenodo.20811171`.
 
 ## Figure and package state
@@ -40,24 +40,25 @@ PanelForge remains unchanged in this closure step. The package has `18` rendered
 |---|---:|---:|
 | `manuscript/nature_methods/submission_package/main_text_for_submission.md` | `ddd08a91ef3b` | `36168` |
 | `manuscript/nature_methods/submission_package/supplementary_information_for_submission.md` | `d5bf3eadafa0` | `11912` |
-| `manuscript/nature_methods/submission_package/submission_manifest.md` | `6071060ab98b` | `2583` |
-| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `47771a571d76` | `2570` |
+| `manuscript/nature_methods/submission_package/submission_manifest.md` | `f488134c2baa` | `2744` |
+| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `f333deb1938b` | `2733` |
 | `manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md` | `9fc7e15e22fd` | `2079` |
 | `manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md` | `196ee35bb536` | `6512` |
 | `manuscript/nature_methods/submission_package/software_reporting_checklist.md` | `34d4d62ebbca` | `4048` |
 | `manuscript/nature_methods/submission_package/article_fit_checklist.md` | `e98ff50a846f` | `2408` |
-| `manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md` | `93a5448c6ff8` | `2267` |
+| `manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md` | `b82946113e92` | `2359` |
+| `manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` | `f656f475e944` | `2118` |
 | `manuscript/nature_methods/submission_package/code_for_review.md` | `669b4108eea3` | `5472` |
-| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `66dfe1b92211` | `2492` |
+| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `08924db2f0d1` | `2655` |
 | `manuscript/nature_methods/submission_package/figure_file_inventory.csv` | `e5230d7be7fb` | `4121` |
 | `manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv` | `7cfc0ef56a00` | `6267` |
 | `manuscript/nature_methods/submission_package/references_for_submission.bib` | `c37151ef73f2` | `6973` |
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | `b83b8d2f639e` | `1448` |
-| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `9654bccfc828` | `5481` |
+| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `0962503ec30d` | `5799` |
 | `manuscript/nature_methods/submission_package/pi_review_packet.md` | `283a56dc3f67` | `7833` |
 | `manuscript/nature_methods/submission_package/pi_review_action_matrix.csv` | `e3acfd583515` | `2203` |
-| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `5c49eafe29d3` | `1639` |
-| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `307b1445fff2` | `1534` |
+| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `a645085425ff` | `1639` |
+| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `e319cd8f334f` | `1534` |
 
 ## Scientific boundary
 
@@ -66,6 +67,6 @@ The closed package supports a methods claim that RhoDyn provides an inspectable 
 ## Remaining human submission actions
 
 1. Complete the official Springer Nature Reporting Summary form.
-2. Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and AI-use disclosure if applicable.
+2. Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and the AI-use disclosure draft if applicable.
 3. Confirm final portal metadata, corresponding-author fields, ORCID fields, and journal-specific file names.
 4. Perform final author approval of the main text, Supplementary Information, figures, and code-for-review surface before upload.

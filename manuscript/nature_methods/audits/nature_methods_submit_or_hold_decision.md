@@ -1,10 +1,10 @@
 # Nature Methods submit-or-hold decision
 
-Generated UTC. `2026-07-07T12:25:03Z`.
+Generated UTC. `2026-07-07T12:33:47Z`.
 
 Decision. `hold_for_human_upload_actions`.
 
-The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. It should not be treated as ready for final journal upload until the official Springer Nature Reporting Summary, author declarations, AI-use disclosure decision, portal metadata, and final author approval are complete.
+The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. It should not be treated as ready for final journal upload until the official Springer Nature Reporting Summary, author declarations, AI-use disclosure decision using the author-confirmation draft, portal metadata, and final author approval are complete.
 
 ## Science package checks
 
@@ -26,6 +26,7 @@ The Stage 9.29 package is ready for collaborator and PI review as a Nature Metho
 | --- | --- | --- |
 | official_reporting_summary_not_completed_in_repo | pass | Repository contains a required-form placeholder, not the official completed Springer Nature form. |
 | author_attestations_remain_human_actions | pass | author_declaration_human_rows=6. |
+| ai_disclosure_draft_requires_author_confirmation | pass | AI disclosure support file provides draft options while preserving author confirmation as the required decision. |
 | final_upload_approval_remains_human_action | pass | Readiness checklist retains final upload and author approval actions. |
 | controlled_reference_case_requires_upload_decision | pass | Optional RhoA/microglia reviewer-access records must be supplied only if authors include that reference case. |
 
@@ -33,7 +34,7 @@ The Stage 9.29 package is ready for collaborator and PI review as a Nature Metho
 
 - Complete the official Springer Nature Reporting Summary form.
 - Confirm funding, competing interests, author contributions, author order, affiliations, ORCID, and corresponding-author metadata.
-- Confirm whether AI-assisted content disclosure is required and insert the final journal-compliant wording if applicable.
+- Confirm whether AI-assisted content disclosure is required, revise the AI disclosure draft with final author-confirmed wording if applicable, and insert it in the journal-designated location.
 - Confirm ethics, biological materials, and controlled-access or reviewer-access statements.
 - Perform final file naming, portal metadata, and author approval checks.
 

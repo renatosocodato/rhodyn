@@ -9,6 +9,7 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 | Main figures | ready | Six main display items are present in PDF, PNG, and SVG. |
 | Reporting Summary | registered | The required Reporting Summary placeholder is present. The final Springer Nature form remains a human submission action. |
 | Author declarations | registered | `author_declarations_REQUIRED.md` records author-controlled declarations that must be completed before upload. |
+| AI disclosure draft | registered | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` provides draft wording options that require author confirmation before use. |
 | Code for review | ready | `code_for_review.md` records release identity and reproducibility commands. |
 | Editor-triage note | ready | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |
 | Editorial pitch | ready | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |

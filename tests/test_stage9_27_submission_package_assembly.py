@@ -23,6 +23,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         cls.checklist = (PACKAGE / "submission_readiness_checklist.md").read_text(encoding="utf-8")
         cls.code_for_review = (PACKAGE / "code_for_review.md").read_text(encoding="utf-8")
         cls.author_declarations = (PACKAGE / "author_declarations_REQUIRED.md").read_text(encoding="utf-8")
+        cls.ai_disclosure = (PACKAGE / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         with (PACKAGE / "figure_file_inventory.csv").open(newline="", encoding="utf-8") as handle:
             cls.figure_rows = list(csv.DictReader(handle))
         with (PACKAGE / "source_data_and_statistics_inventory.csv").open(newline="", encoding="utf-8") as handle:
@@ -54,6 +55,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "software_reporting_checklist_present",
             "article_fit_checklist_present",
             "author_declarations_present",
+            "ai_disclosure_draft_present",
             "package_safety_scan_clear",
             "no_downstream_pi_or_closure_started",
             "package_consistency_audit_passed",
@@ -115,7 +117,12 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("Competing interests", self.author_declarations)
         self.assertIn("AI-assisted content disclosure", self.author_declarations)
         self.assertIn("human action", self.author_declarations)
+        self.assertIn("AUTHOR CONFIRMATION REQUIRED", self.ai_disclosure)
+        self.assertIn("does not assert final AI use", self.ai_disclosure)
+        self.assertIn("Option A", self.ai_disclosure)
+        self.assertIn("Option B", self.ai_disclosure)
         self.assertIn("Author declarations | registered", self.checklist)
+        self.assertIn("AI disclosure draft | registered", self.checklist)
         self.assertIn("Reporting Summary | registered", self.checklist)
         self.assertIn("Springer Nature", self.checklist)
         self.assertIn("human submission action", self.checklist)

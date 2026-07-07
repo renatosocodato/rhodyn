@@ -33,7 +33,7 @@ class Stage929ClosureAssemblyTests(unittest.TestCase):
         self.assertEqual(self.gate["closure_status"], "complete_stage9_closed_version_bound")
         self.assertEqual(self.gate["action_decision_rows"], 6)
         self.assertEqual(self.gate["human_submission_action_rows"], 1)
-        self.assertEqual(self.gate["package_file_count"], 20)
+        self.assertEqual(self.gate["package_file_count"], 21)
         self.assertEqual(self.gate["rendered_figure_file_count"], 18)
 
     def test_all_expected_closure_checks_pass(self) -> None:
@@ -95,8 +95,10 @@ class Stage929ClosureAssemblyTests(unittest.TestCase):
         self.assertEqual(self.package_manifest["closure_status"], "complete_stage9_closure_version_bound")
         self.assertEqual(self.package_manifest["not_started"], [])
         self.assertIn("manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md", self.package_manifest["package_files"])
+        self.assertIn("manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/stage9_completion_report.md", self.package_manifest["package_files"])
         self.assertIn("| Author declarations | `author_declarations_REQUIRED.md` |", self.submission_manifest)
+        self.assertIn("| AI disclosure draft | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` |", self.submission_manifest)
         self.assertIn("| Stage 9 completion report | `../stage9_completion_report.md` |", self.submission_manifest)
         self.assertIn("does not submit the manuscript or replace final journal-upload approval", self.submission_manifest)
         self.assertNotIn("does not submit the manuscript or close Stage 9", self.submission_manifest)

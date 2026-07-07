@@ -41,6 +41,7 @@ class Stage9SubmitOrHoldDecisionTests(unittest.TestCase):
             "unresolved_reference_case_links_not_public_facing",
             "code_and_data_availability_present",
             "stage9_closure_passed",
+            "pi_review_actions_resolved_or_submission_only",
         ]:
             self.assertIn(expected, names)
 
@@ -54,6 +55,8 @@ class Stage9SubmitOrHoldDecisionTests(unittest.TestCase):
         self.assertTrue(
             any("AI-assisted content disclosure" in action for action in self.report["human_submission_actions"])
         )
+        names = {check["name"] for check in self.report["upload_hold_checks"]}
+        self.assertIn("ai_disclosure_draft_requires_author_confirmation", names)
         self.assertTrue(
             any("official Springer Nature Reporting Summary" in action for action in self.report["human_submission_actions"])
         )

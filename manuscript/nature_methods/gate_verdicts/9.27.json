@@ -56,6 +56,11 @@
       "passed": true
     },
     {
+      "detail": "AI disclosure draft provides author-confirmation wording options without inserting a manuscript declaration automatically",
+      "name": "ai_disclosure_draft_present",
+      "passed": true
+    },
+    {
       "detail": "Code-for-review surface includes reproducibility commands",
       "name": "code_for_review_present",
       "passed": true
@@ -96,9 +101,9 @@
       "passed": true
     }
   ],
-  "commit": "4e3906b89ad6515644bb3edec539630c6ff140b1",
+  "commit": "32a94e2918852704c704c771bec7f60fd3e39d23",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T12:19:26Z",
+  "generated_utc": "2026-07-07T12:33:29Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -110,6 +115,7 @@
     "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",

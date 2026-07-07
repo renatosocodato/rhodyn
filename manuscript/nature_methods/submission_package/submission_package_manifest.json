@@ -56,6 +56,11 @@
       "passed": true
     },
     {
+      "detail": "AI disclosure draft provides author-confirmation wording options without inserting a manuscript declaration automatically",
+      "name": "ai_disclosure_draft_present",
+      "passed": true
+    },
+    {
       "detail": "Code-for-review surface includes reproducibility commands",
       "name": "code_for_review_present",
       "passed": true
@@ -97,14 +102,15 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "4e3906b89ad6515644bb3edec539630c6ff140b1",
+  "commit": "32a94e2918852704c704c771bec7f60fd3e39d23",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T12:19:26Z",
+  "generated_utc": "2026-07-07T12:33:29Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
     "manuscript/nature_methods/stage9_closure_version_binding.json",
     "manuscript/nature_methods/stage9_completion_report.md",
+    "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
@@ -141,10 +147,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "4e3906b89ad6515644bb3edec539630c6ff140b1",
+    "closure_commit": "32a94e2918852704c704c771bec7f60fd3e39d23",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@4e3906b89ad6515644bb3edec539630c6ff140b1",
+    "package_version": "stage9.29-closure@32a94e2918852704c704c771bec7f60fd3e39d23",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

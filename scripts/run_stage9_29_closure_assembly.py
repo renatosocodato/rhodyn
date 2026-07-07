@@ -51,6 +51,7 @@ PACKAGE_FILES = [
     SUBMISSION / "software_reporting_checklist.md",
     SUBMISSION / "article_fit_checklist.md",
     SUBMISSION / "author_declarations_REQUIRED.md",
+    SUBMISSION / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
     SUBMISSION / "code_for_review.md",
     SUBMISSION / "package_consistency_audit.md",
     SUBMISSION / "figure_file_inventory.csv",
@@ -299,7 +300,7 @@ def _version_binding(package_rows: list[dict[str, Any]], action_decisions: list[
         "pi_review_action_decisions": action_decisions,
         "human_submission_actions": [
             "Complete the official Springer Nature Reporting Summary form.",
-            "Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and AI-use disclosure if applicable.",
+            "Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and the AI-use disclosure draft if applicable.",
             "Confirm final portal metadata, corresponding-author details, ORCID fields, and journal-specific file names.",
             "Perform final human author approval before upload.",
         ],
@@ -368,7 +369,7 @@ The closed package supports a methods claim that RhoDyn provides an inspectable 
 ## Remaining human submission actions
 
 1. Complete the official Springer Nature Reporting Summary form.
-2. Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and AI-use disclosure if applicable.
+2. Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and the AI-use disclosure draft if applicable.
 3. Confirm final portal metadata, corresponding-author fields, ORCID fields, and journal-specific file names.
 4. Perform final author approval of the main text, Supplementary Information, figures, and code-for-review surface before upload.
 """
@@ -382,6 +383,12 @@ def _update_submission_manifest() -> None:
         body = body.replace(
             anchor,
             anchor + "\n| Author declarations | `author_declarations_REQUIRED.md` | Required upload declarations pending human completion. |",
+        )
+    if "| AI disclosure draft | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` |" not in body:
+        anchor = "| Author declarations | `author_declarations_REQUIRED.md` | Required upload declarations pending human completion. |"
+        body = body.replace(
+            anchor,
+            anchor + "\n| AI disclosure draft | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation wording options for any required AI-assisted content disclosure. |",
         )
     if "| Stage 9 completion report | `../stage9_completion_report.md` |" not in body:
         anchor = "| PI review literature calibration | `pi_review_literature_calibration.md` | Prior-art and novelty calibration note. |"
@@ -424,6 +431,7 @@ def _update_submission_package_manifest(version_binding: dict[str, Any]) -> None
     package_files = set(payload.get("package_files", []))
     for rel in [
         "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
+        "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
         "manuscript/nature_methods/stage9_completion_report.md",
         "manuscript/nature_methods/stage9_closure_version_binding.json",

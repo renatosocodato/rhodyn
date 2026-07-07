@@ -55,6 +55,7 @@ OUTPUTS = {
     "software_reporting_checklist": SUBMISSION / "software_reporting_checklist.md",
     "article_fit_checklist": SUBMISSION / "article_fit_checklist.md",
     "author_declarations": SUBMISSION / "author_declarations_REQUIRED.md",
+    "ai_disclosure_draft": SUBMISSION / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
     "code_review": SUBMISSION / "code_for_review.md",
     "package_audit": SUBMISSION / "package_consistency_audit.md",
     "figure_inventory": SUBMISSION / "figure_file_inventory.csv",
@@ -522,10 +523,37 @@ This checklist registers author-controlled declaration fields that must be compl
 | Author contributions | Complete the author contribution statement using the final author list and the contribution taxonomy expected by the journal. | The repository cannot infer author order or contribution roles. | human action |
 | Competing interests | Provide the Nature Portfolio competing-interest statement for all authors. Use the journal's standard no-competing-interest statement only if true. | No author-confirmed competing-interest statement is stored in the package. | human action |
 | Ethics and biological materials | Confirm that this methods Article adds no new human-participant, animal, or private wet-lab experiments, and that public source datasets remain governed by their source records. | Current package uses public-derived data and software demonstrations; no private new wet-lab data are claimed. | human action |
-| AI-assisted content disclosure | Confirm whether any AI-assisted writing, analysis, or content-generation declaration is required and provide final journal-compliant wording if applicable. | This package does not insert an AI declaration automatically. | human action |
+| AI-assisted content disclosure | Confirm whether any AI-assisted writing, analysis, or content-generation declaration is required and provide final journal-compliant wording if applicable. | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` provides author-confirmation draft options. This package does not insert an AI declaration automatically. | human action |
 | Corresponding-author and ORCID fields | Complete corresponding-author, ORCID, affiliation, and portal-only metadata in the submission system. | Package keeps scientific surfaces separate from portal-only metadata. | human action |
 
 Policy rationale. Nature Portfolio requires a competing-interest declaration for submitted manuscripts, and Springer Nature policy requires transparent AI-use declaration where applicable. These are author attestations and should be completed in the journal submission workflow rather than inferred from repository files.
+"""
+
+
+def _ai_disclosure_author_confirmation() -> str:
+    return """# AI disclosure AUTHOR CONFIRMATION REQUIRED
+
+This file provides draft wording options for the Nature Methods upload. It does not assert final AI use, does not replace author review, and must not be copied into the manuscript or portal unless all authors confirm the exact tools, scope, and wording.
+
+## Why this file exists
+
+Springer Nature guidance states that Large Language Models do not satisfy authorship criteria and that use of an LLM should be documented in the Methods section or in a suitable alternative manuscript location when applicable. This package therefore separates the journal-facing disclosure decision from the scientific manuscript text.
+
+## Option A. AI-assisted writing, editing, code, or figure-support tools were used
+
+During preparation of this manuscript, the authors used [tool name, provider, and model or configuration if known] for [editing, formatting, proofreading, code assistance, figure preparation, or other exact use]. The authors reviewed and edited all outputs and take full responsibility for the content. The tools were not used to generate primary data, alter source datasets, perform undisclosed analyses, or make autonomous scientific interpretations unless explicitly stated and documented elsewhere in the manuscript.
+
+Use this option only after replacing the bracketed text with author-confirmed details.
+
+## Option B. No AI-assisted tools were used for manuscript preparation
+
+The authors did not use generative AI or AI-assisted technologies to write, edit, analyze, or generate manuscript content.
+
+Use this option only if it is true for all authors and all manuscript-production steps.
+
+## Upload decision
+
+Select one option, revise it to match the actual author-confirmed record, and place the final wording in the Methods section or journal-designated declaration field if required by the submission system. If the final statement differs from either option, preserve the same boundaries by naming the tool, naming the task, confirming author responsibility, and avoiding any unsupported claim that an AI tool generated data or made scientific interpretations.
 """
 
 
@@ -566,6 +594,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Main figures | {'ready' if check_map.get('figure_files_present') else 'blocked'} | Six main display items are present in PDF, PNG, and SVG. |",
         f"| Reporting Summary | {'registered' if check_map.get('reporting_summary_present') else 'blocked'} | The required Reporting Summary placeholder is present. The final Springer Nature form remains a human submission action. |",
         f"| Author declarations | {'registered' if check_map.get('author_declarations_present') else 'blocked'} | `author_declarations_REQUIRED.md` records author-controlled declarations that must be completed before upload. |",
+        f"| AI disclosure draft | {'registered' if check_map.get('ai_disclosure_draft_present') else 'blocked'} | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` provides draft wording options that require author confirmation before use. |",
         f"| Code for review | {'ready' if check_map.get('code_for_review_present') else 'blocked'} | `code_for_review.md` records release identity and reproducibility commands. |",
         f"| Editor-triage note | {'ready' if check_map.get('editor_triage_note_present') else 'blocked'} | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |",
         f"| Editorial pitch | {'ready' if check_map.get('editorial_pitch_present') else 'blocked'} | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |",
@@ -589,6 +618,7 @@ def _submission_manifest(generated_utc: str) -> str:
         ("Source data and statistics", "source_data_and_statistics_inventory.csv", "Review-support inventory for statistics and source-data bindings."),
         ("Reporting Summary", "reporting_summary_REQUIRED.md", "Required journal form placeholder pending human completion."),
         ("Author declarations", "author_declarations_REQUIRED.md", "Required author declaration checklist pending human completion."),
+        ("AI disclosure draft", "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md", "Author-confirmation wording options for any required AI-assisted content disclosure."),
         ("Code for review", "code_for_review.md", "Release identity and reproducibility-command surface."),
         ("Editor-triage note", "editor_triage_note_for_cover_letter.md", "Cover-letter-ready Nature Methods fit, validation, and claim-boundary note."),
         ("Editorial pitch", "editorial_pitch_for_submission.md", "Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage."),
@@ -713,6 +743,15 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
             and "AI-assisted content disclosure" in (package_dir / "author_declarations_REQUIRED.md").read_text(encoding="utf-8")
             and "human action" in (package_dir / "author_declarations_REQUIRED.md").read_text(encoding="utf-8"),
             "detail": "Author declarations checklist records competing-interest, contribution, funding, ethics/materials, AI-use, and portal-only human actions",
+        },
+        {
+            "name": "ai_disclosure_draft_present",
+            "passed": (package_dir / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md").exists()
+            and "AUTHOR CONFIRMATION REQUIRED" in (package_dir / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "does not assert final AI use" in (package_dir / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Option A" in (package_dir / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Option B" in (package_dir / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8"),
+            "detail": "AI disclosure draft provides author-confirmation wording options without inserting a manuscript declaration automatically",
         },
         {
             "name": "code_for_review_present",
@@ -860,6 +899,7 @@ def _stage_outputs(generated_utc: str) -> tuple[dict[str, Any], dict[str, Any]]:
     _write_text(staging_submission / "software_reporting_checklist.md", _software_reporting_checklist())
     _write_text(staging_submission / "article_fit_checklist.md", _article_fit_checklist(main_text))
     _write_text(staging_submission / "author_declarations_REQUIRED.md", _author_declarations_checklist())
+    _write_text(staging_submission / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md", _ai_disclosure_author_confirmation())
     _write_text(staging_submission / "references_for_submission.bib", _submission_bib())
     _write_csv(
         staging_submission / "figure_file_inventory.csv",
@@ -1020,7 +1060,7 @@ Current status. Stage 9.27 submission package assembly complete.
 
 The workspace now contains the authorized manuscript components through collaborator-review package assembly. Evidence intake, venue guidance, methods-paper corpus analysis, narrative spine, claim freeze, paragraph planning, figure planning, deterministic main-figure rendering, supplementary display planning, section contracts, front matter, Results, Introduction, Discussion, Methods, availability statements, Supplementary Methods, supplementary table/source-data binding, reference audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review, and submission package assembly are present.
 
-The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
+The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
 
 The official Springer Nature Reporting Summary form remains a human submission action. The PI review packet and Stage 9 closure report have not started.
 

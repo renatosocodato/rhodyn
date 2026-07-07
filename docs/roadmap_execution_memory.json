@@ -469,6 +469,7 @@
         "manuscript/nature_methods/stage9_closure_version_binding.json",
         "manuscript/nature_methods/stage9_completion_report.md",
         "manuscript/nature_methods/stage9_narrative_spine.md",
+        "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/article_fit_checklist.md",
         "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
         "manuscript/nature_methods/submission_package/code_for_review.md",
@@ -847,7 +848,7 @@
           "status": "complete_pi_review_packet"
         },
         {
-          "closure_version": "stage9.29-closure@4e3906b89ad6515644bb3edec539630c6ff140b1",
+          "closure_version": "stage9.29-closure@32a94e2918852704c704c771bec7f60fd3e39d23",
           "evidence": "manuscript/nature_methods/gate_verdicts/9.29.json",
           "gate": "every Stage 9 gate passes; quarantine has no unresolved blocker; package, evidence, and release versions are bound",
           "goal": "Close Stage 9 with package, evidence, release, and limitation versions bound.",

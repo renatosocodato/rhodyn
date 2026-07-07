@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T12:19:26Z
+Generated UTC. 2026-07-07T12:33:29Z
 
 ## Result
 
@@ -21,6 +21,7 @@ Status. pass
 | panelforge_status_bound | true | Stage 9.6b has six rendered main display items |
 | reporting_summary_present | true | Reporting Summary requirement placeholder is present |
 | author_declarations_present | true | Author declarations checklist records competing-interest, contribution, funding, ethics/materials, AI-use, and portal-only human actions |
+| ai_disclosure_draft_present | true | AI disclosure draft provides author-confirmation wording options without inserting a manuscript declaration automatically |
 | code_for_review_present | true | Code-for-review surface includes reproducibility commands |
 | editor_triage_note_present | true | Editor-triage note foregrounds Nature Methods fit and claim boundaries |
 | editorial_pitch_present | true | Editorial pitch includes cover-letter, author-confirmation, and presubmission-inquiry drafts |
