@@ -23,13 +23,13 @@ Codex closed `5` PI-review action items from existing manuscript evidence and re
 - Software version. `v0.1.0`.
 - Pyproject version. `0.1.0`.
 - Repository. `https://github.com/renatosocodato/rhodyn`.
-- Closure commit. `976dc7c1473b63babbdd46ed3cfa1357e3607e04`.
+- Closure commit. `f0331531dc3ca444683161438d09e836fcee8d9e`.
 - Software archive DOI. `10.5281/zenodo.21036616`.
 - Software concept DOI. `10.5281/zenodo.21036615`.
 - Evidence version. `stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc`.
 - Claim-freeze version. `claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af`.
 - Reference version. `reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81`.
-- Package version. `stage9.29-closure@976dc7c1473b63babbdd46ed3cfa1357e3607e04`.
+- Package version. `stage9.29-closure@f0331531dc3ca444683161438d09e836fcee8d9e`.
 - PanelForge version. `v3.14.1` with DOI `10.5281/zenodo.20811171`.
 
 ## Figure and package state
@@ -40,8 +40,8 @@ PanelForge remains unchanged in this closure step. The package has `18` rendered
 |---|---:|---:|
 | `manuscript/nature_methods/submission_package/main_text_for_submission.md` | `26d096530df0` | `36158` |
 | `manuscript/nature_methods/submission_package/supplementary_information_for_submission.md` | `d5bf3eadafa0` | `11912` |
-| `manuscript/nature_methods/submission_package/submission_manifest.md` | `ff72e514e084` | `2583` |
-| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `47771a571d76` | `2570` |
+| `manuscript/nature_methods/submission_package/submission_manifest.md` | `a09aafd81cb1` | `2900` |
+| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `1e62d79e7278` | `2870` |
 | `manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md` | `9fc7e15e22fd` | `2079` |
 | `manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md` | `196ee35bb536` | `6512` |
 | `manuscript/nature_methods/submission_package/software_reporting_checklist.md` | `34d4d62ebbca` | `4048` |
@@ -53,7 +53,7 @@ PanelForge remains unchanged in this closure step. The package has `18` rendered
 | `manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv` | `7cfc0ef56a00` | `6267` |
 | `manuscript/nature_methods/submission_package/references_for_submission.bib` | `c37151ef73f2` | `6973` |
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | `b83b8d2f639e` | `1448` |
-| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `e47eda38c05f` | `5481` |
+| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `6ce285176a4e` | `6342` |
 | `manuscript/nature_methods/submission_package/pi_review_packet.md` | `283a56dc3f67` | `7833` |
 | `manuscript/nature_methods/submission_package/pi_review_action_matrix.csv` | `e3acfd583515` | `2203` |
 | `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `3ff376164524` | `1639` |

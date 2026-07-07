@@ -141,10 +141,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "976dc7c1473b63babbdd46ed3cfa1357e3607e04",
+    "closure_commit": "f0331531dc3ca444683161438d09e836fcee8d9e",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@976dc7c1473b63babbdd46ed3cfa1357e3607e04",
+    "package_version": "stage9.29-closure@f0331531dc3ca444683161438d09e836fcee8d9e",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

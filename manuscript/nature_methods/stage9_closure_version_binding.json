@@ -1,6 +1,6 @@
 {
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-  "closure_commit": "976dc7c1473b63babbdd46ed3cfa1357e3607e04",
+  "closure_commit": "f0331531dc3ca444683161438d09e836fcee8d9e",
   "content_type": "Article",
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine": {
@@ -42,7 +42,7 @@
     "panelforge_ref": null,
     "rendered_file_count": 18
   },
-  "generated_utc": "2026-07-07T11:56:58Z",
+  "generated_utc": "2026-07-07T12:01:41Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form.",
     "Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and AI-use disclosure if applicable.",
@@ -64,16 +64,16 @@
       "sha256": "d5bf3eadafa0932021fe626589de53796e7212fb93ea2e02584266b46fc61d03"
     },
     {
-      "bytes": 2583,
+      "bytes": 2900,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_manifest.md",
-      "sha256": "ff72e514e0841445540c1cc4a597fe0dc218d6ff595d6ea8f8a98fefa759703d"
+      "sha256": "a09aafd81cb1838cd4537e602152c7c176bcafa66e6ac952310cc3b7431cbdc6"
     },
     {
-      "bytes": 2570,
+      "bytes": 2870,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
-      "sha256": "47771a571d76075b8eac3f1d8ff63a687d36a9dbbd8c2a15e9b6bf881c6d1e26"
+      "sha256": "1e62d79e7278d3e4e34d941ab98dd25b1d0bd87920336e96a506bfdc7bdcfd5a"
     },
     {
       "bytes": 2079,
@@ -142,10 +142,10 @@
       "sha256": "b83b8d2f639ec3361eb5b7ec54a71f680fcc0214cb020f82e45cc31141e0527f"
     },
     {
-      "bytes": 5481,
+      "bytes": 6342,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_package_manifest.json",
-      "sha256": "e47eda38c05fadd03293317ee392fa33c45693c80b45d0ce05a0620ad23e80bb"
+      "sha256": "6ce285176a4efc2a3e2a2b8cc38d35ea2599c0bc557f36c4174ec236be1766a2"
     },
     {
       "bytes": 7833,
@@ -172,7 +172,7 @@
       "sha256": "362ebab9dd91b5b642341c18b668b49f7a8b869b170fa30a68089357ff65c529"
     }
   ],
-  "package_version": "stage9.29-closure@976dc7c1473b63babbdd46ed3cfa1357e3607e04",
+  "package_version": "stage9.29-closure@f0331531dc3ca444683161438d09e836fcee8d9e",
   "pi_review_action_decisions": [
     {
       "closure_status": "closed",
