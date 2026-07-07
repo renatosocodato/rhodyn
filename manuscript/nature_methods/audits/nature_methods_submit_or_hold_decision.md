@@ -1,6 +1,6 @@
 # Nature Methods submit-or-hold decision
 
-Generated UTC. `2026-07-07T13:32:28Z`.
+Generated UTC. `2026-07-07T13:40:46Z`.
 
 Decision. `hold_for_human_upload_actions`.
 
@@ -21,6 +21,7 @@ The Stage 9.29 package is ready for collaborator and PI review as a Nature Metho
 | prior_art_positioning_matrix_present | pass | Prior-art positioning matrix makes the RhoDyn novelty boundary explicit for collaborator/editorial review. |
 | editor_objection_response_map_present | pass | Editor-objection response map ties likely desk-review objections to existing evidence and claim boundaries. |
 | editor_two_minute_triage_simulation_present | pass | Two-minute editor triage simulation checks whether method novelty, validation breadth, and claim boundaries are visible on first pass. |
+| current_policy_preflight_present | pass | Current Nature Methods policy preflight maps official Article, reporting, data/code, and software expectations to the package evidence. |
 | stage9_closure_passed | pass | Stage 9.29 closure and package manifest are closed and version-bound. |
 | pi_review_actions_resolved_or_submission_only | pass | open_action_rows=0; submission_only_rows=1. |
 

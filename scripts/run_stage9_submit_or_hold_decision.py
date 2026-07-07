@@ -64,6 +64,7 @@ def build_report() -> dict[str, Any]:
     prior_art_positioning = _read(PACKAGE / "prior_art_positioning_matrix.md")
     editor_objection_response = _read(PACKAGE / "editor_objection_response_map.md")
     editor_two_minute_triage = _read(PACKAGE / "editor_two_minute_triage_simulation.md")
+    current_policy_preflight = _read(PACKAGE / "current_nature_methods_policy_preflight.md")
     article_fit = _read(PACKAGE / "article_fit_checklist.md")
     code_for_review = _read(PACKAGE / "code_for_review.md")
     editor_note = _read(PACKAGE / "editor_triage_note_for_cover_letter.md")
@@ -171,6 +172,16 @@ def build_report() -> dict[str, Any]:
             and "The current package should be readable as a Nature Methods computational-methods Article" in editor_two_minute_triage
             and "If an editor can answer these three questions in the first two minutes" in editor_two_minute_triage,
             "Two-minute editor triage simulation checks whether method novelty, validation breadth, and claim boundaries are visible on first pass.",
+        ),
+        _check(
+            "current_policy_preflight_present",
+            "Current Nature Methods policy preflight" in current_policy_preflight
+            and "does not add evidence, citations, analyses, figures, datasets, performance claims, or manuscript text" in current_policy_preflight
+            and "Article is a report describing a novel method or tool" in current_policy_preflight
+            and "Abstract up to 150 words" in current_policy_preflight
+            and "Code and algorithm availability" in current_policy_preflight
+            and "Reporting Summary remains a human submission action" in current_policy_preflight,
+            "Current Nature Methods policy preflight maps official Article, reporting, data/code, and software expectations to the package evidence.",
         ),
         _check(
             "stage9_closure_passed",

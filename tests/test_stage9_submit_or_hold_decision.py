@@ -44,6 +44,7 @@ class Stage9SubmitOrHoldDecisionTests(unittest.TestCase):
             "prior_art_positioning_matrix_present",
             "editor_objection_response_map_present",
             "editor_two_minute_triage_simulation_present",
+            "current_policy_preflight_present",
             "stage9_closure_passed",
             "pi_review_actions_resolved_or_submission_only",
         ]:

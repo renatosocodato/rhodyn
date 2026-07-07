@@ -18,6 +18,7 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 | Prior-art positioning matrix | ready | `prior_art_positioning_matrix.md` distinguishes RhoDyn from related dynamic-state, trajectory, imaging, and software-method literature without adding new manuscript claims. |
 | Editor-objection response map | ready | `editor_objection_response_map.md` links likely desk-review objections to existing evidence and claim boundaries. |
 | Two-minute editor triage simulation | ready | `editor_two_minute_triage_simulation.md` checks whether the title, Abstract, cover letter, and figure spine communicate the method claim quickly. |
+| Current Nature Methods policy preflight | ready | `current_nature_methods_policy_preflight.md` maps the package to current Article, reporting, data/code, and software guidance. |
 | Software-reporting checklist | ready | `software_reporting_checklist.md` maps RhoDyn to Nature Methods software and algorithm reporting expectations. |
 | Article-fit checklist | ready | `article_fit_checklist.md` records content-type fit, word counts, display count, references, and section structure. |
 | Reader-surface hygiene | ready | Main manuscript and Supplementary Information surfaces are free of internal IDs and build-language tokens. |

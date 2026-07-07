@@ -101,6 +101,11 @@
       "passed": true
     },
     {
+      "detail": "Current Nature Methods policy preflight maps Article, reporting, data/code, and software requirements to package evidence",
+      "name": "current_policy_preflight_present",
+      "passed": true
+    },
+    {
       "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
       "name": "software_reporting_checklist_present",
       "passed": true
@@ -126,9 +131,9 @@
       "passed": true
     }
   ],
-  "commit": "025584f2fe1e0a91e7fa15c3bf37478fd00aeab2",
+  "commit": "a46a942d46b24fe2e0d23682b1bbbe434334aa6a",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T13:32:08Z",
+  "generated_utc": "2026-07-07T13:40:23Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -140,6 +145,7 @@
     "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
     "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
     "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
+    "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
     "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",

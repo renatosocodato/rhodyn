@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T13:32:08Z
+Generated UTC. 2026-07-07T13:40:23Z
 
 ## Result
 
@@ -30,6 +30,7 @@ Status. pass
 | prior_art_positioning_matrix_present | true | Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence |
 | editor_objection_response_map_present | true | Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries |
 | editor_two_minute_triage_simulation_present | true | Two-minute editor triage simulation checks first-pass method fit, validation breadth, and claim boundaries |
+| current_policy_preflight_present | true | Current Nature Methods policy preflight maps Article, reporting, data/code, and software requirements to package evidence |
 | software_reporting_checklist_present | true | Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning |
 | article_fit_checklist_present | true | Article-fit checklist records content-type fit, word counts, display count, references, and section structure |
 | package_safety_scan_clear | true | package_hits=[] |

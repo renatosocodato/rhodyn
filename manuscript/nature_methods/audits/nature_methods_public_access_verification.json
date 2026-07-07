@@ -104,6 +104,39 @@
       "method": "HEAD",
       "normalization": "none",
       "ok": true,
+      "raw_url": "https://www.nature.com/nmeth/content",
+      "resolved_url": "https://www.nature.com/nmeth/content?error=cookies_not_supported&code=0c5c0d05-5f28-4095-a661-6371fd205ecc",
+      "source": "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
+      "status_code": 200,
+      "url": "https://www.nature.com/nmeth/content"
+    },
+    {
+      "error": "",
+      "method": "HEAD",
+      "normalization": "none",
+      "ok": true,
+      "raw_url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards",
+      "resolved_url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards?error=cookies_not_supported&code=43246d8f-be5c-4e06-a7f8-f5e02220d4ca",
+      "source": "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
+      "status_code": 200,
+      "url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards"
+    },
+    {
+      "error": "",
+      "method": "HEAD",
+      "normalization": "none",
+      "ok": true,
+      "raw_url": "https://communities.springernature.com/posts/guidelines-for-algorithms-and-software-in-nature-methods",
+      "resolved_url": "https://communities.springernature.com/posts/guidelines-for-algorithms-and-software-in-nature-methods",
+      "source": "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
+      "status_code": 200,
+      "url": "https://communities.springernature.com/posts/guidelines-for-algorithms-and-software-in-nature-methods"
+    },
+    {
+      "error": "",
+      "method": "HEAD",
+      "normalization": "none",
+      "ok": true,
       "raw_url": "https://github.com/renatosocodato/rhodyn",
       "resolved_url": "https://github.com/renatosocodato/rhodyn",
       "source": "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -339,7 +372,7 @@
   "failed_urls": [],
   "failures": [],
   "forbidden_public_reference_hits": [],
-  "generated_utc": "2026-07-07T13:32:28Z",
+  "generated_utc": "2026-07-07T13:40:46Z",
   "interpretation_boundary": "This report verifies public URL accessibility for the Nature Methods submission-package surfaces. It does not upload files, alter DOI records, modify GitHub or Zenodo state, or certify journal acceptance.",
   "missing_expected_urls": [],
   "report_format": "rhodyn.stage9_public_access_verification.v1",
@@ -348,6 +381,7 @@
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
+    "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
     "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
     "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
@@ -367,5 +401,5 @@
     "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md"
   ],
   "status": "pass",
-  "url_count": 30
+  "url_count": 33
 }
