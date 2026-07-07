@@ -61,6 +61,11 @@
       "passed": true
     },
     {
+      "detail": "Editorial pitch includes cover-letter and presubmission-inquiry drafts",
+      "name": "editorial_pitch_present",
+      "passed": true
+    },
+    {
       "detail": "package_hits=[]",
       "name": "package_safety_scan_clear",
       "passed": true
@@ -76,9 +81,9 @@
       "passed": true
     }
   ],
-  "commit": "a6f03e40cd7abe82a7a38e52022b7fa296dcf439",
+  "commit": "768deca3d679af02fc9536638dc6361d85cf4f21",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T11:07:25Z",
+  "generated_utc": "2026-07-07T11:18:20Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -86,6 +91,7 @@
     "manuscript/nature_methods/submission_package/submission_manifest.md",
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
+    "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",

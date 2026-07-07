@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T11:07:25Z
+Generated UTC. 2026-07-07T11:18:20Z
 
 ## Result
 
@@ -22,6 +22,7 @@ Status. pass
 | reporting_summary_present | true | Reporting Summary requirement placeholder is present |
 | code_for_review_present | true | Code-for-review surface includes reproducibility commands |
 | editor_triage_note_present | true | Editor-triage note foregrounds Nature Methods fit and claim boundaries |
+| editorial_pitch_present | true | Editorial pitch includes cover-letter and presubmission-inquiry drafts |
 | package_safety_scan_clear | true | package_hits=[] |
 | no_downstream_pi_or_closure_started | true | Closed Stage 9.29 package refresh allowed existing downstream surfaces |
 | package_consistency_audit_passed | true | All package prerequisites, reader-surface, figure, reporting, code, and safety checks pass |

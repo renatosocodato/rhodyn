@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T11:07:25Z
-Git commit. a6f03e40cd7abe82a7a38e52022b7fa296dcf439
+Generated UTC. 2026-07-07T11:18:19Z
+Git commit. 768deca3d679af02fc9536638dc6361d85cf4f21
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -13,6 +13,7 @@ Git commit. a6f03e40cd7abe82a7a38e52022b7fa296dcf439
 | Reporting Summary | `reporting_summary_REQUIRED.md` | Required journal form placeholder pending human completion. |
 | Code for review | `code_for_review.md` | Release identity and reproducibility-command surface. |
 | Editor-triage note | `editor_triage_note_for_cover_letter.md` | Cover-letter-ready Nature Methods fit, validation, and claim-boundary note. |
+| Editorial pitch | `editorial_pitch_for_submission.md` | Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage. |
 | Readiness checklist | `submission_readiness_checklist.md` | Collaborator handoff checklist. |
 | Consistency audit | `package_consistency_audit.md` | Package assembly checks. |
 | PI review packet | `pi_review_packet.md` | Final human PI-style review surface for author decision. |

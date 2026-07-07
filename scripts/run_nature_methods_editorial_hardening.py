@@ -29,6 +29,7 @@ RISK_MATRIX = AUDITS / "nature_methods_desk_rejection_risk_matrix.csv"
 HARDENING_REPORT = AUDITS / "nature_methods_editorial_hardening_report.md"
 TRIAGE_NOTE = STAGING / "nature_methods_editor_triage_note_draft.md"
 PACKAGE_TRIAGE_NOTE = SUBMISSION / "editor_triage_note_for_cover_letter.md"
+PACKAGE_EDITORIAL_PITCH = SUBMISSION / "editorial_pitch_for_submission.md"
 PRIOR_ART_NOTE = STAGING / "live_cell_prior_art_candidate_for_promotion.md"
 
 
@@ -72,6 +73,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
     references = _section(main_text, "References")
     figure_legends_present = "### Main figure legends" in main_text and "#### Figure 6" in main_text
     package_triage = _read(PACKAGE_TRIAGE_NOTE)
+    package_pitch = _read(PACKAGE_EDITORIAL_PITCH)
     invalid_input_language = (
         "validation issues" in methods
         and "missing time units" in methods
@@ -173,6 +175,15 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "recommended_action": "Complete the official Springer Nature Reporting Summary and portal fields after author approval.",
             "promotion_target": "Human action, not repository-derived manuscript edit.",
         },
+        {
+            "risk_id": "NM-DESK-011",
+            "editorial_risk": "The closed package may still require a submission-ready pitch that translates the method into Nature Methods editorial-decision language.",
+            "nature_methods_requirement": "Initial editorial triage needs fast evidence of novelty, strong validation, immediate practical relevance, reusable software, and calibrated biological scope.",
+            "current_evidence": "The package now includes cover-letter and presubmission-inquiry drafts that state the method object, validation ladder, software release surfaces, and interpretation limits.",
+            "status": "hardened_in_current_text" if "Cover-letter draft" in package_pitch and "Presubmission-inquiry draft" in package_pitch and "immediate practical relevance" in package_pitch else "needs_revision",
+            "recommended_action": "Use the package-bound editorial pitch as the starting point for the final cover letter or presubmission inquiry after author approval.",
+            "promotion_target": "submission_package/editorial_pitch_for_submission.md.",
+        },
     ]
 
 
@@ -238,6 +249,7 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "",
             "- The live-cell morphodynamic prior-art citation has been promoted and renumbered across the current package.",
             "- The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.",
+            "- The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.",
             "- No title, Abstract, Results, Methods, figure, or data changes were made.",
             "- The official Reporting Summary remains a human submission action.",
             "",
@@ -323,6 +335,7 @@ def run() -> dict[str, object]:
             "hardening_report": HARDENING_REPORT.relative_to(ROOT).as_posix(),
             "triage_note": TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_triage_note": PACKAGE_TRIAGE_NOTE.relative_to(ROOT).as_posix(),
+            "package_editorial_pitch": PACKAGE_EDITORIAL_PITCH.relative_to(ROOT).as_posix(),
             "prior_art_note": PRIOR_ART_NOTE.relative_to(ROOT).as_posix(),
         },
         "scope": "Editorial hardening addendum only. No data, figures, model outputs, manuscript claims, or closed package files were changed.",

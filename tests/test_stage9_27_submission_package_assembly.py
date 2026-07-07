@@ -49,6 +49,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "reporting_summary_present",
             "code_for_review_present",
             "editor_triage_note_present",
+            "editorial_pitch_present",
             "package_safety_scan_clear",
             "no_downstream_pi_or_closure_started",
             "package_consistency_audit_passed",
@@ -95,6 +96,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
     def test_code_and_reporting_surfaces_remain_review_scoped(self) -> None:
         self.assertIn("Reproducibility commands", self.code_for_review)
         self.assertIn("RhoDyn repository root", self.code_for_review)
+        self.assertTrue((PACKAGE / "editorial_pitch_for_submission.md").exists())
         self.assertIn("Reporting Summary | registered", self.checklist)
         self.assertIn("Springer Nature", self.checklist)
         self.assertIn("human submission action", self.checklist)
