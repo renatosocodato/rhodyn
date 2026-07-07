@@ -1,6 +1,6 @@
 # Nature Methods submit-or-hold decision
 
-Generated UTC. `2026-07-07T13:40:46Z`.
+Generated UTC. `2026-07-07T13:51:51Z`.
 
 Decision. `hold_for_human_upload_actions`.
 
@@ -22,6 +22,7 @@ The Stage 9.29 package is ready for collaborator and PI review as a Nature Metho
 | editor_objection_response_map_present | pass | Editor-objection response map ties likely desk-review objections to existing evidence and claim boundaries. |
 | editor_two_minute_triage_simulation_present | pass | Two-minute editor triage simulation checks whether method novelty, validation breadth, and claim boundaries are visible on first pass. |
 | current_policy_preflight_present | pass | Current Nature Methods policy preflight maps official Article, reporting, data/code, and software expectations to the package evidence. |
+| reviewer_editor_fit_planner_present | pass | Reviewer/editor fit planner keeps reviewer suggestions, exclusions, and editor-fit wording author-confirmed while preserving a method-first reviewer mix. |
 | stage9_closure_passed | pass | Stage 9.29 closure and package manifest are closed and version-bound. |
 | pi_review_actions_resolved_or_submission_only | pass | open_action_rows=0; submission_only_rows=1. |
 
@@ -42,6 +43,7 @@ The Stage 9.29 package is ready for collaborator and PI review as a Nature Metho
 - Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.
 - Confirm title page, author order, affiliations, ORCID, corresponding-author metadata, funding, competing interests, and author contributions.
 - Confirm whether AI-assisted content disclosure is required, revise the AI disclosure draft with final author-confirmed wording if applicable, and insert it in the journal-designated location.
+- Confirm reviewer suggestions, reviewer exclusions, and editor-fit wording using the reviewer/editor fit planner if those portal fields are used.
 - Confirm ethics, biological materials, and controlled-access or reviewer-access statements.
 - Perform final file naming, portal metadata, and author approval checks.
 

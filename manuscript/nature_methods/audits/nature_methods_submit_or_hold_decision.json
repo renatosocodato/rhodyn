@@ -1,11 +1,12 @@
 {
   "collaborator_review_ready": true,
   "decision": "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. Final journal upload should remain on hold until the listed human-attested submission fields are completed.",
-  "generated_utc": "2026-07-07T13:40:46Z",
+  "generated_utc": "2026-07-07T13:51:51Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
     "Confirm title page, author order, affiliations, ORCID, corresponding-author metadata, funding, competing interests, and author contributions.",
     "Confirm whether AI-assisted content disclosure is required, revise the AI disclosure draft with final author-confirmed wording if applicable, and insert it in the journal-designated location.",
+    "Confirm reviewer suggestions, reviewer exclusions, and editor-fit wording using the reviewer/editor fit planner if those portal fields are used.",
     "Confirm ethics, biological materials, and controlled-access or reviewer-access statements.",
     "Perform final file naming, portal metadata, and author approval checks."
   ],
@@ -70,6 +71,11 @@
     {
       "detail": "Current Nature Methods policy preflight maps official Article, reporting, data/code, and software expectations to the package evidence.",
       "name": "current_policy_preflight_present",
+      "passed": true
+    },
+    {
+      "detail": "Reviewer/editor fit planner keeps reviewer suggestions, exclusions, and editor-fit wording author-confirmed while preserving a method-first reviewer mix.",
+      "name": "reviewer_editor_fit_planner_present",
       "passed": true
     },
     {

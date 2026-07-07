@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T13:40:22Z
-Git commit. a46a942d46b24fe2e0d23682b1bbbe434334aa6a
+Generated UTC. 2026-07-07T13:51:28Z
+Git commit. 216e26b0cc33e3055a0e16d65aa201e4c83afffb
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -22,6 +22,7 @@ Git commit. a46a942d46b24fe2e0d23682b1bbbe434334aa6a
 | Editor-objection response map | `editor_objection_response_map.md` | Desk-review objection map linking likely objections to existing package evidence and wording boundaries. |
 | Two-minute editor triage simulation | `editor_two_minute_triage_simulation.md` | First-pass editor-read simulation for title, Abstract, cover-letter opening, figure spine, and claim boundaries. |
 | Current Nature Methods policy preflight | `current_nature_methods_policy_preflight.md` | Source-linked preflight against current Article, Reporting Summary, data/code availability, and software guidance. |
+| Reviewer and editor fit planner | `reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation planner for reviewer expertise coverage, suggested-reviewer fields, exclusions, and editor-fit wording. |
 | Software-reporting checklist | `software_reporting_checklist.md` | Nature Methods software and algorithm reporting cross-check. |
 | Article-fit checklist | `article_fit_checklist.md` | Nature Methods Article content-type and format cross-check. |
 | Readiness checklist | `submission_readiness_checklist.md` | Collaborator handoff checklist. |

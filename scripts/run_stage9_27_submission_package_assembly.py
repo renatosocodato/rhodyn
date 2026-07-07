@@ -56,6 +56,7 @@ OUTPUTS = {
     "editor_objection_response_map": SUBMISSION / "editor_objection_response_map.md",
     "editor_two_minute_triage_simulation": SUBMISSION / "editor_two_minute_triage_simulation.md",
     "current_policy_preflight": SUBMISSION / "current_nature_methods_policy_preflight.md",
+    "reviewer_editor_fit_planner": SUBMISSION / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
     "software_reporting_checklist": SUBMISSION / "software_reporting_checklist.md",
     "article_fit_checklist": SUBMISSION / "article_fit_checklist.md",
     "author_declarations": SUBMISSION / "author_declarations_REQUIRED.md",
@@ -562,6 +563,70 @@ The strongest risk is not the absence of a required surface, but loss of focus d
 """
 
 
+def _reviewer_editor_fit_planner() -> str:
+    return """# Reviewer and editor fit planner AUTHOR CONFIRMATION REQUIRED
+
+This file is a collaborator-review aid for choosing reviewer suggestions, reviewer exclusions, and editor-facing fit language during Nature Methods upload. It does not nominate reviewers, infer conflicts, or add manuscript evidence. Author confirmation is required before any name, exclusion, or portal text is entered into the journal system.
+
+## Purpose and boundary
+
+RhoDyn should be evaluated as a computational method for live-cell perturbation data rather than as a software note or a single RhoA/microglia biology paper. Reviewer suggestions should therefore cover the method object, uncertainty logic, perturbation biology, software reproducibility, and biological reference-use-case scope. The RhoA/microglia reference use case should not dominate reviewer assignment.
+
+## Expertise coverage needed
+
+| Expertise area | Why it is needed | Package evidence | Suggested reviewer profile | Exclusion or conflict notes |
+| --- | --- | --- | --- | --- |
+| Live-cell signaling dynamics and reporter trajectories | The method compares residence, amplitude, dwell time, and segment behavior in live-cell traces. | Main text, Fig. 1-3, Supplementary Methods, trajectory schema, public calcium and ERK examples. | A reviewer experienced with live-cell reporters, signaling dynamics, or perturbation time courses. | Exclude only if the author team confirms a collaboration, competition, institutional conflict, or other journal-relevant conflict. |
+| Computational methods and time-series state inference | RhoDyn is a decision workflow for declared residence states, amplitude comparators, uncertainty, and failure modes. | Methods, method specification, limitations matrix, synthetic truth cases, benchmark reports. | A quantitative reviewer who can assess time-series summaries, state definitions, uncertainty, and benchmark design. | Avoid reviewers who would evaluate only biological novelty without assessing the method definition. |
+| Perturbation endpoint analysis and bounded-coupling decisions | Figures 4 and 5 extend the method beyond single-reporter trajectories into endpoint, reserve-like, and routed-output decisions. | Bounded-coupling Methods, source-data/statistics inventory, margin-sensitivity reports, endpoint demonstrations. | A reviewer familiar with perturbation biology, equivalence or bounded-effect reasoning, and endpoint-model comparison. | Do not suggest a reviewer who would require unreported wet-lab mechanisms for all effective parameters. |
+| Bioimage, screening, or scientific-software reproducibility | The package includes figure-ready outputs, workbench routes, command-indexed reproduction, GitHub, Zenodo, and checksum surfaces. | Fig. 6, code-for-review file, software checklist, release checks, source-distribution and clean-room reports. | A reviewer who can judge reusable software, documented examples, release engineering, and reproducible scientific computing. | Exclude only with author-confirmed conflict, not because a reviewer may be technically demanding. |
+| Statistical decision rules and uncertainty reporting | Passing, failing, and inconclusive calls are all part of the method claim. | Bounded-coupling decisions, interval summaries, ROPE-style fields where used, source-data/statistics inventory. | A reviewer who understands uncertainty, equivalence-margin logic, and the distinction between non-significance and equivalence. | Do not use reviewers whose likely critique depends on treating all non-significant contrasts as equivalence. |
+| Biological reference-use-case expertise | The optional RhoA/microglia use case can test whether the method language remains biologically interpretable. | Reference-use-case wording, limitations, and controlled-access boundary statements. | A domain biologist may be useful after the method and software expertise are covered. | Domain expertise should not replace the quantitative and software-methods review mix. |
+
+## Reviewer balance rule
+
+Use a balanced reviewer set only after author confirmation. A strong set should include at least one live-cell signaling or perturbation-dynamics reviewer, one computational methods or time-series reviewer, and one software or reproducibility reviewer. Add a disease or cell-biology domain reviewer only if the method expertise is already represented.
+
+## Suggested reviewer template
+
+Complete one row per author-approved suggested reviewer.
+
+| Field | Author-confirmed value |
+| --- | --- |
+| Reviewer name | [name] |
+| Institution | [institution] |
+| Email or ORCID if requested by portal | [email or ORCID] |
+| Expertise match | [live-cell signaling, time-series methods, perturbation endpoints, reproducibility, statistics, or domain biology] |
+| Why this reviewer can evaluate RhoDyn | [short evidence-based reason] |
+| Conflict check | [author-confirmed no conflict, or do not suggest] |
+
+## Exclusion template
+
+Complete one row per author-approved exclusion.
+
+| Field | Author-confirmed value |
+| --- | --- |
+| Excluded reviewer name | [name] |
+| Institution | [institution] |
+| Reason for exclusion | [collaboration, direct competition, conflict, confidentiality, or other journal-acceptable reason] |
+| Scientific relevance of exclusion | [short reason if needed] |
+| Author confirmation | [confirmed by author team] |
+
+## Editor-facing fit note
+
+Use this only as draft language for a portal note or cover-letter sentence if the journal provides a reviewer-fit field.
+
+RhoDyn is best evaluated by reviewers spanning live-cell perturbation dynamics, computational method validation, statistical decision rules, and reproducible scientific software. The RhoA/microglia reference use case should not dominate reviewer assignment because the Article-level claim is the reusable residence-state inference method and its validation ladder across synthetic, public trajectory, endpoint, and software-reproducibility examples.
+
+## Upload checks
+
+- Confirm every suggested or excluded reviewer with all authors before upload.
+- Do not infer conflicts from repository history, manuscript drafts, citation overlap, or personal assumptions.
+- Do not suggest only RhoA, microglia, or Alzheimer's disease specialists unless the method-review expertise is already covered.
+- Preserve the method claim during reviewer selection. RhoDyn is not submitted as a single-system biological discovery paper.
+"""
+
+
 def _software_reporting_checklist() -> str:
     return """# Nature Methods software-reporting checklist
 
@@ -857,6 +922,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Editor-objection response map | {'ready' if check_map.get('editor_objection_response_map_present') else 'blocked'} | `editor_objection_response_map.md` links likely desk-review objections to existing evidence and claim boundaries. |",
         f"| Two-minute editor triage simulation | {'ready' if check_map.get('editor_two_minute_triage_simulation_present') else 'blocked'} | `editor_two_minute_triage_simulation.md` checks whether the title, Abstract, cover letter, and figure spine communicate the method claim quickly. |",
         f"| Current Nature Methods policy preflight | {'ready' if check_map.get('current_policy_preflight_present') else 'blocked'} | `current_nature_methods_policy_preflight.md` maps the package to current Article, reporting, data/code, and software guidance. |",
+        f"| Reviewer and editor fit planner | {'registered' if check_map.get('reviewer_editor_fit_planner_present') else 'blocked'} | `reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md` helps authors choose reviewer expertise and exclusions without inventing names or shifting the package toward a single use case. |",
         f"| Software-reporting checklist | {'ready' if check_map.get('software_reporting_checklist_present') else 'blocked'} | `software_reporting_checklist.md` maps RhoDyn to Nature Methods software and algorithm reporting expectations. |",
         f"| Article-fit checklist | {'ready' if check_map.get('article_fit_checklist_present') else 'blocked'} | `article_fit_checklist.md` records content-type fit, word counts, display count, references, and section structure. |",
         f"| Reader-surface hygiene | {'ready' if check_map.get('reader_surface_hygiene_passed') else 'blocked'} | Main manuscript and Supplementary Information surfaces are free of internal IDs and build-language tokens. |",
@@ -887,6 +953,7 @@ def _submission_manifest(generated_utc: str) -> str:
         ("Editor-objection response map", "editor_objection_response_map.md", "Desk-review objection map linking likely objections to existing package evidence and wording boundaries."),
         ("Two-minute editor triage simulation", "editor_two_minute_triage_simulation.md", "First-pass editor-read simulation for title, Abstract, cover-letter opening, figure spine, and claim boundaries."),
         ("Current Nature Methods policy preflight", "current_nature_methods_policy_preflight.md", "Source-linked preflight against current Article, Reporting Summary, data/code availability, and software guidance."),
+        ("Reviewer and editor fit planner", "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md", "Author-confirmation planner for reviewer expertise coverage, suggested-reviewer fields, exclusions, and editor-fit wording."),
         ("Software-reporting checklist", "software_reporting_checklist.md", "Nature Methods software and algorithm reporting cross-check."),
         ("Article-fit checklist", "article_fit_checklist.md", "Nature Methods Article content-type and format cross-check."),
         ("Readiness checklist", "submission_readiness_checklist.md", "Collaborator handoff checklist."),
@@ -1097,6 +1164,17 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
             "detail": "Current Nature Methods policy preflight maps Article, reporting, data/code, and software requirements to package evidence",
         },
         {
+            "name": "reviewer_editor_fit_planner_present",
+            "passed": (package_dir / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").exists()
+            and "Reviewer and editor fit planner" in (package_dir / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "does not nominate reviewers, infer conflicts, or add manuscript evidence" in (package_dir / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Expertise coverage needed" in (package_dir / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Suggested reviewer template" in (package_dir / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Exclusion template" in (package_dir / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "The RhoA/microglia reference use case should not dominate reviewer assignment" in (package_dir / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8"),
+            "detail": "Reviewer/editor planner keeps reviewer suggestions and exclusions author-confirmed while preserving method-first reviewer coverage",
+        },
+        {
             "name": "software_reporting_checklist_present",
             "passed": (package_dir / "software_reporting_checklist.md").exists()
             and "Nature Methods software-reporting checklist" in (package_dir / "software_reporting_checklist.md").read_text(encoding="utf-8")
@@ -1223,6 +1301,7 @@ def _stage_outputs(generated_utc: str) -> tuple[dict[str, Any], dict[str, Any]]:
     _write_text(staging_submission / "editor_objection_response_map.md", _editor_objection_response_map())
     _write_text(staging_submission / "editor_two_minute_triage_simulation.md", _editor_two_minute_triage_simulation())
     _write_text(staging_submission / "current_nature_methods_policy_preflight.md", _current_policy_preflight())
+    _write_text(staging_submission / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md", _reviewer_editor_fit_planner())
     _write_text(staging_submission / "software_reporting_checklist.md", _software_reporting_checklist())
     _write_text(staging_submission / "article_fit_checklist.md", _article_fit_checklist(main_text))
     _write_text(staging_submission / "author_declarations_REQUIRED.md", _author_declarations_checklist())
@@ -1283,7 +1362,7 @@ def _upsert_completed_substage(memory: dict[str, Any], checks: list[dict[str, An
         "status": "pass",
         "pass": True,
         "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.27.json",
-        "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, prior-art positioning, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, Reporting Summary placeholder and answer bank, and readiness checklist",
+        "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, prior-art positioning, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, Reporting Summary placeholder and answer bank, and readiness checklist",
         "evidence_dependencies": [
             "manuscript/nature_methods/gate_verdicts/9.26.json",
             "manuscript/nature_methods/audits/internal_peer_review_simulation.md",
@@ -1328,7 +1407,7 @@ def _update_stage9_memory(generated_utc: str, checks: list[dict[str, Any]]) -> N
         "Stage 9.0 through Stage 9.27 are complete through submission package assembly.",
         "Stage 9.28 and Stage 9.29 remain not started.",
         "No PI review packet or Stage 9 completion report is created in this pass.",
-        "The package contains reader-clean main text, Supplementary Information, code-for-review, prior-art positioning matrix, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, figure inventory, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist.",
+        "The package contains reader-clean main text, Supplementary Information, code-for-review, prior-art positioning matrix, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, figure inventory, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist.",
     ]
     memory["scope_rule"] = (
         "Stage 9 has completed evidence intake, guidance, corpus, narrative spine, claim freeze, paragraph and figure planning, "
@@ -1346,7 +1425,7 @@ def _update_roadmap_memory() -> None:
     current["stage9_active_gate"] = "Stage 9.27 Submission package assembly complete; final PI review not started"
     current["after_stage9_27_submission_package_assembly"] = (
         "Stage 9.27 assembled the collaborator-review Nature Methods package from the reader-clean main text, Supplementary Information, figures, "
-        "references, code-for-review surface, prior-art positioning matrix, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist."
+        "references, code-for-review surface, prior-art positioning matrix, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist."
     )
     current["current_gate"] = "Submission package assembled for collaborator review"
     current["next_stage"] = "Stage 9.28 Final human PI review packet"
@@ -1389,7 +1468,7 @@ Current status. Stage 9.27 submission package assembly complete.
 
 The workspace now contains the authorized manuscript components through collaborator-review package assembly. Evidence intake, venue guidance, methods-paper corpus analysis, narrative spine, claim freeze, paragraph planning, figure planning, deterministic main-figure rendering, supplementary display planning, section contracts, front matter, Results, Introduction, Discussion, Methods, availability statements, Supplementary Methods, supplementary table/source-data binding, reference audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review, and submission package assembly are present.
 
-The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/prior_art_positioning_matrix.md`, `submission_package/editor_objection_response_map.md`, `submission_package/editor_two_minute_triage_simulation.md`, `submission_package/current_nature_methods_policy_preflight.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/reporting_summary_REQUIRED.md`, `submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
+The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/prior_art_positioning_matrix.md`, `submission_package/editor_objection_response_map.md`, `submission_package/editor_two_minute_triage_simulation.md`, `submission_package/current_nature_methods_policy_preflight.md`, `submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/reporting_summary_REQUIRED.md`, `submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
 
 The official Springer Nature Reporting Summary form remains a human submission action. The PI review packet and Stage 9 closure report have not started.
 

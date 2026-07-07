@@ -52,6 +52,7 @@ PACKAGE_FILES = [
     SUBMISSION / "editor_objection_response_map.md",
     SUBMISSION / "editor_two_minute_triage_simulation.md",
     SUBMISSION / "current_nature_methods_policy_preflight.md",
+    SUBMISSION / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
     SUBMISSION / "software_reporting_checklist.md",
     SUBMISSION / "article_fit_checklist.md",
     SUBMISSION / "author_declarations_REQUIRED.md",
@@ -313,6 +314,7 @@ def _version_binding(package_rows: list[dict[str, Any]], action_decisions: list[
         "human_submission_actions": [
             "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
             "Confirm final title page, author list, affiliations, correspondence fields, author declarations, and the AI-use disclosure draft if applicable.",
+            "Confirm reviewer suggestions, reviewer exclusions, and editor-fit wording using the reviewer/editor fit planner if those portal fields are used.",
             "Confirm final portal metadata, corresponding-author details, ORCID fields, and journal-specific file names.",
             "Perform final human author approval before upload.",
         ],
@@ -382,8 +384,9 @@ The closed package supports a methods claim that RhoDyn provides an inspectable 
 
 1. Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.
 2. Confirm final title page, author list, affiliations, correspondence fields, author declarations, and the AI-use disclosure draft if applicable.
-3. Confirm final portal metadata, corresponding-author fields, ORCID fields, and journal-specific file names.
-4. Perform final author approval of the main text, Supplementary Information, figures, and code-for-review surface before upload.
+3. Confirm reviewer suggestions, reviewer exclusions, and editor-fit wording using the reviewer/editor fit planner if those portal fields are used.
+4. Confirm final portal metadata, corresponding-author fields, ORCID fields, and journal-specific file names.
+5. Perform final author approval of the main text, Supplementary Information, figures, and code-for-review surface before upload.
 """
 
 
@@ -446,6 +449,12 @@ def _update_submission_manifest() -> None:
             anchor,
             anchor + "\n| Current Nature Methods policy preflight | `current_nature_methods_policy_preflight.md` | Source-linked preflight against current Article, Reporting Summary, data/code availability, and software guidance. |",
         )
+    if "| Reviewer and editor fit planner | `reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md` |" not in body:
+        anchor = "| Current Nature Methods policy preflight | `current_nature_methods_policy_preflight.md` | Source-linked preflight against current Article, Reporting Summary, data/code availability, and software guidance. |"
+        body = body.replace(
+            anchor,
+            anchor + "\n| Reviewer and editor fit planner | `reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation planner for reviewer expertise coverage, suggested-reviewer fields, exclusions, and editor-fit wording. |",
+        )
     body = body.replace(
         "Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and support files, but it does not submit the manuscript or close Stage 9.",
         "Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and Stage 9.29 closure support files, but it does not submit the manuscript or replace final journal-upload approval.",
@@ -485,6 +494,7 @@ def _update_submission_package_manifest(version_binding: dict[str, Any]) -> None
         "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
         "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
         "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
+        "manuscript/nature_methods/submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
         "manuscript/nature_methods/stage9_completion_report.md",
@@ -529,6 +539,7 @@ def _update_stage9_memory(version_binding: dict[str, Any]) -> None:
         "manuscript/nature_methods/stage9_completion_report.md",
         "manuscript/nature_methods/stage9_closure_version_binding.json",
         "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
+        "manuscript/nature_methods/submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/gate_verdicts/9.29.json",
         "scripts/run_stage9_29_closure_assembly.py",
     ]
@@ -572,7 +583,7 @@ def _update_roadmap_memory(version_binding: dict[str, Any]) -> None:
     current["after_stage9_29_closure"] = (
         "Stage 9.29 closed the Nature Methods manuscript package by binding the package, evidence, release, "
         "figure-rendering, limitation, and PI-review decision versions. Official Reporting Summary, author declarations, "
-        "and portal metadata remain human submission actions."
+        "reviewer/editor fit choices, and portal metadata remain human submission actions."
     )
     stages = memory.get("stage_lock", [])
     for stage in stages:
@@ -590,6 +601,7 @@ def _update_roadmap_memory(version_binding: dict[str, Any]) -> None:
                 "manuscript/nature_methods/stage9_completion_report.md",
                 "manuscript/nature_methods/stage9_closure_version_binding.json",
                 "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
+                "manuscript/nature_methods/submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
                 "manuscript/nature_methods/gate_verdicts/9.29.json",
                 "scripts/run_stage9_29_closure_assembly.py",
             ]
@@ -620,7 +632,7 @@ def _update_docs() -> None:
             ),
             (
                 "The official Springer Nature Reporting Summary form, author declarations, portal metadata, and final upload checks remain human submission actions. The Stage 9 closure report has not started.",
-                "The official Springer Nature Reporting Summary form, author declarations, portal metadata, and final upload checks remain human submission actions. The Stage 9 closure report is `stage9_completion_report.md`.",
+                "The official Springer Nature Reporting Summary form, author declarations, reviewer/editor fit choices, portal metadata, and final upload checks remain human submission actions. The Stage 9 closure report is `stage9_completion_report.md`.",
             ),
         ],
     )

@@ -65,6 +65,7 @@ def build_report() -> dict[str, Any]:
     editor_objection_response = _read(PACKAGE / "editor_objection_response_map.md")
     editor_two_minute_triage = _read(PACKAGE / "editor_two_minute_triage_simulation.md")
     current_policy_preflight = _read(PACKAGE / "current_nature_methods_policy_preflight.md")
+    reviewer_editor_fit = _read(PACKAGE / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md")
     article_fit = _read(PACKAGE / "article_fit_checklist.md")
     code_for_review = _read(PACKAGE / "code_for_review.md")
     editor_note = _read(PACKAGE / "editor_triage_note_for_cover_letter.md")
@@ -184,6 +185,16 @@ def build_report() -> dict[str, Any]:
             "Current Nature Methods policy preflight maps official Article, reporting, data/code, and software expectations to the package evidence.",
         ),
         _check(
+            "reviewer_editor_fit_planner_present",
+            "Reviewer and editor fit planner" in reviewer_editor_fit
+            and "does not nominate reviewers, infer conflicts, or add manuscript evidence" in reviewer_editor_fit
+            and "Expertise coverage needed" in reviewer_editor_fit
+            and "Suggested reviewer template" in reviewer_editor_fit
+            and "Exclusion template" in reviewer_editor_fit
+            and "The RhoA/microglia reference use case should not dominate reviewer assignment" in reviewer_editor_fit,
+            "Reviewer/editor fit planner keeps reviewer suggestions, exclusions, and editor-fit wording author-confirmed while preserving a method-first reviewer mix.",
+        ),
+        _check(
             "stage9_closure_passed",
             closure_gate.get("pass") is True
             and closure_gate.get("closure_status") == "complete_stage9_closed_version_bound"
@@ -263,6 +274,7 @@ def build_report() -> dict[str, Any]:
             "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
             "Confirm title page, author order, affiliations, ORCID, corresponding-author metadata, funding, competing interests, and author contributions.",
             "Confirm whether AI-assisted content disclosure is required, revise the AI disclosure draft with final author-confirmed wording if applicable, and insert it in the journal-designated location.",
+            "Confirm reviewer suggestions, reviewer exclusions, and editor-fit wording using the reviewer/editor fit planner if those portal fields are used.",
             "Confirm ethics, biological materials, and controlled-access or reviewer-access statements.",
             "Perform final file naming, portal metadata, and author approval checks.",
         ],

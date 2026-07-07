@@ -45,6 +45,7 @@ class Stage9SubmitOrHoldDecisionTests(unittest.TestCase):
             "editor_objection_response_map_present",
             "editor_two_minute_triage_simulation_present",
             "current_policy_preflight_present",
+            "reviewer_editor_fit_planner_present",
             "stage9_closure_passed",
             "pi_review_actions_resolved_or_submission_only",
         ]:
@@ -66,6 +67,9 @@ class Stage9SubmitOrHoldDecisionTests(unittest.TestCase):
         self.assertIn("title_author_metadata_requires_author_confirmation", names)
         self.assertTrue(
             any("title page" in action for action in self.report["human_submission_actions"])
+        )
+        self.assertTrue(
+            any("reviewer suggestions" in action for action in self.report["human_submission_actions"])
         )
         self.assertTrue(
             any("reporting-summary answer bank" in action for action in self.report["human_submission_actions"])

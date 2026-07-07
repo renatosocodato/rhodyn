@@ -30,6 +30,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         cls.editor_objection_response = (PACKAGE / "editor_objection_response_map.md").read_text(encoding="utf-8")
         cls.editor_two_minute_triage = (PACKAGE / "editor_two_minute_triage_simulation.md").read_text(encoding="utf-8")
         cls.current_policy_preflight = (PACKAGE / "current_nature_methods_policy_preflight.md").read_text(encoding="utf-8")
+        cls.reviewer_editor_fit = (PACKAGE / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         with (PACKAGE / "figure_file_inventory.csv").open(newline="", encoding="utf-8") as handle:
             cls.figure_rows = list(csv.DictReader(handle))
         with (PACKAGE / "source_data_and_statistics_inventory.csv").open(newline="", encoding="utf-8") as handle:
@@ -63,6 +64,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "editor_objection_response_map_present",
             "editor_two_minute_triage_simulation_present",
             "current_policy_preflight_present",
+            "reviewer_editor_fit_planner_present",
             "software_reporting_checklist_present",
             "article_fit_checklist_present",
             "author_declarations_present",
@@ -168,6 +170,13 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("Code and algorithm availability", self.current_policy_preflight)
         self.assertIn("Reporting Summary remains a human submission action", self.current_policy_preflight)
         self.assertIn("Current Nature Methods policy preflight | ready", self.checklist)
+        self.assertIn("Reviewer and editor fit planner", self.reviewer_editor_fit)
+        self.assertIn("does not nominate reviewers, infer conflicts, or add manuscript evidence", self.reviewer_editor_fit)
+        self.assertIn("Expertise coverage needed", self.reviewer_editor_fit)
+        self.assertIn("Suggested reviewer template", self.reviewer_editor_fit)
+        self.assertIn("Exclusion template", self.reviewer_editor_fit)
+        self.assertIn("The RhoA/microglia reference use case should not dominate reviewer assignment", self.reviewer_editor_fit)
+        self.assertIn("Reviewer and editor fit planner | registered", self.checklist)
         self.assertIn("Author declarations | registered", self.checklist)
         self.assertIn("AI disclosure draft | registered", self.checklist)
         self.assertIn("Title and author metadata | registered", self.checklist)
