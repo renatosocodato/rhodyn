@@ -1,0 +1,19 @@
+dataset,discordance_with_rhodyn_count,interpretation_boundary,method,method_family,n_rows,n_traces,overlap_with_amplitude_top_quartile,overlap_with_rhodyn_residence_top_quartile,top_quartile_count
+drg_calcium,0,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,RhoDyn_residence_fraction,RhoDyn_residence_fraction,72000,120,15,30,30
+drg_calcium,30,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,peak_amplitude,peak_amplitude,72000,120,30,15,30
+drg_calcium,22,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,mean_activity_auc,mean_activity_auc,72000,120,20,19,30
+drg_calcium,30,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,scipy_signal_peak_detection,scipy_signal_peak_detection,72000,120,30,15,30
+drg_calcium,60,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,catch22_feature_family,catch22_feature_family,72000,120,0,0,30
+drg_calcium,30,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,tsfresh_feature_family,tsfresh_feature_family,72000,120,29,15,30
+drg_calcium,18,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,rocket_interval_kernel_family,rocket_interval_kernel_family,72000,120,20,21,30
+drg_calcium,26,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,ruptures_changepoint_family,ruptures_changepoint_family,72000,120,20,17,30
+drg_calcium,30,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,hmmlearn_gaussian_hmm_family,hmmlearn_gaussian_hmm_family,72000,120,30,15,30
+erk_gpcr,0,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,RhoDyn_residence_fraction,RhoDyn_residence_fraction,4320,180,34,45,45
+erk_gpcr,22,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,peak_amplitude,peak_amplitude,4320,180,45,34,45
+erk_gpcr,12,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,mean_activity_auc,mean_activity_auc,4320,180,37,39,45
+erk_gpcr,32,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,scipy_signal_peak_detection,scipy_signal_peak_detection,4320,180,36,29,45
+erk_gpcr,84,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,catch22_feature_family,catch22_feature_family,4320,180,0,3,45
+erk_gpcr,12,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,tsfresh_feature_family,tsfresh_feature_family,4320,180,40,39,45
+erk_gpcr,78,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,rocket_interval_kernel_family,rocket_interval_kernel_family,4320,180,12,6,45
+erk_gpcr,26,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,ruptures_changepoint_family,ruptures_changepoint_family,4320,180,30,32,45
+erk_gpcr,48,Public rows compare high-scoring trace sets across methods. They are not truth labels and do not prove biological superiority.,hmmlearn_gaussian_hmm_family,hmmlearn_gaussian_hmm_family,4320,180,30,21,45

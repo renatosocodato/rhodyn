@@ -229,6 +229,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 9.29 closed and version-bound",
         "Stage 10.0 Nature Methods EIC rescue roadmap scaffold serialized; implementation not started",
         "Stage 10.1 method object v2 complete; Stage 10.2 named benchmarking not started",
+        "Stage 10.2 named benchmarking complete; Stage 10.3 expanded public biological demonstrations not started",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -242,7 +243,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_1_complete_method_object_v2",
+        10: "stage10_2_complete_named_benchmarking",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -260,6 +261,18 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_method_object_v2/stage10_1_method_object_decisions.csv",
             "case_studies/stage10_method_object_v2/stage10_1_method_object_gate_report.json",
             "case_studies/stage10_method_object_v2/stage10_1_method_object_brief.md",
+            "docs/stage10_2_named_benchmarking.md",
+            "scripts/run_stage10_2_named_benchmarking.py",
+            "tests/test_stage10_2_named_benchmarking.py",
+            "src/rhodyn/named_baselines.py",
+            "case_studies/stage10_named_benchmarks/stage10_2_named_benchmark_report.json",
+            "case_studies/stage10_named_benchmarks/stage10_2_synthetic_named_baseline_benchmark.csv",
+            "case_studies/stage10_named_benchmarks/stage10_2_named_baseline_accuracy_summary.csv",
+            "case_studies/stage10_named_benchmarks/stage10_2_public_input_named_baseline_summary.csv",
+            "case_studies/stage10_named_benchmarks/stage10_2_named_tool_availability.tsv",
+            "case_studies/stage10_named_benchmarks/stage10_2_runtime_memory.tsv",
+            "case_studies/stage10_named_benchmarks/stage10_2_failure_boundary_report.md",
+            "case_studies/stage10_named_benchmarks/stage10_2_named_benchmark_brief.md",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -291,6 +304,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 10.0 must be complete_scaffold_serialized")
         if subphase_status.get("10.1") != "complete_method_object_v2":
             failures.append("Stage 10.1 must be complete_method_object_v2")
+        if subphase_status.get("10.2") != "complete_named_benchmarking":
+            failures.append("Stage 10.2 must be complete_named_benchmarking")
         gate_report_path = root / "case_studies" / "stage10_method_object_v2" / "stage10_1_method_object_gate_report.json"
         if gate_report_path.exists():
             gate_report = json.loads(gate_report_path.read_text(encoding="utf-8"))
@@ -299,9 +314,22 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             expectations = gate_report.get("expectations", {})
             if not isinstance(expectations, dict) or not all(expectations.values()):
                 failures.append("Stage 10.1 method-object expectations must all pass")
-        for subphase in ["10.2", "10.3", "10.4", "10.5", "10.6", "10.7", "10.8", "10.9"]:
+        named_report_path = root / "case_studies" / "stage10_named_benchmarks" / "stage10_2_named_benchmark_report.json"
+        if named_report_path.exists():
+            named_report = json.loads(named_report_path.read_text(encoding="utf-8"))
+            if named_report.get("status") != "pass":
+                failures.append("Stage 10.2 named-benchmark report must pass")
+            summary = named_report.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("direct_optional_package_family_count", 0) < 3:
+                failures.append("Stage 10.2 must report at least three direct optional package families")
+            gates = named_report.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.2 named-benchmark gates must all pass")
+        else:
+            failures.append("missing Stage 10.2 named-benchmark report")
+        for subphase in ["10.3", "10.4", "10.5", "10.6", "10.7", "10.8", "10.9"]:
             if subphase_status.get(subphase) != "not_started":
-                failures.append(f"Stage {subphase} must remain not_started after scaffold serialization")
+                failures.append(f"Stage {subphase} must remain not_started after Stage 10.2")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

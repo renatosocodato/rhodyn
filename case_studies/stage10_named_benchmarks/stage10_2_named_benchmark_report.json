@@ -1,0 +1,43 @@
+{
+  "benchmark_role": "named baseline and named external-tool family benchmarking",
+  "created_outputs": [
+    "stage10_2_synthetic_named_baseline_benchmark.csv",
+    "stage10_2_named_baseline_accuracy_summary.csv",
+    "stage10_2_public_input_named_baseline_summary.csv",
+    "stage10_2_named_tool_availability.tsv",
+    "stage10_2_runtime_memory.tsv",
+    "stage10_2_failure_boundary_report.md",
+    "stage10_2_named_benchmark_brief.md",
+    "stage10_2_named_benchmark_report.json"
+  ],
+  "gates": {
+    "all_methods_run_on_common_synthetic_inputs": true,
+    "ambiguous_cases_withheld": true,
+    "amplitude_sufficient_case_preserved": true,
+    "internal_simple_summaries_included": true,
+    "named_baseline_performance_reported_even_when_competitive": true,
+    "public_inputs_evaluated": true,
+    "rhodyn_known_truth_cases_pass": true,
+    "runtime_memory_reported": true,
+    "three_named_external_families_evaluated": true
+  },
+  "interpretation_boundary": "Stage 10.2 evaluates method and comparator behavior on shared synthetic and retained public inputs. It does not add a new biological system and does not claim that RhoDyn is superior in all regimes.",
+  "next_phase": "Stage 10.3 expanded independent public biological demonstrations",
+  "next_phase_authorization_required": true,
+  "output_dir": "case_studies/stage10_named_benchmarks",
+  "report_format": "rhodyn.stage10_2_named_benchmarking.v1",
+  "stage": "10.2",
+  "status": "pass",
+  "summary_metrics": {
+    "available_optional_tools": [
+      "SciPy signal",
+      "scikit-learn",
+      "hmmlearn"
+    ],
+    "direct_optional_package_family_count": 3,
+    "named_external_family_count": 7,
+    "peak_amplitude_accuracy": "24/36",
+    "public_dataset_count": 2,
+    "rhodyn_method_object_accuracy": "36/36"
+  }
+}

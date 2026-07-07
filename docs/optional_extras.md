@@ -12,6 +12,7 @@ python -m pip install 'rhodyn[stats]'
 python -m pip install 'rhodyn[plots]'
 python -m pip install 'rhodyn[backend]'
 python -m pip install 'rhodyn[notebooks]'
+python -m pip install 'rhodyn[benchmarks]'
 python -m pip install 'rhodyn[dev]'
 python -m pip install 'rhodyn[all]'
 ```
@@ -25,11 +26,16 @@ python -m pip install 'rhodyn[all]'
 | `plots` | `matplotlib` | residence traces, margin-sensitivity curves, model residual plots |
 | `backend` | `fastapi`, `httpx`, `uvicorn` | stateless service endpoints around frozen Stage 3 analysis surfaces |
 | `notebooks` | `jupyterlab` | interactive synthetic and case-study tutorials |
+| `benchmarks` | `scipy`, `scikit-learn`, `hmmlearn`, `ruptures` | direct named-baseline benchmarking for Stage 10-style comparator runs |
 | `dev` | `build`, `mkdocs`, `twine` | wheel/source builds, documentation site builds, publication dry runs |
 
 The base package should continue to validate tables, score residence, normalize
 reserve-like responses, classify supplied coupling intervals, simulate the
 minimal controller, and rank endpoint fits without optional dependencies.
+
+The benchmark extra is intentionally separate from `all` for now because direct
+named-baseline benchmarking is a methods-validation task, not a requirement for
+ordinary RhoDyn analysis.
 
 ## Graceful failure pattern
 

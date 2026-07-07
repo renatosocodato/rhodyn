@@ -78,6 +78,14 @@ Stage 10.1 is now implemented as an additive public method-object layer. The for
 
 The completed fixture set contains positive, counterexample, and ambiguous decisions for trajectory residence-versus-comparator divergence, bounded coupling, reserve-like endpoints, and routed-output model comparison. This makes the method object reviewable as a decision structure while preserving the biological boundary that decision divergence is not a mechanism-discovery statistic and does not imply that every live-cell system has a residence regime.
 
+### Stage 10.2 completion update
+
+Stage 10.2 is now implemented as a named-baseline benchmark surface. The executable runner is `scripts/run_stage10_2_named_benchmarking.py`, the documentation page is `docs/stage10_2_named_benchmarking.md`, and the benchmark outputs are under `case_studies/stage10_named_benchmarks/`.
+
+The completed benchmark evaluates RhoDyn against internal simple summaries plus SciPy signal peak detection, scikit-learn feature classification, hmmlearn state summaries, catch22-style, tsfresh-style, MiniROCKET-style, and ruptures-style comparator families. The gate report passes with seven named external-style families and three direct optional package families available in the current runtime. The benchmark deliberately reports that generic feature methods can match the synthetic labels in this fixture. That result defines where classifier-like summaries may be sufficient and where RhoDyn's declared residence-state decision object remains more interpretable.
+
+Stage 10.2 does not add a new biological system. The DRG calcium and ERK GPCR public inputs are included as shared-input comparator summaries, not as new truth-labeled evidence of method superiority. Stage 10.3 remains required before the Nature Methods generality claim is safer.
+
 ## Stage 10.2 named benchmarking ladder
 
 The named benchmarking track must be explicit enough that a methods editor does not see only self-comparison against simple summaries.
@@ -245,7 +253,7 @@ These are planning commands only. They should be run after Stage 10 implementati
 
 ```bash
 python3 scripts/run_stage10_1_method_object_v2.py
-python3 scripts/run_stage10_2_named_baseline_benchmarks.py
+python3 scripts/run_stage10_2_named_benchmarking.py
 python3 scripts/run_stage10_3_public_biological_breadth.py
 python3 scripts/run_stage10_8_eic_red_team.py
 python3 scripts/check_release.py

@@ -1,0 +1,8 @@
+available,benchmark_role,execution_policy,python_module,tool_family
+1,peak/event detection baseline,direct if available,scipy,SciPy signal
+1,generic feature classifier,direct if available,sklearn,scikit-learn
+1,Gaussian HMM state-summary baseline,direct if available,hmmlearn,hmmlearn
+0,catch22 feature-family baseline,compatibility if unavailable,pycatch22,pycatch22/catch22
+0,tsfresh feature-family baseline,compatibility if unavailable,tsfresh,tsfresh
+0,MiniROCKET/ROCKET feature-family baseline,compatibility if unavailable,sktime,sktime
+0,changepoint baseline,compatibility if unavailable,ruptures,ruptures

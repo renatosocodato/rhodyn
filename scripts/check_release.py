@@ -609,6 +609,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 9.29 closed and version-bound",
             "Stage 10.0 Nature Methods EIC rescue roadmap scaffold serialized; implementation not started",
             "Stage 10.1 method object v2 complete; Stage 10.2 named benchmarking not started",
+            "Stage 10.2 named benchmarking complete; Stage 10.3 expanded public biological demonstrations not started",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -629,12 +630,24 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_1_complete_method_object_v2":
-                failures.append("roadmap execution memory does not mark Stage 10.1 method object as complete")
+            if stage10.get("status") != "stage10_2_complete_named_benchmarking":
+                failures.append("roadmap execution memory does not mark Stage 10.2 named benchmarking as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
                 "case_studies/stage10_method_object_v2/stage10_1_method_object_gate_report.json",
+                "docs/stage10_2_named_benchmarking.md",
+                "scripts/run_stage10_2_named_benchmarking.py",
+                "tests/test_stage10_2_named_benchmarking.py",
+                "src/rhodyn/named_baselines.py",
+                "case_studies/stage10_named_benchmarks/stage10_2_named_benchmark_report.json",
+                "case_studies/stage10_named_benchmarks/stage10_2_synthetic_named_baseline_benchmark.csv",
+                "case_studies/stage10_named_benchmarks/stage10_2_named_baseline_accuracy_summary.csv",
+                "case_studies/stage10_named_benchmarks/stage10_2_public_input_named_baseline_summary.csv",
+                "case_studies/stage10_named_benchmarks/stage10_2_named_tool_availability.tsv",
+                "case_studies/stage10_named_benchmarks/stage10_2_runtime_memory.tsv",
+                "case_studies/stage10_named_benchmarks/stage10_2_failure_boundary_report.md",
+                "case_studies/stage10_named_benchmarks/stage10_2_named_benchmark_brief.md",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -649,6 +662,23 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 else:
                     if gate_payload.get("status") != "pass" or gate_payload.get("decision_count") != 12:
                         failures.append("Stage 10.1 method-object gate report must pass with 12 decisions")
+            stage10_named_gate = root / "case_studies" / "stage10_named_benchmarks" / "stage10_2_named_benchmark_report.json"
+            if stage10_named_gate.exists():
+                try:
+                    named_payload = json.loads(stage10_named_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.2 named-benchmark report is not valid JSON: {exc}")
+                else:
+                    if named_payload.get("status") != "pass":
+                        failures.append("Stage 10.2 named-benchmark report must pass")
+                    gates = named_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.2 named-benchmark gates must all pass")
+                    summary = named_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("direct_optional_package_family_count", 0) < 3:
+                        failures.append("Stage 10.2 must report at least three direct optional package families")
+            else:
+                failures.append("Stage 10.2 named-benchmark report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

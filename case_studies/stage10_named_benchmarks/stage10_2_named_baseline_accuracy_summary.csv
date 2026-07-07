@@ -1,0 +1,14 @@
+accuracy,ambiguous_regime_correct,amplitude_regime_correct,correct,input_type,method,method_family,residence_regime_correct,total
+1.0,12,12,36,synthetic_known_truth,catch22_style_feature_screen,catch22_feature_family,12,36
+0.666667,12,0,24,synthetic_known_truth,hmmlearn.GaussianHMM,hmmlearn_gaussian_hmm_family,12,36
+0.333333,12,0,12,synthetic_known_truth,endpoint_value,internal_simple_summary,0,36
+0.5,12,6,18,synthetic_known_truth,latency_to_peak,internal_simple_summary,0,36
+0.333333,12,0,12,synthetic_known_truth,mean_activity_auc,internal_simple_summary,0,36
+0.666667,12,12,24,synthetic_known_truth,peak_amplitude,internal_simple_summary,0,36
+0.333333,12,0,12,synthetic_known_truth,threshold_occupancy,internal_simple_summary,0,36
+1.0,12,12,36,synthetic_known_truth,RhoDyn_method_object,rhodyn_method_object,12,36
+0.666667,0,12,24,synthetic_known_truth,MiniROCKET_style_interval_kernels,rocket_interval_kernel_family,12,36
+0.333333,0,0,12,synthetic_known_truth,ruptures_style_single_changepoint,ruptures_changepoint_family,12,36
+1.0,12,12,36,synthetic_known_truth,sklearn.RandomForestClassifier_LOOCV,scikit_learn_feature_classifier,12,36
+0.333333,0,12,12,synthetic_known_truth,scipy.signal.find_peaks,scipy_signal_peak_detection,0,36
+0.666667,12,0,24,synthetic_known_truth,tsfresh_style_selected_features,tsfresh_feature_family,12,36

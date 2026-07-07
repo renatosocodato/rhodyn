@@ -1,0 +1,7 @@
+method,n_rows,n_traces,peak_memory_kb,result_units,runtime_ms
+RhoDyn_method_object,480,30,18.484375,30,2.382
+named_feature_families,480,30,132.546875,30,80.971708
+RhoDyn_method_object,1920,120,68.978516,120,8.922584
+named_feature_families,1920,120,512.445312,120,319.809416
+RhoDyn_method_object,4800,300,172.056641,300,22.412542
+named_feature_families,4800,300,1270.259766,300,796.468208
