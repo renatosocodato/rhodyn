@@ -1,7 +1,7 @@
 {
   "collaborator_review_ready": true,
   "decision": "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. Final journal upload should remain on hold until the listed human-attested submission fields are completed.",
-  "generated_utc": "2026-07-07T13:59:40Z",
+  "generated_utc": "2026-07-07T14:14:25Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
     "Confirm title page, author order, affiliations, ORCID, corresponding-author metadata, funding, competing interests, and author contributions.",
@@ -56,6 +56,11 @@
     {
       "detail": "Prior-art positioning matrix makes the RhoDyn novelty boundary explicit for collaborator/editorial review.",
       "name": "prior_art_positioning_matrix_present",
+      "passed": true
+    },
+    {
+      "detail": "Validation breadth map makes cross-system method tests and non-universality boundaries visible for collaborator/editorial review.",
+      "name": "validation_breadth_map_present",
       "passed": true
     },
     {

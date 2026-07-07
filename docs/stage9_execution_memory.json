@@ -109,6 +109,7 @@
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
     "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
     "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
     "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
     "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
     "manuscript/nature_methods/supplementary/supplementary_methods.md",
@@ -121,9 +122,9 @@
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
   "closure_version_binding": {
     "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-    "closure_commit": "4c94124edee6ebeb5351dfa7cadb5cc45759c725",
+    "closure_commit": "25c3f129a9923080b2285d7340af4e5cb75350e7",
     "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
-    "package_version": "stage9.29-closure@4c94124edee6ebeb5351dfa7cadb5cc45759c725",
+    "package_version": "stage9.29-closure@25c3f129a9923080b2285d7340af4e5cb75350e7",
     "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
@@ -1953,6 +1954,11 @@
           "passed": true
         },
         {
+          "detail": "Validation breadth map makes the method-validation ladder visible while preserving non-universality boundaries",
+          "name": "validation_breadth_map_present",
+          "passed": true
+        },
+        {
           "detail": "Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries",
           "name": "editor_objection_response_map_present",
           "passed": true
@@ -2013,6 +2019,7 @@
         "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
         "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
         "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
+        "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
         "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
         "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
         "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
@@ -2041,7 +2048,7 @@
       ],
       "status": "pass",
       "substage": "9.27",
-      "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, prior-art positioning, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, Reporting Summary placeholder and answer bank, and readiness checklist"
+      "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, prior-art positioning, validation breadth map, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, Reporting Summary placeholder and answer bank, and readiness checklist"
     },
     {
       "checks": [
@@ -2173,7 +2180,7 @@
     "No Stage 9 completion report is created in this pass.",
     "The package now contains the PI review packet, action matrix, revision log, and literature calibration record."
   ],
-  "generated_utc": "2026-07-07T13:59:15Z",
+  "generated_utc": "2026-07-07T14:13:57Z",
   "internal_peer_review_started": true,
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
@@ -3234,6 +3241,11 @@
     {
       "detail": "Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence",
       "name": "prior_art_positioning_matrix_present",
+      "passed": true
+    },
+    {
+      "detail": "Validation breadth map makes the method-validation ladder visible while preserving non-universality boundaries",
+      "name": "validation_breadth_map_present",
       "passed": true
     },
     {

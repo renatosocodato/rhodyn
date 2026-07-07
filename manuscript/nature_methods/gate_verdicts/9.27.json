@@ -91,6 +91,11 @@
       "passed": true
     },
     {
+      "detail": "Validation breadth map makes the method-validation ladder visible while preserving non-universality boundaries",
+      "name": "validation_breadth_map_present",
+      "passed": true
+    },
+    {
       "detail": "Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries",
       "name": "editor_objection_response_map_present",
       "passed": true
@@ -136,9 +141,9 @@
       "passed": true
     }
   ],
-  "commit": "4c94124edee6ebeb5351dfa7cadb5cc45759c725",
+  "commit": "25c3f129a9923080b2285d7340af4e5cb75350e7",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T13:59:15Z",
+  "generated_utc": "2026-07-07T14:13:57Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -148,6 +153,7 @@
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
     "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
     "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
+    "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
     "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
     "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
     "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",

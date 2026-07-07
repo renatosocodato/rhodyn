@@ -41,7 +41,7 @@
     "after_stage9_25_editorial_polish_pass_2": "Stage 9.25 tightened venue-style readability, removed residual process-like phrasing, varied supplementary-legend openings, and preserved paragraph IDs, claim IDs, Results figure calls, limitations, statistics, figures, and evidence bindings. It did not start the reader-surface hygiene gate, peer-review simulation, or final package assembly.",
     "after_stage9_25b_reader_surface_hygiene": "Stage 9.25b removed internal IDs, hidden comments, stage metadata, and lineage wording from reader-facing manuscript surfaces. It preserved figure-call flow, availability identifiers, claim boundaries, and the evidence set, and did not start internal peer review or package assembly.",
     "after_stage9_26_internal_peer_review": "Stage 9.26 completed an eight-perspective internal peer-review simulation and reviewer action matrix. It preserved the reader-clean manuscript, routed scoped concerns, and recorded the current PanelForge figure assembly status without starting package assembly.",
-    "after_stage9_27_submission_package_assembly": "Stage 9.27 assembled the collaborator-review Nature Methods package from the reader-clean main text, Supplementary Information, figures, references, code-for-review surface, prior-art positioning matrix, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist.",
+    "after_stage9_27_submission_package_assembly": "Stage 9.27 assembled the collaborator-review Nature Methods package from the reader-clean main text, Supplementary Information, figures, references, code-for-review surface, prior-art positioning matrix, validation breadth map, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist.",
     "after_stage9_28_pi_review_packet": "Stage 9.28 prepared the PI-review decision packet, applied evidence-safe source revisions, regenerated the submission package, and preserved Reporting Summary, author declarations, portal metadata, and closure as human/downstream actions.",
     "after_stage9_29_closure": "Stage 9.29 closed the Nature Methods manuscript package by binding the package, evidence, release, figure-rendering, limitation, and PI-review decision versions. Official Reporting Summary, author declarations, reviewer/editor fit choices, and portal metadata remain human submission actions.",
     "after_stage9_2_methods_corpus": "Stage 9.2 registered an eight-DOI representative computational methods-paper corpus and extracted cross-paper archetype features. Stage 9.3 narrative-spine selection, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
@@ -498,6 +498,7 @@
         "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
         "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
         "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+        "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
         "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
         "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
         "manuscript/nature_methods/supplementary/supplementary_methods.md",
@@ -855,7 +856,7 @@
           "status": "complete_pi_review_packet"
         },
         {
-          "closure_version": "stage9.29-closure@4c94124edee6ebeb5351dfa7cadb5cc45759c725",
+          "closure_version": "stage9.29-closure@25c3f129a9923080b2285d7340af4e5cb75350e7",
           "evidence": "manuscript/nature_methods/gate_verdicts/9.29.json",
           "gate": "every Stage 9 gate passes; quarantine has no unresolved blocker; package, evidence, and release versions are bound",
           "goal": "Close Stage 9 with package, evidence, release, and limitation versions bound.",

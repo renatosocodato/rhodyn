@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T13:59:15Z
-Git commit. 4c94124edee6ebeb5351dfa7cadb5cc45759c725
+Generated UTC. 2026-07-07T14:13:57Z
+Git commit. 25c3f129a9923080b2285d7340af4e5cb75350e7
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -19,6 +19,7 @@ Git commit. 4c94124edee6ebeb5351dfa7cadb5cc45759c725
 | Editor-triage note | `editor_triage_note_for_cover_letter.md` | Cover-letter-ready Nature Methods fit, validation, and claim-boundary note. |
 | Editorial pitch | `editorial_pitch_for_submission.md` | Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage. |
 | Prior-art positioning matrix | `prior_art_positioning_matrix.md` | Novelty-boundary comparison against related dynamic-state, trajectory, imaging, and software-method literature. |
+| Validation breadth map | `validation_breadth_and_boundary_map.md` | Validation-ladder and boundary map across synthetic, public trajectory, endpoint, held-out, and software-reproducibility tests. |
 | Editor-objection response map | `editor_objection_response_map.md` | Desk-review objection map linking likely objections to existing package evidence and wording boundaries. |
 | Two-minute editor triage simulation | `editor_two_minute_triage_simulation.md` | First-pass editor-read simulation for title, Abstract, cover-letter opening, figure spine, and claim boundaries. |
 | Current Nature Methods policy preflight | `current_nature_methods_policy_preflight.md` | Source-linked preflight against current Article, Reporting Summary, data/code availability, and software guidance. |

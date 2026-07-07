@@ -105,7 +105,7 @@
       "normalization": "none",
       "ok": true,
       "raw_url": "https://www.nature.com/nmeth/content",
-      "resolved_url": "https://www.nature.com/nmeth/content?error=cookies_not_supported&code=cd34784c-bfa9-448f-9a89-294b7816a375",
+      "resolved_url": "https://www.nature.com/nmeth/content?error=cookies_not_supported&code=a0f4e340-895a-4738-b4b4-3fd0b8c3c15d",
       "source": "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
       "status_code": 200,
       "url": "https://www.nature.com/nmeth/content"
@@ -116,7 +116,7 @@
       "normalization": "none",
       "ok": true,
       "raw_url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards",
-      "resolved_url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards?error=cookies_not_supported&code=ec016a87-1082-44f4-928d-fb8302afe0c0",
+      "resolved_url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards?error=cookies_not_supported&code=64d9a78f-5b65-4372-8295-4e56a8a51ac6",
       "source": "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
       "status_code": 200,
       "url": "https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards"
@@ -372,7 +372,7 @@
   "failed_urls": [],
   "failures": [],
   "forbidden_public_reference_hits": [],
-  "generated_utc": "2026-07-07T13:59:40Z",
+  "generated_utc": "2026-07-07T14:14:25Z",
   "interpretation_boundary": "This report verifies public URL accessibility for the Nature Methods submission-package surfaces. It does not upload files, alter DOI records, modify GitHub or Zenodo state, or certify journal acceptance.",
   "missing_expected_urls": [],
   "report_format": "rhodyn.stage9_public_access_verification.v1",
@@ -399,7 +399,8 @@
     "manuscript/nature_methods/submission_package/submission_manifest.md",
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
     "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
-    "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md"
+    "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md"
   ],
   "status": "pass",
   "url_count": 33

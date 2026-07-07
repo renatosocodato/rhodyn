@@ -91,6 +91,11 @@
       "passed": true
     },
     {
+      "detail": "Validation breadth map makes the method-validation ladder visible while preserving non-universality boundaries",
+      "name": "validation_breadth_map_present",
+      "passed": true
+    },
+    {
       "detail": "Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries",
       "name": "editor_objection_response_map_present",
       "passed": true
@@ -137,9 +142,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "4c94124edee6ebeb5351dfa7cadb5cc45759c725",
+  "commit": "25c3f129a9923080b2285d7340af4e5cb75350e7",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T13:59:15Z",
+  "generated_utc": "2026-07-07T14:13:57Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -172,7 +177,8 @@
     "manuscript/nature_methods/submission_package/submission_manifest.md",
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
     "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
-    "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md"
+    "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md"
   ],
   "package_root": "manuscript/nature_methods/submission_package",
   "pi_review_action_decisions": "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
@@ -189,10 +195,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "4c94124edee6ebeb5351dfa7cadb5cc45759c725",
+    "closure_commit": "25c3f129a9923080b2285d7340af4e5cb75350e7",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@4c94124edee6ebeb5351dfa7cadb5cc45759c725",
+    "package_version": "stage9.29-closure@25c3f129a9923080b2285d7340af4e5cb75350e7",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

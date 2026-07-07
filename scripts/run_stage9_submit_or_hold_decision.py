@@ -62,6 +62,7 @@ def build_report() -> dict[str, Any]:
     reporting_summary = _read(PACKAGE / "reporting_summary_REQUIRED.md")
     reporting_summary_answer_bank = _read(PACKAGE / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md")
     prior_art_positioning = _read(PACKAGE / "prior_art_positioning_matrix.md")
+    validation_breadth_map = _read(PACKAGE / "validation_breadth_and_boundary_map.md")
     editor_objection_response = _read(PACKAGE / "editor_objection_response_map.md")
     editor_two_minute_triage = _read(PACKAGE / "editor_two_minute_triage_simulation.md")
     current_policy_preflight = _read(PACKAGE / "current_nature_methods_policy_preflight.md")
@@ -156,6 +157,16 @@ def build_report() -> dict[str, Any]:
             and "should not be positioned as the first method to treat live-cell signals as dynamic" in prior_art_positioning
             and "does not add citations, performance results, biological datasets, or manuscript claims" in prior_art_positioning,
             "Prior-art positioning matrix makes the RhoDyn novelty boundary explicit for collaborator/editorial review.",
+        ),
+        _check(
+            "validation_breadth_map_present",
+            "Validation breadth and boundary map" in validation_breadth_map
+            and "Known-truth synthetic regimes" in validation_breadth_map
+            and "Public live-cell trajectory examples" in validation_breadth_map
+            and "Public-derived endpoint and paired-reporter demonstrations" in validation_breadth_map
+            and "Held-out contexts and margin sensitivity" in validation_breadth_map
+            and "It does not claim that every biological system contains a residence regime" in validation_breadth_map,
+            "Validation breadth map makes cross-system method tests and non-universality boundaries visible for collaborator/editorial review.",
         ),
         _check(
             "editor_objection_response_map_present",

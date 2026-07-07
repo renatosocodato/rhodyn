@@ -36,6 +36,7 @@ PACKAGE_SOFTWARE_CHECKLIST = SUBMISSION / "software_reporting_checklist.md"
 PACKAGE_ARTICLE_FIT = SUBMISSION / "article_fit_checklist.md"
 PACKAGE_AUTHOR_DECLARATIONS = SUBMISSION / "author_declarations_REQUIRED.md"
 PACKAGE_REVIEWER_FIT = SUBMISSION / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md"
+PACKAGE_VALIDATION_BREADTH = SUBMISSION / "validation_breadth_and_boundary_map.md"
 PRIOR_ART_NOTE = STAGING / "live_cell_prior_art_candidate_for_promotion.md"
 
 
@@ -94,6 +95,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
     package_article_fit = _read(PACKAGE_ARTICLE_FIT)
     package_author_declarations = _read(PACKAGE_AUTHOR_DECLARATIONS)
     package_reviewer_fit = _read(PACKAGE_REVIEWER_FIT)
+    package_validation_breadth = _read(PACKAGE_VALIDATION_BREADTH)
     invalid_input_language = (
         "validation issues" in methods
         and "missing time units" in methods
@@ -118,10 +120,10 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "risk_id": "NM-DESK-002",
             "editorial_risk": "Validation may look too narrow for Nature Methods if public examples are over-presented as broad generality.",
             "nature_methods_requirement": "Strong validation, biological application, and performance comparison with available approaches.",
-            "current_evidence": "Figures 2-5 cover synthetic truth cases, public calcium, public ERK, public endpoint data, held-out contexts, margin sensitivity, and inconclusive outcomes.",
-            "status": "hardened_in_current_text" if "not whether every biological system contains a residence regime" in intro + discussion else "needs_revision",
-            "recommended_action": "Frame examples as portability and decision-behavior tests, not field-wide biological generality.",
-            "promotion_target": "Maintain current Results and Discussion boundary language.",
+            "current_evidence": "Figures 2-5 and the validation breadth map cover synthetic truth cases, public calcium, public ERK, public endpoint data, held-out contexts, margin sensitivity, software parity, and inconclusive outcomes.",
+            "status": "hardened_in_current_text" if "not whether every biological system contains a residence regime" in intro + discussion and "Validation breadth and boundary map" in package_validation_breadth else "needs_revision",
+            "recommended_action": "Frame examples as portability and decision-boundary tests, not field-wide biological generality.",
+            "promotion_target": "submission_package/validation_breadth_and_boundary_map.md.",
         },
         {
             "risk_id": "NM-DESK-003",
@@ -315,6 +317,7 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "- The live-cell morphodynamic prior-art citation has been promoted and renumbered across the current package.",
             "- The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.",
             "- The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.",
+            "- The validation breadth map is included in the submission package as `validation_breadth_and_boundary_map.md`.",
             "- The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.",
             "- The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.",
             "- The author-declarations checklist is included in the submission package as `author_declarations_REQUIRED.md`.",
@@ -345,6 +348,7 @@ def _triage_rows(rows: list[dict[str, str]], main_text: str) -> list[dict[str, s
     package_software = _read(PACKAGE_SOFTWARE_CHECKLIST)
     article_fit = _read(PACKAGE_ARTICLE_FIT)
     reviewer_fit = _read(PACKAGE_REVIEWER_FIT)
+    validation_breadth = _read(PACKAGE_VALIDATION_BREADTH)
     high_or_open = {
         row["risk_id"]: row
         for row in rows
@@ -368,9 +372,9 @@ def _triage_rows(rows: list[dict[str, str]], main_text: str) -> list[dict[str, s
         },
         {
             "criterion": "Validation breadth and transferability",
-            "current_evidence": "Results describe synthetic truth cases, public DRG calcium, public ERK, public endpoint/paired-reporter demonstrations, held-out bounded-coupling contexts, and inconclusive cases.",
-            "simulated_editor_read": "The validation ladder is broad enough for editorial consideration, but the wording must not imply universal residence biology.",
-            "risk_level": "medium",
+            "current_evidence": "Results and the validation breadth map describe synthetic truth cases, public DRG calcium, public ERK, public endpoint/paired-reporter demonstrations, held-out bounded-coupling contexts, software parity, and inconclusive cases.",
+            "simulated_editor_read": "The validation ladder is legible as method portability and decision-boundary testing rather than as a single-system biology claim.",
+            "risk_level": "low" if "Validation breadth and boundary map" in validation_breadth and "It does not claim that every biological system contains a residence regime" in validation_breadth else "medium",
             "recommended_action": "Keep examples as method stress tests and avoid claiming every reporter has a residence regime.",
         },
         {
@@ -566,6 +570,7 @@ def run() -> dict[str, object]:
             "triage_note": TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_triage_note": PACKAGE_TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_editorial_pitch": PACKAGE_EDITORIAL_PITCH.relative_to(ROOT).as_posix(),
+            "package_validation_breadth_map": PACKAGE_VALIDATION_BREADTH.relative_to(ROOT).as_posix(),
             "package_software_reporting_checklist": PACKAGE_SOFTWARE_CHECKLIST.relative_to(ROOT).as_posix(),
             "package_article_fit_checklist": PACKAGE_ARTICLE_FIT.relative_to(ROOT).as_posix(),
             "package_author_declarations": PACKAGE_AUTHOR_DECLARATIONS.relative_to(ROOT).as_posix(),

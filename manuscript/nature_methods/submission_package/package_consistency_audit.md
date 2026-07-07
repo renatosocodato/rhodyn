@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T13:59:15Z
+Generated UTC. 2026-07-07T14:13:57Z
 
 ## Result
 
@@ -28,6 +28,7 @@ Status. pass
 | editor_triage_note_present | true | Editor-triage note foregrounds Nature Methods fit and claim boundaries |
 | editorial_pitch_present | true | Editorial pitch includes cover-letter, author-confirmation, and presubmission-inquiry drafts |
 | prior_art_positioning_matrix_present | true | Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence |
+| validation_breadth_map_present | true | Validation breadth map makes the method-validation ladder visible while preserving non-universality boundaries |
 | editor_objection_response_map_present | true | Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries |
 | editor_two_minute_triage_simulation_present | true | Two-minute editor triage simulation checks first-pass method fit, validation breadth, and claim boundaries |
 | current_policy_preflight_present | true | Current Nature Methods policy preflight maps Article, reporting, data/code, and software requirements to package evidence |

@@ -16,6 +16,7 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 | Editor-triage note | ready | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |
 | Editorial pitch | ready | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |
 | Prior-art positioning matrix | ready | `prior_art_positioning_matrix.md` distinguishes RhoDyn from related dynamic-state, trajectory, imaging, and software-method literature without adding new manuscript claims. |
+| Validation breadth map | ready | `validation_breadth_and_boundary_map.md` condenses the synthetic, public trajectory, endpoint, held-out, and software-reproducibility validation ladder while preserving claim boundaries. |
 | Editor-objection response map | ready | `editor_objection_response_map.md` links likely desk-review objections to existing evidence and claim boundaries. |
 | Two-minute editor triage simulation | ready | `editor_two_minute_triage_simulation.md` checks whether the title, Abstract, cover letter, and figure spine communicate the method claim quickly. |
 | Current Nature Methods policy preflight | ready | `current_nature_methods_policy_preflight.md` maps the package to current Article, reporting, data/code, and software guidance. |

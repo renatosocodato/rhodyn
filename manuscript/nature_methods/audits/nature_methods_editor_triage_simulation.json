@@ -16,10 +16,10 @@
     },
     {
       "criterion": "Validation breadth and transferability",
-      "current_evidence": "Results describe synthetic truth cases, public DRG calcium, public ERK, public endpoint/paired-reporter demonstrations, held-out bounded-coupling contexts, and inconclusive cases.",
+      "current_evidence": "Results and the validation breadth map describe synthetic truth cases, public DRG calcium, public ERK, public endpoint/paired-reporter demonstrations, held-out bounded-coupling contexts, software parity, and inconclusive cases.",
       "recommended_action": "Keep examples as method stress tests and avoid claiming every reporter has a residence regime.",
-      "risk_level": "medium",
-      "simulated_editor_read": "The validation ladder is broad enough for editorial consideration, but the wording must not imply universal residence biology."
+      "risk_level": "low",
+      "simulated_editor_read": "The validation ladder is legible as method portability and decision-boundary testing rather than as a single-system biology claim."
     },
     {
       "criterion": "Performance comparison and alternatives",
@@ -70,8 +70,8 @@
   },
   "risk_counts": {
     "high": 0,
-    "low": 5,
-    "medium": 4
+    "low": 6,
+    "medium": 3
   },
   "scope": "Author-side stress test only. This is not a journal decision and does not add evidence.",
   "simulated_verdict": "Potentially suitable for full editorial consideration after author upload actions",

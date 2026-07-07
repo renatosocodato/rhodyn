@@ -27,7 +27,7 @@ The relevant editorial bar is a novel method or substantial improvement with bro
 | risk | status | action |
 |---|---|---|
 | NM-DESK-001 | hardened_in_current_text | Keep the novelty sentence centered on the integrated decision object. Do not broaden into a general theory of cell dynamics. |
-| NM-DESK-002 | hardened_in_current_text | Frame examples as portability and decision-behavior tests, not field-wide biological generality. |
+| NM-DESK-002 | hardened_in_current_text | Frame examples as portability and decision-boundary tests, not field-wide biological generality. |
 | NM-DESK-003 | hardened_in_current_text | Keep the prior-art contrast explicit. Do not claim novelty for live-cell trajectory embedding itself. |
 | NM-DESK-004 | hardened_in_current_text | Keep invalid-input and withheld-decision language visible. Do not describe RhoDyn as fully automated state discovery. |
 | NM-DESK-005 | hardened_in_current_text | Preserve the margin/context and measured-endpoint boundary in all upload-facing files. |
@@ -52,6 +52,7 @@ The package is defensible for editor triage because the package-bound editor not
 - The live-cell morphodynamic prior-art citation has been promoted and renumbered across the current package.
 - The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.
 - The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.
+- The validation breadth map is included in the submission package as `validation_breadth_and_boundary_map.md`.
 - The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.
 - The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.
 - The author-declarations checklist is included in the submission package as `author_declarations_REQUIRED.md`.

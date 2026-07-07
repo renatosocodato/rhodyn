@@ -1,6 +1,6 @@
 {
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-  "closure_commit": "4c94124edee6ebeb5351dfa7cadb5cc45759c725",
+  "closure_commit": "25c3f129a9923080b2285d7340af4e5cb75350e7",
   "content_type": "Article",
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine": {
@@ -42,7 +42,7 @@
     "panelforge_ref": null,
     "rendered_file_count": 18
   },
-  "generated_utc": "2026-07-07T13:59:15Z",
+  "generated_utc": "2026-07-07T14:13:57Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
     "Confirm final title page, author list, affiliations, correspondence fields, author declarations, and the AI-use disclosure draft if applicable.",
@@ -65,16 +65,16 @@
       "sha256": "d5bf3eadafa0932021fe626589de53796e7212fb93ea2e02584266b46fc61d03"
     },
     {
-      "bytes": 4142,
+      "bytes": 4342,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_manifest.md",
-      "sha256": "5678cf781f3be027a37ec503f363ceef6a937e8cab9e61bd7f036edabffcc4ac"
+      "sha256": "ee9c4cd07df278c36cfdb1e4860192e11534323f80b1a143529cc4a756b4f377"
     },
     {
-      "bytes": 4210,
+      "bytes": 4434,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
-      "sha256": "50419efa0dfac422f2f3ef06becdd5092ec92d1dc0204e29c13058cd81d5c22d"
+      "sha256": "733cde5c9d56e88d0d9fa715dceebbbaeabdf34b835360e20fb31353784b19ab"
     },
     {
       "bytes": 2079,
@@ -93,6 +93,12 @@
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
       "sha256": "148544f738b537e45f6c396e4ed8b1db1a825aa4455f8f1909bd3ae7cdd436d1"
+    },
+    {
+      "bytes": 4902,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
+      "sha256": "97a9a95f46f5550f3a0f19f84ff0c6b843b0ada2c32da2c8e8b5e4f0540b8bbf"
     },
     {
       "bytes": 5133,
@@ -155,10 +161,10 @@
       "sha256": "669b4108eea3e6e0fb034822b8a38800e7a0e305b0a9a192ad315775e0df6fd9"
     },
     {
-      "bytes": 3844,
+      "bytes": 3999,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/package_consistency_audit.md",
-      "sha256": "645e6fabd2fa29f9edb8c6f9ee6d988aed84a42d90583a336390e18c617485b0"
+      "sha256": "89a26dae70813e8f9335bc77cfcfd486c9c0bc9332548f108b9b99dfce1626d6"
     },
     {
       "bytes": 4121,
@@ -191,10 +197,10 @@
       "sha256": "2b5fac1cbf22a8ff00d0107476a801911d0448827d977139e5e893db5cc93a9e"
     },
     {
-      "bytes": 8074,
+      "bytes": 8377,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_package_manifest.json",
-      "sha256": "7474fafbcc7408662ed503a578093ac3b75937fe31e63177eacd821c2c5368f2"
+      "sha256": "9fd29485232b9f6ce5090773cd5a46ae403aafc8c889909269b731363d9ac3e9"
     },
     {
       "bytes": 7833,
@@ -212,16 +218,16 @@
       "bytes": 1639,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
-      "sha256": "8ba24a551685384ad31e5e7d905ee90e05751a5525ec3ca2ae482bd6cb630c22"
+      "sha256": "775b19f0188f19fa46f5452c58b259ce50ad73d89e7a77b61bcba3ba63e08127"
     },
     {
       "bytes": 1534,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
-      "sha256": "9b9a582a7c8e737d57c88d8b7ac7435d929d7f2e586b2fb34b034ec127ff9ab2"
+      "sha256": "a4c1b5c3d9e8585fa3eea36bf64eba4d472b7b55a99b0b6dfc1e31dd7d16b06c"
     }
   ],
-  "package_version": "stage9.29-closure@4c94124edee6ebeb5351dfa7cadb5cc45759c725",
+  "package_version": "stage9.29-closure@25c3f129a9923080b2285d7340af4e5cb75350e7",
   "pi_review_action_decisions": [
     {
       "closure_status": "closed",

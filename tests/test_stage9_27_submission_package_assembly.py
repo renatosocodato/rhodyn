@@ -31,6 +31,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         cls.editor_two_minute_triage = (PACKAGE / "editor_two_minute_triage_simulation.md").read_text(encoding="utf-8")
         cls.current_policy_preflight = (PACKAGE / "current_nature_methods_policy_preflight.md").read_text(encoding="utf-8")
         cls.reviewer_editor_fit = (PACKAGE / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+        cls.validation_breadth_map = (PACKAGE / "validation_breadth_and_boundary_map.md").read_text(encoding="utf-8")
         with (PACKAGE / "figure_file_inventory.csv").open(newline="", encoding="utf-8") as handle:
             cls.figure_rows = list(csv.DictReader(handle))
         with (PACKAGE / "source_data_and_statistics_inventory.csv").open(newline="", encoding="utf-8") as handle:
@@ -61,6 +62,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "editor_triage_note_present",
             "editorial_pitch_present",
             "prior_art_positioning_matrix_present",
+            "validation_breadth_map_present",
             "editor_objection_response_map_present",
             "editor_two_minute_triage_simulation_present",
             "current_policy_preflight_present",
@@ -152,6 +154,14 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("should not be positioned as the first method to treat live-cell signals as dynamic", self.prior_art_positioning)
         self.assertIn("does not add citations, performance results, biological datasets, or manuscript claims", self.prior_art_positioning)
         self.assertIn("Prior-art positioning matrix | ready", self.checklist)
+        self.assertIn("Validation breadth and boundary map", self.validation_breadth_map)
+        self.assertIn("does not add data, analyses, citations, figures, datasets, performance claims, or manuscript text", self.validation_breadth_map)
+        self.assertIn("Known-truth synthetic regimes", self.validation_breadth_map)
+        self.assertIn("Public live-cell trajectory examples", self.validation_breadth_map)
+        self.assertIn("Public-derived endpoint and paired-reporter demonstrations", self.validation_breadth_map)
+        self.assertIn("Held-out contexts and margin sensitivity", self.validation_breadth_map)
+        self.assertIn("It does not claim that every biological system contains a residence regime", self.validation_breadth_map)
+        self.assertIn("Validation breadth map | ready", self.checklist)
         self.assertIn("Editor-objection response map", self.editor_objection_response)
         self.assertIn("likely Nature Methods desk-review objections", self.editor_objection_response)
         self.assertIn("does not add evidence, citations, figures, datasets, performance claims, or manuscript text", self.editor_objection_response)
