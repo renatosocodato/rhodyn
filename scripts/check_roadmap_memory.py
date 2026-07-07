@@ -231,6 +231,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.1 method object v2 complete; Stage 10.2 named benchmarking not started",
         "Stage 10.2 named benchmarking complete; Stage 10.3 expanded public biological demonstrations not started",
         "Stage 10.3 expanded public biological demonstrations complete; Stage 10.4 held-out validation not started",
+        "Stage 10.4 sealed held-out validation complete; Stage 10.5 method-first figure architecture not started",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -244,7 +245,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_3_complete_public_biological_breadth",
+        10: "stage10_4_complete_heldout_validation",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -284,6 +285,15 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_public_breadth/stage10_3_source_access_ledger.tsv",
             "case_studies/stage10_public_breadth/stage10_3_birtwistle_source_probe.json",
             "case_studies/stage10_public_breadth/stage10_3_public_breadth_brief.md",
+            "docs/stage10_4_heldout_validation.md",
+            "scripts/run_stage10_4_heldout_validation.py",
+            "tests/test_stage10_4_heldout_validation.py",
+            "case_studies/stage10_heldout_validation/stage10_4_predeclaration.json",
+            "case_studies/stage10_heldout_validation/stage10_4_predeclaration.md",
+            "case_studies/stage10_heldout_validation/stage10_4_heldout_decisions.tsv",
+            "case_studies/stage10_heldout_validation/stage10_4_trajectory_object_calls.csv",
+            "case_studies/stage10_heldout_validation/stage10_4_heldout_report.md",
+            "case_studies/stage10_heldout_validation/stage10_4_gate_report.json",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -355,9 +365,28 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.3 public-breadth gates must all pass")
         else:
             failures.append("missing Stage 10.3 public-breadth report")
-        for subphase in ["10.4", "10.5", "10.6", "10.7", "10.8", "10.9"]:
+        heldout_report_path = root / "case_studies" / "stage10_heldout_validation" / "stage10_4_gate_report.json"
+        if heldout_report_path.exists():
+            heldout_report = json.loads(heldout_report_path.read_text(encoding="utf-8"))
+            if heldout_report.get("status") != "pass":
+                failures.append("Stage 10.4 held-out report must pass")
+            summary = heldout_report.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("positive_call_count", 0) < 1:
+                failures.append("Stage 10.4 must preserve at least one positive held-out call")
+            if not isinstance(summary, dict) or summary.get("negative_call_count", 0) < 1:
+                failures.append("Stage 10.4 must preserve at least one negative or comparator-sufficient held-out call")
+            if not isinstance(summary, dict) or summary.get("inconclusive_call_count", 0) < 1:
+                failures.append("Stage 10.4 must preserve at least one inconclusive held-out call")
+            gates = heldout_report.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.4 held-out gates must all pass")
+        else:
+            failures.append("missing Stage 10.4 held-out report")
+        if subphase_status.get("10.4") != "complete_heldout_validation":
+            failures.append("Stage 10.4 must be complete_heldout_validation")
+        for subphase in ["10.5", "10.6", "10.7", "10.8", "10.9"]:
             if subphase_status.get(subphase) != "not_started":
-                failures.append(f"Stage {subphase} must remain not_started after Stage 10.3")
+                failures.append(f"Stage {subphase} must remain not_started after Stage 10.4")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

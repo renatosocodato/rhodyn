@@ -1,0 +1,66 @@
+{
+  "analysis_id": "stage10_4_sealed_heldout_challenge",
+  "challenge_type": "sealed_replay_from_public_derived_tables",
+  "paired_reporter_challenge": {
+    "case_id": "wan2021_erk_akt_non_dmso_inhibitors",
+    "source": "Zenodo DOI 10.5281/zenodo.5836623",
+    "stage7_5_fixed_plan": {
+      "alpha": 0.05,
+      "analysis_id": "stage7_5_heldout_erk_akt_inhibitor_validation",
+      "fixed_thresholds": {
+        "akt": 0.5892,
+        "erk": 0.7623
+      },
+      "heldout_contexts": [
+        "His/PTx",
+        "His/YM",
+        "His/ymptx",
+        "S1P/PTx",
+        "S1P/YM",
+        "S1P/ymptx",
+        "UK/PTx"
+      ],
+      "heldout_definition": "Non-DMSO inhibitor contexts from Figure_3.zip were not used as the promoted Stage 7.4 DMSO-control bounded-coupling example.",
+      "no_hidden_tuning_rule": "No hidden tuning is allowed. Thresholds, margin, alpha, selected contexts, selection limit, and outcome classes are fixed in this script before outcomes are written.",
+      "primary_decision_rule": "For each held-out ligand-inhibitor context, one-sample TOST tests whether ERK-minus-Akt high-state residence fraction lies inside +/-0.20. Holm-adjusted TOST p < 0.05 plus 90 percent CI inside the margin gives a pass. A 90 percent CI entirely outside the margin gives a fail. Other non-passing contexts are inconclusive.",
+      "primary_margin": 0.2,
+      "selection_rule": {
+        "context": "ligand plus inhibitor",
+        "grouping": "experiment label used for grouped bootstrap sensitivity where available",
+        "max_cells_per_ligand_inhibitor_experiment": 20,
+        "unit": "single-cell paired ERK/Akt trajectory"
+      },
+      "source_dataset": "Wan et al. 2021 public ERK/Akt GPCR Zenodo archive",
+      "source_doi": "10.5281/zenodo.5836623",
+      "stage": "7.5",
+      "threshold_quantile": 0.75,
+      "threshold_source": "Stage 7.4 DMSO-control selected-record 75th-percentile ERK and Akt KTR values",
+      "uncertainty_rule": "Experiment-label grouped percentile bootstrap intervals are reported as sensitivity evidence and not used to tune the primary margin or thresholds."
+    }
+  },
+  "required_gate": "at least one positive, one negative, and one inconclusive held-out call with no retuning",
+  "scope_boundary": "This is a no-retuning held-out challenge over public-derived tables already retained in RhoDyn. It is not a prospective blinded collaborator study and does not create a universal performance claim.",
+  "stage": "10.4",
+  "status": "predeclared_before_stage10_4_outputs",
+  "trajectory_challenges": [
+    {
+      "case_id": "mlci_replicate_01_heldout_residence_amplitude",
+      "heldout": "replicate 01",
+      "source": "Zenodo DOI 10.5281/zenodo.7260137",
+      "train": "replicate 00"
+    },
+    {
+      "case_id": "erk_gpcr_ligand_s1p_heldout_residence_amplitude",
+      "heldout": "remaining ligands",
+      "source": "Zenodo DOI 10.5281/zenodo.5836623",
+      "train": "lexically sorted ligands at even indices"
+    }
+  ],
+  "trajectory_decision_rule": {
+    "inconclusive_call": "all other cases",
+    "negative_call": "Jaccard >= 0.75",
+    "positive_call": "Jaccard <= 0.5 with at least 2 discordant held-out objects",
+    "threshold_quantile": 0.75,
+    "threshold_source": "training split only"
+  }
+}

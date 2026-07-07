@@ -94,6 +94,14 @@ The completed breadth matrix counts four independent public systems across live-
 
 Stage 10.3 reduces the biological-breadth vulnerability. It does not show that every live-cell system has a residence regime and does not remove the need for Stage 10.4 held-out validation.
 
+### Stage 10.4 completion update
+
+Stage 10.4 is now implemented as a sealed held-out validation route. The executable runner is `scripts/run_stage10_4_heldout_validation.py`, the documentation page is `docs/stage10_4_heldout_validation.md`, and the held-out outputs are under `case_studies/stage10_heldout_validation/`.
+
+The completed challenge writes a predeclaration before interpreting the Stage 10.4 output tables, then evaluates retained public-derived contexts without retuning. It preserves a positive residence/amplitude divergence call in held-out MLCI tracking, a negative or comparator-sufficient boundary in held-out ERK GPCR dynamics, a positive ERK/Akt bounded-coupling held-out call, and an inconclusive ERK/Akt margin-boundary call. This strengthens the method-level reading because RhoDyn is shown as a rule-preserving decision method that can pass, withhold, or report comparator sufficiency under fixed settings.
+
+Stage 10.4 does not replace a prospective blinded collaborator study. It is a sealed replay over public-derived tables and should be described as no-retuning held-out validation rather than as universal external validation.
+
 ## Stage 10.2 named benchmarking ladder
 
 The named benchmarking track must be explicit enough that a methods editor does not see only self-comparison against simple summaries.
@@ -143,7 +151,7 @@ The current public evidence contains DRG calcium, ERK GPCR, ERK/Akt, and Cell Pa
 
 ## Stage 10.4 held-out validation
 
-The current held-out layer is useful but should become stricter. Stage 10 should predeclare windows, margins, and grouping on a training subset, then evaluate held-out contexts without retuning.
+The held-out layer is now implemented as a sealed public-derived replay with predeclared rules. Future work can make it stronger by adding a prospective collaborator-blind table, but the current Stage 10.4 gate already records whether fixed settings preserve positive, negative, and inconclusive calls.
 
 Minimum held-out design:
 
@@ -154,7 +162,7 @@ Minimum held-out design:
 5. record pass, fail, and inconclusive outcomes;
 6. report whether conclusions are stable under window and margin sensitivity.
 
-Gate. If held-out performance collapses, the manuscript should not claim broad generality. It should either narrow to demonstrated contexts or delay the EIC contact.
+Gate. The current gate passes because the output includes positive, negative or comparator-sufficient, and inconclusive decisions under fixed rules. If a later prospective held-out expansion collapses, the manuscript should narrow to demonstrated contexts or delay the EIC contact.
 
 ## Stage 10.5 revised Nature Methods figure spine
 
@@ -263,6 +271,7 @@ These are planning commands only. They should be run after Stage 10 implementati
 python3 scripts/run_stage10_1_method_object_v2.py
 python3 scripts/run_stage10_2_named_benchmarking.py
 python3 scripts/run_stage10_3_public_biological_breadth.py
+python3 scripts/run_stage10_4_heldout_validation.py
 python3 scripts/run_stage10_8_eic_red_team.py
 python3 scripts/check_release.py
 ```

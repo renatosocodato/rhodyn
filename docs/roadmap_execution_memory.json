@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 10.3 expanded public biological demonstrations complete; Stage 10.4 held-out validation not started",
+    "active_stage": "Stage 10.4 sealed held-out validation complete; Stage 10.5 method-first figure architecture not started",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage10_0_eic_rescue_scaffold": "Stage 10.0 serialized the post-closure Nature Methods EIC rescue and methodological-elevation roadmap. The next work must lower desk-rejection risk through named baseline benchmarking, broader independent public biological demonstrations, a stronger mathematical method object, and adversarial EIC simulation before any second editor contact.",
     "after_stage10_1_method_object_v2": "Stage 10.1 completed an explicit RhoDyn method-object v2 with a decision-divergence definition, bounded-coupling, reserve-like, and routed-output calls, interpretation boundaries, executable positive, counterexample, and ambiguous fixtures, and a non-blocking API gap list. This enabled the now-completed Stage 10.2 named benchmarking pass.",
@@ -59,12 +59,13 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Stage 10.3 expanded public biological demonstrations complete",
-    "next_stage": "Stage 10.4 blinded or held-out validation route, not started",
-    "stage10_active_gate": "Stage 10.3 expanded public biological demonstrations complete; Stage 10.4 held-out validation not started",
+    "current_gate": "Stage 10.4 sealed held-out validation complete",
+    "next_stage": "Stage 10.5 method-first Nature Methods figure architecture, not started",
+    "stage10_active_gate": "Stage 10.4 sealed held-out validation complete; Stage 10.5 method-first figure architecture not started",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
-    "stage9_active_gate": "Stage 9.29 closed and version-bound"
+    "stage9_active_gate": "Stage 9.29 closed and version-bound",
+    "after_stage10_4_heldout_validation": "Stage 10.4 completed a sealed no-retuning held-out validation route over retained public-derived tables. It writes a predeclaration, preserves positive residence-divergence and bounded-coupling calls, preserves a negative or comparator-sufficient ERK GPCR boundary, and keeps ERK/Akt margin-boundary inconclusive contexts visible. This strengthens the method reading without claiming prospective blinded validation or universal RhoDyn superiority."
   },
   "memory_notes": {
     "after_stage9_6b_panelforge_rendering": "Stage 9.6b generated a renderable PanelForge manifest and six deterministic main-figure mockups from the frozen figure-to-claim-to-artifact spine. Citation resolution, manuscript drafting, supplementary display planning, and submission-package assembly remain not started.",
@@ -908,9 +909,18 @@
         "case_studies/stage10_public_breadth/stage10_3_candidate_resolution.tsv",
         "case_studies/stage10_public_breadth/stage10_3_source_access_ledger.tsv",
         "case_studies/stage10_public_breadth/stage10_3_birtwistle_source_probe.json",
-        "case_studies/stage10_public_breadth/stage10_3_public_breadth_brief.md"
+        "case_studies/stage10_public_breadth/stage10_3_public_breadth_brief.md",
+        "docs/stage10_4_heldout_validation.md",
+        "scripts/run_stage10_4_heldout_validation.py",
+        "tests/test_stage10_4_heldout_validation.py",
+        "case_studies/stage10_heldout_validation/stage10_4_predeclaration.json",
+        "case_studies/stage10_heldout_validation/stage10_4_predeclaration.md",
+        "case_studies/stage10_heldout_validation/stage10_4_heldout_decisions.tsv",
+        "case_studies/stage10_heldout_validation/stage10_4_trajectory_object_calls.csv",
+        "case_studies/stage10_heldout_validation/stage10_4_heldout_report.md",
+        "case_studies/stage10_heldout_validation/stage10_4_gate_report.json"
       ],
-      "current_gate": "Stage 10.3 expanded public biological demonstrations complete; Stage 10.4 held-out validation has not started.",
+      "current_gate": "Stage 10.4 sealed held-out validation complete; Stage 10.5 method-first figure architecture has not started.",
       "gate": [
         "Named baseline and named-tool benchmarking must be materially broader than Stage 7.2.",
         "At least two additional independent public biological demonstrations should be added before a stronger Nature Methods generality claim.",
@@ -920,7 +930,7 @@
       "name": "Nature Methods EIC rescue and methodological elevation",
       "scope_rule": "Stage 10 is a post-closure evidence-elevation program, not a Stage 9 polish pass. It must lower the risk that RhoDyn is read as workflow/software integration by adding named baseline benchmarking, independent public biological breadth, mathematical method-object elevation, held-out validation, and EIC red-team simulation before any second editor contact.",
       "stage": 10,
-      "status": "stage10_3_complete_public_biological_breadth",
+      "status": "stage10_4_complete_heldout_validation",
       "subphases": [
         {
           "evidence": "docs/stage10_nature_methods_eic_rescue_roadmap.md",
@@ -952,7 +962,9 @@
         {
           "id": "10.4",
           "name": "Blinded or held-out validation route",
-          "status": "not_started"
+          "status": "complete_heldout_validation",
+          "evidence": "case_studies/stage10_heldout_validation/stage10_4_gate_report.json",
+          "gate": "sealed predeclaration plus positive, negative or comparator-sufficient, and inconclusive held-out calls under fixed rules"
         },
         {
           "id": "10.5",

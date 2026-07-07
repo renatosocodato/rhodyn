@@ -1,0 +1,32 @@
+{
+  "created_outputs": [
+    "stage10_4_predeclaration.json",
+    "stage10_4_predeclaration.md",
+    "stage10_4_heldout_decisions.tsv",
+    "stage10_4_trajectory_object_calls.csv",
+    "stage10_4_heldout_report.md",
+    "stage10_4_gate_report.json"
+  ],
+  "gates": {
+    "inconclusive_call_present": true,
+    "negative_call_present": true,
+    "no_hidden_tuning_status_recorded": true,
+    "positive_call_present": true,
+    "predeclaration_present": true,
+    "stage10_3_prerequisite_passed": true,
+    "three_or_more_challenge_rows": true
+  },
+  "interpretation_boundary": "Stage 10.4 is a sealed replay held-out validation over retained public-derived tables. It strengthens no-retuning evidence but does not replace a prospective blinded collaborator study.",
+  "next_phase": "Stage 10.5 method-first Nature Methods figure architecture",
+  "output_dir": "case_studies/stage10_heldout_validation",
+  "report_format": "rhodyn.stage10_4_heldout_validation.v1",
+  "stage": "10.4",
+  "status": "pass",
+  "summary_metrics": {
+    "decision_count": 4,
+    "inconclusive_call_count": 1,
+    "negative_call_count": 1,
+    "positive_call_count": 2,
+    "trajectory_object_call_rows": 74
+  }
+}
