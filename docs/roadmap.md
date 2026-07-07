@@ -56,7 +56,8 @@ completed reader-surface hygiene, Stage 9.26 has completed internal peer review
 simulation, Stage 9.27 has completed collaborator-review package assembly, and
 Stage 9.29 has closed and version-bound the current Nature Methods manuscript package.
 Stage 10.0 has serialized the post-closure Nature Methods EIC rescue and
-methodological-elevation roadmap. Stage 10 implementation has not started.
+methodological-elevation roadmap. Stage 10.1 has completed the method-object
+v2 formalization; Stage 10.2 named benchmarking has not started.
 
 ## Execution memory
 
@@ -106,7 +107,9 @@ passes.
    methodological-elevation program. It is for lowering desk-rejection risk by
    adding named baseline benchmarking, broader independent public biological
    demonstrations, a stronger mathematical method object, and adversarial EIC
-   simulation before any second editor contact.
+   simulation before any second editor contact. Stage 10.1 has now made the
+   method object explicit as an executable decision structure rather than only
+   a workflow description.
 
 Decision rule for new work. If a proposed task adds another public biological
 system, it is Stage 7 evidence expansion unless it fixes a Stage 3 defect. If a
@@ -139,13 +142,13 @@ as roadmap work.
 | Stage 7. Independent methods-program roadmap | Stage 7.8 methods manuscript readiness package complete and recursively hardened against release surfaces. | Treat this as an evidence-expansion and methods-platform maturation program aligned to standards exemplified by strong computational methods papers. Nature Methods is the primary reference point, not an acceptance formula. |
 | Stage 8. Product and commercial alignment | Conceptual only. | Product strategy inherits the Stage 7 methods evidence and should not lead the scientific evidence path. |
 | Stage 9. Nature Methods manuscript assembly | Stage 9.29 closed and version-bound. | The current boundary is evidence intake, official venue-guidance registration, representative methods-paper corpus analysis, narrative-spine selection, claim freeze, paragraph-level claim planning, main figure-spine planning, deterministic PanelForge rendering, supplementary display planning, section-contract planning, front-matter strategy, Results architecture, Results drafting, Introduction literature binding, Discussion interpretation mapping, Discussion drafting, Methods architecture, Methods drafting, availability assembly, Supplementary Methods drafting, supplementary table/source-data binding, reference-library/citation audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review simulation, submission package assembly, and PI review packet assembly. Stage 9 closure is complete; future work must be journal-specific submission handling or a newly authorized evidence/manuscript stage. |
-| Stage 10. Nature Methods EIC rescue and methodological elevation | Stage 10.0 roadmap scaffold serialized; implementation not started. | This is a post-closure evidence-elevation program, not another Stage 9 polish pass. It exists to lower the risk that RhoDyn is read as useful workflow/software integration rather than as a competitive Nature Methods-level method. Stage 10 must add named baseline and named-tool benchmarking, broader independent public biological demonstrations, a stronger mathematical method object, and adversarial EIC simulation before any second EIC contact. |
+| Stage 10. Nature Methods EIC rescue and methodological elevation | Stage 10.1 method-object v2 formalization complete; Stage 10.2 named benchmarking not started. | This is a post-closure evidence-elevation program, not another Stage 9 polish pass. It exists to lower the risk that RhoDyn is read as useful workflow/software integration rather than as a competitive Nature Methods-level method. Stage 10 must add named baseline and named-tool benchmarking, broader independent public biological demonstrations, a stronger mathematical method object, and adversarial EIC simulation before any second EIC contact. |
 
 Stage 9.1 venue guidance source register has been completed. The current
 source-bound constraints are the Nature Methods Article budget, Reporting
 Summary expectation, software/code availability expectations, data availability
 expectations, figure-legend constraints, and statistics-reporting expectations.
-Stage 9.2 representative methods-paper corpus has been completed. Stage 9.3 narrative spine has been completed. Stage 9.4 claim freeze has been completed. Stage 9.5 paragraph-level claim ledger has been completed. Stage 9.6 figure-first manuscript spine has been completed. Stage 9.6b PanelForge rendering has been completed. Stage 9.7 supplementary display planning has been completed. Stage 9.8 section contract blueprint has been completed. Stage 9.9 title, subtitle, and abstract strategy has been completed. Stage 9.10 Results subsection architecture has been completed. Stage 9.11 Results drafting pass has been completed. Stage 9.12 Introduction literature binding has been completed. Stage 9.13 Discussion interpretation map has been completed. Stage 9.14 Discussion drafting pass has been completed. Stage 9.15 Methods architecture has been completed. Stage 9.16 Methods drafting pass has been completed. Stage 9.17 software, data, and code availability assembly has been completed. Stage 9.18 Supplementary Methods drafting has been completed. Stage 9.19 Supplementary tables and source-data binding has been completed. Stage 9.20 Reference library and citation audit has been completed. Stage 9.21 Cross-document consistency audit has been completed. Stage 9.22 Statistical and quantitative language audit has been completed. Stage 9.23 Figure legend and caption audit has been completed. Stage 9.24 Editorial polish pass I has been completed. Stage 9.25 Editorial polish pass II has been completed. Stage 9.25b Reader-surface hygiene has been completed. Stage 9.26 Internal peer review simulation has been completed. Stage 9.27 Submission package assembly has been completed. Stage 9.28 Final human PI review packet has been completed. Stage 9.29 Roadmap closure and version binding has been completed. Stage 10.0 Nature Methods EIC rescue roadmap scaffold has been serialized in `docs/stage10_nature_methods_eic_rescue_roadmap.md`; Stage 10 implementation has not started.
+Stage 9.2 representative methods-paper corpus has been completed. Stage 9.3 narrative spine has been completed. Stage 9.4 claim freeze has been completed. Stage 9.5 paragraph-level claim ledger has been completed. Stage 9.6 figure-first manuscript spine has been completed. Stage 9.6b PanelForge rendering has been completed. Stage 9.7 supplementary display planning has been completed. Stage 9.8 section contract blueprint has been completed. Stage 9.9 title, subtitle, and abstract strategy has been completed. Stage 9.10 Results subsection architecture has been completed. Stage 9.11 Results drafting pass has been completed. Stage 9.12 Introduction literature binding has been completed. Stage 9.13 Discussion interpretation map has been completed. Stage 9.14 Discussion drafting pass has been completed. Stage 9.15 Methods architecture has been completed. Stage 9.16 Methods drafting pass has been completed. Stage 9.17 software, data, and code availability assembly has been completed. Stage 9.18 Supplementary Methods drafting has been completed. Stage 9.19 Supplementary tables and source-data binding has been completed. Stage 9.20 Reference library and citation audit has been completed. Stage 9.21 Cross-document consistency audit has been completed. Stage 9.22 Statistical and quantitative language audit has been completed. Stage 9.23 Figure legend and caption audit has been completed. Stage 9.24 Editorial polish pass I has been completed. Stage 9.25 Editorial polish pass II has been completed. Stage 9.25b Reader-surface hygiene has been completed. Stage 9.26 Internal peer review simulation has been completed. Stage 9.27 Submission package assembly has been completed. Stage 9.28 Final human PI review packet has been completed. Stage 9.29 Roadmap closure and version binding has been completed. Stage 10.0 Nature Methods EIC rescue roadmap scaffold has been serialized in `docs/stage10_nature_methods_eic_rescue_roadmap.md`. Stage 10.1 method-object v2 formalization has been completed in `docs/stage10_method_object_v2.md` with executable fixtures under `case_studies/stage10_method_object_v2/`; Stage 10.2 named benchmarking has not started.
 
 ## Non-drift principles
 
@@ -201,6 +204,11 @@ Required execution tracks.
 Current Stage 10 surface.
 
 - `docs/stage10_nature_methods_eic_rescue_roadmap.md`
+- `docs/stage10_method_object_v2.md`
+- `docs/stage10_1_api_gap_list.md`
+- `case_studies/stage10_method_object_v2/`
+- `scripts/run_stage10_1_method_object_v2.py`
+- `tests/test_stage10_1_method_object_v2.py`
 
 Gate.
 

@@ -228,6 +228,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
     allowed_active_stages = {
         "Stage 9.29 closed and version-bound",
         "Stage 10.0 Nature Methods EIC rescue roadmap scaffold serialized; implementation not started",
+        "Stage 10.1 method object v2 complete; Stage 10.2 named benchmarking not started",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -241,7 +242,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_0_scaffold_serialized_implementation_not_started",
+        10: "stage10_1_complete_method_object_v2",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -249,8 +250,22 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
 
     stage10 = stages.get(10, {})
     if stage10:
-        if "docs/stage10_nature_methods_eic_rescue_roadmap.md" not in stage10.get("artifacts", []):
-            failures.append("Stage 10 must register docs/stage10_nature_methods_eic_rescue_roadmap.md")
+        required_stage10_artifacts = [
+            "docs/stage10_nature_methods_eic_rescue_roadmap.md",
+            "docs/stage10_method_object_v2.md",
+            "docs/stage10_1_api_gap_list.md",
+            "scripts/run_stage10_1_method_object_v2.py",
+            "tests/test_stage10_1_method_object_v2.py",
+            "src/rhodyn/method_object.py",
+            "case_studies/stage10_method_object_v2/stage10_1_method_object_decisions.csv",
+            "case_studies/stage10_method_object_v2/stage10_1_method_object_gate_report.json",
+            "case_studies/stage10_method_object_v2/stage10_1_method_object_brief.md",
+        ]
+        for artifact in required_stage10_artifacts:
+            if artifact not in stage10.get("artifacts", []):
+                failures.append(f"Stage 10 must register {artifact}")
+            if not (root / artifact).exists():
+                failures.append(f"missing Stage 10 artifact: {artifact}")
         stage10_doc = root / "docs" / "stage10_nature_methods_eic_rescue_roadmap.md"
         if not stage10_doc.exists():
             failures.append("missing docs/stage10_nature_methods_eic_rescue_roadmap.md")
@@ -274,7 +289,17 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         }
         if subphase_status.get("10.0") != "complete_scaffold_serialized":
             failures.append("Stage 10.0 must be complete_scaffold_serialized")
-        for subphase in ["10.1", "10.2", "10.3", "10.4", "10.5", "10.6", "10.7", "10.8", "10.9"]:
+        if subphase_status.get("10.1") != "complete_method_object_v2":
+            failures.append("Stage 10.1 must be complete_method_object_v2")
+        gate_report_path = root / "case_studies" / "stage10_method_object_v2" / "stage10_1_method_object_gate_report.json"
+        if gate_report_path.exists():
+            gate_report = json.loads(gate_report_path.read_text(encoding="utf-8"))
+            if gate_report.get("status") != "pass" or gate_report.get("decision_count") != 12:
+                failures.append("Stage 10.1 method-object gate report must pass with 12 decisions")
+            expectations = gate_report.get("expectations", {})
+            if not isinstance(expectations, dict) or not all(expectations.values()):
+                failures.append("Stage 10.1 method-object expectations must all pass")
+        for subphase in ["10.2", "10.3", "10.4", "10.5", "10.6", "10.7", "10.8", "10.9"]:
             if subphase_status.get(subphase) != "not_started":
                 failures.append(f"Stage {subphase} must remain not_started after scaffold serialization")
 

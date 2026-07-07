@@ -43,4 +43,7 @@ nav:
   - Stage 7 endpoint, reserve, and routing demonstrations: stage7_endpoint_reserve_routing_demonstrations.md
   - Stage 7 held-out validation: stage7_heldout_validation_report.md
   - Stage 7 methods reproducibility card: stage7_methods_reproducibility_card.md
+  - Stage 10 EIC rescue roadmap: stage10_nature_methods_eic_rescue_roadmap.md
+  - Stage 10.1 method object v2: stage10_method_object_v2.md
+  - Stage 10.1 API gap list: stage10_1_api_gap_list.md
   - Release checklist: release_checklist.md

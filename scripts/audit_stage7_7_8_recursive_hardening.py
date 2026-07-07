@@ -669,8 +669,13 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
     if stages.get(8, {}).get("status") != "conceptual_only":
         failures.append("Stage 8 must remain conceptual after Stage 7.7/7.8 hardening")
     current = memory.get("current_position", {}) if isinstance(memory.get("current_position", {}), dict) else {}
-    if current.get("active_stage") != "Stage 9.29 closed and version-bound":
-        failures.append("roadmap active stage must record the Stage 9.29 closure boundary")
+    allowed_active_stages = {
+        "Stage 9.29 closed and version-bound",
+        "Stage 10.0 Nature Methods EIC rescue roadmap scaffold serialized; implementation not started",
+        "Stage 10.1 method object v2 complete; Stage 10.2 named benchmarking not started",
+    }
+    if current.get("active_stage") not in allowed_active_stages:
+        failures.append("roadmap active stage must record the Stage 9.29 closure boundary or an authorized post-closure Stage 10 state")
     return {
         "authorized_phase9_scaffold_files": len(stage9_files) - len(unauthorized),
         "unauthorized_phase9_files": len(unauthorized),

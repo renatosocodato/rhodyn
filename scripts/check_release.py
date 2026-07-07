@@ -608,6 +608,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
         allowed_active_stages = {
             "Stage 9.29 closed and version-bound",
             "Stage 10.0 Nature Methods EIC rescue roadmap scaffold serialized; implementation not started",
+            "Stage 10.1 method object v2 complete; Stage 10.2 named benchmarking not started",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -628,10 +629,26 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_0_scaffold_serialized_implementation_not_started":
-                failures.append("roadmap execution memory does not mark Stage 10.0 scaffold as serialized but not started")
-            if "docs/stage10_nature_methods_eic_rescue_roadmap.md" not in stage10.get("artifacts", []):
-                failures.append("roadmap execution memory does not register the Stage 10 EIC rescue roadmap artifact")
+            if stage10.get("status") != "stage10_1_complete_method_object_v2":
+                failures.append("roadmap execution memory does not mark Stage 10.1 method object as complete")
+            for artifact in [
+                "docs/stage10_nature_methods_eic_rescue_roadmap.md",
+                "docs/stage10_method_object_v2.md",
+                "case_studies/stage10_method_object_v2/stage10_1_method_object_gate_report.json",
+            ]:
+                if artifact not in stage10.get("artifacts", []):
+                    failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
+                if not (root / artifact).exists():
+                    failures.append(f"Stage 10 artifact is missing: {artifact}")
+            stage10_gate = root / "case_studies" / "stage10_method_object_v2" / "stage10_1_method_object_gate_report.json"
+            if stage10_gate.exists():
+                try:
+                    gate_payload = json.loads(stage10_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.1 gate report is not valid JSON: {exc}")
+                else:
+                    if gate_payload.get("status") != "pass" or gate_payload.get("decision_count") != 12:
+                        failures.append("Stage 10.1 method-object gate report must pass with 12 decisions")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

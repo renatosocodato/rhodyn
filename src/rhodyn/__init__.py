@@ -43,6 +43,15 @@ from rhodyn.ctc import (
     write_trajectory_csv,
 )
 from rhodyn.extras import MissingOptionalDependency, OptionalExtra, extra_plan, require_extra
+from rhodyn.method_object import (
+    MethodObjectDecision,
+    MethodObjectSpec,
+    coupling_method_decision,
+    decision_to_row,
+    reserve_method_decision,
+    routed_output_method_decision,
+    trajectory_method_decision,
+)
 from rhodyn.models import ControllerParams, simulate_controller
 from rhodyn.plots import (
     plot_coupling_interval,
@@ -108,11 +117,14 @@ __all__ = [
     "TostDecision",
     "TrajectoryRecord",
     "UncertaintyInterval",
+    "MethodObjectDecision",
+    "MethodObjectSpec",
     "bootstrap_interval",
     "build_analysis_bundle",
     "compare_endpoint_models",
     "coupling_result_from_decision",
     "coupling_result_from_tost",
+    "coupling_method_decision",
     "ctc_features_to_trajectory_records",
     "ctc_lineage_coverage_issues",
     "ctc_lineage_to_trajectory_records",
@@ -122,6 +134,7 @@ __all__ = [
     "equivalence_from_interval",
     "extra_plan",
     "decide_coupling_table",
+    "decision_to_row",
     "export_markdown_report",
     "linear_grid",
     "model_comparison_result_from_fits",
@@ -138,9 +151,11 @@ __all__ = [
     "read_uncompressed_grayscale_tiff",
     "residence_result_from_summary",
     "residence_window_grid",
+    "reserve_method_decision",
     "require_extra",
     "rope_decision",
     "rope_mass",
+    "routed_output_method_decision",
     "schema_specs",
     "run_backend_operation",
     "score_records_window_sensitivity",
@@ -153,6 +168,7 @@ __all__ = [
     "validate_table",
     "write_analysis_bundle",
     "write_trajectory_csv",
+    "trajectory_method_decision",
 ]
 
 __version__ = "0.1.0"

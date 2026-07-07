@@ -72,6 +72,12 @@ where \(W\) is a declared residence-window family and \(B\) is a declared compar
 
 Stage 10 should refine this into the exact notation supported by the API. If the current API cannot express the method object, the implementation must stop and either narrow the method claim or authorize an API expansion.
 
+### Stage 10.1 completion update
+
+Stage 10.1 is now implemented as an additive public method-object layer. The formal specification is `docs/stage10_method_object_v2.md`, the API gap list is `docs/stage10_1_api_gap_list.md`, the executable runner is `scripts/run_stage10_1_method_object_v2.py`, and the fixture outputs are under `case_studies/stage10_method_object_v2/`.
+
+The completed fixture set contains positive, counterexample, and ambiguous decisions for trajectory residence-versus-comparator divergence, bounded coupling, reserve-like endpoints, and routed-output model comparison. This makes the method object reviewable as a decision structure while preserving the biological boundary that decision divergence is not a mechanism-discovery statistic and does not imply that every live-cell system has a residence regime.
+
 ## Stage 10.2 named benchmarking ladder
 
 The named benchmarking track must be explicit enough that a methods editor does not see only self-comparison against simple summaries.
