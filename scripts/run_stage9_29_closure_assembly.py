@@ -46,6 +46,7 @@ PACKAGE_FILES = [
     SUBMISSION / "supplementary_information_for_submission.md",
     SUBMISSION / "submission_manifest.md",
     SUBMISSION / "submission_readiness_checklist.md",
+    SUBMISSION / "editor_triage_note_for_cover_letter.md",
     SUBMISSION / "code_for_review.md",
     SUBMISSION / "package_consistency_audit.md",
     SUBMISSION / "figure_file_inventory.csv",

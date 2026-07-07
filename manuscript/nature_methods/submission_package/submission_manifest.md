@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T10:55:03Z
-Git commit. 62c2841691ce15ec6960440ea2faba7f60124e81
+Generated UTC. 2026-07-07T11:07:25Z
+Git commit. a6f03e40cd7abe82a7a38e52022b7fa296dcf439
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -12,6 +12,7 @@ Git commit. 62c2841691ce15ec6960440ea2faba7f60124e81
 | Source data and statistics | `source_data_and_statistics_inventory.csv` | Review-support inventory for statistics and source-data bindings. |
 | Reporting Summary | `reporting_summary_REQUIRED.md` | Required journal form placeholder pending human completion. |
 | Code for review | `code_for_review.md` | Release identity and reproducibility-command surface. |
+| Editor-triage note | `editor_triage_note_for_cover_letter.md` | Cover-letter-ready Nature Methods fit, validation, and claim-boundary note. |
 | Readiness checklist | `submission_readiness_checklist.md` | Collaborator handoff checklist. |
 | Consistency audit | `package_consistency_audit.md` | Package assembly checks. |
 | PI review packet | `pi_review_packet.md` | Final human PI-style review surface for author decision. |

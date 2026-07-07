@@ -31,19 +31,20 @@ The relevant editorial bar is a novel method or substantial improvement with bro
 | NM-DESK-003 | hardened_in_current_text | Keep the prior-art contrast explicit. Do not claim novelty for live-cell trajectory embedding itself. |
 | NM-DESK-004 | hardened_in_current_text | Keep invalid-input and withheld-decision language visible. Do not describe RhoDyn as fully automated state discovery. |
 | NM-DESK-005 | hardened_in_current_text | Preserve the margin/context and measured-endpoint boundary in all upload-facing files. |
-| NM-DESK-006 | hardened_in_current_text | Use the editor-triage note to make software parity part of the method validation argument, not a back-matter afterthought. |
+| NM-DESK-006 | hardened_in_current_text | Use the package-bound editor-triage note to make software parity part of the method validation argument, not a back-matter afterthought. |
 | NM-DESK-007 | hardened_in_current_text | Complete the official Reporting Summary and portal metadata before submission. |
-| NM-DESK-008 | hardened_by_staged_triage_note | Use the triage note to state the six-figure logic in one paragraph for editors. |
+| NM-DESK-008 | hardened_in_current_text | Keep the package-bound editor note with the submission surfaces so editors see the six-display-item logic immediately. |
 | NM-DESK-009 | hardened_in_current_text | Do not strengthen the terminal Discussion claim without additional independent demonstrations. |
 | NM-DESK-010 | human_submission_action_remaining | Complete the official Springer Nature Reporting Summary and portal fields after author approval. |
 
 ## Recommended author action
 
-The package is defensible for editor triage if the cover/editor note foregrounds the method contribution as a decision framework rather than a generic dynamics statement. The live-cell morphodynamic trajectory prior-art citation has been promoted, so the remaining package-side action is to preserve the calibrated claim boundary.
+The package is defensible for editor triage because the package-bound editor note foregrounds the method contribution as a decision framework rather than a generic dynamics statement. The live-cell morphodynamic trajectory prior-art citation has been promoted, so the remaining package-side action is to preserve the calibrated claim boundary.
 
 ## Items not automatically promoted
 
 - The live-cell morphodynamic prior-art citation has been promoted and renumbered across the current package.
+- The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.
 - No title, Abstract, Results, Methods, figure, or data changes were made.
 - The official Reporting Summary remains a human submission action.
 

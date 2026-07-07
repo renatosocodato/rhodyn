@@ -50,6 +50,7 @@ OUTPUTS = {
     "supplement": SUBMISSION / "supplementary_information_for_submission.md",
     "manifest": SUBMISSION / "submission_manifest.md",
     "readiness": SUBMISSION / "submission_readiness_checklist.md",
+    "editor_triage_note": SUBMISSION / "editor_triage_note_for_cover_letter.md",
     "code_review": SUBMISSION / "code_for_review.md",
     "package_audit": SUBMISSION / "package_consistency_audit.md",
     "figure_inventory": SUBMISSION / "figure_file_inventory.csv",
@@ -349,6 +350,19 @@ The commands are run from the RhoDyn repository root at the cited release tag an
 """
 
 
+def _editor_triage_note() -> str:
+    return """# Editor-triage note for Nature Methods
+
+RhoDyn is submitted as a computational methods Article for live-cell perturbation biology. The central contribution is not the broad observation that cell signaling is dynamic, and it is not a claim that one trajectory summary should replace all endpoint or amplitude summaries. The contribution is an executable decision framework that places residence-state summaries, amplitude comparators, bounded-coupling margins, reserve-like endpoint coordinates, routed-output alternatives, uncertainty behavior, and cross-surface reproducibility into one inspectable workflow.
+
+The validation ladder is designed to answer the editorial question of whether the method travels beyond one motivating system. It includes known-truth synthetic regimes, public DRG calcium trajectories, public ERK reporter trajectories, public-derived endpoint and paired-reporter demonstrations, held-out bounded-coupling contexts, margin-sensitivity checks, inconclusive examples, and parity across Python, command-line, backend, workbench, export bundle, source distribution, checksums, GitHub, and Zenodo surfaces. These examples are used as method stress tests rather than as a new disease-biology claim.
+
+RhoDyn deliberately reports pass, fail, and inconclusive outcomes. A residence window is a declared analysis choice rather than an automatically discovered biological state. A bounded-coupling call means equivalence within a stated margin and context rather than absence of all coupling. Reserve-like endpoint summaries remain tied to the measured readout, and routed-output comparisons constrain tested endpoint alternatives without identifying direct biochemical edges.
+
+The package is therefore best read as a method for reviewable dynamic operating-state interpretation, with the RhoA/microglia work serving as a reference use case rather than as hidden evidence for the methods Article. The method evidence for this Article is carried by the released RhoDyn package, public-derived demonstrations, software parity checks, and reproducibility archive.
+"""
+
+
 def _manifest_json(generated_utc: str, checks: list[dict[str, Any]], package_dir: Path) -> dict[str, Any]:
     package_files = [
         (SUBMISSION / path.name).relative_to(ROOT).as_posix()
@@ -386,6 +400,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Main figures | {'ready' if check_map.get('figure_files_present') else 'blocked'} | Six main display items are present in PDF, PNG, and SVG. |",
         f"| Reporting Summary | {'registered' if check_map.get('reporting_summary_present') else 'blocked'} | The required Reporting Summary placeholder is present. The final Springer Nature form remains a human submission action. |",
         f"| Code for review | {'ready' if check_map.get('code_for_review_present') else 'blocked'} | `code_for_review.md` records release identity and reproducibility commands. |",
+        f"| Editor-triage note | {'ready' if check_map.get('editor_triage_note_present') else 'blocked'} | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |",
         f"| Reader-surface hygiene | {'ready' if check_map.get('reader_surface_hygiene_passed') else 'blocked'} | Main manuscript and Supplementary Information surfaces are free of internal IDs and build-language tokens. |",
         f"| Package safety scan | {'ready' if check_map.get('package_safety_scan_clear') else 'blocked'} | Package files were scanned for local machine paths and token-like strings. |",
         f"| Consistency audit | {'ready' if check_map.get('package_consistency_audit_passed') else 'blocked'} | Package-level consistency checks passed. |",
@@ -404,6 +419,7 @@ def _submission_manifest(generated_utc: str) -> str:
         ("Source data and statistics", "source_data_and_statistics_inventory.csv", "Review-support inventory for statistics and source-data bindings."),
         ("Reporting Summary", "reporting_summary_REQUIRED.md", "Required journal form placeholder pending human completion."),
         ("Code for review", "code_for_review.md", "Release identity and reproducibility-command surface."),
+        ("Editor-triage note", "editor_triage_note_for_cover_letter.md", "Cover-letter-ready Nature Methods fit, validation, and claim-boundary note."),
         ("Readiness checklist", "submission_readiness_checklist.md", "Collaborator handoff checklist."),
         ("Consistency audit", "package_consistency_audit.md", "Package assembly checks."),
     ]
@@ -522,6 +538,12 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
             "detail": "Code-for-review surface includes reproducibility commands",
         },
         {
+            "name": "editor_triage_note_present",
+            "passed": (package_dir / "editor_triage_note_for_cover_letter.md").exists()
+            and "not the broad observation that cell signaling is dynamic" in (package_dir / "editor_triage_note_for_cover_letter.md").read_text(encoding="utf-8"),
+            "detail": "Editor-triage note foregrounds Nature Methods fit and claim boundaries",
+        },
+        {
             "name": "package_safety_scan_clear",
             "passed": not package_hits,
             "detail": f"package_hits={package_hits}",
@@ -625,6 +647,7 @@ def _stage_outputs(generated_utc: str) -> tuple[dict[str, Any], dict[str, Any]]:
     _write_text(staging_submission / "main_text_for_submission.md", _assemble_main_text())
     _write_text(staging_submission / "supplementary_information_for_submission.md", _assemble_supplement())
     _write_text(staging_submission / "code_for_review.md", _code_for_review())
+    _write_text(staging_submission / "editor_triage_note_for_cover_letter.md", _editor_triage_note())
     _write_text(staging_submission / "references_for_submission.bib", _submission_bib())
     _write_csv(
         staging_submission / "figure_file_inventory.csv",
@@ -785,7 +808,7 @@ Current status. Stage 9.27 submission package assembly complete.
 
 The workspace now contains the authorized manuscript components through collaborator-review package assembly. Evidence intake, venue guidance, methods-paper corpus analysis, narrative spine, claim freeze, paragraph planning, figure planning, deterministic main-figure rendering, supplementary display planning, section contracts, front matter, Results, Introduction, Discussion, Methods, availability statements, Supplementary Methods, supplementary table/source-data binding, reference audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review, and submission package assembly are present.
 
-The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
+The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
 
 The official Springer Nature Reporting Summary form remains a human submission action. The PI review packet and Stage 9 closure report have not started.
 

@@ -56,6 +56,11 @@
       "passed": true
     },
     {
+      "detail": "Editor-triage note foregrounds Nature Methods fit and claim boundaries",
+      "name": "editor_triage_note_present",
+      "passed": true
+    },
+    {
       "detail": "package_hits=[]",
       "name": "package_safety_scan_clear",
       "passed": true
@@ -71,15 +76,16 @@
       "passed": true
     }
   ],
-  "commit": "62c2841691ce15ec6960440ea2faba7f60124e81",
+  "commit": "a6f03e40cd7abe82a7a38e52022b7fa296dcf439",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T10:55:04Z",
+  "generated_utc": "2026-07-07T11:07:25Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
     "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
     "manuscript/nature_methods/submission_package/submission_manifest.md",
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
+    "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",

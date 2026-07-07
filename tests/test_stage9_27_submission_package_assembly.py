@@ -48,6 +48,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "panelforge_status_bound",
             "reporting_summary_present",
             "code_for_review_present",
+            "editor_triage_note_present",
             "package_safety_scan_clear",
             "no_downstream_pi_or_closure_started",
             "package_consistency_audit_passed",

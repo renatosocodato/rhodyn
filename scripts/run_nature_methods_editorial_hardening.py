@@ -28,6 +28,7 @@ VERSION_BINDING = WORKSPACE / "stage9_closure_version_binding.json"
 RISK_MATRIX = AUDITS / "nature_methods_desk_rejection_risk_matrix.csv"
 HARDENING_REPORT = AUDITS / "nature_methods_editorial_hardening_report.md"
 TRIAGE_NOTE = STAGING / "nature_methods_editor_triage_note_draft.md"
+PACKAGE_TRIAGE_NOTE = SUBMISSION / "editor_triage_note_for_cover_letter.md"
 PRIOR_ART_NOTE = STAGING / "live_cell_prior_art_candidate_for_promotion.md"
 
 
@@ -70,6 +71,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
     discussion = _section(main_text, "Discussion")
     references = _section(main_text, "References")
     figure_legends_present = "### Main figure legends" in main_text and "#### Figure 6" in main_text
+    package_triage = _read(PACKAGE_TRIAGE_NOTE)
     invalid_input_language = (
         "validation issues" in methods
         and "missing time units" in methods
@@ -132,8 +134,8 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "nature_methods_requirement": "Immediate practical relevance, reproducible code, peer-reviewable software, and reusable outputs.",
             "current_evidence": "Figure 6, Methods, data availability, code availability, and package inventories bind Python, CLI, backend, workbench, source distribution, Zenodo DOI, checksums, and exported analysis bundles.",
             "status": "hardened_in_current_text" if "Python, command-line, backend, and workbench" in methods and "Zenodo version DOI" in code_availability else "needs_revision",
-            "recommended_action": "Use the editor-triage note to make software parity part of the method validation argument, not a back-matter afterthought.",
-            "promotion_target": "Staged editor-triage note.",
+            "recommended_action": "Use the package-bound editor-triage note to make software parity part of the method validation argument, not a back-matter afterthought.",
+            "promotion_target": "submission_package/editor_triage_note_for_cover_letter.md.",
         },
         {
             "risk_id": "NM-DESK-007",
@@ -148,10 +150,10 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "risk_id": "NM-DESK-008",
             "editorial_risk": "Manuscript may appear too compressed or figure-light if the editor cannot see the six-display-item logic immediately.",
             "nature_methods_requirement": "Clear results illustrating performance and comparison with available approaches.",
-            "current_evidence": f"Results section has {_word_count(results)} words and six figure-anchored subsections; main legends describe six figures with panel-level roles.",
-            "status": "hardened_by_staged_triage_note" if "### RhoDyn defines" in results and figure_legends_present else "needs_revision",
-            "recommended_action": "Use the triage note to state the six-figure logic in one paragraph for editors.",
-            "promotion_target": "Staged editor-triage note.",
+            "current_evidence": f"Results section has {_word_count(results)} words and six figure-anchored subsections; main legends describe six figures with panel-level roles; the package-bound editor note states the validation ladder and decision boundaries in cover-letter-ready prose.",
+            "status": "hardened_in_current_text" if "### RhoDyn defines" in results and figure_legends_present and "validation ladder" in package_triage else "needs_revision",
+            "recommended_action": "Keep the package-bound editor note with the submission surfaces so editors see the six-display-item logic immediately.",
+            "promotion_target": "submission_package/editor_triage_note_for_cover_letter.md.",
         },
         {
             "risk_id": "NM-DESK-009",
@@ -177,7 +179,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
 def _write_csv(path: Path, rows: list[dict[str, str]]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=list(rows[0]))
+        writer = csv.DictWriter(handle, fieldnames=list(rows[0]), lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -191,7 +193,7 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
     remaining = [
         row
         for row in rows
-        if row["status"] not in {"hardened_in_current_text", "hardened_by_staged_triage_note"}
+        if row["status"] != "hardened_in_current_text"
     ]
     lines = [
         "# Nature Methods desk-rejection hardening addendum",
@@ -230,11 +232,12 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "",
             "## Recommended author action",
             "",
-            "The package is defensible for editor triage if the cover/editor note foregrounds the method contribution as a decision framework rather than a generic dynamics statement. The live-cell morphodynamic trajectory prior-art citation has been promoted, so the remaining package-side action is to preserve the calibrated claim boundary.",
+            "The package is defensible for editor triage because the package-bound editor note foregrounds the method contribution as a decision framework rather than a generic dynamics statement. The live-cell morphodynamic trajectory prior-art citation has been promoted, so the remaining package-side action is to preserve the calibrated claim boundary.",
             "",
             "## Items not automatically promoted",
             "",
             "- The live-cell morphodynamic prior-art citation has been promoted and renumbered across the current package.",
+            "- The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.",
             "- No title, Abstract, Results, Methods, figure, or data changes were made.",
             "- The official Reporting Summary remains a human submission action.",
             "",
@@ -309,16 +312,17 @@ def run() -> dict[str, object]:
     status = "pass" if "needs_revision" not in statuses else "warning"
     return {
         "status": status,
-        "open_statuses": sorted(statuses - {"hardened_in_current_text", "hardened_by_staged_triage_note"}),
+        "open_statuses": sorted(statuses - {"hardened_in_current_text"}),
         "risk_rows": len(rows),
         "hardened_rows": sum(row["status"] == "hardened_in_current_text" for row in rows),
-        "triage_note_hardened_rows": sum(row["status"] == "hardened_by_staged_triage_note" for row in rows),
+        "triage_note_hardened_rows": sum(row["risk_id"] == "NM-DESK-008" and row["status"] == "hardened_in_current_text" for row in rows),
         "candidate_revision_rows": sum(row["status"] == "candidate_revision_prepared" for row in rows),
         "human_submission_rows": sum(row["status"] == "human_submission_action_remaining" for row in rows),
         "outputs": {
             "risk_matrix": RISK_MATRIX.relative_to(ROOT).as_posix(),
             "hardening_report": HARDENING_REPORT.relative_to(ROOT).as_posix(),
             "triage_note": TRIAGE_NOTE.relative_to(ROOT).as_posix(),
+            "package_triage_note": PACKAGE_TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "prior_art_note": PRIOR_ART_NOTE.relative_to(ROOT).as_posix(),
         },
         "scope": "Editorial hardening addendum only. No data, figures, model outputs, manuscript claims, or closed package files were changed.",
