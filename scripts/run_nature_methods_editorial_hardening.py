@@ -35,6 +35,7 @@ PACKAGE_EDITORIAL_PITCH = SUBMISSION / "editorial_pitch_for_submission.md"
 PACKAGE_SOFTWARE_CHECKLIST = SUBMISSION / "software_reporting_checklist.md"
 PACKAGE_ARTICLE_FIT = SUBMISSION / "article_fit_checklist.md"
 PACKAGE_AUTHOR_DECLARATIONS = SUBMISSION / "author_declarations_REQUIRED.md"
+PACKAGE_REVIEWER_FIT = SUBMISSION / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md"
 PRIOR_ART_NOTE = STAGING / "live_cell_prior_art_candidate_for_promotion.md"
 
 
@@ -92,6 +93,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
     package_software = _read(PACKAGE_SOFTWARE_CHECKLIST)
     package_article_fit = _read(PACKAGE_ARTICLE_FIT)
     package_author_declarations = _read(PACKAGE_AUTHOR_DECLARATIONS)
+    package_reviewer_fit = _read(PACKAGE_REVIEWER_FIT)
     invalid_input_language = (
         "validation issues" in methods
         and "missing time units" in methods
@@ -238,6 +240,15 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "recommended_action": "Complete the cover-letter checklist before upload, using only author-confirmed statements.",
             "promotion_target": "submission_package/editorial_pitch_for_submission.md.",
         },
+        {
+            "risk_id": "NM-DESK-016",
+            "editorial_risk": "Reviewer suggestions could over-center the RhoA/microglia use case and leave the computational method, statistical decision rules, or software reproducibility under-reviewed.",
+            "nature_methods_requirement": "The reviewer set should match the submitted method Article, including technical validation, reusable software, statistical decision rules, live-cell perturbation data, and biological application scope.",
+            "current_evidence": "The package now includes a reviewer/editor fit planner that separates method-review expertise from biological reference-use-case expertise and keeps reviewer names, exclusions, and conflicts author-confirmed.",
+            "status": "human_submission_action_remaining" if "Expertise coverage needed" in package_reviewer_fit and "RhoA/microglia reference use case should not dominate reviewer assignment" in package_reviewer_fit else "needs_revision",
+            "recommended_action": "Use the reviewer/editor fit planner to choose a method-first reviewer mix before upload, without inferring names or conflicts from repository files.",
+            "promotion_target": "Human action guided by `submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md`.",
+        },
     ]
 
 
@@ -307,6 +318,7 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "- The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.",
             "- The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.",
             "- The author-declarations checklist is included in the submission package as `author_declarations_REQUIRED.md`.",
+            "- The reviewer/editor fit planner is included in the submission package as `reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md`.",
             "- The cover-letter draft includes an author-confirmed upload checklist for related manuscripts, prior editor discussions, dual-consideration, author approval, double-blind review, and optional reviewer suggestions.",
             "- No title, Abstract, Results, Methods, figure, or data changes were made.",
             "- The official Reporting Summary and author declarations remain human submission actions.",
@@ -332,6 +344,7 @@ def _triage_rows(rows: list[dict[str, str]], main_text: str) -> list[dict[str, s
     package_triage = _read(PACKAGE_TRIAGE_NOTE)
     package_software = _read(PACKAGE_SOFTWARE_CHECKLIST)
     article_fit = _read(PACKAGE_ARTICLE_FIT)
+    reviewer_fit = _read(PACKAGE_REVIEWER_FIT)
     high_or_open = {
         row["risk_id"]: row
         for row in rows
@@ -387,6 +400,13 @@ def _triage_rows(rows: list[dict[str, str]], main_text: str) -> list[dict[str, s
             "simulated_editor_read": "Repository-derived package contents are complete, but journal forms and portal fields remain author actions.",
             "risk_level": "medium" if human_actions else "low",
             "recommended_action": "Complete the official Reporting Summary, author declarations, portal metadata, and author approval before upload.",
+        },
+        {
+            "criterion": "Reviewer and editor fit",
+            "current_evidence": "The reviewer/editor fit planner defines a method-first expertise mix, separates biological reference-use-case expertise from software and statistical review, and keeps reviewer names and exclusions author-confirmed.",
+            "simulated_editor_read": "Reviewer suggestions can support the method claim if they cover live-cell dynamics, computational time-series inference, statistical decision rules, perturbation endpoints, and reproducible software rather than only RhoA or microglial biology.",
+            "risk_level": "medium" if "Suggested reviewer template" in reviewer_fit else "high",
+            "recommended_action": "Confirm reviewer suggestions, reviewer exclusions, and any editor-fit wording with the author team before upload.",
         },
         {
             "criterion": "Desk-rejection residual risk",
@@ -452,18 +472,21 @@ def _write_triage_simulation(rows: list[dict[str, str]], main_text: str) -> None
             "3. Are declared windows, equivalence margins, reserve-like endpoints, and routed-output alternatives transparent enough for immediate use?",
             "4. Can reviewers run the software and reproduce representative outputs without private manuscript data?",
             "5. Are the RhoA/microglia examples clearly separated from the method-validation evidence?",
+            "6. Does the suggested-reviewer mix cover the method, statistics, software, and biological reference-use-case scope without reducing the paper to RhoA/microglia biology?",
             "",
             "## Decision pressure points",
             "",
             "- Keep the cover letter focused on method object, validation ladder, software reproducibility, and calibrated scope.",
             "- Do not claim that RhoDyn discovers biological states automatically or that every live-cell system contains a residence regime.",
+            "- Keep reviewer suggestions method-first and author-confirmed rather than inferred from repository history or citation overlap.",
             "- Complete the official Reporting Summary, author declarations, portal metadata, and author approval before submission.",
             "",
             "## Most useful final author actions",
             "",
             "1. Confirm the author-side declarations and portal fields without inferring them from repository files.",
             "2. Verify that GitHub and Zenodo review links resolve from a clean browser session.",
-            "3. Use the package-bound cover-letter draft as the upload text, preserving the limitation language.",
+            "3. Confirm reviewer suggestions, exclusions, and editor-fit wording from the reviewer/editor fit planner.",
+            "4. Use the package-bound cover-letter draft as the upload text, preserving the limitation language.",
         ]
     )
     TRIAGE_SIMULATION.parent.mkdir(parents=True, exist_ok=True)
@@ -546,6 +569,7 @@ def run() -> dict[str, object]:
             "package_software_reporting_checklist": PACKAGE_SOFTWARE_CHECKLIST.relative_to(ROOT).as_posix(),
             "package_article_fit_checklist": PACKAGE_ARTICLE_FIT.relative_to(ROOT).as_posix(),
             "package_author_declarations": PACKAGE_AUTHOR_DECLARATIONS.relative_to(ROOT).as_posix(),
+            "package_reviewer_editor_fit_planner": PACKAGE_REVIEWER_FIT.relative_to(ROOT).as_posix(),
             "prior_art_note": PRIOR_ART_NOTE.relative_to(ROOT).as_posix(),
         },
         "scope": "Editorial hardening addendum only. No data, figures, model outputs, manuscript claims, or closed package files were changed.",

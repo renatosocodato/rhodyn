@@ -36,6 +36,7 @@ class NatureMethodsEditorialHardeningTests(unittest.TestCase):
                 "Reproducibility and software readiness",
                 "Biological utility without overclaiming",
                 "Submission completeness",
+                "Reviewer and editor fit",
                 "Desk-rejection residual risk",
             },
         )
@@ -47,6 +48,8 @@ class NatureMethodsEditorialHardeningTests(unittest.TestCase):
         self.assertIn("not a hidden primary biology claim", self.report)
         self.assertIn("Complete the official Reporting Summary", self.report)
         self.assertIn("Verify reviewer access to the public repository and Zenodo archive", self.report)
+        self.assertIn("reviewer suggestions method-first", self.report)
+        self.assertIn("reviewer/editor fit planner", self.report)
 
     def test_official_sources_are_recorded(self) -> None:
         sources = self.payload["official_sources"]

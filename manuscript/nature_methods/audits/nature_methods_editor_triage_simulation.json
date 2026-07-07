@@ -50,8 +50,15 @@
       "simulated_editor_read": "Repository-derived package contents are complete, but journal forms and portal fields remain author actions."
     },
     {
+      "criterion": "Reviewer and editor fit",
+      "current_evidence": "The reviewer/editor fit planner defines a method-first expertise mix, separates biological reference-use-case expertise from software and statistical review, and keeps reviewer names and exclusions author-confirmed.",
+      "recommended_action": "Confirm reviewer suggestions, reviewer exclusions, and any editor-fit wording with the author team before upload.",
+      "risk_level": "medium",
+      "simulated_editor_read": "Reviewer suggestions can support the method claim if they cover live-cell dynamics, computational time-series inference, statistical decision rules, perturbation endpoints, and reproducible software rather than only RhoA or microglial biology."
+    },
+    {
       "criterion": "Desk-rejection residual risk",
-      "current_evidence": "Risk matrix rows=15, unresolved non-human rows=0, human upload rows=1, Results words=850, Methods words=1017.",
+      "current_evidence": "Risk matrix rows=16, unresolved non-human rows=0, human upload rows=2, Results words=850, Methods words=1017.",
       "recommended_action": "Use the editorial pitch to foreground Article fit, validation breadth, and calibrated scope in the cover letter.",
       "risk_level": "medium",
       "simulated_editor_read": "The package is suitable for a serious initial editor read if the author-side upload fields are completed, but it is not guaranteed to proceed to review."
@@ -64,7 +71,7 @@
   "risk_counts": {
     "high": 0,
     "low": 5,
-    "medium": 3
+    "medium": 4
   },
   "scope": "Author-side stress test only. This is not a journal decision and does not add evidence.",
   "simulated_verdict": "Potentially suitable for full editorial consideration after author upload actions",

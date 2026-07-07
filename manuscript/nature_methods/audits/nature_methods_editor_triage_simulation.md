@@ -17,6 +17,7 @@ Potentially suitable for full editorial consideration after author upload action
 | Reproducibility and software readiness | low | Software reproducibility is strong for review if access links, version, and sample workflows remain available at upload. | Verify reviewer access to the public repository and Zenodo archive immediately before submission. |
 | Biological utility without overclaiming | low | The use case helps show biological utility as long as it remains a demonstration of method behavior, not a hidden primary biology claim. | Keep the RhoA/microglia language scoped to reference-use-case evidence. |
 | Submission completeness | medium | Repository-derived package contents are complete, but journal forms and portal fields remain author actions. | Complete the official Reporting Summary, author declarations, portal metadata, and author approval before upload. |
+| Reviewer and editor fit | medium | Reviewer suggestions can support the method claim if they cover live-cell dynamics, computational time-series inference, statistical decision rules, perturbation endpoints, and reproducible software rather than only RhoA or microglial biology. | Confirm reviewer suggestions, reviewer exclusions, and any editor-fit wording with the author team before upload. |
 | Desk-rejection residual risk | medium | The package is suitable for a serious initial editor read if the author-side upload fields are completed, but it is not guaranteed to proceed to review. | Use the editorial pitch to foreground Article fit, validation breadth, and calibrated scope in the cover letter. |
 
 ## Likely editor questions
@@ -26,15 +27,18 @@ Potentially suitable for full editorial consideration after author upload action
 3. Are declared windows, equivalence margins, reserve-like endpoints, and routed-output alternatives transparent enough for immediate use?
 4. Can reviewers run the software and reproduce representative outputs without private manuscript data?
 5. Are the RhoA/microglia examples clearly separated from the method-validation evidence?
+6. Does the suggested-reviewer mix cover the method, statistics, software, and biological reference-use-case scope without reducing the paper to RhoA/microglia biology?
 
 ## Decision pressure points
 
 - Keep the cover letter focused on method object, validation ladder, software reproducibility, and calibrated scope.
 - Do not claim that RhoDyn discovers biological states automatically or that every live-cell system contains a residence regime.
+- Keep reviewer suggestions method-first and author-confirmed rather than inferred from repository history or citation overlap.
 - Complete the official Reporting Summary, author declarations, portal metadata, and author approval before submission.
 
 ## Most useful final author actions
 
 1. Confirm the author-side declarations and portal fields without inferring them from repository files.
 2. Verify that GitHub and Zenodo review links resolve from a clean browser session.
-3. Use the package-bound cover-letter draft as the upload text, preserving the limitation language.
+3. Confirm reviewer suggestions, exclusions, and editor-fit wording from the reviewer/editor fit planner.
+4. Use the package-bound cover-letter draft as the upload text, preserving the limitation language.
