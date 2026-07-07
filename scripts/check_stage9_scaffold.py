@@ -91,6 +91,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
@@ -1958,6 +1959,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "article_fit_checklist_present",
             "author_declarations_present",
             "ai_disclosure_draft_present",
+            "title_author_metadata_present",
             "package_safety_scan_clear",
             "no_downstream_pi_or_closure_started",
             "package_consistency_audit_passed",
@@ -1987,6 +1989,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "manuscript/nature_methods/submission_package/article_fit_checklist.md",
             "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
             "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
+            "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
             "manuscript/nature_methods/submission_package/code_for_review.md",
             "manuscript/nature_methods/submission_package/package_consistency_audit.md",
             "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
@@ -2044,6 +2047,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "submission_package/article_fit_checklist.md",
             "submission_package/author_declarations_REQUIRED.md",
             "submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
+            "submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
             "submission_package/code_for_review.md",
             "submission_package/package_consistency_audit.md",
             "submission_package/figure_file_inventory.csv",
@@ -2158,8 +2162,8 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.29 must record six PI-review action decisions")
         if stage9_29_gate.get("human_submission_action_rows") != 1:
             failures.append("Stage 9.29 must retain one human submission action")
-        if stage9_29_gate.get("package_file_count") != 21:
-            failures.append("Stage 9.29 must bind twenty-one package files")
+        if stage9_29_gate.get("package_file_count") != 22:
+            failures.append("Stage 9.29 must bind twenty-two package files")
         if stage9_29_gate.get("rendered_figure_file_count") != 18:
             failures.append("Stage 9.29 must bind eighteen rendered figure files")
         for rel in [

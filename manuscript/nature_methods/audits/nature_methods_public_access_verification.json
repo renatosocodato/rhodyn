@@ -306,7 +306,7 @@
   "failed_urls": [],
   "failures": [],
   "forbidden_public_reference_hits": [],
-  "generated_utc": "2026-07-07T12:34:05Z",
+  "generated_utc": "2026-07-07T12:43:14Z",
   "interpretation_boundary": "This report verifies public URL accessibility for the Nature Methods submission-package surfaces. It does not upload files, alter DOI records, modify GitHub or Zenodo state, or certify journal acceptance.",
   "missing_expected_urls": [],
   "report_format": "rhodyn.stage9_public_access_verification.v1",
@@ -326,7 +326,8 @@
     "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
     "manuscript/nature_methods/submission_package/submission_manifest.md",
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
-    "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md"
+    "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+    "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md"
   ],
   "status": "pass",
   "url_count": 27

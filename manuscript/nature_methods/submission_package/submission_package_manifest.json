@@ -61,6 +61,11 @@
       "passed": true
     },
     {
+      "detail": "Title and author metadata template records author-controlled manuscript-file and portal fields without inventing author details",
+      "name": "title_author_metadata_present",
+      "passed": true
+    },
+    {
       "detail": "Code-for-review surface includes reproducibility commands",
       "name": "code_for_review_present",
       "passed": true
@@ -102,9 +107,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "32a94e2918852704c704c771bec7f60fd3e39d23",
+  "commit": "a2df6119866c0ae2ef17ac53d159b14e5b80b4b3",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T12:33:29Z",
+  "generated_utc": "2026-07-07T12:41:06Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -130,7 +135,8 @@
     "manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv",
     "manuscript/nature_methods/submission_package/submission_manifest.md",
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
-    "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md"
+    "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+    "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md"
   ],
   "package_root": "manuscript/nature_methods/submission_package",
   "pi_review_action_decisions": "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
@@ -147,10 +153,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "32a94e2918852704c704c771bec7f60fd3e39d23",
+    "closure_commit": "a2df6119866c0ae2ef17ac53d159b14e5b80b4b3",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@32a94e2918852704c704c771bec7f60fd3e39d23",
+    "package_version": "stage9.29-closure@a2df6119866c0ae2ef17ac53d159b14e5b80b4b3",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

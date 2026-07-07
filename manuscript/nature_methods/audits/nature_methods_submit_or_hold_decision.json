@@ -1,10 +1,10 @@
 {
   "collaborator_review_ready": true,
   "decision": "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. Final journal upload should remain on hold until the listed human-attested submission fields are completed.",
-  "generated_utc": "2026-07-07T12:33:47Z",
+  "generated_utc": "2026-07-07T12:43:14Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form.",
-    "Confirm funding, competing interests, author contributions, author order, affiliations, ORCID, and corresponding-author metadata.",
+    "Confirm title page, author order, affiliations, ORCID, corresponding-author metadata, funding, competing interests, and author contributions.",
     "Confirm whether AI-assisted content disclosure is required, revise the AI disclosure draft with final author-confirmed wording if applicable, and insert it in the journal-designated location.",
     "Confirm ethics, biological materials, and controlled-access or reviewer-access statements.",
     "Perform final file naming, portal metadata, and author approval checks."
@@ -67,13 +67,18 @@
       "passed": true
     },
     {
-      "detail": "author_declaration_human_rows=6.",
+      "detail": "author_declaration_human_rows=7.",
       "name": "author_attestations_remain_human_actions",
       "passed": true
     },
     {
       "detail": "AI disclosure support file provides draft options while preserving author confirmation as the required decision.",
       "name": "ai_disclosure_draft_requires_author_confirmation",
+      "passed": true
+    },
+    {
+      "detail": "Title-page and author metadata support file captures author-controlled manuscript-file and portal fields.",
+      "name": "title_author_metadata_requires_author_confirmation",
       "passed": true
     },
     {

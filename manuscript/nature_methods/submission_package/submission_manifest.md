@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T12:33:29Z
-Git commit. 32a94e2918852704c704c771bec7f60fd3e39d23
+Generated UTC. 2026-07-07T12:41:06Z
+Git commit. a2df6119866c0ae2ef17ac53d159b14e5b80b4b3
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -13,6 +13,7 @@ Git commit. 32a94e2918852704c704c771bec7f60fd3e39d23
 | Reporting Summary | `reporting_summary_REQUIRED.md` | Required journal form placeholder pending human completion. |
 | Author declarations | `author_declarations_REQUIRED.md` | Required author declaration checklist pending human completion. |
 | AI disclosure draft | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation wording options for any required AI-assisted content disclosure. |
+| Title and author metadata | `title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation template for title-page, author-list, affiliation, correspondence, ORCID, and review-mode fields. |
 | Code for review | `code_for_review.md` | Release identity and reproducibility-command surface. |
 | Editor-triage note | `editor_triage_note_for_cover_letter.md` | Cover-letter-ready Nature Methods fit, validation, and claim-boundary note. |
 | Editorial pitch | `editorial_pitch_for_submission.md` | Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage. |

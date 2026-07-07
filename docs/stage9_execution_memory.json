@@ -102,6 +102,7 @@
     "manuscript/nature_methods/submission_package/submission_package_manifest.json",
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
     "manuscript/nature_methods/submission_package/supplementary_information_for_submission.md",
+    "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/supplementary/source_data_binding_ledger.csv",
     "manuscript/nature_methods/supplementary/supplementary_item_plan.md",
     "manuscript/nature_methods/supplementary/supplementary_methods.md",
@@ -114,9 +115,9 @@
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
   "closure_version_binding": {
     "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-    "closure_commit": "32a94e2918852704c704c771bec7f60fd3e39d23",
+    "closure_commit": "a2df6119866c0ae2ef17ac53d159b14e5b80b4b3",
     "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
-    "package_version": "stage9.29-closure@32a94e2918852704c704c771bec7f60fd3e39d23",
+    "package_version": "stage9.29-closure@a2df6119866c0ae2ef17ac53d159b14e5b80b4b3",
     "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
@@ -1916,6 +1917,11 @@
           "passed": true
         },
         {
+          "detail": "Title and author metadata template records author-controlled manuscript-file and portal fields without inventing author details",
+          "name": "title_author_metadata_present",
+          "passed": true
+        },
+        {
           "detail": "Code-for-review surface includes reproducibility commands",
           "name": "code_for_review_present",
           "passed": true
@@ -1974,6 +1980,7 @@
         "manuscript/nature_methods/submission_package/article_fit_checklist.md",
         "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
         "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
+        "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/code_for_review.md",
         "manuscript/nature_methods/submission_package/package_consistency_audit.md",
         "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
@@ -2124,7 +2131,7 @@
     "No Stage 9 completion report is created in this pass.",
     "The package now contains the PI review packet, action matrix, revision log, and literature calibration record."
   ],
-  "generated_utc": "2026-07-07T12:33:29Z",
+  "generated_utc": "2026-07-07T12:41:06Z",
   "internal_peer_review_started": true,
   "introduction_draft_version": "introduction-draft@2026-07-03@2f9199cca5c419b88ffa2010f40a7fc7bc01fafc",
   "introduction_literature_binding_started": true,
@@ -3155,6 +3162,11 @@
     {
       "detail": "AI disclosure draft provides author-confirmation wording options without inserting a manuscript declaration automatically",
       "name": "ai_disclosure_draft_present",
+      "passed": true
+    },
+    {
+      "detail": "Title and author metadata template records author-controlled manuscript-file and portal fields without inventing author details",
+      "name": "title_author_metadata_present",
       "passed": true
     },
     {

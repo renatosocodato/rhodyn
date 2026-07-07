@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T12:33:29Z
+Generated UTC. 2026-07-07T12:41:06Z
 
 ## Result
 
@@ -22,6 +22,7 @@ Status. pass
 | reporting_summary_present | true | Reporting Summary requirement placeholder is present |
 | author_declarations_present | true | Author declarations checklist records competing-interest, contribution, funding, ethics/materials, AI-use, and portal-only human actions |
 | ai_disclosure_draft_present | true | AI disclosure draft provides author-confirmation wording options without inserting a manuscript declaration automatically |
+| title_author_metadata_present | true | Title and author metadata template records author-controlled manuscript-file and portal fields without inventing author details |
 | code_for_review_present | true | Code-for-review surface includes reproducibility commands |
 | editor_triage_note_present | true | Editor-triage note foregrounds Nature Methods fit and claim boundaries |
 | editorial_pitch_present | true | Editorial pitch includes cover-letter, author-confirmation, and presubmission-inquiry drafts |

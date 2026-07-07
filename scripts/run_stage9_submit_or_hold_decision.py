@@ -58,6 +58,7 @@ def build_report() -> dict[str, Any]:
     checklist = _read(PACKAGE / "submission_readiness_checklist.md")
     author_declarations = _read(PACKAGE / "author_declarations_REQUIRED.md")
     ai_disclosure = _read(PACKAGE / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md")
+    title_author_metadata = _read(PACKAGE / "title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md")
     reporting_summary = _read(PACKAGE / "reporting_summary_REQUIRED.md")
     article_fit = _read(PACKAGE / "article_fit_checklist.md")
     code_for_review = _read(PACKAGE / "code_for_review.md")
@@ -170,6 +171,14 @@ def build_report() -> dict[str, Any]:
             "AI disclosure support file provides draft options while preserving author confirmation as the required decision.",
         ),
         _check(
+            "title_author_metadata_requires_author_confirmation",
+            "AUTHOR CONFIRMATION REQUIRED" in title_author_metadata
+            and "Author list" in title_author_metadata
+            and "Correspondence and materials" in title_author_metadata
+            and "Double-blind review decision" in title_author_metadata,
+            "Title-page and author metadata support file captures author-controlled manuscript-file and portal fields.",
+        ),
+        _check(
             "final_upload_approval_remains_human_action",
             "Human actions before journal upload" in checklist
             and "final author approval" in checklist,
@@ -195,7 +204,7 @@ def build_report() -> dict[str, Any]:
         "upload_hold_checks": upload_hold_checks,
         "human_submission_actions": [
             "Complete the official Springer Nature Reporting Summary form.",
-            "Confirm funding, competing interests, author contributions, author order, affiliations, ORCID, and corresponding-author metadata.",
+            "Confirm title page, author order, affiliations, ORCID, corresponding-author metadata, funding, competing interests, and author contributions.",
             "Confirm whether AI-assisted content disclosure is required, revise the AI disclosure draft with final author-confirmed wording if applicable, and insert it in the journal-designated location.",
             "Confirm ethics, biological materials, and controlled-access or reviewer-access statements.",
             "Perform final file naming, portal metadata, and author approval checks.",
@@ -227,7 +236,7 @@ def _write_markdown(report: dict[str, Any]) -> None:
         "",
         f"Decision. `{report['status']}`.",
         "",
-        "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. It should not be treated as ready for final journal upload until the official Springer Nature Reporting Summary, author declarations, AI-use disclosure decision using the author-confirmation draft, portal metadata, and final author approval are complete.",
+        "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. It should not be treated as ready for final journal upload until the official Springer Nature Reporting Summary, title and author metadata, author declarations, AI-use disclosure decision using the author-confirmation draft, portal metadata, and final author approval are complete.",
         "",
         "## Science package checks",
         "",

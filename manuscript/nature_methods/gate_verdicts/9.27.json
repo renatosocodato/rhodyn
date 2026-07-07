@@ -61,6 +61,11 @@
       "passed": true
     },
     {
+      "detail": "Title and author metadata template records author-controlled manuscript-file and portal fields without inventing author details",
+      "name": "title_author_metadata_present",
+      "passed": true
+    },
+    {
       "detail": "Code-for-review surface includes reproducibility commands",
       "name": "code_for_review_present",
       "passed": true
@@ -101,9 +106,9 @@
       "passed": true
     }
   ],
-  "commit": "32a94e2918852704c704c771bec7f60fd3e39d23",
+  "commit": "a2df6119866c0ae2ef17ac53d159b14e5b80b4b3",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T12:33:29Z",
+  "generated_utc": "2026-07-07T12:41:06Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -116,6 +121,7 @@
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
