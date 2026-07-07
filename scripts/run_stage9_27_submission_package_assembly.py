@@ -53,6 +53,7 @@ OUTPUTS = {
     "editor_triage_note": SUBMISSION / "editor_triage_note_for_cover_letter.md",
     "editorial_pitch": SUBMISSION / "editorial_pitch_for_submission.md",
     "cover_letter_draft": SUBMISSION / "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md",
+    "final_upload_runbook": SUBMISSION / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md",
     "prior_art_positioning_matrix": SUBMISSION / "prior_art_positioning_matrix.md",
     "validation_breadth_map": SUBMISSION / "validation_breadth_and_boundary_map.md",
     "editor_objection_response_map": SUBMISSION / "editor_objection_response_map.md",
@@ -472,6 +473,51 @@ The paper is deliberately scoped. Residence windows are declared analysis choice
 Sincerely,
 
 The authors
+"""
+
+
+def _final_upload_runbook() -> str:
+    return """# Final upload runbook AUTHOR CONFIRMATION REQUIRED
+
+This runbook is a pre-upload coordination aid for the Nature Methods submission. It does not add data, analyses, citations, figures, datasets, performance claims, manuscript text, reviewer names, conflicts, declarations, or portal metadata. It turns the current package into a human-checkable upload sequence so that the final portal entry preserves the Article-level method claim, validation breadth, software reproducibility, and biological scope boundaries.
+
+## Upload sequence
+
+1. Confirm that the main manuscript, Supplementary Information, six main figures, source-data/statistics inventory, code-for-review surface, and references are the files intended for upload.
+2. Use `cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md` as the starting cover-letter text only after related-manuscript status, prior editor contact, author approval, double-blind review choice, reviewer suggestions or exclusions, and declarations are confirmed.
+3. Complete the official Springer Nature Reporting Summary using `reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` as the evidence guide.
+4. Complete author declarations using `author_declarations_REQUIRED.md`, `title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md`, and `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`.
+5. Choose reviewer suggestions, reviewer exclusions, and any editor-fit wording from `reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md` only after author confirmation.
+6. Verify that public GitHub, Zenodo, PanelForge, and public-data links resolve from a clean browser session immediately before upload.
+7. Perform final file naming and portal metadata checks, then obtain final author approval before submission.
+
+## Cover-letter guardrails
+
+- Lead with RhoDyn as an Article-level computational method for live-cell perturbation data.
+- Keep the first claim tied to residence-state inference, amplitude comparators, bounded-coupling margins, reserve-like endpoints, routed-output alternatives, uncertainty summaries, and failure modes.
+- State the validation ladder as known-truth synthetic regimes, public live-cell reporter examples, public endpoint or paired-reporter demonstrations, held-out contexts, and software reproducibility.
+- Keep the RhoA/microglia material as a reference use case rather than the basis for every method claim.
+- Preserve the limits that residence windows are declared analysis choices, bounded coupling is margin- and context-limited, reserve-like endpoints stay tied to measured assays, and routed-output comparisons do not identify biochemical edges.
+
+## Reviewer and editor-fit guardrails
+
+- Use a method-first reviewer mix that covers live-cell signaling dynamics, computational time-series inference, statistical decision rules, perturbation endpoints, and reproducible scientific software.
+- Add disease or cell-biology domain expertise only after the method, statistics, and software-review expertise are covered.
+- Do not suggest or exclude reviewers from repository history, citation overlap, or assumptions about conflict.
+- Do not over-center RhoA, microglia, Alzheimer's disease, or the reference use case in reviewer selection.
+- Keep any editor-facing fit note focused on the reusable method object and validation ladder, not on a single biological system.
+
+## Stop-before-upload checks
+
+- Stop if the official Reporting Summary is not complete.
+- Stop if author order, affiliations, ORCID entries, correspondence fields, funding, competing interests, author contributions, or AI-use disclosure are not author-confirmed.
+- Stop if any cover-letter text claims automatic biological state discovery, universal residence regimes, absence of all coupling, direct reserve measurement from reserve-like endpoints, or biochemical-edge identification from routed-output parameters.
+- Stop if public release, DOI, or software links fail from a clean browser session.
+- Stop if reviewer suggestions or exclusions are not confirmed by the author team.
+
+## Final sentence to preserve in spirit
+
+RhoDyn should be presented as a reusable, reviewable method for deciding when residence-state summaries change interpretation relative to amplitude or endpoint summaries, while deliberately returning amplitude-sufficient and withheld conclusions when the data do not support a residence-state interpretation.
 """
 
 
@@ -987,6 +1033,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Editor-triage note | {'ready' if check_map.get('editor_triage_note_present') else 'blocked'} | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |",
         f"| Editorial pitch | {'ready' if check_map.get('editorial_pitch_present') else 'blocked'} | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |",
         f"| Cover-letter submission draft | {'registered' if check_map.get('cover_letter_draft_present') else 'blocked'} | `cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md` provides a final upload-facing draft that keeps Article fit, validation breadth, software reproducibility, and claim boundaries together for author confirmation. |",
+        f"| Final upload runbook | {'registered' if check_map.get('final_upload_runbook_present') else 'blocked'} | `final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md` gives the author-confirmed upload sequence, cover-letter guardrails, reviewer/editor-fit guardrails, and stop-before-upload checks. |",
         f"| Prior-art positioning matrix | {'ready' if check_map.get('prior_art_positioning_matrix_present') else 'blocked'} | `prior_art_positioning_matrix.md` distinguishes RhoDyn from related dynamic-state, trajectory, imaging, and software-method literature without adding new manuscript claims. |",
         f"| Validation breadth map | {'ready' if check_map.get('validation_breadth_map_present') else 'blocked'} | `validation_breadth_and_boundary_map.md` condenses the synthetic, public trajectory, endpoint, held-out, and software-reproducibility validation ladder while preserving claim boundaries. |",
         f"| Editor-objection response map | {'ready' if check_map.get('editor_objection_response_map_present') else 'blocked'} | `editor_objection_response_map.md` links likely desk-review objections to existing evidence and claim boundaries. |",
@@ -1020,6 +1067,7 @@ def _submission_manifest(generated_utc: str) -> str:
         ("Editor-triage note", "editor_triage_note_for_cover_letter.md", "Cover-letter-ready Nature Methods fit, validation, and claim-boundary note."),
         ("Editorial pitch", "editorial_pitch_for_submission.md", "Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage."),
         ("Cover-letter submission draft", "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md", "Author-confirmation cover-letter draft foregrounding Article fit, validation breadth, software reproducibility, and scoped claims."),
+        ("Final upload runbook", "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md", "Author-confirmation upload sequence, cover-letter guardrails, reviewer/editor-fit guardrails, and stop-before-upload checks."),
         ("Prior-art positioning matrix", "prior_art_positioning_matrix.md", "Novelty-boundary comparison against related dynamic-state, trajectory, imaging, and software-method literature."),
         ("Validation breadth map", "validation_breadth_and_boundary_map.md", "Validation-ladder and boundary map across synthetic, public trajectory, endpoint, held-out, and software-reproducibility tests."),
         ("Editor-objection response map", "editor_objection_response_map.md", "Desk-review objection map linking likely objections to existing package evidence and wording boundaries."),
@@ -1208,6 +1256,17 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
             "detail": "Cover-letter submission draft keeps Article fit, validation breadth, software reproducibility, and claim boundaries together for author confirmation",
         },
         {
+            "name": "final_upload_runbook_present",
+            "passed": (package_dir / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md").exists()
+            and "Final upload runbook" in (package_dir / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Upload sequence" in (package_dir / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Cover-letter guardrails" in (package_dir / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Reviewer and editor-fit guardrails" in (package_dir / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Stop-before-upload checks" in (package_dir / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "amplitude-sufficient and withheld conclusions" in (package_dir / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8"),
+            "detail": "Final upload runbook consolidates human upload sequence, reviewer/editor-fit guardrails, and stop-before-upload claim boundaries",
+        },
+        {
             "name": "prior_art_positioning_matrix_present",
             "passed": (package_dir / "prior_art_positioning_matrix.md").exists()
             and "Prior-art positioning matrix" in (package_dir / "prior_art_positioning_matrix.md").read_text(encoding="utf-8")
@@ -1394,6 +1453,7 @@ def _stage_outputs(generated_utc: str) -> tuple[dict[str, Any], dict[str, Any]]:
     _write_text(staging_submission / "editor_triage_note_for_cover_letter.md", _editor_triage_note())
     _write_text(staging_submission / "editorial_pitch_for_submission.md", _editorial_pitch())
     _write_text(staging_submission / "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md", _cover_letter_for_submission())
+    _write_text(staging_submission / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md", _final_upload_runbook())
     _write_text(staging_submission / "prior_art_positioning_matrix.md", _prior_art_positioning_matrix())
     _write_text(staging_submission / "validation_breadth_and_boundary_map.md", _validation_breadth_map())
     _write_text(staging_submission / "editor_objection_response_map.md", _editor_objection_response_map())
@@ -1460,7 +1520,7 @@ def _upsert_completed_substage(memory: dict[str, Any], checks: list[dict[str, An
         "status": "pass",
         "pass": True,
         "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.27.json",
-        "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, cover-letter submission draft, prior-art positioning, validation breadth map, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, Reporting Summary placeholder and answer bank, and readiness checklist",
+        "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, cover-letter submission draft, final upload runbook, prior-art positioning, validation breadth map, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, Reporting Summary placeholder and answer bank, and readiness checklist",
         "evidence_dependencies": [
             "manuscript/nature_methods/gate_verdicts/9.26.json",
             "manuscript/nature_methods/audits/internal_peer_review_simulation.md",
@@ -1505,7 +1565,7 @@ def _update_stage9_memory(generated_utc: str, checks: list[dict[str, Any]]) -> N
         "Stage 9.0 through Stage 9.27 are complete through submission package assembly.",
         "Stage 9.28 and Stage 9.29 remain not started.",
         "No PI review packet or Stage 9 completion report is created in this pass.",
-        "The package contains reader-clean main text, Supplementary Information, code-for-review, cover-letter submission draft, prior-art positioning matrix, validation breadth map, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, figure inventory, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist.",
+        "The package contains reader-clean main text, Supplementary Information, code-for-review, cover-letter submission draft, final upload runbook, prior-art positioning matrix, validation breadth map, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, figure inventory, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist.",
     ]
     memory["scope_rule"] = (
         "Stage 9 has completed evidence intake, guidance, corpus, narrative spine, claim freeze, paragraph and figure planning, "
@@ -1523,7 +1583,7 @@ def _update_roadmap_memory() -> None:
     current["stage9_active_gate"] = "Stage 9.27 Submission package assembly complete; final PI review not started"
     current["after_stage9_27_submission_package_assembly"] = (
         "Stage 9.27 assembled the collaborator-review Nature Methods package from the reader-clean main text, Supplementary Information, figures, "
-        "references, code-for-review surface, cover-letter submission draft, prior-art positioning matrix, validation breadth map, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist."
+        "references, code-for-review surface, cover-letter submission draft, final upload runbook, prior-art positioning matrix, validation breadth map, editor-objection response map, two-minute editor triage simulation, current Nature Methods policy preflight, reviewer/editor fit planner, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist."
     )
     current["current_gate"] = "Submission package assembled for collaborator review"
     current["next_stage"] = "Stage 9.28 Final human PI review packet"
@@ -1566,7 +1626,7 @@ Current status. Stage 9.27 submission package assembly complete.
 
 The workspace now contains the authorized manuscript components through collaborator-review package assembly. Evidence intake, venue guidance, methods-paper corpus analysis, narrative spine, claim freeze, paragraph planning, figure planning, deterministic main-figure rendering, supplementary display planning, section contracts, front matter, Results, Introduction, Discussion, Methods, availability statements, Supplementary Methods, supplementary table/source-data binding, reference audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review, and submission package assembly are present.
 
-The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/prior_art_positioning_matrix.md`, `submission_package/validation_breadth_and_boundary_map.md`, `submission_package/editor_objection_response_map.md`, `submission_package/editor_two_minute_triage_simulation.md`, `submission_package/current_nature_methods_policy_preflight.md`, `submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/reporting_summary_REQUIRED.md`, `submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
+The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/prior_art_positioning_matrix.md`, `submission_package/validation_breadth_and_boundary_map.md`, `submission_package/editor_objection_response_map.md`, `submission_package/editor_two_minute_triage_simulation.md`, `submission_package/current_nature_methods_policy_preflight.md`, `submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/reporting_summary_REQUIRED.md`, `submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
 
 The official Springer Nature Reporting Summary form remains a human submission action. The PI review packet and Stage 9 closure report have not started.
 

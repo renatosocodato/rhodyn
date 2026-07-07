@@ -33,6 +33,7 @@ TRIAGE_NOTE = STAGING / "nature_methods_editor_triage_note_draft.md"
 PACKAGE_TRIAGE_NOTE = SUBMISSION / "editor_triage_note_for_cover_letter.md"
 PACKAGE_EDITORIAL_PITCH = SUBMISSION / "editorial_pitch_for_submission.md"
 PACKAGE_COVER_LETTER = SUBMISSION / "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md"
+PACKAGE_UPLOAD_RUNBOOK = SUBMISSION / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md"
 PACKAGE_SOFTWARE_CHECKLIST = SUBMISSION / "software_reporting_checklist.md"
 PACKAGE_ARTICLE_FIT = SUBMISSION / "article_fit_checklist.md"
 PACKAGE_AUTHOR_DECLARATIONS = SUBMISSION / "author_declarations_REQUIRED.md"
@@ -93,6 +94,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
     package_triage = _read(PACKAGE_TRIAGE_NOTE)
     package_pitch = _read(PACKAGE_EDITORIAL_PITCH)
     package_cover_letter = _read(PACKAGE_COVER_LETTER)
+    package_upload_runbook = _read(PACKAGE_UPLOAD_RUNBOOK)
     package_software = _read(PACKAGE_SOFTWARE_CHECKLIST)
     package_article_fit = _read(PACKAGE_ARTICLE_FIT)
     package_author_declarations = _read(PACKAGE_AUTHOR_DECLARATIONS)
@@ -194,9 +196,9 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "risk_id": "NM-DESK-010",
             "editorial_risk": "Human-upload requirements could still block submission even if repository-derived checks pass.",
             "nature_methods_requirement": "Completed reporting summary, author declarations, portal metadata, file naming, and author approval.",
-            "current_evidence": "Stage 9.29 retains the official Reporting Summary, author declarations, and portal metadata as external human submission actions.",
+            "current_evidence": "Stage 9.29 retains the official Reporting Summary, author declarations, and portal metadata as external human submission actions and now provides a final upload runbook with stop-before-upload checks.",
             "status": "human_submission_action_remaining",
-            "recommended_action": "Complete the official Springer Nature Reporting Summary, author declarations, and portal fields after author approval.",
+            "recommended_action": "Complete the official Springer Nature Reporting Summary, author declarations, portal fields, reviewer/editor choices, and final file checks using the final upload runbook after author approval.",
             "promotion_target": "Human action, not repository-derived manuscript edit.",
         },
         {
@@ -248,9 +250,9 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "risk_id": "NM-DESK-016",
             "editorial_risk": "Reviewer suggestions could over-center the RhoA/microglia use case and leave the computational method, statistical decision rules, or software reproducibility under-reviewed.",
             "nature_methods_requirement": "The reviewer set should match the submitted method Article, including technical validation, reusable software, statistical decision rules, live-cell perturbation data, and biological application scope.",
-            "current_evidence": "The package now includes a reviewer/editor fit planner that separates method-review expertise from biological reference-use-case expertise and keeps reviewer names, exclusions, and conflicts author-confirmed.",
-            "status": "human_submission_action_remaining" if "Expertise coverage needed" in package_reviewer_fit and "RhoA/microglia reference use case should not dominate reviewer assignment" in package_reviewer_fit else "needs_revision",
-            "recommended_action": "Use the reviewer/editor fit planner to choose a method-first reviewer mix before upload, without inferring names or conflicts from repository files.",
+            "current_evidence": "The package now includes a reviewer/editor fit planner and final upload runbook that separate method-review expertise from biological reference-use-case expertise and keep reviewer names, exclusions, and conflicts author-confirmed.",
+            "status": "human_submission_action_remaining" if "Expertise coverage needed" in package_reviewer_fit and "RhoA/microglia reference use case should not dominate reviewer assignment" in package_reviewer_fit and "Reviewer and editor-fit guardrails" in package_upload_runbook else "needs_revision",
+            "recommended_action": "Use the reviewer/editor fit planner and final upload runbook to choose a method-first reviewer mix before upload, without inferring names or conflicts from repository files.",
             "promotion_target": "Human action guided by `submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md`.",
         },
     ]
@@ -320,6 +322,7 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "- The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.",
             "- The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.",
             "- The author-confirmation cover-letter draft is included in the submission package as `cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md`.",
+            "- The final upload runbook is included in the submission package as `final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md`.",
             "- The validation breadth map is included in the submission package as `validation_breadth_and_boundary_map.md`.",
             "- The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.",
             "- The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.",
@@ -353,6 +356,7 @@ def _triage_rows(rows: list[dict[str, str]], main_text: str) -> list[dict[str, s
     reviewer_fit = _read(PACKAGE_REVIEWER_FIT)
     validation_breadth = _read(PACKAGE_VALIDATION_BREADTH)
     cover_letter_draft = _read(PACKAGE_COVER_LETTER)
+    upload_runbook = _read(PACKAGE_UPLOAD_RUNBOOK)
     high_or_open = {
         row["risk_id"]: row
         for row in rows
@@ -404,17 +408,17 @@ def _triage_rows(rows: list[dict[str, str]], main_text: str) -> list[dict[str, s
         },
         {
             "criterion": "Submission completeness",
-            "current_evidence": "Main manuscript, Supplementary Information, cover-letter draft, Reporting Summary placeholder, author-declarations checklist, inventories, and readiness checklist are present.",
-            "simulated_editor_read": "Repository-derived package contents are complete, but journal forms and portal fields remain author actions.",
+            "current_evidence": "Main manuscript, Supplementary Information, cover-letter draft, final upload runbook, Reporting Summary placeholder, author-declarations checklist, inventories, and readiness checklist are present.",
+            "simulated_editor_read": "Repository-derived package contents are complete and the final upload runbook reduces portal-entry drift, but journal forms and portal fields remain author actions.",
             "risk_level": "medium" if human_actions else "low",
-            "recommended_action": "Complete the official Reporting Summary, author declarations, portal metadata, and author approval before upload.",
+            "recommended_action": "Complete the official Reporting Summary, author declarations, portal metadata, and author approval using the final upload runbook before upload.",
         },
         {
             "criterion": "Reviewer and editor fit",
-            "current_evidence": "The reviewer/editor fit planner defines a method-first expertise mix, separates biological reference-use-case expertise from software and statistical review, and keeps reviewer names and exclusions author-confirmed.",
-            "simulated_editor_read": "Reviewer suggestions can support the method claim if they cover live-cell dynamics, computational time-series inference, statistical decision rules, perturbation endpoints, and reproducible software rather than only RhoA or microglial biology.",
-            "risk_level": "medium" if "Suggested reviewer template" in reviewer_fit else "high",
-            "recommended_action": "Confirm reviewer suggestions, reviewer exclusions, and any editor-fit wording with the author team before upload.",
+            "current_evidence": "The reviewer/editor fit planner and final upload runbook define a method-first expertise mix, separate biological reference-use-case expertise from software and statistical review, and keep reviewer names and exclusions author-confirmed.",
+            "simulated_editor_read": "Reviewer selection is structurally aligned with the method claim if the author team fills the planner with experts covering live-cell dynamics, computational time-series inference, statistical decision rules, perturbation endpoints, and reproducible software rather than only RhoA or microglial biology.",
+            "risk_level": "low" if "Suggested reviewer template" in reviewer_fit and "Reviewer and editor-fit guardrails" in upload_runbook else "medium",
+            "recommended_action": "Use the reviewer/editor fit planner and final upload runbook to confirm reviewer suggestions, exclusions, and any editor-fit wording with the author team before upload.",
         },
         {
             "criterion": "Desk-rejection residual risk",
@@ -575,6 +579,7 @@ def run() -> dict[str, object]:
             "package_triage_note": PACKAGE_TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_editorial_pitch": PACKAGE_EDITORIAL_PITCH.relative_to(ROOT).as_posix(),
             "package_cover_letter_draft": PACKAGE_COVER_LETTER.relative_to(ROOT).as_posix(),
+            "package_upload_runbook": PACKAGE_UPLOAD_RUNBOOK.relative_to(ROOT).as_posix(),
             "package_validation_breadth_map": PACKAGE_VALIDATION_BREADTH.relative_to(ROOT).as_posix(),
             "package_software_reporting_checklist": PACKAGE_SOFTWARE_CHECKLIST.relative_to(ROOT).as_posix(),
             "package_article_fit_checklist": PACKAGE_ARTICLE_FIT.relative_to(ROOT).as_posix(),

@@ -44,17 +44,17 @@
     },
     {
       "criterion": "Submission completeness",
-      "current_evidence": "Main manuscript, Supplementary Information, cover-letter draft, Reporting Summary placeholder, author-declarations checklist, inventories, and readiness checklist are present.",
-      "recommended_action": "Complete the official Reporting Summary, author declarations, portal metadata, and author approval before upload.",
+      "current_evidence": "Main manuscript, Supplementary Information, cover-letter draft, final upload runbook, Reporting Summary placeholder, author-declarations checklist, inventories, and readiness checklist are present.",
+      "recommended_action": "Complete the official Reporting Summary, author declarations, portal metadata, and author approval using the final upload runbook before upload.",
       "risk_level": "medium",
-      "simulated_editor_read": "Repository-derived package contents are complete, but journal forms and portal fields remain author actions."
+      "simulated_editor_read": "Repository-derived package contents are complete and the final upload runbook reduces portal-entry drift, but journal forms and portal fields remain author actions."
     },
     {
       "criterion": "Reviewer and editor fit",
-      "current_evidence": "The reviewer/editor fit planner defines a method-first expertise mix, separates biological reference-use-case expertise from software and statistical review, and keeps reviewer names and exclusions author-confirmed.",
-      "recommended_action": "Confirm reviewer suggestions, reviewer exclusions, and any editor-fit wording with the author team before upload.",
-      "risk_level": "medium",
-      "simulated_editor_read": "Reviewer suggestions can support the method claim if they cover live-cell dynamics, computational time-series inference, statistical decision rules, perturbation endpoints, and reproducible software rather than only RhoA or microglial biology."
+      "current_evidence": "The reviewer/editor fit planner and final upload runbook define a method-first expertise mix, separate biological reference-use-case expertise from software and statistical review, and keep reviewer names and exclusions author-confirmed.",
+      "recommended_action": "Use the reviewer/editor fit planner and final upload runbook to confirm reviewer suggestions, exclusions, and any editor-fit wording with the author team before upload.",
+      "risk_level": "low",
+      "simulated_editor_read": "Reviewer selection is structurally aligned with the method claim if the author team fills the planner with experts covering live-cell dynamics, computational time-series inference, statistical decision rules, perturbation endpoints, and reproducible software rather than only RhoA or microglial biology."
     },
     {
       "criterion": "Desk-rejection residual risk",
@@ -70,8 +70,8 @@
   },
   "risk_counts": {
     "high": 0,
-    "low": 7,
-    "medium": 2
+    "low": 8,
+    "medium": 1
   },
   "scope": "Author-side stress test only. This is not a journal decision and does not add evidence.",
   "simulated_verdict": "Potentially suitable for full editorial consideration after author upload actions",

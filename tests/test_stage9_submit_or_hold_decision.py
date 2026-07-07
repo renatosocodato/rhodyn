@@ -42,6 +42,7 @@ class Stage9SubmitOrHoldDecisionTests(unittest.TestCase):
             "code_and_data_availability_present",
             "cover_letter_pitch_boundary_present",
             "cover_letter_submission_draft_present",
+            "final_upload_runbook_present",
             "prior_art_positioning_matrix_present",
             "validation_breadth_map_present",
             "editor_objection_response_map_present",

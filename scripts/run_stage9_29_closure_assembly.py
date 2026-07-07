@@ -49,6 +49,7 @@ PACKAGE_FILES = [
     SUBMISSION / "editor_triage_note_for_cover_letter.md",
     SUBMISSION / "editorial_pitch_for_submission.md",
     SUBMISSION / "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md",
+    SUBMISSION / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md",
     SUBMISSION / "prior_art_positioning_matrix.md",
     SUBMISSION / "validation_breadth_and_boundary_map.md",
     SUBMISSION / "editor_objection_response_map.md",
@@ -439,6 +440,12 @@ def _update_submission_manifest() -> None:
             anchor,
             anchor + "\n| Cover-letter submission draft | `cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation cover-letter draft foregrounding Article fit, validation breadth, software reproducibility, and scoped claims. |",
         )
+    if "| Final upload runbook | `final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md` |" not in body:
+        anchor = "| Cover-letter submission draft | `cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation cover-letter draft foregrounding Article fit, validation breadth, software reproducibility, and scoped claims. |"
+        body = body.replace(
+            anchor,
+            anchor + "\n| Final upload runbook | `final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation upload sequence, cover-letter guardrails, reviewer/editor-fit guardrails, and stop-before-upload checks. |",
+        )
     if "| Editor-objection response map | `editor_objection_response_map.md` |" not in body:
         anchor = "| Prior-art positioning matrix | `prior_art_positioning_matrix.md` | Novelty-boundary comparison against related dynamic-state, trajectory, imaging, and software-method literature. |"
         body = body.replace(
@@ -505,6 +512,7 @@ def _update_submission_package_manifest(version_binding: dict[str, Any]) -> None
         "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md",
+        "manuscript/nature_methods/submission_package/final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
         "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
         "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
@@ -556,6 +564,7 @@ def _update_stage9_memory(version_binding: dict[str, Any]) -> None:
         "manuscript/nature_methods/stage9_closure_version_binding.json",
         "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
         "manuscript/nature_methods/submission_package/cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md",
+        "manuscript/nature_methods/submission_package/final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
         "manuscript/nature_methods/submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/gate_verdicts/9.29.json",

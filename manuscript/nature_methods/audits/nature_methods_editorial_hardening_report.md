@@ -35,13 +35,13 @@ The relevant editorial bar is a novel method or substantial improvement with bro
 | NM-DESK-007 | hardened_in_current_text | Complete the official Reporting Summary and portal metadata before submission. |
 | NM-DESK-008 | hardened_in_current_text | Keep the package-bound editor note with the submission surfaces so editors see the six-display-item logic immediately. |
 | NM-DESK-009 | hardened_in_current_text | Do not strengthen the terminal Discussion claim without additional independent demonstrations. |
-| NM-DESK-010 | human_submission_action_remaining | Complete the official Springer Nature Reporting Summary, author declarations, and portal fields after author approval. |
+| NM-DESK-010 | human_submission_action_remaining | Complete the official Springer Nature Reporting Summary, author declarations, portal fields, reviewer/editor choices, and final file checks using the final upload runbook after author approval. |
 | NM-DESK-011 | hardened_in_current_text | Use the package-bound cover-letter draft as the upload starting point after author approval, preserving the Article fit, validation breadth, software reproducibility, and scope limits. |
 | NM-DESK-012 | hardened_in_current_text | Keep the software-reporting checklist with the package so software review can start from a single evidence map. |
 | NM-DESK-013 | hardened_in_current_text | Keep the Article-fit checklist with the package so format and content-type fit are explicit before upload. |
 | NM-DESK-014 | hardened_in_current_text | Complete the author declarations before upload. Do not infer author attestations from repository files. |
 | NM-DESK-015 | hardened_in_current_text | Complete the cover-letter checklist before upload, using only author-confirmed statements. |
-| NM-DESK-016 | human_submission_action_remaining | Use the reviewer/editor fit planner to choose a method-first reviewer mix before upload, without inferring names or conflicts from repository files. |
+| NM-DESK-016 | human_submission_action_remaining | Use the reviewer/editor fit planner and final upload runbook to choose a method-first reviewer mix before upload, without inferring names or conflicts from repository files. |
 
 ## Recommended author action
 
@@ -53,6 +53,7 @@ The package is defensible for editor triage because the package-bound editor not
 - The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.
 - The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.
 - The author-confirmation cover-letter draft is included in the submission package as `cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md`.
+- The final upload runbook is included in the submission package as `final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md`.
 - The validation breadth map is included in the submission package as `validation_breadth_and_boundary_map.md`.
 - The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.
 - The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.
@@ -64,5 +65,5 @@ The package is defensible for editor triage because the package-bound editor not
 
 ## Remaining non-hardened rows
 
-- `NM-DESK-010`. human_submission_action_remaining. Complete the official Springer Nature Reporting Summary, author declarations, and portal fields after author approval.
-- `NM-DESK-016`. human_submission_action_remaining. Use the reviewer/editor fit planner to choose a method-first reviewer mix before upload, without inferring names or conflicts from repository files.
+- `NM-DESK-010`. human_submission_action_remaining. Complete the official Springer Nature Reporting Summary, author declarations, portal fields, reviewer/editor choices, and final file checks using the final upload runbook after author approval.
+- `NM-DESK-016`. human_submission_action_remaining. Use the reviewer/editor fit planner and final upload runbook to choose a method-first reviewer mix before upload, without inferring names or conflicts from repository files.

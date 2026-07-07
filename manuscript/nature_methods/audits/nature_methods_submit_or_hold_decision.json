@@ -1,7 +1,7 @@
 {
   "collaborator_review_ready": true,
   "decision": "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. Final journal upload should remain on hold until the listed human-attested submission fields are completed.",
-  "generated_utc": "2026-07-07T14:24:53Z",
+  "generated_utc": "2026-07-07T14:32:52Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
     "Confirm title page, author order, affiliations, ORCID, corresponding-author metadata, funding, competing interests, and author contributions.",
@@ -56,6 +56,11 @@
     {
       "detail": "Final cover-letter draft keeps the upload-facing Article fit, validation breadth, software reproducibility, and claim boundaries together for author confirmation.",
       "name": "cover_letter_submission_draft_present",
+      "passed": true
+    },
+    {
+      "detail": "Final upload runbook consolidates author-confirmed portal actions, reviewer/editor-fit guardrails, and stop-before-upload claim boundaries.",
+      "name": "final_upload_runbook_present",
       "passed": true
     },
     {

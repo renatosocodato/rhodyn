@@ -33,6 +33,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         cls.reviewer_editor_fit = (PACKAGE / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         cls.validation_breadth_map = (PACKAGE / "validation_breadth_and_boundary_map.md").read_text(encoding="utf-8")
         cls.cover_letter_draft = (PACKAGE / "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+        cls.final_upload_runbook = (PACKAGE / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         with (PACKAGE / "figure_file_inventory.csv").open(newline="", encoding="utf-8") as handle:
             cls.figure_rows = list(csv.DictReader(handle))
         with (PACKAGE / "source_data_and_statistics_inventory.csv").open(newline="", encoding="utf-8") as handle:
@@ -63,6 +64,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "editor_triage_note_present",
             "editorial_pitch_present",
             "cover_letter_draft_present",
+            "final_upload_runbook_present",
             "prior_art_positioning_matrix_present",
             "validation_breadth_map_present",
             "editor_objection_response_map_present",
@@ -140,6 +142,12 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("Residence windows are declared analysis choices", self.cover_letter_draft)
         self.assertIn("RhoDyn v0.1.0 is publicly available", self.cover_letter_draft)
         self.assertIn("authors must confirm related-manuscript status", self.cover_letter_draft)
+        self.assertIn("Final upload runbook AUTHOR CONFIRMATION REQUIRED", self.final_upload_runbook)
+        self.assertIn("Upload sequence", self.final_upload_runbook)
+        self.assertIn("Cover-letter guardrails", self.final_upload_runbook)
+        self.assertIn("Reviewer and editor-fit guardrails", self.final_upload_runbook)
+        self.assertIn("Stop-before-upload checks", self.final_upload_runbook)
+        self.assertIn("amplitude-sufficient and withheld conclusions", self.final_upload_runbook)
         self.assertIn("Source code supplied for review", (PACKAGE / "software_reporting_checklist.md").read_text(encoding="utf-8"))
         self.assertIn("Content-type decision", (PACKAGE / "article_fit_checklist.md").read_text(encoding="utf-8"))
         self.assertIn("Competing interests", self.author_declarations)
@@ -162,6 +170,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("should not be positioned as the first method to treat live-cell signals as dynamic", self.prior_art_positioning)
         self.assertIn("does not add citations, performance results, biological datasets, or manuscript claims", self.prior_art_positioning)
         self.assertIn("Cover-letter submission draft | registered", self.checklist)
+        self.assertIn("Final upload runbook | registered", self.checklist)
         self.assertIn("Prior-art positioning matrix | ready", self.checklist)
         self.assertIn("Validation breadth and boundary map", self.validation_breadth_map)
         self.assertIn("does not add data, analyses, citations, figures, datasets, performance claims, or manuscript text", self.validation_breadth_map)

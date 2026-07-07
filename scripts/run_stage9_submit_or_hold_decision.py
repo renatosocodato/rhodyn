@@ -72,6 +72,7 @@ def build_report() -> dict[str, Any]:
     editor_note = _read(PACKAGE / "editor_triage_note_for_cover_letter.md")
     editorial_pitch = _read(PACKAGE / "editorial_pitch_for_submission.md")
     cover_letter_draft = _read(PACKAGE / "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md")
+    final_upload_runbook = _read(PACKAGE / "final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md")
     package_manifest = _json(PACKAGE / "submission_package_manifest.json")
     public_access = _json(AUDITS / "nature_methods_public_access_verification.json")
     closure_gate = _json(WORKSPACE / "gate_verdicts" / "9.29.json")
@@ -160,6 +161,15 @@ def build_report() -> dict[str, Any]:
             and "Residence windows are declared analysis choices" in cover_letter_draft
             and "RhoDyn v0.1.0 is publicly available" in cover_letter_draft,
             "Final cover-letter draft keeps the upload-facing Article fit, validation breadth, software reproducibility, and claim boundaries together for author confirmation.",
+        ),
+        _check(
+            "final_upload_runbook_present",
+            "Final upload runbook" in final_upload_runbook
+            and "Upload sequence" in final_upload_runbook
+            and "Reviewer and editor-fit guardrails" in final_upload_runbook
+            and "Stop-before-upload checks" in final_upload_runbook
+            and "amplitude-sufficient and withheld conclusions" in final_upload_runbook,
+            "Final upload runbook consolidates author-confirmed portal actions, reviewer/editor-fit guardrails, and stop-before-upload claim boundaries.",
         ),
         _check(
             "prior_art_positioning_matrix_present",

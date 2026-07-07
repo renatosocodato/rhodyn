@@ -1,6 +1,6 @@
 {
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-  "closure_commit": "828c8ac65101ab91236ad033565327876aabdb42",
+  "closure_commit": "4ea6815463ac7a60a656a97d0273f6e78cd3430e",
   "content_type": "Article",
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine": {
@@ -42,7 +42,7 @@
     "panelforge_ref": null,
     "rendered_file_count": 18
   },
-  "generated_utc": "2026-07-07T14:24:31Z",
+  "generated_utc": "2026-07-07T14:32:28Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
     "Confirm final title page, author list, affiliations, correspondence fields, author declarations, and the AI-use disclosure draft if applicable.",
@@ -65,16 +65,16 @@
       "sha256": "d5bf3eadafa0932021fe626589de53796e7212fb93ea2e02584266b46fc61d03"
     },
     {
-      "bytes": 4573,
+      "bytes": 4782,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_manifest.md",
-      "sha256": "17cc5e3c2495bc800f95bb8d7b2977046775240822304f8013f0e08ee1fd83f7"
+      "sha256": "07da8e5eec8b077c70cb7cc41f6698700732eb6b69e63fc4f8e8ca3fe3c9e89e"
     },
     {
-      "bytes": 4707,
+      "bytes": 4934,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
-      "sha256": "885f957a22b74ea7f2408c3368c42aa76692980701a40550855b9ae97705bf58"
+      "sha256": "22819c7009abc0766bdeb6ae44be24bff5da8ffbd6de5ac942ae85a0fe66a8f5"
     },
     {
       "bytes": 2079,
@@ -93,6 +93,12 @@
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md",
       "sha256": "d7302ebcc1cf98809415981c2269b27b394048333008533e20ae5e2b4aa6880f"
+    },
+    {
+      "bytes": 4386,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md",
+      "sha256": "cef5eb3dcbc2d9bd8afe366a3460a5081015e6973dc650a2080139ac71b42b68"
     },
     {
       "bytes": 5933,
@@ -167,10 +173,10 @@
       "sha256": "669b4108eea3e6e0fb034822b8a38800e7a0e305b0a9a192ad315775e0df6fd9"
     },
     {
-      "bytes": 4188,
+      "bytes": 4359,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/package_consistency_audit.md",
-      "sha256": "df6b4b9be1c3e4559be5f229a97c763e6547ea686f37f46918df817714cdb211"
+      "sha256": "6b2b29774e398c3ac48cf24350d2cb80d0317a12adc728c5c6bf4e57ab45c2b5"
     },
     {
       "bytes": 4121,
@@ -203,10 +209,10 @@
       "sha256": "2b5fac1cbf22a8ff00d0107476a801911d0448827d977139e5e893db5cc93a9e"
     },
     {
-      "bytes": 8735,
+      "bytes": 9068,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_package_manifest.json",
-      "sha256": "26198f5993377351874b325e05a83a393d8c56720a785332247d7e49ebf57b03"
+      "sha256": "a202023771cf5cf72ecf3abf8b7dd571a63e8dff3ee6d43f6c3a08f43cd2a520"
     },
     {
       "bytes": 7833,
@@ -224,16 +230,16 @@
       "bytes": 1639,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
-      "sha256": "e87f4b5ce32034362ac51861aa62b614edcc7035035f29f4e510cdfad0376fc0"
+      "sha256": "a9607a17e2bb8403445f41578053d1168343a833d1a3dc918737ffada45aaa5c"
     },
     {
       "bytes": 1534,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
-      "sha256": "b5c16ac1897765e45a32b12a43b53e9de9240f5309dafe947f29eee13c6c04ef"
+      "sha256": "7886181fcf9aabb171fd222138325b1f6d58805ca78c6d71e26374c38326fda4"
     }
   ],
-  "package_version": "stage9.29-closure@828c8ac65101ab91236ad033565327876aabdb42",
+  "package_version": "stage9.29-closure@4ea6815463ac7a60a656a97d0273f6e78cd3430e",
   "pi_review_action_decisions": [
     {
       "closure_status": "closed",

@@ -91,6 +91,11 @@
       "passed": true
     },
     {
+      "detail": "Final upload runbook consolidates human upload sequence, reviewer/editor-fit guardrails, and stop-before-upload claim boundaries",
+      "name": "final_upload_runbook_present",
+      "passed": true
+    },
+    {
       "detail": "Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence",
       "name": "prior_art_positioning_matrix_present",
       "passed": true
@@ -147,9 +152,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "828c8ac65101ab91236ad033565327876aabdb42",
+  "commit": "4ea6815463ac7a60a656a97d0273f6e78cd3430e",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T14:24:31Z",
+  "generated_utc": "2026-07-07T14:32:28Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -166,6 +171,7 @@
     "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
     "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
+    "manuscript/nature_methods/submission_package/final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
@@ -201,10 +207,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "828c8ac65101ab91236ad033565327876aabdb42",
+    "closure_commit": "4ea6815463ac7a60a656a97d0273f6e78cd3430e",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@828c8ac65101ab91236ad033565327876aabdb42",
+    "package_version": "stage9.29-closure@4ea6815463ac7a60a656a97d0273f6e78cd3430e",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }
