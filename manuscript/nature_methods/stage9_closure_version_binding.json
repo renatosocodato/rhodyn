@@ -1,6 +1,6 @@
 {
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-  "closure_commit": "cf8ce230d1adbc55519928be47e5cb619fcb9e5d",
+  "closure_commit": "94dcc5093f4f00e30a2363cdd130f100ebe8cd56",
   "content_type": "Article",
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine": {
@@ -42,7 +42,7 @@
     "panelforge_ref": null,
     "rendered_file_count": 18
   },
-  "generated_utc": "2026-07-07T11:49:36Z",
+  "generated_utc": "2026-07-07T11:52:40Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form.",
     "Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and AI-use disclosure if applicable.",
@@ -172,7 +172,7 @@
       "sha256": "923d81a190b4a22188d8e69661729b9683fd6af76f0a78875100f7f290f38d9a"
     }
   ],
-  "package_version": "stage9.29-closure@cf8ce230d1adbc55519928be47e5cb619fcb9e5d",
+  "package_version": "stage9.29-closure@94dcc5093f4f00e30a2363cdd130f100ebe8cd56",
   "pi_review_action_decisions": [
     {
       "closure_status": "closed",
@@ -219,8 +219,8 @@
       "codex_decision": "retain_as_external_submission_action",
       "item_id": "PI-9.28-HUMAN-001",
       "previous_status": "human_action_required",
-      "rationale": "The official Reporting Summary and portal metadata are journal-upload actions, not repository-derived scientific content.",
-      "remaining_requirement": "Complete the official Springer Nature form and portal metadata before journal submission."
+      "rationale": "The official Reporting Summary, author declarations, and portal metadata are journal-upload actions, not repository-derived scientific content.",
+      "remaining_requirement": "Complete the official Springer Nature form, author declarations, and portal metadata before journal submission."
     }
   ],
   "pyproject_version": "0.1.0",

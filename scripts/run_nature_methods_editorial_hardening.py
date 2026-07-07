@@ -185,10 +185,10 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
         {
             "risk_id": "NM-DESK-010",
             "editorial_risk": "Human-upload requirements could still block submission even if repository-derived checks pass.",
-            "nature_methods_requirement": "Completed reporting summary, portal metadata, file naming, and author approval.",
-            "current_evidence": "Stage 9.29 retains the official Reporting Summary and portal metadata as external human submission actions.",
+            "nature_methods_requirement": "Completed reporting summary, author declarations, portal metadata, file naming, and author approval.",
+            "current_evidence": "Stage 9.29 retains the official Reporting Summary, author declarations, and portal metadata as external human submission actions.",
             "status": "human_submission_action_remaining",
-            "recommended_action": "Complete the official Springer Nature Reporting Summary and portal fields after author approval.",
+            "recommended_action": "Complete the official Springer Nature Reporting Summary, author declarations, and portal fields after author approval.",
             "promotion_target": "Human action, not repository-derived manuscript edit.",
         },
         {

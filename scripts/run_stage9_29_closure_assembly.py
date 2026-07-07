@@ -228,8 +228,8 @@ def _action_decisions() -> list[dict[str, str]]:
         elif status == "human_action_required":
             decision = "retain_as_external_submission_action"
             closure_status = "not_blocking_stage9_closure"
-            rationale = "The official Reporting Summary and portal metadata are journal-upload actions, not repository-derived scientific content."
-            remaining = "Complete the official Springer Nature form and portal metadata before journal submission."
+            rationale = "The official Reporting Summary, author declarations, and portal metadata are journal-upload actions, not repository-derived scientific content."
+            remaining = "Complete the official Springer Nature form, author declarations, and portal metadata before journal submission."
         else:
             decision = "requires_author_review"
             closure_status = "open"
@@ -509,8 +509,8 @@ def _update_roadmap_memory(version_binding: dict[str, Any]) -> None:
     current["next_stage"] = "Stage 10 or journal-specific submission actions, not started"
     current["after_stage9_29_closure"] = (
         "Stage 9.29 closed the Nature Methods manuscript package by binding the package, evidence, release, "
-        "figure-rendering, limitation, and PI-review decision versions. Official Reporting Summary and portal "
-        "metadata remain human submission actions."
+        "figure-rendering, limitation, and PI-review decision versions. Official Reporting Summary, author declarations, "
+        "and portal metadata remain human submission actions."
     )
     stages = memory.get("stage_lock", [])
     for stage in stages:

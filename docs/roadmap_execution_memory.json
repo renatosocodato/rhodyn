@@ -43,7 +43,7 @@
     "after_stage9_26_internal_peer_review": "Stage 9.26 completed an eight-perspective internal peer-review simulation and reviewer action matrix. It preserved the reader-clean manuscript, routed scoped concerns, and recorded the current PanelForge figure assembly status without starting package assembly.",
     "after_stage9_27_submission_package_assembly": "Stage 9.27 assembled the collaborator-review Nature Methods package from the reader-clean main text, Supplementary Information, figures, references, code-for-review surface, source-data/statistics inventory, Reporting Summary placeholder, author declarations checklist, and readiness checklist.",
     "after_stage9_28_pi_review_packet": "Stage 9.28 prepared the PI-review decision packet, applied evidence-safe source revisions, regenerated the submission package, and preserved Reporting Summary, author declarations, portal metadata, and closure as human/downstream actions.",
-    "after_stage9_29_closure": "Stage 9.29 closed the Nature Methods manuscript package by binding the package, evidence, release, figure-rendering, limitation, and PI-review decision versions. Official Reporting Summary and portal metadata remain human submission actions.",
+    "after_stage9_29_closure": "Stage 9.29 closed the Nature Methods manuscript package by binding the package, evidence, release, figure-rendering, limitation, and PI-review decision versions. Official Reporting Summary, author declarations, and portal metadata remain human submission actions.",
     "after_stage9_2_methods_corpus": "Stage 9.2 registered an eight-DOI representative computational methods-paper corpus and extracted cross-paper archetype features. Stage 9.3 narrative-spine selection, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_3_narrative_spine": "Stage 9.3 selected the Nature Methods Article archetype, registered the RhoDyn narrative spine, and fixed the discovery-versus-demonstration boundary. Stage 9.4 claim freeze, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
     "after_stage9_4_claim_freeze": "Stage 9.4 froze five central RhoDyn methods-paper claims with evidence artifact links, strength caps, and explicit non-claims. Stage 9.5 paragraph claim ledger, citation resolution, manuscript drafting, figure rendering, PanelForge execution, and submission-package assembly remain not started.",
@@ -847,7 +847,7 @@
           "status": "complete_pi_review_packet"
         },
         {
-          "closure_version": "stage9.29-closure@cf8ce230d1adbc55519928be47e5cb619fcb9e5d",
+          "closure_version": "stage9.29-closure@94dcc5093f4f00e30a2363cdd130f100ebe8cd56",
           "evidence": "manuscript/nature_methods/gate_verdicts/9.29.json",
           "gate": "every Stage 9 gate passes; quarantine has no unresolved blocker; package, evidence, and release versions are bound",
           "goal": "Close Stage 9 with package, evidence, release, and limitation versions bound.",

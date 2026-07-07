@@ -15,7 +15,7 @@ Codex closed `5` PI-review action items from existing manuscript evidence and re
 | PI-9.28-MAJ-003 | accept_auto_revision | closed | Human review should verify the official Reporting Summary and supplementary tables retain these fields. |
 | PI-9.28-MAJ-004 | retain_boundary_without_new_edit | closed | Maintain this wording during final author upload review. |
 | PI-9.28-MAJ-005 | close_as_boundary_present | closed | Do not strengthen routed-output language without new mechanistic evidence. |
-| PI-9.28-HUMAN-001 | retain_as_external_submission_action | not_blocking_stage9_closure | Complete the official Springer Nature form and portal metadata before journal submission. |
+| PI-9.28-HUMAN-001 | retain_as_external_submission_action | not_blocking_stage9_closure | Complete the official Springer Nature form, author declarations, and portal metadata before journal submission. |
 
 ## Bound versions
 
@@ -23,13 +23,13 @@ Codex closed `5` PI-review action items from existing manuscript evidence and re
 - Software version. `v0.1.0`.
 - Pyproject version. `0.1.0`.
 - Repository. `https://github.com/renatosocodato/rhodyn`.
-- Closure commit. `cf8ce230d1adbc55519928be47e5cb619fcb9e5d`.
+- Closure commit. `94dcc5093f4f00e30a2363cdd130f100ebe8cd56`.
 - Software archive DOI. `10.5281/zenodo.21036616`.
 - Software concept DOI. `10.5281/zenodo.21036615`.
 - Evidence version. `stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc`.
 - Claim-freeze version. `claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af`.
 - Reference version. `reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81`.
-- Package version. `stage9.29-closure@cf8ce230d1adbc55519928be47e5cb619fcb9e5d`.
+- Package version. `stage9.29-closure@94dcc5093f4f00e30a2363cdd130f100ebe8cd56`.
 - PanelForge version. `v3.14.1` with DOI `10.5281/zenodo.20811171`.
 
 ## Figure and package state

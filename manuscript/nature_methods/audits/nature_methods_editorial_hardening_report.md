@@ -35,7 +35,7 @@ The relevant editorial bar is a novel method or substantial improvement with bro
 | NM-DESK-007 | hardened_in_current_text | Complete the official Reporting Summary and portal metadata before submission. |
 | NM-DESK-008 | hardened_in_current_text | Keep the package-bound editor note with the submission surfaces so editors see the six-display-item logic immediately. |
 | NM-DESK-009 | hardened_in_current_text | Do not strengthen the terminal Discussion claim without additional independent demonstrations. |
-| NM-DESK-010 | human_submission_action_remaining | Complete the official Springer Nature Reporting Summary and portal fields after author approval. |
+| NM-DESK-010 | human_submission_action_remaining | Complete the official Springer Nature Reporting Summary, author declarations, and portal fields after author approval. |
 | NM-DESK-011 | hardened_in_current_text | Use the package-bound editorial pitch as the starting point for the final cover letter or presubmission inquiry after author approval. |
 | NM-DESK-012 | hardened_in_current_text | Keep the software-reporting checklist with the package so software review can start from a single evidence map. |
 | NM-DESK-013 | hardened_in_current_text | Keep the Article-fit checklist with the package so format and content-type fit are explicit before upload. |
@@ -58,4 +58,4 @@ The package is defensible for editor triage because the package-bound editor not
 
 ## Remaining non-hardened rows
 
-- `NM-DESK-010`. human_submission_action_remaining. Complete the official Springer Nature Reporting Summary and portal fields after author approval.
+- `NM-DESK-010`. human_submission_action_remaining. Complete the official Springer Nature Reporting Summary, author declarations, and portal fields after author approval.
