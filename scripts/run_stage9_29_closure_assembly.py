@@ -50,6 +50,7 @@ PACKAGE_FILES = [
     SUBMISSION / "editorial_pitch_for_submission.md",
     SUBMISSION / "software_reporting_checklist.md",
     SUBMISSION / "article_fit_checklist.md",
+    SUBMISSION / "author_declarations_REQUIRED.md",
     SUBMISSION / "code_for_review.md",
     SUBMISSION / "package_consistency_audit.md",
     SUBMISSION / "figure_file_inventory.csv",
@@ -298,7 +299,8 @@ def _version_binding(package_rows: list[dict[str, Any]], action_decisions: list[
         "pi_review_action_decisions": action_decisions,
         "human_submission_actions": [
             "Complete the official Springer Nature Reporting Summary form.",
-            "Confirm final portal metadata, corresponding-author details, and journal-specific file names.",
+            "Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and AI-use disclosure if applicable.",
+            "Confirm final portal metadata, corresponding-author details, ORCID fields, and journal-specific file names.",
             "Perform final human author approval before upload.",
         ],
         "scientific_boundary": (
@@ -330,7 +332,7 @@ Stage 9 is closed for the current Nature Methods manuscript-assembly package. Th
 
 ## Codex decision on PI-review action items
 
-Codex closed `{len(closed)}` PI-review action items from existing manuscript evidence and retained `{len(retained)}` item as an external journal-submission action rather than a scientific blocker. The official Springer Nature Reporting Summary form, final portal metadata, and author upload approval remain outside repository-derived closure.
+Codex closed `{len(closed)}` PI-review action items from existing manuscript evidence and retained `{len(retained)}` item as an external journal-submission action rather than a scientific blocker. The official Springer Nature Reporting Summary form, final author declarations, final portal metadata, and author upload approval remain outside repository-derived closure.
 
 | item | decision | closure status | remaining requirement |
 |---|---|---|---|
@@ -366,14 +368,21 @@ The closed package supports a methods claim that RhoDyn provides an inspectable 
 ## Remaining human submission actions
 
 1. Complete the official Springer Nature Reporting Summary form.
-2. Confirm final portal metadata, corresponding-author fields, and journal-specific file names.
-3. Perform final author approval of the main text, Supplementary Information, figures, and code-for-review surface before upload.
+2. Confirm final author declarations, including competing interests, author contributions, funding and acknowledgements, ethics and materials, and AI-use disclosure if applicable.
+3. Confirm final portal metadata, corresponding-author fields, ORCID fields, and journal-specific file names.
+4. Perform final author approval of the main text, Supplementary Information, figures, and code-for-review surface before upload.
 """
 
 
 def _update_submission_manifest() -> None:
     manifest = SUBMISSION / "submission_manifest.md"
     body = manifest.read_text(encoding="utf-8")
+    if "| Author declarations | `author_declarations_REQUIRED.md` |" not in body:
+        anchor = "| Reporting Summary | `reporting_summary_REQUIRED.md` | Required journal form placeholder pending human completion. |"
+        body = body.replace(
+            anchor,
+            anchor + "\n| Author declarations | `author_declarations_REQUIRED.md` | Required upload declarations pending human completion. |",
+        )
     if "| Stage 9 completion report | `../stage9_completion_report.md` |" not in body:
         anchor = "| PI review literature calibration | `pi_review_literature_calibration.md` | Prior-art and novelty calibration note. |"
         replacement = (
@@ -382,6 +391,14 @@ def _update_submission_manifest() -> None:
             + "\n| Stage 9 completion report | `../stage9_completion_report.md` | Final closure and version-binding surface for the current Nature Methods package. |"
         )
         body = body.replace(anchor, replacement)
+    body = body.replace(
+        "Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and support files, but it does not submit the manuscript or close Stage 9.",
+        "Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and Stage 9.29 closure support files, but it does not submit the manuscript or replace final journal-upload approval.",
+    )
+    body = body.replace(
+        "Scope. This package assembles the current Nature Methods Article surfaces for collaborator review. It does not create the PI review packet, submit the manuscript, or close Stage 9.",
+        "Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and Stage 9.29 closure support files, but it does not submit the manuscript or replace final journal-upload approval.",
+    )
     manifest.write_text(body, encoding="utf-8")
 
     checklist = SUBMISSION / "submission_readiness_checklist.md"
@@ -406,6 +423,7 @@ def _update_submission_package_manifest(version_binding: dict[str, Any]) -> None
     payload = _read_json(path)
     package_files = set(payload.get("package_files", []))
     for rel in [
+        "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
         "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
         "manuscript/nature_methods/stage9_completion_report.md",
         "manuscript/nature_methods/stage9_closure_version_binding.json",
@@ -539,8 +557,8 @@ def _update_docs() -> None:
                 "Stage 9.29 roadmap closure and version binding is complete.",
             ),
             (
-                "The official Springer Nature Reporting Summary form, portal metadata, and final upload checks remain human submission actions. The Stage 9 closure report has not started.",
-                "The official Springer Nature Reporting Summary form, portal metadata, and final upload checks remain human submission actions. The Stage 9 closure report is `stage9_completion_report.md`.",
+                "The official Springer Nature Reporting Summary form, author declarations, portal metadata, and final upload checks remain human submission actions. The Stage 9 closure report has not started.",
+                "The official Springer Nature Reporting Summary form, author declarations, portal metadata, and final upload checks remain human submission actions. The Stage 9 closure report is `stage9_completion_report.md`.",
             ),
         ],
     )

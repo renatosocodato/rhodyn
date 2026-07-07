@@ -54,6 +54,7 @@ OUTPUTS = {
     "editorial_pitch": SUBMISSION / "editorial_pitch_for_submission.md",
     "software_reporting_checklist": SUBMISSION / "software_reporting_checklist.md",
     "article_fit_checklist": SUBMISSION / "article_fit_checklist.md",
+    "author_declarations": SUBMISSION / "author_declarations_REQUIRED.md",
     "code_review": SUBMISSION / "code_for_review.md",
     "package_audit": SUBMISSION / "package_consistency_audit.md",
     "figure_inventory": SUBMISSION / "figure_file_inventory.csv",
@@ -496,6 +497,26 @@ def _article_fit_checklist(main_text: str) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _author_declarations_checklist() -> str:
+    return """# Author declarations REQUIRED
+
+This checklist registers author-controlled declaration fields that must be completed before Nature Methods upload. It does not invent author, funding, competing-interest, ethics, or AI-use statements.
+
+## Required declarations before upload
+
+| Declaration | Required action | Current package evidence | Status |
+| --- | --- | --- | --- |
+| Acknowledgements and funding | Confirm final funding and acknowledgement wording, or confirm that no funding statement is needed. | No author-confirmed funding text is stored in the RhoDyn methods package. | human action |
+| Author contributions | Complete the author contribution statement using the final author list and the contribution taxonomy expected by the journal. | The repository cannot infer author order or contribution roles. | human action |
+| Competing interests | Provide the Nature Portfolio competing-interest statement for all authors. Use the journal's standard no-competing-interest statement only if true. | No author-confirmed competing-interest statement is stored in the package. | human action |
+| Ethics and biological materials | Confirm that this methods Article adds no new human-participant, animal, or private wet-lab experiments, and that public source datasets remain governed by their source records. | Current package uses public-derived data and software demonstrations; no private new wet-lab data are claimed. | human action |
+| AI-assisted content disclosure | Confirm whether any AI-assisted writing, analysis, or content-generation declaration is required and provide final journal-compliant wording if applicable. | This package does not insert an AI declaration automatically. | human action |
+| Corresponding-author and ORCID fields | Complete corresponding-author, ORCID, affiliation, and portal-only metadata in the submission system. | Package keeps scientific surfaces separate from portal-only metadata. | human action |
+
+Policy rationale. Nature Portfolio requires a competing-interest declaration for submitted manuscripts, and Springer Nature policy requires transparent AI-use declaration where applicable. These are author attestations and should be completed in the journal submission workflow rather than inferred from repository files.
+"""
+
+
 def _manifest_json(generated_utc: str, checks: list[dict[str, Any]], package_dir: Path) -> dict[str, Any]:
     package_files = [
         (SUBMISSION / path.name).relative_to(ROOT).as_posix()
@@ -532,6 +553,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Supplementary Information source | {'ready' if check_map.get('supplement_present') else 'blocked'} | `supplementary_information_for_submission.md` assembles Supplementary Methods, supplementary figure legends, supplementary table captions, and a compact traceability note. |",
         f"| Main figures | {'ready' if check_map.get('figure_files_present') else 'blocked'} | Six main display items are present in PDF, PNG, and SVG. |",
         f"| Reporting Summary | {'registered' if check_map.get('reporting_summary_present') else 'blocked'} | The required Reporting Summary placeholder is present. The final Springer Nature form remains a human submission action. |",
+        f"| Author declarations | {'registered' if check_map.get('author_declarations_present') else 'blocked'} | `author_declarations_REQUIRED.md` records author-controlled declarations that must be completed before upload. |",
         f"| Code for review | {'ready' if check_map.get('code_for_review_present') else 'blocked'} | `code_for_review.md` records release identity and reproducibility commands. |",
         f"| Editor-triage note | {'ready' if check_map.get('editor_triage_note_present') else 'blocked'} | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |",
         f"| Editorial pitch | {'ready' if check_map.get('editorial_pitch_present') else 'blocked'} | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |",
@@ -541,7 +563,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Package safety scan | {'ready' if check_map.get('package_safety_scan_clear') else 'blocked'} | Package files were scanned for local machine paths and token-like strings. |",
         f"| Consistency audit | {'ready' if check_map.get('package_consistency_audit_passed') else 'blocked'} | Package-level consistency checks passed. |",
         "",
-        "Human actions before journal upload. Complete the official Springer Nature Reporting Summary form, choose the final corresponding-author and portal metadata, verify any journal-specific file naming rules, and review the assembled main text and Supplementary Information for final author approval.",
+        "Human actions before journal upload. Complete the official Springer Nature Reporting Summary form, author declarations, corresponding-author and portal metadata, journal-specific file naming checks, and final author approval of the assembled main text and Supplementary Information.",
     ]
     return "\n".join(lines) + "\n"
 
@@ -554,6 +576,7 @@ def _submission_manifest(generated_utc: str) -> str:
         ("Main figures", "figure_file_inventory.csv", "Inventory of six main figures rendered as PDF, PNG, and SVG."),
         ("Source data and statistics", "source_data_and_statistics_inventory.csv", "Review-support inventory for statistics and source-data bindings."),
         ("Reporting Summary", "reporting_summary_REQUIRED.md", "Required journal form placeholder pending human completion."),
+        ("Author declarations", "author_declarations_REQUIRED.md", "Required author declaration checklist pending human completion."),
         ("Code for review", "code_for_review.md", "Release identity and reproducibility-command surface."),
         ("Editor-triage note", "editor_triage_note_for_cover_letter.md", "Cover-letter-ready Nature Methods fit, validation, and claim-boundary note."),
         ("Editorial pitch", "editorial_pitch_for_submission.md", "Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage."),
@@ -670,6 +693,14 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
             "name": "reporting_summary_present",
             "passed": (package_dir / "reporting_summary_REQUIRED.md").exists(),
             "detail": "Reporting Summary requirement placeholder is present",
+        },
+        {
+            "name": "author_declarations_present",
+            "passed": (package_dir / "author_declarations_REQUIRED.md").exists()
+            and "Competing interests" in (package_dir / "author_declarations_REQUIRED.md").read_text(encoding="utf-8")
+            and "AI-assisted content disclosure" in (package_dir / "author_declarations_REQUIRED.md").read_text(encoding="utf-8")
+            and "human action" in (package_dir / "author_declarations_REQUIRED.md").read_text(encoding="utf-8"),
+            "detail": "Author declarations checklist records competing-interest, contribution, funding, ethics/materials, AI-use, and portal-only human actions",
         },
         {
             "name": "code_for_review_present",
@@ -814,6 +845,7 @@ def _stage_outputs(generated_utc: str) -> tuple[dict[str, Any], dict[str, Any]]:
     _write_text(staging_submission / "editorial_pitch_for_submission.md", _editorial_pitch())
     _write_text(staging_submission / "software_reporting_checklist.md", _software_reporting_checklist())
     _write_text(staging_submission / "article_fit_checklist.md", _article_fit_checklist(main_text))
+    _write_text(staging_submission / "author_declarations_REQUIRED.md", _author_declarations_checklist())
     _write_text(staging_submission / "references_for_submission.bib", _submission_bib())
     _write_csv(
         staging_submission / "figure_file_inventory.csv",
@@ -913,7 +945,7 @@ def _update_stage9_memory(generated_utc: str, checks: list[dict[str, Any]]) -> N
         "Stage 9.0 through Stage 9.27 are complete through submission package assembly.",
         "Stage 9.28 and Stage 9.29 remain not started.",
         "No PI review packet or Stage 9 completion report is created in this pass.",
-        "The package contains reader-clean main text, Supplementary Information, code-for-review, figure inventory, source-data/statistics inventory, Reporting Summary placeholder, and readiness checklist.",
+        "The package contains reader-clean main text, Supplementary Information, code-for-review, figure inventory, source-data/statistics inventory, Reporting Summary placeholder, author declarations checklist, and readiness checklist.",
     ]
     memory["scope_rule"] = (
         "Stage 9 has completed evidence intake, guidance, corpus, narrative spine, claim freeze, paragraph and figure planning, "
@@ -931,7 +963,7 @@ def _update_roadmap_memory() -> None:
     current["stage9_active_gate"] = "Stage 9.27 Submission package assembly complete; final PI review not started"
     current["after_stage9_27_submission_package_assembly"] = (
         "Stage 9.27 assembled the collaborator-review Nature Methods package from the reader-clean main text, Supplementary Information, figures, "
-        "references, code-for-review surface, source-data/statistics inventory, Reporting Summary placeholder, and readiness checklist."
+        "references, code-for-review surface, source-data/statistics inventory, Reporting Summary placeholder, author declarations checklist, and readiness checklist."
     )
     current["current_gate"] = "Submission package assembled for collaborator review"
     current["next_stage"] = "Stage 9.28 Final human PI review packet"
@@ -974,7 +1006,7 @@ Current status. Stage 9.27 submission package assembly complete.
 
 The workspace now contains the authorized manuscript components through collaborator-review package assembly. Evidence intake, venue guidance, methods-paper corpus analysis, narrative spine, claim freeze, paragraph planning, figure planning, deterministic main-figure rendering, supplementary display planning, section contracts, front matter, Results, Introduction, Discussion, Methods, availability statements, Supplementary Methods, supplementary table/source-data binding, reference audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review, and submission package assembly are present.
 
-The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
+The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
 
 The official Springer Nature Reporting Summary form remains a human submission action. The PI review packet and Stage 9 closure report have not started.
 

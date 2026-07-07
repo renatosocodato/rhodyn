@@ -51,6 +51,11 @@
       "passed": true
     },
     {
+      "detail": "Author declarations checklist records competing-interest, contribution, funding, ethics/materials, AI-use, and portal-only human actions",
+      "name": "author_declarations_present",
+      "passed": true
+    },
+    {
       "detail": "Code-for-review surface includes reproducibility commands",
       "name": "code_for_review_present",
       "passed": true
@@ -91,9 +96,9 @@
       "passed": true
     }
   ],
-  "commit": "38cff4e149921addbf54bd797e788d6af6b5c196",
+  "commit": "cf8ce230d1adbc55519928be47e5cb619fcb9e5d",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T11:37:50Z",
+  "generated_utc": "2026-07-07T11:47:59Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -104,6 +109,7 @@
     "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
     "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
+    "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",

@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T11:37:50Z
-Git commit. 38cff4e149921addbf54bd797e788d6af6b5c196
+Generated UTC. 2026-07-07T11:47:59Z
+Git commit. cf8ce230d1adbc55519928be47e5cb619fcb9e5d
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -11,6 +11,7 @@ Git commit. 38cff4e149921addbf54bd797e788d6af6b5c196
 | Main figures | `figure_file_inventory.csv` | Inventory of six main figures rendered as PDF, PNG, and SVG. |
 | Source data and statistics | `source_data_and_statistics_inventory.csv` | Review-support inventory for statistics and source-data bindings. |
 | Reporting Summary | `reporting_summary_REQUIRED.md` | Required journal form placeholder pending human completion. |
+| Author declarations | `author_declarations_REQUIRED.md` | Required author declaration checklist pending human completion. |
 | Code for review | `code_for_review.md` | Release identity and reproducibility-command surface. |
 | Editor-triage note | `editor_triage_note_for_cover_letter.md` | Cover-letter-ready Nature Methods fit, validation, and claim-boundary note. |
 | Editorial pitch | `editorial_pitch_for_submission.md` | Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage. |
@@ -25,4 +26,4 @@ Git commit. 38cff4e149921addbf54bd797e788d6af6b5c196
 | PI review action decisions | `pi_review_action_decisions.csv` | Codex closure decisions for the PI-review action matrix. |
 | Stage 9 completion report | `../stage9_completion_report.md` | Final closure and version-binding surface for the current Nature Methods package. |
 
-Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and support files, but it does not submit the manuscript or close Stage 9.
+Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and Stage 9.29 closure support files, but it does not submit the manuscript or replace final journal-upload approval.

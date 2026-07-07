@@ -51,6 +51,11 @@
       "passed": true
     },
     {
+      "detail": "Author declarations checklist records competing-interest, contribution, funding, ethics/materials, AI-use, and portal-only human actions",
+      "name": "author_declarations_present",
+      "passed": true
+    },
+    {
       "detail": "Code-for-review surface includes reproducibility commands",
       "name": "code_for_review_present",
       "passed": true
@@ -92,15 +97,16 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "38cff4e149921addbf54bd797e788d6af6b5c196",
+  "commit": "cf8ce230d1adbc55519928be47e5cb619fcb9e5d",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T11:37:50Z",
+  "generated_utc": "2026-07-07T11:47:59Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
     "manuscript/nature_methods/stage9_closure_version_binding.json",
     "manuscript/nature_methods/stage9_completion_report.md",
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
+    "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
     "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
@@ -135,10 +141,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "38cff4e149921addbf54bd797e788d6af6b5c196",
+    "closure_commit": "cf8ce230d1adbc55519928be47e5cb619fcb9e5d",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@38cff4e149921addbf54bd797e788d6af6b5c196",
+    "package_version": "stage9.29-closure@cf8ce230d1adbc55519928be47e5cb619fcb9e5d",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

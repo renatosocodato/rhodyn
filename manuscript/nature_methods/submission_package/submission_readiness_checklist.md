@@ -8,6 +8,7 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 | Supplementary Information source | ready | `supplementary_information_for_submission.md` assembles Supplementary Methods, supplementary figure legends, supplementary table captions, and a compact traceability note. |
 | Main figures | ready | Six main display items are present in PDF, PNG, and SVG. |
 | Reporting Summary | registered | The required Reporting Summary placeholder is present. The final Springer Nature form remains a human submission action. |
+| Author declarations | registered | `author_declarations_REQUIRED.md` records author-controlled declarations that must be completed before upload. |
 | Code for review | ready | `code_for_review.md` records release identity and reproducibility commands. |
 | Editor-triage note | ready | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |
 | Editorial pitch | ready | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |
@@ -21,4 +22,4 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 | Stage 9 closure | ready | `../stage9_completion_report.md` binds the package, evidence, software, figure, and limitation versions. |
 | PI review support files | ready | Action matrix, revision log, and literature-calibration note are present. |
 
-Human actions before journal upload. Complete the official Springer Nature Reporting Summary form, choose the final corresponding-author and portal metadata, verify any journal-specific file naming rules, review the assembled main text and Supplementary Information for final author approval, and complete the remaining submission-only actions recorded after Stage 9 closure.
+Human actions before journal upload. Complete the official Springer Nature Reporting Summary form, author declarations, corresponding-author and portal metadata, journal-specific file naming checks, and final author approval of the assembled main text and Supplementary Information.

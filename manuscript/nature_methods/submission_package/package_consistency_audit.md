@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T11:37:50Z
+Generated UTC. 2026-07-07T11:47:59Z
 
 ## Result
 
@@ -20,6 +20,7 @@ Status. pass
 | figure_files_present | true | figure_file_rows=18 |
 | panelforge_status_bound | true | Stage 9.6b has six rendered main display items |
 | reporting_summary_present | true | Reporting Summary requirement placeholder is present |
+| author_declarations_present | true | Author declarations checklist records competing-interest, contribution, funding, ethics/materials, AI-use, and portal-only human actions |
 | code_for_review_present | true | Code-for-review surface includes reproducibility commands |
 | editor_triage_note_present | true | Editor-triage note foregrounds Nature Methods fit and claim boundaries |
 | editorial_pitch_present | true | Editorial pitch includes cover-letter and presubmission-inquiry drafts |

@@ -32,6 +32,7 @@ PACKAGE_TRIAGE_NOTE = SUBMISSION / "editor_triage_note_for_cover_letter.md"
 PACKAGE_EDITORIAL_PITCH = SUBMISSION / "editorial_pitch_for_submission.md"
 PACKAGE_SOFTWARE_CHECKLIST = SUBMISSION / "software_reporting_checklist.md"
 PACKAGE_ARTICLE_FIT = SUBMISSION / "article_fit_checklist.md"
+PACKAGE_AUTHOR_DECLARATIONS = SUBMISSION / "author_declarations_REQUIRED.md"
 PRIOR_ART_NOTE = STAGING / "live_cell_prior_art_candidate_for_promotion.md"
 
 
@@ -88,6 +89,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
     package_pitch = _read(PACKAGE_EDITORIAL_PITCH)
     package_software = _read(PACKAGE_SOFTWARE_CHECKLIST)
     package_article_fit = _read(PACKAGE_ARTICLE_FIT)
+    package_author_declarations = _read(PACKAGE_AUTHOR_DECLARATIONS)
     invalid_input_language = (
         "validation issues" in methods
         and "missing time units" in methods
@@ -216,6 +218,15 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "recommended_action": "Keep the Article-fit checklist with the package so format and content-type fit are explicit before upload.",
             "promotion_target": "submission_package/article_fit_checklist.md.",
         },
+        {
+            "risk_id": "NM-DESK-014",
+            "editorial_risk": "Author declarations could trigger technical return if competing interests, contributions, funding, ethics/materials, or AI-use fields are not explicit before upload.",
+            "nature_methods_requirement": "Nature Portfolio policies require completed competing-interest, authorship, reporting, and AI-use declarations where applicable.",
+            "current_evidence": "The package includes author_declarations_REQUIRED.md, which records declaration fields that require author confirmation before journal upload.",
+            "status": "hardened_in_current_text" if "Competing interests" in package_author_declarations and "AI-assisted content disclosure" in package_author_declarations and "human action" in package_author_declarations else "needs_revision",
+            "recommended_action": "Complete the author declarations before upload. Do not infer author attestations from repository files.",
+            "promotion_target": "submission_package/author_declarations_REQUIRED.md.",
+        },
     ]
 
 
@@ -284,8 +295,9 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "- The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.",
             "- The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.",
             "- The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.",
+            "- The author-declarations checklist is included in the submission package as `author_declarations_REQUIRED.md`.",
             "- No title, Abstract, Results, Methods, figure, or data changes were made.",
-            "- The official Reporting Summary remains a human submission action.",
+            "- The official Reporting Summary and author declarations remain human submission actions.",
             "",
             "## Remaining non-hardened rows",
             "",
@@ -372,6 +384,7 @@ def run() -> dict[str, object]:
             "package_editorial_pitch": PACKAGE_EDITORIAL_PITCH.relative_to(ROOT).as_posix(),
             "package_software_reporting_checklist": PACKAGE_SOFTWARE_CHECKLIST.relative_to(ROOT).as_posix(),
             "package_article_fit_checklist": PACKAGE_ARTICLE_FIT.relative_to(ROOT).as_posix(),
+            "package_author_declarations": PACKAGE_AUTHOR_DECLARATIONS.relative_to(ROOT).as_posix(),
             "prior_art_note": PRIOR_ART_NOTE.relative_to(ROOT).as_posix(),
         },
         "scope": "Editorial hardening addendum only. No data, figures, model outputs, manuscript claims, or closed package files were changed.",
