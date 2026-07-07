@@ -233,6 +233,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.3 expanded public biological demonstrations complete; Stage 10.4 held-out validation not started",
         "Stage 10.4 sealed held-out validation complete; Stage 10.5 method-first figure architecture not started",
         "Stage 10.5 method-first figure architecture complete; Stage 10.6 manuscript-pitch transformation not started",
+        "Stage 10.6 manuscript-pitch transformation complete; Stage 10.7 benchmark-ready release candidate not started",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -246,7 +247,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_5_complete_method_first_figure_architecture",
+        10: "stage10_6_complete_manuscript_pitch_transformation",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -303,6 +304,18 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "manuscript/nature_methods/figures/stage10_5_supplementary_map.csv",
             "case_studies/stage10_figure_architecture/stage10_5_gate_report.json",
             "case_studies/stage10_figure_architecture/stage10_5_figure_architecture_brief.md",
+            "docs/stage10_6_manuscript_pitch_transformation.md",
+            "scripts/run_stage10_6_manuscript_pitch.py",
+            "tests/test_stage10_6_manuscript_pitch.py",
+            "manuscript/nature_methods/stage10_6/title_abstract_v2.md",
+            "manuscript/nature_methods/stage10_6/results_method_first_v2.md",
+            "manuscript/nature_methods/stage10_6/discussion_landing_v2.md",
+            "manuscript/nature_methods/stage10_6/eic_pitch_v2.md",
+            "manuscript/nature_methods/stage10_6/main_text_method_first_rescue_draft.md",
+            "manuscript/nature_methods/stage10_6/stage10_6_change_matrix.tsv",
+            "manuscript/nature_methods/stage10_6/stage10_6_claim_boundary_audit.tsv",
+            "case_studies/stage10_manuscript_pitch/stage10_6_gate_report.json",
+            "case_studies/stage10_manuscript_pitch/stage10_6_manuscript_pitch_brief.md",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -410,9 +423,24 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.5 figure-architecture gates must all pass")
         else:
             failures.append("missing Stage 10.5 figure-architecture report")
-        for subphase in ["10.6", "10.7", "10.8", "10.9"]:
+        if subphase_status.get("10.6") != "complete_manuscript_pitch_transformation":
+            failures.append("Stage 10.6 must be complete_manuscript_pitch_transformation")
+        pitch_report_path = root / "case_studies" / "stage10_manuscript_pitch" / "stage10_6_gate_report.json"
+        if pitch_report_path.exists():
+            pitch_report = json.loads(pitch_report_path.read_text(encoding="utf-8"))
+            if pitch_report.get("status") != "pass":
+                failures.append("Stage 10.6 manuscript-pitch report must pass")
+            summary = pitch_report.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("results_subsection_count") != 6:
+                failures.append("Stage 10.6 must retain six method-first Results subsections")
+            gates = pitch_report.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.6 manuscript-pitch gates must all pass")
+        else:
+            failures.append("missing Stage 10.6 manuscript-pitch report")
+        for subphase in ["10.7", "10.8", "10.9"]:
             if subphase_status.get(subphase) != "not_started":
-                failures.append(f"Stage {subphase} must remain not_started after Stage 10.5")
+                failures.append(f"Stage {subphase} must remain not_started after Stage 10.6")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []
