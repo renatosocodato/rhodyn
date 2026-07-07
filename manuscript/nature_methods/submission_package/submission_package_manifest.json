@@ -91,6 +91,11 @@
       "passed": true
     },
     {
+      "detail": "Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries",
+      "name": "editor_objection_response_map_present",
+      "passed": true
+    },
+    {
       "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
       "name": "software_reporting_checklist_present",
       "passed": true
@@ -117,9 +122,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "59a54a6f8b93187a4edb4216820462e5652d5543",
+  "commit": "e140ca1ce0c0d9a212155ad7834a265ed290d710",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T13:08:18Z",
+  "generated_utc": "2026-07-07T13:18:28Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -129,6 +134,7 @@
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
+    "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
     "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
@@ -165,10 +171,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "59a54a6f8b93187a4edb4216820462e5652d5543",
+    "closure_commit": "e140ca1ce0c0d9a212155ad7834a265ed290d710",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@59a54a6f8b93187a4edb4216820462e5652d5543",
+    "package_version": "stage9.29-closure@e140ca1ce0c0d9a212155ad7834a265ed290d710",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

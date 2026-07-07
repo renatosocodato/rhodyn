@@ -49,6 +49,7 @@ PACKAGE_FILES = [
     SUBMISSION / "editor_triage_note_for_cover_letter.md",
     SUBMISSION / "editorial_pitch_for_submission.md",
     SUBMISSION / "prior_art_positioning_matrix.md",
+    SUBMISSION / "editor_objection_response_map.md",
     SUBMISSION / "software_reporting_checklist.md",
     SUBMISSION / "article_fit_checklist.md",
     SUBMISSION / "author_declarations_REQUIRED.md",
@@ -425,6 +426,12 @@ def _update_submission_manifest() -> None:
             anchor,
             anchor + "\n| Prior-art positioning matrix | `prior_art_positioning_matrix.md` | Novelty-boundary comparison against related dynamic-state, trajectory, imaging, and software-method literature. |",
         )
+    if "| Editor-objection response map | `editor_objection_response_map.md` |" not in body:
+        anchor = "| Prior-art positioning matrix | `prior_art_positioning_matrix.md` | Novelty-boundary comparison against related dynamic-state, trajectory, imaging, and software-method literature. |"
+        body = body.replace(
+            anchor,
+            anchor + "\n| Editor-objection response map | `editor_objection_response_map.md` | Desk-review objection map linking likely objections to existing package evidence and wording boundaries. |",
+        )
     body = body.replace(
         "Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and support files, but it does not submit the manuscript or close Stage 9.",
         "Scope. This package assembles the current Nature Methods Article surfaces for collaborator and PI review. It includes the Stage 9.28 review packet and Stage 9.29 closure support files, but it does not submit the manuscript or replace final journal-upload approval.",
@@ -461,6 +468,7 @@ def _update_submission_package_manifest(version_binding: dict[str, Any]) -> None
         "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
+        "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
         "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
         "manuscript/nature_methods/stage9_completion_report.md",

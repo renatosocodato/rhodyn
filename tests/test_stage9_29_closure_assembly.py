@@ -33,7 +33,7 @@ class Stage929ClosureAssemblyTests(unittest.TestCase):
         self.assertEqual(self.gate["closure_status"], "complete_stage9_closed_version_bound")
         self.assertEqual(self.gate["action_decision_rows"], 6)
         self.assertEqual(self.gate["human_submission_action_rows"], 1)
-        self.assertEqual(self.gate["package_file_count"], 24)
+        self.assertEqual(self.gate["package_file_count"], 25)
         self.assertEqual(self.gate["rendered_figure_file_count"], 18)
 
     def test_all_expected_closure_checks_pass(self) -> None:
@@ -101,10 +101,12 @@ class Stage929ClosureAssemblyTests(unittest.TestCase):
         self.assertIn("manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md", self.package_manifest["package_files"])
+        self.assertIn("manuscript/nature_methods/submission_package/editor_objection_response_map.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/stage9_completion_report.md", self.package_manifest["package_files"])
         self.assertIn("| Reporting Summary answer bank | `reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` |", self.submission_manifest)
         self.assertIn("| Prior-art positioning matrix | `prior_art_positioning_matrix.md` |", self.submission_manifest)
+        self.assertIn("| Editor-objection response map | `editor_objection_response_map.md` |", self.submission_manifest)
         self.assertIn("| Author declarations | `author_declarations_REQUIRED.md` |", self.submission_manifest)
         self.assertIn("| AI disclosure draft | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` |", self.submission_manifest)
         self.assertIn("| Title and author metadata | `title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md` |", self.submission_manifest)

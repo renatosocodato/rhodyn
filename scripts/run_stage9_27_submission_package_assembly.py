@@ -53,6 +53,7 @@ OUTPUTS = {
     "editor_triage_note": SUBMISSION / "editor_triage_note_for_cover_letter.md",
     "editorial_pitch": SUBMISSION / "editorial_pitch_for_submission.md",
     "prior_art_positioning_matrix": SUBMISSION / "prior_art_positioning_matrix.md",
+    "editor_objection_response_map": SUBMISSION / "editor_objection_response_map.md",
     "software_reporting_checklist": SUBMISSION / "software_reporting_checklist.md",
     "article_fit_checklist": SUBMISSION / "article_fit_checklist.md",
     "author_declarations": SUBMISSION / "author_declarations_REQUIRED.md",
@@ -474,6 +475,28 @@ Use this matrix when checking the title, Abstract, Introduction, cover letter, p
 """
 
 
+def _editor_objection_response_map() -> str:
+    return """# Editor-objection response map
+
+This map is a collaborator-review aid for the most likely Nature Methods desk-review objections. It does not add evidence, citations, figures, datasets, performance claims, or manuscript text. It links each objection to the current package evidence and the wording boundary that should be preserved during cover-letter, presubmission, and portal preparation.
+
+| Likely editorial objection | Evidence already present in the package | Safe response | Boundary to preserve |
+| --- | --- | --- | --- |
+| This reads like software packaging rather than a methods Article. | Main text, Supplementary Information, software-reporting checklist, method specification, public case-study demonstrations, and parity checks across Python, CLI, backend, workbench, exports, source distribution, checksums, GitHub, and Zenodo. | RhoDyn is framed as a method because it defines a decision object for residence-state inference, amplitude comparison, bounded coupling, reserve-like endpoints, routed-output alternatives, uncertainty, and failure modes. | Do not describe UI, backend, or archive parity as the scientific contribution by itself. |
+| The novelty may be too close to existing live-cell trajectory and state-space methods. | Prior-art positioning matrix, reference library, representative methods-paper corpus, editor-triage note, and main Introduction. | The claim is not novelty for dynamic signaling, trajectories, or state-space analysis. The claim is an inspectable workflow that asks when declared residence windows change interpretation relative to amplitude, endpoint, peak, latency, or threshold summaries. | Do not claim first-in-field status for live-cell dynamics or automatic state discovery. |
+| The validation may be too centered on one motivating biology problem. | Known-truth synthetic regimes, public DRG calcium trajectories, public ERK reporter trajectories, public-derived endpoint and paired-reporter demonstrations, held-out bounded-coupling contexts, margin-sensitivity checks, and inconclusive examples. | The RhoA/microglia work is a reference use case, while the Nature Methods evidence ladder tests the method across synthetic, public trajectory, endpoint, reserve-like, routed-output, and held-out contexts. | Do not imply that the reference use case generated the method evidence for every claim. |
+| The method may overinterpret residence as mechanism. | Claim-strength rules, limitations matrix, Results and Discussion boundaries, figure legends, and Reporting Summary answer bank. | Residence windows are declared analysis choices. Passing residence-amplitude separation supports a reviewable dynamic operating-state interpretation, not automatic mechanism discovery. | Do not state that every reporter contains a biologically meaningful residence regime. |
+| Equivalence or bounded-coupling language could be mistaken for no coupling. | Bounded-coupling Methods, source-data/statistics inventory, held-out examples, and editor-triage note. | A bounded-coupling call means equivalence within a stated margin and context. Failing and inconclusive calls remain visible. | Do not say absence of all coupling, especially slower, delayed, or condition-specific coupling. |
+| Reserve-like and routed-output examples could be read as direct biology. | Supplementary Information, source-data/statistics inventory, limitations matrix, PI review action decisions, and figure legends. | Reserve-like summaries are tied to measured endpoints, and routed-output comparisons constrain tested alternatives. Effective parameters are not biochemical edges. | Do not turn endpoint coordinates into direct reserve capacity or motor-routing mechanism claims. |
+| Reproducibility may not be strong enough for a software-methods paper. | Code-for-review file, public-access verification, GitHub and Zenodo identifiers, software checklist, command index, source-data/statistics inventory, package manifest, and release checks. | The package gives versioned commands, expected outputs, checksums, public release surfaces, and reviewable examples for the current RhoDyn release. | Do not claim package-index distribution or unrestricted access to optional controlled reference-case material. |
+| The paper may not tell a broad enough story for Nature Methods. | Title, Abstract, editor-triage note, editorial pitch, prior-art matrix, and figure spine. | The broad story is dynamic operating-state interpretation for live-cell perturbation data when endpoint or amplitude summaries may be insufficient. | Do not overextend to disease prediction, clinical utility, or universal residence superiority. |
+
+## Use during final preparation
+
+Use this map as an editor-facing stress test before submission. If a cover letter, presubmission inquiry, title, Abstract, or portal note cannot answer these objections using the safe-response column, revise the wording or keep the point out of the submission package. If answering an objection would require new data, new benchmarking, or a stronger biological claim than the package supports, retain it as a limitation rather than filling the gap rhetorically.
+"""
+
+
 def _software_reporting_checklist() -> str:
     return """# Nature Methods software-reporting checklist
 
@@ -766,6 +789,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Editor-triage note | {'ready' if check_map.get('editor_triage_note_present') else 'blocked'} | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |",
         f"| Editorial pitch | {'ready' if check_map.get('editorial_pitch_present') else 'blocked'} | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |",
         f"| Prior-art positioning matrix | {'ready' if check_map.get('prior_art_positioning_matrix_present') else 'blocked'} | `prior_art_positioning_matrix.md` distinguishes RhoDyn from related dynamic-state, trajectory, imaging, and software-method literature without adding new manuscript claims. |",
+        f"| Editor-objection response map | {'ready' if check_map.get('editor_objection_response_map_present') else 'blocked'} | `editor_objection_response_map.md` links likely desk-review objections to existing evidence and claim boundaries. |",
         f"| Software-reporting checklist | {'ready' if check_map.get('software_reporting_checklist_present') else 'blocked'} | `software_reporting_checklist.md` maps RhoDyn to Nature Methods software and algorithm reporting expectations. |",
         f"| Article-fit checklist | {'ready' if check_map.get('article_fit_checklist_present') else 'blocked'} | `article_fit_checklist.md` records content-type fit, word counts, display count, references, and section structure. |",
         f"| Reader-surface hygiene | {'ready' if check_map.get('reader_surface_hygiene_passed') else 'blocked'} | Main manuscript and Supplementary Information surfaces are free of internal IDs and build-language tokens. |",
@@ -793,6 +817,7 @@ def _submission_manifest(generated_utc: str) -> str:
         ("Editor-triage note", "editor_triage_note_for_cover_letter.md", "Cover-letter-ready Nature Methods fit, validation, and claim-boundary note."),
         ("Editorial pitch", "editorial_pitch_for_submission.md", "Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage."),
         ("Prior-art positioning matrix", "prior_art_positioning_matrix.md", "Novelty-boundary comparison against related dynamic-state, trajectory, imaging, and software-method literature."),
+        ("Editor-objection response map", "editor_objection_response_map.md", "Desk-review objection map linking likely objections to existing package evidence and wording boundaries."),
         ("Software-reporting checklist", "software_reporting_checklist.md", "Nature Methods software and algorithm reporting cross-check."),
         ("Article-fit checklist", "article_fit_checklist.md", "Nature Methods Article content-type and format cross-check."),
         ("Readiness checklist", "submission_readiness_checklist.md", "Collaborator handoff checklist."),
@@ -973,6 +998,15 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
             "detail": "Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence",
         },
         {
+            "name": "editor_objection_response_map_present",
+            "passed": (package_dir / "editor_objection_response_map.md").exists()
+            and "Editor-objection response map" in (package_dir / "editor_objection_response_map.md").read_text(encoding="utf-8")
+            and "does not add evidence, citations, figures, datasets, performance claims, or manuscript text" in (package_dir / "editor_objection_response_map.md").read_text(encoding="utf-8")
+            and "likely Nature Methods desk-review objections" in (package_dir / "editor_objection_response_map.md").read_text(encoding="utf-8")
+            and "If answering an objection would require new data, new benchmarking, or a stronger biological claim" in (package_dir / "editor_objection_response_map.md").read_text(encoding="utf-8"),
+            "detail": "Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries",
+        },
+        {
             "name": "software_reporting_checklist_present",
             "passed": (package_dir / "software_reporting_checklist.md").exists()
             and "Nature Methods software-reporting checklist" in (package_dir / "software_reporting_checklist.md").read_text(encoding="utf-8")
@@ -1096,6 +1130,7 @@ def _stage_outputs(generated_utc: str) -> tuple[dict[str, Any], dict[str, Any]]:
     _write_text(staging_submission / "editor_triage_note_for_cover_letter.md", _editor_triage_note())
     _write_text(staging_submission / "editorial_pitch_for_submission.md", _editorial_pitch())
     _write_text(staging_submission / "prior_art_positioning_matrix.md", _prior_art_positioning_matrix())
+    _write_text(staging_submission / "editor_objection_response_map.md", _editor_objection_response_map())
     _write_text(staging_submission / "software_reporting_checklist.md", _software_reporting_checklist())
     _write_text(staging_submission / "article_fit_checklist.md", _article_fit_checklist(main_text))
     _write_text(staging_submission / "author_declarations_REQUIRED.md", _author_declarations_checklist())
@@ -1156,7 +1191,7 @@ def _upsert_completed_substage(memory: dict[str, Any], checks: list[dict[str, An
         "status": "pass",
         "pass": True,
         "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.27.json",
-        "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, prior-art positioning, Reporting Summary placeholder and answer bank, and readiness checklist",
+        "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, prior-art positioning, editor-objection response map, Reporting Summary placeholder and answer bank, and readiness checklist",
         "evidence_dependencies": [
             "manuscript/nature_methods/gate_verdicts/9.26.json",
             "manuscript/nature_methods/audits/internal_peer_review_simulation.md",
@@ -1201,7 +1236,7 @@ def _update_stage9_memory(generated_utc: str, checks: list[dict[str, Any]]) -> N
         "Stage 9.0 through Stage 9.27 are complete through submission package assembly.",
         "Stage 9.28 and Stage 9.29 remain not started.",
         "No PI review packet or Stage 9 completion report is created in this pass.",
-        "The package contains reader-clean main text, Supplementary Information, code-for-review, prior-art positioning matrix, figure inventory, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist.",
+        "The package contains reader-clean main text, Supplementary Information, code-for-review, prior-art positioning matrix, editor-objection response map, figure inventory, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist.",
     ]
     memory["scope_rule"] = (
         "Stage 9 has completed evidence intake, guidance, corpus, narrative spine, claim freeze, paragraph and figure planning, "
@@ -1219,7 +1254,7 @@ def _update_roadmap_memory() -> None:
     current["stage9_active_gate"] = "Stage 9.27 Submission package assembly complete; final PI review not started"
     current["after_stage9_27_submission_package_assembly"] = (
         "Stage 9.27 assembled the collaborator-review Nature Methods package from the reader-clean main text, Supplementary Information, figures, "
-        "references, code-for-review surface, prior-art positioning matrix, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist."
+        "references, code-for-review surface, prior-art positioning matrix, editor-objection response map, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist."
     )
     current["current_gate"] = "Submission package assembled for collaborator review"
     current["next_stage"] = "Stage 9.28 Final human PI review packet"
@@ -1262,7 +1297,7 @@ Current status. Stage 9.27 submission package assembly complete.
 
 The workspace now contains the authorized manuscript components through collaborator-review package assembly. Evidence intake, venue guidance, methods-paper corpus analysis, narrative spine, claim freeze, paragraph planning, figure planning, deterministic main-figure rendering, supplementary display planning, section contracts, front matter, Results, Introduction, Discussion, Methods, availability statements, Supplementary Methods, supplementary table/source-data binding, reference audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review, and submission package assembly are present.
 
-The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/prior_art_positioning_matrix.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/reporting_summary_REQUIRED.md`, `submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
+The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/prior_art_positioning_matrix.md`, `submission_package/editor_objection_response_map.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/reporting_summary_REQUIRED.md`, `submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
 
 The official Springer Nature Reporting Summary form remains a human submission action. The PI review packet and Stage 9 closure report have not started.
 

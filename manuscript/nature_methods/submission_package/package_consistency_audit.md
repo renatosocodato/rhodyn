@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T13:08:18Z
+Generated UTC. 2026-07-07T13:18:28Z
 
 ## Result
 
@@ -28,6 +28,7 @@ Status. pass
 | editor_triage_note_present | true | Editor-triage note foregrounds Nature Methods fit and claim boundaries |
 | editorial_pitch_present | true | Editorial pitch includes cover-letter, author-confirmation, and presubmission-inquiry drafts |
 | prior_art_positioning_matrix_present | true | Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence |
+| editor_objection_response_map_present | true | Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries |
 | software_reporting_checklist_present | true | Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning |
 | article_fit_checklist_present | true | Article-fit checklist records content-type fit, word counts, display count, references, and section structure |
 | package_safety_scan_clear | true | package_hits=[] |

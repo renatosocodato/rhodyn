@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T13:08:18Z
-Git commit. 59a54a6f8b93187a4edb4216820462e5652d5543
+Generated UTC. 2026-07-07T13:18:28Z
+Git commit. e140ca1ce0c0d9a212155ad7834a265ed290d710
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -19,6 +19,7 @@ Git commit. 59a54a6f8b93187a4edb4216820462e5652d5543
 | Editor-triage note | `editor_triage_note_for_cover_letter.md` | Cover-letter-ready Nature Methods fit, validation, and claim-boundary note. |
 | Editorial pitch | `editorial_pitch_for_submission.md` | Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage. |
 | Prior-art positioning matrix | `prior_art_positioning_matrix.md` | Novelty-boundary comparison against related dynamic-state, trajectory, imaging, and software-method literature. |
+| Editor-objection response map | `editor_objection_response_map.md` | Desk-review objection map linking likely objections to existing package evidence and wording boundaries. |
 | Software-reporting checklist | `software_reporting_checklist.md` | Nature Methods software and algorithm reporting cross-check. |
 | Article-fit checklist | `article_fit_checklist.md` | Nature Methods Article content-type and format cross-check. |
 | Readiness checklist | `submission_readiness_checklist.md` | Collaborator handoff checklist. |

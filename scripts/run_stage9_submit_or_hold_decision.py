@@ -62,6 +62,7 @@ def build_report() -> dict[str, Any]:
     reporting_summary = _read(PACKAGE / "reporting_summary_REQUIRED.md")
     reporting_summary_answer_bank = _read(PACKAGE / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md")
     prior_art_positioning = _read(PACKAGE / "prior_art_positioning_matrix.md")
+    editor_objection_response = _read(PACKAGE / "editor_objection_response_map.md")
     article_fit = _read(PACKAGE / "article_fit_checklist.md")
     code_for_review = _read(PACKAGE / "code_for_review.md")
     editor_note = _read(PACKAGE / "editor_triage_note_for_cover_letter.md")
@@ -143,6 +144,14 @@ def build_report() -> dict[str, Any]:
             and "should not be positioned as the first method to treat live-cell signals as dynamic" in prior_art_positioning
             and "does not add citations, performance results, biological datasets, or manuscript claims" in prior_art_positioning,
             "Prior-art positioning matrix makes the RhoDyn novelty boundary explicit for collaborator/editorial review.",
+        ),
+        _check(
+            "editor_objection_response_map_present",
+            "Editor-objection response map" in editor_objection_response
+            and "likely Nature Methods desk-review objections" in editor_objection_response
+            and "does not add evidence, citations, figures, datasets, performance claims, or manuscript text" in editor_objection_response
+            and "If answering an objection would require new data, new benchmarking, or a stronger biological claim" in editor_objection_response,
+            "Editor-objection response map ties likely desk-review objections to existing evidence and claim boundaries.",
         ),
         _check(
             "stage9_closure_passed",

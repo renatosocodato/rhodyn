@@ -23,13 +23,13 @@ Codex closed `5` PI-review action items from existing manuscript evidence and re
 - Software version. `v0.1.0`.
 - Pyproject version. `0.1.0`.
 - Repository. `https://github.com/renatosocodato/rhodyn`.
-- Closure commit. `59a54a6f8b93187a4edb4216820462e5652d5543`.
+- Closure commit. `e140ca1ce0c0d9a212155ad7834a265ed290d710`.
 - Software archive DOI. `10.5281/zenodo.21036616`.
 - Software concept DOI. `10.5281/zenodo.21036615`.
 - Evidence version. `stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc`.
 - Claim-freeze version. `claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af`.
 - Reference version. `reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81`.
-- Package version. `stage9.29-closure@59a54a6f8b93187a4edb4216820462e5652d5543`.
+- Package version. `stage9.29-closure@e140ca1ce0c0d9a212155ad7834a265ed290d710`.
 - PanelForge version. `v3.14.1` with DOI `10.5281/zenodo.20811171`.
 
 ## Figure and package state
@@ -40,28 +40,29 @@ PanelForge remains unchanged in this closure step. The package has `18` rendered
 |---|---:|---:|
 | `manuscript/nature_methods/submission_package/main_text_for_submission.md` | `ddd08a91ef3b` | `36168` |
 | `manuscript/nature_methods/submission_package/supplementary_information_for_submission.md` | `d5bf3eadafa0` | `11912` |
-| `manuscript/nature_methods/submission_package/submission_manifest.md` | `db8d22387248` | `3332` |
-| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `bb96a5ad8cd0` | `3433` |
+| `manuscript/nature_methods/submission_package/submission_manifest.md` | `8bc93b8c8f43` | `3510` |
+| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `0e8eb64dc58a` | `3591` |
 | `manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md` | `9fc7e15e22fd` | `2079` |
 | `manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md` | `64277c70ff62` | `6528` |
 | `manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md` | `148544f738b5` | `5933` |
+| `manuscript/nature_methods/submission_package/editor_objection_response_map.md` | `96928659e456` | `5133` |
 | `manuscript/nature_methods/submission_package/software_reporting_checklist.md` | `34d4d62ebbca` | `4048` |
 | `manuscript/nature_methods/submission_package/article_fit_checklist.md` | `e98ff50a846f` | `2408` |
 | `manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md` | `503f7b39af25` | `2666` |
 | `manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` | `f656f475e944` | `2118` |
 | `manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md` | `36779884d31c` | `2315` |
 | `manuscript/nature_methods/submission_package/code_for_review.md` | `669b4108eea3` | `5472` |
-| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `f320ae4550f0` | `3173` |
+| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `fc9e0b2fb1a3` | `3332` |
 | `manuscript/nature_methods/submission_package/figure_file_inventory.csv` | `e5230d7be7fb` | `4121` |
 | `manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv` | `7cfc0ef56a00` | `6267` |
 | `manuscript/nature_methods/submission_package/references_for_submission.bib` | `c37151ef73f2` | `6973` |
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | `b83b8d2f639e` | `1448` |
 | `manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` | `2b5fac1cbf22` | `9335` |
-| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `261a4b3c5adc` | `6792` |
+| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `cbb2e3aaeec0` | `7093` |
 | `manuscript/nature_methods/submission_package/pi_review_packet.md` | `283a56dc3f67` | `7833` |
 | `manuscript/nature_methods/submission_package/pi_review_action_matrix.csv` | `e3acfd583515` | `2203` |
-| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `6925dbecf7db` | `1639` |
-| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `e0de8cc4b99a` | `1534` |
+| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `a86cba9215c5` | `1639` |
+| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `9243111e1880` | `1534` |
 
 ## Scientific boundary
 

@@ -91,6 +91,11 @@
       "passed": true
     },
     {
+      "detail": "Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries",
+      "name": "editor_objection_response_map_present",
+      "passed": true
+    },
+    {
       "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
       "name": "software_reporting_checklist_present",
       "passed": true
@@ -116,9 +121,9 @@
       "passed": true
     }
   ],
-  "commit": "59a54a6f8b93187a4edb4216820462e5652d5543",
+  "commit": "e140ca1ce0c0d9a212155ad7834a265ed290d710",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T13:08:18Z",
+  "generated_utc": "2026-07-07T13:18:28Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -128,6 +133,7 @@
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
     "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
     "manuscript/nature_methods/submission_package/prior_art_positioning_matrix.md",
+    "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
     "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
