@@ -124,12 +124,12 @@
   "claim_freeze_started": true,
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
   "closure_version_binding": {
-    "assembly_source_commit": "39a692f9934305be111642c812a1fbdd44b17262",
+    "assembly_source_commit": "1fbd8919711492ab160024a383e8020c660a11c7",
     "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-    "closure_commit": "39a692f9934305be111642c812a1fbdd44b17262",
+    "closure_commit": "1fbd8919711492ab160024a383e8020c660a11c7",
     "commit_binding_scope": "The Git anchor records the repository state used as input when the closure files were assembled. A final archival commit that contains the regenerated closure files may be a descendant of this anchor. Package file hashes are the content authority for the assembled submission package.",
     "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
-    "package_version": "stage9.29-closure@39a692f9934305be111642c812a1fbdd44b17262",
+    "package_version": "stage9.29-closure@1fbd8919711492ab160024a383e8020c660a11c7",
     "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"

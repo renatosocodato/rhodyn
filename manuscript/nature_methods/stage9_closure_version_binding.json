@@ -1,7 +1,7 @@
 {
-  "assembly_source_commit": "39a692f9934305be111642c812a1fbdd44b17262",
+  "assembly_source_commit": "1fbd8919711492ab160024a383e8020c660a11c7",
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-  "closure_commit": "39a692f9934305be111642c812a1fbdd44b17262",
+  "closure_commit": "1fbd8919711492ab160024a383e8020c660a11c7",
   "commit_binding_scope": "The Git anchor records the repository state used as input when the closure files were assembled. A final archival commit that contains the regenerated closure files may be a descendant of this anchor. Package file hashes are the content authority for the assembled submission package.",
   "content_type": "Article",
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
@@ -44,7 +44,7 @@
     "panelforge_ref": null,
     "rendered_file_count": 18
   },
-  "generated_utc": "2026-07-07T15:34:26Z",
+  "generated_utc": "2026-07-07T16:11:42Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
     "Confirm final title page, author list, affiliations, correspondence fields, author declarations, and the AI-use disclosure draft if applicable.",
@@ -220,7 +220,7 @@
       "bytes": 11008,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_package_manifest.json",
-      "sha256": "b27c015aeee0420495b23d25e2f6f5d984ae657341c701633d3c10a4410f7cf5"
+      "sha256": "565f2b94f95f78fff5d0c54b7ba068012b8f4a0ef2b0883c2c92e04eb1fc2a68"
     },
     {
       "bytes": 7833,
@@ -247,7 +247,7 @@
       "sha256": "11dbd08724288ce43f71e9decfd1d6d23a06ac87cb61ce18dccfdc12b9e2939b"
     }
   ],
-  "package_version": "stage9.29-closure@39a692f9934305be111642c812a1fbdd44b17262",
+  "package_version": "stage9.29-closure@1fbd8919711492ab160024a383e8020c660a11c7",
   "pi_review_action_decisions": [
     {
       "closure_status": "closed",
