@@ -616,6 +616,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.6 manuscript-pitch transformation complete; Stage 10.7 benchmark-ready release candidate not started",
             "Stage 10.7 benchmark-ready release candidate complete; Stage 10.8 adversarial EIC red-team simulation not started",
             "Stage 10.8 adversarial EIC red-team simulation complete; Stage 10.9 EIC-contact decision not started",
+            "Stage 10.9 EIC-contact decision complete; external contact not sent",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -636,8 +637,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_8_complete_adversarial_eic_red_team":
-                failures.append("roadmap execution memory does not mark Stage 10.8 adversarial EIC red-team simulation as complete")
+            if stage10.get("status") != "stage10_9_complete_eic_contact_decision":
+                failures.append("roadmap execution memory does not mark Stage 10.9 EIC-contact decision as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -709,6 +710,15 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "case_studies/stage10_eic_red_team/stage10_8_red_team_report.md",
                 "case_studies/stage10_eic_red_team/stage10_8_decision_brief.md",
                 "case_studies/stage10_eic_red_team/stage10_8_gate_report.json",
+                "docs/stage10_9_eic_contact_decision.md",
+                "scripts/run_stage10_9_eic_contact_decision.py",
+                "tests/test_stage10_9_eic_contact_decision.py",
+                "case_studies/stage10_eic_contact_decision/stage10_9_decision_memo.md",
+                "case_studies/stage10_eic_contact_decision/stage10_9_one_page_pitch.md",
+                "case_studies/stage10_eic_contact_decision/stage10_9_presubmission_email_draft_AUTHOR_REVIEW_REQUIRED.md",
+                "case_studies/stage10_eic_contact_decision/stage10_9_route_decision_matrix.tsv",
+                "case_studies/stage10_eic_contact_decision/stage10_9_contact_package_manifest.tsv",
+                "case_studies/stage10_eic_contact_decision/stage10_9_gate_report.json",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -868,6 +878,29 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                         failures.append("Stage 10.8 verdict rubric must retain five verdict categories")
             else:
                 failures.append("Stage 10.8 EIC red-team report is missing")
+            stage10_contact_gate = root / "case_studies" / "stage10_eic_contact_decision" / "stage10_9_gate_report.json"
+            if stage10_contact_gate.exists():
+                try:
+                    contact_payload = json.loads(stage10_contact_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.9 EIC-contact decision report is not valid JSON: {exc}")
+                else:
+                    if contact_payload.get("status") != "pass":
+                        failures.append("Stage 10.9 EIC-contact decision report must pass")
+                    if contact_payload.get("selected_route") != "presubmission_query_author_review_required":
+                        failures.append("Stage 10.9 must select presubmission-style contact with author review required")
+                    if contact_payload.get("external_contact_status") != "not_sent":
+                        failures.append("Stage 10.9 must not mark external contact as sent")
+                    gates = contact_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.9 EIC-contact decision gates must all pass")
+                    summary = contact_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("message_beat_count") != 6:
+                        failures.append("Stage 10.9 pitch must retain six required message beats")
+                    if not isinstance(summary, dict) or summary.get("selected_route_count") != 1:
+                        failures.append("Stage 10.9 must select exactly one route")
+            else:
+                failures.append("Stage 10.9 EIC-contact decision report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

@@ -1,0 +1,5 @@
+surface	path	role	author_action_required
+decision_memo	case_studies/stage10_eic_contact_decision/stage10_9_decision_memo.md	records route choice and residual risks	review before any journal contact
+one_page_pitch	case_studies/stage10_eic_contact_decision/stage10_9_one_page_pitch.md	EIC-safe presubmission pitch source	edit and approve before reuse
+email_draft	case_studies/stage10_eic_contact_decision/stage10_9_presubmission_email_draft_AUTHOR_REVIEW_REQUIRED.md	optional presubmission email scaffold	must be reviewed and sent manually by author if used
+route_matrix	case_studies/stage10_eic_contact_decision/stage10_9_route_decision_matrix.tsv	route alternatives and rationale	none unless overriding selected route

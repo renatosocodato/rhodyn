@@ -1,0 +1,39 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "author_review_required": true,
+    "external_contact_not_sent": true,
+    "full_submission_not_selected_without_pi_acceptance": true,
+    "no_high_severity_risk_inherited": true,
+    "old_package_contact_forbidden": true,
+    "presubmission_route_selected": true,
+    "six_message_beats_present": true,
+    "stage10_8_prerequisite_passed": true
+  },
+  "generated_utc": "2026-07-07T17:42:25Z",
+  "git_sha": "9e36983d172e557083a5a0e405fe26d964074d22",
+  "interpretation_boundary": "Stage 10.9 chooses an editor-contact route and prepares author-review surfaces. It does not send any message and does not add data, benchmarks, figures, or manuscript claims.",
+  "message_beat_status": {
+    "comparator classes": true,
+    "held-out validation": true,
+    "limits and not biology-only": true,
+    "method advance": true,
+    "public biological breadth": true,
+    "software reproducibility": true
+  },
+  "next_phase": "Author review and optional EIC presubmission contact",
+  "required_human_actions": [
+    "PI or corresponding author must review and approve the presubmission query before any contact.",
+    "Author must complete sender identity, affiliation, and contact details.",
+    "Author must decide whether to attach or mention the Stage 10 one-page pitch."
+  ],
+  "selected_route": "presubmission_query_author_review_required",
+  "stage": "10.9",
+  "status": "pass",
+  "summary_metrics": {
+    "message_beat_count": 6,
+    "route_count": 4,
+    "selected_route_count": 1,
+    "unresolved_high_severity_count_inherited": 0
+  }
+}
