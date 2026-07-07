@@ -1,0 +1,6 @@
+access_status	counted	license	source_id	url
+retained_public_derived_outputs_available	1	CC-BY-4.0	drg_calcium_vonbuchholtz2025	https://zenodo.org/records/14907827
+retained_public_derived_outputs_available	1	CC-BY-4.0	erk_gpcr_wan2021	https://zenodo.org/records/5836623
+retained_public_derived_outputs_available	1	CC-BY-4.0	cell_painting_mitotox_seal2023	https://zenodo.org/records/10011861
+retained_public_derived_outputs_available	1	CC-BY-4.0	mlci_tracking	https://zenodo.org/records/7260137
+source_probe_readable	0	no_explicit_license_detected	birtwistle_erk_akt_cell_division	https://github.com/birtwistlelab/Predicting-Individual-Cell-Division-Events-from-Single-Cell-ERK-and-Akt-Dynamics

@@ -84,7 +84,15 @@ Stage 10.2 is now implemented as a named-baseline benchmark surface. The executa
 
 The completed benchmark evaluates RhoDyn against internal simple summaries plus SciPy signal peak detection, scikit-learn feature classification, hmmlearn state summaries, catch22-style, tsfresh-style, MiniROCKET-style, and ruptures-style comparator families. The gate report passes with seven named external-style families and three direct optional package families available in the current runtime. The benchmark deliberately reports that generic feature methods can match the synthetic labels in this fixture. That result defines where classifier-like summaries may be sufficient and where RhoDyn's declared residence-state decision object remains more interpretable.
 
-Stage 10.2 does not add a new biological system. The DRG calcium and ERK GPCR public inputs are included as shared-input comparator summaries, not as new truth-labeled evidence of method superiority. Stage 10.3 remains required before the Nature Methods generality claim is safer.
+Stage 10.2 does not add a new biological system. The DRG calcium and ERK GPCR public inputs are included as shared-input comparator summaries, not as new truth-labeled evidence of method superiority.
+
+### Stage 10.3 completion update
+
+Stage 10.3 is now implemented as an expanded public biological breadth surface. The executable runner is `scripts/run_stage10_3_public_biological_breadth.py`, the documentation page is `docs/stage10_3_public_biological_breadth.md`, and the breadth outputs are under `case_studies/stage10_public_breadth/`.
+
+The completed breadth matrix counts four independent public systems across live-cell calcium dynamics, GPCR-linked ERK trajectories, perturbation endpoint morphology and cell-health profiling, and microbial live-cell tracking. It adds Cell Painting/MitoTox and MLCI tracking as public systems beyond the earlier DRG and ERK trajectory examples. It also retains ERK/AKT bounded-coupling evidence as method support while not counting it as another independent public system because it shares the Wan source family. A public Birtwistle ERK/AKT cell-division source was verified as readable but deferred because no explicit repository license was detected, so no derivative table is retained and it is not counted as release-ready evidence.
+
+Stage 10.3 reduces the biological-breadth vulnerability. It does not show that every live-cell system has a residence regime and does not remove the need for Stage 10.4 held-out validation.
 
 ## Stage 10.2 named benchmarking ladder
 

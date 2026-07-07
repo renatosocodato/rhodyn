@@ -1,0 +1,25 @@
+{
+  "counted_as_stage10_3_public_system": false,
+  "file_shapes": {
+    "all_div_cells_Akt": "6x117",
+    "all_div_cells_ERK": "6x225",
+    "all_non_div_Akt": "6x312",
+    "all_non_div_ERK": "6x82"
+  },
+  "github_api_available": true,
+  "interpretation_boundary": "Public source files are readable, but no explicit repository license was detected. Stage 10.3 records this as a future candidate and does not retain derivative tables.",
+  "license": null,
+  "license_status": "not_counted_no_explicit_license_detected",
+  "mat_files_readable": true,
+  "readme_available": true,
+  "readme_sha256": "bbd1a73a77ceb8c996182f2b1a712e2e8b0bbaeb6b083b346a0c25be77b60fae",
+  "repo": "https://github.com/birtwistlelab/Predicting-Individual-Cell-Division-Events-from-Single-Cell-ERK-and-Akt-Dynamics",
+  "retained_derivative_data": false,
+  "source_hashes": {
+    "all_div_cells_Akt": "cac590df8062b706391668c224b10d095b0c40be6f5e8df74832c3d8ee6d9a36",
+    "all_div_cells_ERK": "aec8d269b91c2fc3cf19b559c44474e87951074a914873898382287f4dd3c9dc",
+    "all_non_div_Akt": "b04a20e5b17d840eeed571cda6a12ec53769dd4e060f12dfe7487d17d85ad53c",
+    "all_non_div_ERK": "5b7d61e496bc55b909668d896d0cb0009d90d31e20d429dc53518beaeef7280f"
+  },
+  "source_id": "birtwistle_erk_akt_cell_division"
+}

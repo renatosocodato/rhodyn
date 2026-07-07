@@ -230,6 +230,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.0 Nature Methods EIC rescue roadmap scaffold serialized; implementation not started",
         "Stage 10.1 method object v2 complete; Stage 10.2 named benchmarking not started",
         "Stage 10.2 named benchmarking complete; Stage 10.3 expanded public biological demonstrations not started",
+        "Stage 10.3 expanded public biological demonstrations complete; Stage 10.4 held-out validation not started",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -243,7 +244,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_2_complete_named_benchmarking",
+        10: "stage10_3_complete_public_biological_breadth",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -273,6 +274,16 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_named_benchmarks/stage10_2_runtime_memory.tsv",
             "case_studies/stage10_named_benchmarks/stage10_2_failure_boundary_report.md",
             "case_studies/stage10_named_benchmarks/stage10_2_named_benchmark_brief.md",
+            "docs/stage10_3_public_biological_breadth.md",
+            "scripts/run_stage10_3_public_biological_breadth.py",
+            "tests/test_stage10_3_public_biological_breadth.py",
+            "case_studies/stage10_public_breadth/stage10_3_public_breadth_report.json",
+            "case_studies/stage10_public_breadth/stage10_3_public_system_matrix.tsv",
+            "case_studies/stage10_public_breadth/stage10_3_mlci_tracking_residence_summary.csv",
+            "case_studies/stage10_public_breadth/stage10_3_candidate_resolution.tsv",
+            "case_studies/stage10_public_breadth/stage10_3_source_access_ledger.tsv",
+            "case_studies/stage10_public_breadth/stage10_3_birtwistle_source_probe.json",
+            "case_studies/stage10_public_breadth/stage10_3_public_breadth_brief.md",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -306,6 +317,8 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 10.1 must be complete_method_object_v2")
         if subphase_status.get("10.2") != "complete_named_benchmarking":
             failures.append("Stage 10.2 must be complete_named_benchmarking")
+        if subphase_status.get("10.3") != "complete_public_biological_breadth":
+            failures.append("Stage 10.3 must be complete_public_biological_breadth")
         gate_report_path = root / "case_studies" / "stage10_method_object_v2" / "stage10_1_method_object_gate_report.json"
         if gate_report_path.exists():
             gate_report = json.loads(gate_report_path.read_text(encoding="utf-8"))
@@ -327,9 +340,24 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.2 named-benchmark gates must all pass")
         else:
             failures.append("missing Stage 10.2 named-benchmark report")
-        for subphase in ["10.3", "10.4", "10.5", "10.6", "10.7", "10.8", "10.9"]:
+        breadth_report_path = root / "case_studies" / "stage10_public_breadth" / "stage10_3_public_breadth_report.json"
+        if breadth_report_path.exists():
+            breadth_report = json.loads(breadth_report_path.read_text(encoding="utf-8"))
+            if breadth_report.get("status") != "pass":
+                failures.append("Stage 10.3 public-breadth report must pass")
+            summary = breadth_report.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("counted_independent_public_systems", 0) < 4:
+                failures.append("Stage 10.3 must count at least four independent public systems")
+            if not isinstance(summary, dict) or summary.get("counted_biological_domains", 0) < 3:
+                failures.append("Stage 10.3 must count at least three biological domains")
+            gates = breadth_report.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.3 public-breadth gates must all pass")
+        else:
+            failures.append("missing Stage 10.3 public-breadth report")
+        for subphase in ["10.4", "10.5", "10.6", "10.7", "10.8", "10.9"]:
             if subphase_status.get(subphase) != "not_started":
-                failures.append(f"Stage {subphase} must remain not_started after Stage 10.2")
+                failures.append(f"Stage {subphase} must remain not_started after Stage 10.3")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

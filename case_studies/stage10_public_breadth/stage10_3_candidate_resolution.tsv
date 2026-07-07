@@ -1,0 +1,6 @@
+candidate_id	counted	decision	reason
+mlci_tracking	1	counted_stage10_3_public_system	CC-BY live-cell tracking source already has retained derived trajectory features and now contributes a residence/amplitude breadth case.
+cell_painting_mitotox_seal2023	1	counted_stage10_3_public_system	CC-BY perturbation endpoint source contributes routed-output and endpoint-preservation breadth beyond trajectory-only signaling.
+birtwistle_erk_akt_cell_division	0	source_verified_but_deferred	Public ERK/Akt cell-division MAT files are readable, but no explicit repository license was detected; no derivative table is retained in this phase.
+nfkb_watchlist	0	deferred	High-value immune dynamics target, but no release-safe tidy trajectory source with license and grouping metadata has been promoted yet.
+esc_erk_akt_stat3_cell_systems	0	deferred	Scientifically strong ESC signaling candidate, but direct supplemental source access was not stable enough for retained Stage 10.3 outputs.

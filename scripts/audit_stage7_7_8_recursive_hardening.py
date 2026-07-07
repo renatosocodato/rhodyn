@@ -674,6 +674,7 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         "Stage 10.0 Nature Methods EIC rescue roadmap scaffold serialized; implementation not started",
         "Stage 10.1 method object v2 complete; Stage 10.2 named benchmarking not started",
         "Stage 10.2 named benchmarking complete; Stage 10.3 expanded public biological demonstrations not started",
+        "Stage 10.3 expanded public biological demonstrations complete; Stage 10.4 held-out validation not started",
     }
     if current.get("active_stage") not in allowed_active_stages:
         failures.append("roadmap active stage must record the Stage 9.29 closure boundary or an authorized post-closure Stage 10 state")

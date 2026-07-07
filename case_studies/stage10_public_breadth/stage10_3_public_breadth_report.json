@@ -1,0 +1,35 @@
+{
+  "created_outputs": [
+    "stage10_3_public_system_matrix.tsv",
+    "stage10_3_mlci_tracking_residence_summary.csv",
+    "stage10_3_candidate_resolution.tsv",
+    "stage10_3_source_access_ledger.tsv",
+    "stage10_3_birtwistle_source_probe.json",
+    "stage10_3_public_breadth_brief.md",
+    "stage10_3_public_breadth_report.json"
+  ],
+  "gates": {
+    "bounded_coupling_or_routed_output_evidence_retained": true,
+    "four_total_independent_public_systems": true,
+    "negative_or_amplitude_sufficient_case_present": true,
+    "three_or_more_biological_domains": true,
+    "two_additional_systems_beyond_drg_and_erk": true,
+    "unlicensed_public_source_not_counted": true
+  },
+  "interpretation_boundary": "Stage 10.3 expands public biological breadth, but it does not show that every live-cell system has a residence regime and does not count unlicensed public sources as release-ready demonstrations.",
+  "next_phase": "Stage 10.4 blinded or held-out challenge route",
+  "output_dir": "case_studies/stage10_public_breadth",
+  "report_format": "rhodyn.stage10_3_public_biological_breadth.v1",
+  "stage": "10.3",
+  "status": "pass",
+  "summary_metrics": {
+    "additional_systems_beyond_drg_and_erk": [
+      "cell_painting_mitotox_seal2023",
+      "mlci_tracking"
+    ],
+    "birtwistle_counted": false,
+    "birtwistle_mat_files_readable": true,
+    "counted_biological_domains": 4,
+    "counted_independent_public_systems": 4
+  }
+}
