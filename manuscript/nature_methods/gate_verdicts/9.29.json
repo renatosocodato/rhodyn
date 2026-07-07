@@ -17,12 +17,12 @@
       "passed": true
     },
     {
-      "detail": "package_file_count=22",
+      "detail": "package_file_count=23",
       "name": "package_files_present",
       "passed": true
     },
     {
-      "detail": "stage9.29-closure@ff413de392595648330d3ec8e19ed6947609ed08",
+      "detail": "stage9.29-closure@1b5502dbcbf61056d482cd7ce5e8d0238a5e5869",
       "name": "package_version_bound",
       "passed": true
     },
@@ -73,8 +73,8 @@
     }
   ],
   "closure_status": "complete_stage9_closed_version_bound",
-  "generated_utc": "2026-07-07T12:45:58Z",
-  "git_sha": "ff413de392595648330d3ec8e19ed6947609ed08",
+  "generated_utc": "2026-07-07T12:54:47Z",
+  "git_sha": "1b5502dbcbf61056d482cd7ce5e8d0238a5e5869",
   "human_submission_action_rows": 1,
   "next_substage": "none",
   "outputs": {
@@ -83,7 +83,7 @@
     "gate": "manuscript/nature_methods/gate_verdicts/9.29.json",
     "version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json"
   },
-  "package_file_count": 22,
+  "package_file_count": 23,
   "pass": true,
   "rendered_figure_file_count": 18,
   "scope_boundary": "Closure and version binding only. No new analysis, figure, dataset, model output, manuscript claim, or journal upload is created.",
@@ -92,7 +92,7 @@
   "version_binding": {
     "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
     "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
-    "package_version": "stage9.29-closure@ff413de392595648330d3ec8e19ed6947609ed08",
+    "package_version": "stage9.29-closure@1b5502dbcbf61056d482cd7ce5e8d0238a5e5869",
     "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"

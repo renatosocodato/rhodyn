@@ -92,6 +92,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
@@ -1952,6 +1953,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "figure_files_present",
             "panelforge_status_bound",
             "reporting_summary_present",
+            "reporting_summary_answer_bank_present",
             "code_for_review_present",
             "editor_triage_note_present",
             "editorial_pitch_present",
@@ -1990,6 +1992,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
             "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
             "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+            "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
             "manuscript/nature_methods/submission_package/code_for_review.md",
             "manuscript/nature_methods/submission_package/package_consistency_audit.md",
             "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
@@ -2032,7 +2035,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         checklist = workspace / "submission_package" / "submission_readiness_checklist.md"
         if checklist.exists():
             body = checklist.read_text(encoding="utf-8")
-            for phrase in ["Main manuscript source | ready", "Supplementary Information source | ready", "Editor-triage note | ready", "Editorial pitch | ready", "Software-reporting checklist | ready", "Article-fit checklist | ready", "Author declarations | registered", "Reporting Summary | registered", "final Springer Nature form remains a human submission action"]:
+            for phrase in ["Main manuscript source | ready", "Supplementary Information source | ready", "Editor-triage note | ready", "Editorial pitch | ready", "Software-reporting checklist | ready", "Article-fit checklist | ready", "Author declarations | registered", "Reporting Summary | registered", "Reporting Summary answer bank | registered", "final Springer Nature form remains a human submission action"]:
                 if phrase not in body:
                     failures.append(f"Stage 9.27 readiness checklist missing phrase: {phrase}")
     if not stage9_27_started:
@@ -2048,6 +2051,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "submission_package/author_declarations_REQUIRED.md",
             "submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
             "submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+            "submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
             "submission_package/code_for_review.md",
             "submission_package/package_consistency_audit.md",
             "submission_package/figure_file_inventory.csv",
@@ -2162,8 +2166,8 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.29 must record six PI-review action decisions")
         if stage9_29_gate.get("human_submission_action_rows") != 1:
             failures.append("Stage 9.29 must retain one human submission action")
-        if stage9_29_gate.get("package_file_count") != 22:
-            failures.append("Stage 9.29 must bind twenty-two package files")
+        if stage9_29_gate.get("package_file_count") != 23:
+            failures.append("Stage 9.29 must bind twenty-three package files")
         if stage9_29_gate.get("rendered_figure_file_count") != 18:
             failures.append("Stage 9.29 must bind eighteen rendered figure files")
         for rel in [

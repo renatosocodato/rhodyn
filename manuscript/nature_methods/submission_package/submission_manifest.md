@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T12:45:58Z
-Git commit. ff413de392595648330d3ec8e19ed6947609ed08
+Generated UTC. 2026-07-07T12:54:47Z
+Git commit. 1b5502dbcbf61056d482cd7ce5e8d0238a5e5869
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -11,6 +11,7 @@ Git commit. ff413de392595648330d3ec8e19ed6947609ed08
 | Main figures | `figure_file_inventory.csv` | Inventory of six main figures rendered as PDF, PNG, and SVG. |
 | Source data and statistics | `source_data_and_statistics_inventory.csv` | Review-support inventory for statistics and source-data bindings. |
 | Reporting Summary | `reporting_summary_REQUIRED.md` | Required journal form placeholder pending human completion. |
+| Reporting Summary answer bank | `reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation answer bank mapping current evidence to official Reporting Summary fields. |
 | Author declarations | `author_declarations_REQUIRED.md` | Required author declaration checklist pending human completion. |
 | AI disclosure draft | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation wording options for any required AI-assisted content disclosure. |
 | Title and author metadata | `title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation template for title-page, author-list, affiliation, correspondence, ORCID, and review-mode fields. |

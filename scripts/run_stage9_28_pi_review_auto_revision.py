@@ -75,6 +75,7 @@ PACKAGE_SCAN_TARGETS = [
     SUBMISSION / "author_declarations_REQUIRED.md",
     SUBMISSION / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
     SUBMISSION / "title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+    SUBMISSION / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
     SUBMISSION / "pi_review_packet.md",
     SUBMISSION / "pi_review_action_matrix.csv",
     SUBMISSION / "pi_review_revision_log.md",

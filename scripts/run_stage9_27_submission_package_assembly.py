@@ -57,6 +57,7 @@ OUTPUTS = {
     "author_declarations": SUBMISSION / "author_declarations_REQUIRED.md",
     "ai_disclosure_draft": SUBMISSION / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
     "title_author_metadata": SUBMISSION / "title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+    "reporting_summary_answer_bank": SUBMISSION / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
     "code_review": SUBMISSION / "code_for_review.md",
     "package_audit": SUBMISSION / "package_consistency_audit.md",
     "figure_inventory": SUBMISSION / "figure_file_inventory.csv",
@@ -412,7 +413,7 @@ The validation strategy is built around the questions a methods editor and user 
 
 We believe the manuscript fits Nature Methods because it presents a reusable computational method with immediate practical relevance for a diverse methods readership. A biologist can use the package to decide whether a tidy live-cell or endpoint perturbation table supports residence-state interpretation, amplitude-only interpretation, bounded coupling, reserve-like buffering, routed-output comparison, or a withheld conclusion. A quantitative reader can inspect the same decision through declared windows, margins, uncertainty summaries, versioned commands, and reproducible exports.
 
-The paper is deliberately scoped. A residence window is a declared analysis choice, not an automatically discovered biological state. A bounded-coupling result means equivalence within a stated margin and context, not absence of all coupling. Reserve-like endpoint summaries remain tied to the measured assay, and routed-output comparisons constrain tested alternatives without identifying direct biochemical edges. The software is publicly available as RhoDyn v0.1.0 with GitHub and Zenodo release records, documented commands, public-derived example tables, tests, figure-ready outputs, and reviewable reproducibility surfaces. We have included data and code availability statements, a Reporting Summary placeholder for final portal completion, author-declaration prompts, a code-for-review surface, figure inventories, and source-data/statistics inventories.
+The paper is deliberately scoped. A residence window is a declared analysis choice, not an automatically discovered biological state. A bounded-coupling result means equivalence within a stated margin and context, not absence of all coupling. Reserve-like endpoint summaries remain tied to the measured assay, and routed-output comparisons constrain tested alternatives without identifying direct biochemical edges. The software is publicly available as RhoDyn v0.1.0 with GitHub and Zenodo release records, documented commands, public-derived example tables, tests, figure-ready outputs, and reviewable reproducibility surfaces. We have included data and code availability statements, a Reporting Summary placeholder and answer bank for final portal completion, author-declaration prompts, a code-for-review surface, figure inventories, and source-data/statistics inventories.
 
 Sincerely,
 
@@ -582,6 +583,87 @@ Before journal upload, transfer the completed author-confirmed fields into the m
 """
 
 
+def _reporting_summary_answer_bank_author_confirmation() -> str:
+    return """# Reporting Summary answer bank AUTHOR CONFIRMATION REQUIRED
+
+This file is a field-ready support surface for completing the official Springer Nature Reporting Summary. It is not the completed journal form. Authors must transfer only author-confirmed answers into the official PDF or portal form and must check the final form before submission.
+
+## Source of the requested fields
+
+Nature Portfolio asks authors to complete a reporting summary where relevant, including statistics, software and code, data availability, study design, sample size, data exclusions, replication, randomization, blinding, and relevant materials or methods categories. The official form also states that fields should not be completed with "not applicable" or "n/a". Use a specific explanation when a field does not apply to this methods Article.
+
+## Journal metadata fields
+
+| Reporting Summary field | Draft answer or action | Author confirmation |
+| --- | --- | --- |
+| Corresponding author(s) | Complete with the final corresponding author name(s) after author approval. | required |
+| Last updated by author(s) | Complete with the author who finalizes the official form and the final date. | required |
+| Manuscript title | RhoDyn infers residence states in live-cell perturbation data. Confirm final title against the manuscript and portal metadata. | required |
+
+## Statistics
+
+| Reporting Summary field | Draft answer or evidence source | Author confirmation |
+| --- | --- | --- |
+| Exact sample size for each group or condition | Sample sizes for benchmark and case-study analyses are reported in `source_data_and_statistics_inventory.csv`, the Online Methods, and figure legends where applicable. Confirm the final values against the generated figure legends and tables before upload. | required |
+| Distinct samples or repeated measurements | The manuscript distinguishes trajectory-level repeated time measurements from endpoint tables, synthetic benchmark rows, and public-derived examples. Confirm that the final form states the relevant unit for each analysis. | required |
+| Statistical tests and sidedness | The Online Methods describe residence scoring, amplitude comparators, bounded-coupling decisions, reserve-like endpoint summaries, uncertainty intervals, and reduced-architecture comparisons. Confirm all tests and sidedness are reflected in the form. | required |
+| Covariates tested | No hidden covariate model is introduced by the submission package. Any covariates or grouping variables used for a specific case study should be copied from the Online Methods and source-data/statistics inventory. | required |
+| Assumptions and multiple-comparison corrections | The manuscript describes margin choices, uncertainty handling, and interpretation boundaries for bounded-coupling and model-comparison examples. Confirm any correction procedures or assumptions in the official form. | required |
+| Statistical parameters and uncertainty | Effects, intervals, and decision thresholds are reported in figure legends, Online Methods, and the statistics inventory. Confirm that confidence intervals, posterior summaries, and decision thresholds match the final package. | required |
+| Bayesian analyses | Bayesian or posterior-mass language should be included only where used by a specific analysis surface. Confirm priors and computation details from the Methods before completing this field. | required |
+| Hierarchical or complex designs | The method distinguishes time-series, endpoint, public-derived, and synthetic-truth examples. Confirm that any grouped or repeated structure is stated at the analysis unit used by the manuscript. | required |
+
+## Software and code
+
+| Reporting Summary field | Draft answer or evidence source | Author confirmation |
+| --- | --- | --- |
+| Data collection | This methods Article does not introduce new wet-lab data collection software. Public-derived and synthetic examples are analyzed from tabular inputs described in the manuscript and support files. Confirm if any author-supplied reference-case data collection software is disclosed separately. | required |
+| Data analysis | RhoDyn v0.1.0 is the analysis software. Public source code is available at https://github.com/renatosocodato/rhodyn and the citable software archive is https://doi.org/10.5281/zenodo.21036616. PanelForge v3.14.1 is used for figure rendering and is archived at https://doi.org/10.5281/zenodo.20811171. | required |
+| Custom algorithms or central software | RhoDyn is the central method and is available to editors and reviewers through the public repository, Zenodo release, documented command index, tests, and example inputs. | required |
+
+## Data
+
+| Reporting Summary field | Draft answer or evidence source | Author confirmation |
+| --- | --- | --- |
+| Public datasets and accession identifiers | Public-derived input records and software/example data are identified in the Data availability section, code-for-review surface, source-data/statistics inventory, and reference list. Confirm that all final URLs and DOIs resolve before upload. | required |
+| Restrictions on data availability | The main software package is public. Any optional RhoA/microglia reference case that is not publicly redistributable should remain scoped as reviewer-access or controlled-access material and should not be represented as a public dataset unless authors provide the appropriate repository record. | required |
+| Minimum dataset for replication | The minimum dataset for the public RhoDyn method examples is the released example data, synthetic benchmark outputs, documented command index, and citable software archive. Confirm whether any optional reference-case data are included in the journal upload package. | required |
+
+## Life-science study design
+
+| Reporting Summary field | Draft answer or evidence source | Author confirmation |
+| --- | --- | --- |
+| Sample size | Sample sizes are inherited from public examples, synthetic benchmark designs, and any optional reference-use case. No repository-derived author decision should be used to justify sample size beyond the evidence described in the manuscript. | required |
+| Data exclusions | Use the Methods and source-data/statistics inventory to state any declared filtering, quality-control, schema validation, or exclusion rule. If no exclusions apply to a given example, state that no data were excluded for that analysis. | required |
+| Replication | The public method examples are reproducible through CLI workflows, tests, generated benchmark reports, and public release archives. Confirm whether biological replication applies to any optional reference-use case. | required |
+| Randomization | Synthetic generators use seeded construction where stated. Public-derived examples are not randomized experiments performed by this manuscript package. State the applicable design rather than using a generic response. | required |
+| Blinding | The software demonstrations and public-derived analyses are computational examples rather than blinded wet-lab experiments. If any optional reference case involved blinding, report it from the source study or author-confirmed records. | required |
+
+## Materials and experimental systems
+
+| Reporting Summary field | Draft answer or evidence source | Author confirmation |
+| --- | --- | --- |
+| Antibodies | Not relevant to the public RhoDyn methods package unless an optional reference-use case reports antibody data. | required |
+| Eukaryotic cell lines | Not newly generated or experimentally manipulated by the RhoDyn methods package. If the optional RhoA/microglia reference case is included, report cell-line details from the source record only. | required |
+| Animals and other organisms | No new animal or organism experiments are performed by the RhoDyn methods package. Any optional reference-case animal or organism information must come from the source study or author-confirmed records. | required |
+| Human participants or clinical data | The public RhoDyn package does not introduce new human-participant or clinical datasets. Any third-party human-derived data used as a public example should be described through its source record and access terms. | required |
+| Dual-use research of concern | The package implements computational analysis of live-cell perturbation data and does not create agents, protocols, or information intended for harmful misuse. Authors should confirm this before upload. | required |
+| Plants, palaeontology, archaeology, field work | Not relevant to the current methods Article because these systems are not used. State the reason in the official form rather than using "n/a". | required |
+
+## Method-specific categories
+
+| Reporting Summary field | Draft answer or evidence source | Author confirmation |
+| --- | --- | --- |
+| ChIP-seq | Not used in this methods Article. | required |
+| Flow cytometry | Not used in this methods Article. | required |
+| MRI-based neuroimaging | Not used in this methods Article. | required |
+
+## Final author checks
+
+Before submission, verify that the official Reporting Summary matches the main manuscript, Supplementary Information, source-data/statistics inventory, code-for-review surface, and final author declarations. Do not use this answer bank to strengthen any manuscript claim. It is a transfer aid for reporting transparency only.
+"""
+
+
 def _ai_disclosure_author_confirmation() -> str:
     return """# AI disclosure AUTHOR CONFIRMATION REQUIRED
 
@@ -645,6 +727,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Supplementary Information source | {'ready' if check_map.get('supplement_present') else 'blocked'} | `supplementary_information_for_submission.md` assembles Supplementary Methods, supplementary figure legends, supplementary table captions, and a compact traceability note. |",
         f"| Main figures | {'ready' if check_map.get('figure_files_present') else 'blocked'} | Six main display items are present in PDF, PNG, and SVG. |",
         f"| Reporting Summary | {'registered' if check_map.get('reporting_summary_present') else 'blocked'} | The required Reporting Summary placeholder is present. The final Springer Nature form remains a human submission action. |",
+        f"| Reporting Summary answer bank | {'registered' if check_map.get('reporting_summary_answer_bank_present') else 'blocked'} | `reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` maps the current package evidence to official Reporting Summary fields for author-confirmed transfer into the journal form. |",
         f"| Author declarations | {'registered' if check_map.get('author_declarations_present') else 'blocked'} | `author_declarations_REQUIRED.md` records author-controlled declarations that must be completed before upload. |",
         f"| AI disclosure draft | {'registered' if check_map.get('ai_disclosure_draft_present') else 'blocked'} | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` provides draft wording options that require author confirmation before use. |",
         f"| Title and author metadata | {'registered' if check_map.get('title_author_metadata_present') else 'blocked'} | `title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md` records the author-list, affiliation, correspondence, ORCID, and review-mode fields that must be author-confirmed. |",
@@ -657,7 +740,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Package safety scan | {'ready' if check_map.get('package_safety_scan_clear') else 'blocked'} | Package files were scanned for local machine paths and token-like strings. |",
         f"| Consistency audit | {'ready' if check_map.get('package_consistency_audit_passed') else 'blocked'} | Package-level consistency checks passed. |",
         "",
-        "Human actions before journal upload. Complete the official Springer Nature Reporting Summary form, author declarations, corresponding-author and portal metadata, journal-specific file naming checks, and final author approval of the assembled main text and Supplementary Information.",
+        "Human actions before journal upload. Complete the official Springer Nature Reporting Summary form using author-confirmed answers, author declarations, corresponding-author and portal metadata, journal-specific file naming checks, and final author approval of the assembled main text and Supplementary Information.",
     ]
     return "\n".join(lines) + "\n"
 
@@ -670,6 +753,7 @@ def _submission_manifest(generated_utc: str) -> str:
         ("Main figures", "figure_file_inventory.csv", "Inventory of six main figures rendered as PDF, PNG, and SVG."),
         ("Source data and statistics", "source_data_and_statistics_inventory.csv", "Review-support inventory for statistics and source-data bindings."),
         ("Reporting Summary", "reporting_summary_REQUIRED.md", "Required journal form placeholder pending human completion."),
+        ("Reporting Summary answer bank", "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md", "Author-confirmation answer bank mapping current evidence to official Reporting Summary fields."),
         ("Author declarations", "author_declarations_REQUIRED.md", "Required author declaration checklist pending human completion."),
         ("AI disclosure draft", "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md", "Author-confirmation wording options for any required AI-assisted content disclosure."),
         ("Title and author metadata", "title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md", "Author-confirmation template for title-page, author-list, affiliation, correspondence, ORCID, and review-mode fields."),
@@ -789,6 +873,16 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
             "name": "reporting_summary_present",
             "passed": (package_dir / "reporting_summary_REQUIRED.md").exists(),
             "detail": "Reporting Summary requirement placeholder is present",
+        },
+        {
+            "name": "reporting_summary_answer_bank_present",
+            "passed": (package_dir / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md").exists()
+            and "AUTHOR CONFIRMATION REQUIRED" in (package_dir / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Statistics" in (package_dir / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Software and code" in (package_dir / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Life-science study design" in (package_dir / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+            and "Materials and experimental systems" in (package_dir / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8"),
+            "detail": "Reporting Summary answer bank maps statistics, software, data, study design, and materials fields to author-confirmed package evidence",
         },
         {
             "name": "author_declarations_present",
@@ -964,6 +1058,7 @@ def _stage_outputs(generated_utc: str) -> tuple[dict[str, Any], dict[str, Any]]:
     _write_text(staging_submission / "author_declarations_REQUIRED.md", _author_declarations_checklist())
     _write_text(staging_submission / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md", _ai_disclosure_author_confirmation())
     _write_text(staging_submission / "title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md", _title_author_metadata_author_confirmation())
+    _write_text(staging_submission / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md", _reporting_summary_answer_bank_author_confirmation())
     _write_text(staging_submission / "references_for_submission.bib", _submission_bib())
     _write_csv(
         staging_submission / "figure_file_inventory.csv",
@@ -1018,7 +1113,7 @@ def _upsert_completed_substage(memory: dict[str, Any], checks: list[dict[str, An
         "status": "pass",
         "pass": True,
         "gate_verdict_path": "manuscript/nature_methods/gate_verdicts/9.27.json",
-        "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, Reporting Summary placeholder, and readiness checklist",
+        "validation_outcome": "Submission package assembled with reader-clean main text, Supplementary Information, figure inventory, source-data/statistics inventory, code-for-review, Reporting Summary placeholder and answer bank, and readiness checklist",
         "evidence_dependencies": [
             "manuscript/nature_methods/gate_verdicts/9.26.json",
             "manuscript/nature_methods/audits/internal_peer_review_simulation.md",
@@ -1028,7 +1123,7 @@ def _upsert_completed_substage(memory: dict[str, Any], checks: list[dict[str, An
         ],
         "files_created_or_modified": [path.relative_to(ROOT).as_posix() for path in OUTPUTS.values()],
         "remaining_blockers": [
-            "Final Springer Nature Reporting Summary form remains a human submission action",
+            "Final Springer Nature Reporting Summary form remains a human submission action, with the answer bank available for author-confirmed transfer",
             "PI review packet has not started",
             "Stage 9 closure has not started",
         ],
@@ -1063,7 +1158,7 @@ def _update_stage9_memory(generated_utc: str, checks: list[dict[str, Any]]) -> N
         "Stage 9.0 through Stage 9.27 are complete through submission package assembly.",
         "Stage 9.28 and Stage 9.29 remain not started.",
         "No PI review packet or Stage 9 completion report is created in this pass.",
-        "The package contains reader-clean main text, Supplementary Information, code-for-review, figure inventory, source-data/statistics inventory, Reporting Summary placeholder, author declarations checklist, and readiness checklist.",
+        "The package contains reader-clean main text, Supplementary Information, code-for-review, figure inventory, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist.",
     ]
     memory["scope_rule"] = (
         "Stage 9 has completed evidence intake, guidance, corpus, narrative spine, claim freeze, paragraph and figure planning, "
@@ -1081,7 +1176,7 @@ def _update_roadmap_memory() -> None:
     current["stage9_active_gate"] = "Stage 9.27 Submission package assembly complete; final PI review not started"
     current["after_stage9_27_submission_package_assembly"] = (
         "Stage 9.27 assembled the collaborator-review Nature Methods package from the reader-clean main text, Supplementary Information, figures, "
-        "references, code-for-review surface, source-data/statistics inventory, Reporting Summary placeholder, author declarations checklist, and readiness checklist."
+        "references, code-for-review surface, source-data/statistics inventory, Reporting Summary placeholder and answer bank, author declarations checklist, and readiness checklist."
     )
     current["current_gate"] = "Submission package assembled for collaborator review"
     current["next_stage"] = "Stage 9.28 Final human PI review packet"
@@ -1124,7 +1219,7 @@ Current status. Stage 9.27 submission package assembly complete.
 
 The workspace now contains the authorized manuscript components through collaborator-review package assembly. Evidence intake, venue guidance, methods-paper corpus analysis, narrative spine, claim freeze, paragraph planning, figure planning, deterministic main-figure rendering, supplementary display planning, section contracts, front matter, Results, Introduction, Discussion, Methods, availability statements, Supplementary Methods, supplementary table/source-data binding, reference audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review, and submission package assembly are present.
 
-The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
+The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/author_declarations_REQUIRED.md`, `submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/reporting_summary_REQUIRED.md`, `submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
 
 The official Springer Nature Reporting Summary form remains a human submission action. The PI review packet and Stage 9 closure report have not started.
 

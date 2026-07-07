@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T12:45:58Z
+Generated UTC. 2026-07-07T12:54:47Z
 
 ## Result
 
@@ -20,6 +20,7 @@ Status. pass
 | figure_files_present | true | figure_file_rows=18 |
 | panelforge_status_bound | true | Stage 9.6b has six rendered main display items |
 | reporting_summary_present | true | Reporting Summary requirement placeholder is present |
+| reporting_summary_answer_bank_present | true | Reporting Summary answer bank maps statistics, software, data, study design, and materials fields to author-confirmed package evidence |
 | author_declarations_present | true | Author declarations checklist records competing-interest, contribution, funding, ethics/materials, AI-use, and portal-only human actions |
 | ai_disclosure_draft_present | true | AI disclosure draft provides author-confirmation wording options without inserting a manuscript declaration automatically |
 | title_author_metadata_present | true | Title and author metadata template records author-controlled manuscript-file and portal fields without inventing author details |

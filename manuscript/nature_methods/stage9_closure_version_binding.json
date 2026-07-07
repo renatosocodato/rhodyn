@@ -1,6 +1,6 @@
 {
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-  "closure_commit": "ff413de392595648330d3ec8e19ed6947609ed08",
+  "closure_commit": "1b5502dbcbf61056d482cd7ce5e8d0238a5e5869",
   "content_type": "Article",
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine": {
@@ -42,9 +42,9 @@
     "panelforge_ref": null,
     "rendered_file_count": 18
   },
-  "generated_utc": "2026-07-07T12:45:58Z",
+  "generated_utc": "2026-07-07T12:54:47Z",
   "human_submission_actions": [
-    "Complete the official Springer Nature Reporting Summary form.",
+    "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
     "Confirm final title page, author list, affiliations, correspondence fields, author declarations, and the AI-use disclosure draft if applicable.",
     "Confirm final portal metadata, corresponding-author details, ORCID fields, and journal-specific file names.",
     "Perform final human author approval before upload."
@@ -64,16 +64,16 @@
       "sha256": "d5bf3eadafa0932021fe626589de53796e7212fb93ea2e02584266b46fc61d03"
     },
     {
-      "bytes": 2952,
+      "bytes": 3149,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_manifest.md",
-      "sha256": "75b6519096258139de12fd65f5e3b7cd211d60da40c071f983f12041531d4776"
+      "sha256": "d85da3455f191699da552504338b88728199612f15c994b6b523de74d3ba19e4"
     },
     {
-      "bytes": 2949,
+      "bytes": 3217,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
-      "sha256": "c5b7dc439a1cedffd15ad4c292ae482a878979e65ec7052e921462036058a085"
+      "sha256": "970e2e808a269bfd211f92851805dbc0139d897891985a36f18eba07703fc43a"
     },
     {
       "bytes": 2079,
@@ -82,10 +82,10 @@
       "sha256": "9fc7e15e22fdce0a561880e187e079df63548284fe5d613d775194aa9ec853d5"
     },
     {
-      "bytes": 6512,
+      "bytes": 6528,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
-      "sha256": "196ee35bb5367a62561e80834ccdaba9ba24ef60dfdb1260d277d0d1f4460622"
+      "sha256": "64277c70ff62731e4b0c2656359ab910caa5671647e0552f9df690b2abae788e"
     },
     {
       "bytes": 4048,
@@ -124,10 +124,10 @@
       "sha256": "669b4108eea3e6e0fb034822b8a38800e7a0e305b0a9a192ad315775e0df6fd9"
     },
     {
-      "bytes": 2826,
+      "bytes": 3012,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/package_consistency_audit.md",
-      "sha256": "0e3ebef7ae5aff3ce8959ee938b99ade9870052c6b03f30942182c770521e944"
+      "sha256": "978ddc274c749b9e4f3cefdbeac88818a247e184a50ec3e46a5d03539ba4b32c"
     },
     {
       "bytes": 4121,
@@ -154,10 +154,16 @@
       "sha256": "b83b8d2f639ec3361eb5b7ec54a71f680fcc0214cb020f82e45cc31141e0527f"
     },
     {
-      "bytes": 6133,
+      "bytes": 9335,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
+      "sha256": "2b5fac1cbf22a8ff00d0107476a801911d0448827d977139e5e893db5cc93a9e"
+    },
+    {
+      "bytes": 6490,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_package_manifest.json",
-      "sha256": "fd4a49d128f185e6e241e33ae5ebe2d961bea6e1ad73c11786bd016ec64dcefe"
+      "sha256": "6d390ea75561bdd738d48e061fc4e0f831319fe71ee964f46dded86ef07b549c"
     },
     {
       "bytes": 7833,
@@ -175,16 +181,16 @@
       "bytes": 1639,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
-      "sha256": "8c18312008d54efa1bd97771119e367869e2e482e15b14f0d026e1f04184c8b3"
+      "sha256": "a461d43506e5e982dd8540a3f6241707a7caf5cf55d67acc107fb6601c8fd4b8"
     },
     {
       "bytes": 1534,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
-      "sha256": "ad24cd3da991c1d6a41073e7fbe74c094f38a5a095f7a04780e920e70ade7965"
+      "sha256": "92b984724de478e5a81afeb9f12977aec39f7ca269995a641022ce88128c66a6"
     }
   ],
-  "package_version": "stage9.29-closure@ff413de392595648330d3ec8e19ed6947609ed08",
+  "package_version": "stage9.29-closure@1b5502dbcbf61056d482cd7ce5e8d0238a5e5869",
   "pi_review_action_decisions": [
     {
       "closure_status": "closed",

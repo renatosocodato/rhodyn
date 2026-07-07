@@ -60,6 +60,7 @@ def build_report() -> dict[str, Any]:
     ai_disclosure = _read(PACKAGE / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md")
     title_author_metadata = _read(PACKAGE / "title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md")
     reporting_summary = _read(PACKAGE / "reporting_summary_REQUIRED.md")
+    reporting_summary_answer_bank = _read(PACKAGE / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md")
     article_fit = _read(PACKAGE / "article_fit_checklist.md")
     code_for_review = _read(PACKAGE / "code_for_review.md")
     editor_note = _read(PACKAGE / "editor_triage_note_for_cover_letter.md")
@@ -157,6 +158,15 @@ def build_report() -> dict[str, Any]:
             "Repository contains a required-form placeholder, not the official completed Springer Nature form.",
         ),
         _check(
+            "reporting_summary_answer_bank_requires_author_confirmation",
+            "AUTHOR CONFIRMATION REQUIRED" in reporting_summary_answer_bank
+            and "Statistics" in reporting_summary_answer_bank
+            and "Software and code" in reporting_summary_answer_bank
+            and "Life-science study design" in reporting_summary_answer_bank
+            and "Materials and experimental systems" in reporting_summary_answer_bank,
+            "Reporting Summary answer bank maps current package evidence to official form fields while preserving author confirmation.",
+        ),
+        _check(
             "author_attestations_remain_human_actions",
             len(declaration_human_rows) >= 6
             and "This package does not insert an AI declaration automatically" in author_declarations,
@@ -203,7 +213,7 @@ def build_report() -> dict[str, Any]:
         "science_package_checks": science_checks,
         "upload_hold_checks": upload_hold_checks,
         "human_submission_actions": [
-            "Complete the official Springer Nature Reporting Summary form.",
+            "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
             "Confirm title page, author order, affiliations, ORCID, corresponding-author metadata, funding, competing interests, and author contributions.",
             "Confirm whether AI-assisted content disclosure is required, revise the AI disclosure draft with final author-confirmed wording if applicable, and insert it in the journal-designated location.",
             "Confirm ethics, biological materials, and controlled-access or reviewer-access statements.",
@@ -236,7 +246,7 @@ def _write_markdown(report: dict[str, Any]) -> None:
         "",
         f"Decision. `{report['status']}`.",
         "",
-        "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. It should not be treated as ready for final journal upload until the official Springer Nature Reporting Summary, title and author metadata, author declarations, AI-use disclosure decision using the author-confirmation draft, portal metadata, and final author approval are complete.",
+        "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. It should not be treated as ready for final journal upload until the official Springer Nature Reporting Summary has been completed from author-confirmed answers, title and author metadata, author declarations, AI-use disclosure decision using the author-confirmation draft, portal metadata, and final author approval are complete.",
         "",
         "## Science package checks",
         "",

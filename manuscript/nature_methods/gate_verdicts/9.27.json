@@ -51,6 +51,11 @@
       "passed": true
     },
     {
+      "detail": "Reporting Summary answer bank maps statistics, software, data, study design, and materials fields to author-confirmed package evidence",
+      "name": "reporting_summary_answer_bank_present",
+      "passed": true
+    },
+    {
       "detail": "Author declarations checklist records competing-interest, contribution, funding, ethics/materials, AI-use, and portal-only human actions",
       "name": "author_declarations_present",
       "passed": true
@@ -106,9 +111,9 @@
       "passed": true
     }
   ],
-  "commit": "ff413de392595648330d3ec8e19ed6947609ed08",
+  "commit": "1b5502dbcbf61056d482cd7ce5e8d0238a5e5869",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T12:45:58Z",
+  "generated_utc": "2026-07-07T12:54:47Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -122,6 +127,7 @@
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",

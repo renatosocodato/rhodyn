@@ -296,6 +296,39 @@
       "source": "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
       "status_code": 200,
       "url": "https://doi.org/10.5281/zenodo.20811171"
+    },
+    {
+      "error": "",
+      "method": "HEAD",
+      "normalization": "none",
+      "ok": true,
+      "raw_url": "https://github.com/renatosocodato/rhodyn",
+      "resolved_url": "https://github.com/renatosocodato/rhodyn",
+      "source": "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
+      "status_code": 200,
+      "url": "https://github.com/renatosocodato/rhodyn"
+    },
+    {
+      "error": "",
+      "method": "HEAD",
+      "normalization": "none",
+      "ok": true,
+      "raw_url": "https://doi.org/10.5281/zenodo.21036616",
+      "resolved_url": "https://zenodo.org/records/21036616",
+      "source": "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
+      "status_code": 200,
+      "url": "https://doi.org/10.5281/zenodo.21036616"
+    },
+    {
+      "error": "",
+      "method": "HEAD",
+      "normalization": "none",
+      "ok": true,
+      "raw_url": "https://doi.org/10.5281/zenodo.20811171",
+      "resolved_url": "https://zenodo.org/records/20811171",
+      "source": "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
+      "status_code": 200,
+      "url": "https://doi.org/10.5281/zenodo.20811171"
     }
   ],
   "checks": {
@@ -306,7 +339,7 @@
   "failed_urls": [],
   "failures": [],
   "forbidden_public_reference_hits": [],
-  "generated_utc": "2026-07-07T12:46:17Z",
+  "generated_utc": "2026-07-07T12:55:08Z",
   "interpretation_boundary": "This report verifies public URL accessibility for the Nature Methods submission-package surfaces. It does not upload files, alter DOI records, modify GitHub or Zenodo state, or certify journal acceptance.",
   "missing_expected_urls": [],
   "report_format": "rhodyn.stage9_public_access_verification.v1",
@@ -323,6 +356,7 @@
     "manuscript/nature_methods/submission_package/pi_review_packet.md",
     "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
     "manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md",
+    "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
     "manuscript/nature_methods/submission_package/submission_manifest.md",
     "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
@@ -330,5 +364,5 @@
     "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md"
   ],
   "status": "pass",
-  "url_count": 27
+  "url_count": 30
 }

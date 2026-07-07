@@ -25,6 +25,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         cls.author_declarations = (PACKAGE / "author_declarations_REQUIRED.md").read_text(encoding="utf-8")
         cls.ai_disclosure = (PACKAGE / "ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         cls.title_author_metadata = (PACKAGE / "title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
+        cls.reporting_summary_answer_bank = (PACKAGE / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         with (PACKAGE / "figure_file_inventory.csv").open(newline="", encoding="utf-8") as handle:
             cls.figure_rows = list(csv.DictReader(handle))
         with (PACKAGE / "source_data_and_statistics_inventory.csv").open(newline="", encoding="utf-8") as handle:
@@ -50,6 +51,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "figure_files_present",
             "panelforge_status_bound",
             "reporting_summary_present",
+            "reporting_summary_answer_bank_present",
             "code_for_review_present",
             "editor_triage_note_present",
             "editorial_pitch_present",
@@ -127,10 +129,16 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("Author list", self.title_author_metadata)
         self.assertIn("Correspondence and materials", self.title_author_metadata)
         self.assertIn("Double-blind review decision", self.title_author_metadata)
+        self.assertIn("AUTHOR CONFIRMATION REQUIRED", self.reporting_summary_answer_bank)
+        self.assertIn("Statistics", self.reporting_summary_answer_bank)
+        self.assertIn("Software and code", self.reporting_summary_answer_bank)
+        self.assertIn("Life-science study design", self.reporting_summary_answer_bank)
+        self.assertIn("Materials and experimental systems", self.reporting_summary_answer_bank)
         self.assertIn("Author declarations | registered", self.checklist)
         self.assertIn("AI disclosure draft | registered", self.checklist)
         self.assertIn("Title and author metadata | registered", self.checklist)
         self.assertIn("Reporting Summary | registered", self.checklist)
+        self.assertIn("Reporting Summary answer bank | registered", self.checklist)
         self.assertIn("Springer Nature", self.checklist)
         self.assertIn("human submission action", self.checklist)
         self.assertTrue((PACKAGE / "pi_review_packet.md").exists())

@@ -56,13 +56,14 @@ class Stage9SubmitOrHoldDecisionTests(unittest.TestCase):
             any("AI-assisted content disclosure" in action for action in self.report["human_submission_actions"])
         )
         names = {check["name"] for check in self.report["upload_hold_checks"]}
+        self.assertIn("reporting_summary_answer_bank_requires_author_confirmation", names)
         self.assertIn("ai_disclosure_draft_requires_author_confirmation", names)
         self.assertIn("title_author_metadata_requires_author_confirmation", names)
         self.assertTrue(
             any("title page" in action for action in self.report["human_submission_actions"])
         )
         self.assertTrue(
-            any("official Springer Nature Reporting Summary" in action for action in self.report["human_submission_actions"])
+            any("reporting-summary answer bank" in action for action in self.report["human_submission_actions"])
         )
 
     def test_markdown_is_collaborator_readable(self) -> None:

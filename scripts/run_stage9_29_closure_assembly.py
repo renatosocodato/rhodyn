@@ -59,6 +59,7 @@ PACKAGE_FILES = [
     SUBMISSION / "source_data_and_statistics_inventory.csv",
     SUBMISSION / "references_for_submission.bib",
     SUBMISSION / "reporting_summary_REQUIRED.md",
+    SUBMISSION / "reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
     SUBMISSION / "submission_package_manifest.json",
     SUBMISSION / "pi_review_packet.md",
     SUBMISSION / "pi_review_action_matrix.csv",
@@ -300,7 +301,7 @@ def _version_binding(package_rows: list[dict[str, Any]], action_decisions: list[
         "package_files": package_rows,
         "pi_review_action_decisions": action_decisions,
         "human_submission_actions": [
-            "Complete the official Springer Nature Reporting Summary form.",
+            "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
             "Confirm final title page, author list, affiliations, correspondence fields, author declarations, and the AI-use disclosure draft if applicable.",
             "Confirm final portal metadata, corresponding-author details, ORCID fields, and journal-specific file names.",
             "Perform final human author approval before upload.",
@@ -369,7 +370,7 @@ The closed package supports a methods claim that RhoDyn provides an inspectable 
 
 ## Remaining human submission actions
 
-1. Complete the official Springer Nature Reporting Summary form.
+1. Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.
 2. Confirm final title page, author list, affiliations, correspondence fields, author declarations, and the AI-use disclosure draft if applicable.
 3. Confirm final portal metadata, corresponding-author fields, ORCID fields, and journal-specific file names.
 4. Perform final author approval of the main text, Supplementary Information, figures, and code-for-review surface before upload.
@@ -384,6 +385,12 @@ def _update_submission_manifest() -> None:
         body = body.replace(
             anchor,
             anchor + "\n| Author declarations | `author_declarations_REQUIRED.md` | Required upload declarations pending human completion. |",
+        )
+    if "| Reporting Summary answer bank | `reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` |" not in body:
+        anchor = "| Reporting Summary | `reporting_summary_REQUIRED.md` | Required journal form placeholder pending human completion. |"
+        body = body.replace(
+            anchor,
+            anchor + "\n| Reporting Summary answer bank | `reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation answer bank mapping current evidence to official Reporting Summary fields. |",
         )
     if "| AI disclosure draft | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` |" not in body:
         anchor = "| Author declarations | `author_declarations_REQUIRED.md` | Required upload declarations pending human completion. |"
@@ -440,6 +447,7 @@ def _update_submission_package_manifest(version_binding: dict[str, Any]) -> None
         "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
         "manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md",
+        "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
         "manuscript/nature_methods/stage9_completion_report.md",
         "manuscript/nature_methods/stage9_closure_version_binding.json",

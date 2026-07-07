@@ -8,6 +8,7 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 | Supplementary Information source | ready | `supplementary_information_for_submission.md` assembles Supplementary Methods, supplementary figure legends, supplementary table captions, and a compact traceability note. |
 | Main figures | ready | Six main display items are present in PDF, PNG, and SVG. |
 | Reporting Summary | registered | The required Reporting Summary placeholder is present. The final Springer Nature form remains a human submission action. |
+| Reporting Summary answer bank | registered | `reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` maps the current package evidence to official Reporting Summary fields for author-confirmed transfer into the journal form. |
 | Author declarations | registered | `author_declarations_REQUIRED.md` records author-controlled declarations that must be completed before upload. |
 | AI disclosure draft | registered | `ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` provides draft wording options that require author confirmation before use. |
 | Title and author metadata | registered | `title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md` records the author-list, affiliation, correspondence, ORCID, and review-mode fields that must be author-confirmed. |
@@ -24,4 +25,4 @@ This checklist prepares the Nature Methods Article package for collaborator revi
 | Stage 9 closure | ready | `../stage9_completion_report.md` binds the package, evidence, software, figure, and limitation versions. |
 | PI review support files | ready | Action matrix, revision log, and literature-calibration note are present. |
 
-Human actions before journal upload. Complete the official Springer Nature Reporting Summary form, author declarations, corresponding-author and portal metadata, journal-specific file naming checks, and final author approval of the assembled main text and Supplementary Information.
+Human actions before journal upload. Complete the official Springer Nature Reporting Summary form using author-confirmed answers, author declarations, corresponding-author and portal metadata, journal-specific file naming checks, and final author approval of the assembled main text and Supplementary Information.

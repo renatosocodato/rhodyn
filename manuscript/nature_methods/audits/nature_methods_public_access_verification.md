@@ -1,6 +1,6 @@
 # Nature Methods public-access verification
 
-Generated UTC. `2026-07-07T12:46:17Z`.
+Generated UTC. `2026-07-07T12:55:08Z`.
 
 Status. `pass`.
 
@@ -41,6 +41,9 @@ Status. `pass`.
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | https://doi.org/10.5281/zenodo.21036616 | https://zenodo.org/records/21036616 | 200 via HEAD |
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | https://github.com/renatosocodato/rhodyn | https://github.com/renatosocodato/rhodyn | 200 via HEAD |
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | https://doi.org/10.5281/zenodo.20811171 | https://zenodo.org/records/20811171 | 200 via HEAD |
+| `manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` | https://github.com/renatosocodato/rhodyn | https://github.com/renatosocodato/rhodyn | 200 via HEAD |
+| `manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` | https://doi.org/10.5281/zenodo.21036616 | https://zenodo.org/records/21036616 | 200 via HEAD |
+| `manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md` | https://doi.org/10.5281/zenodo.20811171 | https://zenodo.org/records/20811171 | 200 via HEAD |
 
 ## Reference-use-case boundary
 
