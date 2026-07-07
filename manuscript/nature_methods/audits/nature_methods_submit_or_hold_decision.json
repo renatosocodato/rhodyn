@@ -1,0 +1,85 @@
+{
+  "collaborator_review_ready": true,
+  "decision": "The Stage 9.29 package is ready for collaborator and PI review as a Nature Methods Article package. Final journal upload should remain on hold until the listed human-attested submission fields are completed.",
+  "generated_utc": "2026-07-07T12:25:03Z",
+  "human_submission_actions": [
+    "Complete the official Springer Nature Reporting Summary form.",
+    "Confirm funding, competing interests, author contributions, author order, affiliations, ORCID, and corresponding-author metadata.",
+    "Confirm whether AI-assisted content disclosure is required and insert the final journal-compliant wording if applicable.",
+    "Confirm ethics, biological materials, and controlled-access or reviewer-access statements.",
+    "Perform final file naming, portal metadata, and author approval checks."
+  ],
+  "journal_upload_ready": false,
+  "report_format": "rhodyn.stage9_submit_or_hold_decision.v1",
+  "science_package_checks": [
+    {
+      "detail": "Article-fit checklist records Article type, abstract length, six display items, and reference count.",
+      "name": "nature_methods_article_fit",
+      "passed": true
+    },
+    {
+      "detail": "Main manuscript includes the expected Article sections and legends.",
+      "name": "manuscript_sections_present",
+      "passed": true
+    },
+    {
+      "detail": "Figure inventory rows=18.",
+      "name": "figures_present_in_three_formats",
+      "passed": true
+    },
+    {
+      "detail": "Public-access report status=pass.",
+      "name": "public_urls_resolve",
+      "passed": true
+    },
+    {
+      "detail": "The optional RhoA/microglia reference case is reviewer-access scoped rather than exposed as unresolved public links.",
+      "name": "unresolved_reference_case_links_not_public_facing",
+      "passed": true
+    },
+    {
+      "detail": "RhoDyn release, software DOI, and PanelForge DOI appear in availability text.",
+      "name": "code_and_data_availability_present",
+      "passed": true
+    },
+    {
+      "detail": "Editor-triage note presents the Nature Methods fit and validation ladder.",
+      "name": "editorial_fit_argument_present",
+      "passed": true
+    },
+    {
+      "detail": "Stage 9.29 closure and package manifest are closed and version-bound.",
+      "name": "stage9_closure_passed",
+      "passed": true
+    },
+    {
+      "detail": "open_action_rows=0; submission_only_rows=1.",
+      "name": "pi_review_actions_resolved_or_submission_only",
+      "passed": true
+    }
+  ],
+  "scientific_boundary": "This report does not add data, analyses, figures, citations, or manuscript claims. It separates evidence readiness from author-attested submission requirements.",
+  "status": "hold_for_human_upload_actions",
+  "upload_hold_checks": [
+    {
+      "detail": "Repository contains a required-form placeholder, not the official completed Springer Nature form.",
+      "name": "official_reporting_summary_not_completed_in_repo",
+      "passed": true
+    },
+    {
+      "detail": "author_declaration_human_rows=6.",
+      "name": "author_attestations_remain_human_actions",
+      "passed": true
+    },
+    {
+      "detail": "Readiness checklist retains final upload and author approval actions.",
+      "name": "final_upload_approval_remains_human_action",
+      "passed": true
+    },
+    {
+      "detail": "Optional RhoA/microglia reviewer-access records must be supplied only if authors include that reference case.",
+      "name": "controlled_reference_case_requires_upload_decision",
+      "passed": true
+    }
+  ]
+}

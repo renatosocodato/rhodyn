@@ -264,6 +264,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_28_pi_review_auto_revision.py",
     "scripts/run_stage9_29_closure_assembly.py",
     "scripts/run_stage9_public_access_verification.py",
+    "scripts/run_stage9_submit_or_hold_decision.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -297,6 +298,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_28_pi_review_auto_revision.py",
     "tests/test_stage9_29_closure_assembly.py",
     "tests/test_stage9_public_access_verification.py",
+    "tests/test_stage9_submit_or_hold_decision.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -441,6 +443,8 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/audits/panelforge_render_report.md",
     "manuscript/nature_methods/audits/nature_methods_public_access_verification.json",
     "manuscript/nature_methods/audits/nature_methods_public_access_verification.md",
+    "manuscript/nature_methods/audits/nature_methods_submit_or_hold_decision.json",
+    "manuscript/nature_methods/audits/nature_methods_submit_or_hold_decision.md",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.pdf",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.png",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.svg",
@@ -1890,6 +1894,47 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 failures.append(f"Nature Methods public-access Markdown report missing phrase: {phrase}")
     else:
         failures.append("missing Nature Methods public-access Markdown report")
+
+    submit_hold_path = root / "manuscript" / "nature_methods" / "audits" / "nature_methods_submit_or_hold_decision.json"
+    submit_hold_md = root / "manuscript" / "nature_methods" / "audits" / "nature_methods_submit_or_hold_decision.md"
+    if submit_hold_path.exists():
+        try:
+            submit_hold = json.loads(submit_hold_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Nature Methods submit-or-hold report is not valid JSON: {exc}")
+            submit_hold = {}
+        if submit_hold.get("status") != "hold_for_human_upload_actions":
+            failures.append("Nature Methods submit-or-hold report must retain hold_for_human_upload_actions status")
+        if submit_hold.get("collaborator_review_ready") is not True:
+            failures.append("Nature Methods submit-or-hold report must mark collaborator review ready")
+        if submit_hold.get("journal_upload_ready") is not False:
+            failures.append("Nature Methods submit-or-hold report must not mark final journal upload ready")
+        for group_name in ["science_package_checks", "upload_hold_checks"]:
+            checks = submit_hold.get(group_name, [])
+            if not checks or any(item.get("passed") is not True for item in checks if isinstance(item, dict)):
+                failures.append(f"Nature Methods submit-or-hold report has failing or missing {group_name}")
+        actions = submit_hold.get("human_submission_actions", [])
+        if not isinstance(actions, list) or len(actions) < 5:
+            failures.append("Nature Methods submit-or-hold report must retain at least five human submission actions")
+        else:
+            joined_actions = "\n".join(str(action) for action in actions)
+            for phrase in ["Reporting Summary", "AI-assisted content disclosure", "author", "portal metadata"]:
+                if phrase not in joined_actions:
+                    failures.append(f"Nature Methods submit-or-hold human actions missing phrase: {phrase}")
+    else:
+        failures.append("missing Nature Methods submit-or-hold JSON report")
+    if submit_hold_md.exists():
+        submit_hold_text = submit_hold_md.read_text(encoding="utf-8")
+        for phrase in [
+            "Decision. `hold_for_human_upload_actions`.",
+            "## Science package checks",
+            "## Upload hold checks",
+            "## Required human submission actions",
+        ]:
+            if phrase not in submit_hold_text:
+                failures.append(f"Nature Methods submit-or-hold Markdown report missing phrase: {phrase}")
+    else:
+        failures.append("missing Nature Methods submit-or-hold Markdown report")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():
