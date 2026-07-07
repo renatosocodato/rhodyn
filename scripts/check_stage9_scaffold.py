@@ -93,6 +93,7 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
     "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
     "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
+    "manuscript/nature_methods/submission_package/nature_methods_editorial_bar_rescue_audit.md",
     "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
     "manuscript/nature_methods/submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
@@ -1971,6 +1972,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "validation_breadth_map_present",
             "editor_objection_response_map_present",
             "editor_two_minute_triage_simulation_present",
+            "editorial_bar_rescue_audit_present",
             "current_policy_preflight_present",
             "reviewer_editor_fit_planner_present",
             "software_reporting_checklist_present",
@@ -2009,6 +2011,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
             "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
             "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
+            "manuscript/nature_methods/submission_package/nature_methods_editorial_bar_rescue_audit.md",
             "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
             "manuscript/nature_methods/submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
             "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
@@ -2074,6 +2077,7 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "submission_package/final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md",
             "submission_package/validation_breadth_and_boundary_map.md",
             "submission_package/editor_two_minute_triage_simulation.md",
+            "submission_package/nature_methods_editorial_bar_rescue_audit.md",
             "submission_package/current_nature_methods_policy_preflight.md",
             "submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
             "submission_package/software_reporting_checklist.md",
@@ -2197,8 +2201,8 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             failures.append("Stage 9.29 must record six PI-review action decisions")
         if stage9_29_gate.get("human_submission_action_rows") != 1:
             failures.append("Stage 9.29 must retain one human submission action")
-        if stage9_29_gate.get("package_file_count") != 31:
-            failures.append("Stage 9.29 must bind thirty-one package files")
+        if stage9_29_gate.get("package_file_count") != 32:
+            failures.append("Stage 9.29 must bind thirty-two package files")
         if stage9_29_gate.get("rendered_figure_file_count") != 18:
             failures.append("Stage 9.29 must bind eighteen rendered figure files")
         for rel in [

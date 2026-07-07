@@ -1,6 +1,6 @@
 # Nature Methods public-access verification
 
-Generated UTC. `2026-07-07T14:40:29Z`.
+Generated UTC. `2026-07-07T15:12:26Z`.
 
 Status. `pass`.
 
@@ -23,8 +23,8 @@ Status. `pass`.
 | `manuscript/nature_methods/submission_package/code_for_review.md` | https://doi.org/10.5281/zenodo.20811170 | https://zenodo.org/records/20811171 | 200 via HEAD |
 | `manuscript/nature_methods/submission_package/code_for_review.md` | https://github.com/renatosocodato/panelforge-figures | https://github.com/renatosocodato/panelforge-figures | 200 via HEAD |
 | `manuscript/nature_methods/submission_package/code_for_review.md` | https://github.com/renatosocodato/panelforge-figures/tree/v3.14.1 from `https://github.com/renatosocodato/panelforge-figures@v3.14.1` | https://github.com/renatosocodato/panelforge-figures/tree/v3.14.1 | 200 via HEAD |
-| `manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md` | https://www.nature.com/nmeth/content | https://www.nature.com/nmeth/content?error=cookies_not_supported&code=b487b531-de54-4f89-af25-16f7a5c4e55b | 200 via HEAD |
-| `manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md` | https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards | https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards?error=cookies_not_supported&code=37ce2a58-04fc-4523-8b93-849496822235 | 200 via HEAD |
+| `manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md` | https://www.nature.com/nmeth/content | https://www.nature.com/nmeth/content?error=cookies_not_supported&code=b6addba6-1aaa-4100-acfc-6f9a137bd019 | 200 via HEAD |
+| `manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md` | https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards | https://www.nature.com/nature-portfolio/editorial-policies/reporting-standards?error=cookies_not_supported&code=da49def7-14c4-4e23-be93-a693dd65d062 | 200 via HEAD |
 | `manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md` | https://communities.springernature.com/posts/guidelines-for-algorithms-and-software-in-nature-methods | https://communities.springernature.com/posts/guidelines-for-algorithms-and-software-in-nature-methods | 200 via HEAD |
 | `manuscript/nature_methods/submission_package/main_text_for_submission.md` | https://github.com/renatosocodato/rhodyn | https://github.com/renatosocodato/rhodyn | 200 via HEAD |
 | `manuscript/nature_methods/submission_package/main_text_for_submission.md` | https://doi.org/10.5281/zenodo.21036616 | https://zenodo.org/records/21036616 | 200 via HEAD |

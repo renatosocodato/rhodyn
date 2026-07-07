@@ -17,17 +17,17 @@
       "passed": true
     },
     {
-      "detail": "package_file_count=31",
+      "detail": "package_file_count=32",
       "name": "package_files_present",
       "passed": true
     },
     {
-      "detail": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+      "detail": "5d5bb946854f06a58176c40d40c3edf000ed031b",
       "name": "assembly_source_commit_in_history",
       "passed": true
     },
     {
-      "detail": "stage9.29-closure@0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+      "detail": "stage9.29-closure@5d5bb946854f06a58176c40d40c3edf000ed031b",
       "name": "package_version_bound",
       "passed": true
     },
@@ -78,8 +78,8 @@
     }
   ],
   "closure_status": "complete_stage9_closed_version_bound",
-  "generated_utc": "2026-07-07T14:41:40Z",
-  "git_sha": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+  "generated_utc": "2026-07-07T15:11:54Z",
+  "git_sha": "5d5bb946854f06a58176c40d40c3edf000ed031b",
   "human_submission_action_rows": 1,
   "next_substage": "none",
   "outputs": {
@@ -88,17 +88,17 @@
     "gate": "manuscript/nature_methods/gate_verdicts/9.29.json",
     "version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json"
   },
-  "package_file_count": 31,
+  "package_file_count": 32,
   "pass": true,
   "rendered_figure_file_count": 18,
   "scope_boundary": "Closure and version binding only. No new analysis, figure, dataset, model output, manuscript claim, or journal upload is created.",
   "status": "pass",
   "substage": "9.29",
   "version_binding": {
-    "assembly_source_commit": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+    "assembly_source_commit": "5d5bb946854f06a58176c40d40c3edf000ed031b",
     "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
     "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
-    "package_version": "stage9.29-closure@0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+    "package_version": "stage9.29-closure@5d5bb946854f06a58176c40d40c3edf000ed031b",
     "reference_version": "reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"

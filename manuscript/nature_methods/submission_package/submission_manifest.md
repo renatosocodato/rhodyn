@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T14:39:54Z
-Assembly source commit. 0b5d64ed94eb488136bb04ef9b64c3df527d43a9
+Generated UTC. 2026-07-07T15:11:54Z
+Assembly source commit. 5d5bb946854f06a58176c40d40c3edf000ed031b
 Commit-binding scope. The Git anchor records the repository state used as input when the package was assembled. A final archival commit that contains the regenerated package files may be a descendant of this anchor. Package file hashes are the content authority.
 
 | Component | File | Role |
@@ -25,6 +25,7 @@ Commit-binding scope. The Git anchor records the repository state used as input 
 | Validation breadth map | `validation_breadth_and_boundary_map.md` | Validation-ladder and boundary map across synthetic, public trajectory, endpoint, held-out, and software-reproducibility tests. |
 | Editor-objection response map | `editor_objection_response_map.md` | Desk-review objection map linking likely objections to existing package evidence and wording boundaries. |
 | Two-minute editor triage simulation | `editor_two_minute_triage_simulation.md` | First-pass editor-read simulation for title, Abstract, cover-letter opening, figure spine, and claim boundaries. |
+| Editorial-bar rescue audit | `nature_methods_editorial_bar_rescue_audit.md` | Nature Methods editorial-bar rescue audit covering novelty, validation, generality, benchmarking, figure architecture, claim discipline, and final decision. |
 | Current Nature Methods policy preflight | `current_nature_methods_policy_preflight.md` | Source-linked preflight against current Article, Reporting Summary, data/code availability, and software guidance. |
 | Reviewer and editor fit planner | `reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation planner for reviewer expertise coverage, suggested-reviewer fields, exclusions, and editor-fit wording. |
 | Software-reporting checklist | `software_reporting_checklist.md` | Nature Methods software and algorithm reporting cross-check. |

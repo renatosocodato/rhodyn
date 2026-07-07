@@ -1,6 +1,6 @@
 # Nature Methods submit-or-hold decision
 
-Generated UTC. `2026-07-07T14:40:29Z`.
+Generated UTC. `2026-07-07T15:12:26Z`.
 
 Decision. `hold_for_human_upload_actions`.
 
@@ -24,6 +24,7 @@ The Stage 9.29 package is ready for collaborator and PI review as a Nature Metho
 | validation_breadth_map_present | pass | Validation breadth map makes cross-system method tests and non-universality boundaries visible for collaborator/editorial review. |
 | editor_objection_response_map_present | pass | Editor-objection response map ties likely desk-review objections to existing evidence and claim boundaries. |
 | editor_two_minute_triage_simulation_present | pass | Two-minute editor triage simulation checks whether method novelty, validation breadth, and claim boundaries are visible on first pass. |
+| editorial_bar_rescue_audit_present | pass | Editorial-bar rescue audit decides the remaining Nature Methods risk items without inventing new validation or biology. |
 | current_policy_preflight_present | pass | Current Nature Methods policy preflight maps official Article, reporting, data/code, and software expectations to the package evidence. |
 | reviewer_editor_fit_planner_present | pass | Reviewer/editor fit planner keeps reviewer suggestions, exclusions, and editor-fit wording author-confirmed while preserving a method-first reviewer mix. |
 | stage9_closure_passed | pass | Stage 9.29 closure and package manifest are closed and version-bound. |

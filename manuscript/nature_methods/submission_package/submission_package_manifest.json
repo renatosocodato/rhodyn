@@ -1,5 +1,5 @@
 {
-  "assembly_source_commit": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+  "assembly_source_commit": "5d5bb946854f06a58176c40d40c3edf000ed031b",
   "checks": [
     {
       "detail": "Stage 9.26 internal peer-review gate passes and points to package assembly",
@@ -117,6 +117,11 @@
       "passed": true
     },
     {
+      "detail": "Editorial-bar rescue audit stress-tests novelty, validation, generality, benchmarking, figure architecture, claim discipline, and final decision",
+      "name": "editorial_bar_rescue_audit_present",
+      "passed": true
+    },
+    {
       "detail": "Current Nature Methods policy preflight maps Article, reporting, data/code, and software requirements to package evidence",
       "name": "current_policy_preflight_present",
       "passed": true
@@ -153,10 +158,10 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+  "commit": "5d5bb946854f06a58176c40d40c3edf000ed031b",
   "commit_binding_scope": "The Git anchor records the repository state used as input when the package was assembled. A final archival commit that contains the regenerated package files may be a descendant of this anchor. Package file hashes are the content authority.",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T14:39:55Z",
+  "generated_utc": "2026-07-07T15:11:54Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -175,6 +180,7 @@
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",
     "manuscript/nature_methods/submission_package/final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
+    "manuscript/nature_methods/submission_package/nature_methods_editorial_bar_rescue_audit.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/pi_review_action_decisions.csv",
     "manuscript/nature_methods/submission_package/pi_review_action_matrix.csv",
@@ -209,12 +215,12 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "assembly_source_commit": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
-    "closure_commit": "0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+    "assembly_source_commit": "5d5bb946854f06a58176c40d40c3edf000ed031b",
+    "closure_commit": "5d5bb946854f06a58176c40d40c3edf000ed031b",
     "commit_binding_scope": "The Git anchor records the repository state used as input when the closure files were assembled. A final archival commit that contains the regenerated closure files may be a descendant of this anchor. Package file hashes are the content authority for the assembled submission package.",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@0b5d64ed94eb488136bb04ef9b64c3df527d43a9",
+    "package_version": "stage9.29-closure@5d5bb946854f06a58176c40d40c3edf000ed031b",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

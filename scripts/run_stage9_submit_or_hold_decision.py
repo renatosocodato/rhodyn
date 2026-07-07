@@ -65,6 +65,7 @@ def build_report() -> dict[str, Any]:
     validation_breadth_map = _read(PACKAGE / "validation_breadth_and_boundary_map.md")
     editor_objection_response = _read(PACKAGE / "editor_objection_response_map.md")
     editor_two_minute_triage = _read(PACKAGE / "editor_two_minute_triage_simulation.md")
+    editorial_bar_rescue_audit = _read(PACKAGE / "nature_methods_editorial_bar_rescue_audit.md")
     current_policy_preflight = _read(PACKAGE / "current_nature_methods_policy_preflight.md")
     reviewer_editor_fit = _read(PACKAGE / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md")
     article_fit = _read(PACKAGE / "article_fit_checklist.md")
@@ -204,6 +205,19 @@ def build_report() -> dict[str, Any]:
             and "The current package should be readable as a Nature Methods computational-methods Article" in editor_two_minute_triage
             and "If an editor can answer these three questions in the first two minutes" in editor_two_minute_triage,
             "Two-minute editor triage simulation checks whether method novelty, validation breadth, and claim boundaries are visible on first pass.",
+        ),
+        _check(
+            "editorial_bar_rescue_audit_present",
+            "Nature Methods editorial-bar rescue audit" in editorial_bar_rescue_audit
+            and "Top Desk-Rejection Risks" in editorial_bar_rescue_audit
+            and "One-Sentence Nature Methods Advance" in editorial_bar_rescue_audit
+            and "Nature Methods Requirement Matrix" in editorial_bar_rescue_audit
+            and "Novelty Ledger" in editorial_bar_rescue_audit
+            and "Comparator Ledger" in editorial_bar_rescue_audit
+            and "Minimum Elevation Package" in editorial_bar_rescue_audit
+            and "Submit after minor narrative elevation and completion of human upload actions" in editorial_bar_rescue_audit
+            and "Do not delay for new wet-lab experiments" in editorial_bar_rescue_audit,
+            "Editorial-bar rescue audit decides the remaining Nature Methods risk items without inventing new validation or biology.",
         ),
         _check(
             "current_policy_preflight_present",

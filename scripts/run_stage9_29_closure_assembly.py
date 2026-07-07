@@ -54,6 +54,7 @@ PACKAGE_FILES = [
     SUBMISSION / "validation_breadth_and_boundary_map.md",
     SUBMISSION / "editor_objection_response_map.md",
     SUBMISSION / "editor_two_minute_triage_simulation.md",
+    SUBMISSION / "nature_methods_editorial_bar_rescue_audit.md",
     SUBMISSION / "current_nature_methods_policy_preflight.md",
     SUBMISSION / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
     SUBMISSION / "software_reporting_checklist.md",
@@ -489,7 +490,15 @@ def _update_submission_manifest() -> None:
         anchor = "| Two-minute editor triage simulation | `editor_two_minute_triage_simulation.md` | First-pass editor-read simulation for title, Abstract, cover-letter opening, figure spine, and claim boundaries. |"
         body = body.replace(
             anchor,
-            anchor + "\n| Current Nature Methods policy preflight | `current_nature_methods_policy_preflight.md` | Source-linked preflight against current Article, Reporting Summary, data/code availability, and software guidance. |",
+            anchor
+            + "\n| Editorial-bar rescue audit | `nature_methods_editorial_bar_rescue_audit.md` | Nature Methods editorial-bar rescue audit covering novelty, validation, generality, benchmarking, figure architecture, claim discipline, and final decision. |"
+            + "\n| Current Nature Methods policy preflight | `current_nature_methods_policy_preflight.md` | Source-linked preflight against current Article, Reporting Summary, data/code availability, and software guidance. |",
+        )
+    if "| Editorial-bar rescue audit | `nature_methods_editorial_bar_rescue_audit.md` |" not in body:
+        anchor = "| Two-minute editor triage simulation | `editor_two_minute_triage_simulation.md` | First-pass editor-read simulation for title, Abstract, cover-letter opening, figure spine, and claim boundaries. |"
+        body = body.replace(
+            anchor,
+            anchor + "\n| Editorial-bar rescue audit | `nature_methods_editorial_bar_rescue_audit.md` | Nature Methods editorial-bar rescue audit covering novelty, validation, generality, benchmarking, figure architecture, claim discipline, and final decision. |",
         )
     if "| Reviewer and editor fit planner | `reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md` |" not in body:
         anchor = "| Current Nature Methods policy preflight | `current_nature_methods_policy_preflight.md` | Source-linked preflight against current Article, Reporting Summary, data/code availability, and software guidance. |"
@@ -538,6 +547,7 @@ def _update_submission_package_manifest(version_binding: dict[str, Any]) -> None
         "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
         "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
         "manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md",
+        "manuscript/nature_methods/submission_package/nature_methods_editorial_bar_rescue_audit.md",
         "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
         "manuscript/nature_methods/submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md",
@@ -589,6 +599,7 @@ def _update_stage9_memory(version_binding: dict[str, Any]) -> None:
         "manuscript/nature_methods/submission_package/cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/final_upload_runbook_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md",
+        "manuscript/nature_methods/submission_package/nature_methods_editorial_bar_rescue_audit.md",
         "manuscript/nature_methods/submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md",
         "manuscript/nature_methods/gate_verdicts/9.29.json",
         "scripts/run_stage9_29_closure_assembly.py",

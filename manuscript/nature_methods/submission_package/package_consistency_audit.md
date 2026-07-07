@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T14:39:55Z
+Generated UTC. 2026-07-07T15:11:54Z
 
 ## Result
 
@@ -33,6 +33,7 @@ Status. pass
 | validation_breadth_map_present | true | Validation breadth map makes the method-validation ladder visible while preserving non-universality boundaries |
 | editor_objection_response_map_present | true | Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries |
 | editor_two_minute_triage_simulation_present | true | Two-minute editor triage simulation checks first-pass method fit, validation breadth, and claim boundaries |
+| editorial_bar_rescue_audit_present | true | Editorial-bar rescue audit stress-tests novelty, validation, generality, benchmarking, figure architecture, claim discipline, and final decision |
 | current_policy_preflight_present | true | Current Nature Methods policy preflight maps Article, reporting, data/code, and software requirements to package evidence |
 | reviewer_editor_fit_planner_present | true | Reviewer/editor planner keeps reviewer suggestions and exclusions author-confirmed while preserving method-first reviewer coverage |
 | software_reporting_checklist_present | true | Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning |

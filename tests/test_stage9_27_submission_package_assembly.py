@@ -29,6 +29,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         cls.prior_art_positioning = (PACKAGE / "prior_art_positioning_matrix.md").read_text(encoding="utf-8")
         cls.editor_objection_response = (PACKAGE / "editor_objection_response_map.md").read_text(encoding="utf-8")
         cls.editor_two_minute_triage = (PACKAGE / "editor_two_minute_triage_simulation.md").read_text(encoding="utf-8")
+        cls.editorial_bar_rescue_audit = (PACKAGE / "nature_methods_editorial_bar_rescue_audit.md").read_text(encoding="utf-8")
         cls.current_policy_preflight = (PACKAGE / "current_nature_methods_policy_preflight.md").read_text(encoding="utf-8")
         cls.reviewer_editor_fit = (PACKAGE / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         cls.validation_breadth_map = (PACKAGE / "validation_breadth_and_boundary_map.md").read_text(encoding="utf-8")
@@ -69,6 +70,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "validation_breadth_map_present",
             "editor_objection_response_map_present",
             "editor_two_minute_triage_simulation_present",
+            "editorial_bar_rescue_audit_present",
             "current_policy_preflight_present",
             "reviewer_editor_fit_planner_present",
             "software_reporting_checklist_present",
@@ -191,6 +193,16 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("The current package should be readable as a Nature Methods computational-methods Article", self.editor_two_minute_triage)
         self.assertIn("If an editor can answer these three questions in the first two minutes", self.editor_two_minute_triage)
         self.assertIn("Two-minute editor triage simulation | ready", self.checklist)
+        self.assertIn("Nature Methods editorial-bar rescue audit", self.editorial_bar_rescue_audit)
+        self.assertIn("Top Desk-Rejection Risks", self.editorial_bar_rescue_audit)
+        self.assertIn("One-Sentence Nature Methods Advance", self.editorial_bar_rescue_audit)
+        self.assertIn("Nature Methods Requirement Matrix", self.editorial_bar_rescue_audit)
+        self.assertIn("Novelty Ledger", self.editorial_bar_rescue_audit)
+        self.assertIn("Comparator Ledger", self.editorial_bar_rescue_audit)
+        self.assertIn("Minimum Elevation Package", self.editorial_bar_rescue_audit)
+        self.assertIn("Submit after minor narrative elevation and completion of human upload actions", self.editorial_bar_rescue_audit)
+        self.assertIn("Do not delay for new wet-lab experiments", self.editorial_bar_rescue_audit)
+        self.assertIn("Editorial-bar rescue audit | ready", self.checklist)
         self.assertIn("Current Nature Methods policy preflight", self.current_policy_preflight)
         self.assertIn("does not add evidence, citations, analyses, figures, datasets, performance claims, or manuscript text", self.current_policy_preflight)
         self.assertIn("Article is a report describing a novel method or tool", self.current_policy_preflight)

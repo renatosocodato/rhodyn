@@ -33,7 +33,7 @@ class Stage929ClosureAssemblyTests(unittest.TestCase):
         self.assertEqual(self.gate["closure_status"], "complete_stage9_closed_version_bound")
         self.assertEqual(self.gate["action_decision_rows"], 6)
         self.assertEqual(self.gate["human_submission_action_rows"], 1)
-        self.assertEqual(self.gate["package_file_count"], 31)
+        self.assertEqual(self.gate["package_file_count"], 32)
         self.assertEqual(self.gate["rendered_figure_file_count"], 18)
 
     def test_all_expected_closure_checks_pass(self) -> None:
@@ -115,6 +115,7 @@ class Stage929ClosureAssemblyTests(unittest.TestCase):
         self.assertIn("manuscript/nature_methods/submission_package/validation_breadth_and_boundary_map.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/submission_package/editor_objection_response_map.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/submission_package/editor_two_minute_triage_simulation.md", self.package_manifest["package_files"])
+        self.assertIn("manuscript/nature_methods/submission_package/nature_methods_editorial_bar_rescue_audit.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/submission_package/reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md", self.package_manifest["package_files"])
         self.assertIn("manuscript/nature_methods/submission_package/reporting_summary_answer_bank_AUTHOR_CONFIRMATION_REQUIRED.md", self.package_manifest["package_files"])
