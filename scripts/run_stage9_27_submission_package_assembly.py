@@ -53,6 +53,7 @@ OUTPUTS = {
     "editor_triage_note": SUBMISSION / "editor_triage_note_for_cover_letter.md",
     "editorial_pitch": SUBMISSION / "editorial_pitch_for_submission.md",
     "software_reporting_checklist": SUBMISSION / "software_reporting_checklist.md",
+    "article_fit_checklist": SUBMISSION / "article_fit_checklist.md",
     "code_review": SUBMISSION / "code_for_review.md",
     "package_audit": SUBMISSION / "package_consistency_audit.md",
     "figure_inventory": SUBMISSION / "figure_file_inventory.csv",
@@ -165,6 +166,16 @@ def _strip_html_comments(text: str) -> str:
 
 def _drop_first_heading(text: str) -> str:
     return re.sub(r"^# .+?\n+", "", text.strip(), count=1)
+
+
+def _word_count(text: str) -> int:
+    return len(re.findall(r"\b[\w'-]+\b", text))
+
+
+def _assembled_section(text: str, heading: str) -> str:
+    pattern = re.compile(rf"^## {re.escape(heading)}\n(?P<body>.*?)(?=^## |\Z)", re.M | re.S)
+    match = pattern.search(text)
+    return match.group("body").strip() if match else ""
 
 
 def _demote_headings(text: str) -> str:
@@ -420,6 +431,53 @@ Official guidance used. Nature Methods Article content type expects a novel meth
 """
 
 
+def _article_fit_checklist(main_text: str) -> str:
+    abstract_words = _word_count(_assembled_section(main_text, "Abstract"))
+    intro_results_discussion = "\n\n".join(
+        _assembled_section(main_text, heading)
+        for heading in ["Introduction", "Results", "Discussion"]
+    )
+    main_body_words = _word_count(intro_results_discussion)
+    methods_words = _word_count(_assembled_section(main_text, "Online Methods"))
+    display_items = main_text.count("#### Figure ")
+    references = len(re.findall(r"^\d+\. ", _assembled_section(main_text, "References"), re.M))
+    discussion_has_subheadings = bool(re.search(r"^### ", _assembled_section(main_text, "Discussion"), re.M))
+    results_has_subheadings = bool(re.search(r"^### ", _assembled_section(main_text, "Results"), re.M))
+    methods_has_subheadings = bool(re.search(r"^### ", _assembled_section(main_text, "Online Methods"), re.M))
+
+    rows = [
+        ("Content-type decision", "Nature Methods Article", "Selected because the package reports a novel computational method/tool with validation, software, biological demonstrations, and full method description.", "fit"),
+        ("Rejected alternative", "Analysis", "Not selected because RhoDyn is not only a comparison of established methods; it defines and releases a method object.", "not selected"),
+        ("Rejected alternative", "Resource", "Not selected because the central contribution is not only a dataset or software catalog.", "not selected"),
+        ("Rejected alternative", "Brief Communication", "Not selected because the method requires formal definition, validation, software review surfaces, examples, and limitations.", "not selected"),
+        ("Abstract length", f"{abstract_words} words", "Nature Methods Article limit is up to 150 words and unreferenced.", "pass" if abstract_words <= 150 and "(" not in _assembled_section(main_text, "Abstract") else "check"),
+        ("Main text length", f"{main_body_words} words", "Nature Methods Article target is 3,000 words, with up to 5,000 words at editorial discretion, excluding abstract, Methods, references, and figure legends.", "pass" if main_body_words <= 3000 else "check"),
+        ("Main display items", f"{display_items} figures", "Nature Methods Article limit is up to six main figures and/or tables.", "pass" if display_items <= 6 else "check"),
+        ("Reference count", f"{references} references", "Nature Methods Article guidance typically recommends up to 50 references.", "pass" if references <= 50 else "check"),
+        ("Article section order", "Abstract, Introduction text, Results, Discussion, Online Methods, availability, references, legends", "The assembled review package labels the Introduction for navigation. Nature Methods Article formatting should remove any visible Introduction heading if the final journal template requires an unheaded opening section.", "format note"),
+        ("Results subheadings", "present" if results_has_subheadings else "absent", "Nature Methods permits topical Results subheadings.", "pass" if results_has_subheadings else "check"),
+        ("Methods subheadings", "present" if methods_has_subheadings else "absent", "Nature Methods permits topical Online Methods subheadings.", "pass" if methods_has_subheadings else "check"),
+        ("Discussion subheadings", "absent" if not discussion_has_subheadings else "present", "Nature Methods Article Discussion does not contain subheadings.", "pass" if not discussion_has_subheadings else "check"),
+    ]
+    lines = [
+        "# Nature Methods Article-fit checklist",
+        "",
+        "This checklist makes the content-type and format fit of the current RhoDyn package visible for author review. It is a submission-support surface and does not add new analyses, figures, datasets, or manuscript claims.",
+        "",
+        "| Check | Current package evidence | Nature Methods relevance | Status |",
+        "| --- | --- | --- | --- |",
+    ]
+    for check, evidence, relevance, status in rows:
+        lines.append(f"| {check} | {evidence} | {relevance} | {status} |")
+    lines.extend(
+        [
+            "",
+            "Residual human action. Confirm final file naming, Reporting Summary, portal metadata, and final Nature Methods template handling of the Introduction heading at upload. These are submission actions, not evidence gaps in the current manuscript package.",
+        ]
+    )
+    return "\n".join(lines) + "\n"
+
+
 def _manifest_json(generated_utc: str, checks: list[dict[str, Any]], package_dir: Path) -> dict[str, Any]:
     package_files = [
         (SUBMISSION / path.name).relative_to(ROOT).as_posix()
@@ -460,6 +518,7 @@ def _readiness_checklist(checks: list[dict[str, Any]]) -> str:
         f"| Editor-triage note | {'ready' if check_map.get('editor_triage_note_present') else 'blocked'} | `editor_triage_note_for_cover_letter.md` gives a cover-letter-ready Nature Methods fit argument. |",
         f"| Editorial pitch | {'ready' if check_map.get('editorial_pitch_present') else 'blocked'} | `editorial_pitch_for_submission.md` contains cover-letter and presubmission-inquiry drafts. |",
         f"| Software-reporting checklist | {'ready' if check_map.get('software_reporting_checklist_present') else 'blocked'} | `software_reporting_checklist.md` maps RhoDyn to Nature Methods software and algorithm reporting expectations. |",
+        f"| Article-fit checklist | {'ready' if check_map.get('article_fit_checklist_present') else 'blocked'} | `article_fit_checklist.md` records content-type fit, word counts, display count, references, and section structure. |",
         f"| Reader-surface hygiene | {'ready' if check_map.get('reader_surface_hygiene_passed') else 'blocked'} | Main manuscript and Supplementary Information surfaces are free of internal IDs and build-language tokens. |",
         f"| Package safety scan | {'ready' if check_map.get('package_safety_scan_clear') else 'blocked'} | Package files were scanned for local machine paths and token-like strings. |",
         f"| Consistency audit | {'ready' if check_map.get('package_consistency_audit_passed') else 'blocked'} | Package-level consistency checks passed. |",
@@ -481,6 +540,7 @@ def _submission_manifest(generated_utc: str) -> str:
         ("Editor-triage note", "editor_triage_note_for_cover_letter.md", "Cover-letter-ready Nature Methods fit, validation, and claim-boundary note."),
         ("Editorial pitch", "editorial_pitch_for_submission.md", "Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage."),
         ("Software-reporting checklist", "software_reporting_checklist.md", "Nature Methods software and algorithm reporting cross-check."),
+        ("Article-fit checklist", "article_fit_checklist.md", "Nature Methods Article content-type and format cross-check."),
         ("Readiness checklist", "submission_readiness_checklist.md", "Collaborator handoff checklist."),
         ("Consistency audit", "package_consistency_audit.md", "Package assembly checks."),
     ]
@@ -620,6 +680,14 @@ def _audit(generated_utc: str, package_dir: Path) -> dict[str, Any]:
             "detail": "Software-reporting checklist maps source code, algorithm description, documentation, sample data, expected outputs, license, and versioning",
         },
         {
+            "name": "article_fit_checklist_present",
+            "passed": (package_dir / "article_fit_checklist.md").exists()
+            and "Nature Methods Article-fit checklist" in (package_dir / "article_fit_checklist.md").read_text(encoding="utf-8")
+            and "Content-type decision" in (package_dir / "article_fit_checklist.md").read_text(encoding="utf-8")
+            and "Main display items" in (package_dir / "article_fit_checklist.md").read_text(encoding="utf-8"),
+            "detail": "Article-fit checklist records content-type fit, word counts, display count, references, and section structure",
+        },
+        {
             "name": "package_safety_scan_clear",
             "passed": not package_hits,
             "detail": f"package_hits={package_hits}",
@@ -720,12 +788,14 @@ def _stage_outputs(generated_utc: str) -> tuple[dict[str, Any], dict[str, Any]]:
     staging_submission.mkdir(parents=True, exist_ok=True)
     staging_gates.mkdir(parents=True, exist_ok=True)
 
-    _write_text(staging_submission / "main_text_for_submission.md", _assemble_main_text())
+    main_text = _assemble_main_text()
+    _write_text(staging_submission / "main_text_for_submission.md", main_text)
     _write_text(staging_submission / "supplementary_information_for_submission.md", _assemble_supplement())
     _write_text(staging_submission / "code_for_review.md", _code_for_review())
     _write_text(staging_submission / "editor_triage_note_for_cover_letter.md", _editor_triage_note())
     _write_text(staging_submission / "editorial_pitch_for_submission.md", _editorial_pitch())
     _write_text(staging_submission / "software_reporting_checklist.md", _software_reporting_checklist())
+    _write_text(staging_submission / "article_fit_checklist.md", _article_fit_checklist(main_text))
     _write_text(staging_submission / "references_for_submission.bib", _submission_bib())
     _write_csv(
         staging_submission / "figure_file_inventory.csv",
@@ -886,7 +956,7 @@ Current status. Stage 9.27 submission package assembly complete.
 
 The workspace now contains the authorized manuscript components through collaborator-review package assembly. Evidence intake, venue guidance, methods-paper corpus analysis, narrative spine, claim freeze, paragraph planning, figure planning, deterministic main-figure rendering, supplementary display planning, section contracts, front matter, Results, Introduction, Discussion, Methods, availability statements, Supplementary Methods, supplementary table/source-data binding, reference audit, cross-document consistency audit, statistical-language audit, figure legend/caption audit, editorial polish passes I and II, reader-surface hygiene, internal peer review, and submission package assembly are present.
 
-The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/software_reporting_checklist.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
+The next unstarted step is Stage 9.28 final human PI review packet. The package currently includes `submission_package/main_text_for_submission.md`, `submission_package/supplementary_information_for_submission.md`, `submission_package/code_for_review.md`, `submission_package/editor_triage_note_for_cover_letter.md`, `submission_package/editorial_pitch_for_submission.md`, `submission_package/software_reporting_checklist.md`, `submission_package/article_fit_checklist.md`, `submission_package/figure_file_inventory.csv`, `submission_package/source_data_and_statistics_inventory.csv`, `submission_package/submission_readiness_checklist.md`, `submission_package/package_consistency_audit.md`, and `submission_package/submission_package_manifest.json`.
 
 The official Springer Nature Reporting Summary form remains a human submission action. The PI review packet and Stage 9 closure report have not started.
 

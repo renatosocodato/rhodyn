@@ -51,6 +51,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "editor_triage_note_present",
             "editorial_pitch_present",
             "software_reporting_checklist_present",
+            "article_fit_checklist_present",
             "package_safety_scan_clear",
             "no_downstream_pi_or_closure_started",
             "package_consistency_audit_passed",
@@ -99,6 +100,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("RhoDyn repository root", self.code_for_review)
         self.assertTrue((PACKAGE / "editorial_pitch_for_submission.md").exists())
         self.assertIn("Source code supplied for review", (PACKAGE / "software_reporting_checklist.md").read_text(encoding="utf-8"))
+        self.assertIn("Content-type decision", (PACKAGE / "article_fit_checklist.md").read_text(encoding="utf-8"))
         self.assertIn("Reporting Summary | registered", self.checklist)
         self.assertIn("Springer Nature", self.checklist)
         self.assertIn("human submission action", self.checklist)

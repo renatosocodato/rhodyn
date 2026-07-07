@@ -38,6 +38,7 @@ The relevant editorial bar is a novel method or substantial improvement with bro
 | NM-DESK-010 | human_submission_action_remaining | Complete the official Springer Nature Reporting Summary and portal fields after author approval. |
 | NM-DESK-011 | hardened_in_current_text | Use the package-bound editorial pitch as the starting point for the final cover letter or presubmission inquiry after author approval. |
 | NM-DESK-012 | hardened_in_current_text | Keep the software-reporting checklist with the package so software review can start from a single evidence map. |
+| NM-DESK-013 | hardened_in_current_text | Keep the Article-fit checklist with the package so format and content-type fit are explicit before upload. |
 
 ## Recommended author action
 
@@ -49,6 +50,7 @@ The package is defensible for editor triage because the package-bound editor not
 - The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.
 - The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.
 - The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.
+- The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.
 - No title, Abstract, Results, Methods, figure, or data changes were made.
 - The official Reporting Summary remains a human submission action.
 

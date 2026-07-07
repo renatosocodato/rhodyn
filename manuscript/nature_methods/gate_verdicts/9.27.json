@@ -71,6 +71,11 @@
       "passed": true
     },
     {
+      "detail": "Article-fit checklist records content-type fit, word counts, display count, references, and section structure",
+      "name": "article_fit_checklist_present",
+      "passed": true
+    },
+    {
       "detail": "package_hits=[]",
       "name": "package_safety_scan_clear",
       "passed": true
@@ -86,9 +91,9 @@
       "passed": true
     }
   ],
-  "commit": "d1b48ec06586d0749f95d937d24dec2d22f28619",
+  "commit": "a5d8df03e7b0500a069869d8fc4a5e241be86ef6",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T11:24:15Z",
+  "generated_utc": "2026-07-07T11:32:26Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
@@ -98,6 +103,7 @@
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
     "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
     "manuscript/nature_methods/submission_package/software_reporting_checklist.md",
+    "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
     "manuscript/nature_methods/submission_package/package_consistency_audit.md",
     "manuscript/nature_methods/submission_package/figure_file_inventory.csv",

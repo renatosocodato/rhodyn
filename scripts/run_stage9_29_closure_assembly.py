@@ -49,6 +49,7 @@ PACKAGE_FILES = [
     SUBMISSION / "editor_triage_note_for_cover_letter.md",
     SUBMISSION / "editorial_pitch_for_submission.md",
     SUBMISSION / "software_reporting_checklist.md",
+    SUBMISSION / "article_fit_checklist.md",
     SUBMISSION / "code_for_review.md",
     SUBMISSION / "package_consistency_audit.md",
     SUBMISSION / "figure_file_inventory.csv",

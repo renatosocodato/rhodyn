@@ -31,6 +31,7 @@ TRIAGE_NOTE = STAGING / "nature_methods_editor_triage_note_draft.md"
 PACKAGE_TRIAGE_NOTE = SUBMISSION / "editor_triage_note_for_cover_letter.md"
 PACKAGE_EDITORIAL_PITCH = SUBMISSION / "editorial_pitch_for_submission.md"
 PACKAGE_SOFTWARE_CHECKLIST = SUBMISSION / "software_reporting_checklist.md"
+PACKAGE_ARTICLE_FIT = SUBMISSION / "article_fit_checklist.md"
 PRIOR_ART_NOTE = STAGING / "live_cell_prior_art_candidate_for_promotion.md"
 
 
@@ -76,6 +77,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
     package_triage = _read(PACKAGE_TRIAGE_NOTE)
     package_pitch = _read(PACKAGE_EDITORIAL_PITCH)
     package_software = _read(PACKAGE_SOFTWARE_CHECKLIST)
+    package_article_fit = _read(PACKAGE_ARTICLE_FIT)
     invalid_input_language = (
         "validation issues" in methods
         and "missing time units" in methods
@@ -195,6 +197,15 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "recommended_action": "Keep the software-reporting checklist with the package so software review can start from a single evidence map.",
             "promotion_target": "submission_package/software_reporting_checklist.md.",
         },
+        {
+            "risk_id": "NM-DESK-013",
+            "editorial_risk": "The package could look like the wrong Nature Methods content type if format, display-count, and Article-versus-Resource boundaries are not visible at triage.",
+            "nature_methods_requirement": "Article submissions should fit the Article structure, abstract and main-text budgets, display-item limit, reference guidance, and method/tool content type.",
+            "current_evidence": "The package now includes an Article-fit checklist with content-type decision, rejected alternatives, abstract word count, main body word count, display count, reference count, and section-structure checks.",
+            "status": "hardened_in_current_text" if "Content-type decision" in package_article_fit and "Abstract length" in package_article_fit and "Main display items" in package_article_fit else "needs_revision",
+            "recommended_action": "Keep the Article-fit checklist with the package so format and content-type fit are explicit before upload.",
+            "promotion_target": "submission_package/article_fit_checklist.md.",
+        },
     ]
 
 
@@ -262,6 +273,7 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "- The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.",
             "- The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.",
             "- The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.",
+            "- The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.",
             "- No title, Abstract, Results, Methods, figure, or data changes were made.",
             "- The official Reporting Summary remains a human submission action.",
             "",
@@ -349,6 +361,7 @@ def run() -> dict[str, object]:
             "package_triage_note": PACKAGE_TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_editorial_pitch": PACKAGE_EDITORIAL_PITCH.relative_to(ROOT).as_posix(),
             "package_software_reporting_checklist": PACKAGE_SOFTWARE_CHECKLIST.relative_to(ROOT).as_posix(),
+            "package_article_fit_checklist": PACKAGE_ARTICLE_FIT.relative_to(ROOT).as_posix(),
             "prior_art_note": PRIOR_ART_NOTE.relative_to(ROOT).as_posix(),
         },
         "scope": "Editorial hardening addendum only. No data, figures, model outputs, manuscript claims, or closed package files were changed.",
