@@ -1092,9 +1092,10 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
             "https://doi.org/10.5281/zenodo.14907827",
             "https://doi.org/10.5281/zenodo.5836623",
             "https://doi.org/10.5281/zenodo.10011861",
-            "https://github.com/renatosocodato/windowed_rhoA_model",
-            "e63cc93a4b23d8b3d27cf25136b00d53fa6144f4",
-            "https://doi.org/10.5281/zenodo.19796406",
+            "optional biological reference use case",
+            "controlled reviewer-access repository",
+            "journal upload system",
+            "do not depend on manuscript-private raw microscopy",
             "https://doi.org/10.5281/zenodo.20811171",
             "figures render manuscript/nature_methods/figures/figures.manifest.yaml",
             "Reporting Summary REQUIRED",
@@ -1102,6 +1103,13 @@ def check_stage9_scaffold(root: Path = ROOT) -> dict[str, object]:
         ]:
             if phrase not in combined:
                 failures.append(f"Stage 9.17 availability surfaces missing phrase: {phrase}")
+        for phrase in [
+            "https://github.com/renatosocodato/windowed_rhoA_model",
+            "https://doi.org/10.5281/zenodo.19796404",
+            "https://doi.org/10.5281/zenodo.19796406",
+        ]:
+            if phrase in combined:
+                failures.append(f"Stage 9.17 availability surfaces still expose unresolved optional reference-case link: {phrase}")
         for phrase in [
             "upon request",
             "available on request",

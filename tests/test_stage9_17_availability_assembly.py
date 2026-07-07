@@ -46,16 +46,22 @@ class Stage917AvailabilityAssemblyTests(unittest.TestCase):
             "https://doi.org/10.5281/zenodo.14907827",
             "https://doi.org/10.5281/zenodo.5836623",
             "https://doi.org/10.5281/zenodo.10011861",
-            "https://github.com/renatosocodato/windowed_rhoA_model",
-            "e63cc93a4b23d8b3d27cf25136b00d53fa6144f4",
-            "https://doi.org/10.5281/zenodo.19796404",
-            "https://doi.org/10.5281/zenodo.19796406",
+            "optional biological reference use case",
+            "controlled reviewer-access repository",
+            "journal upload system",
+            "do not depend on manuscript-private raw microscopy",
             "https://doi.org/10.5281/zenodo.20811171",
             "figures render manuscript/nature_methods/figures/figures.manifest.yaml",
             "Reporting Summary REQUIRED",
             "not the completed journal form",
         ]:
             self.assertIn(phrase, combined)
+        for phrase in [
+            "https://github.com/renatosocodato/windowed_rhoA_model",
+            "https://doi.org/10.5281/zenodo.19796404",
+            "https://doi.org/10.5281/zenodo.19796406",
+        ]:
+            self.assertNotIn(phrase, combined)
 
     def test_no_request_only_or_local_path_language(self) -> None:
         combined = "\n".join(

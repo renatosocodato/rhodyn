@@ -97,9 +97,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "976dc7c1473b63babbdd46ed3cfa1357e3607e04",
+  "commit": "4e3906b89ad6515644bb3edec539630c6ff140b1",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T11:56:58Z",
+  "generated_utc": "2026-07-07T12:19:26Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -141,10 +141,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "f0331531dc3ca444683161438d09e836fcee8d9e",
+    "closure_commit": "4e3906b89ad6515644bb3edec539630c6ff140b1",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@f0331531dc3ca444683161438d09e836fcee8d9e",
+    "package_version": "stage9.29-closure@4e3906b89ad6515644bb3edec539630c6ff140b1",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

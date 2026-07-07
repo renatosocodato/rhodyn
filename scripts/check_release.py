@@ -263,6 +263,7 @@ REQUIRED_FILES = [
     "scripts/run_stage9_27_submission_package_assembly.py",
     "scripts/run_stage9_28_pi_review_auto_revision.py",
     "scripts/run_stage9_29_closure_assembly.py",
+    "scripts/run_stage9_public_access_verification.py",
     "tests/test_stage9_scaffold.py",
     "tests/test_stage9_0_evidence_lock.py",
     "tests/test_stage9_1_venue_guidance.py",
@@ -295,6 +296,7 @@ REQUIRED_FILES = [
     "tests/test_stage9_27_submission_package_assembly.py",
     "tests/test_stage9_28_pi_review_auto_revision.py",
     "tests/test_stage9_29_closure_assembly.py",
+    "tests/test_stage9_public_access_verification.py",
     "manuscript/nature_methods/README.md",
     "manuscript/nature_methods/contracts/id_namespace.md",
     "manuscript/nature_methods/contracts/machine_gate_spec.md",
@@ -437,6 +439,8 @@ REQUIRED_FILES = [
     "manuscript/nature_methods/sections/abstract_strategy.md",
     "manuscript/nature_methods/sections/abstract.md",
     "manuscript/nature_methods/audits/panelforge_render_report.md",
+    "manuscript/nature_methods/audits/nature_methods_public_access_verification.json",
+    "manuscript/nature_methods/audits/nature_methods_public_access_verification.md",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.pdf",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.png",
     "manuscript/nature_methods/figures/rendered/FIG-001/FIG-001.svg",
@@ -1843,6 +1847,49 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
     if stage9_check.returncode != 0:
         detail = (stage9_check.stdout or stage9_check.stderr).strip()
         failures.append(f"Stage 9 scaffold check does not pass: {detail[:1200]}")
+
+    public_access_path = root / "manuscript" / "nature_methods" / "audits" / "nature_methods_public_access_verification.json"
+    public_access_md = root / "manuscript" / "nature_methods" / "audits" / "nature_methods_public_access_verification.md"
+    if public_access_path.exists():
+        try:
+            public_access = json.loads(public_access_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as exc:
+            failures.append(f"Nature Methods public-access verification is not valid JSON: {exc}")
+            public_access = {}
+        if public_access.get("status") != "pass":
+            failures.append("Nature Methods public-access verification does not pass")
+        public_access_checks = (
+            public_access.get("checks", {}) if isinstance(public_access.get("checks", {}), dict) else {}
+        )
+        for check_name in [
+            "all_visible_public_urls_resolve",
+            "expected_release_dataset_and_renderer_urls_present",
+            "unresolved_optional_reference_case_links_not_advertised",
+        ]:
+            if public_access_checks.get(check_name) is not True:
+                failures.append(f"Nature Methods public-access check failed or missing: {check_name}")
+        if public_access.get("failed_urls") not in ([], None):
+            failures.append("Nature Methods public-access verification must not contain failed URLs")
+        if public_access.get("forbidden_public_reference_hits") not in ([], None):
+            failures.append("Nature Methods package still advertises unresolved optional RhoA reference-case links")
+        if public_access.get("missing_expected_urls") not in ([], None):
+            failures.append("Nature Methods public-access verification is missing expected release, dataset, or renderer URLs")
+        if int(public_access.get("url_count", 0)) < 10:
+            failures.append("Nature Methods public-access verification did not check enough package URLs")
+    else:
+        failures.append("missing Nature Methods public-access verification report")
+    if public_access_md.exists():
+        public_access_text = public_access_md.read_text(encoding="utf-8")
+        for phrase in [
+            "Status. `pass`.",
+            "all_visible_public_urls_resolve. pass.",
+            "unresolved_optional_reference_case_links_not_advertised. pass.",
+            "expected_release_dataset_and_renderer_urls_present. pass.",
+        ]:
+            if phrase not in public_access_text:
+                failures.append(f"Nature Methods public-access Markdown report missing phrase: {phrase}")
+    else:
+        failures.append("missing Nature Methods public-access Markdown report")
 
     zenodo_publication_path = root / "docs" / "zenodo_publication_report.json"
     if zenodo_publication_path.exists():
