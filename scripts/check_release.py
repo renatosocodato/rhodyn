@@ -612,6 +612,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.2 named benchmarking complete; Stage 10.3 expanded public biological demonstrations not started",
             "Stage 10.3 expanded public biological demonstrations complete; Stage 10.4 held-out validation not started",
             "Stage 10.4 sealed held-out validation complete; Stage 10.5 method-first figure architecture not started",
+            "Stage 10.5 method-first figure architecture complete; Stage 10.6 manuscript-pitch transformation not started",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -632,8 +633,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_4_complete_heldout_validation":
-                failures.append("roadmap execution memory does not mark Stage 10.4 held-out validation as complete")
+            if stage10.get("status") != "stage10_5_complete_method_first_figure_architecture":
+                failures.append("roadmap execution memory does not mark Stage 10.5 method-first figure architecture as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -669,6 +670,14 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "case_studies/stage10_heldout_validation/stage10_4_trajectory_object_calls.csv",
                 "case_studies/stage10_heldout_validation/stage10_4_heldout_report.md",
                 "case_studies/stage10_heldout_validation/stage10_4_gate_report.json",
+                "docs/stage10_5_method_first_figure_architecture.md",
+                "scripts/run_stage10_5_figure_architecture.py",
+                "tests/test_stage10_5_figure_architecture.py",
+                "manuscript/nature_methods/figures/stage10_5_method_first_figure_spine.md",
+                "manuscript/nature_methods/figures/stage10_5_panel_evidence_crosswalk.csv",
+                "manuscript/nature_methods/figures/stage10_5_supplementary_map.csv",
+                "case_studies/stage10_figure_architecture/stage10_5_gate_report.json",
+                "case_studies/stage10_figure_architecture/stage10_5_figure_architecture_brief.md",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -740,6 +749,33 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                         failures.append("Stage 10.4 must preserve at least one inconclusive held-out call")
             else:
                 failures.append("Stage 10.4 held-out report is missing")
+            stage10_figure_gate = root / "case_studies" / "stage10_figure_architecture" / "stage10_5_gate_report.json"
+            if stage10_figure_gate.exists():
+                try:
+                    figure_payload = json.loads(stage10_figure_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.5 figure-architecture report is not valid JSON: {exc}")
+                else:
+                    if figure_payload.get("status") != "pass":
+                        failures.append("Stage 10.5 figure-architecture report must pass")
+                    gates = figure_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.5 figure-architecture gates must all pass")
+                    roles = figure_payload.get("figure_roles", {})
+                    expected_roles = {
+                        "FIG-001": "method_object_first",
+                        "FIG-002": "named_baseline_benchmarking",
+                        "FIG-003": "public_biological_breadth",
+                        "FIG-006": "software_reproducibility_secondary",
+                    }
+                    for fig_id, role in expected_roles.items():
+                        if roles.get(fig_id) != role:
+                            failures.append(f"Stage 10.5 {fig_id} role must be {role}")
+                    summary = figure_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("panel_count", 0) < 30:
+                        failures.append("Stage 10.5 must define at least 30 planned panels")
+            else:
+                failures.append("Stage 10.5 figure-architecture report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

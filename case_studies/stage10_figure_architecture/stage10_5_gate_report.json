@@ -1,0 +1,44 @@
+{
+  "figure_roles": {
+    "FIG-001": "method_object_first",
+    "FIG-002": "named_baseline_benchmarking",
+    "FIG-003": "public_biological_breadth",
+    "FIG-004": "endpoint_reserve_routing_extension",
+    "FIG-005": "heldout_validation",
+    "FIG-006": "software_reproducibility_secondary"
+  },
+  "gates": {
+    "all_panels_have_existing_evidence": true,
+    "all_panels_have_existing_scripts": true,
+    "all_three_vulnerabilities_addressed": true,
+    "first_three_method_performance_breadth": true,
+    "six_main_figures": true,
+    "software_after_method_validation": true,
+    "stage10_4_heldout_visible_before_software": true,
+    "supplementary_items_have_one_parent": true
+  },
+  "interpretation_boundary": "Stage 10.5 is a figure-architecture and manuscript-display plan. It does not add new biological evidence, render new PanelForge figures, or replace the Stage 9 rendered mockups.",
+  "missing_evidence_files": [],
+  "missing_source_scripts": [],
+  "next_phase": "Stage 10.6 manuscript and cover-letter pitch transformation",
+  "stage": "10.5",
+  "status": "pass",
+  "summary_metrics": {
+    "figure_count": 6,
+    "method_or_validation_panel_count_before_software": 25,
+    "panel_count": 30,
+    "software_panel_count": 5,
+    "supplementary_item_count": 7,
+    "unique_evidence_file_count": 48,
+    "unique_source_script_count": 11
+  },
+  "vulnerability_panel_counts": {
+    "heldout_validation": 5,
+    "limited_named_tool_benchmarking": 3,
+    "method_generalization": 5,
+    "method_novelty": 4,
+    "overclaim_boundary": 2,
+    "small_public_biological_demonstration_count": 5,
+    "software_secondary_support": 6
+  }
+}

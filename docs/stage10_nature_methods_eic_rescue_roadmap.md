@@ -102,6 +102,14 @@ The completed challenge writes a predeclaration before interpreting the Stage 10
 
 Stage 10.4 does not replace a prospective blinded collaborator study. It is a sealed replay over public-derived tables and should be described as no-retuning held-out validation rather than as universal external validation.
 
+### Stage 10.5 completion update
+
+Stage 10.5 is now implemented as a method-first Nature Methods figure architecture. The executable runner is `scripts/run_stage10_5_figure_architecture.py`, the documentation page is `docs/stage10_5_method_first_figure_architecture.md`, the active Stage 10 figure spine is `manuscript/nature_methods/figures/stage10_5_method_first_figure_spine.md`, and the panel-evidence crosswalk is `manuscript/nature_methods/figures/stage10_5_panel_evidence_crosswalk.csv`.
+
+The completed architecture uses six main figures. Figure 1 defines the RhoDyn method object and decision divergence. Figure 2 displays named-baseline benchmarking and comparator boundaries. Figure 3 shows public biological breadth across four counted independent public systems. Figure 4 extends the method to endpoint, reserve-like, bounded-coupling, and routed-output decisions. Figure 5 shows sealed held-out validation with positive, comparator-sufficient, and inconclusive outcomes. Figure 6 then shows software parity, archive reproduction, and user-path support. This ordering moves the method and validation evidence before software maturity.
+
+Stage 10.5 does not add new biological evidence, does not render new PanelForge figures, and does not replace the historical Stage 9 rendered mockups. It is the figure-architecture bridge that should control the next PanelForge rebuild and the Stage 10.6 manuscript-pitch transformation.
+
 ## Stage 10.2 named benchmarking ladder
 
 The named benchmarking track must be explicit enough that a methods editor does not see only self-comparison against simple summaries.
@@ -166,16 +174,16 @@ Gate. The current gate passes because the output includes positive, negative or 
 
 ## Stage 10.5 revised Nature Methods figure spine
 
-The Stage 9 figure spine is coherent but too balanced between method, examples, and software. Stage 10 should make the first half of the figure sequence unmistakably methodological.
+The Stage 9 figure spine is coherent but too balanced between method, examples, and software. Stage 10.5 makes the first half of the figure sequence unmistakably methodological and validation-driven.
 
-| figure | new editorial job | key panels |
+| figure | completed editorial job | key panels |
 | --- | --- | --- |
-| Fig. 1 | Define the RhoDyn method object and decision divergence. | input object, residence vs comparator families, abstention, decision report, failure modes |
-| Fig. 2 | Show synthetic truth and named-baseline benchmarking. | truth regimes, named baselines, calibration, sensitivity, runtime |
-| Fig. 3 | Demonstrate public live-cell biological breadth. | DRG calcium, ERK, NF-kB or p53, fourth independent system, negative/amplitude-sufficient case |
-| Fig. 4 | Demonstrate endpoint, reserve-like, bounded-coupling, and routed-output extension. | endpoint schema, bounded coupling, reserve-like endpoint, routed alternatives, reduced models |
-| Fig. 5 | Show held-out validation and uncertainty boundaries. | predeclared settings, held-out pass/fail/inconclusive, margin sensitivity, grouping sensitivity |
-| Fig. 6 | Show reproducibility and user adoption. | Python/CLI/API/workbench parity, archive, clean-room reproduction, report export |
+| Fig. 1 | Define the RhoDyn method object and decision divergence. | input objects, decision divergence, executable positive/negative/ambiguous fixtures, abstention and failure modes |
+| Fig. 2 | Show synthetic truth and named-baseline benchmarking. | known-truth regimes, named comparator families, accuracy and boundary outcomes, public-input comparator summaries, runtime |
+| Fig. 3 | Demonstrate public biological breadth. | public system matrix, DRG calcium, ERK GPCR, Cell Painting/MitoTox, MLCI tracking, source eligibility |
+| Fig. 4 | Demonstrate endpoint, reserve-like, bounded-coupling, and routed-output extension. | endpoint schema, bounded coupling, reserve-like endpoint, routed alternatives, measurement-scope limits |
+| Fig. 5 | Show held-out validation and uncertainty boundaries. | predeclared settings, held-out decision table, object-level calls, no-hidden-tuning gates, prospective-validation boundary |
+| Fig. 6 | Show reproducibility and user adoption. | Python/CLI/API/workbench parity, export bundles, clean-room reproduction, archive checksums, user-path rehearsal |
 
 The software figure remains essential but moves after the method and validation evidence have already established the advance.
 
@@ -272,10 +280,11 @@ python3 scripts/run_stage10_1_method_object_v2.py
 python3 scripts/run_stage10_2_named_benchmarking.py
 python3 scripts/run_stage10_3_public_biological_breadth.py
 python3 scripts/run_stage10_4_heldout_validation.py
+python3 scripts/run_stage10_5_figure_architecture.py
 python3 scripts/run_stage10_8_eic_red_team.py
 python3 scripts/check_release.py
 ```
 
 ## Reflection update
 
-Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 becomes the next scientific-methods elevation program. It is justified only because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. That risk can only be lowered by stronger named benchmarking, broader public biological demonstrations, a clearer mathematical method object, and adversarial editorial simulation before contact.
+Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 is now the active scientific-methods elevation program. It is justified because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. Stages 10.1 through 10.5 have now strengthened the mathematical method object, named benchmarking, public biological breadth, no-retuning held-out validation, and method-first figure architecture. The next risk is whether the manuscript text and EIC-facing pitch make that evidence hierarchy legible without sliding back into a software-workflow reading.
