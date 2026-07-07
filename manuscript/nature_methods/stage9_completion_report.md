@@ -23,13 +23,13 @@ Codex closed `5` PI-review action items from existing manuscript evidence and re
 - Software version. `v0.1.0`.
 - Pyproject version. `0.1.0`.
 - Repository. `https://github.com/renatosocodato/rhodyn`.
-- Closure commit. `a2df6119866c0ae2ef17ac53d159b14e5b80b4b3`.
+- Closure commit. `ff413de392595648330d3ec8e19ed6947609ed08`.
 - Software archive DOI. `10.5281/zenodo.21036616`.
 - Software concept DOI. `10.5281/zenodo.21036615`.
 - Evidence version. `stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc`.
 - Claim-freeze version. `claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af`.
 - Reference version. `reference-library@2026-07-07@62c2841691ce15ec6960440ea2faba7f60124e81`.
-- Package version. `stage9.29-closure@a2df6119866c0ae2ef17ac53d159b14e5b80b4b3`.
+- Package version. `stage9.29-closure@ff413de392595648330d3ec8e19ed6947609ed08`.
 - PanelForge version. `v3.14.1` with DOI `10.5281/zenodo.20811171`.
 
 ## Figure and package state
@@ -40,8 +40,8 @@ PanelForge remains unchanged in this closure step. The package has `18` rendered
 |---|---:|---:|
 | `manuscript/nature_methods/submission_package/main_text_for_submission.md` | `ddd08a91ef3b` | `36168` |
 | `manuscript/nature_methods/submission_package/supplementary_information_for_submission.md` | `d5bf3eadafa0` | `11912` |
-| `manuscript/nature_methods/submission_package/submission_manifest.md` | `0b406434ef18` | `3269` |
-| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `bf8862b8c2ec` | `3249` |
+| `manuscript/nature_methods/submission_package/submission_manifest.md` | `75b651909625` | `2952` |
+| `manuscript/nature_methods/submission_package/submission_readiness_checklist.md` | `c5b7dc439a1c` | `2949` |
 | `manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md` | `9fc7e15e22fd` | `2079` |
 | `manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md` | `196ee35bb536` | `6512` |
 | `manuscript/nature_methods/submission_package/software_reporting_checklist.md` | `34d4d62ebbca` | `4048` |
@@ -50,16 +50,16 @@ PanelForge remains unchanged in this closure step. The package has `18` rendered
 | `manuscript/nature_methods/submission_package/ai_disclosure_AUTHOR_CONFIRMATION_REQUIRED.md` | `f656f475e944` | `2118` |
 | `manuscript/nature_methods/submission_package/title_author_metadata_AUTHOR_CONFIRMATION_REQUIRED.md` | `36779884d31c` | `2315` |
 | `manuscript/nature_methods/submission_package/code_for_review.md` | `669b4108eea3` | `5472` |
-| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `65c55b302838` | `2826` |
+| `manuscript/nature_methods/submission_package/package_consistency_audit.md` | `0e3ebef7ae5a` | `2826` |
 | `manuscript/nature_methods/submission_package/figure_file_inventory.csv` | `e5230d7be7fb` | `4121` |
 | `manuscript/nature_methods/submission_package/source_data_and_statistics_inventory.csv` | `7cfc0ef56a00` | `6267` |
 | `manuscript/nature_methods/submission_package/references_for_submission.bib` | `c37151ef73f2` | `6973` |
 | `manuscript/nature_methods/submission_package/reporting_summary_REQUIRED.md` | `b83b8d2f639e` | `1448` |
-| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `2eee24553c6a` | `6994` |
+| `manuscript/nature_methods/submission_package/submission_package_manifest.json` | `fd4a49d128f1` | `6133` |
 | `manuscript/nature_methods/submission_package/pi_review_packet.md` | `283a56dc3f67` | `7833` |
 | `manuscript/nature_methods/submission_package/pi_review_action_matrix.csv` | `e3acfd583515` | `2203` |
-| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `895d3c1394b4` | `1639` |
-| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `769c32e5f8a8` | `1534` |
+| `manuscript/nature_methods/submission_package/pi_review_revision_log.md` | `8c18312008d5` | `1639` |
+| `manuscript/nature_methods/submission_package/pi_review_literature_calibration.md` | `ad24cd3da991` | `1534` |
 
 ## Scientific boundary
 

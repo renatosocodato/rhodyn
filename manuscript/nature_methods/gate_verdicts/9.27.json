@@ -106,9 +106,9 @@
       "passed": true
     }
   ],
-  "commit": "a2df6119866c0ae2ef17ac53d159b14e5b80b4b3",
+  "commit": "ff413de392595648330d3ec8e19ed6947609ed08",
   "figure_file_count": 18,
-  "generated_utc": "2026-07-07T12:41:06Z",
+  "generated_utc": "2026-07-07T12:45:58Z",
   "next_substage": "9.28",
   "package_files": [
     "manuscript/nature_methods/submission_package/main_text_for_submission.md",
