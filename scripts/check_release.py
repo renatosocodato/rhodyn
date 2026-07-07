@@ -604,8 +604,13 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append(f"roadmap execution memory is not valid JSON: {exc}")
             memory = {}
         current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-        if current.get("active_stage") != "Stage 9.29 closed and version-bound":
-            failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary as active")
+        active_stage = current.get("active_stage")
+        allowed_active_stages = {
+            "Stage 9.29 closed and version-bound",
+            "Stage 10.0 Nature Methods EIC rescue roadmap scaffold serialized; implementation not started",
+        }
+        if active_stage not in allowed_active_stages:
+            failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
         stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
         if stages.get(3, {}).get("status") != "complete_for_current_gate":
             failures.append("roadmap execution memory does not keep Stage 3 complete for the current gate")
@@ -621,6 +626,12 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not keep Stage 8 conceptual only")
         if stages.get(9, {}).get("status") != "stage9_29_closed_version_bound":
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
+        if 10 in stages:
+            stage10 = stages.get(10, {})
+            if stage10.get("status") != "stage10_0_scaffold_serialized_implementation_not_started":
+                failures.append("roadmap execution memory does not mark Stage 10.0 scaffold as serialized but not started")
+            if "docs/stage10_nature_methods_eic_rescue_roadmap.md" not in stage10.get("artifacts", []):
+                failures.append("roadmap execution memory does not register the Stage 10 EIC rescue roadmap artifact")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

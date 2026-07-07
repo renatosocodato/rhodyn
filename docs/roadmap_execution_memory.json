@@ -2,6 +2,7 @@
   "current_position": {
     "active_stage": "Stage 9.29 closed and version-bound",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
+    "after_stage10_0_eic_rescue_scaffold": "Stage 10.0 serialized the post-closure Nature Methods EIC rescue and methodological-elevation roadmap. The next work must lower desk-rejection risk through named baseline benchmarking, broader independent public biological demonstrations, a stronger mathematical method object, and adversarial EIC simulation before any second editor contact.",
     "after_stage4_api_freeze": "Stage 4 API contract is frozen for the first Stage 5 frontend scaffold.",
     "after_stage5_browser_hardening": "Stage 5 now has Playwright screenshot regression across desktop and mobile comparison panels, the public MLCI workflow, and an adversarial bounded-coupling case, with platform-specific Darwin/Linux baselines and CI wiring.",
     "after_stage5_closeout": "Stage 5 is completed as a contract-bound scientific workbench with upload parity, operation-specific visualizations, export provenance, browser regression, and adversarial layout guards.",
@@ -57,6 +58,7 @@
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
     "current_gate": "Stage 9 closed and version-bound",
     "next_stage": "Stage 10 or journal-specific submission actions, not started",
+    "stage10_active_gate": "Stage 10.0 scaffold serialized; implementation not started",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
     "stage9_active_gate": "Stage 9.29 closed and version-bound"
@@ -73,7 +75,8 @@
     "Stage 4 backend work must delegate to stable Python library functions.",
     "Stage 7 method evidence can expand biological systems only through the serialized methods-program plan and should not reopen the Stage 3 closure unless a Stage 3 defect is found.",
     "Stage 8 cannot reshape the Stage 7 methods evidence path.",
-    "Stage 5 frontend work must consume the frozen Stage 4 API contract."
+    "Stage 5 frontend work must consume the frozen Stage 4 API contract.",
+    "Do not ask the EIC to take another close look from the Stage 9.29 package alone; Stage 10 evidence elevation is the safer route before any second editor contact."
   ],
   "project": "RhoDyn",
   "purpose": "Roadmap execution memory for the original Stage 3 to Stage 8 blueprint.",
@@ -859,7 +862,7 @@
           "status": "complete_pi_review_packet"
         },
         {
-          "closure_version": "stage9.29-closure@5d5bb946854f06a58176c40d40c3edf000ed031b",
+          "closure_version": "stage9.29-closure@39a692f9934305be111642c812a1fbdd44b17262",
           "evidence": "manuscript/nature_methods/gate_verdicts/9.29.json",
           "gate": "every Stage 9 gate passes; quarantine has no unresolved blocker; package, evidence, and release versions are bound",
           "goal": "Close Stage 9 with package, evidence, release, and limitation versions bound.",
@@ -869,7 +872,76 @@
         }
       ],
       "substage_count": 33
+    },
+    {
+      "artifacts": [
+        "docs/stage10_nature_methods_eic_rescue_roadmap.md"
+      ],
+      "current_gate": "Stage 10.0 serialized the desk-rejection blockade roadmap; no implementation has started.",
+      "gate": [
+        "Named baseline and named-tool benchmarking must be materially broader than Stage 7.2.",
+        "At least two additional independent public biological demonstrations should be added before a stronger Nature Methods generality claim.",
+        "The method object must be mathematically and algorithmically explicit enough to read as methodological advance, not only workflow integration.",
+        "A second EIC contact should not be made until adversarial red-team simulation shows no unresolved high-severity desk-rejection risk."
+      ],
+      "name": "Nature Methods EIC rescue and methodological elevation",
+      "scope_rule": "Stage 10 is a post-closure evidence-elevation program, not a Stage 9 polish pass. It must lower the risk that RhoDyn is read as workflow/software integration by adding named baseline benchmarking, independent public biological breadth, mathematical method-object elevation, held-out validation, and EIC red-team simulation before any second editor contact.",
+      "stage": 10,
+      "status": "stage10_0_scaffold_serialized_implementation_not_started",
+      "subphases": [
+        {
+          "evidence": "docs/stage10_nature_methods_eic_rescue_roadmap.md",
+          "id": "10.0",
+          "name": "EIC rescue roadmap scaffold",
+          "status": "complete_scaffold_serialized"
+        },
+        {
+          "id": "10.1",
+          "name": "Method object v2 formalization",
+          "status": "not_started"
+        },
+        {
+          "id": "10.2",
+          "name": "Named baseline and named-tool benchmarking",
+          "status": "not_started"
+        },
+        {
+          "id": "10.3",
+          "name": "Expanded independent public biological demonstrations",
+          "status": "not_started"
+        },
+        {
+          "id": "10.4",
+          "name": "Blinded or held-out validation route",
+          "status": "not_started"
+        },
+        {
+          "id": "10.5",
+          "name": "Method-first figure spine rebuild",
+          "status": "not_started"
+        },
+        {
+          "id": "10.6",
+          "name": "Manuscript and cover-letter pitch transformation",
+          "status": "not_started"
+        },
+        {
+          "id": "10.7",
+          "name": "Benchmark-ready release candidate",
+          "status": "not_started"
+        },
+        {
+          "id": "10.8",
+          "name": "Adversarial EIC red-team simulation",
+          "status": "not_started"
+        },
+        {
+          "id": "10.9",
+          "name": "EIC-contact decision",
+          "status": "not_started"
+        }
+      ]
     }
   ],
-  "updated": "2026-07-02"
+  "updated": "2026-07-07"
 }

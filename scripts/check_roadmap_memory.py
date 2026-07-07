@@ -224,8 +224,13 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         gate = json.loads(gate_path.read_text(encoding="utf-8"))
 
     current = memory.get("current_position", {}) if isinstance(memory, dict) else {}
-    if current.get("active_stage") != "Stage 9.29 closed and version-bound":
-        failures.append("active stage must record the Stage 9.29 closure boundary")
+    active_stage = current.get("active_stage")
+    allowed_active_stages = {
+        "Stage 9.29 closed and version-bound",
+        "Stage 10.0 Nature Methods EIC rescue roadmap scaffold serialized; implementation not started",
+    }
+    if active_stage not in allowed_active_stages:
+        failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
 
     stages = {entry.get("stage"): entry for entry in memory.get("stage_lock", []) if isinstance(entry, dict)}
     expected_status = {
@@ -236,10 +241,42 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
+        10: "stage10_0_scaffold_serialized_implementation_not_started",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
             failures.append(f"Stage {stage} status must be {status}")
+
+    stage10 = stages.get(10, {})
+    if stage10:
+        if "docs/stage10_nature_methods_eic_rescue_roadmap.md" not in stage10.get("artifacts", []):
+            failures.append("Stage 10 must register docs/stage10_nature_methods_eic_rescue_roadmap.md")
+        stage10_doc = root / "docs" / "stage10_nature_methods_eic_rescue_roadmap.md"
+        if not stage10_doc.exists():
+            failures.append("missing docs/stage10_nature_methods_eic_rescue_roadmap.md")
+        else:
+            stage10_body = stage10_doc.read_text(encoding="utf-8")
+            for phrase in [
+                "limited named-tool and named-baseline benchmarking",
+                "small number of independent public biological demonstrations",
+                "mathematically and algorithmically distinctive method",
+                "named benchmarking ladder",
+                "public biological demonstration expansion",
+                "adversarial EIC simulation",
+                'Do not ask the EIC to "take another look" at the old paper',
+            ]:
+                if phrase not in stage10_body:
+                    failures.append(f"Stage 10 EIC rescue roadmap missing phrase: {phrase}")
+        subphase_status = {
+            item.get("id"): item.get("status")
+            for item in stage10.get("subphases", [])
+            if isinstance(item, dict)
+        }
+        if subphase_status.get("10.0") != "complete_scaffold_serialized":
+            failures.append("Stage 10.0 must be complete_scaffold_serialized")
+        for subphase in ["10.1", "10.2", "10.3", "10.4", "10.5", "10.6", "10.7", "10.8", "10.9"]:
+            if subphase_status.get(subphase) != "not_started":
+                failures.append(f"Stage {subphase} must remain not_started after scaffold serialization")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []
