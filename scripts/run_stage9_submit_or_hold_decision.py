@@ -71,6 +71,7 @@ def build_report() -> dict[str, Any]:
     code_for_review = _read(PACKAGE / "code_for_review.md")
     editor_note = _read(PACKAGE / "editor_triage_note_for_cover_letter.md")
     editorial_pitch = _read(PACKAGE / "editorial_pitch_for_submission.md")
+    cover_letter_draft = _read(PACKAGE / "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md")
     package_manifest = _json(PACKAGE / "submission_package_manifest.json")
     public_access = _json(AUDITS / "nature_methods_public_access_verification.json")
     closure_gate = _json(WORKSPACE / "gate_verdicts" / "9.29.json")
@@ -150,6 +151,15 @@ def build_report() -> dict[str, Any]:
             and "reference use case rather than as hidden evidence for every methods claim" in editorial_pitch
             and "rather than as a software note or a single-system biological study" in editorial_pitch,
             "Cover-letter and presubmission drafts state the method novelty, validation breadth, and non-overclaim boundaries.",
+        ),
+        _check(
+            "cover_letter_submission_draft_present",
+            "AUTHOR CONFIRMATION REQUIRED" in cover_letter_draft
+            and "Article-level computational method" in cover_letter_draft
+            and "validation ladder is designed to avoid a single-case methods claim" in cover_letter_draft
+            and "Residence windows are declared analysis choices" in cover_letter_draft
+            and "RhoDyn v0.1.0 is publicly available" in cover_letter_draft,
+            "Final cover-letter draft keeps the upload-facing Article fit, validation breadth, software reproducibility, and claim boundaries together for author confirmation.",
         ),
         _check(
             "prior_art_positioning_matrix_present",

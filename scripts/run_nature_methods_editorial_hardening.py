@@ -32,6 +32,7 @@ TRIAGE_SIMULATION_JSON = AUDITS / "nature_methods_editor_triage_simulation.json"
 TRIAGE_NOTE = STAGING / "nature_methods_editor_triage_note_draft.md"
 PACKAGE_TRIAGE_NOTE = SUBMISSION / "editor_triage_note_for_cover_letter.md"
 PACKAGE_EDITORIAL_PITCH = SUBMISSION / "editorial_pitch_for_submission.md"
+PACKAGE_COVER_LETTER = SUBMISSION / "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md"
 PACKAGE_SOFTWARE_CHECKLIST = SUBMISSION / "software_reporting_checklist.md"
 PACKAGE_ARTICLE_FIT = SUBMISSION / "article_fit_checklist.md"
 PACKAGE_AUTHOR_DECLARATIONS = SUBMISSION / "author_declarations_REQUIRED.md"
@@ -91,6 +92,7 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
     figure_legends_present = "### Main figure legends" in main_text and "#### Figure 6" in main_text
     package_triage = _read(PACKAGE_TRIAGE_NOTE)
     package_pitch = _read(PACKAGE_EDITORIAL_PITCH)
+    package_cover_letter = _read(PACKAGE_COVER_LETTER)
     package_software = _read(PACKAGE_SOFTWARE_CHECKLIST)
     package_article_fit = _read(PACKAGE_ARTICLE_FIT)
     package_author_declarations = _read(PACKAGE_AUTHOR_DECLARATIONS)
@@ -201,10 +203,10 @@ def _risk_rows(main_text: str, pi_review: str) -> list[dict[str, str]]:
             "risk_id": "NM-DESK-011",
             "editorial_risk": "The closed package may still require a submission-ready pitch that translates the method into Nature Methods editorial-decision language.",
             "nature_methods_requirement": "Initial editorial triage needs fast evidence of novelty, strong validation, immediate practical relevance, reusable software, and calibrated biological scope.",
-            "current_evidence": "The package now includes cover-letter and presubmission-inquiry drafts that state the method object, validation ladder, software release surfaces, and interpretation limits.",
-            "status": "hardened_in_current_text" if "Cover-letter draft" in package_pitch and "Presubmission-inquiry draft" in package_pitch and "immediate practical relevance" in package_pitch else "needs_revision",
-            "recommended_action": "Use the package-bound editorial pitch as the starting point for the final cover letter or presubmission inquiry after author approval.",
-            "promotion_target": "submission_package/editorial_pitch_for_submission.md.",
+            "current_evidence": "The package now includes an author-confirmation cover-letter draft and an editorial pitch surface that state the method object, validation ladder, software release surfaces, immediate practical relevance, and interpretation limits.",
+            "status": "hardened_in_current_text" if "Cover-letter draft" in package_pitch and "Presubmission-inquiry draft" in package_pitch and "immediate practical relevance" in package_pitch and "Article-level computational method" in package_cover_letter and "validation ladder is designed to avoid a single-case methods claim" in package_cover_letter else "needs_revision",
+            "recommended_action": "Use the package-bound cover-letter draft as the upload starting point after author approval, preserving the Article fit, validation breadth, software reproducibility, and scope limits.",
+            "promotion_target": "submission_package/cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md.",
         },
         {
             "risk_id": "NM-DESK-012",
@@ -317,6 +319,7 @@ def _write_report(rows: list[dict[str, str]], main_text: str) -> None:
             "- The live-cell morphodynamic prior-art citation has been promoted and renumbered across the current package.",
             "- The editor-triage note is included in the submission package as `editor_triage_note_for_cover_letter.md`.",
             "- The editorial pitch is included in the submission package as `editorial_pitch_for_submission.md`.",
+            "- The author-confirmation cover-letter draft is included in the submission package as `cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md`.",
             "- The validation breadth map is included in the submission package as `validation_breadth_and_boundary_map.md`.",
             "- The software-reporting checklist is included in the submission package as `software_reporting_checklist.md`.",
             "- The Article-fit checklist is included in the submission package as `article_fit_checklist.md`.",
@@ -349,6 +352,7 @@ def _triage_rows(rows: list[dict[str, str]], main_text: str) -> list[dict[str, s
     article_fit = _read(PACKAGE_ARTICLE_FIT)
     reviewer_fit = _read(PACKAGE_REVIEWER_FIT)
     validation_breadth = _read(PACKAGE_VALIDATION_BREADTH)
+    cover_letter_draft = _read(PACKAGE_COVER_LETTER)
     high_or_open = {
         row["risk_id"]: row
         for row in rows
@@ -414,10 +418,10 @@ def _triage_rows(rows: list[dict[str, str]], main_text: str) -> list[dict[str, s
         },
         {
             "criterion": "Desk-rejection residual risk",
-            "current_evidence": f"Risk matrix rows={len(rows)}, unresolved non-human rows={len(high_or_open)}, human upload rows={len(human_actions)}, Results words={_word_count(results)}, Methods words={_word_count(methods)}.",
-            "simulated_editor_read": "The package is suitable for a serious initial editor read if the author-side upload fields are completed, but it is not guaranteed to proceed to review.",
-            "risk_level": "medium",
-            "recommended_action": "Use the editorial pitch to foreground Article fit, validation breadth, and calibrated scope in the cover letter.",
+            "current_evidence": f"Risk matrix rows={len(rows)}, unresolved non-human rows={len(high_or_open)}, human upload rows={len(human_actions)}, Results words={_word_count(results)}, Methods words={_word_count(methods)}, cover-letter draft present={'Article-level computational method' in cover_letter_draft}.",
+            "simulated_editor_read": "The package is suitable for a serious initial editor read if the author-side upload fields are completed, and the cover-letter draft now foregrounds Article fit, validation breadth, software reproducibility, and calibrated scope.",
+            "risk_level": "low" if not high_or_open and "Article-level computational method" in cover_letter_draft and "Residence windows are declared analysis choices" in cover_letter_draft else "medium",
+            "recommended_action": "Use the author-confirmed cover-letter draft to preserve Article fit, validation breadth, software reproducibility, and calibrated scope during upload.",
         },
     ]
 
@@ -570,6 +574,7 @@ def run() -> dict[str, object]:
             "triage_note": TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_triage_note": PACKAGE_TRIAGE_NOTE.relative_to(ROOT).as_posix(),
             "package_editorial_pitch": PACKAGE_EDITORIAL_PITCH.relative_to(ROOT).as_posix(),
+            "package_cover_letter_draft": PACKAGE_COVER_LETTER.relative_to(ROOT).as_posix(),
             "package_validation_breadth_map": PACKAGE_VALIDATION_BREADTH.relative_to(ROOT).as_posix(),
             "package_software_reporting_checklist": PACKAGE_SOFTWARE_CHECKLIST.relative_to(ROOT).as_posix(),
             "package_article_fit_checklist": PACKAGE_ARTICLE_FIT.relative_to(ROOT).as_posix(),

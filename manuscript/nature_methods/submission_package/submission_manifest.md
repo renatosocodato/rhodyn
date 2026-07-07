@@ -1,7 +1,7 @@
 # Submission package manifest
 
-Generated UTC. 2026-07-07T14:13:57Z
-Git commit. 25c3f129a9923080b2285d7340af4e5cb75350e7
+Generated UTC. 2026-07-07T14:24:31Z
+Git commit. 828c8ac65101ab91236ad033565327876aabdb42
 
 | Component | File | Role |
 | --- | --- | --- |
@@ -18,6 +18,7 @@ Git commit. 25c3f129a9923080b2285d7340af4e5cb75350e7
 | Code for review | `code_for_review.md` | Release identity and reproducibility-command surface. |
 | Editor-triage note | `editor_triage_note_for_cover_letter.md` | Cover-letter-ready Nature Methods fit, validation, and claim-boundary note. |
 | Editorial pitch | `editorial_pitch_for_submission.md` | Cover-letter and presubmission-inquiry drafts for Nature Methods editorial triage. |
+| Cover-letter submission draft | `cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md` | Author-confirmation cover-letter draft foregrounding Article fit, validation breadth, software reproducibility, and scoped claims. |
 | Prior-art positioning matrix | `prior_art_positioning_matrix.md` | Novelty-boundary comparison against related dynamic-state, trajectory, imaging, and software-method literature. |
 | Validation breadth map | `validation_breadth_and_boundary_map.md` | Validation-ladder and boundary map across synthetic, public trajectory, endpoint, held-out, and software-reproducibility tests. |
 | Editor-objection response map | `editor_objection_response_map.md` | Desk-review objection map linking likely objections to existing package evidence and wording boundaries. |

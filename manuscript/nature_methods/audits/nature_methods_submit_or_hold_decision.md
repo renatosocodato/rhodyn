@@ -1,6 +1,6 @@
 # Nature Methods submit-or-hold decision
 
-Generated UTC. `2026-07-07T14:14:25Z`.
+Generated UTC. `2026-07-07T14:24:53Z`.
 
 Decision. `hold_for_human_upload_actions`.
 
@@ -18,6 +18,7 @@ The Stage 9.29 package is ready for collaborator and PI review as a Nature Metho
 | code_and_data_availability_present | pass | RhoDyn release, software DOI, and PanelForge DOI appear in availability text. |
 | editorial_fit_argument_present | pass | Editor-triage note presents the Nature Methods fit and validation ladder. |
 | cover_letter_pitch_boundary_present | pass | Cover-letter and presubmission drafts state the method novelty, validation breadth, and non-overclaim boundaries. |
+| cover_letter_submission_draft_present | pass | Final cover-letter draft keeps the upload-facing Article fit, validation breadth, software reproducibility, and claim boundaries together for author confirmation. |
 | prior_art_positioning_matrix_present | pass | Prior-art positioning matrix makes the RhoDyn novelty boundary explicit for collaborator/editorial review. |
 | validation_breadth_map_present | pass | Validation breadth map makes cross-system method tests and non-universality boundaries visible for collaborator/editorial review. |
 | editor_objection_response_map_present | pass | Editor-objection response map ties likely desk-review objections to existing evidence and claim boundaries. |

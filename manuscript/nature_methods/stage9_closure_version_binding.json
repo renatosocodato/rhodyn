@@ -1,6 +1,6 @@
 {
   "claim_freeze_version": "claim-freeze@2026-07-02@beacfd947561f89b2cde213ae1dab0dc13e6b1af",
-  "closure_commit": "25c3f129a9923080b2285d7340af4e5cb75350e7",
+  "closure_commit": "828c8ac65101ab91236ad033565327876aabdb42",
   "content_type": "Article",
   "evidence_version": "stage7.8-methods-readiness@242f06c49e8310b81ac1c06a270bb6810f3f4cfc",
   "figure_engine": {
@@ -42,7 +42,7 @@
     "panelforge_ref": null,
     "rendered_file_count": 18
   },
-  "generated_utc": "2026-07-07T14:13:57Z",
+  "generated_utc": "2026-07-07T14:24:31Z",
   "human_submission_actions": [
     "Complete the official Springer Nature Reporting Summary form using author-confirmed answers from the reporting-summary answer bank.",
     "Confirm final title page, author list, affiliations, correspondence fields, author declarations, and the AI-use disclosure draft if applicable.",
@@ -65,16 +65,16 @@
       "sha256": "d5bf3eadafa0932021fe626589de53796e7212fb93ea2e02584266b46fc61d03"
     },
     {
-      "bytes": 4342,
+      "bytes": 4573,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_manifest.md",
-      "sha256": "ee9c4cd07df278c36cfdb1e4860192e11534323f80b1a143529cc4a756b4f377"
+      "sha256": "17cc5e3c2495bc800f95bb8d7b2977046775240822304f8013f0e08ee1fd83f7"
     },
     {
-      "bytes": 4434,
+      "bytes": 4707,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_readiness_checklist.md",
-      "sha256": "733cde5c9d56e88d0d9fa715dceebbbaeabdf34b835360e20fb31353784b19ab"
+      "sha256": "885f957a22b74ea7f2408c3368c42aa76692980701a40550855b9ae97705bf58"
     },
     {
       "bytes": 2079,
@@ -87,6 +87,12 @@
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/editorial_pitch_for_submission.md",
       "sha256": "9ead8c253489e47b4c6306dca0d56fbead404370eb1a875d30b0fe877e85103a"
+    },
+    {
+      "bytes": 3927,
+      "exists": true,
+      "path": "manuscript/nature_methods/submission_package/cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md",
+      "sha256": "d7302ebcc1cf98809415981c2269b27b394048333008533e20ae5e2b4aa6880f"
     },
     {
       "bytes": 5933,
@@ -161,10 +167,10 @@
       "sha256": "669b4108eea3e6e0fb034822b8a38800e7a0e305b0a9a192ad315775e0df6fd9"
     },
     {
-      "bytes": 3999,
+      "bytes": 4188,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/package_consistency_audit.md",
-      "sha256": "89a26dae70813e8f9335bc77cfcfd486c9c0bc9332548f108b9b99dfce1626d6"
+      "sha256": "df6b4b9be1c3e4559be5f229a97c763e6547ea686f37f46918df817714cdb211"
     },
     {
       "bytes": 4121,
@@ -197,10 +203,10 @@
       "sha256": "2b5fac1cbf22a8ff00d0107476a801911d0448827d977139e5e893db5cc93a9e"
     },
     {
-      "bytes": 8377,
+      "bytes": 8735,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/submission_package_manifest.json",
-      "sha256": "9fd29485232b9f6ce5090773cd5a46ae403aafc8c889909269b731363d9ac3e9"
+      "sha256": "26198f5993377351874b325e05a83a393d8c56720a785332247d7e49ebf57b03"
     },
     {
       "bytes": 7833,
@@ -218,16 +224,16 @@
       "bytes": 1639,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_revision_log.md",
-      "sha256": "775b19f0188f19fa46f5452c58b259ce50ad73d89e7a77b61bcba3ba63e08127"
+      "sha256": "e87f4b5ce32034362ac51861aa62b614edcc7035035f29f4e510cdfad0376fc0"
     },
     {
       "bytes": 1534,
       "exists": true,
       "path": "manuscript/nature_methods/submission_package/pi_review_literature_calibration.md",
-      "sha256": "a4c1b5c3d9e8585fa3eea36bf64eba4d472b7b55a99b0b6dfc1e31dd7d16b06c"
+      "sha256": "b5c16ac1897765e45a32b12a43b53e9de9240f5309dafe947f29eee13c6c04ef"
     }
   ],
-  "package_version": "stage9.29-closure@25c3f129a9923080b2285d7340af4e5cb75350e7",
+  "package_version": "stage9.29-closure@828c8ac65101ab91236ad033565327876aabdb42",
   "pi_review_action_decisions": [
     {
       "closure_status": "closed",

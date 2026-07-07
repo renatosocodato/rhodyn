@@ -86,6 +86,11 @@
       "passed": true
     },
     {
+      "detail": "Cover-letter submission draft keeps Article fit, validation breadth, software reproducibility, and claim boundaries together for author confirmation",
+      "name": "cover_letter_draft_present",
+      "passed": true
+    },
+    {
       "detail": "Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence",
       "name": "prior_art_positioning_matrix_present",
       "passed": true
@@ -142,9 +147,9 @@
     }
   ],
   "closure_status": "complete_stage9_closure_version_bound",
-  "commit": "25c3f129a9923080b2285d7340af4e5cb75350e7",
+  "commit": "828c8ac65101ab91236ad033565327876aabdb42",
   "current_substage": "9.29",
-  "generated_utc": "2026-07-07T14:13:57Z",
+  "generated_utc": "2026-07-07T14:24:31Z",
   "next_substage": "none",
   "not_started": [],
   "package_files": [
@@ -154,6 +159,7 @@
     "manuscript/nature_methods/submission_package/article_fit_checklist.md",
     "manuscript/nature_methods/submission_package/author_declarations_REQUIRED.md",
     "manuscript/nature_methods/submission_package/code_for_review.md",
+    "manuscript/nature_methods/submission_package/cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md",
     "manuscript/nature_methods/submission_package/current_nature_methods_policy_preflight.md",
     "manuscript/nature_methods/submission_package/editor_objection_response_map.md",
     "manuscript/nature_methods/submission_package/editor_triage_note_for_cover_letter.md",
@@ -195,10 +201,10 @@
   "stage9_version_binding": "manuscript/nature_methods/stage9_closure_version_binding.json",
   "title": "Submission package assembly",
   "version_binding": {
-    "closure_commit": "25c3f129a9923080b2285d7340af4e5cb75350e7",
+    "closure_commit": "828c8ac65101ab91236ad033565327876aabdb42",
     "figure_engine_doi": "10.5281/zenodo.20811171",
     "figure_engine_version": "v3.14.1",
-    "package_version": "stage9.29-closure@25c3f129a9923080b2285d7340af4e5cb75350e7",
+    "package_version": "stage9.29-closure@828c8ac65101ab91236ad033565327876aabdb42",
     "software_archive_doi": "10.5281/zenodo.21036616",
     "software_version": "v0.1.0"
   }

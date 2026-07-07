@@ -18,7 +18,7 @@ Potentially suitable for full editorial consideration after author upload action
 | Biological utility without overclaiming | low | The use case helps show biological utility as long as it remains a demonstration of method behavior, not a hidden primary biology claim. | Keep the RhoA/microglia language scoped to reference-use-case evidence. |
 | Submission completeness | medium | Repository-derived package contents are complete, but journal forms and portal fields remain author actions. | Complete the official Reporting Summary, author declarations, portal metadata, and author approval before upload. |
 | Reviewer and editor fit | medium | Reviewer suggestions can support the method claim if they cover live-cell dynamics, computational time-series inference, statistical decision rules, perturbation endpoints, and reproducible software rather than only RhoA or microglial biology. | Confirm reviewer suggestions, reviewer exclusions, and any editor-fit wording with the author team before upload. |
-| Desk-rejection residual risk | medium | The package is suitable for a serious initial editor read if the author-side upload fields are completed, but it is not guaranteed to proceed to review. | Use the editorial pitch to foreground Article fit, validation breadth, and calibrated scope in the cover letter. |
+| Desk-rejection residual risk | low | The package is suitable for a serious initial editor read if the author-side upload fields are completed, and the cover-letter draft now foregrounds Article fit, validation breadth, software reproducibility, and calibrated scope. | Use the author-confirmed cover-letter draft to preserve Article fit, validation breadth, software reproducibility, and calibrated scope during upload. |
 
 ## Likely editor questions
 

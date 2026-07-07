@@ -58,10 +58,10 @@
     },
     {
       "criterion": "Desk-rejection residual risk",
-      "current_evidence": "Risk matrix rows=16, unresolved non-human rows=0, human upload rows=2, Results words=850, Methods words=1017.",
-      "recommended_action": "Use the editorial pitch to foreground Article fit, validation breadth, and calibrated scope in the cover letter.",
-      "risk_level": "medium",
-      "simulated_editor_read": "The package is suitable for a serious initial editor read if the author-side upload fields are completed, but it is not guaranteed to proceed to review."
+      "current_evidence": "Risk matrix rows=16, unresolved non-human rows=0, human upload rows=2, Results words=850, Methods words=1017, cover-letter draft present=True.",
+      "recommended_action": "Use the author-confirmed cover-letter draft to preserve Article fit, validation breadth, software reproducibility, and calibrated scope during upload.",
+      "risk_level": "low",
+      "simulated_editor_read": "The package is suitable for a serious initial editor read if the author-side upload fields are completed, and the cover-letter draft now foregrounds Article fit, validation breadth, software reproducibility, and calibrated scope."
     }
   ],
   "official_sources": {
@@ -70,8 +70,8 @@
   },
   "risk_counts": {
     "high": 0,
-    "low": 6,
-    "medium": 3
+    "low": 7,
+    "medium": 2
   },
   "scope": "Author-side stress test only. This is not a journal decision and does not add evidence.",
   "simulated_verdict": "Potentially suitable for full editorial consideration after author upload actions",

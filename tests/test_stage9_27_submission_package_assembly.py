@@ -32,6 +32,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         cls.current_policy_preflight = (PACKAGE / "current_nature_methods_policy_preflight.md").read_text(encoding="utf-8")
         cls.reviewer_editor_fit = (PACKAGE / "reviewer_editor_fit_planner_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         cls.validation_breadth_map = (PACKAGE / "validation_breadth_and_boundary_map.md").read_text(encoding="utf-8")
+        cls.cover_letter_draft = (PACKAGE / "cover_letter_for_submission_AUTHOR_CONFIRMATION_REQUIRED.md").read_text(encoding="utf-8")
         with (PACKAGE / "figure_file_inventory.csv").open(newline="", encoding="utf-8") as handle:
             cls.figure_rows = list(csv.DictReader(handle))
         with (PACKAGE / "source_data_and_statistics_inventory.csv").open(newline="", encoding="utf-8") as handle:
@@ -61,6 +62,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
             "code_for_review_present",
             "editor_triage_note_present",
             "editorial_pitch_present",
+            "cover_letter_draft_present",
             "prior_art_positioning_matrix_present",
             "validation_breadth_map_present",
             "editor_objection_response_map_present",
@@ -132,6 +134,12 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("not the broad observation that cell signaling is dynamic", pitch)
         self.assertIn("reference use case rather than as hidden evidence for every methods claim", pitch)
         self.assertIn("rather than as a software note or a single-system biological study", pitch)
+        self.assertIn("Cover letter for submission AUTHOR CONFIRMATION REQUIRED", self.cover_letter_draft)
+        self.assertIn("Article-level computational method", self.cover_letter_draft)
+        self.assertIn("validation ladder is designed to avoid a single-case methods claim", self.cover_letter_draft)
+        self.assertIn("Residence windows are declared analysis choices", self.cover_letter_draft)
+        self.assertIn("RhoDyn v0.1.0 is publicly available", self.cover_letter_draft)
+        self.assertIn("authors must confirm related-manuscript status", self.cover_letter_draft)
         self.assertIn("Source code supplied for review", (PACKAGE / "software_reporting_checklist.md").read_text(encoding="utf-8"))
         self.assertIn("Content-type decision", (PACKAGE / "article_fit_checklist.md").read_text(encoding="utf-8"))
         self.assertIn("Competing interests", self.author_declarations)
@@ -153,6 +161,7 @@ class Stage927SubmissionPackageTests(unittest.TestCase):
         self.assertIn("Prior-art positioning matrix", self.prior_art_positioning)
         self.assertIn("should not be positioned as the first method to treat live-cell signals as dynamic", self.prior_art_positioning)
         self.assertIn("does not add citations, performance results, biological datasets, or manuscript claims", self.prior_art_positioning)
+        self.assertIn("Cover-letter submission draft | registered", self.checklist)
         self.assertIn("Prior-art positioning matrix | ready", self.checklist)
         self.assertIn("Validation breadth and boundary map", self.validation_breadth_map)
         self.assertIn("does not add data, analyses, citations, figures, datasets, performance claims, or manuscript text", self.validation_breadth_map)

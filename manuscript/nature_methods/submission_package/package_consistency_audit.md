@@ -1,6 +1,6 @@
 # Package consistency audit
 
-Generated UTC. 2026-07-07T14:13:57Z
+Generated UTC. 2026-07-07T14:24:31Z
 
 ## Result
 
@@ -27,6 +27,7 @@ Status. pass
 | code_for_review_present | true | Code-for-review surface includes reproducibility commands |
 | editor_triage_note_present | true | Editor-triage note foregrounds Nature Methods fit and claim boundaries |
 | editorial_pitch_present | true | Editorial pitch includes cover-letter, author-confirmation, and presubmission-inquiry drafts |
+| cover_letter_draft_present | true | Cover-letter submission draft keeps Article fit, validation breadth, software reproducibility, and claim boundaries together for author confirmation |
 | prior_art_positioning_matrix_present | true | Prior-art positioning matrix preserves novelty calibration against related methods without adding new evidence |
 | validation_breadth_map_present | true | Validation breadth map makes the method-validation ladder visible while preserving non-universality boundaries |
 | editor_objection_response_map_present | true | Editor-objection response map links likely desk-review objections to existing evidence and claim boundaries |
