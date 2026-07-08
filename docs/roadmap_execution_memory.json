@@ -1,10 +1,11 @@
 {
   "current_position": {
-    "active_stage": "Stage 10.11 author-review readiness complete; external contact remains not sent",
+    "active_stage": "Stage 10.12 optional-strengthening triage complete; external contact remains not sent",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage10_0_eic_rescue_scaffold": "Stage 10.0 serialized the post-closure Nature Methods EIC rescue and methodological-elevation roadmap. The next work must lower desk-rejection risk through named baseline benchmarking, broader independent public biological demonstrations, a stronger mathematical method object, and adversarial EIC simulation before any second editor contact.",
     "after_stage10_10_recursive_hardening": "Stage 10.10 rechecked the full Stage 10.0 through 10.9 evidence ladder. All phase gates, evidence-chain checks, and claim-boundary checks pass. The author-reviewed presubmission route remains the selected editor-facing path, and no external contact was sent.",
     "after_stage10_11_author_review_readiness": "Stage 10.11 produced an author-review-ready presubmission query packet with checklist, boundary scan, packet manifest, decision brief, and gate report. It preserved the selected presubmission route and did not send external contact.",
+    "after_stage10_12_optional_strengthening_triage": "Stage 10.12 separated the remaining medium-risk strengthening paths. Rendered Stage 10 figures are the highest-value local hardening step before full submission, whereas prospective collaborator-blind validation requires new external data. External contact remains not sent.",
     "after_stage10_1_method_object_v2": "Stage 10.1 completed an explicit RhoDyn method-object v2 with a decision-divergence definition, bounded-coupling, reserve-like, and routed-output calls, interpretation boundaries, executable positive, counterexample, and ambiguous fixtures, and a non-blocking API gap list. This enabled the now-completed Stage 10.2 named benchmarking pass.",
     "after_stage10_2_named_benchmarking": "Stage 10.2 completed named baseline and named-tool family benchmarking against simple summaries, SciPy signal peak detection, scikit-learn feature classification, hmmlearn state summaries, catch22-style, tsfresh-style, MiniROCKET-style, and ruptures-style comparator families on common synthetic inputs plus retained DRG calcium and ERK GPCR public trajectory inputs. It reports comparator successes as method boundaries rather than hiding them. Stage 10.3 expanded biological demonstrations have not started.",
     "after_stage10_3_public_biological_breadth": "Stage 10.3 completed an expanded public biological breadth matrix with four counted independent public systems across live-cell calcium, GPCR-linked ERK dynamics, perturbation endpoint morphology/cell-health profiling, and microbial live-cell tracking. It adds MLCI tracking and Cell Painting/MitoTox as public systems beyond the earlier DRG and ERK trajectory examples, retains bounded-coupling and routed-output evidence, and records Birtwistle ERK/Akt cell-division as source-verified but license-deferred rather than counted.",
@@ -68,9 +69,9 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Stage 10.11 author-review readiness complete; external contact remains not sent",
-    "next_stage": "Author review and optional EIC presubmission contact, not sent",
-    "stage10_active_gate": "Stage 10.11 author-review readiness complete; external contact remains not sent",
+    "current_gate": "Stage 10.12 optional-strengthening triage complete; external contact remains not sent",
+    "next_stage": "Author review, optional presubmission contact, or Stage 10 figure rendering",
+    "stage10_active_gate": "Stage 10.12 optional-strengthening triage complete; external contact remains not sent",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
     "stage9_active_gate": "Stage 9.29 closed and version-bound"
@@ -925,6 +926,11 @@
         "case_studies/stage10_named_benchmarks/stage10_2_public_input_named_baseline_summary.csv",
         "case_studies/stage10_named_benchmarks/stage10_2_runtime_memory.tsv",
         "case_studies/stage10_named_benchmarks/stage10_2_synthetic_named_baseline_benchmark.csv",
+        "case_studies/stage10_optional_strengthening/stage10_12_figure_render_readiness.tsv",
+        "case_studies/stage10_optional_strengthening/stage10_12_gate_report.json",
+        "case_studies/stage10_optional_strengthening/stage10_12_recommended_next_step.md",
+        "case_studies/stage10_optional_strengthening/stage10_12_strengthening_option_matrix.tsv",
+        "case_studies/stage10_optional_strengthening/stage10_12_validation_gap_matrix.tsv",
         "case_studies/stage10_public_breadth/stage10_3_birtwistle_source_probe.json",
         "case_studies/stage10_public_breadth/stage10_3_candidate_resolution.tsv",
         "case_studies/stage10_public_breadth/stage10_3_mlci_tracking_residence_summary.csv",
@@ -945,6 +951,7 @@
         "case_studies/stage10_release_candidate/stage10_7_reproducibility_commands.tsv",
         "docs/stage10_10_recursive_hardening.md",
         "docs/stage10_11_author_review_readiness.md",
+        "docs/stage10_12_optional_strengthening_triage.md",
         "docs/stage10_1_api_gap_list.md",
         "docs/stage10_2_named_benchmarking.md",
         "docs/stage10_3_public_biological_breadth.md",
@@ -968,6 +975,7 @@
         "manuscript/nature_methods/stage10_6/title_abstract_v2.md",
         "scripts/run_stage10_10_recursive_hardening.py",
         "scripts/run_stage10_11_author_review_readiness.py",
+        "scripts/run_stage10_12_optional_strengthening_triage.py",
         "scripts/run_stage10_1_method_object_v2.py",
         "scripts/run_stage10_2_named_benchmarking.py",
         "scripts/run_stage10_3_public_biological_breadth.py",
@@ -981,6 +989,7 @@
         "src/rhodyn/named_baselines.py",
         "tests/test_stage10_10_recursive_hardening.py",
         "tests/test_stage10_11_author_review_readiness.py",
+        "tests/test_stage10_12_optional_strengthening_triage.py",
         "tests/test_stage10_1_method_object_v2.py",
         "tests/test_stage10_2_named_benchmarking.py",
         "tests/test_stage10_3_public_biological_breadth.py",
@@ -991,7 +1000,7 @@
         "tests/test_stage10_8_eic_red_team.py",
         "tests/test_stage10_9_eic_contact_decision.py"
       ],
-      "current_gate": "Stage 10.11 author-review readiness complete; external contact remains not sent",
+      "current_gate": "Stage 10.12 optional-strengthening triage complete; external contact remains not sent",
       "gate": [
         "Named baseline and named-tool benchmarking must be materially broader than Stage 7.2.",
         "At least two additional independent public biological demonstrations should be added before a stronger Nature Methods generality claim.",
@@ -1001,7 +1010,7 @@
       "name": "Nature Methods EIC rescue and methodological elevation",
       "scope_rule": "Stage 10 is a post-closure evidence-elevation program, not a Stage 9 polish pass. It must lower the risk that RhoDyn is read as workflow/software integration by adding named baseline benchmarking, independent public biological breadth, mathematical method-object elevation, held-out validation, and EIC red-team simulation before any second editor contact.",
       "stage": 10,
-      "status": "stage10_11_complete_author_review_readiness",
+      "status": "stage10_12_complete_optional_strengthening_triage",
       "subphases": [
         {
           "evidence": "docs/stage10_nature_methods_eic_rescue_roadmap.md",
@@ -1086,6 +1095,14 @@
           "id": "10.11",
           "name": "Author-review readiness",
           "status": "complete_author_review_readiness"
+        },
+        {
+          "id": "10.12",
+          "name": "Optional strengthening triage",
+          "status": "complete_optional_strengthening_triage",
+          "goal": "Separate locally actionable figure hardening from external collaborator-blind validation and author-only contact decisions.",
+          "gate": "Stage 10.11 passes; figure crosswalk is evidence-complete; prospective validation remains external-data dependent; external contact remains not sent.",
+          "evidence": "case_studies/stage10_optional_strengthening/stage10_12_gate_report.json"
         }
       ]
     }

@@ -1,0 +1,31 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "external_contact_not_sent": true,
+    "figure_crosswalk_render_ready": true,
+    "no_forbidden_overreads": true,
+    "option_matrix_complete": true,
+    "prospective_validation_scoped_as_external": true,
+    "stage10_11_author_review_ready": true
+  },
+  "generated_utc": "2026-07-08T10:19:25Z",
+  "git_sha": "0d43ad4b52886304e04b065bbd9a361a11bd666d",
+  "interpretation_boundary": "Stage 10.12 is a strengthening triage only. It does not render figures, add collaborator-blind validation, send external contact, or change manuscript evidence.",
+  "outputs": {
+    "figure_readiness": "case_studies/stage10_optional_strengthening/stage10_12_figure_render_readiness.tsv",
+    "gate_report": "case_studies/stage10_optional_strengthening/stage10_12_gate_report.json",
+    "option_matrix": "case_studies/stage10_optional_strengthening/stage10_12_strengthening_option_matrix.tsv",
+    "recommended_next_step": "case_studies/stage10_optional_strengthening/stage10_12_recommended_next_step.md",
+    "validation_gap": "case_studies/stage10_optional_strengthening/stage10_12_validation_gap_matrix.tsv"
+  },
+  "recommended_local_next_step": "render_stage10_method_figures",
+  "stage": "10.12",
+  "status": "pass",
+  "summary_metrics": {
+    "figure_count": 6,
+    "locally_actionable_option_count": 2,
+    "option_count": 5,
+    "planned_panel_count": 30,
+    "validation_layer_count": 3
+  }
+}

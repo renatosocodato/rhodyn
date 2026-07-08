@@ -619,6 +619,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.9 EIC-contact decision complete; external contact not sent",
             "Stage 10.10 recursive hardening complete; external contact remains not sent",
             "Stage 10.11 author-review readiness complete; external contact remains not sent",
+            "Stage 10.12 optional-strengthening triage complete; external contact remains not sent",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -639,8 +640,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_11_complete_author_review_readiness":
-                failures.append("roadmap execution memory does not mark Stage 10.11 author-review readiness as complete")
+            if stage10.get("status") != "stage10_12_complete_optional_strengthening_triage":
+                failures.append("roadmap execution memory does not mark Stage 10.12 optional-strengthening triage as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -739,6 +740,14 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "case_studies/stage10_author_review_readiness/stage10_11_author_decision_brief.md",
                 "case_studies/stage10_author_review_readiness/stage10_11_boundary_scan.tsv",
                 "case_studies/stage10_author_review_readiness/stage10_11_gate_report.json",
+                "docs/stage10_12_optional_strengthening_triage.md",
+                "scripts/run_stage10_12_optional_strengthening_triage.py",
+                "tests/test_stage10_12_optional_strengthening_triage.py",
+                "case_studies/stage10_optional_strengthening/stage10_12_strengthening_option_matrix.tsv",
+                "case_studies/stage10_optional_strengthening/stage10_12_figure_render_readiness.tsv",
+                "case_studies/stage10_optional_strengthening/stage10_12_validation_gap_matrix.tsv",
+                "case_studies/stage10_optional_strengthening/stage10_12_recommended_next_step.md",
+                "case_studies/stage10_optional_strengthening/stage10_12_gate_report.json",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -975,6 +984,31 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                         failures.append("Stage 10.11 must record six packet surfaces")
             else:
                 failures.append("Stage 10.11 author-review readiness report is missing")
+            stage10_strengthening_gate = root / "case_studies" / "stage10_optional_strengthening" / "stage10_12_gate_report.json"
+            if stage10_strengthening_gate.exists():
+                try:
+                    strengthening_payload = json.loads(stage10_strengthening_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.12 optional-strengthening report is not valid JSON: {exc}")
+                else:
+                    if strengthening_payload.get("status") != "pass":
+                        failures.append("Stage 10.12 optional-strengthening report must pass")
+                    if strengthening_payload.get("external_contact_status") != "not_sent":
+                        failures.append("Stage 10.12 must preserve external contact as not sent")
+                    if strengthening_payload.get("recommended_local_next_step") != "render_stage10_method_figures":
+                        failures.append("Stage 10.12 must select Stage 10 figure rendering as the next local hardening step")
+                    gates = strengthening_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.12 optional-strengthening gates must all pass")
+                    summary = strengthening_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("figure_count") != 6:
+                        failures.append("Stage 10.12 must record six Stage 10 figures")
+                    if not isinstance(summary, dict) or summary.get("planned_panel_count") != 30:
+                        failures.append("Stage 10.12 must record thirty planned Stage 10 panels")
+                    if not isinstance(summary, dict) or summary.get("validation_layer_count") != 3:
+                        failures.append("Stage 10.12 must record three validation or strengthening layers")
+            else:
+                failures.append("Stage 10.12 optional-strengthening report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
