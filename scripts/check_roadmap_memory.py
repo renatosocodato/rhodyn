@@ -245,6 +245,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.15 author visual-review packet complete; external contact remains not sent",
         "Stage 10.16 route-decision triage complete; external contact remains not sent",
         "Stage 10.17 message integrity complete; external contact remains not sent",
+        "Stage 10.18 author approval dossier complete; external contact remains not sent",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -258,7 +259,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_17_complete_message_integrity",
+        10: "stage10_18_complete_author_approval_dossier",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -457,6 +458,15 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_message_integrity/stage10_17_message_integrity_audit.tsv",
             "case_studies/stage10_message_integrity/stage10_17_no_send_boundary_scan.tsv",
             "case_studies/stage10_message_integrity/stage10_17_gate_report.json",
+            "docs/stage10_18_author_approval_dossier.md",
+            "scripts/run_stage10_18_author_approval_dossier.py",
+            "tests/test_stage10_18_author_approval_dossier.py",
+            "case_studies/stage10_author_approval_dossier/stage10_18_corresponding_author_approval_dossier_AUTHOR_ACTION_REQUIRED.md",
+            "case_studies/stage10_author_approval_dossier/stage10_18_corresponding_author_approval_checklist.tsv",
+            "case_studies/stage10_author_approval_dossier/stage10_18_submission_route_lock.tsv",
+            "case_studies/stage10_author_approval_dossier/stage10_18_dossier_manifest.tsv",
+            "case_studies/stage10_author_approval_dossier/stage10_18_no_send_boundary_scan.tsv",
+            "case_studies/stage10_author_approval_dossier/stage10_18_gate_report.json",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -859,6 +869,35 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.17 polished pitch must stay within the one-page word target")
         else:
             failures.append("missing Stage 10.17 message-integrity report")
+        if subphase_status.get("10.18") != "complete_author_approval_dossier":
+            failures.append("Stage 10.18 must be complete_author_approval_dossier")
+        approval_gate_path = root / "case_studies" / "stage10_author_approval_dossier" / "stage10_18_gate_report.json"
+        if approval_gate_path.exists():
+            approval_gate = json.loads(approval_gate_path.read_text(encoding="utf-8"))
+            if approval_gate.get("status") != "pass":
+                failures.append("Stage 10.18 author-approval report must pass")
+            if approval_gate.get("external_contact_status") != "not_sent":
+                failures.append("Stage 10.18 must preserve external contact as not sent")
+            if approval_gate.get("recommendation") != "presubmission_query_after_corresponding_author_approval":
+                failures.append("Stage 10.18 must retain presubmission after corresponding-author approval")
+            gates = approval_gate.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.18 author-approval gates must all pass")
+            summary = approval_gate.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("checklist_count") != 9:
+                failures.append("Stage 10.18 must record nine approval checklist rows")
+            if not isinstance(summary, dict) or summary.get("required_author_action_count") != 5:
+                failures.append("Stage 10.18 must retain five required author-action rows")
+            if not isinstance(summary, dict) or summary.get("route_count") != 4:
+                failures.append("Stage 10.18 must preserve four route-lock rows")
+            if not isinstance(summary, dict) or summary.get("manifest_row_count") != 10:
+                failures.append("Stage 10.18 must register ten dossier manifest rows")
+            if not isinstance(summary, dict) or summary.get("boundary_count") != 9:
+                failures.append("Stage 10.18 must record nine no-send dossier boundaries")
+            if not isinstance(summary, dict) or summary.get("boundary_pass_count") != 9:
+                failures.append("Stage 10.18 must pass all no-send dossier boundaries")
+        else:
+            failures.append("missing Stage 10.18 author-approval report")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

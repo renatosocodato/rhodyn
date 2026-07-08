@@ -1,0 +1,10 @@
+boundary_id	boundary	status	evidence	action_if_failed
+B-001	Parent Stage 10.15, 10.16, and 10.17 gates pass	pass	parent gate reports	Regenerate or repair the failing parent stage before author approval.
+B-002	External contact remains unsent across the handoff	pass	parent gates and route lock	Stop and restore no-send status.
+B-003	Presubmission remains recommended only after author approval	pass	Stage 10.16 recommendation and Stage 10.18 route lock	Restore route lock before approval review.
+B-004	Corresponding-author identity and send decisions remain explicit author actions	pass	approval checklist and dossier	Restore required author-action rows.
+B-005	Polished query retains the author placeholder	pass	polished query	Restore the author placeholder and remove invented metadata.
+B-006	Overclaim boundaries remain visible	pass	polished query and pitch	Restore non-universal, non-mechanism, and prospective-validation boundaries.
+B-007	No local path or credential-like pattern appears in outgoing candidate text	pass	hits=[]	Remove local path or credential-like text before author review.
+B-008	All dossier surfaces exist and are checksum-backed	pass	Stage 10.18 manifest	Regenerate missing surfaces.
+B-009	Stage 10.18 adds no data, figures, benchmarks, manuscript claims, upload, or external contact	pass	dossier-only assembly from existing Stage 10 surfaces	Move new evidence into a separate authorized phase.

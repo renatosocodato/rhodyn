@@ -1,0 +1,37 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "approval_dossier_exists": true,
+    "author_actions_retained": true,
+    "boundary_scan_all_pass": true,
+    "external_contact_not_sent": true,
+    "manifest_all_exists": true,
+    "no_new_science_claims_or_contact": true,
+    "parent_gates_pass": true,
+    "presubmission_route_locked_for_author_approval": true,
+    "route_lock_not_sent": true
+  },
+  "generated_utc": "2026-07-08T12:24:47Z",
+  "git_sha": "6d735fd6db6570eefcd4d0a6426e40460a6d547f",
+  "interpretation_boundary": "Stage 10.18 is a no-send author-approval dossier. It consolidates existing Stage 10 route, message, figure-review, and boundary surfaces for corresponding-author signoff, but does not approve, send, upload, add evidence, or create new manuscript claims.",
+  "outputs": {
+    "boundary_scan": "case_studies/stage10_author_approval_dossier/stage10_18_no_send_boundary_scan.tsv",
+    "checklist": "case_studies/stage10_author_approval_dossier/stage10_18_corresponding_author_approval_checklist.tsv",
+    "doc": "docs/stage10_18_author_approval_dossier.md",
+    "dossier": "case_studies/stage10_author_approval_dossier/stage10_18_corresponding_author_approval_dossier_AUTHOR_ACTION_REQUIRED.md",
+    "gate_report": "case_studies/stage10_author_approval_dossier/stage10_18_gate_report.json",
+    "manifest": "case_studies/stage10_author_approval_dossier/stage10_18_dossier_manifest.tsv",
+    "route_lock": "case_studies/stage10_author_approval_dossier/stage10_18_submission_route_lock.tsv"
+  },
+  "recommendation": "presubmission_query_after_corresponding_author_approval",
+  "stage": "10.18",
+  "status": "pass",
+  "summary_metrics": {
+    "boundary_count": 9,
+    "boundary_pass_count": 9,
+    "checklist_count": 9,
+    "manifest_row_count": 10,
+    "required_author_action_count": 5,
+    "route_count": 4
+  }
+}

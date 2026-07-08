@@ -1,0 +1,5 @@
+route	local_status	risk_position	author_action	send_status
+presubmission_query	recommended_after_author_approval	lowest local editorial-risk route from Stage 10.16	Approve exact text and sender identity before manual send.	not_sent
+full_submission	author_override_only	medium residual risk remains without prospective collaborator-blind validation	Use only if PI accepts recorded risk and bypasses presubmission.	not_sent
+delay_for_new_external_validation	optional_new_evidence	would strengthen direct-submission posture but is not locally closable	Choose separately if delaying for collaborator-blind evidence.	not_sent
+venue_pivot	fallback_not_current_route	kept for editor feedback or PI venue decision	Use only after explicit venue decision.	not_sent
