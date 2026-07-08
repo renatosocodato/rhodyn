@@ -1,0 +1,20 @@
+subphase	evidence_path	exists	status	gate_pass	external_contact_status	route_signal	closeout_reading
+10.0	docs/stage10_nature_methods_eic_rescue_roadmap.md	yes	pass	yes	not_sent_rule	no_contact_rule	post-closure elevation objective remains serialized
+10.1	case_studies/stage10_method_object_v2/stage10_1_method_object_gate_report.json	yes	pass	yes	not_applicable	not_applicable	method-evidence layer remains passing
+10.2	case_studies/stage10_named_benchmarks/stage10_2_named_benchmark_report.json	yes	pass	yes	not_applicable	not_applicable	method-evidence layer remains passing
+10.3	case_studies/stage10_public_breadth/stage10_3_public_breadth_report.json	yes	pass	yes	not_applicable	not_applicable	method-evidence layer remains passing
+10.4	case_studies/stage10_heldout_validation/stage10_4_gate_report.json	yes	pass	yes	not_applicable	not_applicable	method-evidence layer remains passing
+10.5	case_studies/stage10_figure_architecture/stage10_5_gate_report.json	yes	pass	yes	not_applicable	not_applicable	method-first manuscript and figure framing remains passing
+10.6	case_studies/stage10_manuscript_pitch/stage10_6_gate_report.json	yes	pass	yes	not_applicable	not_applicable	method-first manuscript and figure framing remains passing
+10.7	case_studies/stage10_release_candidate/stage10_7_gate_report.json	yes	pass	yes	not_applicable	not_applicable	release, red-team, route, and hardening layer remains passing
+10.8	case_studies/stage10_eic_red_team/stage10_8_gate_report.json	yes	pass	yes	not_applicable	not_applicable	release, red-team, route, and hardening layer remains passing
+10.9	case_studies/stage10_eic_contact_decision/stage10_9_gate_report.json	yes	pass	yes	not_sent	presubmission_query_author_review_required	release, red-team, route, and hardening layer remains passing
+10.10	case_studies/stage10_recursive_hardening/stage10_10_gate_report.json	yes	pass	yes	not_sent	presubmission_query_author_review_required	release, red-team, route, and hardening layer remains passing
+10.11	case_studies/stage10_author_review_readiness/stage10_11_gate_report.json	yes	pass	yes	not_sent	presubmission_query_author_review_required	author-review and no-send layer remains passing
+10.12	case_studies/stage10_optional_strengthening/stage10_12_gate_report.json	yes	pass	yes	not_sent	not_applicable	author-review and no-send layer remains passing
+10.13	case_studies/stage10_rendered_figures/stage10_13_gate_report.json	yes	pass	yes	not_sent	not_applicable	author-review and no-send layer remains passing
+10.14	case_studies/stage10_rendered_figure_visual_qc/stage10_14_gate_report.json	yes	pass	yes	not_sent	not_applicable	author-review and no-send layer remains passing
+10.15	case_studies/stage10_author_visual_review_packet/stage10_15_gate_report.json	yes	pass	yes	not_sent	not_applicable	author-review and no-send layer remains passing
+10.16	case_studies/stage10_route_decision_triage/stage10_16_gate_report.json	yes	pass	yes	not_sent	presubmission_query_after_author_approval	author-review and no-send layer remains passing
+10.17	case_studies/stage10_message_integrity/stage10_17_gate_report.json	yes	pass	yes	not_sent	not_applicable	author-review and no-send layer remains passing
+10.18	case_studies/stage10_author_approval_dossier/stage10_18_gate_report.json	yes	pass	yes	not_sent	presubmission_query_after_corresponding_author_approval	author-review and no-send layer remains passing

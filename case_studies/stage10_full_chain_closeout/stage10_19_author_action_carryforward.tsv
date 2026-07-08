@@ -1,0 +1,10 @@
+item_id	decision_item	required	current_status	carryforward_decision	author_action
+CAA-001	Approve the presubmission route or choose an alternative	yes	author_required	human_required_before_any_external_action	Choose presubmission query, full submission, delay for new validation, or venue pivot.
+CAA-002	Approve exact query text	yes	author_required	human_required_before_any_external_action	Edit or approve the polished query before any external message.
+CAA-003	Approve one-page pitch use	yes	author_required	human_required_before_any_external_action	Decide whether to attach, paste, shorten, or omit the pitch.
+CAA-004	Complete sender identity and signature	yes	author_required	human_required_before_any_external_action	Fill name, affiliation, account, address, and signature outside repository automation.
+CAA-005	Approve figure inclusion status	yes	author_required	human_required_before_any_external_action	Decide whether figures are referenced only, attached, or held for full submission.
+CAA-006	Retain method-first framing	yes	ready_for_author_review	retain_for_author_review	Do not weaken the method object into a software-wrapper story.
+CAA-007	Retain boundaries against overclaiming	yes	ready_for_author_review	retain_for_author_review	Keep limits visible after any shortening.
+CAA-008	Decide whether to delay for prospective collaborator-blind validation	no	optional_new_evidence	optional_delay_decision_not_local_blocker	Delay only if prioritizing a stronger direct-submission posture.
+CAA-009	Confirm external contact remains manual	yes	not_sent	manual_send_only_after_author_approval	Send only manually after all required approvals are complete.

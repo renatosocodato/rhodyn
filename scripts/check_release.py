@@ -626,6 +626,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.16 route-decision triage complete; external contact remains not sent",
             "Stage 10.17 message integrity complete; external contact remains not sent",
             "Stage 10.18 author approval dossier complete; external contact remains not sent",
+            "Stage 10.19 full-chain closeout complete; external contact remains not sent",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -646,8 +647,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_18_complete_author_approval_dossier":
-                failures.append("roadmap execution memory does not mark Stage 10.18 author approval dossier as complete")
+            if stage10.get("status") != "stage10_19_complete_full_chain_closeout":
+                failures.append("roadmap execution memory does not mark Stage 10.19 full-chain closeout as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -842,6 +843,15 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "case_studies/stage10_author_approval_dossier/stage10_18_dossier_manifest.tsv",
                 "case_studies/stage10_author_approval_dossier/stage10_18_no_send_boundary_scan.tsv",
                 "case_studies/stage10_author_approval_dossier/stage10_18_gate_report.json",
+                "docs/stage10_19_full_chain_closeout.md",
+                "scripts/run_stage10_19_full_chain_closeout.py",
+                "tests/test_stage10_19_full_chain_closeout.py",
+                "case_studies/stage10_full_chain_closeout/stage10_19_phase_closeout_matrix.tsv",
+                "case_studies/stage10_full_chain_closeout/stage10_19_no_send_boundary_scan.tsv",
+                "case_studies/stage10_full_chain_closeout/stage10_19_author_action_carryforward.tsv",
+                "case_studies/stage10_full_chain_closeout/stage10_19_closeout_manifest.tsv",
+                "case_studies/stage10_full_chain_closeout/stage10_19_closeout_report.md",
+                "case_studies/stage10_full_chain_closeout/stage10_19_gate_report.json",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -1294,6 +1304,48 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                         failures.append("Stage 10.18 must pass all no-send dossier boundaries")
             else:
                 failures.append("Stage 10.18 author-approval report is missing")
+            subphase_status = {
+                entry.get("id"): entry.get("status")
+                for entry in stage10.get("subphases", [])
+                if isinstance(entry, dict)
+            }
+            if subphase_status.get("10.19") != "complete_full_chain_closeout":
+                failures.append("Stage 10.19 must be complete_full_chain_closeout")
+            stage10_closeout_gate = root / "case_studies" / "stage10_full_chain_closeout" / "stage10_19_gate_report.json"
+            if stage10_closeout_gate.exists():
+                try:
+                    closeout_payload = json.loads(stage10_closeout_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.19 full-chain closeout report is not valid JSON: {exc}")
+                else:
+                    if closeout_payload.get("status") != "pass":
+                        failures.append("Stage 10.19 full-chain closeout report must pass")
+                    if closeout_payload.get("external_contact_status") != "not_sent":
+                        failures.append("Stage 10.19 must preserve external contact as not sent")
+                    if closeout_payload.get("recommendation") != "presubmission_query_after_corresponding_author_approval":
+                        failures.append("Stage 10.19 must retain presubmission after corresponding-author approval")
+                    gates = closeout_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.19 full-chain closeout gates must all pass")
+                    summary = closeout_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("audited_subphase_count") != 19:
+                        failures.append("Stage 10.19 must audit all nineteen Stage 10 subphases")
+                    if not isinstance(summary, dict) or summary.get("subphase_pass_count") != 19:
+                        failures.append("Stage 10.19 must pass all nineteen Stage 10 subphases")
+                    if not isinstance(summary, dict) or summary.get("boundary_count") != 9:
+                        failures.append("Stage 10.19 must record nine no-send closeout boundaries")
+                    if not isinstance(summary, dict) or summary.get("boundary_pass_count") != 9:
+                        failures.append("Stage 10.19 must pass all no-send closeout boundaries")
+                    if not isinstance(summary, dict) or summary.get("author_action_count") != 9:
+                        failures.append("Stage 10.19 must carry forward nine author-action rows")
+                    if not isinstance(summary, dict) or summary.get("required_author_action_count") != 5:
+                        failures.append("Stage 10.19 must retain five required author-action rows")
+                    if not isinstance(summary, dict) or summary.get("route_count") != 4:
+                        failures.append("Stage 10.19 must preserve four route options")
+                    if not isinstance(summary, dict) or summary.get("manifest_row_count") != 6:
+                        failures.append("Stage 10.19 must register six closeout manifest rows")
+            else:
+                failures.append("Stage 10.19 full-chain closeout report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

@@ -1,0 +1,10 @@
+boundary_id	boundary	status	evidence	action_if_failed
+B-001	All Stage 10.0 through 10.18 evidence gates remain passing	pass	Stage 10 phase closeout matrix	Repair the failing subphase before treating Stage 10 as closed.
+B-002	All Stage 10 surfaces that track external contact remain not sent	pass	Gate reports with external_contact_status	Stop and restore the no-send state.
+B-003	Presubmission query remains recommended only after corresponding-author approval	pass	Stage 10.18 route lock	Restore route lock or request author decision.
+B-004	All route options remain unsent and author-controlled	pass	Stage 10.18 route lock	Remove any send implication and return to author-only route control.
+B-005	Five required corresponding-author actions remain visible	pass	Stage 10.19 author action carryforward	Restore required author-action rows before closeout.
+B-006	Outgoing candidate text contains no local path or credential-like pattern	pass	hits=[]	Clean candidate query or pitch before author review.
+B-007	Stage 9.29 remains closed and version-bound	pass	manuscript/nature_methods/gate_verdicts/9.29.json	Refresh Stage 9.29 closure before Stage 10 closeout.
+B-008	Stage 10.19 adds no new data, benchmark, figure, manuscript claim, upload, or external contact	pass	closeout-only runner over existing Stage 10 surfaces	Move new evidence into a separately authorized phase.
+B-009	All Stage 10.19 closeout surfaces exist and are checksum-backed	pass	Stage 10.19 closeout manifest	Regenerate missing closeout surfaces.

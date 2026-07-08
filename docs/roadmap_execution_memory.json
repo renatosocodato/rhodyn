@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 10.18 author approval dossier complete; external contact remains not sent",
+    "active_stage": "Stage 10.19 full-chain closeout complete; external contact remains not sent",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage10_0_eic_rescue_scaffold": "Stage 10.0 serialized the post-closure Nature Methods EIC rescue and methodological-elevation roadmap. The next work must lower desk-rejection risk through named baseline benchmarking, broader independent public biological demonstrations, a stronger mathematical method object, and adversarial EIC simulation before any second editor contact.",
     "after_stage10_10_recursive_hardening": "Stage 10.10 rechecked the full Stage 10.0 through 10.9 evidence ladder. All phase gates, evidence-chain checks, and claim-boundary checks pass. The author-reviewed presubmission route remains the selected editor-facing path, and no external contact was sent.",
@@ -12,6 +12,7 @@
     "after_stage10_16_route_decision_triage": "Stage 10.16 resolved locally decidable author-review items, retained presubmission as the recommended no-send route, kept full submission as author-override only, and left prospective collaborator-blind validation as optional new evidence.",
     "after_stage10_17_message_integrity": "Stage 10.17 created polished no-send presubmission query and pitch candidates, checked readability and claim boundaries, and preserved author-only sender metadata plus unsent external-contact state.",
     "after_stage10_18_author_approval_dossier": "Stage 10.18 assembled the no-send corresponding-author approval dossier, route lock, checklist, manifest, and boundary scan. It preserves the presubmission recommendation after author approval and keeps all external contact outside repository automation.",
+    "after_stage10_19_full_chain_closeout": "Stage 10.19 recursively closed out Stage 10.0 through 10.18. All subphase gates remain passing, all no-send boundaries pass, five required author actions remain explicit, and external contact remains outside repository automation.",
     "after_stage10_1_method_object_v2": "Stage 10.1 completed an explicit RhoDyn method-object v2 with a decision-divergence definition, bounded-coupling, reserve-like, and routed-output calls, interpretation boundaries, executable positive, counterexample, and ambiguous fixtures, and a non-blocking API gap list. This enabled the now-completed Stage 10.2 named benchmarking pass.",
     "after_stage10_2_named_benchmarking": "Stage 10.2 completed named baseline and named-tool family benchmarking against simple summaries, SciPy signal peak detection, scikit-learn feature classification, hmmlearn state summaries, catch22-style, tsfresh-style, MiniROCKET-style, and ruptures-style comparator families on common synthetic inputs plus retained DRG calcium and ERK GPCR public trajectory inputs. It reports comparator successes as method boundaries rather than hiding them. Stage 10.3 expanded biological demonstrations have not started.",
     "after_stage10_3_public_biological_breadth": "Stage 10.3 completed an expanded public biological breadth matrix with four counted independent public systems across live-cell calcium, GPCR-linked ERK dynamics, perturbation endpoint morphology/cell-health profiling, and microbial live-cell tracking. It adds MLCI tracking and Cell Painting/MitoTox as public systems beyond the earlier DRG and ERK trajectory examples, retains bounded-coupling and routed-output evidence, and records Birtwistle ERK/Akt cell-division as source-verified but license-deferred rather than counted.",
@@ -75,9 +76,9 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Stage 10.18 author approval dossier complete; external contact remains not sent",
+    "current_gate": "Stage 10.19 full-chain closeout complete; external contact remains not sent",
     "next_stage": "Corresponding-author signoff and manual external action outside repository, or a new-evidence delay decision",
-    "stage10_active_gate": "Stage 10.18 author approval dossier complete; external contact remains not sent",
+    "stage10_active_gate": "Stage 10.19 full-chain closeout complete; external contact remains not sent",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
     "stage9_active_gate": "Stage 9.29 closed and version-bound"
@@ -925,6 +926,12 @@
         "case_studies/stage10_eic_red_team/stage10_8_verdict_rubric.tsv",
         "case_studies/stage10_figure_architecture/stage10_5_figure_architecture_brief.md",
         "case_studies/stage10_figure_architecture/stage10_5_gate_report.json",
+        "case_studies/stage10_full_chain_closeout/stage10_19_author_action_carryforward.tsv",
+        "case_studies/stage10_full_chain_closeout/stage10_19_closeout_manifest.tsv",
+        "case_studies/stage10_full_chain_closeout/stage10_19_closeout_report.md",
+        "case_studies/stage10_full_chain_closeout/stage10_19_gate_report.json",
+        "case_studies/stage10_full_chain_closeout/stage10_19_no_send_boundary_scan.tsv",
+        "case_studies/stage10_full_chain_closeout/stage10_19_phase_closeout_matrix.tsv",
         "case_studies/stage10_heldout_validation/stage10_4_gate_report.json",
         "case_studies/stage10_heldout_validation/stage10_4_heldout_decisions.tsv",
         "case_studies/stage10_heldout_validation/stage10_4_heldout_report.md",
@@ -1034,6 +1041,7 @@
         "docs/stage10_16_route_decision_triage.md",
         "docs/stage10_17_message_integrity.md",
         "docs/stage10_18_author_approval_dossier.md",
+        "docs/stage10_19_full_chain_closeout.md",
         "docs/stage10_1_api_gap_list.md",
         "docs/stage10_2_named_benchmarking.md",
         "docs/stage10_3_public_biological_breadth.md",
@@ -1064,6 +1072,7 @@
         "scripts/run_stage10_16_route_decision_triage.py",
         "scripts/run_stage10_17_message_integrity.py",
         "scripts/run_stage10_18_author_approval_dossier.py",
+        "scripts/run_stage10_19_full_chain_closeout.py",
         "scripts/run_stage10_1_method_object_v2.py",
         "scripts/run_stage10_2_named_benchmarking.py",
         "scripts/run_stage10_3_public_biological_breadth.py",
@@ -1084,6 +1093,7 @@
         "tests/test_stage10_16_route_decision_triage.py",
         "tests/test_stage10_17_message_integrity.py",
         "tests/test_stage10_18_author_approval_dossier.py",
+        "tests/test_stage10_19_full_chain_closeout.py",
         "tests/test_stage10_1_method_object_v2.py",
         "tests/test_stage10_2_named_benchmarking.py",
         "tests/test_stage10_3_public_biological_breadth.py",
@@ -1094,7 +1104,7 @@
         "tests/test_stage10_8_eic_red_team.py",
         "tests/test_stage10_9_eic_contact_decision.py"
       ],
-      "current_gate": "Stage 10.18 author approval dossier complete; external contact remains not sent",
+      "current_gate": "Stage 10.19 full-chain closeout complete; external contact remains not sent",
       "gate": [
         "Named baseline and named-tool benchmarking must be materially broader than Stage 7.2.",
         "At least two additional independent public biological demonstrations should be added before a stronger Nature Methods generality claim.",
@@ -1104,7 +1114,7 @@
       "name": "Nature Methods EIC rescue and methodological elevation",
       "scope_rule": "Stage 10 is a post-closure evidence-elevation program, not a Stage 9 polish pass. It must lower the risk that RhoDyn is read as workflow/software integration by adding named baseline benchmarking, independent public biological breadth, mathematical method-object elevation, held-out validation, and EIC red-team simulation before any second editor contact.",
       "stage": 10,
-      "status": "stage10_18_complete_author_approval_dossier",
+      "status": "stage10_19_complete_full_chain_closeout",
       "subphases": [
         {
           "evidence": "docs/stage10_nature_methods_eic_rescue_roadmap.md",
@@ -1245,6 +1255,14 @@
           "id": "10.18",
           "name": "No-send corresponding-author approval dossier",
           "status": "complete_author_approval_dossier"
+        },
+        {
+          "evidence": "case_studies/stage10_full_chain_closeout/stage10_19_gate_report.json",
+          "gate": "All Stage 10.0 through 10.18 gates pass, no-send boundaries pass, and required author actions remain explicit.",
+          "goal": "Verify the completed Stage 10 chain, route state, author-only decisions, and no-send boundaries.",
+          "id": "10.19",
+          "name": "No-send full-chain closeout",
+          "status": "complete_full_chain_closeout"
         }
       ]
     }

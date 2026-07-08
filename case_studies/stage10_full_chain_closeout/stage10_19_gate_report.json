@@ -1,0 +1,38 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "all_stage10_subphases_pass": true,
+    "author_actions_retained": true,
+    "boundary_scan_all_pass": true,
+    "external_contact_not_sent": true,
+    "manifest_all_exists": true,
+    "no_new_science_or_contact": true,
+    "presubmission_route_retained_after_author_approval": true,
+    "stage9_closure_still_passes": true
+  },
+  "generated_utc": "2026-07-08T12:41:49Z",
+  "git_sha": "3b1d39d8ecba1d1c18be497da3a2f89228d18ebc",
+  "interpretation_boundary": "Stage 10.19 is a no-send closeout audit over existing Stage 10 evidence. It does not approve, send, upload, add evidence, rerender figures, or change manuscript claims.",
+  "outputs": {
+    "author_action_carryforward": "case_studies/stage10_full_chain_closeout/stage10_19_author_action_carryforward.tsv",
+    "closeout_manifest": "case_studies/stage10_full_chain_closeout/stage10_19_closeout_manifest.tsv",
+    "closeout_report": "case_studies/stage10_full_chain_closeout/stage10_19_closeout_report.md",
+    "doc": "docs/stage10_19_full_chain_closeout.md",
+    "gate_report": "case_studies/stage10_full_chain_closeout/stage10_19_gate_report.json",
+    "no_send_boundary_scan": "case_studies/stage10_full_chain_closeout/stage10_19_no_send_boundary_scan.tsv",
+    "phase_matrix": "case_studies/stage10_full_chain_closeout/stage10_19_phase_closeout_matrix.tsv"
+  },
+  "recommendation": "presubmission_query_after_corresponding_author_approval",
+  "stage": "10.19",
+  "status": "pass",
+  "summary_metrics": {
+    "audited_subphase_count": 19,
+    "author_action_count": 9,
+    "boundary_count": 9,
+    "boundary_pass_count": 9,
+    "manifest_row_count": 6,
+    "required_author_action_count": 5,
+    "route_count": 4,
+    "subphase_pass_count": 19
+  }
+}
