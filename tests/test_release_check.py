@@ -13,6 +13,13 @@ class ReleaseCheckTests(TestCase):
             stderr=subprocess.PIPE,
             check=True,
         )
+        subprocess.run(
+            [sys.executable, "scripts/run_stage10_21_figure_recipe_diversification.py"],
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            check=True,
+        )
         result = subprocess.run(
             [sys.executable, "scripts/check_release.py"],
             text=True,

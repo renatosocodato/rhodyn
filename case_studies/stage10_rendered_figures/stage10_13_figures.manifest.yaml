@@ -562,65 +562,67 @@
         },
         {
           "id": "C",
-          "recipe": "sensitivity_analysis.sobol_first_total_pair",
+          "recipe": "biophysics_scaling.equivalence_forest_with_tost_bounds",
           "title": "ERK GPCR residence-amplitude divergence and sufficiency boundary",
           "data": {
             "source": {
-              "parameter_names": [
-                "residence",
-                "amplitude",
-                "window",
-                "grouping"
-              ],
-              "S1": [
-                0.29000000000000004,
-                0.21,
-                0.15,
-                0.11
-              ],
-              "ST": [
-                0.4,
-                0.32,
-                0.26,
-                0.22
-              ],
-              "S1_ci": [
-                [
-                  0.26,
-                  0.32000000000000006
-                ],
-                [
-                  0.18,
-                  0.24
-                ],
-                [
-                  0.12,
-                  0.18
-                ],
-                [
-                  0.08,
-                  0.14
-                ]
-              ],
-              "ST_ci": [
-                [
-                  0.36000000000000004,
-                  0.44
-                ],
-                [
-                  0.28,
-                  0.36
-                ],
-                [
-                  0.22,
-                  0.3
-                ],
-                [
-                  0.18,
-                  0.26
-                ]
-              ],
-              "output_label": "ERK GPCR residence-amplitude divergence and sufficiency boundary"
+              "title": "ERK GPCR residence-amplitude divergence and sufficiency boundary",
+              "estimates": [
+                {
+                  "feature": "bounded context",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.04,
+                  "ci_lo": -0.09,
+                  "ci_hi": 0.12,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "null_accepting",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "positive context",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.28,
+                  "ci_lo": 0.13,
+                  "ci_hi": 0.39,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "significant",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "margin boundary",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.18000000000000002,
+                  "ci_lo": -0.01,
+                  "ci_hi": 0.31,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "equivocal",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                }
+              ]
             },
             "adapter": "passthrough",
             "options": {},
@@ -630,43 +632,35 @@
         },
         {
           "id": "D",
-          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "recipe": "mixed_effects_models.model_comparison_aic_bic_ladder",
           "title": "Cell Painting and MitoTox endpoint architecture",
           "data": {
             "source": {
               "title": "Cell Painting and MitoTox endpoint architecture",
-              "criterion_order": [
-                "supports",
-                "bounds",
-                "withholds"
-              ],
-              "rows": [
+              "models": [
                 {
-                  "hypothesis": "declared method call",
-                  "criteria": {
-                    "supports": "Y",
-                    "bounds": "Y",
-                    "withholds": "~"
-                  },
-                  "overall_verdict": "consistent"
+                  "name": "RhoDyn decision object",
+                  "aic": 168,
+                  "bic": 178,
+                  "n_params": 6
                 },
                 {
-                  "hypothesis": "overgeneralized mechanism",
-                  "criteria": {
-                    "supports": "N",
-                    "bounds": "~",
-                    "withholds": "Y"
-                  },
-                  "overall_verdict": "ruled_out"
+                  "name": "amplitude only",
+                  "aic": 181,
+                  "bic": 187,
+                  "n_params": 3
                 },
                 {
-                  "hypothesis": "insufficient input context",
-                  "criteria": {
-                    "supports": "~",
-                    "bounds": "Y",
-                    "withholds": "Y"
-                  },
-                  "overall_verdict": "equivocal"
+                  "name": "endpoint only",
+                  "aic": 186,
+                  "bic": 191,
+                  "n_params": 2
+                },
+                {
+                  "name": "forced universal call",
+                  "aic": 195,
+                  "bic": 200,
+                  "n_params": 2
                 }
               ]
             },
@@ -1560,44 +1554,40 @@
         },
         {
           "id": "E",
-          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "recipe": "grant_and_conceptual.conceptual_triptych",
           "title": "User-path rehearsal",
           "data": {
             "source": {
-              "title": "User-path rehearsal",
-              "criterion_order": [
-                "supports",
-                "bounds",
-                "withholds"
-              ],
-              "rows": [
-                {
-                  "hypothesis": "declared method call",
-                  "criteria": {
-                    "supports": "Y",
-                    "bounds": "Y",
-                    "withholds": "~"
-                  },
-                  "overall_verdict": "consistent"
-                },
-                {
-                  "hypothesis": "overgeneralized mechanism",
-                  "criteria": {
-                    "supports": "N",
-                    "bounds": "~",
-                    "withholds": "Y"
-                  },
-                  "overall_verdict": "ruled_out"
-                },
-                {
-                  "hypothesis": "insufficient input context",
-                  "criteria": {
-                    "supports": "~",
-                    "bounds": "Y",
-                    "withholds": "Y"
-                  },
-                  "overall_verdict": "equivocal"
-                }
+              "left": {
+                "label": "Input",
+                "headline": "User-path rehearsal",
+                "details": [
+                  "declared table",
+                  "biological scope"
+                ],
+                "color_key": "signaling"
+              },
+              "middle": {
+                "label": "Decision",
+                "headline": "user path panel",
+                "details": [
+                  "comparator",
+                  "uncertainty"
+                ],
+                "color_key": "metabolic"
+              },
+              "right": {
+                "label": "Boundary",
+                "headline": "software after method evidence",
+                "details": [
+                  "call or abstain",
+                  "reader-facing limit"
+                ],
+                "color_key": "cytoskeletal"
+              },
+              "arrow_labels": [
+                "tests",
+                "returns"
               ]
             },
             "adapter": "passthrough",

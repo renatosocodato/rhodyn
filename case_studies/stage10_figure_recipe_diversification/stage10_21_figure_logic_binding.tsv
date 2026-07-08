@@ -1,0 +1,7 @@
+fig_id	public_label	figure_job	required_panel_logic	bound_panel_count	status
+FIG-001	Fig. 1	Define the RhoDyn method object and decision divergence.	input objects, decision divergence, executable positive/negative/ambiguous fixtures, abstention and failure modes	4	bound
+FIG-002	Fig. 2	Show synthetic truth and named-baseline benchmarking.	known-truth regimes, named comparator families, accuracy and boundary outcomes, public-input comparator summaries, runtime	5	bound
+FIG-003	Fig. 3	Demonstrate public biological breadth.	public system matrix, DRG calcium, ERK GPCR, Cell Painting/MitoTox, MLCI tracking, source eligibility	6	bound
+FIG-004	Fig. 4	Demonstrate endpoint, reserve-like, bounded-coupling, and routed-output extension.	endpoint schema, bounded coupling, reserve-like endpoint, routed alternatives, measurement-scope limits	5	bound
+FIG-005	Fig. 5	Show held-out validation and uncertainty boundaries.	predeclared settings, held-out decision table, object-level calls, no-hidden-tuning gates, prospective-validation boundary	5	bound
+FIG-006	Fig. 6	Show reproducibility and user adoption.	Python/CLI/API/workbench parity, export bundles, clean-room reproduction, archive checksums, user-path rehearsal	5	bound

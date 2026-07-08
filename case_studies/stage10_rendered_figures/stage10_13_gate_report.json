@@ -13,8 +13,8 @@
     "stage10_12_selected_figure_rendering": true,
     "stage9_render_hashes_unchanged": true
   },
-  "generated_utc": "2026-07-08T10:55:11Z",
-  "git_sha": "d3449f707fa3811d7dadb1db5c14bfe3ba06f26f",
+  "generated_utc": "2026-07-08T13:31:22Z",
+  "git_sha": "ac1326ac1e6a962e4968cd6320d93538534d7e1c",
   "interpretation_boundary": "Stage 10.13 renders the method-first figures only. It does not add data, retune benchmarks, change claims, overwrite Stage 9 renders, send external contact, or create a journal upload.",
   "outputs": {
     "coverage": "case_studies/stage10_rendered_figures/stage10_13_panel_coverage.tsv",
@@ -33,11 +33,11 @@
   },
   "rendered_files": [
     {
-      "bytes": 43500,
+      "bytes": 43511,
       "fig_id": "FIG-001",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-001/FIG-001.pdf",
-      "sha256": "529c4ec2d640dfcedb85207f82d242f80d22310b69671b201ab28cad98bc9582"
+      "sha256": "705fd431c7a4536136211c97d5169006446c11c966dd979d7b57d437128fe890"
     },
     {
       "bytes": 403513,
@@ -51,14 +51,14 @@
       "fig_id": "FIG-001",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-001/FIG-001.svg",
-      "sha256": "60d825f17911772bba8d04334ebe7445ac3e8ae515e5fff86141d61fc0f4eae9"
+      "sha256": "d098f51a139f1977b7ddd953597d8dc9a2f9fb15a8219223aef1a39f09d96c3f"
     },
     {
-      "bytes": 57936,
+      "bytes": 57955,
       "fig_id": "FIG-002",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-002/FIG-002.pdf",
-      "sha256": "d8aa9170b03e2179c4fdeee65d7f06bc0dd6a46db0a24cb39793122d3f1d5c16"
+      "sha256": "6f35e09320fb22e3c00da45a005c4ceae4ef9da8332da34e4f865015f2c43fd9"
     },
     {
       "bytes": 552265,
@@ -72,35 +72,35 @@
       "fig_id": "FIG-002",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-002/FIG-002.svg",
-      "sha256": "620cb8d9e3f8aa2d5781f1ef039fb7e803de726560ea81e41b7f926915f568d2"
+      "sha256": "ae7f35fe3685e875c6f8b78e8ac8d707052991f946e3ec6aedc9d13a629090cc"
     },
     {
-      "bytes": 51064,
+      "bytes": 68093,
       "fig_id": "FIG-003",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-003/FIG-003.pdf",
-      "sha256": "010c3006336020a45a7842519d9afe53269dcf8412b5c4778ee416b0b6cc5087"
+      "sha256": "8a02fdaaff0ff976c45037649fd7b871bf78a3eaecaada608e762f8fae843825"
     },
     {
-      "bytes": 540077,
+      "bytes": 601307,
       "fig_id": "FIG-003",
       "format": "png",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-003/FIG-003.png",
-      "sha256": "9d33016ac8668fed79f67e42051105fe912a5266acff7c5023ef1b3165562a44"
+      "sha256": "2f1797424637744b655d16618183f715e160e17459d3141f99ef7125da649ce5"
     },
     {
-      "bytes": 110768,
+      "bytes": 98664,
       "fig_id": "FIG-003",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-003/FIG-003.svg",
-      "sha256": "b12c4bfd408c7fb33f9761176734cd65c9c3d86301dcc1338d045f1441932e65"
+      "sha256": "d6aea60a381c47908d6d479bcc2eeffd7e9efdcef151196145c33a996bcd9a08"
     },
     {
-      "bytes": 61886,
+      "bytes": 61897,
       "fig_id": "FIG-004",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-004/FIG-004.pdf",
-      "sha256": "cec2861982ef7ad680e0543f208140389b319a0e61c6fbfc190e9bb0c1774045"
+      "sha256": "eb02af8ca6ffe3724fe0ae9474748d2e0b3584c65676aef0a43da25bd94a5565"
     },
     {
       "bytes": 478188,
@@ -114,14 +114,14 @@
       "fig_id": "FIG-004",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-004/FIG-004.svg",
-      "sha256": "478e3cedff458f08c9940760bce843526dbed9273f4415d0b423a6b8bdad6e29"
+      "sha256": "5264e90ba70788f01ddb2e2ff4ed0317fecd86a8ea752e5517496612b6dede79"
     },
     {
-      "bytes": 48533,
+      "bytes": 48544,
       "fig_id": "FIG-005",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-005/FIG-005.pdf",
-      "sha256": "772d5fb278bfb6826accfb5f720a25b85f241994e08c343c066ce1f89e9b77d7"
+      "sha256": "acdd09349fd0af65d1da52065318d7ba4518ed42fadf5a7fd2213dcee7285774"
     },
     {
       "bytes": 430380,
@@ -135,28 +135,28 @@
       "fig_id": "FIG-005",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-005/FIG-005.svg",
-      "sha256": "cb85a0a5f22d7460e46bdfa58722ab24833fd2788fbc0119087b5b0d48799153"
+      "sha256": "cb1acd3c65af7d56b33c0ba66dce5c5a44e063a4a6aef2916a74f72d0622a96e"
     },
     {
-      "bytes": 41485,
+      "bytes": 43196,
       "fig_id": "FIG-006",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.pdf",
-      "sha256": "5871a65febafa117f4588294a1e54ccec15721a46739c7d024887ce2fe042a7c"
+      "sha256": "eb98a105585b741c47e266e2185902e126ee5de545eaa09398b060569f9e6fa3"
     },
     {
-      "bytes": 447156,
+      "bytes": 447718,
       "fig_id": "FIG-006",
       "format": "png",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.png",
-      "sha256": "a103ccf73ba9d1fa6e04c648d8f8de60a46ee8265b803ec5dfac230a785a3b33"
+      "sha256": "a11d16032ee36761cb63ffa68bf6170cfa61d5b091b811b43b2b681095815491"
     },
     {
-      "bytes": 52556,
+      "bytes": 50894,
       "fig_id": "FIG-006",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.svg",
-      "sha256": "ab14b2eabf767ac29c3a65c541099998ce7a80df41d871307c67a33cdb38ae67"
+      "sha256": "ff9848d8f9bdb9cfe5828e9177d91e9030797246c4a1ecc265f8af00c6ff51c5"
     }
   ],
   "stage": "10.13",

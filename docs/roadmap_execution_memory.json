@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 10.20 EIC/manuscript strengthening complete; external contact remains not sent",
+    "active_stage": "Stage 10.21 figure recipe diversification complete; external contact remains not sent",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage10_0_eic_rescue_scaffold": "Stage 10.0 serialized the post-closure Nature Methods EIC rescue and methodological-elevation roadmap. The next work must lower desk-rejection risk through named baseline benchmarking, broader independent public biological demonstrations, a stronger mathematical method object, and adversarial EIC simulation before any second editor contact.",
     "after_stage10_10_recursive_hardening": "Stage 10.10 rechecked the full Stage 10.0 through 10.9 evidence ladder. All phase gates, evidence-chain checks, and claim-boundary checks pass. The author-reviewed presubmission route remains the selected editor-facing path, and no external contact was sent.",
@@ -15,6 +15,7 @@
     "after_stage10_19_full_chain_closeout": "Stage 10.19 recursively closed out Stage 10.0 through 10.18. All subphase gates remain passing, all no-send boundaries pass, five required author actions remain explicit, and external contact remains outside repository automation.",
     "after_stage10_1_method_object_v2": "Stage 10.1 completed an explicit RhoDyn method-object v2 with a decision-divergence definition, bounded-coupling, reserve-like, and routed-output calls, interpretation boundaries, executable positive, counterexample, and ambiguous fixtures, and a non-blocking API gap list. This enabled the now-completed Stage 10.2 named benchmarking pass.",
     "after_stage10_20_eic_manuscript_strengthening": "Stage 10.20 rechecked Stage 10.6 onward against the EIC/manuscript rubric, bound readable rendered figures to author-review readiness, and predeclared prospective collaborator-blind validation as optional new evidence rather than a completed result.",
+    "after_stage10_21_figure_recipe_diversification": "Stage 10.21 bound the six method-first figures and all thirty panels to explicit PanelForge recipe families, data-tooling classes, and review-render motifs so the figures no longer depend on repeated generic template logic.",
     "after_stage10_2_named_benchmarking": "Stage 10.2 completed named baseline and named-tool family benchmarking against simple summaries, SciPy signal peak detection, scikit-learn feature classification, hmmlearn state summaries, catch22-style, tsfresh-style, MiniROCKET-style, and ruptures-style comparator families on common synthetic inputs plus retained DRG calcium and ERK GPCR public trajectory inputs. It reports comparator successes as method boundaries rather than hiding them. Stage 10.3 expanded biological demonstrations have not started.",
     "after_stage10_3_public_biological_breadth": "Stage 10.3 completed an expanded public biological breadth matrix with four counted independent public systems across live-cell calcium, GPCR-linked ERK dynamics, perturbation endpoint morphology/cell-health profiling, and microbial live-cell tracking. It adds MLCI tracking and Cell Painting/MitoTox as public systems beyond the earlier DRG and ERK trajectory examples, retains bounded-coupling and routed-output evidence, and records Birtwistle ERK/Akt cell-division as source-verified but license-deferred rather than counted.",
     "after_stage10_4_heldout_validation": "Stage 10.4 completed a sealed no-retuning held-out validation route over retained public-derived tables. It writes a predeclaration, preserves positive residence-divergence and bounded-coupling calls, preserves a negative or comparator-sufficient ERK GPCR boundary, and keeps ERK/Akt margin-boundary inconclusive contexts visible. This strengthens the method reading without claiming prospective blinded validation or universal RhoDyn superiority.",
@@ -77,9 +78,9 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Stage 10.20 EIC/manuscript strengthening complete; external contact remains not sent",
+    "current_gate": "Stage 10.21 figure recipe diversification complete; external contact remains not sent",
     "next_stage": "Corresponding-author decision on presubmission query, direct submission, venue pivot, or optional prospective validation",
-    "stage10_active_gate": "Stage 10.20 EIC/manuscript strengthening complete; external contact remains not sent",
+    "stage10_active_gate": "Stage 10.21 figure recipe diversification complete; external contact remains not sent",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
     "stage9_active_gate": "Stage 9.29 closed and version-bound"
@@ -936,6 +937,12 @@
         "case_studies/stage10_eic_red_team/stage10_8_verdict_rubric.tsv",
         "case_studies/stage10_figure_architecture/stage10_5_figure_architecture_brief.md",
         "case_studies/stage10_figure_architecture/stage10_5_gate_report.json",
+        "case_studies/stage10_figure_recipe_diversification/stage10_21_figure_logic_binding.tsv",
+        "case_studies/stage10_figure_recipe_diversification/stage10_21_gate_report.json",
+        "case_studies/stage10_figure_recipe_diversification/stage10_21_manifest.tsv",
+        "case_studies/stage10_figure_recipe_diversification/stage10_21_panel_recipe_binding.tsv",
+        "case_studies/stage10_figure_recipe_diversification/stage10_21_recipe_diversification_report.md",
+        "case_studies/stage10_figure_recipe_diversification/stage10_21_recipe_diversity_audit.tsv",
         "case_studies/stage10_full_chain_closeout/stage10_19_author_action_carryforward.tsv",
         "case_studies/stage10_full_chain_closeout/stage10_19_closeout_manifest.tsv",
         "case_studies/stage10_full_chain_closeout/stage10_19_closeout_report.md",
@@ -1054,6 +1061,7 @@
         "docs/stage10_19_full_chain_closeout.md",
         "docs/stage10_1_api_gap_list.md",
         "docs/stage10_20_eic_manuscript_strengthening.md",
+        "docs/stage10_21_figure_recipe_diversification.md",
         "docs/stage10_2_named_benchmarking.md",
         "docs/stage10_3_public_biological_breadth.md",
         "docs/stage10_4_heldout_validation.md",
@@ -1086,6 +1094,7 @@
         "scripts/run_stage10_19_full_chain_closeout.py",
         "scripts/run_stage10_1_method_object_v2.py",
         "scripts/run_stage10_20_eic_manuscript_strengthening.py",
+        "scripts/run_stage10_21_figure_recipe_diversification.py",
         "scripts/run_stage10_2_named_benchmarking.py",
         "scripts/run_stage10_3_public_biological_breadth.py",
         "scripts/run_stage10_4_heldout_validation.py",
@@ -1108,6 +1117,7 @@
         "tests/test_stage10_19_full_chain_closeout.py",
         "tests/test_stage10_1_method_object_v2.py",
         "tests/test_stage10_20_eic_manuscript_strengthening.py",
+        "tests/test_stage10_21_figure_recipe_diversification.py",
         "tests/test_stage10_2_named_benchmarking.py",
         "tests/test_stage10_3_public_biological_breadth.py",
         "tests/test_stage10_4_heldout_validation.py",
@@ -1117,7 +1127,7 @@
         "tests/test_stage10_8_eic_red_team.py",
         "tests/test_stage10_9_eic_contact_decision.py"
       ],
-      "current_gate": "Stage 10.20 EIC/manuscript strengthening complete; external contact remains not sent",
+      "current_gate": "Stage 10.21 figure recipe diversification complete; external contact remains not sent",
       "gate": [
         "Named baseline and named-tool benchmarking must be materially broader than Stage 7.2.",
         "At least two additional independent public biological demonstrations should be added before a stronger Nature Methods generality claim.",
@@ -1127,7 +1137,7 @@
       "name": "Nature Methods EIC rescue and methodological elevation",
       "scope_rule": "Stage 10 is a post-closure evidence-elevation program, not a Stage 9 polish pass. It must lower the risk that RhoDyn is read as workflow/software integration by adding named baseline benchmarking, independent public biological breadth, mathematical method-object elevation, held-out validation, and EIC red-team simulation before any second editor contact.",
       "stage": 10,
-      "status": "stage10_20_complete_eic_manuscript_strengthening",
+      "status": "stage10_21_complete_figure_recipe_diversification",
       "subphases": [
         {
           "evidence": "docs/stage10_nature_methods_eic_rescue_roadmap.md",
@@ -1284,6 +1294,14 @@
           "id": "10.20",
           "name": "EIC/manuscript strengthening and prospective-validation predeclaration",
           "status": "complete_eic_manuscript_strengthening"
+        },
+        {
+          "evidence": "case_studies/stage10_figure_recipe_diversification/stage10_21_gate_report.json",
+          "gate": "All figures and panels are bound, every figure passes the recipe and motif diversity policy, and external contact remains unsent.",
+          "goal": "Bind the six figures and thirty panels to explicit PanelForge recipe families and panel-specific review motifs.",
+          "id": "10.21",
+          "name": "Figure recipe diversification",
+          "status": "complete_figure_recipe_diversification"
         }
       ]
     }

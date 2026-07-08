@@ -1,0 +1,7 @@
+fig_id	panel_count	unique_panelforge_recipes	unique_review_motifs	max_recipe_reuse	max_motif_reuse	status
+FIG-001	4	3	4	2	1	pass
+FIG-002	5	3	5	2	1	pass
+FIG-003	6	4	6	2	1	pass
+FIG-004	5	5	5	1	1	pass
+FIG-005	5	4	5	2	1	pass
+FIG-006	5	3	5	3	1	pass

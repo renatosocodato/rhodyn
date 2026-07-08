@@ -43,6 +43,39 @@ PYTHON312 = Path("/opt/homebrew/bin/python3.12")
 
 RENDER_FORMATS = ["pdf", "png", "svg"]
 
+PANEL_RECIPE_BINDINGS = {
+    "schema_flow": ("grant_and_conceptual.methods_pipeline_flow", "pipeline"),
+    "equation_plus_decision_table": ("grant_and_conceptual.conceptual_triptych", "triptych"),
+    "truth_case_grid": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "failure_boundary_table": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "truth_regime_matrix": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "baseline_family_ladder": ("grant_and_conceptual.conceptual_triptych", "triptych"),
+    "accuracy_heatmap_with_boundary_rows": ("mixed_effects_models.model_comparison_aic_bic_ladder", "models"),
+    "public_input_comparator_table": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "runtime_memory_stripplot": ("mixed_effects_models.model_comparison_aic_bic_ladder", "models"),
+    "public_system_matrix": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "trajectory_residence_amplitude_panel": ("sensitivity_analysis.sobol_first_total_pair", "sobol"),
+    "trajectory_boundary_comparison": ("biophysics_scaling.equivalence_forest_with_tost_bounds", "forest"),
+    "endpoint_architecture_panel": ("mixed_effects_models.model_comparison_aic_bic_ladder", "models"),
+    "tracking_residence_panel": ("sensitivity_analysis.sobol_first_total_pair", "sobol"),
+    "source_eligibility_table": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "endpoint_schema_flow": ("grant_and_conceptual.methods_pipeline_flow", "pipeline"),
+    "bounded_coupling_interval_table": ("biophysics_scaling.equivalence_forest_with_tost_bounds", "forest"),
+    "reserve_endpoint_uncertainty_panel": ("biophysics_scaling.hierarchical_effect_size_ladder", "hierarchy"),
+    "architecture_comparison_matrix": ("mixed_effects_models.model_comparison_aic_bic_ladder", "models"),
+    "endpoint_limitations_table": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "predeclaration_flow": ("grant_and_conceptual.methods_pipeline_flow", "pipeline"),
+    "heldout_decision_matrix": ("biophysics_scaling.equivalence_forest_with_tost_bounds", "forest"),
+    "heldout_object_scatter": ("biophysics_scaling.hierarchical_effect_size_ladder", "hierarchy"),
+    "gate_status_table": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "validation_boundary_panel": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "parity_table": ("grant_and_conceptual.methods_pipeline_flow", "pipeline"),
+    "export_bundle_diagram": ("grant_and_conceptual.methods_pipeline_flow", "pipeline"),
+    "clean_room_flow": ("grant_and_conceptual.methods_pipeline_flow", "pipeline"),
+    "archive_checksum_panel": ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    "user_path_panel": ("grant_and_conceptual.conceptual_triptych", "triptych"),
+}
+
 INVENTORY_FIELDS = [
     "fig_id",
     "format",
@@ -347,19 +380,25 @@ def _provenance(row: dict[str, str]) -> dict[str, Any]:
 
 def panel_recipe_and_data(row: dict[str, str], offset: int) -> tuple[str, dict[str, Any]]:
     hint = row["render_recipe_hint"]
-    if hint in {"schema_flow", "endpoint_schema_flow", "predeclaration_flow", "clean_room_flow", "parity_table", "export_bundle_diagram"}:
-        return "grant_and_conceptual.methods_pipeline_flow", _pipeline(row)
-    if hint in {"equation_plus_decision_table", "baseline_family_ladder"}:
-        return "grant_and_conceptual.conceptual_triptych", _triptych(row)
-    if hint in {"bounded_coupling_interval_table", "heldout_decision_matrix"}:
-        return "biophysics_scaling.equivalence_forest_with_tost_bounds", _forest(row, offset)
-    if hint in {"reserve_endpoint_uncertainty_panel", "heldout_object_scatter"}:
-        return "biophysics_scaling.hierarchical_effect_size_ladder", _hierarchy(row, offset)
-    if hint in {"accuracy_heatmap_with_boundary_rows", "architecture_comparison_matrix", "runtime_memory_stripplot"}:
-        return "mixed_effects_models.model_comparison_aic_bic_ladder", _models(row, offset)
-    if hint in {"trajectory_residence_amplitude_panel", "trajectory_boundary_comparison", "tracking_residence_panel"}:
-        return "sensitivity_analysis.sobol_first_total_pair", _sobol(row, offset)
-    return "meta_and_diagnostic.alternative_hypothesis_exclusion_table", _exclusion(row)
+    recipe, data_kind = PANEL_RECIPE_BINDINGS.get(
+        hint,
+        ("meta_and_diagnostic.alternative_hypothesis_exclusion_table", "exclusion"),
+    )
+    if data_kind == "pipeline":
+        return recipe, _pipeline(row)
+    if data_kind == "triptych":
+        return recipe, _triptych(row)
+    if data_kind == "forest":
+        return recipe, _forest(row, offset)
+    if data_kind == "hierarchy":
+        return recipe, _hierarchy(row, offset)
+    if data_kind == "models":
+        return recipe, _models(row, offset)
+    if data_kind == "sobol":
+        return recipe, _sobol(row, offset)
+    if data_kind == "provenance":
+        return recipe, _provenance(row)
+    return recipe, _exclusion(row)
 
 
 def build_manifest(rows: list[dict[str, str]] | None = None) -> dict[str, Any]:

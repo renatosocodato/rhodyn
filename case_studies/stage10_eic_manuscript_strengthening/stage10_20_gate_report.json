@@ -10,8 +10,8 @@
     "stage10_19_still_passes": true,
     "stage10_6_onward_parent_gates_pass": true
   },
-  "generated_utc": "2026-07-08T13:05:58Z",
-  "git_sha": "948bdb942eec70efe7bd0817acd8cd793d6fe5fc",
+  "generated_utc": "2026-07-08T13:32:18Z",
+  "git_sha": "ac1326ac1e6a962e4968cd6320d93538534d7e1c",
   "interpretation_boundary": "Stage 10.20 hardens the EIC/manuscript route and predeclares optional prospective validation. It does not add data, rerun benchmarks, change claims, imply author approval, or send external contact.",
   "outputs": {
     "boundary_scan": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_boundary_scan.tsv",

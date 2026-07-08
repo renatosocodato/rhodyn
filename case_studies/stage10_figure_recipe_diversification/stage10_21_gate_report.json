@@ -1,0 +1,36 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "all_panels_bound": true,
+    "external_contact_not_sent": true,
+    "manifest_all_exists": true,
+    "recipe_diversity_passes": true,
+    "six_figures_bound": true,
+    "stage10_20_passed": true,
+    "uses_multiple_panelforge_recipe_families": true,
+    "uses_panel_specific_review_motifs": true
+  },
+  "generated_utc": "2026-07-08T13:32:19Z",
+  "git_sha": "ac1326ac1e6a962e4968cd6320d93538534d7e1c",
+  "interpretation_boundary": "Stage 10.21 changes figure recipe binding and review-render diversity only. It does not add data, rerun benchmarks, change claims, imply author approval, perform prospective validation, or send external contact.",
+  "outputs": {
+    "doc": "docs/stage10_21_figure_recipe_diversification.md",
+    "figure_logic": "case_studies/stage10_figure_recipe_diversification/stage10_21_figure_logic_binding.tsv",
+    "gate_report": "case_studies/stage10_figure_recipe_diversification/stage10_21_gate_report.json",
+    "manifest": "case_studies/stage10_figure_recipe_diversification/stage10_21_manifest.tsv",
+    "panel_binding": "case_studies/stage10_figure_recipe_diversification/stage10_21_panel_recipe_binding.tsv",
+    "recipe_audit": "case_studies/stage10_figure_recipe_diversification/stage10_21_recipe_diversity_audit.tsv",
+    "report": "case_studies/stage10_figure_recipe_diversification/stage10_21_recipe_diversification_report.md"
+  },
+  "stage": "10.21",
+  "status": "pass",
+  "summary_metrics": {
+    "bound_panel_count": 30,
+    "diversity_pass_figure_count": 6,
+    "figure_count": 6,
+    "manifest_row_count": 5,
+    "panel_count": 30,
+    "unique_panelforge_recipe_count": 7,
+    "unique_review_motif_count": 28
+  }
+}

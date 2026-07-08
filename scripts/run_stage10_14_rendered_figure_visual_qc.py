@@ -77,12 +77,12 @@ PARENT_DEFECTS = {
 }
 
 FIGURE_SHORT_TITLES = {
-    "FIG-001": "Residence-state inference as a decision object",
-    "FIG-002": "Named baselines and when residence adds value",
-    "FIG-003": "Biological breadth beyond a single use case",
-    "FIG-004": "Held-out validation and fixed decision rules",
-    "FIG-005": "Method-first figure architecture and evidence binding",
-    "FIG-006": "Manuscript pitch, reproducibility, and contact boundary",
+    "FIG-001": "RhoDyn method object and decision divergence",
+    "FIG-002": "Synthetic truth and named-baseline benchmarking",
+    "FIG-003": "Public biological breadth",
+    "FIG-004": "Endpoint, reserve, bounded-coupling, and routing",
+    "FIG-005": "Held-out validation and uncertainty boundaries",
+    "FIG-006": "Reproducibility and user adoption",
 }
 
 ROLE_COLORS = {
@@ -94,6 +94,39 @@ ROLE_COLORS = {
     "main_heldout_validation": "#6E3E82",
     "main_figure_architecture": "#2B6777",
     "main_reproducibility": "#545454",
+}
+
+MOTIF_VARIANTS = {
+    "schema_flow": "flow",
+    "equation_plus_decision_table": "formula_decision",
+    "truth_case_grid": "truth_grid",
+    "failure_boundary_table": "boundary_table",
+    "truth_regime_matrix": "truth_grid",
+    "baseline_family_ladder": "ladder",
+    "accuracy_heatmap_with_boundary_rows": "heatmap",
+    "public_input_comparator_table": "small_multiples",
+    "runtime_memory_stripplot": "stripplot",
+    "public_system_matrix": "domain_matrix",
+    "trajectory_residence_amplitude_panel": "trajectory_window",
+    "trajectory_boundary_comparison": "trajectory_boundary",
+    "endpoint_architecture_panel": "endpoint_network",
+    "tracking_residence_panel": "tracking_path",
+    "source_eligibility_table": "eligibility",
+    "endpoint_schema_flow": "flow",
+    "bounded_coupling_interval_table": "forest",
+    "reserve_endpoint_uncertainty_panel": "reserve_gauge",
+    "architecture_comparison_matrix": "model_ladder",
+    "endpoint_limitations_table": "guardrail",
+    "predeclaration_flow": "locked_timeline",
+    "heldout_decision_matrix": "decision_matrix",
+    "heldout_object_scatter": "object_scatter",
+    "gate_status_table": "gate_checklist",
+    "validation_boundary_panel": "validation_boundary",
+    "parity_table": "interface_parity",
+    "export_bundle_diagram": "bundle",
+    "clean_room_flow": "replay_loop",
+    "archive_checksum_panel": "checksum_ledger",
+    "user_path_panel": "dual_path",
 }
 
 
@@ -181,8 +214,8 @@ def _panel_positions(n: int) -> list[tuple[float, float, float, float]]:
 
 
 def _draw_motif(ax: Any, row: dict[str, str], color: str) -> None:
-    hint = row["render_recipe_hint"]
-    if "flow" in hint or "diagram" in hint:
+    variant = MOTIF_VARIANTS.get(row["render_recipe_hint"], "bars")
+    if variant == "flow":
         y = 0.43
         xs = [0.12, 0.39, 0.66]
         labels = ["input", "rule", "call"]
@@ -191,32 +224,143 @@ def _draw_motif(ax: Any, row: dict[str, str], color: str) -> None:
             ax.text(x + 0.09, y + 0.055, label, ha="center", va="center", fontsize=6.8, color=color, fontweight="bold")
         for x in [0.31, 0.58]:
             ax.add_patch(FancyArrowPatch((x, y + 0.055), (x + 0.065, y + 0.055), arrowstyle="-|>", mutation_scale=12, linewidth=1.0, color=color))
-    elif "matrix" in hint or "table" in hint or "heatmap" in hint:
-        for i in range(4):
-            for j in range(3):
-                shade = 0.18 + 0.13 * ((i + j) % 4)
-                ax.add_patch(Rectangle((0.25 + i * 0.10, 0.40 + j * 0.055), 0.08, 0.04, facecolor=color, alpha=shade, edgecolor="white", linewidth=0.5))
-        ax.text(0.72, 0.48, "declared\nrows", ha="center", va="center", fontsize=6.5, color=color)
-    elif "trajectory" in hint or "tracking" in hint:
+    elif variant == "formula_decision":
+        ax.text(0.16, 0.55, "D = R - C", ha="left", va="center", fontsize=13, color=color, fontweight="bold")
+        ax.add_patch(FancyBboxPatch((0.50, 0.52), 0.16, 0.07, boxstyle="round,pad=0.01", linewidth=1.1, edgecolor=color, facecolor="#F5F8FB"))
+        ax.add_patch(FancyBboxPatch((0.69, 0.52), 0.16, 0.07, boxstyle="round,pad=0.01", linewidth=1.1, edgecolor="#888888", facecolor="#FAFAFA"))
+        ax.text(0.58, 0.555, "call", ha="center", va="center", fontsize=6.8, color=color, fontweight="bold")
+        ax.text(0.77, 0.555, "abstain", ha="center", va="center", fontsize=6.8, color="#555555", fontweight="bold")
+    elif variant in {"truth_grid", "heatmap", "decision_matrix", "domain_matrix"}:
+        labels = ["R+", "A+", "?"] if variant != "domain_matrix" else ["DRG", "ERK", "CP", "MLCI"]
+        cols = 3 if variant != "domain_matrix" else 4
+        rows = 3 if variant != "domain_matrix" else 2
+        for i in range(cols):
+            for j in range(rows):
+                shade = 0.18 + 0.10 * ((i + j) % 4)
+                ax.add_patch(Rectangle((0.18 + i * 0.13, 0.40 + j * 0.055), 0.105, 0.04, facecolor=color, alpha=shade, edgecolor="white", linewidth=0.6))
+        for i, label in enumerate(labels[:cols]):
+            ax.text(0.232 + i * 0.13, 0.60, label, ha="center", va="center", fontsize=6.3, color=color, fontweight="bold")
+        ax.text(0.76, 0.49, "declared\noutcomes", ha="center", va="center", fontsize=6.4, color=color)
+    elif variant in {"boundary_table", "eligibility", "gate_checklist", "checksum_ledger"}:
+        labels = ["pass", "bound", "defer"] if variant != "checksum_ledger" else ["sha", "size", "record"]
+        for idx, label in enumerate(labels):
+            y = 0.56 - idx * 0.07
+            ax.add_patch(Rectangle((0.20, y - 0.018), 0.08, 0.036, facecolor=color, alpha=0.18 + 0.18 * idx, edgecolor=color, linewidth=0.7))
+            ax.plot([0.32, 0.78], [y, y], color="#8A8F99", linewidth=0.8)
+            ax.text(0.23, y, label, ha="center", va="center", fontsize=6.2, color=color, fontweight="bold")
+        ax.text(0.68, 0.62, "status\nledger", ha="center", va="center", fontsize=6.4, color=color)
+    elif variant == "ladder":
+        for idx, width in enumerate([0.56, 0.46, 0.36, 0.26]):
+            y = 0.58 - idx * 0.052
+            ax.add_patch(Rectangle((0.22, y), width, 0.032, facecolor=color, alpha=0.20 + idx * 0.12, edgecolor=color, linewidth=0.6))
+        ax.text(0.76, 0.43, "named\nfamilies", ha="center", va="center", fontsize=6.5, color=color)
+    elif variant == "small_multiples":
+        for idx, x0 in enumerate([0.16, 0.39, 0.62]):
+            ax.add_patch(Rectangle((x0, 0.41), 0.16, 0.15, facecolor="#F7F9FC", edgecolor="#C9CED6", linewidth=0.7))
+            xs = np.linspace(x0 + 0.02, x0 + 0.14, 20)
+            ax.plot(xs, 0.46 + 0.025 * np.sin(np.linspace(0, math.pi * (idx + 1), 20)), color=color, linewidth=1.1)
+        ax.text(0.50, 0.61, "shared inputs", ha="center", va="center", fontsize=6.5, color=color)
+    elif variant == "stripplot":
+        rng = np.random.default_rng(10)
+        for idx, x in enumerate([0.28, 0.48, 0.68]):
+            ys = 0.42 + rng.random(9) * 0.13
+            xs = x + (rng.random(9) - 0.5) * 0.035
+            ax.scatter(xs, ys, s=10, color=color, alpha=0.55 + idx * 0.1)
+            ax.plot([x - 0.05, x + 0.05], [np.median(ys), np.median(ys)], color="#333333", linewidth=0.9)
+        ax.text(0.50, 0.60, "runtime / memory", ha="center", va="center", fontsize=6.4, color=color)
+    elif variant in {"trajectory_window", "trajectory_boundary", "tracking_path"}:
         xs = np.linspace(0.12, 0.86, 80)
-        y1 = 0.44 + 0.04 * np.sin(np.linspace(0, math.pi * 2, 80))
-        y2 = 0.49 + 0.06 * np.exp(-((xs - 0.55) ** 2) / 0.02)
+        if variant == "tracking_path":
+            y1 = 0.43 + 0.05 * np.sin(np.linspace(0, math.pi * 1.5, 80))
+            y2 = 0.49 + 0.035 * np.cos(np.linspace(0, math.pi * 2.1, 80))
+        else:
+            y1 = 0.43 + 0.04 * np.sin(np.linspace(0, math.pi * 2, 80))
+            y2 = 0.49 + 0.06 * np.exp(-((xs - 0.55) ** 2) / 0.02)
         ax.plot(xs, y1, color="#808080", linewidth=1.2)
         ax.plot(xs, y2, color=color, linewidth=1.8)
         ax.axhspan(0.455, 0.505, color=color, alpha=0.10)
-    elif "coupling" in hint or "interval" in hint or "forest" in hint:
+        if variant == "trajectory_boundary":
+            ax.axvline(0.63, color="#A04A4A", linewidth=1.0, linestyle="--")
+        ax.text(0.22, 0.60, "window", ha="center", va="center", fontsize=6.4, color=color)
+    elif variant == "endpoint_network":
+        nodes = [(0.25, 0.52, "input"), (0.48, 0.44, "route"), (0.70, 0.55, "endpoint")]
+        for x, y, label in nodes:
+            ax.add_patch(FancyBboxPatch((x - 0.07, y - 0.035), 0.14, 0.07, boxstyle="round,pad=0.01", linewidth=1.0, edgecolor=color, facecolor="#F5F8FB"))
+            ax.text(x, y, label, ha="center", va="center", fontsize=6.0, color=color, fontweight="bold")
+        for start, end in [(nodes[0], nodes[1]), (nodes[1], nodes[2])]:
+            ax.add_patch(FancyArrowPatch((start[0] + 0.075, start[1]), (end[0] - 0.075, end[1]), arrowstyle="-|>", mutation_scale=10, color=color, linewidth=1.0))
+    elif variant == "forest":
         ax.axvspan(0.36, 0.64, ymin=0.40, ymax=0.58, color=color, alpha=0.10)
         for y, lo, hi, pt in [(0.44, 0.42, 0.58, 0.51), (0.49, 0.30, 0.55, 0.43), (0.54, 0.47, 0.75, 0.62)]:
             ax.plot([lo, hi], [y, y], color="#545454", linewidth=1.2)
             ax.scatter([pt], [y], s=18, color=color, zorder=3)
         ax.text(0.50, 0.61, "bounded\ninterval", ha="center", va="center", fontsize=6.4, color=color)
+    elif variant == "reserve_gauge":
+        ax.add_patch(FancyBboxPatch((0.22, 0.45), 0.48, 0.10, boxstyle="round,pad=0.012", linewidth=1.1, edgecolor=color, facecolor="#F7FAFC"))
+        for idx in range(5):
+            ax.add_patch(Rectangle((0.25 + idx * 0.082, 0.472), 0.058, 0.056, facecolor=color, alpha=0.22 + idx * 0.12, edgecolor="white"))
+        ax.add_patch(Rectangle((0.71, 0.478), 0.035, 0.045, facecolor=color, alpha=0.45, edgecolor=color))
+        ax.text(0.49, 0.61, "reserve-like\nbuffer", ha="center", va="center", fontsize=6.4, color=color)
+    elif variant == "model_ladder":
+        for idx, width in enumerate([0.50, 0.40, 0.30]):
+            y = 0.53 - idx * 0.07
+            ax.add_patch(Rectangle((0.25, y), width, 0.04, facecolor=color, alpha=0.24 + idx * 0.18, edgecolor=color))
+            ax.text(0.18, y + 0.02, f"M{idx}", ha="center", va="center", fontsize=6.2, color=color, fontweight="bold")
+        ax.text(0.71, 0.43, "reduced\nalternatives", ha="center", va="center", fontsize=6.4, color=color)
+    elif variant == "guardrail":
+        ax.add_patch(Rectangle((0.22, 0.41), 0.54, 0.16, facecolor="#FAFAFA", edgecolor="#C9CED6", linewidth=0.8))
+        for x in [0.34, 0.50, 0.66]:
+            ax.plot([x, x], [0.41, 0.57], color=color, linewidth=1.8)
+        ax.text(0.49, 0.62, "assay scope", ha="center", va="center", fontsize=6.5, color=color)
+    elif variant == "locked_timeline":
+        ax.plot([0.18, 0.78], [0.49, 0.49], color=color, linewidth=1.4)
+        for idx, x in enumerate([0.22, 0.42, 0.62]):
+            ax.scatter([x], [0.49], s=42, color=color, alpha=0.35 + idx * 0.2)
+            ax.text(x, 0.59, ["plan", "freeze", "test"][idx], ha="center", va="center", fontsize=6.1, color=color)
+        ax.text(0.78, 0.43, "no retune", ha="center", va="center", fontsize=6.3, color=color)
+    elif variant == "object_scatter":
+        xs = np.array([0.24, 0.33, 0.45, 0.55, 0.66, 0.75])
+        ys = np.array([0.45, 0.55, 0.49, 0.58, 0.44, 0.52])
+        ax.scatter(xs, ys, s=22, color=color, alpha=0.70)
+        ax.axhline(0.50, color="#888888", linewidth=0.8, linestyle="--")
+        ax.text(0.52, 0.62, "object calls", ha="center", va="center", fontsize=6.4, color=color)
+    elif variant == "validation_boundary":
+        ax.add_patch(Rectangle((0.17, 0.42), 0.28, 0.14, facecolor=color, alpha=0.18, edgecolor=color))
+        ax.add_patch(Rectangle((0.55, 0.42), 0.28, 0.14, facecolor="#F7F7F7", edgecolor="#999999"))
+        ax.text(0.31, 0.49, "sealed\nreplay", ha="center", va="center", fontsize=6.5, color=color, fontweight="bold")
+        ax.text(0.69, 0.49, "future\nblind", ha="center", va="center", fontsize=6.5, color="#555555", fontweight="bold")
+        ax.add_patch(FancyArrowPatch((0.46, 0.49), (0.54, 0.49), arrowstyle="-|>", mutation_scale=11, color="#777777"))
+    elif variant == "interface_parity":
+        labels = ["py", "cli", "api", "ui"]
+        for idx, label in enumerate(labels):
+            x = 0.22 + (idx % 2) * 0.24
+            y = 0.53 - (idx // 2) * 0.11
+            ax.add_patch(FancyBboxPatch((x, y), 0.16, 0.07, boxstyle="round,pad=0.01", edgecolor=color, facecolor="#F5F8FB", linewidth=1.0))
+            ax.text(x + 0.08, y + 0.035, label, ha="center", va="center", fontsize=7.2, color=color, fontweight="bold")
+        ax.text(0.69, 0.49, "same\ncalls", ha="center", va="center", fontsize=6.4, color=color)
+    elif variant == "bundle":
+        ax.add_patch(FancyBboxPatch((0.27, 0.40), 0.38, 0.18, boxstyle="round,pad=0.012", edgecolor=color, facecolor="#F7FAFC", linewidth=1.0))
+        for idx, label in enumerate(["input", "params", "report"]):
+            ax.plot([0.33, 0.58], [0.54 - idx * 0.045, 0.54 - idx * 0.045], color=color, linewidth=0.9)
+            ax.text(0.24, 0.54 - idx * 0.045, label, ha="right", va="center", fontsize=6.0, color=color)
+        ax.text(0.70, 0.49, "bundle", ha="center", va="center", fontsize=6.5, color=color)
+    elif variant == "replay_loop":
+        theta = np.linspace(0.2, 1.75 * math.pi, 80)
+        ax.plot(0.50 + 0.20 * np.cos(theta), 0.49 + 0.10 * np.sin(theta), color=color, linewidth=1.5)
+        ax.add_patch(FancyArrowPatch((0.66, 0.39), (0.69, 0.44), arrowstyle="-|>", mutation_scale=12, color=color))
+        ax.text(0.50, 0.49, "fresh\nreplay", ha="center", va="center", fontsize=6.5, color=color, fontweight="bold")
+    elif variant == "dual_path":
+        for y, label in [(0.55, "biologist"), (0.43, "quant")]:
+            ax.plot([0.18, 0.78], [y, y], color=color, linewidth=1.1)
+            ax.scatter([0.26, 0.52, 0.74], [y, y, y], s=22, color=color, alpha=0.35)
+            ax.text(0.13, y, label, ha="right", va="center", fontsize=6.1, color=color)
+        ax.text(0.51, 0.62, "user paths", ha="center", va="center", fontsize=6.4, color=color)
     else:
-        xs = [0.20, 0.35, 0.50, 0.65]
-        heights = [0.08, 0.15, 0.10, 0.20]
-        for x, h in zip(xs, heights):
-            ax.add_patch(Rectangle((x, 0.39), 0.09, h, facecolor=color, alpha=0.55, edgecolor=color, linewidth=0.8))
-        ax.plot([0.16, 0.82], [0.39, 0.39], color="#555555", linewidth=0.8)
-        ax.text(0.80, 0.55, "compare", ha="center", va="center", fontsize=6.4, color=color)
+        for i in range(4):
+            for j in range(3):
+                shade = 0.18 + 0.13 * ((i + j) % 4)
+                ax.add_patch(Rectangle((0.25 + i * 0.10, 0.40 + j * 0.055), 0.08, 0.04, facecolor=color, alpha=shade, edgecolor="white", linewidth=0.5))
+        ax.text(0.72, 0.48, "declared\nrows", ha="center", va="center", fontsize=6.5, color=color)
 
 
 def _draw_panel_card(ax: Any, row: dict[str, str]) -> None:

@@ -468,13 +468,13 @@ WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; reg
 INFO fontTools.subset: glyf pruned
 INFO fontTools.subset: Added gid0 to subset
 INFO fontTools.subset: Added first four glyphs to subset
-INFO fontTools.subset: Closing glyph list over 'glyf': 44 glyphs before
-INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'i', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'z', 'zero']
-INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 54, 55, 68, 69, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 93]
-INFO fontTools.subset: Closed glyph list over 'glyf': 44 glyphs after
-INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'i', 'l', 'm', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'r', 's', 'seven', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'w', 'x', 'z', 'zero']
-INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 11, 12, 15, 17, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 54, 55, 68, 69, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 93]
-INFO fontTools.subset: Retaining 44 glyphs
+INFO fontTools.subset: Closing glyph list over 'glyf': 59 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'I', 'O', 'R', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'i', 'j', 'l', 'm', 'minus', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'q', 'quotesingle', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'underscore', 'v', 'w', 'x', 'y', 'z', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 10, 11, 12, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 37, 38, 39, 44, 50, 53, 54, 55, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 239, 1091]
+INFO fontTools.subset: Closed glyph list over 'glyf': 59 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'I', 'O', 'R', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'eight', 'equal', 'f', 'five', 'four', 'g', 'h', 'i', 'j', 'l', 'm', 'minus', 'n', 'nine', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'percent', 'period', 'q', 'quotesingle', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'three', 'two', 'u', 'underscore', 'v', 'w', 'x', 'y', 'z', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 8, 10, 11, 12, 15, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 32, 36, 37, 38, 39, 44, 50, 53, 54, 55, 66, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 239, 1091]
+INFO fontTools.subset: Retaining 59 glyphs
 INFO fontTools.subset: head subsetting not needed
 INFO fontTools.subset: hhea subsetting not needed
 INFO fontTools.subset: maxp subsetting not needed
@@ -492,7 +492,7 @@ INFO fontTools.subset: prop subsetted
 INFO fontTools.subset: name subsetting not needed
 INFO fontTools.subset: glyf subsetted
 INFO fontTools.subset: head pruned
-INFO fontTools.subset: OS/2 Unicode ranges pruned: [0]
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 7, 38]
 INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
 INFO fontTools.subset: glyf pruned
 INFO fontTools.subset: name pruned
@@ -549,13 +549,13 @@ INFO fontTools.subset: morx dropped
 INFO fontTools.subset: glyf pruned
 INFO fontTools.subset: Added gid0 to subset
 INFO fontTools.subset: Added first four glyphs to subset
-INFO fontTools.subset: Closing glyph list over 'glyf': 51 glyphs before
-INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'I', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'Y', 'a', 'asciitilde', 'b', 'c', 'comma', 'd', 'e', 'emdash', 'f', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'three', 'u', 'v', 'x', 'y']
-INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 20, 22, 36, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 51, 53, 54, 55, 60, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 97, 179, 195]
-INFO fontTools.subset: Closed glyph list over 'glyf': 51 glyphs after
-INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'I', 'K', 'L', 'M', 'N', 'P', 'R', 'S', 'T', 'Y', 'a', 'asciitilde', 'b', 'c', 'comma', 'd', 'e', 'emdash', 'f', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'periodcentered', 'q', 'r', 's', 'space', 't', 'three', 'u', 'v', 'x', 'y']
-INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 20, 22, 36, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 51, 53, 54, 55, 60, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 97, 179, 195]
-INFO fontTools.subset: Retaining 51 glyphs
+INFO fontTools.subset: Closing glyph list over 'glyf': 63 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'F', 'G', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'Y', 'a', 'asciitilde', 'b', 'bracketleft', 'bracketright', 'c', 'comma', 'd', 'e', 'eight', 'emdash', 'equal', 'f', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'periodcentered', 'q', 'r', 's', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 25, 27, 32, 36, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 51, 53, 54, 55, 60, 62, 64, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 97, 179, 195, 1091]
+INFO fontTools.subset: Closed glyph list over 'glyf': 63 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'C', 'D', 'Deltagreek', 'E', 'F', 'G', 'I', 'K', 'L', 'M', 'N', 'O', 'P', 'R', 'S', 'T', 'Y', 'a', 'asciitilde', 'b', 'bracketleft', 'bracketright', 'c', 'comma', 'd', 'e', 'eight', 'emdash', 'equal', 'f', 'g', 'h', 'hyphen', 'i', 'k', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'one', 'p', 'parenleft', 'parenright', 'period', 'periodcentered', 'q', 'r', 's', 'six', 'space', 't', 'three', 'two', 'u', 'v', 'x', 'y', 'zero']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 11, 12, 15, 16, 17, 19, 20, 21, 22, 25, 27, 32, 36, 37, 38, 39, 40, 41, 42, 44, 46, 47, 48, 49, 50, 51, 53, 54, 55, 60, 62, 64, 68, 69, 70, 71, 72, 73, 74, 75, 76, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 91, 92, 97, 179, 195, 1091]
+INFO fontTools.subset: Retaining 63 glyphs
 INFO fontTools.subset: head subsetting not needed
 INFO fontTools.subset: hhea subsetting not needed
 INFO fontTools.subset: maxp subsetting not needed
@@ -572,7 +572,7 @@ INFO fontTools.subset: prop subsetted
 INFO fontTools.subset: name subsetting not needed
 INFO fontTools.subset: glyf subsetted
 INFO fontTools.subset: head pruned
-INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1, 31]
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 1, 7, 31]
 INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
 INFO fontTools.subset: glyf pruned
 INFO fontTools.subset: name pruned
@@ -1071,13 +1071,13 @@ WARNING fontTools.ttLib.tables._h_e_a_d: 'created' timestamp seems very low; reg
 INFO fontTools.subset: glyf pruned
 INFO fontTools.subset: Added gid0 to subset
 INFO fontTools.subset: Added first four glyphs to subset
-INFO fontTools.subset: Closing glyph list over 'glyf': 37 glyphs before
-INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'D', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'f', 'g', 'h', 'hyphen', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 17, 18, 25, 26, 36, 39, 54, 55, 68, 69, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93]
-INFO fontTools.subset: Closed glyph list over 'glyf': 37 glyphs after
-INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'D', 'S', 'T', 'a', 'b', 'c', 'comma', 'd', 'e', 'f', 'g', 'h', 'hyphen', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 17, 18, 25, 26, 36, 39, 54, 55, 68, 69, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93]
-INFO fontTools.subset: Retaining 37 glyphs
+INFO fontTools.subset: Closing glyph list over 'glyf': 41 glyphs before
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'D', 'I', 'S', 'T', 'U', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'f', 'g', 'h', 'hyphen', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 17, 18, 25, 26, 36, 37, 39, 44, 54, 55, 56, 68, 69, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93, 135]
+INFO fontTools.subset: Closed glyph list over 'glyf': 41 glyphs after
+INFO fontTools.subset: Glyph names: ['.notdef', '.null', 'A', 'B', 'D', 'I', 'S', 'T', 'U', 'a', 'b', 'bullet', 'c', 'comma', 'd', 'e', 'f', 'g', 'h', 'hyphen', 'i', 'l', 'm', 'n', 'nonmarkingreturn', 'o', 'p', 'period', 'r', 's', 'seven', 'six', 'slash', 'space', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+INFO fontTools.subset: Glyph IDs:   [0, 1, 2, 3, 15, 16, 17, 18, 25, 26, 36, 37, 39, 44, 54, 55, 56, 68, 69, 70, 71, 72, 73, 74, 75, 76, 79, 80, 81, 82, 83, 85, 86, 87, 88, 89, 90, 91, 92, 93, 135]
+INFO fontTools.subset: Retaining 41 glyphs
 INFO fontTools.subset: head subsetting not needed
 INFO fontTools.subset: hhea subsetting not needed
 INFO fontTools.subset: maxp subsetting not needed
@@ -1095,7 +1095,7 @@ INFO fontTools.subset: prop subsetted
 INFO fontTools.subset: name subsetting not needed
 INFO fontTools.subset: glyf subsetted
 INFO fontTools.subset: head pruned
-INFO fontTools.subset: OS/2 Unicode ranges pruned: [0]
+INFO fontTools.subset: OS/2 Unicode ranges pruned: [0, 31]
 INFO fontTools.subset: OS/2 CodePage ranges pruned: [0]
 INFO fontTools.subset: glyf pruned
 INFO fontTools.subset: name pruned

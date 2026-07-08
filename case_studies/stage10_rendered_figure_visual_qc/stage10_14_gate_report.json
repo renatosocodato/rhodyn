@@ -13,8 +13,8 @@
     "stage9_render_hashes_unchanged": true,
     "thirty_crosswalk_panels_preserved": true
   },
-  "generated_utc": "2026-07-08T11:19:03Z",
-  "git_sha": "c4f336662e6869b9eafd24520b030c4ef31390de",
+  "generated_utc": "2026-07-08T13:31:38Z",
+  "git_sha": "ac1326ac1e6a962e4968cd6320d93538534d7e1c",
   "interpretation_boundary": "Stage 10.14 corrects figure readability only. It records that the Stage 10.13 parent renders are not manuscript-ready, then generates separate readable review renders from the same crosswalk without changing data, benchmarks, claims, or external-contact state.",
   "outputs": {
     "contact_sheet": "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_contact_sheet.png",
@@ -30,130 +30,130 @@
   "review_render_status": "pass",
   "review_rendered_files": [
     {
-      "bytes": 28564,
+      "bytes": 30032,
       "fig_id": "FIG-001",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.pdf",
-      "sha256": "dca10dbe81445e5d7ef60adfe5e0016a167389fe025adfd776998d86a83fff9a"
+      "sha256": "b79be23907fdab4872050fafc7649f9efd2a7f83781f5fd33c6fbab9b643e8eb"
     },
     {
-      "bytes": 213831,
+      "bytes": 219744,
       "fig_id": "FIG-001",
       "format": "png",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.png",
-      "sha256": "b212600b0d8e7be5c6472063ebe7beb70b2ae74d6fbef5614a19f280b799c594"
+      "sha256": "ed4ef953e0cf475cab2555662b97b98e57fedd552a0c505c44d9b3f9016908c8"
     },
     {
-      "bytes": 158936,
+      "bytes": 161439,
       "fig_id": "FIG-001",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.svg",
-      "sha256": "184babb2997fc4fdd0298a09641e0c8fe9522aca3bfcf80fedf7526941ea3e55"
+      "sha256": "a757024f98613092a79538b8e52239bcf5e4264662bb77e69275a2f2380a45da"
     },
     {
-      "bytes": 32219,
+      "bytes": 35414,
       "fig_id": "FIG-002",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.pdf",
-      "sha256": "c9f27f4aa252f714e93a54bce32e665a764b2b298402f221f054471871ba253c"
+      "sha256": "c443717c7b4281d89925d3d007a7178415c66ce906fd87eaef303f1997467b87"
     },
     {
-      "bytes": 223527,
+      "bytes": 237197,
       "fig_id": "FIG-002",
       "format": "png",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.png",
-      "sha256": "dd2524709aec51ed40e1f0e51c5cb10cbadbd4561f90564ec660dd61457225d1"
+      "sha256": "448b1a22402e3e6eba98818b799554da60c7ca7007a3a093ab64de6a9f6c61ba"
     },
     {
-      "bytes": 181992,
+      "bytes": 190031,
       "fig_id": "FIG-002",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.svg",
-      "sha256": "6a91c63514e7eeb9c2fbb5ca3bec328e520ed6df35e25aca51d9d90ff594f457"
+      "sha256": "958df5a78e28dac2eb8a72d3f19e7c3143b1cf927bdaac337f25a58a10d0b0cd"
     },
     {
-      "bytes": 37097,
+      "bytes": 37937,
       "fig_id": "FIG-003",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.pdf",
-      "sha256": "e179fc7c3d805d212a7c32a8945eaf5bfe0ec3d55e246c0fe833087d09cd4390"
+      "sha256": "1c1ed1d9da8a281c131fa84c337ddfb7edff8ee75a9007bc6f75e75eba850c68"
     },
     {
-      "bytes": 281265,
+      "bytes": 288169,
       "fig_id": "FIG-003",
       "format": "png",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.png",
-      "sha256": "b4a9020677e04eb99ef6d8951f3b2f2d3845293b2a104e4ade747f711ce002a3"
+      "sha256": "b87bc8c52798eb681662e9211f416fe3a6127df820d1b534b1158a892b7fafc7"
     },
     {
-      "bytes": 229974,
+      "bytes": 232798,
       "fig_id": "FIG-003",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.svg",
-      "sha256": "b83bafe9b46e87464b5a2afc73f6c757fb469b1180ef8040809918e5e61b60be"
+      "sha256": "caf41b40d7ed8dc40242b3e8ace52f3700a5a1779d4b67ee17e072db61268bc3"
     },
     {
-      "bytes": 30347,
+      "bytes": 31235,
       "fig_id": "FIG-004",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.pdf",
-      "sha256": "7d07c990b737bebe6d4ef5df5e1b72cbbe36a21b744b47c712fb5de203f34bfa"
+      "sha256": "a98e59da01fcb5c7b24a70c767c4851140b233ac27f8f58328ccce88fa5c802f"
     },
     {
-      "bytes": 207710,
+      "bytes": 216568,
       "fig_id": "FIG-004",
       "format": "png",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.png",
-      "sha256": "d780476f0aaec243cf9cd46d51050823a75032205b4e0f900fea84dd2bbf0347"
+      "sha256": "503dc4adfc6beadd8a89782904e8934b419d070a046531c250c942e2947946e9"
     },
     {
-      "bytes": 173896,
+      "bytes": 171960,
       "fig_id": "FIG-004",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.svg",
-      "sha256": "6d804b456275d5631699ce5d91c9a8605d2d02972fe4be7627c743b469266c75"
+      "sha256": "af8d5d6a09a50cea43b81e217b386af744e882b6d2796f7dd5b9ef3a237c17b8"
     },
     {
-      "bytes": 31654,
+      "bytes": 32708,
       "fig_id": "FIG-005",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.pdf",
-      "sha256": "7a732e19c767c2f3b0b08733569a70dc0c552308b4858707f66a2462217b4883"
+      "sha256": "9637c692a48c72ff4b31029f0b25b87ceb6935b3171574f3cb4c7f2f3cf372d1"
     },
     {
-      "bytes": 198828,
+      "bytes": 208308,
       "fig_id": "FIG-005",
       "format": "png",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.png",
-      "sha256": "3126527deb680e486a3661f5babe1df221c11a81c29b5673beaf66847a2f8097"
+      "sha256": "8442a8d41fc07fccf9844d660c0ab5a7d2e6dfcd074bebafaea70ba46bbe8fc9"
     },
     {
-      "bytes": 163573,
+      "bytes": 167051,
       "fig_id": "FIG-005",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.svg",
-      "sha256": "d8182bb27f9544e97c5c018072ca7528d153b03b2d586b65187601b14beb431e"
+      "sha256": "d9a483e24f6fa6cfc050cb0c5d929abbac2a0f12ca9ed1a2f4fadda18b3086e7"
     },
     {
-      "bytes": 30256,
+      "bytes": 31940,
       "fig_id": "FIG-006",
       "format": "pdf",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.pdf",
-      "sha256": "ca03ad8e5215d67dba657c961b14bc2692981a91bbbc8f70a92ddd06c61aeb35"
+      "sha256": "e5ab19a64eca40bb4c87dd4679373fb080479464c4b5892536839288bc8aa417"
     },
     {
-      "bytes": 192799,
+      "bytes": 205322,
       "fig_id": "FIG-006",
       "format": "png",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.png",
-      "sha256": "4db8de1ee2581ab0ffc5427c13d70c41da51a66d8d24bba9d80248dd45103bad"
+      "sha256": "bb1a391633bf022ea353bbe5317b72a1179bb83514705c18a7beafb6dd3839d9"
     },
     {
-      "bytes": 161100,
+      "bytes": 163243,
       "fig_id": "FIG-006",
       "format": "svg",
       "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.svg",
-      "sha256": "1dd83c45be72b761d1eddbfd3754848c37d66ddf1691e6363bffc4102f76e165"
+      "sha256": "578c52d11156bed0725e73fc94c459aa86162d35c236b5e327239b7b14483376"
     }
   ],
   "stage": "10.14",

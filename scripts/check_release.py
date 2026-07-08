@@ -628,6 +628,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.18 author approval dossier complete; external contact remains not sent",
             "Stage 10.19 full-chain closeout complete; external contact remains not sent",
             "Stage 10.20 EIC/manuscript strengthening complete; external contact remains not sent",
+            "Stage 10.21 figure recipe diversification complete; external contact remains not sent",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -648,8 +649,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_20_complete_eic_manuscript_strengthening":
-                failures.append("roadmap execution memory does not mark Stage 10.20 EIC/manuscript strengthening as complete")
+            if stage10.get("status") != "stage10_21_complete_figure_recipe_diversification":
+                failures.append("roadmap execution memory does not mark Stage 10.21 figure recipe diversification as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -865,6 +866,15 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "case_studies/stage10_eic_manuscript_strengthening/stage10_20_manifest.tsv",
                 "case_studies/stage10_eic_manuscript_strengthening/stage10_20_strengthening_report.md",
                 "case_studies/stage10_eic_manuscript_strengthening/stage10_20_gate_report.json",
+                "docs/stage10_21_figure_recipe_diversification.md",
+                "scripts/run_stage10_21_figure_recipe_diversification.py",
+                "tests/test_stage10_21_figure_recipe_diversification.py",
+                "case_studies/stage10_figure_recipe_diversification/stage10_21_figure_logic_binding.tsv",
+                "case_studies/stage10_figure_recipe_diversification/stage10_21_panel_recipe_binding.tsv",
+                "case_studies/stage10_figure_recipe_diversification/stage10_21_recipe_diversity_audit.tsv",
+                "case_studies/stage10_figure_recipe_diversification/stage10_21_manifest.tsv",
+                "case_studies/stage10_figure_recipe_diversification/stage10_21_recipe_diversification_report.md",
+                "case_studies/stage10_figure_recipe_diversification/stage10_21_gate_report.json",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -1394,6 +1404,39 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                             failures.append(f"Stage 10.20 must record {key}={expected_value}")
             else:
                 failures.append("Stage 10.20 EIC/manuscript strengthening report is missing")
+            if subphase_status.get("10.21") != "complete_figure_recipe_diversification":
+                failures.append("Stage 10.21 must be complete_figure_recipe_diversification")
+            stage10_21_gate = root / "case_studies" / "stage10_figure_recipe_diversification" / "stage10_21_gate_report.json"
+            if stage10_21_gate.exists():
+                try:
+                    recipe_payload = json.loads(stage10_21_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.21 figure recipe diversification report is not valid JSON: {exc}")
+                else:
+                    if recipe_payload.get("status") != "pass":
+                        failures.append("Stage 10.21 figure recipe diversification report must pass")
+                    if recipe_payload.get("external_contact_status") != "not_sent":
+                        failures.append("Stage 10.21 must preserve external contact as not sent")
+                    gates = recipe_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.21 figure recipe diversification gates must all pass")
+                    summary = recipe_payload.get("summary_metrics", {})
+                    expected_summary = {
+                        "figure_count": 6,
+                        "panel_count": 30,
+                        "bound_panel_count": 30,
+                        "diversity_pass_figure_count": 6,
+                        "manifest_row_count": 5,
+                    }
+                    for key, expected_value in expected_summary.items():
+                        if not isinstance(summary, dict) or summary.get(key) != expected_value:
+                            failures.append(f"Stage 10.21 must record {key}={expected_value}")
+                    if not isinstance(summary, dict) or summary.get("unique_panelforge_recipe_count", 0) < 7:
+                        failures.append("Stage 10.21 must use at least seven PanelForge recipe families")
+                    if not isinstance(summary, dict) or summary.get("unique_review_motif_count", 0) < 24:
+                        failures.append("Stage 10.21 must use at least twenty-four review motifs")
+            else:
+                failures.append("Stage 10.21 figure recipe diversification report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

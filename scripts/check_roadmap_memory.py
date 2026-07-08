@@ -248,6 +248,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.18 author approval dossier complete; external contact remains not sent",
         "Stage 10.19 full-chain closeout complete; external contact remains not sent",
         "Stage 10.20 EIC/manuscript strengthening complete; external contact remains not sent",
+        "Stage 10.21 figure recipe diversification complete; external contact remains not sent",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -261,7 +262,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_20_complete_eic_manuscript_strengthening",
+        10: "stage10_21_complete_figure_recipe_diversification",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -490,6 +491,15 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_eic_manuscript_strengthening/stage10_20_manifest.tsv",
             "case_studies/stage10_eic_manuscript_strengthening/stage10_20_strengthening_report.md",
             "case_studies/stage10_eic_manuscript_strengthening/stage10_20_gate_report.json",
+            "docs/stage10_21_figure_recipe_diversification.md",
+            "scripts/run_stage10_21_figure_recipe_diversification.py",
+            "tests/test_stage10_21_figure_recipe_diversification.py",
+            "case_studies/stage10_figure_recipe_diversification/stage10_21_figure_logic_binding.tsv",
+            "case_studies/stage10_figure_recipe_diversification/stage10_21_panel_recipe_binding.tsv",
+            "case_studies/stage10_figure_recipe_diversification/stage10_21_recipe_diversity_audit.tsv",
+            "case_studies/stage10_figure_recipe_diversification/stage10_21_manifest.tsv",
+            "case_studies/stage10_figure_recipe_diversification/stage10_21_recipe_diversification_report.md",
+            "case_studies/stage10_figure_recipe_diversification/stage10_21_gate_report.json",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -993,6 +1003,35 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                         failures.append(f"Stage 10.20 must record {key}={expected_value}")
         else:
             failures.append("missing Stage 10.20 EIC/manuscript strengthening report")
+        if subphase_status.get("10.21") != "complete_figure_recipe_diversification":
+            failures.append("Stage 10.21 must be complete_figure_recipe_diversification")
+        recipe_report_path = root / "case_studies" / "stage10_figure_recipe_diversification" / "stage10_21_gate_report.json"
+        if recipe_report_path.exists():
+            recipe_report = json.loads(recipe_report_path.read_text(encoding="utf-8"))
+            if recipe_report.get("status") != "pass":
+                failures.append("Stage 10.21 figure recipe diversification report must pass")
+            if recipe_report.get("external_contact_status") != "not_sent":
+                failures.append("Stage 10.21 must preserve external contact as not sent")
+            gates = recipe_report.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.21 figure recipe diversification gates must all pass")
+            summary = recipe_report.get("summary_metrics", {})
+            expected_summary = {
+                "figure_count": 6,
+                "panel_count": 30,
+                "bound_panel_count": 30,
+                "diversity_pass_figure_count": 6,
+                "manifest_row_count": 5,
+            }
+            for key, expected_value in expected_summary.items():
+                if not isinstance(summary, dict) or summary.get(key) != expected_value:
+                    failures.append(f"Stage 10.21 must record {key}={expected_value}")
+            if not isinstance(summary, dict) or summary.get("unique_panelforge_recipe_count", 0) < 7:
+                failures.append("Stage 10.21 must use at least seven PanelForge recipe families")
+            if not isinstance(summary, dict) or summary.get("unique_review_motif_count", 0) < 24:
+                failures.append("Stage 10.21 must use at least twenty-four review motifs")
+        else:
+            failures.append("missing Stage 10.21 figure recipe diversification report")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []
