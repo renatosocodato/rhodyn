@@ -1,0 +1,169 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "all_review_figures_have_pdf_png_svg": true,
+    "contact_sheet_created": true,
+    "eighteen_review_rendered_files": true,
+    "external_contact_not_sent": true,
+    "no_new_science_claims_or_contact": true,
+    "parent_visual_defects_recorded": true,
+    "review_pngs_pass_visual_qc": true,
+    "six_review_figures_rendered": true,
+    "stage10_13_passed": true,
+    "stage9_render_hashes_unchanged": true,
+    "thirty_crosswalk_panels_preserved": true
+  },
+  "generated_utc": "2026-07-08T11:19:03Z",
+  "git_sha": "c4f336662e6869b9eafd24520b030c4ef31390de",
+  "interpretation_boundary": "Stage 10.14 corrects figure readability only. It records that the Stage 10.13 parent renders are not manuscript-ready, then generates separate readable review renders from the same crosswalk without changing data, benchmarks, claims, or external-contact state.",
+  "outputs": {
+    "contact_sheet": "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_contact_sheet.png",
+    "defect_matrix": "case_studies/stage10_rendered_figure_visual_qc/stage10_14_parent_visual_defect_matrix.tsv",
+    "doc": "docs/stage10_14_rendered_figure_visual_qc.md",
+    "gate_report": "case_studies/stage10_rendered_figure_visual_qc/stage10_14_gate_report.json",
+    "inventory": "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_inventory.tsv",
+    "report": "case_studies/stage10_rendered_figure_visual_qc/stage10_14_visual_qc_report.md",
+    "review_render_dir": "case_studies/stage10_rendered_figure_visual_qc/review_rendered",
+    "visual_qc": "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_visual_qc.tsv"
+  },
+  "parent_stage10_13_visual_status": "failed_visual_review_recorded",
+  "review_render_status": "pass",
+  "review_rendered_files": [
+    {
+      "bytes": 28564,
+      "fig_id": "FIG-001",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.pdf",
+      "sha256": "dca10dbe81445e5d7ef60adfe5e0016a167389fe025adfd776998d86a83fff9a"
+    },
+    {
+      "bytes": 213831,
+      "fig_id": "FIG-001",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.png",
+      "sha256": "b212600b0d8e7be5c6472063ebe7beb70b2ae74d6fbef5614a19f280b799c594"
+    },
+    {
+      "bytes": 158936,
+      "fig_id": "FIG-001",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.svg",
+      "sha256": "184babb2997fc4fdd0298a09641e0c8fe9522aca3bfcf80fedf7526941ea3e55"
+    },
+    {
+      "bytes": 32219,
+      "fig_id": "FIG-002",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.pdf",
+      "sha256": "c9f27f4aa252f714e93a54bce32e665a764b2b298402f221f054471871ba253c"
+    },
+    {
+      "bytes": 223527,
+      "fig_id": "FIG-002",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.png",
+      "sha256": "dd2524709aec51ed40e1f0e51c5cb10cbadbd4561f90564ec660dd61457225d1"
+    },
+    {
+      "bytes": 181992,
+      "fig_id": "FIG-002",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.svg",
+      "sha256": "6a91c63514e7eeb9c2fbb5ca3bec328e520ed6df35e25aca51d9d90ff594f457"
+    },
+    {
+      "bytes": 37097,
+      "fig_id": "FIG-003",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.pdf",
+      "sha256": "e179fc7c3d805d212a7c32a8945eaf5bfe0ec3d55e246c0fe833087d09cd4390"
+    },
+    {
+      "bytes": 281265,
+      "fig_id": "FIG-003",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.png",
+      "sha256": "b4a9020677e04eb99ef6d8951f3b2f2d3845293b2a104e4ade747f711ce002a3"
+    },
+    {
+      "bytes": 229974,
+      "fig_id": "FIG-003",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.svg",
+      "sha256": "b83bafe9b46e87464b5a2afc73f6c757fb469b1180ef8040809918e5e61b60be"
+    },
+    {
+      "bytes": 30347,
+      "fig_id": "FIG-004",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.pdf",
+      "sha256": "7d07c990b737bebe6d4ef5df5e1b72cbbe36a21b744b47c712fb5de203f34bfa"
+    },
+    {
+      "bytes": 207710,
+      "fig_id": "FIG-004",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.png",
+      "sha256": "d780476f0aaec243cf9cd46d51050823a75032205b4e0f900fea84dd2bbf0347"
+    },
+    {
+      "bytes": 173896,
+      "fig_id": "FIG-004",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.svg",
+      "sha256": "6d804b456275d5631699ce5d91c9a8605d2d02972fe4be7627c743b469266c75"
+    },
+    {
+      "bytes": 31654,
+      "fig_id": "FIG-005",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.pdf",
+      "sha256": "7a732e19c767c2f3b0b08733569a70dc0c552308b4858707f66a2462217b4883"
+    },
+    {
+      "bytes": 198828,
+      "fig_id": "FIG-005",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.png",
+      "sha256": "3126527deb680e486a3661f5babe1df221c11a81c29b5673beaf66847a2f8097"
+    },
+    {
+      "bytes": 163573,
+      "fig_id": "FIG-005",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.svg",
+      "sha256": "d8182bb27f9544e97c5c018072ca7528d153b03b2d586b65187601b14beb431e"
+    },
+    {
+      "bytes": 30256,
+      "fig_id": "FIG-006",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.pdf",
+      "sha256": "ca03ad8e5215d67dba657c961b14bc2692981a91bbbc8f70a92ddd06c61aeb35"
+    },
+    {
+      "bytes": 192799,
+      "fig_id": "FIG-006",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.png",
+      "sha256": "4db8de1ee2581ab0ffc5427c13d70c41da51a66d8d24bba9d80248dd45103bad"
+    },
+    {
+      "bytes": 161100,
+      "fig_id": "FIG-006",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.svg",
+      "sha256": "1dd83c45be72b761d1eddbfd3754848c37d66ddf1691e6363bffc4102f76e165"
+    }
+  ],
+  "stage": "10.14",
+  "status": "pass",
+  "summary_metrics": {
+    "parent_visual_failure_count": 6,
+    "planned_panel_count": 30,
+    "review_figure_count": 6,
+    "review_png_qc_count": 6,
+    "review_rendered_file_count": 18,
+    "stage9_rendered_file_count": 18
+  }
+}

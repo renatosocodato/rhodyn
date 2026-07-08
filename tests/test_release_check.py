@@ -7,7 +7,7 @@ from unittest import TestCase
 class ReleaseCheckTests(TestCase):
     def test_release_check_script_passes(self):
         subprocess.run(
-            [sys.executable, "scripts/run_stage10_13_rendered_method_figures.py"],
+            [sys.executable, "scripts/run_stage10_14_rendered_figure_visual_qc.py"],
             text=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

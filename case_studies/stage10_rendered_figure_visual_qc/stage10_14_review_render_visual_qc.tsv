@@ -1,0 +1,7 @@
+fig_id	review_png	width_px	height_px	bbox	min_edge_margin_px	nonwhite_fraction	visual_qc_pass
+FIG-001	case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.png	2567	1418	19,18,2263,1370	18	0.0665	yes
+FIG-002	case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.png	2652	1418	19,19,2468,1370	19	0.0575	yes
+FIG-003	case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.png	2652	1418	19,18,2633,1370	18	0.0750	yes
+FIG-004	case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.png	2652	1418	19,19,2509,1370	19	0.0600	yes
+FIG-005	case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.png	2652	1418	19,18,2509,1370	18	0.0599	yes
+FIG-006	case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.png	2652	1418	19,18,2518,1370	18	0.0652	yes

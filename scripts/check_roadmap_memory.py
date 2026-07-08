@@ -241,6 +241,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.11 author-review readiness complete; external contact remains not sent",
         "Stage 10.12 optional-strengthening triage complete; external contact remains not sent",
         "Stage 10.13 rendered method figures complete; external contact remains not sent",
+        "Stage 10.14 rendered-figure visual QA complete; external contact remains not sent",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -254,7 +255,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_13_complete_rendered_method_figures",
+        10: "stage10_14_complete_rendered_figure_visual_qc",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -400,6 +401,33 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.pdf",
             "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.png",
             "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.svg",
+            "docs/stage10_14_rendered_figure_visual_qc.md",
+            "scripts/run_stage10_14_rendered_figure_visual_qc.py",
+            "tests/test_stage10_14_rendered_figure_visual_qc.py",
+            "case_studies/stage10_rendered_figure_visual_qc/stage10_14_parent_visual_defect_matrix.tsv",
+            "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_visual_qc.tsv",
+            "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_inventory.tsv",
+            "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_contact_sheet.png",
+            "case_studies/stage10_rendered_figure_visual_qc/stage10_14_visual_qc_report.md",
+            "case_studies/stage10_rendered_figure_visual_qc/stage10_14_gate_report.json",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.pdf",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.png",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.svg",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.pdf",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.png",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.svg",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.pdf",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.png",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.svg",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.pdf",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.png",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.svg",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.pdf",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.png",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.svg",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.pdf",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.png",
+            "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.svg",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -685,6 +713,36 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.13 gate report must list eighteen rendered files")
         else:
             failures.append("missing Stage 10.13 rendered-method-figure report")
+        if subphase_status.get("10.14") != "complete_rendered_figure_visual_qc":
+            failures.append("Stage 10.14 must be complete_rendered_figure_visual_qc")
+        visual_gate_path = root / "case_studies" / "stage10_rendered_figure_visual_qc" / "stage10_14_gate_report.json"
+        if visual_gate_path.exists():
+            visual_gate = json.loads(visual_gate_path.read_text(encoding="utf-8"))
+            if visual_gate.get("status") != "pass":
+                failures.append("Stage 10.14 rendered-figure visual-QA report must pass")
+            if visual_gate.get("external_contact_status") != "not_sent":
+                failures.append("Stage 10.14 must preserve external contact as not sent")
+            if visual_gate.get("parent_stage10_13_visual_status") != "failed_visual_review_recorded":
+                failures.append("Stage 10.14 must record the Stage 10.13 parent visual failure")
+            if visual_gate.get("review_render_status") != "pass":
+                failures.append("Stage 10.14 review renders must pass")
+            gates = visual_gate.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.14 rendered-figure visual-QA gates must all pass")
+            summary = visual_gate.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("parent_visual_failure_count") != 6:
+                failures.append("Stage 10.14 must record six parent visual failures")
+            if not isinstance(summary, dict) or summary.get("planned_panel_count") != 30:
+                failures.append("Stage 10.14 must preserve thirty planned panels")
+            if not isinstance(summary, dict) or summary.get("review_figure_count") != 6:
+                failures.append("Stage 10.14 must render six readable review figures")
+            if not isinstance(summary, dict) or summary.get("review_rendered_file_count") != 18:
+                failures.append("Stage 10.14 must record eighteen readable review-rendered files")
+            rendered_files = visual_gate.get("review_rendered_files", [])
+            if not isinstance(rendered_files, list) or len(rendered_files) != 18:
+                failures.append("Stage 10.14 gate report must list eighteen readable review-rendered files")
+        else:
+            failures.append("missing Stage 10.14 rendered-figure visual-QA report")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

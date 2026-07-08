@@ -35,6 +35,43 @@ DYNAMIC_OUTPUTS_EXCLUDED_FROM_CHECKSUM = {
     str(ARCHIVE_MANIFEST_PATH.relative_to(ROOT)),
 }
 
+STAGE10_7_ALLOWED_ARTIFACT_TOKENS = (
+    "stage10_method_object_v2",
+    "stage10_1_api_gap_list",
+    "run_stage10_1_method_object_v2",
+    "test_stage10_1_method_object_v2",
+    "src/rhodyn/method_object.py",
+    "stage10_2_named_benchmarking",
+    "stage10_named_benchmarks",
+    "run_stage10_2_named_benchmarking",
+    "test_stage10_2_named_benchmarking",
+    "src/rhodyn/named_baselines.py",
+    "stage10_3_public_biological_breadth",
+    "stage10_public_breadth",
+    "run_stage10_3_public_biological_breadth",
+    "test_stage10_3_public_biological_breadth",
+    "stage10_4_heldout_validation",
+    "stage10_heldout_validation",
+    "run_stage10_4_heldout_validation",
+    "test_stage10_4_heldout_validation",
+    "stage10_5_method_first_figure_architecture",
+    "stage10_5_method_first_figure_spine",
+    "stage10_5_panel_evidence_crosswalk",
+    "stage10_5_supplementary_map",
+    "stage10_figure_architecture",
+    "run_stage10_5_figure_architecture",
+    "test_stage10_5_figure_architecture",
+    "stage10_6_manuscript_pitch_transformation",
+    "stage10_6/",
+    "stage10_manuscript_pitch",
+    "run_stage10_6_manuscript_pitch",
+    "test_stage10_6_manuscript_pitch",
+    "stage10_7_benchmark_release_candidate",
+    "stage10_release_candidate",
+    "run_stage10_7_benchmark_release_candidate",
+    "test_stage10_7_benchmark_release_candidate",
+)
+
 
 GATE_REPORTS = {
     "10.1": "case_studies/stage10_method_object_v2/stage10_1_method_object_gate_report.json",
@@ -133,7 +170,13 @@ def _stage10_artifacts() -> list[str]:
     for entry in memory.get("stage_lock", []):
         if isinstance(entry, dict) and entry.get("stage") == 10:
             artifacts = [item for item in entry.get("artifacts", []) if isinstance(item, str)]
-            return sorted(set(artifacts))
+            return sorted(
+                {
+                    artifact
+                    for artifact in artifacts
+                    if any(token in artifact for token in STAGE10_7_ALLOWED_ARTIFACT_TOKENS)
+                }
+            )
     return []
 
 

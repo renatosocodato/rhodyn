@@ -4,6 +4,6 @@ Stage 10.7 packages the Stage 10 method-elevation evidence into a reproducible b
 
 Status. pass.
 
-Artifacts covered. 63 checksum rows from 68 registered Stage 10 artifacts.
+Artifacts covered. 62 checksum rows from 67 registered Stage 10 artifacts.
 
 Next phase. Stage 10.8 adversarial EIC red-team simulation.

@@ -1,11 +1,11 @@
 {
-  "artifact_count": 68,
+  "artifact_count": 67,
   "checksum_manifest": "case_studies/stage10_release_candidate/stage10_7_checksum_manifest.tsv",
-  "checksum_row_count": 63,
+  "checksum_row_count": 62,
   "command_index": "case_studies/stage10_release_candidate/stage10_7_reproducibility_commands.tsv",
-  "generated_utc": "2026-07-07T17:20:15Z",
-  "git_sha": "8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c",
-  "release_candidate_id": "stage10.7-benchmark-release-candidate@8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c",
+  "generated_utc": "2026-07-08T11:16:48Z",
+  "git_sha": "c4f336662e6869b9eafd24520b030c4ef31390de",
+  "release_candidate_id": "stage10.7-benchmark-release-candidate@c4f336662e6869b9eafd24520b030c4ef31390de",
   "scope": "Stage 10.7 is a release-candidate packaging and reproducibility layer. It does not add biological data, benchmarks, figures, or manuscript claims.",
   "stage_gate_statuses": {
     "10.1": {

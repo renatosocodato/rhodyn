@@ -49,6 +49,7 @@ The software/workflow reading remains true, but secondary. RhoDyn is software be
 | 10.11 | Package author-review-ready presubmission route. | Convert the selected presubmission route into a no-send author-review packet with checklist and boundary scan. | Clean query, author checklist, packet manifest, boundary scan, decision brief, and gate report. | Query is ready for author review only, boundary scan passes, and external contact remains not sent. |
 | 10.12 | Triage optional strengthening before full submission. | Separate locally actionable figure rendering from external-data validation and author-only route decisions. | Option matrix, figure-render readiness table, validation-gap matrix, recommended next step, and gate report. | Stage 10 figures are selected as the next local hardening step, prospective collaborator-blind validation remains external-data dependent, and external contact remains not sent. |
 | 10.13 | Render method-first Stage 10 figures. | Build a separate PanelForge manifest from the Stage 10.5 crosswalk and render the six method-first figures without overwriting Stage 9 mockups. | `docs/stage10_13_rendered_method_figures.md`; `case_studies/stage10_rendered_figures/`; render inventory, panel coverage, and gate report. | Thirty crosswalk panels are represented, eighteen rendered files are present, Stage 9 render hashes remain unchanged, and external contact remains not sent. |
+| 10.14 | Visual-QA and readability repair for rendered method figures. | Record the crowded Stage 10.13 parent renders and create a separate readable review-render package from the same Stage 10.5 crosswalk. | `docs/stage10_14_rendered_figure_visual_qc.md`; `case_studies/stage10_rendered_figure_visual_qc/`; parent defect matrix, review-render inventory, visual-QA table, contact sheet, and gate report. | Parent visual defects are documented, thirty planned panels are preserved, eighteen readable review-render files pass image checks, Stage 9 renders remain unchanged, and external contact remains not sent. |
 
 ## Stage 10.1 mathematical elevation
 
@@ -312,6 +313,12 @@ Stage 10.13 is now implemented as a rendered method-first figure package. The ex
 
 The rendered package translates the Stage 10.5 method-first crosswalk into six PanelForge figures with 30 planned panels and 18 output files across PDF, PNG, and SVG. It is deliberately separate from `manuscript/nature_methods/figures/rendered/`, so the Stage 9 mockups remain unchanged while the Stage 10 method-elevation spine gains a concrete figure surface. This pass does not add biological data, retune benchmarks, change manuscript claims, create a journal upload, or contact Nature Methods.
 
+## Stage 10.14 rendered-figure visual QA
+
+Stage 10.14 is now implemented as the visual-readability hardening layer for the rendered method-first figures. The executable runner is `scripts/run_stage10_14_rendered_figure_visual_qc.py`, the documentation page is `docs/stage10_14_rendered_figure_visual_qc.md`, and the readable review-render package is under `case_studies/stage10_rendered_figure_visual_qc/`.
+
+The Stage 10.14 gate report records the Stage 10.13 parent renders as visually failed because title rows, panel labels, and dense card text collided. It then creates six readable review figures in PDF, PNG, and SVG from the same Stage 10.5 panel-evidence crosswalk. This pass preserves all thirty planned panels, leaves Stage 9 renders unchanged, adds no new biological data or benchmark claims, and keeps external contact unsent.
+
 ## Stop and pivot conditions
 
 | trigger | implication | decision |
@@ -341,9 +348,10 @@ python3 scripts/run_stage10_10_recursive_hardening.py
 python3 scripts/run_stage10_11_author_review_readiness.py
 python3 scripts/run_stage10_12_optional_strengthening_triage.py
 python3 scripts/run_stage10_13_rendered_method_figures.py
+python3 scripts/run_stage10_14_rendered_figure_visual_qc.py
 python3 scripts/check_release.py
 ```
 
 ## Reflection update
 
-Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 is now the active scientific-methods elevation program. It is justified because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. Stages 10.1 through 10.12 have now strengthened the mathematical method object, named benchmarking, public biological breadth, no-retuning held-out validation, method-first figure architecture, method-first manuscript/pitch surfaces, benchmark-ready replay packaging, adversarial editorial risk simulation, route selection, recursive claim-boundary hardening, author-review readiness, and optional-strengthening triage. The selected route remains a presubmission-style query that foregrounds the method object, comparator evidence, public biological breadth, held-out validation, reproducible software support, and explicit limits. The next local hardening step before any full-submission route is rendering the Stage 10 method-first figures; prospective collaborator-blind validation remains a separate new-evidence decision. External contact remains an author action and has not been sent.
+Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 is now the active scientific-methods elevation program. It is justified because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. Stages 10.1 through 10.14 have now strengthened the mathematical method object, named benchmarking, public biological breadth, no-retuning held-out validation, method-first figure architecture, method-first manuscript/pitch surfaces, benchmark-ready replay packaging, adversarial editorial risk simulation, route selection, recursive claim-boundary hardening, author-review readiness, optional-strengthening triage, rendered method figures, and visual-readability review renders. The selected route remains a presubmission-style query that foregrounds the method object, comparator evidence, public biological breadth, held-out validation, reproducible software support, readable figures, and explicit limits. Prospective collaborator-blind validation remains a separate new-evidence decision. External contact remains an author action and has not been sent.

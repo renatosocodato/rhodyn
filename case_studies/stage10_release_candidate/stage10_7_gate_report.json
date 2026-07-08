@@ -7,8 +7,8 @@
     "release_candidate_safety_scan_clear": true,
     "stage10_6_prerequisite_passed": true
   },
-  "generated_utc": "2026-07-07T17:20:15Z",
-  "git_sha": "8d1363aa7cdef273a0b7e6ba071b2a156b1ebc9c",
+  "generated_utc": "2026-07-08T11:16:48Z",
+  "git_sha": "c4f336662e6869b9eafd24520b030c4ef31390de",
   "interpretation_boundary": "Stage 10.7 is a release-candidate packaging and reproducibility layer. It does not add biological data, benchmarks, figures, or manuscript claims.",
   "missing_artifacts": [],
   "next_phase": "Stage 10.8 adversarial EIC red-team simulation",
@@ -48,10 +48,10 @@
   },
   "status": "pass",
   "summary_metrics": {
-    "checksum_row_count": 63,
+    "checksum_row_count": 62,
     "reproducibility_command_count": 9,
     "safety_hit_count": 0,
-    "stage10_artifact_count": 68,
+    "stage10_artifact_count": 67,
     "stage_gate_count": 6
   }
 }

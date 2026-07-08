@@ -621,6 +621,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.11 author-review readiness complete; external contact remains not sent",
             "Stage 10.12 optional-strengthening triage complete; external contact remains not sent",
             "Stage 10.13 rendered method figures complete; external contact remains not sent",
+            "Stage 10.14 rendered-figure visual QA complete; external contact remains not sent",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -641,8 +642,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_13_complete_rendered_method_figures":
-                failures.append("roadmap execution memory does not mark Stage 10.13 rendered method figures as complete")
+            if stage10.get("status") != "stage10_14_complete_rendered_figure_visual_qc":
+                failures.append("roadmap execution memory does not mark Stage 10.14 rendered-figure visual QA as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -775,6 +776,33 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.pdf",
                 "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.png",
                 "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.svg",
+                "docs/stage10_14_rendered_figure_visual_qc.md",
+                "scripts/run_stage10_14_rendered_figure_visual_qc.py",
+                "tests/test_stage10_14_rendered_figure_visual_qc.py",
+                "case_studies/stage10_rendered_figure_visual_qc/stage10_14_parent_visual_defect_matrix.tsv",
+                "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_visual_qc.tsv",
+                "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_inventory.tsv",
+                "case_studies/stage10_rendered_figure_visual_qc/stage10_14_review_render_contact_sheet.png",
+                "case_studies/stage10_rendered_figure_visual_qc/stage10_14_visual_qc_report.md",
+                "case_studies/stage10_rendered_figure_visual_qc/stage10_14_gate_report.json",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.pdf",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.png",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-001/FIG-001.svg",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.pdf",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.png",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-002/FIG-002.svg",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.pdf",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.png",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-003/FIG-003.svg",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.pdf",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.png",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-004/FIG-004.svg",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.pdf",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.png",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-005/FIG-005.svg",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.pdf",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.png",
+                "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.svg",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -1069,6 +1097,40 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                         failures.append("Stage 10.13 gate report must list eighteen rendered files")
             else:
                 failures.append("Stage 10.13 rendered-method-figure report is missing")
+            stage10_visual_gate = root / "case_studies" / "stage10_rendered_figure_visual_qc" / "stage10_14_gate_report.json"
+            if stage10_visual_gate.exists():
+                try:
+                    visual_payload = json.loads(stage10_visual_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.14 rendered-figure visual-QA report is not valid JSON: {exc}")
+                else:
+                    if visual_payload.get("status") != "pass":
+                        failures.append("Stage 10.14 rendered-figure visual-QA report must pass")
+                    if visual_payload.get("external_contact_status") != "not_sent":
+                        failures.append("Stage 10.14 must preserve external contact as not sent")
+                    if visual_payload.get("parent_stage10_13_visual_status") != "failed_visual_review_recorded":
+                        failures.append("Stage 10.14 must record the Stage 10.13 parent visual failure")
+                    if visual_payload.get("review_render_status") != "pass":
+                        failures.append("Stage 10.14 review renders must pass")
+                    gates = visual_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.14 rendered-figure visual-QA gates must all pass")
+                    summary = visual_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("parent_visual_failure_count") != 6:
+                        failures.append("Stage 10.14 must record six parent visual failures")
+                    if not isinstance(summary, dict) or summary.get("planned_panel_count") != 30:
+                        failures.append("Stage 10.14 must preserve thirty planned panels")
+                    if not isinstance(summary, dict) or summary.get("review_figure_count") != 6:
+                        failures.append("Stage 10.14 must render six readable review figures")
+                    if not isinstance(summary, dict) or summary.get("review_rendered_file_count") != 18:
+                        failures.append("Stage 10.14 must record eighteen readable review-rendered files")
+                    if not isinstance(summary, dict) or summary.get("stage9_rendered_file_count") != 18:
+                        failures.append("Stage 10.14 must preserve the eighteen Stage 9 rendered files")
+                    rendered_files = visual_payload.get("review_rendered_files", [])
+                    if not isinstance(rendered_files, list) or len(rendered_files) != 18:
+                        failures.append("Stage 10.14 gate report must list eighteen readable review-rendered files")
+            else:
+                failures.append("Stage 10.14 rendered-figure visual-QA report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []
