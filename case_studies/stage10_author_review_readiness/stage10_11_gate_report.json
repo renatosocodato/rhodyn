@@ -11,8 +11,8 @@
     "stage10_10_hardening_passed": true,
     "stage10_9_route_passed": true
   },
-  "generated_utc": "2026-07-08T10:08:37Z",
-  "git_sha": "525ce96971863e9915d58e3cb012aaaf1bffec6e",
+  "generated_utc": "2026-07-08T10:10:27Z",
+  "git_sha": "1b98b8d7d9a04b7046ac1545421d75f9a1dba2ee",
   "interpretation_boundary": "Stage 10.11 is an author-review readiness step only. It does not send any external message, does not create new evidence, and does not alter the Stage 10 method claims.",
   "next_phase": "Author review and optional EIC presubmission contact",
   "outputs": {
