@@ -54,4 +54,5 @@ nav:
   - Stage 10.7 benchmark release candidate: stage10_7_benchmark_release_candidate.md
   - Stage 10.8 EIC red team: stage10_8_adversarial_eic_red_team.md
   - Stage 10.9 EIC contact decision: stage10_9_eic_contact_decision.md
+  - Stage 10.10 recursive hardening: stage10_10_recursive_hardening.md
   - Release checklist: release_checklist.md

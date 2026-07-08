@@ -1,0 +1,35 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "all_stage10_phase_gates_pass": true,
+    "claim_boundaries_pass": true,
+    "evidence_chain_passes": true,
+    "external_contact_not_sent": true,
+    "no_high_risk_gap_open": true,
+    "stage9_29_not_used_alone": true
+  },
+  "generated_utc": "2026-07-08T09:49:47Z",
+  "git_sha": "62dbafd418dd745eb88e72c992420581a8aac992",
+  "interpretation_boundary": "Stage 10.10 is a hardening check only. It does not add datasets, benchmark results, figures, manuscript claims, or journal contact. It preserves the Stage 10 method-first reading and keeps external contact as author review.",
+  "next_phase": "Author review and optional EIC presubmission contact",
+  "outputs": {
+    "claim_boundary_matrix": "case_studies/stage10_recursive_hardening/stage10_10_claim_boundary_matrix.tsv",
+    "evidence_chain_audit": "case_studies/stage10_recursive_hardening/stage10_10_evidence_chain_audit.tsv",
+    "hardening_report": "case_studies/stage10_recursive_hardening/stage10_10_recursive_hardening_report.md",
+    "patch_recommendations": "case_studies/stage10_recursive_hardening/stage10_10_patch_recommendations.tsv",
+    "phase_gate_matrix": "case_studies/stage10_recursive_hardening/stage10_10_phase_gate_matrix.tsv"
+  },
+  "selected_route": "presubmission_query_author_review_required",
+  "stage": "10.10",
+  "status": "pass",
+  "summary_metrics": {
+    "audited_phase_count": 10,
+    "claim_boundary_count": 6,
+    "claim_boundary_pass_count": 6,
+    "evidence_chain_count": 10,
+    "evidence_chain_pass_count": 10,
+    "high_risk_gap_count": 0,
+    "patch_recommendation_count": 5,
+    "phase_pass_count": 10
+  }
+}

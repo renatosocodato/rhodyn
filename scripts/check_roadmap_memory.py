@@ -237,6 +237,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.7 benchmark-ready release candidate complete; Stage 10.8 adversarial EIC red-team simulation not started",
         "Stage 10.8 adversarial EIC red-team simulation complete; Stage 10.9 EIC-contact decision not started",
         "Stage 10.9 EIC-contact decision complete; external contact not sent",
+        "Stage 10.10 recursive hardening complete; external contact remains not sent",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -250,7 +251,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_9_complete_eic_contact_decision",
+        10: "stage10_10_complete_recursive_hardening",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -344,6 +345,15 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_eic_contact_decision/stage10_9_route_decision_matrix.tsv",
             "case_studies/stage10_eic_contact_decision/stage10_9_contact_package_manifest.tsv",
             "case_studies/stage10_eic_contact_decision/stage10_9_gate_report.json",
+            "docs/stage10_10_recursive_hardening.md",
+            "scripts/run_stage10_10_recursive_hardening.py",
+            "tests/test_stage10_10_recursive_hardening.py",
+            "case_studies/stage10_recursive_hardening/stage10_10_phase_gate_matrix.tsv",
+            "case_studies/stage10_recursive_hardening/stage10_10_evidence_chain_audit.tsv",
+            "case_studies/stage10_recursive_hardening/stage10_10_claim_boundary_matrix.tsv",
+            "case_studies/stage10_recursive_hardening/stage10_10_patch_recommendations.tsv",
+            "case_studies/stage10_recursive_hardening/stage10_10_gate_report.json",
+            "case_studies/stage10_recursive_hardening/stage10_10_recursive_hardening_report.md",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -525,6 +535,33 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.9 EIC-contact decision gates must all pass")
         else:
             failures.append("missing Stage 10.9 EIC-contact decision report")
+        if subphase_status.get("10.10") != "complete_recursive_hardening":
+            failures.append("Stage 10.10 must be complete_recursive_hardening")
+        hardening_report_path = root / "case_studies" / "stage10_recursive_hardening" / "stage10_10_gate_report.json"
+        if hardening_report_path.exists():
+            hardening_report = json.loads(hardening_report_path.read_text(encoding="utf-8"))
+            if hardening_report.get("status") != "pass":
+                failures.append("Stage 10.10 recursive-hardening report must pass")
+            if hardening_report.get("selected_route") != "presubmission_query_author_review_required":
+                failures.append("Stage 10.10 must preserve the presubmission-style route")
+            if hardening_report.get("external_contact_status") != "not_sent":
+                failures.append("Stage 10.10 must preserve external contact as not sent")
+            summary = hardening_report.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("audited_phase_count") != 10:
+                failures.append("Stage 10.10 must audit ten completed Stage 10 phases")
+            if not isinstance(summary, dict) or summary.get("phase_pass_count") != 10:
+                failures.append("Stage 10.10 must keep all ten prior phase gates passing")
+            if not isinstance(summary, dict) or summary.get("evidence_chain_pass_count") != summary.get("evidence_chain_count"):
+                failures.append("Stage 10.10 evidence-chain checks must all pass")
+            if not isinstance(summary, dict) or summary.get("claim_boundary_pass_count") != summary.get("claim_boundary_count"):
+                failures.append("Stage 10.10 claim-boundary checks must all pass")
+            if not isinstance(summary, dict) or summary.get("high_risk_gap_count") != 0:
+                failures.append("Stage 10.10 must leave no high-risk gap open")
+            gates = hardening_report.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.10 recursive-hardening gates must all pass")
+        else:
+            failures.append("missing Stage 10.10 recursive-hardening report")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

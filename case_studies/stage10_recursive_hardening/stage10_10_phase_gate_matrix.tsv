@@ -1,0 +1,11 @@
+phase	name	evidence_path	status	primary_function	evidence_read	boundary_preserved	hardening_action
+10.0	EIC rescue objective and no-contact rule	docs/stage10_nature_methods_eic_rescue_roadmap.md	pass	freezes the post-closure evidence-elevation objective	yes	yes	retain
+10.1	Method object v2	case_studies/stage10_method_object_v2/stage10_1_method_object_gate_report.json	pass	makes the mathematical decision object explicit	yes	yes	retain
+10.2	Named baseline benchmarking	case_studies/stage10_named_benchmarks/stage10_2_named_benchmark_report.json	pass	tests RhoDyn against named comparator families	yes	yes	retain
+10.3	Public biological breadth	case_studies/stage10_public_breadth/stage10_3_public_breadth_report.json	pass	broadens evidence beyond one biological use case	yes	yes	retain
+10.4	Held-out validation route	case_studies/stage10_heldout_validation/stage10_4_gate_report.json	pass	checks fixed-rule positive, comparator-sufficient, and inconclusive outcomes	yes	yes	retain
+10.5	Method-first figure architecture	case_studies/stage10_figure_architecture/stage10_5_gate_report.json	pass	puts method and validation evidence before software maturity	yes	yes	retain
+10.6	Manuscript and pitch transformation	case_studies/stage10_manuscript_pitch/stage10_6_gate_report.json	pass	makes the editor-facing reading method-first	yes	yes	retain
+10.7	Benchmark-ready release candidate	case_studies/stage10_release_candidate/stage10_7_gate_report.json	pass	binds replay commands, checksums, and release-candidate evidence	yes	yes	retain
+10.8	Adversarial EIC red-team simulation	case_studies/stage10_eic_red_team/stage10_8_gate_report.json	pass	stress-tests novelty, breadth, benchmarking, and claim scope	yes	yes	retain
+10.9	EIC-contact route decision	case_studies/stage10_eic_contact_decision/stage10_9_gate_report.json	pass	selects author-reviewed presubmission contact without sending it	yes	yes	retain

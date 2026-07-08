@@ -1,0 +1,6 @@
+item	priority	decision	status	rationale	next_action
+Stage 10.0 through 10.9 evidence ladder	required	retain	complete	All phase gates and evidence-chain checks pass.	Use Stage 10.10 as the hardening checkpoint before author review.
+Stage 9.29 package alone as EIC basis	required	forbid	complete	Stage 10 evidence supersedes the old-package reconsideration route.	Do not ask for reconsideration of Stage 9.29 without the Stage 10 method-evidence pitch.
+Prospective collaborator-blind validation	optional_strengthening	defer	not_blocking	Stage 10.4 no-retuning public-derived validation passes, but a prospective collaborator-blind table would still strengthen direct-submission posture.	Add only if the team wants to lower residual route risk before full submission.
+Stage 10 rendered figures	optional_strengthening	defer	not_blocking	Stage 10.5 provides a method-first figure architecture, while Stage 10.9 records unrendered Stage 10 figures as medium route risk.	Render only after author approval of the Stage 10 figure spine.
+External editor contact	human_action	retain_author_review_required	not_sent	Stage 10.9 selected presubmission-style contact but explicitly did not send it.	Author must review and authorize the exact message before any contact.
