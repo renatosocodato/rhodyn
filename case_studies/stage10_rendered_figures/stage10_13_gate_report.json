@@ -1,0 +1,171 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "all_evidence_files_exist": true,
+    "all_figures_have_pdf_png_svg": true,
+    "crosswalk_panel_count_30": true,
+    "eighteen_rendered_files": true,
+    "external_contact_not_sent": true,
+    "manifest_panel_count_matches_crosswalk": true,
+    "no_new_science_claims_or_contact": true,
+    "six_figures_rendered": true,
+    "stage10_12_passed": true,
+    "stage10_12_selected_figure_rendering": true,
+    "stage9_render_hashes_unchanged": true
+  },
+  "generated_utc": "2026-07-08T10:55:11Z",
+  "git_sha": "d3449f707fa3811d7dadb1db5c14bfe3ba06f26f",
+  "interpretation_boundary": "Stage 10.13 renders the method-first figures only. It does not add data, retune benchmarks, change claims, overwrite Stage 9 renders, send external contact, or create a journal upload.",
+  "outputs": {
+    "coverage": "case_studies/stage10_rendered_figures/stage10_13_panel_coverage.tsv",
+    "doc": "docs/stage10_13_rendered_method_figures.md",
+    "gate_report": "case_studies/stage10_rendered_figures/stage10_13_gate_report.json",
+    "inventory": "case_studies/stage10_rendered_figures/stage10_13_render_inventory.tsv",
+    "manifest": "case_studies/stage10_rendered_figures/stage10_13_figures.manifest.yaml",
+    "rendered_dir": "case_studies/stage10_rendered_figures/rendered",
+    "report": "case_studies/stage10_rendered_figures/stage10_13_render_report.md"
+  },
+  "panelforge": {
+    "doi": "10.5281/zenodo.20811171",
+    "name": "panelforge-figures",
+    "pinned_ref": "v3.14.1",
+    "version": "3.14.1"
+  },
+  "rendered_files": [
+    {
+      "bytes": 43500,
+      "fig_id": "FIG-001",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-001/FIG-001.pdf",
+      "sha256": "529c4ec2d640dfcedb85207f82d242f80d22310b69671b201ab28cad98bc9582"
+    },
+    {
+      "bytes": 403513,
+      "fig_id": "FIG-001",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-001/FIG-001.png",
+      "sha256": "d6fed14b04c7c254083011548ce7c7eb79fefcdd798b88c515c9fc054d5b4a07"
+    },
+    {
+      "bytes": 40826,
+      "fig_id": "FIG-001",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-001/FIG-001.svg",
+      "sha256": "60d825f17911772bba8d04334ebe7445ac3e8ae515e5fff86141d61fc0f4eae9"
+    },
+    {
+      "bytes": 57936,
+      "fig_id": "FIG-002",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-002/FIG-002.pdf",
+      "sha256": "d8aa9170b03e2179c4fdeee65d7f06bc0dd6a46db0a24cb39793122d3f1d5c16"
+    },
+    {
+      "bytes": 552265,
+      "fig_id": "FIG-002",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-002/FIG-002.png",
+      "sha256": "3ca6c77b21eeef653f70dc657635a5ebb9b7eedceb411084fc943ce38d756d85"
+    },
+    {
+      "bytes": 55655,
+      "fig_id": "FIG-002",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-002/FIG-002.svg",
+      "sha256": "620cb8d9e3f8aa2d5781f1ef039fb7e803de726560ea81e41b7f926915f568d2"
+    },
+    {
+      "bytes": 51064,
+      "fig_id": "FIG-003",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-003/FIG-003.pdf",
+      "sha256": "010c3006336020a45a7842519d9afe53269dcf8412b5c4778ee416b0b6cc5087"
+    },
+    {
+      "bytes": 540077,
+      "fig_id": "FIG-003",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-003/FIG-003.png",
+      "sha256": "9d33016ac8668fed79f67e42051105fe912a5266acff7c5023ef1b3165562a44"
+    },
+    {
+      "bytes": 110768,
+      "fig_id": "FIG-003",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-003/FIG-003.svg",
+      "sha256": "b12c4bfd408c7fb33f9761176734cd65c9c3d86301dcc1338d045f1441932e65"
+    },
+    {
+      "bytes": 61886,
+      "fig_id": "FIG-004",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-004/FIG-004.pdf",
+      "sha256": "cec2861982ef7ad680e0543f208140389b319a0e61c6fbfc190e9bb0c1774045"
+    },
+    {
+      "bytes": 478188,
+      "fig_id": "FIG-004",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-004/FIG-004.png",
+      "sha256": "8aded0020b95cadd24241f4c7846565cb1c9f3b266789afd6fb389735af50f83"
+    },
+    {
+      "bytes": 52079,
+      "fig_id": "FIG-004",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-004/FIG-004.svg",
+      "sha256": "478e3cedff458f08c9940760bce843526dbed9273f4415d0b423a6b8bdad6e29"
+    },
+    {
+      "bytes": 48533,
+      "fig_id": "FIG-005",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-005/FIG-005.pdf",
+      "sha256": "772d5fb278bfb6826accfb5f720a25b85f241994e08c343c066ce1f89e9b77d7"
+    },
+    {
+      "bytes": 430380,
+      "fig_id": "FIG-005",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-005/FIG-005.png",
+      "sha256": "50811c1dc86b9771c74aa9d32e3d7802b6810249747212c061a5859781416999"
+    },
+    {
+      "bytes": 49793,
+      "fig_id": "FIG-005",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-005/FIG-005.svg",
+      "sha256": "cb85a0a5f22d7460e46bdfa58722ab24833fd2788fbc0119087b5b0d48799153"
+    },
+    {
+      "bytes": 41485,
+      "fig_id": "FIG-006",
+      "format": "pdf",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.pdf",
+      "sha256": "5871a65febafa117f4588294a1e54ccec15721a46739c7d024887ce2fe042a7c"
+    },
+    {
+      "bytes": 447156,
+      "fig_id": "FIG-006",
+      "format": "png",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.png",
+      "sha256": "a103ccf73ba9d1fa6e04c648d8f8de60a46ee8265b803ec5dfac230a785a3b33"
+    },
+    {
+      "bytes": 52556,
+      "fig_id": "FIG-006",
+      "format": "svg",
+      "path": "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.svg",
+      "sha256": "ab14b2eabf767ac29c3a65c541099998ce7a80df41d871307c67a33cdb38ae67"
+    }
+  ],
+  "stage": "10.13",
+  "status": "pass",
+  "summary_metrics": {
+    "figure_count": 6,
+    "manifest_panel_count": 30,
+    "planned_panel_count": 30,
+    "rendered_file_count": 18,
+    "stage9_rendered_file_count": 18
+  }
+}

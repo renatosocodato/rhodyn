@@ -620,6 +620,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.10 recursive hardening complete; external contact remains not sent",
             "Stage 10.11 author-review readiness complete; external contact remains not sent",
             "Stage 10.12 optional-strengthening triage complete; external contact remains not sent",
+            "Stage 10.13 rendered method figures complete; external contact remains not sent",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -640,8 +641,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_12_complete_optional_strengthening_triage":
-                failures.append("roadmap execution memory does not mark Stage 10.12 optional-strengthening triage as complete")
+            if stage10.get("status") != "stage10_13_complete_rendered_method_figures":
+                failures.append("roadmap execution memory does not mark Stage 10.13 rendered method figures as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -748,6 +749,32 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "case_studies/stage10_optional_strengthening/stage10_12_validation_gap_matrix.tsv",
                 "case_studies/stage10_optional_strengthening/stage10_12_recommended_next_step.md",
                 "case_studies/stage10_optional_strengthening/stage10_12_gate_report.json",
+                "docs/stage10_13_rendered_method_figures.md",
+                "scripts/run_stage10_13_rendered_method_figures.py",
+                "tests/test_stage10_13_rendered_method_figures.py",
+                "case_studies/stage10_rendered_figures/stage10_13_figures.manifest.yaml",
+                "case_studies/stage10_rendered_figures/stage10_13_gate_report.json",
+                "case_studies/stage10_rendered_figures/stage10_13_panel_coverage.tsv",
+                "case_studies/stage10_rendered_figures/stage10_13_render_inventory.tsv",
+                "case_studies/stage10_rendered_figures/stage10_13_render_report.md",
+                "case_studies/stage10_rendered_figures/rendered/FIG-001/FIG-001.pdf",
+                "case_studies/stage10_rendered_figures/rendered/FIG-001/FIG-001.png",
+                "case_studies/stage10_rendered_figures/rendered/FIG-001/FIG-001.svg",
+                "case_studies/stage10_rendered_figures/rendered/FIG-002/FIG-002.pdf",
+                "case_studies/stage10_rendered_figures/rendered/FIG-002/FIG-002.png",
+                "case_studies/stage10_rendered_figures/rendered/FIG-002/FIG-002.svg",
+                "case_studies/stage10_rendered_figures/rendered/FIG-003/FIG-003.pdf",
+                "case_studies/stage10_rendered_figures/rendered/FIG-003/FIG-003.png",
+                "case_studies/stage10_rendered_figures/rendered/FIG-003/FIG-003.svg",
+                "case_studies/stage10_rendered_figures/rendered/FIG-004/FIG-004.pdf",
+                "case_studies/stage10_rendered_figures/rendered/FIG-004/FIG-004.png",
+                "case_studies/stage10_rendered_figures/rendered/FIG-004/FIG-004.svg",
+                "case_studies/stage10_rendered_figures/rendered/FIG-005/FIG-005.pdf",
+                "case_studies/stage10_rendered_figures/rendered/FIG-005/FIG-005.png",
+                "case_studies/stage10_rendered_figures/rendered/FIG-005/FIG-005.svg",
+                "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.pdf",
+                "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.png",
+                "case_studies/stage10_rendered_figures/rendered/FIG-006/FIG-006.svg",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -1009,6 +1036,39 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                         failures.append("Stage 10.12 must record three validation or strengthening layers")
             else:
                 failures.append("Stage 10.12 optional-strengthening report is missing")
+            stage10_render_gate = root / "case_studies" / "stage10_rendered_figures" / "stage10_13_gate_report.json"
+            if stage10_render_gate.exists():
+                try:
+                    render_payload = json.loads(stage10_render_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.13 rendered-method-figure report is not valid JSON: {exc}")
+                else:
+                    if render_payload.get("status") != "pass":
+                        failures.append("Stage 10.13 rendered-method-figure report must pass")
+                    if render_payload.get("external_contact_status") != "not_sent":
+                        failures.append("Stage 10.13 must preserve external contact as not sent")
+                    gates = render_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.13 rendered-method-figure gates must all pass")
+                    summary = render_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("figure_count") != 6:
+                        failures.append("Stage 10.13 must render six Stage 10 figures")
+                    if not isinstance(summary, dict) or summary.get("planned_panel_count") != 30:
+                        failures.append("Stage 10.13 must preserve thirty planned Stage 10 panels")
+                    if not isinstance(summary, dict) or summary.get("manifest_panel_count") != 30:
+                        failures.append("Stage 10.13 manifest must contain thirty panels")
+                    if not isinstance(summary, dict) or summary.get("rendered_file_count") != 18:
+                        failures.append("Stage 10.13 must record eighteen rendered files")
+                    if not isinstance(summary, dict) or summary.get("stage9_rendered_file_count") != 18:
+                        failures.append("Stage 10.13 must preserve the eighteen Stage 9 rendered files")
+                    panelforge = render_payload.get("panelforge", {})
+                    if not isinstance(panelforge, dict) or panelforge.get("doi") != "10.5281/zenodo.20811171":
+                        failures.append("Stage 10.13 must record the pinned PanelForge Zenodo DOI")
+                    rendered_files = render_payload.get("rendered_files", [])
+                    if not isinstance(rendered_files, list) or len(rendered_files) != 18:
+                        failures.append("Stage 10.13 gate report must list eighteen rendered files")
+            else:
+                failures.append("Stage 10.13 rendered-method-figure report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

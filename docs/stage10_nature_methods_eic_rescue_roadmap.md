@@ -48,6 +48,7 @@ The software/workflow reading remains true, but secondary. RhoDyn is software be
 | 10.10 | Recursively harden the Stage 10 chain. | Recheck all prior Stage 10 phase gates, evidence-chain links, and claim-boundary decisions before author review. | Phase-gate matrix, evidence-chain audit, claim-boundary matrix, patch recommendations, gate report, and hardening report. | All prior Stage 10 gates pass, no high-risk gap remains open, and external contact is still not sent. |
 | 10.11 | Package author-review-ready presubmission route. | Convert the selected presubmission route into a no-send author-review packet with checklist and boundary scan. | Clean query, author checklist, packet manifest, boundary scan, decision brief, and gate report. | Query is ready for author review only, boundary scan passes, and external contact remains not sent. |
 | 10.12 | Triage optional strengthening before full submission. | Separate locally actionable figure rendering from external-data validation and author-only route decisions. | Option matrix, figure-render readiness table, validation-gap matrix, recommended next step, and gate report. | Stage 10 figures are selected as the next local hardening step, prospective collaborator-blind validation remains external-data dependent, and external contact remains not sent. |
+| 10.13 | Render method-first Stage 10 figures. | Build a separate PanelForge manifest from the Stage 10.5 crosswalk and render the six method-first figures without overwriting Stage 9 mockups. | `docs/stage10_13_rendered_method_figures.md`; `case_studies/stage10_rendered_figures/`; render inventory, panel coverage, and gate report. | Thirty crosswalk panels are represented, eighteen rendered files are present, Stage 9 render hashes remain unchanged, and external contact remains not sent. |
 
 ## Stage 10.1 mathematical elevation
 
@@ -305,6 +306,12 @@ Stage 10.12 is now implemented as an optional-strengthening triage after author-
 
 The triage pass separates the two remaining medium-risk strengthening paths. Stage 10 rendered figures are the highest-value local hardening step before a full-submission route because the Stage 10.5 crosswalk already contains six figures, 30 planned panels, and complete evidence paths. Prospective collaborator-blind validation remains valuable but cannot be locally closed without a new external table or collaborator dataset. The presubmission query remains ready for author review and external contact remains unsent.
 
+## Stage 10.13 rendered method-first figures
+
+Stage 10.13 is now implemented as a rendered method-first figure package. The executable runner is `scripts/run_stage10_13_rendered_method_figures.py`, the documentation page is `docs/stage10_13_rendered_method_figures.md`, and the rendered outputs are under `case_studies/stage10_rendered_figures/`.
+
+The rendered package translates the Stage 10.5 method-first crosswalk into six PanelForge figures with 30 planned panels and 18 output files across PDF, PNG, and SVG. It is deliberately separate from `manuscript/nature_methods/figures/rendered/`, so the Stage 9 mockups remain unchanged while the Stage 10 method-elevation spine gains a concrete figure surface. This pass does not add biological data, retune benchmarks, change manuscript claims, create a journal upload, or contact Nature Methods.
+
 ## Stop and pivot conditions
 
 | trigger | implication | decision |
@@ -333,6 +340,7 @@ python3 scripts/run_stage10_9_eic_contact_decision.py
 python3 scripts/run_stage10_10_recursive_hardening.py
 python3 scripts/run_stage10_11_author_review_readiness.py
 python3 scripts/run_stage10_12_optional_strengthening_triage.py
+python3 scripts/run_stage10_13_rendered_method_figures.py
 python3 scripts/check_release.py
 ```
 

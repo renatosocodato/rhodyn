@@ -1,0 +1,7 @@
+fig_id	panel_count	panels	evidence_files_exist	rendered_formats	render_status
+FIG-001	4	A,B,C,D	yes	pdf,png,svg	rendered
+FIG-002	5	A,B,C,D,E	yes	pdf,png,svg	rendered
+FIG-003	6	A,B,C,D,E,F	yes	pdf,png,svg	rendered
+FIG-004	5	A,B,C,D,E	yes	pdf,png,svg	rendered
+FIG-005	5	A,B,C,D,E	yes	pdf,png,svg	rendered
+FIG-006	5	A,B,C,D,E	yes	pdf,png,svg	rendered

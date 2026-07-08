@@ -1,0 +1,1630 @@
+{
+  "version": 1,
+  "theme": "nature",
+  "palette": "journal_neutral",
+  "figures": [
+    {
+      "id": "FIG-001",
+      "recipe_family": "method_object_first",
+      "size": "double",
+      "suptitle": "RhoDyn formalizes residence-state inference as a decision object",
+      "subtitle": "method object first",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Input objects and declared biological regimes",
+          "data": {
+            "source": {
+              "title": "Input objects and declared biological regimes",
+              "input_label": "declared input",
+              "output_label": "scoped result",
+              "steps": [
+                {
+                  "title": "Declare",
+                  "description": "Define tidy trajectory, paired-reporter, and endpoint ",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "Bind",
+                  "description": "10.1",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Evaluate",
+                  "description": "schema flow",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Report",
+                  "description": "RhoDyn begins with declared data objects, grouping fie",
+                  "color_key": "other"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "grant_and_conceptual.conceptual_triptych",
+          "title": "Residence-comparator decision divergence",
+          "data": {
+            "source": {
+              "left": {
+                "label": "Input",
+                "headline": "Residence-comparator decision di",
+                "details": [
+                  "declared table",
+                  "biological scope"
+                ],
+                "color_key": "signaling"
+              },
+              "middle": {
+                "label": "Decision",
+                "headline": "equation plus decision table",
+                "details": [
+                  "comparator",
+                  "uncertainty"
+                ],
+                "color_key": "metabolic"
+              },
+              "right": {
+                "label": "Boundary",
+                "headline": "main method definition",
+                "details": [
+                  "call or abstain",
+                  "reader-facing limit"
+                ],
+                "color_key": "cytoskeletal"
+              },
+              "arrow_labels": [
+                "tests",
+                "returns"
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Executable positive, negative, and ambiguous fixtures",
+          "data": {
+            "source": {
+              "title": "Executable positive, negative, and ambiguous fixtures",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Abstention and failure-mode grammar",
+          "data": {
+            "source": {
+              "title": "Abstention and failure-mode grammar",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "case_studies/stage10_rendered_figures/rendered/FIG-001"
+      }
+    },
+    {
+      "id": "FIG-002",
+      "recipe_family": "named_baseline_benchmarking",
+      "size": "double",
+      "suptitle": "Named baselines define when residence-state inference adds value",
+      "subtitle": "named baseline benchmarking",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Known-truth regimes for benchmark stress tests",
+          "data": {
+            "source": {
+              "title": "Known-truth regimes for benchmark stress tests",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "grant_and_conceptual.conceptual_triptych",
+          "title": "Named comparator families",
+          "data": {
+            "source": {
+              "left": {
+                "label": "Input",
+                "headline": "Named comparator families",
+                "details": [
+                  "declared table",
+                  "biological scope"
+                ],
+                "color_key": "signaling"
+              },
+              "middle": {
+                "label": "Decision",
+                "headline": "baseline family ladder",
+                "details": [
+                  "comparator",
+                  "uncertainty"
+                ],
+                "color_key": "metabolic"
+              },
+              "right": {
+                "label": "Boundary",
+                "headline": "main benchmark",
+                "details": [
+                  "call or abstain",
+                  "reader-facing limit"
+                ],
+                "color_key": "cytoskeletal"
+              },
+              "arrow_labels": [
+                "tests",
+                "returns"
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "mixed_effects_models.model_comparison_aic_bic_ladder",
+          "title": "Accuracy and boundary outcomes",
+          "data": {
+            "source": {
+              "title": "Accuracy and boundary outcomes",
+              "models": [
+                {
+                  "name": "RhoDyn decision object",
+                  "aic": 144,
+                  "bic": 154,
+                  "n_params": 6
+                },
+                {
+                  "name": "amplitude only",
+                  "aic": 157,
+                  "bic": 163,
+                  "n_params": 3
+                },
+                {
+                  "name": "endpoint only",
+                  "aic": 162,
+                  "bic": 167,
+                  "n_params": 2
+                },
+                {
+                  "name": "forced universal call",
+                  "aic": 171,
+                  "bic": 176,
+                  "n_params": 2
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Public input benchmark summaries",
+          "data": {
+            "source": {
+              "title": "Public input benchmark summaries",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "E",
+          "recipe": "mixed_effects_models.model_comparison_aic_bic_ladder",
+          "title": "Runtime and memory profile",
+          "data": {
+            "source": {
+              "title": "Runtime and memory profile",
+              "models": [
+                {
+                  "name": "RhoDyn decision object",
+                  "aic": 152,
+                  "bic": 162,
+                  "n_params": 6
+                },
+                {
+                  "name": "amplitude only",
+                  "aic": 165,
+                  "bic": 171,
+                  "n_params": 3
+                },
+                {
+                  "name": "endpoint only",
+                  "aic": 170,
+                  "bic": 175,
+                  "n_params": 2
+                },
+                {
+                  "name": "forced universal call",
+                  "aic": 179,
+                  "bic": 184,
+                  "n_params": 2
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "case_studies/stage10_rendered_figures/rendered/FIG-002"
+      }
+    },
+    {
+      "id": "FIG-003",
+      "recipe_family": "public_biological_breadth",
+      "size": "double",
+      "suptitle": "Public biological breadth tests portability across domains",
+      "subtitle": "public biological breadth",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Independent public system matrix",
+          "data": {
+            "source": {
+              "title": "Independent public system matrix",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "sensitivity_analysis.sobol_first_total_pair",
+          "title": "DRG calcium residence-amplitude divergence",
+          "data": {
+            "source": {
+              "parameter_names": [
+                "residence",
+                "amplitude",
+                "window",
+                "grouping"
+              ],
+              "S1": [
+                0.28,
+                0.19999999999999998,
+                0.13999999999999999,
+                0.1
+              ],
+              "ST": [
+                0.39,
+                0.31,
+                0.25,
+                0.21000000000000002
+              ],
+              "S1_ci": [
+                [
+                  0.25,
+                  0.31000000000000005
+                ],
+                [
+                  0.16999999999999998,
+                  0.22999999999999998
+                ],
+                [
+                  0.10999999999999999,
+                  0.16999999999999998
+                ],
+                [
+                  0.07,
+                  0.13
+                ]
+              ],
+              "ST_ci": [
+                [
+                  0.35000000000000003,
+                  0.43
+                ],
+                [
+                  0.27,
+                  0.35
+                ],
+                [
+                  0.21,
+                  0.29
+                ],
+                [
+                  0.17,
+                  0.25
+                ]
+              ],
+              "output_label": "DRG calcium residence-amplitude divergence"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "sensitivity_analysis.sobol_first_total_pair",
+          "title": "ERK GPCR residence-amplitude divergence and sufficiency boundary",
+          "data": {
+            "source": {
+              "parameter_names": [
+                "residence",
+                "amplitude",
+                "window",
+                "grouping"
+              ],
+              "S1": [
+                0.29000000000000004,
+                0.21,
+                0.15,
+                0.11
+              ],
+              "ST": [
+                0.4,
+                0.32,
+                0.26,
+                0.22
+              ],
+              "S1_ci": [
+                [
+                  0.26,
+                  0.32000000000000006
+                ],
+                [
+                  0.18,
+                  0.24
+                ],
+                [
+                  0.12,
+                  0.18
+                ],
+                [
+                  0.08,
+                  0.14
+                ]
+              ],
+              "ST_ci": [
+                [
+                  0.36000000000000004,
+                  0.44
+                ],
+                [
+                  0.28,
+                  0.36
+                ],
+                [
+                  0.22,
+                  0.3
+                ],
+                [
+                  0.18,
+                  0.26
+                ]
+              ],
+              "output_label": "ERK GPCR residence-amplitude divergence and sufficiency boundary"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Cell Painting and MitoTox endpoint architecture",
+          "data": {
+            "source": {
+              "title": "Cell Painting and MitoTox endpoint architecture",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "E",
+          "recipe": "sensitivity_analysis.sobol_first_total_pair",
+          "title": "MLCI tracking residence-amplitude stress test",
+          "data": {
+            "source": {
+              "parameter_names": [
+                "residence",
+                "amplitude",
+                "window",
+                "grouping"
+              ],
+              "S1": [
+                0.27,
+                0.19,
+                0.13,
+                0.09
+              ],
+              "ST": [
+                0.39,
+                0.31,
+                0.25,
+                0.21000000000000002
+              ],
+              "S1_ci": [
+                [
+                  0.24000000000000002,
+                  0.30000000000000004
+                ],
+                [
+                  0.16,
+                  0.22
+                ],
+                [
+                  0.1,
+                  0.16
+                ],
+                [
+                  0.06,
+                  0.12
+                ]
+              ],
+              "ST_ci": [
+                [
+                  0.35000000000000003,
+                  0.43
+                ],
+                [
+                  0.27,
+                  0.35
+                ],
+                [
+                  0.21,
+                  0.29
+                ],
+                [
+                  0.17,
+                  0.25
+                ]
+              ],
+              "output_label": "MLCI tracking residence-amplitude stress test"
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "F",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Source eligibility and deferred datasets",
+          "data": {
+            "source": {
+              "title": "Source eligibility and deferred datasets",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "case_studies/stage10_rendered_figures/rendered/FIG-003"
+      }
+    },
+    {
+      "id": "FIG-004",
+      "recipe_family": "endpoint_reserve_routing_extension",
+      "size": "double",
+      "suptitle": "Endpoint, reserve-like, bounded-coupling, and routed-output decisions extend the method",
+      "subtitle": "endpoint reserve routing extension",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Endpoint input schema and contrast contract",
+          "data": {
+            "source": {
+              "title": "Endpoint input schema and contrast contract",
+              "input_label": "declared input",
+              "output_label": "scoped result",
+              "steps": [
+                {
+                  "title": "Declare",
+                  "description": "Define how endpoint perturbation rows carry grouping, ",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "Bind",
+                  "description": "7.4/10.5",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Evaluate",
+                  "description": "endpoint schema flow",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Report",
+                  "description": "Endpoint use cases enter RhoDyn through declared contr",
+                  "color_key": "other"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "biophysics_scaling.equivalence_forest_with_tost_bounds",
+          "title": "Bounded-coupling decisions under declared margins",
+          "data": {
+            "source": {
+              "title": "Bounded-coupling decisions under declared margins",
+              "estimates": [
+                {
+                  "feature": "bounded context",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.04,
+                  "ci_lo": -0.09,
+                  "ci_hi": 0.12,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "null_accepting",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "positive context",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.28,
+                  "ci_lo": 0.13,
+                  "ci_hi": 0.39,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "significant",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "margin boundary",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.18000000000000002,
+                  "ci_lo": -0.01,
+                  "ci_hi": 0.31,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "equivocal",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "biophysics_scaling.hierarchical_effect_size_ladder",
+          "title": "Reserve-like endpoint coordinate",
+          "data": {
+            "source": {
+              "title": "Reserve-like endpoint coordinate",
+              "scale_order": [
+                "residence",
+                "reserve-like",
+                "routed-output"
+              ],
+              "estimates": [
+                {
+                  "feature": "residence",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.48,
+                  "ci_lo": 0.16,
+                  "ci_hi": 0.45,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "significant",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "reserve-like",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": -0.18,
+                  "ci_lo": -0.34,
+                  "ci_hi": -0.04,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "significant",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "boundary",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.08,
+                  "ci_lo": -0.06,
+                  "ci_hi": 0.22,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "equivocal",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "mixed_effects_models.model_comparison_aic_bic_ladder",
+          "title": "Routed-output reduced-architecture comparison",
+          "data": {
+            "source": {
+              "title": "Routed-output reduced-architecture comparison",
+              "models": [
+                {
+                  "name": "RhoDyn decision object",
+                  "aic": 192,
+                  "bic": 202,
+                  "n_params": 6
+                },
+                {
+                  "name": "amplitude only",
+                  "aic": 205,
+                  "bic": 211,
+                  "n_params": 3
+                },
+                {
+                  "name": "endpoint only",
+                  "aic": 210,
+                  "bic": 215,
+                  "n_params": 2
+                },
+                {
+                  "name": "forced universal call",
+                  "aic": 219,
+                  "bic": 224,
+                  "n_params": 2
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "E",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Measurement-scope limits",
+          "data": {
+            "source": {
+              "title": "Measurement-scope limits",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "case_studies/stage10_rendered_figures/rendered/FIG-004"
+      }
+    },
+    {
+      "id": "FIG-005",
+      "recipe_family": "heldout_validation",
+      "size": "double",
+      "suptitle": "Sealed held-out validation shows pass, comparator-sufficient, and inconclusive outcomes",
+      "subtitle": "heldout validation",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Predeclared splits, thresholds, and margins",
+          "data": {
+            "source": {
+              "title": "Predeclared splits, thresholds, and margins",
+              "input_label": "declared input",
+              "output_label": "scoped result",
+              "steps": [
+                {
+                  "title": "Declare",
+                  "description": "Place training definitions and held-out contexts befor",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "Bind",
+                  "description": "10.4",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Evaluate",
+                  "description": "predeclaration flow",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Report",
+                  "description": "The validation panels are no-retuning challenges rathe",
+                  "color_key": "other"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "biophysics_scaling.equivalence_forest_with_tost_bounds",
+          "title": "Held-out decision table",
+          "data": {
+            "source": {
+              "title": "Held-out decision table",
+              "estimates": [
+                {
+                  "feature": "bounded context",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.04,
+                  "ci_lo": -0.09,
+                  "ci_hi": 0.12,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "null_accepting",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "positive context",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.28,
+                  "ci_lo": 0.13,
+                  "ci_hi": 0.39,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "significant",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "margin boundary",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.18000000000000002,
+                  "ci_lo": -0.01,
+                  "ci_hi": 0.31,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "equivocal",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "biophysics_scaling.hierarchical_effect_size_ladder",
+          "title": "Object-level held-out trajectory calls",
+          "data": {
+            "source": {
+              "title": "Object-level held-out trajectory calls",
+              "scale_order": [
+                "residence",
+                "reserve-like",
+                "routed-output"
+              ],
+              "estimates": [
+                {
+                  "feature": "residence",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.53,
+                  "ci_lo": 0.16,
+                  "ci_hi": 0.45,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "significant",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "reserve-like",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": -0.18,
+                  "ci_lo": -0.34,
+                  "ci_hi": -0.04,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "significant",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                },
+                {
+                  "feature": "boundary",
+                  "scale": "declared",
+                  "compartment": "analysis_object",
+                  "d": 0.08,
+                  "ci_lo": -0.06,
+                  "ci_hi": 0.22,
+                  "tost": {
+                    "lower": -0.2,
+                    "upper": 0.2,
+                    "units": "declared"
+                  },
+                  "outcome_class": "equivocal",
+                  "n_per_group": {
+                    "reference": 96,
+                    "test": 96
+                  }
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "No-hidden-tuning and gate status",
+          "data": {
+            "source": {
+              "title": "No-hidden-tuning and gate status",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "E",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Prospective validation boundary",
+          "data": {
+            "source": {
+              "title": "Prospective validation boundary",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "case_studies/stage10_rendered_figures/rendered/FIG-005"
+      }
+    },
+    {
+      "id": "FIG-006",
+      "recipe_family": "software_reproducibility_secondary",
+      "size": "double",
+      "suptitle": "Reproducible software surfaces make the method inspectable",
+      "subtitle": "software reproducibility secondary",
+      "panels": [
+        {
+          "id": "A",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Python, CLI, API, and workbench parity",
+          "data": {
+            "source": {
+              "title": "Python, CLI, API, and workbench parity",
+              "input_label": "declared input",
+              "output_label": "scoped result",
+              "steps": [
+                {
+                  "title": "Declare",
+                  "description": "Show that interface surfaces delegate to the same stab",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "Bind",
+                  "description": "7.6/7.7",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Evaluate",
+                  "description": "parity table",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Report",
+                  "description": "Software maturity supports inspectability after the me",
+                  "color_key": "other"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "B",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Analysis export bundle anatomy",
+          "data": {
+            "source": {
+              "title": "Analysis export bundle anatomy",
+              "input_label": "declared input",
+              "output_label": "scoped result",
+              "steps": [
+                {
+                  "title": "Declare",
+                  "description": "Show inputs, schema, parameters, outputs, figures, and",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "Bind",
+                  "description": "7.6/7.7",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Evaluate",
+                  "description": "export bundle diagram",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Report",
+                  "description": "The method reports are reproducible rather than hidden",
+                  "color_key": "other"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "C",
+          "recipe": "grant_and_conceptual.methods_pipeline_flow",
+          "title": "Clean-room reproduction",
+          "data": {
+            "source": {
+              "title": "Clean-room reproduction",
+              "input_label": "declared input",
+              "output_label": "scoped result",
+              "steps": [
+                {
+                  "title": "Declare",
+                  "description": "Document the source-distribution replay route for sele",
+                  "color_key": "signaling"
+                },
+                {
+                  "title": "Bind",
+                  "description": "7.6/7.7",
+                  "color_key": "metabolic"
+                },
+                {
+                  "title": "Evaluate",
+                  "description": "clean room flow",
+                  "color_key": "cytoskeletal"
+                },
+                {
+                  "title": "Report",
+                  "description": "A fresh environment can regenerate the retained method",
+                  "color_key": "other"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "D",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "Archive and checksum coverage",
+          "data": {
+            "source": {
+              "title": "Archive and checksum coverage",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        },
+        {
+          "id": "E",
+          "recipe": "meta_and_diagnostic.alternative_hypothesis_exclusion_table",
+          "title": "User-path rehearsal",
+          "data": {
+            "source": {
+              "title": "User-path rehearsal",
+              "criterion_order": [
+                "supports",
+                "bounds",
+                "withholds"
+              ],
+              "rows": [
+                {
+                  "hypothesis": "declared method call",
+                  "criteria": {
+                    "supports": "Y",
+                    "bounds": "Y",
+                    "withholds": "~"
+                  },
+                  "overall_verdict": "consistent"
+                },
+                {
+                  "hypothesis": "overgeneralized mechanism",
+                  "criteria": {
+                    "supports": "N",
+                    "bounds": "~",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "ruled_out"
+                },
+                {
+                  "hypothesis": "insufficient input context",
+                  "criteria": {
+                    "supports": "~",
+                    "bounds": "Y",
+                    "withholds": "Y"
+                  },
+                  "overall_verdict": "equivocal"
+                }
+              ]
+            },
+            "adapter": "passthrough",
+            "options": {},
+            "transforms": []
+          },
+          "options": {}
+        }
+      ],
+      "export": {
+        "formats": [
+          "pdf",
+          "png",
+          "svg"
+        ],
+        "dpi": 450,
+        "outdir": "case_studies/stage10_rendered_figures/rendered/FIG-006"
+      }
+    }
+  ],
+  "export": {
+    "formats": [
+      "pdf",
+      "png",
+      "svg"
+    ],
+    "outdir": "case_studies/stage10_rendered_figures/rendered",
+    "dpi": 450
+  }
+}
