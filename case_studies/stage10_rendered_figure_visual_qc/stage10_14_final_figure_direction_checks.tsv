@@ -1,0 +1,13 @@
+check	category	result	evidence	decision
+six_figure_logic	figure_architecture	pass	Six review figures present and visually coherent	Accept as scaffold
+panel_recipe_diversity	figure_architecture	pass	Stage 10.21 reports 30 bound panels, 7 recipe families, and 28 review motifs	Accept as scaffold
+vector_pdf_presence	output_surface	pass	Six review PDFs present	Accept as scaffold
+companion_png_presence	output_surface	pass	Six review PNGs present	Accept as scaffold
+svg_presence	output_surface	pass	Six review SVGs present	Accept as scaffold
+outer_edge_contact	visual_safety	pass	0 non-white pixels detected in the outer 12 px image edge for all review PNGs	Accept as scaffold
+helvetica_fonts	typography	fail	pdffonts reports embedded DejaVuSans and DejaVuSans-Bold Type 3 fonts	Reject for final
+review_text_pruned	text_density	fail	SVGs retain Purpose, Reader readout, and Stage 10 text blocks	Reject for final
+footnote_pruning	text_density	fail	Stage labels remain visible as footnote-like annotations	Reject for final
+minimalist_annotations	text_density	fail	Panel prose is still review-level and too dense for final figure panels	Reject for final
+annotation_collision_guard	visual_safety	incomplete	Outer-edge check passed, but no per-annotation data-collision proof is recorded	Require final guard
+final_high_res_png_contract	output_surface	incomplete	Review PNGs exist, but final target-resolution contract has not been enforced	Require final guard
