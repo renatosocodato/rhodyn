@@ -242,6 +242,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.12 optional-strengthening triage complete; external contact remains not sent",
         "Stage 10.13 rendered method figures complete; external contact remains not sent",
         "Stage 10.14 rendered-figure visual QA complete; external contact remains not sent",
+        "Stage 10.15 author visual-review packet complete; external contact remains not sent",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -255,7 +256,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_14_complete_rendered_figure_visual_qc",
+        10: "stage10_15_complete_author_visual_review_packet",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -428,6 +429,15 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.pdf",
             "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.png",
             "case_studies/stage10_rendered_figure_visual_qc/review_rendered/FIG-006/FIG-006.svg",
+            "docs/stage10_15_author_visual_review_packet.md",
+            "scripts/run_stage10_15_author_visual_review_packet.py",
+            "tests/test_stage10_15_author_visual_review_packet.py",
+            "case_studies/stage10_author_visual_review_packet/stage10_15_author_visual_review_manifest.tsv",
+            "case_studies/stage10_author_visual_review_packet/stage10_15_author_decision_checklist.tsv",
+            "case_studies/stage10_author_visual_review_packet/stage10_15_no_send_boundary_scan.tsv",
+            "case_studies/stage10_author_visual_review_packet/stage10_15_figure_review_guide.md",
+            "case_studies/stage10_author_visual_review_packet/stage10_15_author_visual_review_packet.md",
+            "case_studies/stage10_author_visual_review_packet/stage10_15_gate_report.json",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -743,6 +753,33 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.14 gate report must list eighteen readable review-rendered files")
         else:
             failures.append("missing Stage 10.14 rendered-figure visual-QA report")
+        if subphase_status.get("10.15") != "complete_author_visual_review_packet":
+            failures.append("Stage 10.15 must be complete_author_visual_review_packet")
+        author_packet_gate_path = root / "case_studies" / "stage10_author_visual_review_packet" / "stage10_15_gate_report.json"
+        if author_packet_gate_path.exists():
+            author_packet_gate = json.loads(author_packet_gate_path.read_text(encoding="utf-8"))
+            if author_packet_gate.get("status") != "pass":
+                failures.append("Stage 10.15 author visual-review packet report must pass")
+            if author_packet_gate.get("external_contact_status") != "not_sent":
+                failures.append("Stage 10.15 must preserve external contact as not sent")
+            gates = author_packet_gate.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.15 author visual-review packet gates must all pass")
+            summary = author_packet_gate.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("manifest_row_count") != 26:
+                failures.append("Stage 10.15 must register the expected 26 packet manifest rows")
+            if not isinstance(summary, dict) or summary.get("figure_render_reference_count") != 18:
+                failures.append("Stage 10.15 must reference eighteen readable review-rendered figure files")
+            if not isinstance(summary, dict) or summary.get("checklist_item_count") != 10:
+                failures.append("Stage 10.15 must preserve ten author decision checklist rows")
+            if not isinstance(summary, dict) or summary.get("author_required_item_count") < 2:
+                failures.append("Stage 10.15 must retain at least two explicit author-required actions")
+            if not isinstance(summary, dict) or summary.get("boundary_count") != 6:
+                failures.append("Stage 10.15 must record six no-send boundary rows")
+            if not isinstance(summary, dict) or summary.get("boundary_pass_count") != 6:
+                failures.append("Stage 10.15 must pass all no-send boundary rows")
+        else:
+            failures.append("missing Stage 10.15 author visual-review packet report")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

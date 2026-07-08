@@ -1,0 +1,37 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "author_required_items_retained": true,
+    "boundary_scan_all_pass": true,
+    "eighteen_review_render_files_referenced": true,
+    "external_contact_not_sent": true,
+    "manifest_all_files_exist": true,
+    "no_new_science_claims_or_contact": true,
+    "six_figures_have_three_formats": true,
+    "stage10_11_passed": true,
+    "stage10_14_passed": true,
+    "stage10_9_passed": true
+  },
+  "generated_utc": "2026-07-08T11:34:21Z",
+  "git_sha": "f668ab4ac0c4569e7476a5433247ede63b576356",
+  "interpretation_boundary": "Stage 10.15 is an author-review packaging step. It binds existing Stage 10 evidence and readable figures without adding new data, changing claims, inventing author-only fields, or sending external contact.",
+  "outputs": {
+    "boundary_scan": "case_studies/stage10_author_visual_review_packet/stage10_15_no_send_boundary_scan.tsv",
+    "checklist": "case_studies/stage10_author_visual_review_packet/stage10_15_author_decision_checklist.tsv",
+    "doc": "docs/stage10_15_author_visual_review_packet.md",
+    "figure_guide": "case_studies/stage10_author_visual_review_packet/stage10_15_figure_review_guide.md",
+    "gate_report": "case_studies/stage10_author_visual_review_packet/stage10_15_gate_report.json",
+    "manifest": "case_studies/stage10_author_visual_review_packet/stage10_15_author_visual_review_manifest.tsv",
+    "packet_brief": "case_studies/stage10_author_visual_review_packet/stage10_15_author_visual_review_packet.md"
+  },
+  "stage": "10.15",
+  "status": "pass",
+  "summary_metrics": {
+    "author_required_item_count": 2,
+    "boundary_count": 6,
+    "boundary_pass_count": 6,
+    "checklist_item_count": 10,
+    "figure_render_reference_count": 18,
+    "manifest_row_count": 26
+  }
+}

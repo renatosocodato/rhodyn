@@ -1,0 +1,7 @@
+boundary_id	boundary	status	evidence	action_if_failed
+B-001	No external contact is sent by this packet	pass	Stage 10.9, Stage 10.11, and Stage 10.14 gate reports	Stop and restore not_sent state before packaging
+B-002	Readable Stage 10.14 figures are used for review instead of crowded Stage 10.13 parent renders	pass	Stage 10.14 visual-QA gate report	Do not use the figure packet until visual-QA passes
+B-003	All packet references exist and are checksum-backed	pass	Stage 10.15 manifest	Regenerate or remove missing surfaces
+B-004	The packet does not add new biological evidence or benchmark outcomes	pass	Stage 10.15 uses existing Stage 10.9, 10.11, and 10.14 surfaces	Move new analyses to a separate evidence phase
+B-005	Author-only fields remain author actions rather than invented metadata	pass	Clean query retains author placeholder and checklist marks author-required rows	Remove invented identity or contact details
+B-006	Old Stage 9.29 package is not used alone as the basis for renewed editor contact	pass	Stage 10 author-review surfaces foreground method-object, named-baseline, public-breadth, held-out, and figure-readiness evidence	Rebuild contact surface around Stage 10 evidence

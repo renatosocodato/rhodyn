@@ -1,0 +1,11 @@
+item_id	review_item	required	status	current_evidence	author_action
+AVR-001	Use Stage 10.14 review renders, not crowded Stage 10.13 parent renders	yes	ready_for_author_review	Stage 10.14 records parent visual failure and readable review-render pass	Review the contact sheet and six readable figures
+AVR-002	External contact remains unsent	yes	not_sent	Stage 10.9, 10.11, 10.14, and 10.15 gates retain not_sent state	Send only after explicit corresponding-author approval
+AVR-003	Corresponding-author identity and contact details	yes	author_required	Clean query still contains author placeholder	Replace placeholder before any external message
+AVR-004	Presubmission route approval	yes	author_required	Stage 10.9 selected presubmission query with author review required	Confirm presubmission query, full submission, delay, or venue pivot
+AVR-005	Method-first framing	yes	ready_for_author_review	Query, pitch, and figure spine foreground residence-state inference	Preserve method-object framing during edits
+AVR-006	Named comparator evidence	yes	ready_for_author_review	Query and pitch name simple summaries and named external-style comparator families	Do not remove comparator evidence unless intentionally shortening
+AVR-007	Public biological breadth	yes	ready_for_author_review	Query and pitch name DRG calcium, GPCR-linked ERK, Cell Painting/MitoTox, and MLCI tracking	Preserve breadth without universal-residence language
+AVR-008	No-retuning held-out validation scope	yes	ready_for_author_review	Query says public-derived contexts and no-retuning route	Do not describe this as prospective blinded collaborator validation
+AVR-009	Limits and non-claims	yes	ready_for_author_review	Query and pitch reject universal residence and automatic mechanism readings	Keep these boundaries visible in any shortened version
+AVR-010	Prospective collaborator-blind validation	no	separate_new_evidence_decision	Stage 10.12 leaves this as external-data dependent	Decide separately whether to delay contact for new external validation
