@@ -639,14 +639,20 @@ def _update_stage9_memory(version_binding: dict[str, Any]) -> None:
 def _update_roadmap_memory(version_binding: dict[str, Any]) -> None:
     memory = _read_json(ROADMAP_MEMORY_PATH)
     current = memory.setdefault("current_position", {})
-    current["active_stage"] = "Stage 9.29 closed and version-bound"
     current["stage9_active_gate"] = "Stage 9.29 closed and version-bound"
-    current["current_gate"] = "Stage 9 closed and version-bound"
-    current["next_stage"] = "Stage 10 or journal-specific submission actions, not started"
+    if not str(current.get("active_stage", "")).startswith("Stage 10"):
+        current["active_stage"] = "Stage 9.29 closed and version-bound"
+        current["current_gate"] = "Stage 9 closed and version-bound"
+        current["next_stage"] = "Stage 10 or journal-specific submission actions, not started"
     current["after_stage9_29_closure"] = (
         "Stage 9.29 closed the Nature Methods manuscript package by binding the package, evidence, release, "
         "figure-rendering, limitation, and PI-review decision versions. Official Reporting Summary, author declarations, "
         "reviewer/editor fit choices, and portal metadata remain human submission actions."
+    )
+    current["after_stage9_29_closure_refresh"] = (
+        "Stage 9.29 closure was refreshed against the current repository state without resetting a later Stage 10 "
+        "roadmap position. The closed manuscript package remains version-bound, while Stage 10 evidence-elevation "
+        "work, if already active, stays the current forward route."
     )
     stages = memory.get("stage_lock", [])
     for stage in stages:
