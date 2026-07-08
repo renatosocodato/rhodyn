@@ -1,0 +1,40 @@
+{
+  "gates": {
+    "all_six_figures_rendered": true,
+    "helvetica_pdf_fonts": true,
+    "high_res_pngs": true,
+    "mutation_table_covers_thirty_old_panels": true,
+    "pdf_png_svg_triplets": true,
+    "review_language_pruned": true,
+    "stage10_14_rejected_visual_language_recorded": true,
+    "stage10_21_recipe_binding_available": true,
+    "visual_guards_pass": true
+  },
+  "generated_utc": "2026-07-08T18:23:15Z",
+  "git_sha": "5ed7da0895b227b111e8b97f1374c4835c433db1",
+  "interpretation_boundary": "Stage 10.22 changes figure design and rendering only. It does not add data, rerun benchmarks, alter scientific claims, imply prospective validation, or send external contact.",
+  "outputs": {
+    "architecture": "case_studies/stage10_quantitative_figure_mutation/stage10_22_six_figure_architecture.tsv",
+    "biophysical_panels": "case_studies/stage10_quantitative_figure_mutation/stage10_22_required_biophysical_panels.tsv",
+    "contact_sheet": "case_studies/stage10_quantitative_figure_mutation/stage10_22_quantitative_contact_sheet.png",
+    "delete_demote_rebuild": "case_studies/stage10_quantitative_figure_mutation/stage10_22_delete_demote_rebuild.tsv",
+    "distributional_panels": "case_studies/stage10_quantitative_figure_mutation/stage10_22_required_distributional_panels.tsv",
+    "final_rendered_dir": "case_studies/stage10_quantitative_figure_mutation/final_rendered",
+    "font_qc": "case_studies/stage10_quantitative_figure_mutation/stage10_22_font_qc.tsv",
+    "gate_card": "case_studies/stage10_quantitative_figure_mutation/stage10_22_final_editorial_gate_card.md",
+    "gate_report": "case_studies/stage10_quantitative_figure_mutation/stage10_22_gate_report.json",
+    "mutation_table": "case_studies/stage10_quantitative_figure_mutation/stage10_22_panel_mutation_table.tsv",
+    "redesign_report": "case_studies/stage10_quantitative_figure_mutation/stage10_22_quantitative_redesign_report.md",
+    "visual_grammar_map": "case_studies/stage10_quantitative_figure_mutation/stage10_22_visual_grammar_map.tsv",
+    "visual_qc": "case_studies/stage10_quantitative_figure_mutation/stage10_22_visual_qc.tsv"
+  },
+  "stage": "10.22",
+  "status": "pass",
+  "summary_metrics": {
+    "biophysical_panel_count": 10,
+    "distributional_panel_count": 21,
+    "figure_count": 6,
+    "old_panel_mutation_rows": 30,
+    "rendered_file_count": 18
+  }
+}

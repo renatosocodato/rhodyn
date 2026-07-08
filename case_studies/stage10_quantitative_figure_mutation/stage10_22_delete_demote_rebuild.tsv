@@ -1,0 +1,25 @@
+fig_id	old_panel	old_panel_title	decision	reason	replacement_or_destination
+FIG-001	A	Input objects and declared biological regimes	rebuild	slide-like workflow boxes	FIG-001A. Trajectory window
+FIG-001	B	Residence-comparator decision divergence	rebuild	conceptual equation card	FIG-001B. Feature distributions
+FIG-001	C	Executable positive, negative, and ambiguous fixtures	rebuild	static grid without distributions	FIG-001C. Decision divergence
+FIG-001	D	Abstention and failure-mode grammar	rebuild	review ledger table	FIG-001D. Abstention bounds
+FIG-002	A	Known-truth regimes for benchmark stress tests	rebuild	static regime matrix	FIG-002E. Runtime scaling
+FIG-002	B	Named comparator families	rebuild	generic comparator ladder	FIG-002E. Runtime scaling
+FIG-002	C	Accuracy and boundary outcomes	rebuild	partly quantitative but visually schematic	FIG-002E. Runtime scaling
+FIG-002	D	Public input benchmark summaries	rebuild	table-like summary	FIG-002E. Runtime scaling
+FIG-003	A	Independent public system matrix	rebuild	source table rather than data matrix	FIG-003F. Source eligibility
+FIG-003	B	DRG calcium residence-amplitude divergence	rebuild	quantitative trace concept retained	FIG-003F. Source eligibility
+FIG-003	C	ERK GPCR residence-amplitude divergence and sufficiency boundary	rebuild	trace concept retained but needs distributions	FIG-003F. Source eligibility
+FIG-003	D	Cell Painting and MitoTox endpoint architecture	rebuild	schematic endpoint network	FIG-003F. Source eligibility
+FIG-003	E	MLCI tracking residence-amplitude stress test	rebuild	trace concept retained	FIG-003F. Source eligibility
+FIG-003	F	Source eligibility and deferred datasets	demote_or_compress	ledger-like table	compress into axis label, caption, or supplementary support
+FIG-004	A	Endpoint input schema and contrast contract	rebuild	workflow boxes	FIG-004E. Scope limits
+FIG-004	E	Measurement-scope limits	demote_or_compress	ledger-like table	compress into axis label, caption, or supplementary support
+FIG-005	A	Predeclared splits, thresholds, and margins	rebuild	workflow boxes	FIG-005E. Validation boundary
+FIG-005	D	No-hidden-tuning and gate status	demote_or_compress	status checklist	compress into axis label, caption, or supplementary support
+FIG-005	E	Prospective validation boundary	demote_or_compress	conceptual boundary	compress into axis label, caption, or supplementary support
+FIG-006	A	Python, CLI, API, and workbench parity	rebuild	software parity table	FIG-006E. Inference scope
+FIG-006	B	Analysis export bundle anatomy	demote_or_compress	workflow diagram	compress into axis label, caption, or supplementary support
+FIG-006	C	Clean-room reproduction	demote_or_compress	loop diagram	compress into axis label, caption, or supplementary support
+FIG-006	D	Archive and checksum coverage	rebuild	ledger table	FIG-006E. Inference scope
+FIG-006	E	User-path rehearsal	demote_or_compress	conceptual user path	compress into axis label, caption, or supplementary support
