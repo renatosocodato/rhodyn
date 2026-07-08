@@ -45,6 +45,8 @@ The software/workflow reading remains true, but secondary. RhoDyn is software be
 | 10.7 | Release a benchmark-ready RhoDyn version. | Prepare a benchmark evidence release, versioned case-study bundle, and clean-room reproduction route for Stage 10 outputs. | Release candidate tag, archive manifest, command index, benchmark checksum table. | A fresh clone can reproduce all Stage 10 benchmark and case-study outputs. |
 | 10.8 | Run adversarial editorial simulation before EIC contact. | Simulate Nature Methods EIC, methods editor, computational reviewer, live-cell biologist, statistician, and software reviewer. | Red-team report and action matrix. | No high-severity desk-rejection risk remains unresolved; any remaining risk is explicitly accepted by the PI. |
 | 10.9 | Decide EIC-contact route. | Choose full submission, presubmission query, delay for another dataset, or pivot venue. | EIC-contact decision memo and final one-page pitch. | Send only if the expected desk-negative risk is materially lower than the Stage 9.29 estimate. |
+| 10.10 | Recursively harden the Stage 10 chain. | Recheck all prior Stage 10 phase gates, evidence-chain links, and claim-boundary decisions before author review. | Phase-gate matrix, evidence-chain audit, claim-boundary matrix, patch recommendations, gate report, and hardening report. | All prior Stage 10 gates pass, no high-risk gap remains open, and external contact is still not sent. |
+| 10.11 | Package author-review-ready presubmission route. | Convert the selected presubmission route into a no-send author-review packet with checklist and boundary scan. | Clean query, author checklist, packet manifest, boundary scan, decision brief, and gate report. | Query is ready for author review only, boundary scan passes, and external contact remains not sent. |
 
 ## Stage 10.1 mathematical elevation
 
@@ -290,6 +292,12 @@ Stage 10.10 is now implemented as a recursive hardening pass over Stages 10.0 th
 
 The hardening pass verifies that all ten prior Stage 10 phase gates pass, the method-evidence chain remains complete, claim-boundary checks remain explicit, no high-risk gap is open, and external contact remains unsent. It does not add datasets, benchmark results, figures, manuscript claims, or journal contact. Its role is to make the author-reviewed presubmission route safer by binding the method object, named baseline evidence, public biological breadth, held-out validation, method-first figure architecture, manuscript pitch, release replayability, red-team clearance, and contact decision into one coherent evidence ladder.
 
+## Stage 10.11 author-review readiness
+
+Stage 10.11 is now implemented as a no-send author-review packet for the selected presubmission route. The executable runner is `scripts/run_stage10_11_author_review_readiness.py`, the documentation page is `docs/stage10_11_author_review_readiness.md`, and the outputs are under `case_studies/stage10_author_review_readiness/`.
+
+The readiness pass provides a clean presubmission query marked `AUTHOR_REVIEW_REQUIRED`, a checklist separating author-only send decisions from evidence-ready message components, a packet manifest, a boundary scan, a decision brief, and a gate report. The boundary scan verifies that the query foregrounds the method object, named comparator classes, public biological breadth, no-retuning held-out validation, software reproducibility as support, and explicit limits against universal-residence or automatic-mechanism readings. It does not contact Nature Methods and does not add evidence, figures, or manuscript claims.
+
 ## Stop and pivot conditions
 
 | trigger | implication | decision |
@@ -316,9 +324,10 @@ python3 scripts/run_stage10_7_benchmark_release_candidate.py
 python3 scripts/run_stage10_8_eic_red_team.py
 python3 scripts/run_stage10_9_eic_contact_decision.py
 python3 scripts/run_stage10_10_recursive_hardening.py
+python3 scripts/run_stage10_11_author_review_readiness.py
 python3 scripts/check_release.py
 ```
 
 ## Reflection update
 
-Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 is now the active scientific-methods elevation program. It is justified because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. Stages 10.1 through 10.10 have now strengthened the mathematical method object, named benchmarking, public biological breadth, no-retuning held-out validation, method-first figure architecture, method-first manuscript/pitch surfaces, benchmark-ready replay packaging, adversarial editorial risk simulation, route selection, and recursive claim-boundary hardening. The selected route remains a presubmission-style query that foregrounds the method object, comparator evidence, public biological breadth, held-out validation, reproducible software support, and explicit limits. External contact remains an author action and has not been sent.
+Stage 9.29 closure remains valid for the current package, but it should not be treated as the safest basis for a second EIC approach. Stage 10 is now the active scientific-methods elevation program. It is justified because the remaining risk is not manuscript grammar or package completeness. The remaining risk is whether the method is seen as a Nature Methods-level advance. Stages 10.1 through 10.11 have now strengthened the mathematical method object, named benchmarking, public biological breadth, no-retuning held-out validation, method-first figure architecture, method-first manuscript/pitch surfaces, benchmark-ready replay packaging, adversarial editorial risk simulation, route selection, recursive claim-boundary hardening, and author-review readiness for the presubmission route. The selected route remains a presubmission-style query that foregrounds the method object, comparator evidence, public biological breadth, held-out validation, reproducible software support, and explicit limits. External contact remains an author action and has not been sent.

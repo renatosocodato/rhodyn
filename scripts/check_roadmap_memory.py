@@ -238,6 +238,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.8 adversarial EIC red-team simulation complete; Stage 10.9 EIC-contact decision not started",
         "Stage 10.9 EIC-contact decision complete; external contact not sent",
         "Stage 10.10 recursive hardening complete; external contact remains not sent",
+        "Stage 10.11 author-review readiness complete; external contact remains not sent",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -251,7 +252,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_10_complete_recursive_hardening",
+        10: "stage10_11_complete_author_review_readiness",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -354,6 +355,15 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_recursive_hardening/stage10_10_patch_recommendations.tsv",
             "case_studies/stage10_recursive_hardening/stage10_10_gate_report.json",
             "case_studies/stage10_recursive_hardening/stage10_10_recursive_hardening_report.md",
+            "docs/stage10_11_author_review_readiness.md",
+            "scripts/run_stage10_11_author_review_readiness.py",
+            "tests/test_stage10_11_author_review_readiness.py",
+            "case_studies/stage10_author_review_readiness/stage10_11_author_review_checklist.tsv",
+            "case_studies/stage10_author_review_readiness/stage10_11_editor_contact_packet_manifest.tsv",
+            "case_studies/stage10_author_review_readiness/stage10_11_presubmission_query_clean_AUTHOR_REVIEW_REQUIRED.md",
+            "case_studies/stage10_author_review_readiness/stage10_11_author_decision_brief.md",
+            "case_studies/stage10_author_review_readiness/stage10_11_boundary_scan.tsv",
+            "case_studies/stage10_author_review_readiness/stage10_11_gate_report.json",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -562,6 +572,29 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.10 recursive-hardening gates must all pass")
         else:
             failures.append("missing Stage 10.10 recursive-hardening report")
+        if subphase_status.get("10.11") != "complete_author_review_readiness":
+            failures.append("Stage 10.11 must be complete_author_review_readiness")
+        readiness_report_path = root / "case_studies" / "stage10_author_review_readiness" / "stage10_11_gate_report.json"
+        if readiness_report_path.exists():
+            readiness_report = json.loads(readiness_report_path.read_text(encoding="utf-8"))
+            if readiness_report.get("status") != "pass":
+                failures.append("Stage 10.11 author-review readiness report must pass")
+            if readiness_report.get("selected_route") != "presubmission_query_author_review_required":
+                failures.append("Stage 10.11 must preserve the presubmission-style route")
+            if readiness_report.get("external_contact_status") != "not_sent":
+                failures.append("Stage 10.11 must preserve external contact as not sent")
+            gates = readiness_report.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.11 author-review readiness gates must all pass")
+            summary = readiness_report.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("author_review_item_count") != 12:
+                failures.append("Stage 10.11 must record twelve author-review checklist items")
+            if not isinstance(summary, dict) or summary.get("boundary_pass_count") != summary.get("boundary_count"):
+                failures.append("Stage 10.11 boundary scan must fully pass")
+            if not isinstance(summary, dict) or summary.get("packet_surface_count") != 6:
+                failures.append("Stage 10.11 must record six packet surfaces")
+        else:
+            failures.append("missing Stage 10.11 author-review readiness report")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

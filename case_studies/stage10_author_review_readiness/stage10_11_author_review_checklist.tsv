@@ -1,0 +1,13 @@
+item_id	review_item	required	status	current_evidence	author_action
+AR-001	Corresponding author identity, affiliation, and contact details	yes	author_required	query contains author placeholder	replace placeholder before any external message
+AR-002	Presubmission route approval	yes	author_required	Stage 10.9 selected presubmission query with author review required	confirm presubmission query rather than full submission, delay, or venue pivot
+AR-003	Subject line	yes	author_required	clean query includes proposed Nature Methods presubmission subject	approve or edit subject before sending
+AR-004	Method-first framing	yes	ready_for_author_review	query and pitch lead with residence-state inference method	preserve method-object framing during edits
+AR-005	Named comparator families	yes	ready_for_author_review	query names simple summaries, SciPy, scikit-learn, HMM, catch22-style, tsfresh-style, MiniROCKET-style, and ruptures-style comparators	do not remove comparator evidence unless pitch is intentionally shortened
+AR-006	Public biological breadth	yes	ready_for_author_review	query names DRG calcium, GPCR-linked ERK, Cell Painting/MitoTox, and MLCI tracking	preserve breadth while avoiding universal-residence language
+AR-007	Held-out validation scope	yes	ready_for_author_review	query states sealed no-retuning validation over public-derived contexts	do not call it prospective blinded validation
+AR-008	Software reproducibility support	yes	ready_for_author_review	query names Python, command-line, API, workbench, checksum, and archive surfaces	keep software as support for the method, not the primary claim
+AR-009	Limits and non-claims	yes	ready_for_author_review	query explicitly rejects universal residence and automatic mechanism readings	do not strengthen limits into unsupported claims during shortening
+AR-010	Attachment decision	no	author_optional	one-page pitch is available as a concise attachment source	decide whether to attach, paste, or omit the one-page pitch
+AR-011	Stage 9.29 package not used alone	yes	ready_for_author_review	Stage 10.10 forbids old-package reconsideration without the Stage 10 evidence pitch	do not ask for reconsideration of the Stage 9.29 package alone
+AR-012	External contact send state	yes	not_sent	Stage 10.9 and 10.10 both record external_contact_status not_sent	send only after explicit corresponding-author approval

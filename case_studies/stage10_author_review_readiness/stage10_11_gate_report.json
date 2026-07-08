@@ -1,0 +1,43 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "author_review_required": true,
+    "boundary_scan_passes": true,
+    "external_contact_not_sent": true,
+    "old_package_contact_forbidden": true,
+    "optional_strengthening_not_blocking": true,
+    "safe_query_checks_pass": true,
+    "selected_route_preserved": true,
+    "stage10_10_hardening_passed": true,
+    "stage10_9_route_passed": true
+  },
+  "generated_utc": "2026-07-08T10:08:37Z",
+  "git_sha": "525ce96971863e9915d58e3cb012aaaf1bffec6e",
+  "interpretation_boundary": "Stage 10.11 is an author-review readiness step only. It does not send any external message, does not create new evidence, and does not alter the Stage 10 method claims.",
+  "next_phase": "Author review and optional EIC presubmission contact",
+  "outputs": {
+    "author_decision_brief": "case_studies/stage10_author_review_readiness/stage10_11_author_decision_brief.md",
+    "author_review_checklist": "case_studies/stage10_author_review_readiness/stage10_11_author_review_checklist.tsv",
+    "boundary_scan": "case_studies/stage10_author_review_readiness/stage10_11_boundary_scan.tsv",
+    "clean_query": "case_studies/stage10_author_review_readiness/stage10_11_presubmission_query_clean_AUTHOR_REVIEW_REQUIRED.md",
+    "gate_report": "case_studies/stage10_author_review_readiness/stage10_11_gate_report.json",
+    "packet_manifest": "case_studies/stage10_author_review_readiness/stage10_11_editor_contact_packet_manifest.tsv"
+  },
+  "safe_query_checks": {
+    "author_placeholder_present": true,
+    "author_review_header_present": true,
+    "forbidden_overreads_absent": true,
+    "no_local_paths_or_tokens": true
+  },
+  "selected_route": "presubmission_query_author_review_required",
+  "stage": "10.11",
+  "status": "pass",
+  "summary_metrics": {
+    "author_action_item_count": 11,
+    "author_review_item_count": 12,
+    "boundary_count": 9,
+    "boundary_pass_count": 9,
+    "packet_surface_count": 6,
+    "required_author_review_item_count": 11
+  }
+}
