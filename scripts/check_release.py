@@ -623,6 +623,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.13 rendered method figures complete; external contact remains not sent",
             "Stage 10.14 rendered-figure visual QA complete; external contact remains not sent",
             "Stage 10.15 author visual-review packet complete; external contact remains not sent",
+            "Stage 10.16 route-decision triage complete; external contact remains not sent",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -643,8 +644,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_15_complete_author_visual_review_packet":
-                failures.append("roadmap execution memory does not mark Stage 10.15 author visual-review packet as complete")
+            if stage10.get("status") != "stage10_16_complete_route_decision_triage":
+                failures.append("roadmap execution memory does not mark Stage 10.16 route-decision triage as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -813,6 +814,14 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "case_studies/stage10_author_visual_review_packet/stage10_15_figure_review_guide.md",
                 "case_studies/stage10_author_visual_review_packet/stage10_15_author_visual_review_packet.md",
                 "case_studies/stage10_author_visual_review_packet/stage10_15_gate_report.json",
+                "docs/stage10_16_route_decision_triage.md",
+                "scripts/run_stage10_16_route_decision_triage.py",
+                "tests/test_stage10_16_route_decision_triage.py",
+                "case_studies/stage10_route_decision_triage/stage10_16_open_item_resolution.tsv",
+                "case_studies/stage10_route_decision_triage/stage10_16_route_decision_triage.tsv",
+                "case_studies/stage10_route_decision_triage/stage10_16_no_send_boundary_scan.tsv",
+                "case_studies/stage10_route_decision_triage/stage10_16_route_recommendation.md",
+                "case_studies/stage10_route_decision_triage/stage10_16_gate_report.json",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -1170,6 +1179,39 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                         failures.append("Stage 10.15 must pass all no-send boundary rows")
             else:
                 failures.append("Stage 10.15 author visual-review packet report is missing")
+            stage10_route_triage_gate = root / "case_studies" / "stage10_route_decision_triage" / "stage10_16_gate_report.json"
+            if stage10_route_triage_gate.exists():
+                try:
+                    route_triage_payload = json.loads(stage10_route_triage_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.16 route-decision triage report is not valid JSON: {exc}")
+                else:
+                    if route_triage_payload.get("status") != "pass":
+                        failures.append("Stage 10.16 route-decision triage report must pass")
+                    if route_triage_payload.get("external_contact_status") != "not_sent":
+                        failures.append("Stage 10.16 must preserve external contact as not sent")
+                    if route_triage_payload.get("recommendation") != "presubmission_query_after_author_approval":
+                        failures.append("Stage 10.16 must retain presubmission after author approval as recommendation")
+                    gates = route_triage_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.16 route-decision triage gates must all pass")
+                    summary = route_triage_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("open_item_count") != 10:
+                        failures.append("Stage 10.16 must classify ten open author-review items")
+                    if not isinstance(summary, dict) or summary.get("local_resolved_count") != 6:
+                        failures.append("Stage 10.16 must resolve six local framing/readiness items")
+                    if not isinstance(summary, dict) or summary.get("author_only_count") != 2:
+                        failures.append("Stage 10.16 must retain two author-only items")
+                    if not isinstance(summary, dict) or summary.get("new_evidence_count") != 1:
+                        failures.append("Stage 10.16 must retain one optional new-evidence item")
+                    if not isinstance(summary, dict) or summary.get("route_count") != 4:
+                        failures.append("Stage 10.16 must preserve four route options")
+                    if not isinstance(summary, dict) or summary.get("boundary_count") != 7:
+                        failures.append("Stage 10.16 must record seven no-send route boundaries")
+                    if not isinstance(summary, dict) or summary.get("boundary_pass_count") != 7:
+                        failures.append("Stage 10.16 must pass all no-send route boundaries")
+            else:
+                failures.append("Stage 10.16 route-decision triage report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

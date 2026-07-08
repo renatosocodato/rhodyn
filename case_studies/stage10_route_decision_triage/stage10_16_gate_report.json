@@ -1,0 +1,38 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "author_only_items_retained": true,
+    "boundary_scan_all_pass": true,
+    "external_contact_not_sent": true,
+    "external_validation_not_local_blocker": true,
+    "full_submission_requires_author_override": true,
+    "local_items_resolved": true,
+    "new_evidence_item_retained": true,
+    "no_new_science_claims_or_contact": true,
+    "presubmission_recommended": true,
+    "stage10_15_passed": true
+  },
+  "generated_utc": "2026-07-08T11:46:29Z",
+  "git_sha": "a06e59170e96dab92cd37db28e83bb824ea57f3a",
+  "interpretation_boundary": "Stage 10.16 is a no-send decision-triage step. It recommends presubmission after author approval, keeps full submission as an author override, preserves prospective collaborator-blind validation as optional new evidence, and does not add data or send external contact.",
+  "outputs": {
+    "boundary_scan": "case_studies/stage10_route_decision_triage/stage10_16_no_send_boundary_scan.tsv",
+    "doc": "docs/stage10_16_route_decision_triage.md",
+    "gate_report": "case_studies/stage10_route_decision_triage/stage10_16_gate_report.json",
+    "open_item_resolution": "case_studies/stage10_route_decision_triage/stage10_16_open_item_resolution.tsv",
+    "recommendation": "case_studies/stage10_route_decision_triage/stage10_16_route_recommendation.md",
+    "route_triage": "case_studies/stage10_route_decision_triage/stage10_16_route_decision_triage.tsv"
+  },
+  "recommendation": "presubmission_query_after_author_approval",
+  "stage": "10.16",
+  "status": "pass",
+  "summary_metrics": {
+    "author_only_count": 2,
+    "boundary_count": 7,
+    "boundary_pass_count": 7,
+    "local_resolved_count": 6,
+    "new_evidence_count": 1,
+    "open_item_count": 10,
+    "route_count": 4
+  }
+}

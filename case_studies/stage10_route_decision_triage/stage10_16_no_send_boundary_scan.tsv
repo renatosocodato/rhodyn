@@ -1,0 +1,8 @@
+boundary_id	boundary	status	evidence	action_if_failed
+B-001	External contact remains unsent	pass	Stage 10.15 gate report	Stop and restore no-send status
+B-002	Presubmission remains the recommended next route after author approval	pass	Stage 10.9 route matrix and Stage 10.12 option matrix	Do not advance route handoff until the route matrix is reconciled
+B-003	Full submission is not silently selected	pass	Stage 10.16 route triage	Restore full submission as author-override only
+B-004	Prospective collaborator-blind validation remains optional new evidence, not a local blocker	pass	Stage 10.16 open-item resolution	Move new validation to a separate evidence phase
+B-005	Author-only identity and send decisions remain outside Codex authority	pass	Stage 10.16 open-item resolution	Remove invented author-only metadata or send decisions
+B-006	Resolved local items retain method-first framing, comparator evidence, public breadth, held-out scope, and limits	pass	Stage 10.16 open-item resolution	Restore local framing and claim-boundary recommendations
+B-007	No new biological evidence, benchmark result, manuscript claim, or figure output is introduced	pass	Stage 10.16 reads existing decision surfaces only	Move any new evidence to a separate authorized phase

@@ -1,0 +1,5 @@
+route	stage10_9_decision	stage10_12_decision	stage10_16_recommendation	residual_risk	required_human_action
+presubmission_query_author_review_required	selected	keep_active	recommended_next_route_after_author_approval	medium_low	Author approves exact message, contact identity, and whether to paste or attach the one-page pitch.
+full_submission	not_selected_now	do_not_select_without_author_override	viable_only_with_author_override	medium	PI explicitly accepts medium residual risk and chooses full submission instead of presubmission.
+delay_for_another_dataset	not_selected_now	defer_not_blocking_presubmission	optional_new_evidence_not_required_for_presubmission	medium	Author decides whether a stronger direct-submission posture is worth delaying for external data.
+venue_pivot	fallback_only	retain_as_fallback	retain_as_fallback_not_current_route	medium	Use only after PI venue decision or editor feedback indicating poor Nature Methods fit.

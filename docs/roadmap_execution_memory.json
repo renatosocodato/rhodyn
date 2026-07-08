@@ -1,6 +1,6 @@
 {
   "current_position": {
-    "active_stage": "Stage 10.15 author visual-review packet complete; external contact remains not sent",
+    "active_stage": "Stage 10.16 route-decision triage complete; external contact remains not sent",
     "after_phase6_horizon_binding": "Stage 6 is decomposed into subphases 6.1-6.7 so official-release work progresses from release boundary through packaging, docs, automation, archive/citation, clean-room reproducibility, and final ultra-hardening.",
     "after_stage10_0_eic_rescue_scaffold": "Stage 10.0 serialized the post-closure Nature Methods EIC rescue and methodological-elevation roadmap. The next work must lower desk-rejection risk through named baseline benchmarking, broader independent public biological demonstrations, a stronger mathematical method object, and adversarial EIC simulation before any second editor contact.",
     "after_stage10_10_recursive_hardening": "Stage 10.10 rechecked the full Stage 10.0 through 10.9 evidence ladder. All phase gates, evidence-chain checks, and claim-boundary checks pass. The author-reviewed presubmission route remains the selected editor-facing path, and no external contact was sent.",
@@ -9,6 +9,7 @@
     "after_stage10_13_rendered_method_figures": "Stage 10.13 rendered the method-first Stage 10 figure plan into a separate PanelForge package with six figures, thirty planned panels, and eighteen rendered files. It preserves the Stage 9 rendered mockups, adds no biological evidence, and keeps external contact unsent.",
     "after_stage10_14_rendered_figure_visual_qc": "Stage 10.14 recorded the visual crowding in the Stage 10.13 parent renders and generated a separate readable review-render package from the same Stage 10.5 crosswalk. It preserves biological claims, Stage 9 renders, and the not-sent external-contact state.",
     "after_stage10_15_author_visual_review_packet": "Stage 10.15 assembled a no-send author visual-review packet that binds the clean query, one-page pitch, checklist, route memo, and readable Stage 10.14 figures. It adds no biological evidence and keeps external contact unsent.",
+    "after_stage10_16_route_decision_triage": "Stage 10.16 resolved locally decidable author-review items, retained presubmission as the recommended no-send route, kept full submission as author-override only, and left prospective collaborator-blind validation as optional new evidence.",
     "after_stage10_1_method_object_v2": "Stage 10.1 completed an explicit RhoDyn method-object v2 with a decision-divergence definition, bounded-coupling, reserve-like, and routed-output calls, interpretation boundaries, executable positive, counterexample, and ambiguous fixtures, and a non-blocking API gap list. This enabled the now-completed Stage 10.2 named benchmarking pass.",
     "after_stage10_2_named_benchmarking": "Stage 10.2 completed named baseline and named-tool family benchmarking against simple summaries, SciPy signal peak detection, scikit-learn feature classification, hmmlearn state summaries, catch22-style, tsfresh-style, MiniROCKET-style, and ruptures-style comparator families on common synthetic inputs plus retained DRG calcium and ERK GPCR public trajectory inputs. It reports comparator successes as method boundaries rather than hiding them. Stage 10.3 expanded biological demonstrations have not started.",
     "after_stage10_3_public_biological_breadth": "Stage 10.3 completed an expanded public biological breadth matrix with four counted independent public systems across live-cell calcium, GPCR-linked ERK dynamics, perturbation endpoint morphology/cell-health profiling, and microbial live-cell tracking. It adds MLCI tracking and Cell Painting/MitoTox as public systems beyond the earlier DRG and ERK trajectory examples, retains bounded-coupling and routed-output evidence, and records Birtwistle ERK/Akt cell-division as source-verified but license-deferred rather than counted.",
@@ -72,9 +73,9 @@
     "after_stage9_scaffold_serialization": "Stage 9 v2.1 has been serialized as a Nature Methods manuscript-assembly scaffold. Stage 9.-1 is complete as a contract/schema layer, Stage 9.0 has locked the Stage 7.8 evidence package, and Stage 9.1 has registered official Nature Methods venue guidance. Stage 9.2 through Stage 9.29, including Stage 9.6b PanelForge rendering and Stage 9.25b reader-surface hygiene, remain not started. Manuscript production, citation resolution, figure rendering, and package assembly have not started.",
     "after_v0_2_0": "Core-methods pass completed.",
     "after_v0_3_x": "Stage 3 case-study evidence bank is satisfied for the current v0.3 gate.",
-    "current_gate": "Stage 10.15 author visual-review packet complete; external contact remains not sent",
-    "next_stage": "Author decision on presubmission contact, full submission, delay for external validation, or venue pivot",
-    "stage10_active_gate": "Stage 10.15 author visual-review packet complete; external contact remains not sent",
+    "current_gate": "Stage 10.16 route-decision triage complete; external contact remains not sent",
+    "next_stage": "Corresponding-author route approval and contact metadata, or separately authorized new external validation",
+    "stage10_active_gate": "Stage 10.16 route-decision triage complete; external contact remains not sent",
     "stage6_active_gate": "Stage 6 v0.1.0 is publicly citable through the GitHub release/tag archive and Zenodo software record. PyPI remains intentionally dry-run only; Stage 7 methods-program evidence expansion and Stage 8 product alignment remain downstream of the public release.",
     "stage7_active_gate": "Stage 7.8 methods manuscript readiness package is complete and recursively hardened against Stage 7.6 release surfaces. Stage 8 remains conceptual and cannot reshape the Stage 7 evidence path. Stage 9.6b has rendered deterministic main figure mockups; manuscript production, citation resolution, supplementary display planning, and drafting remain not started.",
     "stage9_active_gate": "Stage 9.29 closed and version-bound"
@@ -1005,12 +1006,18 @@
         "case_studies/stage10_rendered_figures/stage10_13_panel_coverage.tsv",
         "case_studies/stage10_rendered_figures/stage10_13_render_inventory.tsv",
         "case_studies/stage10_rendered_figures/stage10_13_render_report.md",
+        "case_studies/stage10_route_decision_triage/stage10_16_gate_report.json",
+        "case_studies/stage10_route_decision_triage/stage10_16_no_send_boundary_scan.tsv",
+        "case_studies/stage10_route_decision_triage/stage10_16_open_item_resolution.tsv",
+        "case_studies/stage10_route_decision_triage/stage10_16_route_decision_triage.tsv",
+        "case_studies/stage10_route_decision_triage/stage10_16_route_recommendation.md",
         "docs/stage10_10_recursive_hardening.md",
         "docs/stage10_11_author_review_readiness.md",
         "docs/stage10_12_optional_strengthening_triage.md",
         "docs/stage10_13_rendered_method_figures.md",
         "docs/stage10_14_rendered_figure_visual_qc.md",
         "docs/stage10_15_author_visual_review_packet.md",
+        "docs/stage10_16_route_decision_triage.md",
         "docs/stage10_1_api_gap_list.md",
         "docs/stage10_2_named_benchmarking.md",
         "docs/stage10_3_public_biological_breadth.md",
@@ -1038,6 +1045,7 @@
         "scripts/run_stage10_13_rendered_method_figures.py",
         "scripts/run_stage10_14_rendered_figure_visual_qc.py",
         "scripts/run_stage10_15_author_visual_review_packet.py",
+        "scripts/run_stage10_16_route_decision_triage.py",
         "scripts/run_stage10_1_method_object_v2.py",
         "scripts/run_stage10_2_named_benchmarking.py",
         "scripts/run_stage10_3_public_biological_breadth.py",
@@ -1055,6 +1063,7 @@
         "tests/test_stage10_13_rendered_method_figures.py",
         "tests/test_stage10_14_rendered_figure_visual_qc.py",
         "tests/test_stage10_15_author_visual_review_packet.py",
+        "tests/test_stage10_16_route_decision_triage.py",
         "tests/test_stage10_1_method_object_v2.py",
         "tests/test_stage10_2_named_benchmarking.py",
         "tests/test_stage10_3_public_biological_breadth.py",
@@ -1065,7 +1074,7 @@
         "tests/test_stage10_8_eic_red_team.py",
         "tests/test_stage10_9_eic_contact_decision.py"
       ],
-      "current_gate": "Stage 10.15 author visual-review packet complete; external contact remains not sent",
+      "current_gate": "Stage 10.16 route-decision triage complete; external contact remains not sent",
       "gate": [
         "Named baseline and named-tool benchmarking must be materially broader than Stage 7.2.",
         "At least two additional independent public biological demonstrations should be added before a stronger Nature Methods generality claim.",
@@ -1075,7 +1084,7 @@
       "name": "Nature Methods EIC rescue and methodological elevation",
       "scope_rule": "Stage 10 is a post-closure evidence-elevation program, not a Stage 9 polish pass. It must lower the risk that RhoDyn is read as workflow/software integration by adding named baseline benchmarking, independent public biological breadth, mathematical method-object elevation, held-out validation, and EIC red-team simulation before any second editor contact.",
       "stage": 10,
-      "status": "stage10_15_complete_author_visual_review_packet",
+      "status": "stage10_16_complete_route_decision_triage",
       "subphases": [
         {
           "evidence": "docs/stage10_nature_methods_eic_rescue_roadmap.md",
@@ -1192,6 +1201,14 @@
           "id": "10.15",
           "name": "No-send author visual-review packet",
           "status": "complete_author_visual_review_packet"
+        },
+        {
+          "evidence": "case_studies/stage10_route_decision_triage/stage10_16_gate_report.json",
+          "gate": "Presubmission remains recommended after author approval; full submission is author-override only; external contact remains not sent.",
+          "goal": "Resolve locally decidable author-review items while preserving author-only and new-evidence boundaries.",
+          "id": "10.16",
+          "name": "No-send route-decision triage",
+          "status": "complete_route_decision_triage"
         }
       ]
     }
