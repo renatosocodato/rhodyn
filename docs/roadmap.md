@@ -785,9 +785,9 @@ sequence.
 Official release work now sits downstream of the evidence bank, frozen service
 contract, completed Stage 5 workbench, public v0.1.0 release, and Stage 7.8
 methods-readiness package. Stage 7.1 is complete as a method-formalization
-phase, Stage 7.2 and the later Stage 7 evidence phases are complete, and Stage
-10.12 is the current post-closure hardening state. The next author-facing action
-is review of the Stage 10.11 presubmission query. The next local production
-hardening action before any full-submission route is rendering the Stage 10
-method-first figures from the existing crosswalk; prospective collaborator-blind
-validation remains a separate new-evidence decision.
+phase, Stage 7.2 and the later Stage 7 evidence phases are complete, Stage 9.29
+manuscript closure is complete, and Stage 10.19 no-send closeout is complete.
+Stage 10.0 through Stage 10.19 are closed for the current evidence-elevation
+chain. The next author-facing action is a corresponding-author decision on
+whether to send the presubmission query, choose an alternate route, or delay for
+prospective collaborator-blind validation as a separate new-evidence decision.

@@ -420,6 +420,7 @@ def _update_memory(gate: dict[str, Any]) -> None:
     current["active_stage"] = "Stage 10.19 full-chain closeout complete; external contact remains not sent"
     current["current_gate"] = "Stage 10.19 full-chain closeout complete; external contact remains not sent"
     current["stage10_active_gate"] = "Stage 10.19 full-chain closeout complete; external contact remains not sent"
+    current["stage9_active_gate"] = "Stage 9.29 closed and version-bound"
     current["next_stage"] = "Corresponding-author signoff and manual external action outside repository, or a new-evidence delay decision"
     current["after_stage10_19_full_chain_closeout"] = (
         "Stage 10.19 recursively closed out Stage 10.0 through 10.18. All subphase gates remain passing, "
