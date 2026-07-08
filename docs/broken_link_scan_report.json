@@ -1,9 +1,9 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-06-30T16:44:08.254123Z",
+  "generated_utc": "2026-07-08T12:07:42.348765Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 105,
+  "link_count": 128,
   "records": [
     {
       "detail": "remote URL syntax checked only",
@@ -402,6 +402,18 @@
       "target": "https://www.nature.com/articles/s41587-019-0071-9"
     },
     {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage9_manuscript_assembly_plan.md",
+      "status": "pass",
+      "target": "https://github.com/renatosocodato/rhodyn"
+    },
+    {
+      "detail": "remote URL syntax checked only",
+      "source": "docs/stage9_manuscript_assembly_plan.md",
+      "status": "pass",
+      "target": "https://github.com/renatosocodato/panelforge-figures"
+    },
+    {
       "detail": "local target exists",
       "source": "mkdocs.yml",
       "status": "pass",
@@ -543,6 +555,12 @@
       "detail": "local target exists",
       "source": "mkdocs.yml",
       "status": "pass",
+      "target": "stage7_7_8_recursive_hardening.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
       "target": "stage7_usability_rehearsal.md"
     },
     {
@@ -574,6 +592,12 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "stage7_methods_submission_readiness.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage9_manuscript_assembly_plan.md"
     },
     {
       "detail": "local target exists",
@@ -622,6 +646,120 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "stage7_methods_reproducibility_card.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_nature_methods_eic_rescue_roadmap.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_method_object_v2.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_1_api_gap_list.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_2_named_benchmarking.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_3_public_biological_breadth.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_4_heldout_validation.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_5_method_first_figure_architecture.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_6_manuscript_pitch_transformation.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_7_benchmark_release_candidate.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_8_adversarial_eic_red_team.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_9_eic_contact_decision.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_10_recursive_hardening.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_11_author_review_readiness.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_12_optional_strengthening_triage.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_13_rendered_method_figures.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_14_rendered_figure_visual_qc.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_15_author_visual_review_packet.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_16_route_decision_triage.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_17_message_integrity.md"
     },
     {
       "detail": "local target exists",

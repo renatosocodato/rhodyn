@@ -1,0 +1,8 @@
+boundary_id	boundary	status	evidence	action_if_failed
+B-001	External contact remains unsent	pass	Stage 10.16 gate report	Stop and restore no-send state.
+B-002	Presubmission remains the route, after author approval only	pass	Stage 10.16 gate report	Do not package text until route recommendation is restored.
+B-003	Polished surfaces are candidate review text, not send-ready messages	pass	Stage 10.17 manifest	Restore candidate-only labels.
+B-004	All message surfaces exist and are checksum-backed	pass	Stage 10.17 manifest	Regenerate or remove missing surfaces.
+B-005	Readability, method identity, comparator, breadth, validation, and limitation audits pass	pass	Stage 10.17 message audit	Patch the polished candidate text before author review.
+B-006	Author identity remains a corresponding-author action	pass	Stage 10.17 message audit	Restore the author placeholder.
+B-007	No new data, figures, benchmarks, or manuscript claims are introduced	pass	Stage 10.17 rewrites editor-facing wording only from existing Stage 10 surfaces	Move new evidence to a separate authorized phase.

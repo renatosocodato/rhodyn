@@ -1,0 +1,11 @@
+check_id	surface	check	status	evidence	action_if_failed
+A-001	polished_query	Query stays concise for presubmission email use	pass	240 words	Shorten the query body without removing method object, comparators, breadth, validation, or limitations.
+A-002	polished_pitch	Pitch stays compact enough for one-page use	pass	221 words	Shorten the pitch while preserving the residual-boundary list.
+A-003	polished_query	Query avoids very long sentence cadence	pass	max sentence words 34	Split dense sentences before author review.
+A-004	polished_pitch	Pitch avoids very long sentence cadence	pass	max sentence words 36	Split dense pitch sentences before author review.
+A-005	combined	All required method and boundary beats are present	pass	method_object, declared_regime, comparator_families, public_breadth, heldout_scope, software_support, non_universal, non_mechanism, simpler_summaries	Restore missing method-object, comparator, breadth, held-out, software, or limitation beat.
+A-006	polished_query	Author-only placeholder is retained	pass	corresponding-author placeholder present	Restore author placeholder and do not invent sender metadata.
+A-007	combined	No unsafe overclaim, local path, or secret pattern is present	pass	unsafe hits []	Remove unsafe phrase, local path, or credential-like string.
+A-008	combined	Software support is secondary to method object	pass	method-first software boundary present	Restore the method-first boundary around software availability.
+A-009	polished_pitch	Prospective validation is explicitly not claimed	pass	no-retuning public-derived replay boundary present	Restore the prospective-validation boundary.
+A-010	polished_query	The query asks for presubmission fit rather than implying submission	pass	presubmission question present	Restore presubmission-fit question and avoid submission language.

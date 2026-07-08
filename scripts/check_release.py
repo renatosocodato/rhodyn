@@ -624,6 +624,7 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             "Stage 10.14 rendered-figure visual QA complete; external contact remains not sent",
             "Stage 10.15 author visual-review packet complete; external contact remains not sent",
             "Stage 10.16 route-decision triage complete; external contact remains not sent",
+            "Stage 10.17 message integrity complete; external contact remains not sent",
         }
         if active_stage not in allowed_active_stages:
             failures.append("roadmap execution memory does not mark the Stage 9.29 closure boundary or Stage 10.0 post-closure scaffold as active")
@@ -644,8 +645,8 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
             failures.append("roadmap execution memory does not mark Stage 9.29 closure as registered")
         if 10 in stages:
             stage10 = stages.get(10, {})
-            if stage10.get("status") != "stage10_16_complete_route_decision_triage":
-                failures.append("roadmap execution memory does not mark Stage 10.16 route-decision triage as complete")
+            if stage10.get("status") != "stage10_17_complete_message_integrity":
+                failures.append("roadmap execution memory does not mark Stage 10.17 message integrity as complete")
             for artifact in [
                 "docs/stage10_nature_methods_eic_rescue_roadmap.md",
                 "docs/stage10_method_object_v2.md",
@@ -822,6 +823,15 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                 "case_studies/stage10_route_decision_triage/stage10_16_no_send_boundary_scan.tsv",
                 "case_studies/stage10_route_decision_triage/stage10_16_route_recommendation.md",
                 "case_studies/stage10_route_decision_triage/stage10_16_gate_report.json",
+                "docs/stage10_17_message_integrity.md",
+                "scripts/run_stage10_17_message_integrity.py",
+                "tests/test_stage10_17_message_integrity.py",
+                "case_studies/stage10_message_integrity/stage10_17_presubmission_query_polished_AUTHOR_REVIEW_REQUIRED.md",
+                "case_studies/stage10_message_integrity/stage10_17_one_page_pitch_polished.md",
+                "case_studies/stage10_message_integrity/stage10_17_message_manifest.tsv",
+                "case_studies/stage10_message_integrity/stage10_17_message_integrity_audit.tsv",
+                "case_studies/stage10_message_integrity/stage10_17_no_send_boundary_scan.tsv",
+                "case_studies/stage10_message_integrity/stage10_17_gate_report.json",
             ]:
                 if artifact not in stage10.get("artifacts", []):
                     failures.append(f"roadmap execution memory does not register Stage 10 artifact: {artifact}")
@@ -1212,6 +1222,37 @@ def check_release(root: Path = ROOT) -> dict[str, object]:
                         failures.append("Stage 10.16 must pass all no-send route boundaries")
             else:
                 failures.append("Stage 10.16 route-decision triage report is missing")
+            stage10_message_gate = root / "case_studies" / "stage10_message_integrity" / "stage10_17_gate_report.json"
+            if stage10_message_gate.exists():
+                try:
+                    message_payload = json.loads(stage10_message_gate.read_text(encoding="utf-8"))
+                except json.JSONDecodeError as exc:
+                    failures.append(f"Stage 10.17 message-integrity report is not valid JSON: {exc}")
+                else:
+                    if message_payload.get("status") != "pass":
+                        failures.append("Stage 10.17 message-integrity report must pass")
+                    if message_payload.get("external_contact_status") != "not_sent":
+                        failures.append("Stage 10.17 must preserve external contact as not sent")
+                    gates = message_payload.get("gates", {})
+                    if not isinstance(gates, dict) or not all(gates.values()):
+                        failures.append("Stage 10.17 message-integrity gates must all pass")
+                    summary = message_payload.get("summary_metrics", {})
+                    if not isinstance(summary, dict) or summary.get("manifest_row_count") != 4:
+                        failures.append("Stage 10.17 must register four message manifest rows")
+                    if not isinstance(summary, dict) or summary.get("audit_count") != 10:
+                        failures.append("Stage 10.17 must record ten message audit checks")
+                    if not isinstance(summary, dict) or summary.get("audit_pass_count") != 10:
+                        failures.append("Stage 10.17 must pass all message audit checks")
+                    if not isinstance(summary, dict) or summary.get("boundary_count") != 7:
+                        failures.append("Stage 10.17 must record seven no-send message boundaries")
+                    if not isinstance(summary, dict) or summary.get("boundary_pass_count") != 7:
+                        failures.append("Stage 10.17 must pass all no-send message boundaries")
+                    if not isinstance(summary, dict) or summary.get("polished_query_words", 999) > 260:
+                        failures.append("Stage 10.17 polished query must stay within the presubmission word target")
+                    if not isinstance(summary, dict) or summary.get("polished_pitch_words", 999) > 320:
+                        failures.append("Stage 10.17 polished pitch must stay within the one-page word target")
+            else:
+                failures.append("Stage 10.17 message-integrity report is missing")
 
         stage7 = stages.get(7, {})
         subphases = stage7.get("subphases", []) if isinstance(stage7, dict) else []

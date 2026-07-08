@@ -244,6 +244,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.14 rendered-figure visual QA complete; external contact remains not sent",
         "Stage 10.15 author visual-review packet complete; external contact remains not sent",
         "Stage 10.16 route-decision triage complete; external contact remains not sent",
+        "Stage 10.17 message integrity complete; external contact remains not sent",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -257,7 +258,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_16_complete_route_decision_triage",
+        10: "stage10_17_complete_message_integrity",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -447,6 +448,15 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_route_decision_triage/stage10_16_no_send_boundary_scan.tsv",
             "case_studies/stage10_route_decision_triage/stage10_16_route_recommendation.md",
             "case_studies/stage10_route_decision_triage/stage10_16_gate_report.json",
+            "docs/stage10_17_message_integrity.md",
+            "scripts/run_stage10_17_message_integrity.py",
+            "tests/test_stage10_17_message_integrity.py",
+            "case_studies/stage10_message_integrity/stage10_17_presubmission_query_polished_AUTHOR_REVIEW_REQUIRED.md",
+            "case_studies/stage10_message_integrity/stage10_17_one_page_pitch_polished.md",
+            "case_studies/stage10_message_integrity/stage10_17_message_manifest.tsv",
+            "case_studies/stage10_message_integrity/stage10_17_message_integrity_audit.tsv",
+            "case_studies/stage10_message_integrity/stage10_17_no_send_boundary_scan.tsv",
+            "case_studies/stage10_message_integrity/stage10_17_gate_report.json",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -820,6 +830,35 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                 failures.append("Stage 10.16 must pass all no-send route boundaries")
         else:
             failures.append("missing Stage 10.16 route-decision triage report")
+        if subphase_status.get("10.17") != "complete_message_integrity":
+            failures.append("Stage 10.17 must be complete_message_integrity")
+        message_gate_path = root / "case_studies" / "stage10_message_integrity" / "stage10_17_gate_report.json"
+        if message_gate_path.exists():
+            message_gate = json.loads(message_gate_path.read_text(encoding="utf-8"))
+            if message_gate.get("status") != "pass":
+                failures.append("Stage 10.17 message-integrity report must pass")
+            if message_gate.get("external_contact_status") != "not_sent":
+                failures.append("Stage 10.17 must preserve external contact as not sent")
+            gates = message_gate.get("gates", {})
+            if not isinstance(gates, dict) or not all(gates.values()):
+                failures.append("Stage 10.17 message-integrity gates must all pass")
+            summary = message_gate.get("summary_metrics", {})
+            if not isinstance(summary, dict) or summary.get("manifest_row_count") != 4:
+                failures.append("Stage 10.17 must register four message manifest rows")
+            if not isinstance(summary, dict) or summary.get("audit_count") != 10:
+                failures.append("Stage 10.17 must record ten message audit checks")
+            if not isinstance(summary, dict) or summary.get("audit_pass_count") != 10:
+                failures.append("Stage 10.17 must pass all message audit checks")
+            if not isinstance(summary, dict) or summary.get("boundary_count") != 7:
+                failures.append("Stage 10.17 must record seven no-send message boundaries")
+            if not isinstance(summary, dict) or summary.get("boundary_pass_count") != 7:
+                failures.append("Stage 10.17 must pass all no-send message boundaries")
+            if not isinstance(summary, dict) or summary.get("polished_query_words", 999) > 260:
+                failures.append("Stage 10.17 polished query must stay within the presubmission word target")
+            if not isinstance(summary, dict) or summary.get("polished_pitch_words", 999) > 320:
+                failures.append("Stage 10.17 polished pitch must stay within the one-page word target")
+        else:
+            failures.append("missing Stage 10.17 message-integrity report")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

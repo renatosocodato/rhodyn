@@ -1,0 +1,40 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "audit_all_pass": true,
+    "author_placeholder_retained": true,
+    "boundary_scan_all_pass": true,
+    "candidate_only_surfaces": true,
+    "external_contact_not_sent": true,
+    "no_new_science_claims_or_contact": true,
+    "polished_pitch_exists": true,
+    "polished_query_exists": true,
+    "presubmission_route_retained": true,
+    "stage10_16_passed": true
+  },
+  "generated_utc": "2026-07-08T12:06:57Z",
+  "git_sha": "c2ed2bbb086d1127b0f5d45309b983edaf128e6f",
+  "interpretation_boundary": "Stage 10.17 is a no-send message-integrity pass. It creates polished author-review candidate text from existing Stage 10 surfaces, preserves the presubmission route after author approval, and does not add data, figures, benchmarks, or external contact.",
+  "outputs": {
+    "audit": "case_studies/stage10_message_integrity/stage10_17_message_integrity_audit.tsv",
+    "boundary_scan": "case_studies/stage10_message_integrity/stage10_17_no_send_boundary_scan.tsv",
+    "doc": "docs/stage10_17_message_integrity.md",
+    "gate_report": "case_studies/stage10_message_integrity/stage10_17_gate_report.json",
+    "manifest": "case_studies/stage10_message_integrity/stage10_17_message_manifest.tsv",
+    "polished_pitch": "case_studies/stage10_message_integrity/stage10_17_one_page_pitch_polished.md",
+    "polished_query": "case_studies/stage10_message_integrity/stage10_17_presubmission_query_polished_AUTHOR_REVIEW_REQUIRED.md"
+  },
+  "stage": "10.17",
+  "status": "pass",
+  "summary_metrics": {
+    "audit_count": 10,
+    "audit_pass_count": 10,
+    "boundary_count": 7,
+    "boundary_pass_count": 7,
+    "manifest_row_count": 4,
+    "polished_pitch_max_sentence_words": 36,
+    "polished_pitch_words": 221,
+    "polished_query_max_sentence_words": 34,
+    "polished_query_words": 240
+  }
+}
