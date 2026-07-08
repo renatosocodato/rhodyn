@@ -691,6 +691,7 @@ def _validate_phase9_boundary(failures: list[str]) -> dict[str, int]:
         "Stage 10.17 message integrity complete; external contact remains not sent",
         "Stage 10.18 author approval dossier complete; external contact remains not sent",
         "Stage 10.19 full-chain closeout complete; external contact remains not sent",
+        "Stage 10.20 EIC/manuscript strengthening complete; external contact remains not sent",
     }
     if current.get("active_stage") not in allowed_active_stages:
         failures.append("roadmap active stage must record the Stage 9.29 closure boundary or an authorized post-closure Stage 10 state")

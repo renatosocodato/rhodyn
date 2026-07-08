@@ -1,9 +1,9 @@
 {
   "check_remote": false,
   "failures": [],
-  "generated_utc": "2026-07-08T12:38:20.568864Z",
+  "generated_utc": "2026-07-08T13:05:50.167533Z",
   "interpretation_boundary": "This scan verifies documentation link integrity only. Remote links are syntax-checked unless --check-remote is passed.",
-  "link_count": 130,
+  "link_count": 131,
   "records": [
     {
       "detail": "remote URL syntax checked only",
@@ -772,6 +772,12 @@
       "source": "mkdocs.yml",
       "status": "pass",
       "target": "stage10_19_full_chain_closeout.md"
+    },
+    {
+      "detail": "local target exists",
+      "source": "mkdocs.yml",
+      "status": "pass",
+      "target": "stage10_20_eic_manuscript_strengthening.md"
     },
     {
       "detail": "local target exists",

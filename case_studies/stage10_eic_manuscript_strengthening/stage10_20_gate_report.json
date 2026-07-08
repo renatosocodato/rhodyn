@@ -1,0 +1,42 @@
+{
+  "external_contact_status": "not_sent",
+  "gates": {
+    "boundary_scan_all_pass": true,
+    "eic_manuscript_rubric_passes": true,
+    "external_contact_not_sent": true,
+    "manifest_all_exists": true,
+    "prospective_validation_predeclared_not_promoted": true,
+    "rendered_figures_ready_for_author_visual_acceptance": true,
+    "stage10_19_still_passes": true,
+    "stage10_6_onward_parent_gates_pass": true
+  },
+  "generated_utc": "2026-07-08T13:05:58Z",
+  "git_sha": "948bdb942eec70efe7bd0817acd8cd793d6fe5fc",
+  "interpretation_boundary": "Stage 10.20 hardens the EIC/manuscript route and predeclares optional prospective validation. It does not add data, rerun benchmarks, change claims, imply author approval, or send external contact.",
+  "outputs": {
+    "boundary_scan": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_boundary_scan.tsv",
+    "doc": "docs/stage10_20_eic_manuscript_strengthening.md",
+    "figure_strengthening": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_rendered_figure_strengthening.tsv",
+    "gate_report": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_gate_report.json",
+    "manifest": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_manifest.tsv",
+    "prospective_validation_predeclaration": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_prospective_validation_predeclaration.json",
+    "prospective_validation_predeclaration_md": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_prospective_validation_predeclaration.md",
+    "report": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_strengthening_report.md",
+    "rubric_crosswalk": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_eic_rubric_crosswalk.tsv",
+    "stage_matrix": "case_studies/stage10_eic_manuscript_strengthening/stage10_20_stage10_6_onward_matrix.tsv"
+  },
+  "recommendation": "presubmission_query_after_corresponding_author_approval",
+  "stage": "10.20",
+  "status": "pass",
+  "summary_metrics": {
+    "boundary_count": 7,
+    "boundary_pass_count": 7,
+    "manifest_row_count": 8,
+    "parent_subphase_count": 14,
+    "parent_subphase_pass_count": 14,
+    "ready_review_figure_count": 6,
+    "review_figure_count": 6,
+    "rubric_pass_count": 11,
+    "rubric_row_count": 11
+  }
+}

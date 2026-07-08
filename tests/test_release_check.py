@@ -7,7 +7,7 @@ from unittest import TestCase
 class ReleaseCheckTests(TestCase):
     def test_release_check_script_passes(self):
         subprocess.run(
-            [sys.executable, "scripts/run_stage10_19_full_chain_closeout.py"],
+            [sys.executable, "scripts/run_stage10_20_eic_manuscript_strengthening.py"],
             text=True,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

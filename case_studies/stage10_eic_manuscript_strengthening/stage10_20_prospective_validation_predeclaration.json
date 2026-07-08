@@ -1,0 +1,35 @@
+{
+  "allowed_input_classes": [
+    "tidy trajectory table with time, signal, perturbation, replicate, and grouping columns",
+    "paired-reporter table with reporter A, reporter B, grouping, and declared margin columns",
+    "endpoint perturbation table with readout, group, replicate, and predeclared model-alternative labels"
+  ],
+  "claim_boundary": "Passing this future lane would strengthen direct-submission confidence for the tested system only. It would not prove universal residence-state structure, automatic mechanism discovery, or superiority over simpler summaries in all contexts.",
+  "decision_states": [
+    "positive_residence_or_routed_call",
+    "comparator_sufficient",
+    "bounded_coupling_or_equivalence_with_declared_margin",
+    "inconclusive_or_abstain",
+    "schema_or_permission_failure"
+  ],
+  "external_contact_status": "not_sent",
+  "minimum_metadata": [
+    "source and reuse permission",
+    "biological system and perturbation",
+    "replicate hierarchy",
+    "predeclared residence window or endpoint contrast",
+    "baseline comparator set",
+    "uncertainty rule and abstention rule"
+  ],
+  "not_a_completed_result": true,
+  "promotion_gate": [
+    "data are external to the current RhoDyn development examples",
+    "input schema validates without post hoc field invention",
+    "windows, margins, and model alternatives are declared before result inspection",
+    "RhoDyn and named baselines run from the same frozen input table",
+    "positive, comparator-sufficient, and inconclusive outcomes are all reportable"
+  ],
+  "purpose": "Define how a future collaborator-blind validation table would be evaluated if the author team chooses to delay for new evidence before direct full submission.",
+  "stage": "10.20",
+  "status": "predeclared_optional_new_evidence"
+}

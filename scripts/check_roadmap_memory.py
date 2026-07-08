@@ -247,6 +247,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         "Stage 10.17 message integrity complete; external contact remains not sent",
         "Stage 10.18 author approval dossier complete; external contact remains not sent",
         "Stage 10.19 full-chain closeout complete; external contact remains not sent",
+        "Stage 10.20 EIC/manuscript strengthening complete; external contact remains not sent",
     }
     if active_stage not in allowed_active_stages:
         failures.append("active stage must record the Stage 9.29 closure boundary or the Stage 10.0 EIC rescue scaffold")
@@ -260,7 +261,7 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
         7: "stage7_8_complete_methods_readiness",
         8: "conceptual_only",
         9: "stage9_29_closed_version_bound",
-        10: "stage10_19_complete_full_chain_closeout",
+        10: "stage10_20_complete_eic_manuscript_strengthening",
     }
     for stage, status in expected_status.items():
         if stages.get(stage, {}).get("status") != status:
@@ -477,6 +478,18 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
             "case_studies/stage10_full_chain_closeout/stage10_19_closeout_manifest.tsv",
             "case_studies/stage10_full_chain_closeout/stage10_19_closeout_report.md",
             "case_studies/stage10_full_chain_closeout/stage10_19_gate_report.json",
+            "docs/stage10_20_eic_manuscript_strengthening.md",
+            "scripts/run_stage10_20_eic_manuscript_strengthening.py",
+            "tests/test_stage10_20_eic_manuscript_strengthening.py",
+            "case_studies/stage10_eic_manuscript_strengthening/stage10_20_eic_rubric_crosswalk.tsv",
+            "case_studies/stage10_eic_manuscript_strengthening/stage10_20_stage10_6_onward_matrix.tsv",
+            "case_studies/stage10_eic_manuscript_strengthening/stage10_20_rendered_figure_strengthening.tsv",
+            "case_studies/stage10_eic_manuscript_strengthening/stage10_20_prospective_validation_predeclaration.json",
+            "case_studies/stage10_eic_manuscript_strengthening/stage10_20_prospective_validation_predeclaration.md",
+            "case_studies/stage10_eic_manuscript_strengthening/stage10_20_boundary_scan.tsv",
+            "case_studies/stage10_eic_manuscript_strengthening/stage10_20_manifest.tsv",
+            "case_studies/stage10_eic_manuscript_strengthening/stage10_20_strengthening_report.md",
+            "case_studies/stage10_eic_manuscript_strengthening/stage10_20_gate_report.json",
         ]
         for artifact in required_stage10_artifacts:
             if artifact not in stage10.get("artifacts", []):
@@ -945,6 +958,41 @@ def check_roadmap_memory(root: Path = ROOT) -> dict[str, object]:
                     failures.append("Stage 10.19 must register six closeout manifest rows")
         else:
             failures.append("missing Stage 10.19 full-chain closeout report")
+        if subphase_status.get("10.20") != "complete_eic_manuscript_strengthening":
+            failures.append("Stage 10.20 must be complete_eic_manuscript_strengthening")
+        strengthening_gate_path = root / "case_studies" / "stage10_eic_manuscript_strengthening" / "stage10_20_gate_report.json"
+        if strengthening_gate_path.exists():
+            try:
+                strengthening_payload = json.loads(strengthening_gate_path.read_text(encoding="utf-8"))
+            except json.JSONDecodeError as exc:
+                failures.append(f"Stage 10.20 EIC/manuscript strengthening report is not valid JSON: {exc}")
+            else:
+                if strengthening_payload.get("status") != "pass":
+                    failures.append("Stage 10.20 EIC/manuscript strengthening report must pass")
+                if strengthening_payload.get("external_contact_status") != "not_sent":
+                    failures.append("Stage 10.20 must preserve external contact as not sent")
+                if strengthening_payload.get("recommendation") != "presubmission_query_after_corresponding_author_approval":
+                    failures.append("Stage 10.20 must retain presubmission after corresponding-author approval")
+                gates = strengthening_payload.get("gates", {})
+                if not isinstance(gates, dict) or not all(gates.values()):
+                    failures.append("Stage 10.20 EIC/manuscript strengthening gates must all pass")
+                summary = strengthening_payload.get("summary_metrics", {})
+                expected_summary = {
+                    "parent_subphase_count": 14,
+                    "parent_subphase_pass_count": 14,
+                    "rubric_row_count": 11,
+                    "rubric_pass_count": 11,
+                    "review_figure_count": 6,
+                    "ready_review_figure_count": 6,
+                    "boundary_count": 7,
+                    "boundary_pass_count": 7,
+                    "manifest_row_count": 8,
+                }
+                for key, expected_value in expected_summary.items():
+                    if not isinstance(summary, dict) or summary.get(key) != expected_value:
+                        failures.append(f"Stage 10.20 must record {key}={expected_value}")
+        else:
+            failures.append("missing Stage 10.20 EIC/manuscript strengthening report")
 
     stage6 = stages.get(6, {})
     subphases = stage6.get("subphases", []) if isinstance(stage6, dict) else []

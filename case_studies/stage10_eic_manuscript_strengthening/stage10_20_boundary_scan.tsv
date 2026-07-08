@@ -1,0 +1,8 @@
+boundary_id	boundary	status	evidence	action_if_failed
+B-001	All Stage 10.6 through 10.19 parent gates remain passing	pass	Stage 10.20 Stage 10.6 onward matrix	Repair the failing parent phase before using the strengthened pitch.
+B-002	EIC/manuscript rubric items all pass	pass	Stage 10.20 EIC rubric crosswalk	Patch the failing manuscript or route surface before author handoff.
+B-003	Rendered Stage 10 figures are in readable review-render form for author visual acceptance	pass	Stage 10.20 rendered-figure strengthening matrix	Regenerate or repackage the affected figure review render.
+B-004	Prospective collaborator-blind validation remains predeclared optional new evidence	pass	case_studies/stage10_eic_manuscript_strengthening/stage10_20_prospective_validation_predeclaration.json	Remove any wording that implies prospective validation has already been completed.
+B-005	External contact remains unsent and author-controlled	pass	Stage 10.18 route lock	Restore no-send state before any handoff.
+B-006	No local path or credential-like text appears in strengthened reader-facing surfaces	pass	hits=[]	Clean the affected surface before author review.
+B-007	Stage 10.20 outputs are checksum-backed	pass	Stage 10.20 manifest	Regenerate missing Stage 10.20 outputs.

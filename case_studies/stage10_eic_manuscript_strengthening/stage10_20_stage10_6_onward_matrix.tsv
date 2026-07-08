@@ -1,0 +1,15 @@
+subphase	gate_path	exists	status	gate_pass	eic_role	strengthening_readout
+10.6	case_studies/stage10_manuscript_pitch/stage10_6_gate_report.json	yes	pass	yes	method-first manuscript and EIC pitch	retained_as_passing_evidence
+10.7	case_studies/stage10_release_candidate/stage10_7_gate_report.json	yes	pass	yes	fresh-clone benchmark reproducibility	retained_as_passing_evidence
+10.8	case_studies/stage10_eic_red_team/stage10_8_gate_report.json	yes	pass	yes	six-perspective EIC red-team	retained_as_passing_evidence
+10.9	case_studies/stage10_eic_contact_decision/stage10_9_gate_report.json	yes	pass	yes	presubmission route decision	retained_as_passing_evidence
+10.10	case_studies/stage10_recursive_hardening/stage10_10_gate_report.json	yes	pass	yes	recursive evidence-chain hardening	retained_as_passing_evidence
+10.11	case_studies/stage10_author_review_readiness/stage10_11_gate_report.json	yes	pass	yes	author-review readiness	retained_as_passing_evidence
+10.12	case_studies/stage10_optional_strengthening/stage10_12_gate_report.json	yes	pass	yes	optional rendered-figure and validation triage	retained_as_passing_evidence
+10.13	case_studies/stage10_rendered_figures/stage10_13_gate_report.json	yes	pass	yes	method-first figure rendering	retained_as_passing_evidence
+10.14	case_studies/stage10_rendered_figure_visual_qc/stage10_14_gate_report.json	yes	pass	yes	readable rendered-figure visual QA	retained_as_passing_evidence
+10.15	case_studies/stage10_author_visual_review_packet/stage10_15_gate_report.json	yes	pass	yes	author visual-review packet	retained_as_passing_evidence
+10.16	case_studies/stage10_route_decision_triage/stage10_16_gate_report.json	yes	pass	yes	route-decision triage	retained_as_passing_evidence
+10.17	case_studies/stage10_message_integrity/stage10_17_gate_report.json	yes	pass	yes	message integrity	retained_as_passing_evidence
+10.18	case_studies/stage10_author_approval_dossier/stage10_18_gate_report.json	yes	pass	yes	corresponding-author approval dossier	retained_as_passing_evidence
+10.19	case_studies/stage10_full_chain_closeout/stage10_19_gate_report.json	yes	pass	yes	full-chain no-send closeout	retained_as_passing_evidence
